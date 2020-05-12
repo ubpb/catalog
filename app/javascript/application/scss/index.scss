@@ -1,0 +1,11 @@
+// Import FontAwesome Pro
+$fa-font-path: "../../vendor/fonts/fontawesome-free/webfonts";
+@import "../../vendor/fonts/fontawesome-free/scss/fontawesome";
+@import "../../vendor/fonts/fontawesome-free/scss/regular";
+@import "../../vendor/fonts/fontawesome-free/scss/solid";
+@import "../../vendor/fonts/fontawesome-free/scss/brands";
+
+// Import libs
+@import "./variables";
+@import "bootstrap/scss/bootstrap";
+@import "animate.css";

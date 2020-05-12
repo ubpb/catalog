@@ -1,0 +1,17 @@
+defaults: &defaults
+  default:
+    adapter: "alma"
+    options:
+      api_key: "API KEY HERE"
+      # api_base_url: "https://api-eu.hosted.exlibrisgroup.com/almaws/v1"
+      # default_format: "application/json"
+      # language: "de"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -8,7 +8,7 @@
     "@rails/webpacker": "4.2.2",
     "animate.css": "^3.7.2",
     "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.15.0",
     "stimulus": "^1.1.1",

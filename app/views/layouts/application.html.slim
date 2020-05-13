@@ -14,5 +14,7 @@ html
     = javascript_pack_tag "application", "data-turbolinks-track": "reload"
 
   body
+    .mb-3 = render "navbar"
+
     .container
       = yield

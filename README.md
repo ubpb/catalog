@@ -1,24 +1,5 @@
-# README
+# UBPB Discovery Portal (Katalog)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**!!UNRELEASED – WORK IN PROGRESS!!**
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Dies ist Version 2 des Katalogportals der Universitätsbibliothek Paderborn. Diese Version ersetzt zukünftig [ubpb/katalog](https://github.com/ubpb/katalog).

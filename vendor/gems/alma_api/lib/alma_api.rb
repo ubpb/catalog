@@ -11,9 +11,9 @@ module AlmaApi
   class Error < StandardError
     attr_reader :code
 
-    def initialize(message = "Unknown cause", code = nil)
-      @code = code
-      super(message)
+    def initialize(message, code)
+      @code = code.presence || "UNKNOWN"
+      super(message.presence || "Unknown cause")
     end
   end
 
@@ -136,36 +136,42 @@ module AlmaApi
     end
 
     def parse_response(response)
-      content_type = response.headers[:content_type]
+      if response.body.present? && response.headers[:content_type].present?
+        content_type = response.headers[:content_type]
 
-      case content_type
-      when /application\/json/
-        Oj.load(response.body)
-      when /application\/xml/
-        Nokogiri::XML.parse(response.body)
-      else
-        raise ArgumentError, "Unsupported content type '#{content_type}' in response from Alma."
+        case content_type
+        when /application\/json/
+          Oj.load(response.body)
+        when /application\/xml/
+          Nokogiri::XML.parse(response.body)
+        else
+          raise ArgumentError, "Unsupported content type '#{content_type}' in response from Alma."
+        end
       end
     end
 
     def parse_error_response(response)
-      content_type = response.headers[:content_type]
+      if response.body.present? && response.headers[:content_type].present?
+        content_type = response.headers[:content_type]
 
-      case content_type
-      when /application\/json/
-        json = Oj.load(response.body)
-        error_message = json["errorList"]["error"][0]["errorMessage"]
-        error_code    = json["errorList"]["error"][0]["errorCode"]
+        case content_type
+        when /application\/json/
+          json = Oj.load(response.body)
+          error_message = json["errorList"]["error"][0]["errorMessage"]
+          error_code    = json["errorList"]["error"][0]["errorCode"]
 
-        {error_message: error_message, error_code: error_code}
-      when /application\/xml/
-        xml = Nokogiri::XML.parse(response.body)
-        error_message = xml.at("errorMessage")&.text
-        error_code    = xml.at("errorCode")&.text
+          {error_message: error_message, error_code: error_code}
+        when /application\/xml/
+          xml = Nokogiri::XML.parse(response.body)
+          error_message = xml.at("errorMessage")&.text
+          error_code    = xml.at("errorCode")&.text
 
-        {error_message: error_message, error_code: error_code}
+          {error_message: error_message, error_code: error_code}
+        else
+          raise ArgumentError, "Unsupported content type '#{content_type}' in error response from Alma."
+        end
       else
-        raise ArgumentError, "Unsupported content type '#{content_type}' in error response from Alma."
+        {error_message: nil, error_code: nil}
       end
     end
 

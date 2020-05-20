@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         db_user  = create_or_update_user!(ils_user)
         session[:current_user_id] = db_user.id
         flash[:success] = t(".success")
-        redirect_to(root_path)
+        redirect_to(account_root_path)
       else
         flash[:error] = t(".error")
         render :new

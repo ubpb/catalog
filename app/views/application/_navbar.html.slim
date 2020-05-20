@@ -33,7 +33,7 @@ nav.navbar.navbar-light.bg-light.navbar-expand-lg
 
       - if current_user
         .btn-group
-          = link_to "", class: "btn btn-primary" do
+          = link_to account_root_path, class: "btn btn-primary" do
             i.far.fa-user
             =< current_user.name
           = link_to logout_path, class: "btn btn-outline-primary", data: {confirm: "Wirklich abmelden?"} do

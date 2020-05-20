@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   get  "/login",  to: "sessions#new", as: :new_session
   get  "/logout", to: "sessions#destroy", as: :logout
 
+  # Library account
+  namespace :account, path: "account" do
+    root to: redirect("/account/loans")
+    resources :loans, only: [:index]
+  end
+
 end

@@ -18,4 +18,4 @@ html
 
     .container
       = render "alerts", global: true
-      = yield
+      = content_for?(:main) ? yield(:main) : yield

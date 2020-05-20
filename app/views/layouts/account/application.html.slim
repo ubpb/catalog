@@ -1,0 +1,8 @@
+= content_for :main do
+  .row
+    .col-md-9
+      = yield
+    .col-md-3
+      = render "nav"
+
+= render template: "layouts/application"

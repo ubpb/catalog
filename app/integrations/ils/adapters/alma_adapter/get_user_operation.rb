@@ -5,6 +5,8 @@ module Ils::Adapters
       def call(user_id)
         response = adapter.api.get("users/#{user_id}")
         UserFactory.build(response)
+      rescue AlmaApi::LogicalError
+        nil
       end
 
     end

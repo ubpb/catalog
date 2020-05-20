@@ -8,7 +8,7 @@ module Ils::Adapters
         })
 
         Ils::RenewLoanResult.new(loan_id: loan_id, success: true, message: response.dig("last_renew_status", "desc"))
-      rescue AlmaApi::Error => e
+      rescue AlmaApi::LogicalError => e
         Ils::RenewLoanResult.new(loan_id: loan_id, success: false, message: e.message)
       end
 

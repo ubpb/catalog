@@ -8,7 +8,21 @@ require "alma_api/configuration"
 
 module AlmaApi
 
-  class Error < StandardError ; end
+  class Error < StandardError
+    attr_reader :code
+
+    def initialize(message = "Unknown cause", code = nil)
+      @code = code
+      super(message)
+    end
+  end
+
+  class GatewayError < Error ; end
+  class ServerError  < Error ; end
+  class LogicalError < Error ; end
+
+  GATEWAY_ERROR_CODES = ["GENERAL_ERROR", "UNAUTHORIZED", "INVALID_REQUEST",
+    "PER_SECOND_THRESHOLD", "REQUEST_TOO_LARGE", "FORBIDDEN", "ROUTING_ERROR"]
 
   class << self
 
@@ -26,7 +40,7 @@ module AlmaApi
     def get(uri, params: {}, format: nil)
       format = get_format(format)
 
-      call_with_error_handling format: format do
+      call_with_error_handling do
         RestClient.get(
           full_uri(uri),
           accept: format,
@@ -39,7 +53,7 @@ module AlmaApi
     def post(uri, params: {}, body: "", format: nil)
       format = get_format(format)
 
-      call_with_error_handling format: format do
+      call_with_error_handling do
         RestClient.post(
           full_uri(uri),
           body,
@@ -54,7 +68,7 @@ module AlmaApi
     def put(uri, params: {}, body: "", format: nil)
       format = get_format(format)
 
-      call_with_error_handling format: format do
+      call_with_error_handling do
         RestClient.put(
           full_uri(uri),
           body,
@@ -69,7 +83,7 @@ module AlmaApi
     def delete(uri, params: {}, format: nil)
       format = get_format(format)
 
-      call_with_error_handling format: format do
+      call_with_error_handling do
         RestClient.delete(
           full_uri(uri),
           accept: format,
@@ -81,14 +95,26 @@ module AlmaApi
 
   private
 
-    def call_with_error_handling(format:, &block)
+    def call_with_error_handling(&block)
       response = yield
       set_remaining_api_calls(response)
-      parse_response(response, format)
+      parse_response(response)
     rescue RestClient::ExceptionWithResponse => e
-      raise Error, parse_error_response(e.response, format)
-    rescue e
-      raise Error, e.message || "Unknown error"
+      error = parse_error_response(e.response)
+
+      case error[:error_code]
+      when *GATEWAY_ERROR_CODES
+        raise GatewayError.new(error[:error_message], error[:error_code])
+      else
+        case e.response.code
+        when 400..499
+          raise LogicalError.new(error[:error_message], error[:error_code])
+        when 500..599
+          raise ServerError.new(error[:error_message], error[:error_code])
+        else # this should not happen
+          raise ServerError.new(error[:error_message], error[:error_code])
+        end
+      end
     end
 
     def get_format(format)
@@ -109,33 +135,38 @@ module AlmaApi
       end
     end
 
-    def parse_response(response, format)
-      case format
-      when "application/json"
+    def parse_response(response)
+      content_type = response.headers[:content_type]
+
+      case content_type
+      when /application\/json/
         Oj.load(response.body)
-      when "application/xml"
+      when /application\/xml/
         Nokogiri::XML.parse(response.body)
       else
-        raise ArgumentError, "Unsupported format '#{format}'."
+        raise ArgumentError, "Unsupported content type '#{content_type}' in response from Alma."
       end
     end
 
-    def parse_error_response(response, format)
-      case format
-      when "application/json"
-        json = Oj.load(response.body)
+    def parse_error_response(response)
+      content_type = response.headers[:content_type]
 
-        if json["web_service_result"]
-          json["web_service_result"]["errorList"]["error"]["errorMessage"]
-        else
-          json["errorList"]["error"][0]["errorMessage"]
-        end
-      when "application/xml"
+      case content_type
+      when /application\/json/
+        json = Oj.load(response.body)
+        error_message = json["errorList"]["error"][0]["errorMessage"]
+        error_code    = json["errorList"]["error"][0]["errorCode"]
+
+        {error_message: error_message, error_code: error_code}
+      when /application\/xml/
         xml = Nokogiri::XML.parse(response.body)
-        xml.at("errorMessage")&.text
+        error_message = xml.at("errorMessage")&.text
+        error_code    = xml.at("errorCode")&.text
+
+        {error_message: error_message, error_code: error_code}
+      else
+        raise ArgumentError, "Unsupported content type '#{content_type}' in error response from Alma."
       end
-    rescue
-      "Unknown error from Alma"
     end
 
     def set_remaining_api_calls(response)

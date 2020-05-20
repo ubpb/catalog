@@ -1,1 +1,13 @@
-' NEW SESSION
+= simple_form_for :login, url: session_path, method: :post do |f|
+  .card
+    h5.card-header
+      ' Anmelden
+    .card-body
+      = render "alerts"
+      = f.input :username, autofocus: true
+      = f.input :password
+      /i.far.fa-info-circle
+      /=< link_to t(".forgot_password"), ""
+    .card-footer
+      => f.submit t(".submit"), class: "btn btn-lg btn-primary"
+      => f.submit t(".cancel"), class: "btn btn-lg btn-default", name: "cancel"

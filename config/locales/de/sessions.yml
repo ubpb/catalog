@@ -1,0 +1,11 @@
+de:
+  sessions:
+    new:
+      submit: "Anmelden"
+      cancel: "Abbrechen"
+      forgot_password: "Ich habe mein Passwort vergessen"
+    create:
+      error: "Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist falsch."
+      success: "Sie wurden erfolgreich angemeldet."
+    destroy:
+      success: "Sie wurden erfolgreich abgemeldet."

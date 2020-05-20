@@ -9,8 +9,8 @@ module Ils::Adapters
       def build(alma_user_hash)
         Ils::User.new(
           id: get_id(alma_user_hash),
-          firstname: get_firstname(alma_user_hash),
-          lastname: get_lastname(alma_user_hash),
+          first_name: get_firstname(alma_user_hash),
+          last_name: get_lastname(alma_user_hash),
           email: get_email(alma_user_hash),
           notes: get_nodes(alma_user_hash)
         )

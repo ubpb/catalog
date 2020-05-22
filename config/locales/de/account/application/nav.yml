@@ -1,0 +1,7 @@
+de:
+  account:
+    application:
+      nav:
+        loans: Ausleihen
+        fees: Gebühren
+        hold_requests: Vormerkungen

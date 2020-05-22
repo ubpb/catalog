@@ -1,1 +1,13 @@
-' NAV
+ul.nav.flex-column
+  li.nav-item
+    = link_to "#", class: "nav-link" do
+      i.far.fa-fw.fa-book
+      =< t(".loans")
+  li.nav-item
+    = link_to "#", class: "nav-link" do
+      i.far.fa-fw.fa-euro-sign
+      =< t(".fees")
+  li.nav-item
+    = link_to "#", class: "nav-link" do
+      i.far.fa-fw.fa-heart
+      =< t(".hold_requests")

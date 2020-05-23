@@ -24,7 +24,9 @@ module Ils::Adapters
         # Return a result
         Ils::GetLoansResult.new(
           loans: loans,
-          total_number_of_loans: total_number_of_loans
+          total_number_of_loans: total_number_of_loans,
+          page: page,
+          per_page: per_page
         )
       end
 

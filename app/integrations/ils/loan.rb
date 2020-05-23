@@ -7,7 +7,7 @@ class Ils
     attribute :item_id, Types::String
     attribute :record_id, Types::String
     attribute :barcode, Types::String
-    attribute :call_number, Types::String
+    attribute :call_number, Types::String.optional
     attribute :fine, Types::Float.default(0.0)
     attribute :title, Types::String.optional
     attribute :author, Types::String.optional

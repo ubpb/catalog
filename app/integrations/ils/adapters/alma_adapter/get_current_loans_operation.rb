@@ -1,15 +1,10 @@
 module Ils::Adapters
   class AlmaAdapter
-    class GetCurrentLoansOperation < Operation
-
-      PER_PAGE_DEFAULT = 2
-      PER_PAGE_MAX     = 100
-      PAGE_DEFAULT     = 1
+    class GetCurrentLoansOperation < PagedOperation
 
       def call(user_id, options = {})
-        # Setup required paging options with proper values
-        per_page = per_page_value(options[:per_page])
-        page     = page_value(options[:page])
+        # Call super to setup paged operation
+        super
 
         # Alma uses offset and limit for pagination
         offset = (page - 1) * per_page
@@ -42,17 +37,6 @@ module Ils::Adapters
           limit: limit,
           offset: offset
         })
-      end
-
-      def per_page_value(value)
-        value = value.to_i
-        value = (value <= 0) ? PER_PAGE_DEFAULT : value
-        (value >= 100) ? PER_PAGE_MAX : value
-      end
-
-      def page_value(value)
-        value = value.to_i
-        (value <= 0) ? PAGE_DEFAULT : value
       end
 
     end

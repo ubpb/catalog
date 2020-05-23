@@ -2,26 +2,35 @@ module Ils::Adapters
   class AlmaAdapter
     class GetCurrentLoansOperation < Operation
 
-      LIMIT = 50
+      PER_PAGE_DEFAULT = 2
+      PER_PAGE_MAX     = 100
+      PAGE_DEFAULT     = 1
 
-      def call(user_id)
-        offset = 0
-        item_loans  = []
+      def call(user_id, options = {})
+        # Setup required paging options with proper values
+        per_page = per_page_value(options[:per_page])
+        page     = page_value(options[:page])
 
-        response = get_loans(user_id, offset: offset, limit: LIMIT)
-        total_record_count = response["total_record_count"] || 0
-        item_loans += response["item_loan"] || []
+        # Alma uses offset and limit for pagination
+        offset = (page - 1) * per_page
+        limit  = per_page
 
-        if LIMIT < total_record_count
-          while (offset = offset + LIMIT) < total_record_count
-            response = get_loans(user_id, offset: offset, limit: LIMIT)
-            item_loans += response["item_loan"]
-          end
-        end
+        # Load loans from Alma
+        response = get_loans(user_id, offset: offset, limit: limit)
 
-        item_loans
-          .select{|_| _["loan_status"].upcase == "ACTIVE"}
-          .map{|_| LoanFactory.build(_)}
+        # Get total number of loans
+        total_number_of_loans = response["total_record_count"] || 0
+
+        # Build array of loan objects
+        loans  = []
+        loans += response["item_loan"] || []
+        loans  = loans.map{|_| LoanFactory.build(_)}
+
+        # Return a result
+        Ils::GetLoansResult.new(
+          loans: loans,
+          total_number_of_loans: total_number_of_loans
+        )
       end
 
     private
@@ -33,6 +42,17 @@ module Ils::Adapters
           limit: limit,
           offset: offset
         })
+      end
+
+      def per_page_value(value)
+        value = value.to_i
+        value = (value <= 0) ? PER_PAGE_DEFAULT : value
+        (value >= 100) ? PER_PAGE_MAX : value
+      end
+
+      def page_value(value)
+        value = value.to_i
+        (value <= 0) ? PAGE_DEFAULT : value
       end
 
     end

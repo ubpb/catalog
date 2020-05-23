@@ -40,17 +40,23 @@ class Ils
     # Get the loans for a user.
     #
     # @param user_id [String] a user ID.
-    # @return [Array<Ils::Loan>] List of current loans.
+    # @param options [Hash] an options hash. Optional.
+    # @option options :per_page [Integer] ... Optional. Default value: 10.
+    # @option options :page [Integer] ... Optional. Default value: 1.
+    # @return Ils::GetLoansResult current loans.
     #
-    def get_current_loans(user_id)
-      try_operation(__method__, user_id)
+    def get_current_loans(user_id, options = {})
+      try_operation(__method__, user_id, options)
     end
 
     #
     # Get the former loans for a user.
     #
     # @param user_id [String] a user ID.
-    # @return [Array<Ils::Loan>] List of former loans.
+    # @param options [Hash] an options hash. Optional.
+    # @option options :per_page [Integer] ... Optional. Default value: 10.
+    # @option options :page [Integer] ... Optional. Default value: 1.
+    # @return Ils::GetLoansResult former loans.
     #
     def get_former_loans(user_id)
       try_operation(__method__, user_id)

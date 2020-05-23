@@ -1,1 +1,5 @@
-' LOANS
+- if @loans.present?
+  = render "listing", loans: @loans
+- else
+  .alert.alert-info
+    = t(".no-loans")

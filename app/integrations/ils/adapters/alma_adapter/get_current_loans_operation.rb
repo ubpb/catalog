@@ -33,12 +33,15 @@ module Ils::Adapters
     private
 
       def get_loans(user_id, offset:, limit:)
-        adapter.api.get("users/#{user_id}/loans", params: {
-          expand: "renewable",
-          order_by: "due_date",
-          limit: limit,
-          offset: offset
-        })
+        adapter.api.get("users/#{user_id}/loans",
+          format: "application/json",
+          params: {
+            expand: "renewable",
+            order_by: "due_date",
+            limit: limit,
+            offset: offset
+          }
+        )
       end
 
     end

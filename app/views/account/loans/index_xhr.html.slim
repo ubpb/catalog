@@ -1,0 +1,10 @@
+- if @loans.present?
+  ul
+    - @loans.each do |loan|
+      li = loan.title
+  = paginate(@loans)
+- else
+  .alert.alert-info
+    = t(".no-loans")
+
+

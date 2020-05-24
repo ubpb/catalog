@@ -1,5 +1,1 @@
-- if @loans.present?
-  = render "listing", loans: @loans
-- else
-  .alert.alert-info
-    = t(".no-loans")
+= render "remote_loader", url: account_loans_path(request.params)

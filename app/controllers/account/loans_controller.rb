@@ -1,6 +1,17 @@
 class Account::LoansController < Account::ApplicationController
 
- def index
+  def index
+    if request.xhr?
+      load_loans
+      render :index_xhr, layout: false
+    else
+      render :index
+    end
+  end
+
+private
+
+  def load_loans
     result = Ils[:default].get_current_loans(
       current_user.ils_primary_id,
       {

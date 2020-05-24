@@ -142,7 +142,7 @@ module AlmaApi
         case content_type
         when /application\/json/
           Oj.load(response.body)
-        when /application\/xml/
+        when /text\/xml/, /application\/xml/
           Nokogiri::XML.parse(response.body)
         else
           raise ArgumentError, "Unsupported content type '#{content_type}' in response from Alma."
@@ -161,7 +161,7 @@ module AlmaApi
           error_code    = json["errorList"]["error"][0]["errorCode"]
 
           {error_message: error_message, error_code: error_code}
-        when /application\/xml/
+        when /text\/xml/, /application\/xml/
           xml = Nokogiri::XML.parse(response.body)
           error_message = xml.at("errorMessage")&.text
           error_code    = xml.at("errorCode")&.text

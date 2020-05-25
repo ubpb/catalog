@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     redirect_to(new_session_path) unless current_user
   end
 
+  rescue_from IntegrationError do |e|
+    flash[:error] = e.message
+    redirect_to root_path
+  end
+
 end

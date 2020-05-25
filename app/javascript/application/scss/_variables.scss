@@ -1,1 +1,37 @@
+// Pick selected variables from Bootstrap and make
+// them available in the global space so we can
+// reference the original value while overwrite them.
+%local {
+  @import "~bootstrap/scss/functions";
+  @import "~bootstrap/scss/variables";
 
+  $font-family-sans-serif: $font-family-sans-serif !global;
+  $white: $white !global;
+  $black: $black !global;
+  $grays: $grays !global;
+}
+
+$upb-blue: #003671;
+$upb-cyan: #18b0e2;
+
+$blue: $upb-blue;
+$cyan: $upb-cyan;
+
+$font-family-sans-serif: "Signika", $font-family-sans-serif;
+
+$primary: $upb-cyan;
+$body-color: $upb-blue;
+
+$link-hover-color: $upb-blue;
+$link-hover-decoration: none;
+
+$card-border-width: 0;
+$card-border-radius: 0;
+
+$page-background-color: map-get($grays, '200');
+
+$navbar-light-color: map-get($grays, '900');
+$navbar-light-hover-color: $upb-cyan;
+$navbar-light-active-color: $upb-cyan;
+$navbar-light-disabled-color: map-get($grays, '400');
+$navbar-light-toggler-border-color: transparent;

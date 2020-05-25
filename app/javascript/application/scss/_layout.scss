@@ -1,0 +1,56 @@
+body {
+  background-color: $primary;
+}
+
+#test-server-warning {
+  text-align: center;
+  padding: 8px;
+  background: #E20009;
+  color: white;
+  font-weight: bold;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+header {
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+  background-color: $white;
+}
+
+#page {
+  background-color: $page-background-color;
+  padding: $spacer 0;
+}
+
+footer {
+  background-color: transparent;
+  color: $white;
+  margin: 0;
+  margin-bottom: $spacer;
+
+  a {
+    color: $white;
+  }
+
+  .footer-claim {
+    font-size: $font-size-sm;
+    background-color: $white;
+    font-style: italic;
+    color: $upb-blue;
+    font-weight: bold;
+    padding: 5px 0;
+  }
+
+  .footer-content {
+    font-size: $font-size-sm;
+    margin: $spacer/3 0;
+  }
+
+  .footer-image {
+    text-align: center;
+  }
+}

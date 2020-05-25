@@ -1,3 +1,18 @@
+// Local fonts
+@font-face {
+  font-family: "Signika";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Signika"), local("Signika-Regular"), url("../fonts/Signika.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Signika";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Signika-Bold"), url("../fonts/Signika-Bold.woff") format("woff");
+}
+
 // Import FontAwesome Pro
 $fa-font-path: "../../vendor/fonts/fontawesome-free/webfonts";
 @import "../../vendor/fonts/fontawesome-free/scss/fontawesome";
@@ -9,3 +24,8 @@ $fa-font-path: "../../vendor/fonts/fontawesome-free/webfonts";
 @import "./variables";
 @import "bootstrap/scss/bootstrap";
 @import "animate.css";
+
+// Import our stuff
+@import "layout";
+@import "dropdown";
+@import "cards";

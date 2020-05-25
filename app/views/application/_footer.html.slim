@@ -1,0 +1,16 @@
+footer
+  .footer-claim
+    .container
+      ' Die Universität der Informationsgesellschaft
+  .container
+    .footer-content
+      = "© #{Date.today.year} Universitätsbibliothek Paderborn"
+      =<> "|"
+      = link_to "Impressum", ""
+      =<> "|"
+      = link_to "Datenschutzerklärung", ""
+    .footer-image
+      .d-none.d-sm-block
+        = image_tag "footer-bg-lg.png", class: "img-fluid"
+      .d-block.d-sm-none
+        = image_tag "footer-bg-sm.jpg", class: "img-fluid"

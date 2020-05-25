@@ -14,8 +14,13 @@ html
     = javascript_pack_tag "application", "data-turbolinks-track": "reload"
 
   body
-    .mb-3 = render "navbar"
+    #header
+      = render "header"
 
-    .container
-      = render "alerts", global: true
-      = content_for?(:main) ? yield(:main) : yield
+    #page
+      .container
+        = render "alerts", global: true
+        = content_for?(:main) ? yield(:main) : yield
+
+    #footer
+      = render "footer"

@@ -15,8 +15,13 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from IntegrationError do |e|
-    flash[:error] = e.message
-    redirect_to root_path
+    # TODO: Log/Report such errors
+    unless request.xhr?
+      flash[:error] = t("integrations.common_error_message")
+      redirect_to root_path
+    else
+      render "xhr_error", locals: {message: t("integrations.common_error_message")}, layout: false
+    end
   end
 
 end

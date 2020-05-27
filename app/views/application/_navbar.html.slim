@@ -32,14 +32,14 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
             = link_to "Fernleihe", "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
 
       - if current_user
-        .btn-group.d-flex
+        .btn-group.d-flex.ml-lg-4.mt-2.mt-lg-0
           = link_to account_root_path, class: "btn btn-primary w-100" do
             i.far.fa-user
             =< current_user.name
           = link_to logout_path, class: "btn btn-outline-primary", data: {confirm: "Wirklich abmelden?"} do
             i.fas.fa-power-off
       - else
-        .d-flex
+        .d-flex.ml-lg-4.mt-2.mt-lg-0
           = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
             i.far.fa-user
             =< "Mein Bibliothekskonto"

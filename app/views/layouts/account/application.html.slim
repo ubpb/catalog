@@ -1,12 +1,8 @@
 = content_for :main do
   .row
-    .col-md-9
-      .card.card-primary.card-cutoff-corner
-        .card-body
-          = yield
-    .col-md-3
-      .card.card-cutoff-corner
-        .card-body
-          = render "nav"
+    .col-md-8.col-lg-9
+      = yield
+    .col-md-4.col-lg-3
+      = render "nav"
 
 = render template: "layouts/application"

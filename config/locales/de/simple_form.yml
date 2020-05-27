@@ -7,7 +7,7 @@ de:
     placeholders:
       login:
         username: "Ihre Bibliotheksausweisnummer"
-        password: "Ihr Bibliothekspassword"
+        password: "Ihr Bibliothekspasswort"
     hints:
       login:
         username: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."

@@ -1,13 +1,16 @@
-ul.nav.flex-column
-  li.nav-item
-    = link_to account_loans_path, class: "nav-link" do
-      i.fas.fa-fw.fa-book
-      =< t(".loans")
-  li.nav-item
-    = link_to "#", class: "nav-link" do
-      i.fas.fa-fw.fa-euro-sign
-      =< t(".fees")
-  li.nav-item
-    = link_to "#", class: "nav-link" do
-      i.fas.fa-fw.fa-heart
-      =< t(".hold_requests")
+.card.card-cutoff-corner
+  h5.card-header
+    = t(".header")
+  ul.list-group.list-group-flush
+    li.list-group-item
+      = link_to account_loans_path do
+        i.fas.fa-fw.fa-book
+        =< t(".loans")
+    li.list-group-item
+      = link_to "#" do
+        i.fas.fa-fw.fa-euro-sign
+        =< t(".fees")
+    li.list-group-item
+      = link_to "#" do
+        i.fas.fa-fw.fa-heart
+        =< t(".hold_requests")

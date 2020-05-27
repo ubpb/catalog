@@ -2,4 +2,5 @@ de:
   account:
     loans:
       index:
+        header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."

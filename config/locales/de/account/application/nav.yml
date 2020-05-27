@@ -2,6 +2,7 @@ de:
   account:
     application:
       nav:
-        loans: Ausleihen
+        header: Menü
+        loans: Ausgeliehene Medien
         fees: Gebühren
         hold_requests: Vormerkungen

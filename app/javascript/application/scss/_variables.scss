@@ -11,6 +11,11 @@
   $grays: $grays !global;
 }
 
+$enable-rounded: false;
+$enable-shadows: true;
+
+$font-size-base: 0.9rem;
+
 $upb-blue: #003671;
 $upb-cyan: #18b0e2;
 
@@ -20,9 +25,9 @@ $cyan: $upb-cyan;
 $font-family-sans-serif: "Signika", $font-family-sans-serif;
 
 $primary: $upb-cyan;
-$body-color: $upb-blue;
 
-$link-hover-color: $upb-blue;
+$link-color: $upb-blue;
+$link-hover-color: $upb-cyan;
 $link-hover-decoration: none;
 
 $card-border-width: 0;

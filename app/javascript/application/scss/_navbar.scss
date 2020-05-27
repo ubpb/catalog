@@ -1,3 +1,7 @@
-.navbar-nav .dropdown-menu {
-  margin-bottom: $spacer;
+.navbar-nav {
+  font-size: 110%;
+
+  .dropdown-menu {
+    margin-bottom: $spacer;
+  }
 }

@@ -10,7 +10,7 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
       ul.navbar-nav.ml-auto
         li.nav-item
           = link_to root_path, class: "nav-link" do
-            i.far.fa-home
+            i.fas.fa-home
             =< "Start"
         li.nav-item
           = link_to "http://blogs.uni-paderborn.de/ub-katalog/hilfe/", class: "nav-link" do
@@ -18,11 +18,11 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
             =< "Hilfe"
         li.nav-item
           = link_to "http://blogs.uni-paderborn.de/ub-katalog/", class: "nav-link" do
-            i.far.fa-bullhorn
+            i.fas.fa-bullhorn
             =< "Blog"
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#")
-            i.far.fa-cogs
+            i.fas.fa-cogs
             =< "Weitere Dienste"
           .dropdown-menu.dropdown-menu-right
             = link_to "Neuerwerbungslisten", "https://blogs.uni-paderborn.de/ub-katalog/2014/08/27/neuerwerbungen/", target: "_blank", class: "dropdown-item"
@@ -32,14 +32,15 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
             = link_to "Fernleihe", "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
 
       - if current_user
-        .btn-group
-          = link_to account_root_path, class: "btn btn-primary" do
+        .btn-group.d-flex
+          = link_to account_root_path, class: "btn btn-primary w-100" do
             i.far.fa-user
             =< current_user.name
           = link_to logout_path, class: "btn btn-outline-primary", data: {confirm: "Wirklich abmelden?"} do
-            i.far.fa-power-off
+            i.fas.fa-power-off
       - else
-        = link_to new_session_path, class: "btn btn-primary d-block d-lg-inline" do
-          i.far.fa-user
-          =< "Mein Bibliothekskonto"
+        .d-flex
+          = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
+            i.far.fa-user
+            =< "Mein Bibliothekskonto"
 

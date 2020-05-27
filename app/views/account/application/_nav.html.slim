@@ -1,13 +1,19 @@
-.card.card-cutoff-corner
-  h5.card-header
-    = t(".header")
-  nav.list-group.list-group-flush
-    = link_to account_loans_path, class: "list-group-item" do
-      i.fas.fa-fw.fa-book
-      =< t(".loans")
-    = link_to "#", class: "list-group-item" do
-      i.fas.fa-fw.fa-euro-sign
-      =< t(".fees")
-    = link_to "#", class: "list-group-item" do
-      i.fas.fa-fw.fa-heart
-      =< t(".hold_requests")
+.d-lg-none.mb-3
+  a.btn.btn-light.btn-block(data-toggle="collapse" href="#collapseNav" role="button")
+    i.fas.fa-bars
+    =< t(".nav-toggle")
+
+#collapseNav.collapse.d-lg-block
+  .card.card-cutoff-corner.mb-3
+    h5.card-header
+      = t(".header")
+    nav.list-group.list-group-flush
+      = link_to account_loans_path, class: "list-group-item" do
+        i.fas.fa-fw.fa-book
+        =< t(".loans")
+      = link_to "#", class: "list-group-item" do
+        i.fas.fa-fw.fa-euro-sign
+        =< t(".fees")
+      = link_to "#", class: "list-group-item" do
+        i.fas.fa-fw.fa-heart
+        =< t(".hold_requests")

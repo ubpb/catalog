@@ -2,6 +2,7 @@ de:
   account:
     application:
       nav:
+        nav-toggle: Menü
         header: Menü
         loans: Ausgeliehene Medien
         fees: Gebühren

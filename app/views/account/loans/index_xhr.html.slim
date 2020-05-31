@@ -17,17 +17,19 @@
         li.list-group-item
           .d-flex
             .w-25
-              .font-weight-bold = "Entliehen am: #{l(loan.loan_date)}"
-              .font-weight-bold = "Fällig am: #{l(loan.due_date)}"
+              .font-weight-normal
+                = t(".loan_date", date: l(loan.loan_date))
+              .font-weight-bold(class="#{loan.due_date.past? ? "text-danger" : "text-success"}")
+                = t(".due_date", date: l(loan.due_date))
 
               .mt-1
                 - if loan.fine.present? && loan.fine > 0
                   span.badge.badge-danger.mr-2
-                    = "Gebühren: #{number_to_currency(loan.fine, unit: "€")}"
+                    = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
 
                 - unless loan.renewable
                   span.badge.badge-warning
-                    = "Nicht verlängerbar"
+                    = t(".not_renewable")
 
             .ml-3.w-75
               - if loan.title.present?
@@ -38,10 +40,12 @@
               - if loan.author.present?
                 div = loan.author
 
-              div
-                span = "Signatur: #{loan.call_number.presence || "–"}"
-                span = ", "
-                span = "Barcode: #{loan.barcode.presence || "–"}"
+              - if [loan.call_number.presence, loan.barcode.presence].any?
+                .mt-0
+                  - if loan.call_number.present?
+                    div = t(".call_number", call_number: loan.call_number)
+                  - if loan.barcode.present?
+                    div = t(".barcode", barcode: loan.barcode)
 
     - if paginator.present?
       .card-footer

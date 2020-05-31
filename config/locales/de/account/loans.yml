@@ -1,6 +1,6 @@
 de:
   account:
     loans:
-      index:
+      index_xhr:
         header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."

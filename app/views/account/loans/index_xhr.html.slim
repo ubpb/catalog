@@ -1,8 +1,55 @@
+- paginator = paginate(@loans, page_entries_info: page_entries_info(@loans))
+
 - if @loans.present?
-  ul
-    - @loans.each do |loan|
-      li = loan.title
-  = paginate(@loans)
+  .card.card-cutoff-corner
+    .card-header
+      .d-flex.align-items-center
+        h5.m-0
+          = t(".header")
+        .ml-1.span.badge.badge-pill.badge-info = @total_number_of_loans
+        /div.ml-auto
+          ' ACTIONS TODO
+      - if paginator.present?
+        .mt-3 = paginator
+
+    ul.list-group.list-group-flush
+      - @loans.each do |loan|
+        li.list-group-item
+          .d-flex
+            .w-25
+              .font-weight-bold = "Entliehen am: #{l(loan.loan_date)}"
+              .font-weight-bold = "Fällig am: #{l(loan.due_date)}"
+
+              .mt-1
+                - if loan.fine.present? && loan.fine > 0
+                  span.badge.badge-danger.mr-2
+                    = "Gebühren: #{number_to_currency(loan.fine, unit: "€")}"
+
+                - unless loan.renewable
+                  span.badge.badge-warning
+                    = "Nicht verlängerbar"
+
+            .ml-3.w-75
+              - if loan.title.present?
+                .font-weight-bold = loan.title
+              - else
+                .font-weight-bold = "n.n."
+
+              - if loan.author.present?
+                div = loan.author
+
+              div
+                span = "Signatur: #{loan.call_number.presence || "–"}"
+                span = ", "
+                span = "Barcode: #{loan.barcode.presence || "–"}"
+
+    - if paginator.present?
+      .card-footer
+        = paginator
 - else
-  .alert.alert-info
-    = t(".no-loans")
+  .card.card-cutoff-corner
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      .alert.alert-info.mb-0.text-center
+        = t(".no-loans")

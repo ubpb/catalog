@@ -8,7 +8,7 @@ gem "bootsnap",    ">= 1.4.2", require: false
 gem "cancancan",   "~> 3.1.0"
 gem "dry-struct",  "~> 1.3.0"
 gem "jbuilder",    "~> 2.7"
-gem "kaminari",    "~> 1.2.0"
+gem "kaminari",    "~> 1.2.1"
 gem "mysql2",      ">= 0.4.4"
 gem "puma",        "~> 4.1"
 gem "rails",       "~> 6.0.3"

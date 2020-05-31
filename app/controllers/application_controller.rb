@@ -15,7 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from IntegrationError do |e|
-    # TODO: Log/Report such errors
+    # TODO: Report such errors
+    Rails.logger.error [e.message, *e.backtrace].join($/)
+
     unless request.xhr?
       flash[:error] = t("integrations.common_error_message")
       redirect_to root_path

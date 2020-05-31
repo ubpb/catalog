@@ -47,6 +47,10 @@
                   - if loan.barcode.present?
                     div = t(".barcode", barcode: loan.barcode)
 
+              - if loan.renewable
+                .mt-2
+                  = link_to "Verlängern", renew_account_loan_path(loan.id), class: "btn btn-sm btn-primary", method: :post
+
     - if paginator.present?
       .card-footer
         = paginator

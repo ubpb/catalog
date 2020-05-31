@@ -9,6 +9,18 @@ class Account::LoansController < Account::ApplicationController
     end
   end
 
+  def renew
+    result = renew_loan(params[:id])
+
+    if result.success
+      flash[:success] = t(".success", system_message: result.message)
+    else
+      flash[:error] = t(".error", system_message: result.message)
+    end
+
+    redirect_to(account_loans_path)
+  end
+
 private
 
   def load_loans
@@ -26,6 +38,13 @@ private
       result.loans,
       total_count: @total_number_of_loans
     ).page(result.page).per(result.per_page)
+  end
+
+  def renew_loan(loan_id)
+    Ils[:default].renew_loan(
+      current_user.ils_primary_id,
+      loan_id
+    )
   end
 
 end

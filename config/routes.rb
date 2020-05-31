@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   # Library account
   namespace :account, path: "account" do
     root to: redirect("/account/loans")
-    resources :loans, only: [:index]
+    resources :loans, only: [:index] do
+      post :renew, on: :member
+    end
   end
 
 end

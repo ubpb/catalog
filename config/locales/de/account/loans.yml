@@ -10,3 +10,7 @@ de:
         not_renewable: "Nicht verlängerbar"
         call_number: "Signatur: %{call_number}"
         barcode: "Barcode: %{barcode}"
+
+      renew:
+        success: "%{system_message}"
+        error: "%{system_message}"

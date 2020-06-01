@@ -4,12 +4,15 @@ de:
       index_xhr:
         header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."
+
+      loan:
         loan_date: "Entliehen am: %{date}"
         due_date: "Fällig am: %{date}"
         fines: "Gebühren: %{fines}"
         not_renewable: "Nicht verlängerbar"
         call_number: "Signatur: %{call_number}"
         barcode: "Barcode: %{barcode}"
+        renew: "Verlängern"
 
       renew:
         success: "%{system_message}"

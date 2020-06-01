@@ -38,6 +38,7 @@ module Ils::Adapters
           params: {
             expand: "renewable",
             order_by: "due_date",
+            direction: "ASC",
             limit: limit,
             offset: offset
           }

@@ -1,0 +1,48 @@
+- renew_result  = local_assigns.fetch(:renew_result) { nil }
+
+div(data={"controller": "loan", "loan-renew-url": renew_account_loan_path(loan.id)})
+  .d-flex
+    .w-25
+      .font-weight-bold(class="#{loan.due_date.past? ? "text-danger" : "text-success"}")
+        = t(".due_date", date: l(loan.due_date))
+      .font-weight-normal
+        = t(".loan_date", date: l(loan.loan_date))
+
+      .mt-1
+        - if loan.fine.present? && loan.fine > 0
+          span.badge.badge-danger.mr-2
+            = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
+
+        - unless loan.renewable
+          span.badge.badge-warning
+            = t(".not_renewable")
+
+    .ml-3.w-75
+      - if renew_result
+        .alert.animate__animated.animate__flipInX(class="#{renew_result.success ? "alert-success" : "alert-danger"}")
+          button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true")
+            ' &times;
+          = renew_result.message
+
+      - if loan.title.present?
+        .font-weight-bold = loan.title
+      - else
+        .font-weight-bold = "n.n."
+
+      - if loan.author.present?
+        div = loan.author
+
+      - if [loan.call_number.presence, loan.barcode.presence].any?
+        .mt-0
+          - if loan.call_number.present?
+            div = t(".call_number", call_number: loan.call_number)
+          - if loan.barcode.present?
+            div = t(".barcode", barcode: loan.barcode)
+
+      - if loan.renewable
+        .mt-2
+          button.btn.btn-sm.btn-primary(data-action="click->loan#renew" data-target="loan.renewButton")
+            i.fas.fa-redo
+            =< t(".renew")
+          i.ml-2.fas.fa-lg.fa-spinner.fa-pulse(data-target="loan.renewSpinner", style="visibility: hidden")

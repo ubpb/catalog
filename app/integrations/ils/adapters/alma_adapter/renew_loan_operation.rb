@@ -10,9 +10,11 @@ module Ils::Adapters
           }
         )
 
-        Ils::RenewLoanResult.new(loan_id: loan_id, success: true, message: response.dig("last_renew_status", "desc"))
+        loan = LoanFactory.build(response)
+
+        Ils::RenewLoanResult.new(loan: loan, success: true, message: response.dig("last_renew_status", "desc"))
       rescue AlmaApi::LogicalError => e
-        Ils::RenewLoanResult.new(loan_id: loan_id, success: false, message: e.message)
+        Ils::RenewLoanResult.new(loan: loan, success: false, message: e.message)
       end
 
     end

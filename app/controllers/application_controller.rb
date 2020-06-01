@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     redirect_to(new_session_path) unless current_user
   end
 
+  def ensure_xhr!
+    raise ArgumentError, "This controller action expects an ajax request." unless request.xhr?
+  end
+
   rescue_from IntegrationError do |e|
     # TODO: Report such errors
     Rails.logger.error [e.message, *e.backtrace].join($/)

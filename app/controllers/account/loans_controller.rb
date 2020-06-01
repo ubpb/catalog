@@ -10,15 +10,11 @@ class Account::LoansController < Account::ApplicationController
   end
 
   def renew
+    ensure_xhr!
+
     result = renew_loan(params[:id])
 
-    if result.success
-      flash[:success] = t(".success", system_message: result.message)
-    else
-      flash[:error] = t(".error", system_message: result.message)
-    end
-
-    redirect_to(account_loans_path)
+    render partial: "loan", locals: {loan: result.loan, renew_result: result}
   end
 
 private

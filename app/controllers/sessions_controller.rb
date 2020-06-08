@@ -10,6 +10,9 @@ class SessionsController < ApplicationController
       if Ils[:default].authenticate_user(username, password)
         ils_user = Ils[:default].get_user(username)
         db_user  = create_or_update_user!(ils_user)
+
+        reset_session
+
         session[:current_user_id] = db_user.id
         flash[:success] = t(".success")
         redirect_to(account_root_path)

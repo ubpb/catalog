@@ -30,11 +30,11 @@ module Ils::Adapters
       end
 
       def get_loan_date(alma_item_loan)
-        Date.parse(alma_item_loan["loan_date"])
+        Time.zone.parse(alma_item_loan["loan_date"])
       end
 
       def get_due_date(alma_item_loan)
-        Date.parse(alma_item_loan["due_date"])
+        Time.zone.parse(alma_item_loan["due_date"])
       end
 
       def get_renewable(alma_item_loan)

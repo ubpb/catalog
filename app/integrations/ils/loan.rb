@@ -1,8 +1,8 @@
 class Ils
   class Loan < BaseStruct
     attribute :id, Types::String
-    attribute :loan_date, Types::Date
-    attribute :due_date, Types::Date
+    attribute :loan_date, Types::Time
+    attribute :due_date, Types::Time
     attribute :renewable, Types::Bool.default(false)
     attribute :item_id, Types::String
     attribute :record_id, Types::String

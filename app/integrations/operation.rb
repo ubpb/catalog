@@ -28,9 +28,9 @@ class Operation
 
       begin
         op_class.new(self).(*args) if op_class
-      rescue
+      rescue => e
         # Wrap all errors from integrations into an IntegrationError
-        raise IntegrationError
+        raise IntegrationError, e
       end
     end
   end

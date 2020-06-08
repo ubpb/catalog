@@ -1,9 +1,14 @@
 de:
   account:
     loans:
-      index_xhr:
+      index:
+        renew_all_modal_loading_message: "Alle Medien verlängern..."
+        renew_all_modal_button_text: "Ok"
+
+      loans:
         header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."
+        renewAll: "Alle verlängern"
 
       loan:
         loan_date: "Entliehen am: %{date}"
@@ -17,3 +22,7 @@ de:
       renew:
         success: "%{system_message}"
         error: "%{system_message}"
+
+      renewals:
+        header: Verlängerbare Medien wurden verlängert. Bitte überprüfen Sie die Rückgabefristen.
+        no_renewals: Keine Medien verlängert.

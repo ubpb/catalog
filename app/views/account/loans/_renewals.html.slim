@@ -1,0 +1,10 @@
+- if renewals.present?
+  h5 = t(".header")
+
+  ul.list-group.list-group-flush
+    - renewals.each do |renewal|
+      li.list-group-item
+        = render "loan", loan: renewal.loan, renew_result: renewal
+- else
+  .alert.alert-info.mb-0
+    = t(".no_renewals")

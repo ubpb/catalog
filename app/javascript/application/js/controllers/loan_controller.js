@@ -11,15 +11,15 @@ export default class extends Controller {
     const url = this.data.get("renew-url")
 
     this.renewButtonTarget.disabled = true;
-    this.renewSpinnerTarget.style.visibility = "visible";
+    this.renewSpinnerTarget.style.display = "inline-block";
 
     axios.post(url)
       .then(response => response.data)
-      .then(html => this.element.outerHTML = html)
+      .then(html => this.element.innerHTML = html)
       .catch(error => this.element.innerHTML = error)
       .then(() => {
         this.renewButtonTarget.disabled = false;
-        this.renewSpinnerTarget.style.visibility = "hidden";
+        this.renewSpinnerTarget.style.display = "none";
       })
   }
 

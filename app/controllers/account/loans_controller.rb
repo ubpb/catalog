@@ -3,7 +3,11 @@ class Account::LoansController < Account::ApplicationController
   def index
     if request.xhr?
       load_loans
-      render :index_xhr, layout: false
+
+      render partial: "loans", locals: {
+        loans: @loans,
+        total_number_of_loans: @total_number_of_loans
+      }
     else
       render :index
     end
@@ -14,7 +18,20 @@ class Account::LoansController < Account::ApplicationController
 
     result = renew_loan(params[:id])
 
-    render partial: "loan", locals: {loan: result.loan, renew_result: result}
+    render partial: "loan", locals: {
+      loan: result.loan,
+      renew_result: result
+    }
+  end
+
+  def renew_all
+    ensure_xhr!
+
+    renewals = renew_loans
+
+    render partial: "renewals", locals: {
+      renewals: renewals
+    }
   end
 
 private
@@ -40,6 +57,12 @@ private
     Ils[:default].renew_loan(
       current_user.ils_primary_id,
       loan_id
+    )
+  end
+
+  def renew_loans
+    Ils[:default].renew_loans(
+      current_user.ils_primary_id
     )
   end
 

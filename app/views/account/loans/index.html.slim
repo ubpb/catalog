@@ -1,1 +1,38 @@
-= render "remote_loader", url: account_loans_path(request.params)
+div(
+  data-controller="loans"
+  data-loans-url=account_loans_path(page: params[:page], per_page: params[:per_page])
+  data-loans-renew-all-url=renew_all_account_loans_path
+  data-loans-renew-all-redirect-url=account_loans_path
+)
+  #loansLoader(
+    data-target="loans.loader"
+    style="display: block;"
+  )
+    .card.card-cutoff-corner
+      .card-body.text-center
+        i.fas.fa-lg.fa-spinner.fa-pulse
+
+  #loansOutput(
+    data-target="loans.output"
+    style="display: none;"
+  )
+
+  #loansRenewAllModal.modal(
+    role="dialog"
+    data-target="loans.renewAllModal"
+  )
+    .modal-dialog.modal-lg.modal-dialog-scrollable
+      .modal-content
+        .modal-body(data-target="loans.renewAllModalBody")
+          .text-center
+            h5.modal-title
+              i.fas.fa-spinner.fa-pulse
+              =< t(".renew_all_modal_loading_message")
+
+        .modal-footer
+          button.btn.btn-primary(
+            type="button"
+            data-target="loans.renewAllModalButton"
+            data-action="click->loans#closeRenewAllModal"
+          )
+            = t(".renew_all_modal_button_text")

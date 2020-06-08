@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root to: redirect("/account/loans")
     resources :loans, only: [:index] do
       post :renew, on: :member
+      post :renew_all, on: :collection, path: "renew"
     end
   end
 

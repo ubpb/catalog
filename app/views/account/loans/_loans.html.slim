@@ -1,0 +1,44 @@
+- paginator = paginate(loans, page_entries_info: page_entries_info(loans))
+
+- if loans.present?
+  .card.card-cutoff-corner
+    .card-header
+      .d-flex.align-items-center
+        h5.m-0
+          = t(".header")
+        .ml-1.span.badge.badge-pill.badge-info = total_number_of_loans
+        /div.ml-auto
+          ' ACTIONS TODO
+      - if paginator.present?
+        .mt-3 = paginator
+
+    .card-body
+      .d-flex
+        .ml-auto.button.btn.btn-sm.btn-primary(
+          data-target="loans.renewAllButton"
+          data-action="click->loans#renewAll"
+        )
+          i.fas.fa-redo
+          =< t(".renewAll")
+
+    #loans-listing.ul.list-group.list-group-flush(
+      data-target="loans.listing"
+    )
+      - @loans.each do |loan|
+        li.list-group-item
+          div(
+            data-controller="loan"
+            data-loan-renew-url=renew_account_loan_path(loan.id)
+          )
+            = render "loan", loan: loan, allow_single_renew: true
+
+    - if paginator.present?
+      .card-footer
+        = paginator
+- else
+  .card.card-cutoff-corner
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      .alert.alert-info.mb-0.text-center
+        = t(".no-loans")

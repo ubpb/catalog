@@ -41,8 +41,10 @@ class Ils
     #
     # @param user_id [String] a user ID.
     # @param options [Hash] an options hash. Optional.
-    # @option options :per_page [Integer] ... Optional. Default value: 10.
-    # @option options :page [Integer] ... Optional. Default value: 1.
+    # @option options :disable_pagination [Bool] disbale pagination. Optional. Default value: false.
+    #   If disabled, all loans will be returned.
+    # @option options :per_page [Integer] number of loans to return per page. Optional. Default value: 10.
+    # @option options :page [Integer] the page to return. Optional. Default value: 1.
     # @return Ils::GetLoansResult current loans.
     #
     def get_current_loans(user_id, options = {})

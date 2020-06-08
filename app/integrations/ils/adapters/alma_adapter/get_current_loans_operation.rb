@@ -7,8 +7,8 @@ module Ils::Adapters
         super
 
         # Alma uses offset and limit for pagination
-        offset = (page - 1) * per_page
-        limit  = per_page
+        offset = options[:disable_pagination] ? 0 : (page - 1) * per_page
+        limit  = options[:disable_pagination] ? 10 : per_page
 
         # Load loans from Alma
         response = get_loans(user_id, offset: offset, limit: limit)
@@ -20,7 +20,7 @@ module Ils::Adapters
         loans  = []
         loans += response["item_loan"] || []
 
-        # If pagination is disabled fetch all loans
+        # If pagination is disabled fetch all other loans
         if options[:disable_pagination] && (limit < total_number_of_loans)
           while (offset = offset + limit) < total_number_of_loans
             response = get_loans(user_id, offset: offset, limit: limit)

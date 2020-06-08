@@ -19,14 +19,24 @@ module Ils::Adapters
         # Build array of loan objects
         loans  = []
         loans += response["item_loan"] || []
+
+        # If pagination is disabled fetch all loans
+        if options[:disable_pagination] && (limit < total_number_of_loans)
+          while (offset = offset + limit) < total_number_of_loans
+            response = get_loans(user_id, offset: offset, limit: limit)
+            loans += response["item_loan"] || []
+          end
+        end
+
+        # Build loan objects the app will understand
         loans  = loans.map{|_| LoanFactory.build(_)}
 
         # Return a result
         Ils::GetLoansResult.new(
           loans: loans,
           total_number_of_loans: total_number_of_loans,
-          page: page,
-          per_page: per_page
+          page: (options[:disable_pagination] ? nil : page),
+          per_page: (options[:disable_pagination] ? nil : per_page)
         )
       end
 

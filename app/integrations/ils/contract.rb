@@ -26,17 +26,6 @@ class Ils
     end
 
     #
-    # Get the items for a record.
-    #
-    # @param record_id [String] a record ID.
-    # @return [Array<Ils::Item>] List of items for the given record ID. The  array
-    #   is empty if no items (or a record with that ID) exists.
-    #
-    def get_items(record_id)
-      try_operation(__method__, record_id)
-    end
-
-    #
     # Get the loans for a user.
     #
     # @param user_id [String] a user ID.
@@ -86,6 +75,16 @@ class Ils
     end
 
     #
+    # Get the active fees for a user.
+    #
+    # @param user_id [String] a user ID
+    # @return [Array<Ils::Fee>] List of fees
+    #
+    def get_fees(user_id)
+      try_operation(__method__, user_id)
+    end
+
+    #
     # Get the hold requests for a user.
     #
     # @param user_id [String] a user ID.
@@ -105,6 +104,17 @@ class Ils
     #
     def delete_hold_request(user_id, hold_request_id)
       try_operation(__method__, user_id, hold_request_id)
+    end
+
+    #
+    # Get the items for a record.
+    #
+    # @param record_id [String] a record ID.
+    # @return [Array<Ils::Item>] List of items for the given record ID. The  array
+    #   is empty if no items (or a record with that ID) exists.
+    #
+    def get_items(record_id)
+      try_operation(__method__, record_id)
     end
 
   end

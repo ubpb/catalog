@@ -1,0 +1,7 @@
+de:
+  account:
+    fees:
+
+      fees:
+        header: "Gebühren (%{sum})"
+        no-fees: "Aktuell keine Gebühren"

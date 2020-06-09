@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post :renew, on: :member
       post :renew_all, on: :collection, path: "renew"
     end
+    resources :fees, only: [:index]
   end
 
 end

@@ -31,11 +31,12 @@ class Ils
       )
 
     HoldRequestStatus = Strict::Symbol
-      .default(:requested)
+      .default(:unknown)
       .enum(
-        :requested, # Vorgemerkt
-        :on_hold,   # Bereitgestellt
-        :in_process # In Bearbeitung
+        :in_queue,      # In Warteschlange
+        :on_hold_shelf, # Bereitgestellt
+        :in_process,    # In Bearbeitung
+        :unknown        # Unbekannt
       )
 
   end

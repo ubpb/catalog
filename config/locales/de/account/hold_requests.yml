@@ -1,0 +1,6 @@
+de:
+  account:
+    hold_requests:
+      hold_requests:
+        header: "Vormerkungen"
+        no-hold-requests: "Aktuell keine Vormerkungen"

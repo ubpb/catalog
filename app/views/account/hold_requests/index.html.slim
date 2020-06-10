@@ -1,0 +1,16 @@
+div(
+  data-controller="hold-requests"
+  data-hold-requests-url=account_hold_requests_path
+)
+  #holdRequestsLoader(
+    data-target="hold-requests.loader"
+    style="display: block;"
+  )
+    .card.card-cutoff-corner
+      .card-body.text-center
+        i.fas.fa-lg.fa-spinner.fa-pulse
+
+  #holdRequestsOutput(
+    data-target="hold-requests.output"
+    style="display: none;"
+  )

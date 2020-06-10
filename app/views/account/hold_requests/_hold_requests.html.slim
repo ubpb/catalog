@@ -1,0 +1,23 @@
+.card.card-cutoff-corner
+  .card-header
+    h5.m-0 = t(".header")
+
+  - if hold_requests.present?
+    #holdRequestsListing.ul.list-group.list-group-flush
+      - hold_requests.each do |hold_request|
+        li.list-group-item
+          .d-flex
+            .w-25
+              div = l(hold_request.requested_at)
+              div = hold_request.status
+              div = "Position: #{hold_request.queue_position}"
+            .w-75.ml-3
+              div.strong = hold_request.title
+              - if hold_request.author.present?
+                div = hold_request.author
+              - if hold_request.barcode.present?
+                div = "Barcode: #{hold_request.barcode}"
+  - else
+    .card-body
+      .alert.alert-info.mb-0.text-center
+        = t(".no-hold-requests")

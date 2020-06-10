@@ -2,8 +2,10 @@ de:
   account:
     loans:
       index:
-        renew_all_modal_loading_message: "Alle Medien verlängern..."
-        renew_all_modal_button_text: "Ok"
+        renew_all_modal:
+          header: "Alle Medien verlängern"
+          loading_message: "Alle verlängerbaren Medien verlängern..."
+          button_text: "Ok"
 
       loans:
         header: Ausgeliehene Medien
@@ -24,5 +26,5 @@ de:
         error: "%{system_message}"
 
       renewals:
-        header: Verlängerbare Medien wurden verlängert. Bitte überprüfen Sie die Rückgabefristen.
+        header: Bitte überprüfen Sie die neuen Rückgabefristen.
         no_renewals: Keine Medien verlängert.

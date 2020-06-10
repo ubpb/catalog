@@ -8,6 +8,7 @@
         li.list-group-item
           .d-flex
             .w-25
+              div = l(fee.date.to_date)
               div = fee.type
               div = number_to_currency(fee.balance, unit: "€")
             .w-75.ml-3

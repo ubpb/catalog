@@ -23,11 +23,13 @@ div(
   )
     .modal-dialog.modal-lg.modal-dialog-scrollable
       .modal-content
+        .modal-header
+          h5.modal-title = t(".renew_all_modal.header")
         .modal-body(data-target="loans.renewAllModalBody")
           .text-center
             h5.modal-title
               i.fas.fa-spinner.fa-pulse
-              =< t(".renew_all_modal_loading_message")
+              =< t(".renew_all_modal.loading_message")
 
         .modal-footer
           button.btn.btn-primary(
@@ -35,4 +37,4 @@ div(
             data-target="loans.renewAllModalButton"
             data-action="click->loans#closeRenewAllModal"
           )
-            = t(".renew_all_modal_button_text")
+            = t(".renew_all_modal.button_text")

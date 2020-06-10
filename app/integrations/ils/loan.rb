@@ -6,7 +6,7 @@ class Ils
     attribute :renewable, Types::Bool.default(false)
     attribute :item_id, Types::String
     attribute :record_id, Types::String
-    attribute :barcode, Types::String
+    attribute :barcode, Types::String.optional
     attribute :call_number, Types::String.optional
     attribute :fine, Types::Float.default(0.0)
     attribute :title, Types::String.optional

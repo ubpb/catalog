@@ -20,7 +20,8 @@ class Account::LoansController < Account::ApplicationController
 
     render partial: "loan", locals: {
       loan: result.loan,
-      renew_result: result
+      renew_result: result,
+      allow_single_renew: true
     }
   end
 

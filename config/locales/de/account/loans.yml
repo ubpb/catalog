@@ -3,14 +3,14 @@ de:
     loans:
       index:
         renew_all_modal:
-          header: "Alle Medien verlängern"
-          loading_message: "Alle verlängerbaren Medien verlängern..."
+          header: "Medien verlängern"
+          loading_message: "Alle verlängerbaren Medien werden verlängert..."
           button_text: "Ok"
 
       loans:
         header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."
-        renewAll: "Alle verlängern"
+        renewAll: "Alle Medien verlängern"
 
       loan:
         loan_date: "Entliehen am: %{date}"

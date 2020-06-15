@@ -4,6 +4,8 @@
       => t(".header")
       .badge.badge-danger = number_to_currency(sum, unit: "€")
 
+  .p-3
+    .alert.alert-info.mb-0 = t(".fee-info", url: account_loans_path).html_safe
 
   - if fees.present?
     #feesListing.ul.list-group.list-group-flush
@@ -12,11 +14,13 @@
           .d-flex
             .w-25
               div = l(fee.date.to_date)
-              div = fee.type
-              div = number_to_currency(fee.balance, unit: "€")
+              .badge.badge-danger = number_to_currency(fee.balance, unit: "€")
             .w-75.ml-3
-              div = fee.title
-              div = fee.barcode
+              div = fee.type
+              - if fee.title.present?
+                div = fee.title
+              - if fee.barcode.present?
+                div = fee.barcode
   - else
     .card-body
       .alert.alert-info.mb-0.text-center

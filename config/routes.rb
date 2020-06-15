@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       post :renew_all, on: :collection, path: "renew"
     end
     resources :fees, only: [:index]
-    resources :hold_requests, only: [:index], path: "hold-requests"
+    resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
   end
 
 end

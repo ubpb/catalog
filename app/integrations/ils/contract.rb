@@ -95,14 +95,14 @@ class Ils
     end
 
     #
-    # Delete a hold request for a user
+    # Cancels a hold request for a user
     #
     # @param user_id [String] a user ID.
     # @param hold_request_id [String] a hold request ID.
-    # @return [true, false] `true` if the hold request has been deleted successfully,
+    # @return [true, false] `true` if the hold request has been canceled successfully,
     #   `false` otherwise
     #
-    def delete_hold_request(user_id, hold_request_id)
+    def cancel_hold_request(user_id, hold_request_id)
       try_operation(__method__, user_id, hold_request_id)
     end
 

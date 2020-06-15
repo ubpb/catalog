@@ -4,3 +4,7 @@ de:
       hold_requests:
         header: "Vormerkungen"
         no-hold-requests: "Sie haben aktuell keine Medien vorgemerkt"
+
+      destroy:
+        error: "Die Vormerkung konnte nicht gelöscht werden"
+        success: "Die Vormerkung wurde erfolgreich gelöscht"

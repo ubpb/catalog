@@ -12,7 +12,7 @@
               div = hold_request.status
               div = "Position: #{hold_request.queue_position}"
             .w-75.ml-3
-              div.strong = hold_request.title
+              div: strong = hold_request.title
               - if hold_request.author.present?
                 div = hold_request.author
               - if hold_request.barcode.present?

@@ -2,5 +2,5 @@ de:
   account:
     fees:
       fees:
-        header: "Gebühren (%{sum})"
+        header: "Gebühren"
         no-fees: "Aktuell keine Gebühren"

@@ -1,6 +1,9 @@
 .card.card-cutoff-corner
   .card-header
-    h5.m-0 = t(".header", sum: number_to_currency(sum, unit: "€"))
+    h5.m-0
+      => t(".header")
+      .badge.badge-danger = number_to_currency(sum, unit: "€")
+
 
   - if fees.present?
     #feesListing.ul.list-group.list-group-flush

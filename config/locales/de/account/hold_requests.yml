@@ -3,4 +3,4 @@ de:
     hold_requests:
       hold_requests:
         header: "Vormerkungen"
-        no-hold-requests: "Aktuell keine Vormerkungen"
+        no-hold-requests: "Sie haben aktuell keine Medien vorgemerkt"

@@ -9,7 +9,7 @@ class Ils
     attribute :availability_status, Types::AvailabilityStatus
     attribute :due_date, Types::Date.optional
     attribute :note, Types::String.optional
-    attribute :hold_request_count, Types::Int.default(0)
+    attribute :hold_request_count, Types::Integer.default(0)
     attribute :hold_request_allowed, Types::Bool.default(false)
 
     def expected?

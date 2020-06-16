@@ -1,6 +1,6 @@
 module SearchEngine::Adapters
   class ElasticSearchAdapter < BaseAdapter
-    include Contract
+    include SearchEngine::Contract
 
     attr_reader :client
 

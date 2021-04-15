@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
   end
 
+  # Kickers
+  get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal
+  get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :privacy
+
 end

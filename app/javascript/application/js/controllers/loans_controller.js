@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import axios from "axios"
+import { Modal } from "bootstrap"
 
 export default class extends Controller {
   static targets = [
@@ -11,8 +12,15 @@ export default class extends Controller {
     "renewAllModalButton"
   ]
 
+  modal = null;
+
   connect() {
     this.loadLoans()
+    this.modal = new Modal(this.renewAllModalTarget, {
+      backdrop: "static",
+      keyboard: false,
+      show: false
+    });
   }
 
   loadLoans() {
@@ -66,20 +74,16 @@ export default class extends Controller {
   }
 
   openRenewAllModal() {
-    $(this.renewAllModalTarget).modal({
-      backdrop: "static",
-      keyboard: false,
-      show: true
-    })
+    this.modal.show()
   }
 
   closeRenewAllModal() {
-    $(this.renewAllModalTarget).modal("dispose")
+    this.modal.dispose()
     window.location = this.data.get("renew-all-redirect-url")
   }
 
   updateRenewAllModalHeight() {
-    $(this.renewAllModalTarget).modal("handleUpdate")
+    this.modal.handleUpdate()
   }
 
   showLoader() {

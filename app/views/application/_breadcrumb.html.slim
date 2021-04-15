@@ -1,0 +1,22 @@
+nav(aria-label="breadcrumb")
+  ol.breadcrumb.p-0
+    li.breadcrumb-item
+      = link_to "Universitätsbibliothek", "http://ub.uni-paderborn.de"
+
+    - if breadcrumb.empty?
+      li.breadcrumb-item.active
+        = "Katalog"
+    - else
+      li.breadcrumb-item
+        = link_to "Katalog", root_path
+
+    - breadcrumb.each.with_index do |b, i|
+      - last_element = (i+1) == breadcrumb.count
+      - label        = b[:label]
+      - path         = b[:path]
+      li.breadcrumb-item(class=active_when(last_element))
+        - unless last_element
+          = link_to label, path
+        - else
+          = label
+

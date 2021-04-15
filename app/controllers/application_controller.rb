@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
     raise ArgumentError, "This controller action expects an ajax request." unless request.xhr?
   end
 
+  def breadcrumb
+    @breadcrumb ||= []
+  end
+
+  def add_breadcrumb(label, path)
+    breadcrumb << {label: label, path: path}
+  end
+
   rescue_from IntegrationError do |e|
     # TODO: Report such errors
     Rails.logger.error [e.message, *e.backtrace].join($/)

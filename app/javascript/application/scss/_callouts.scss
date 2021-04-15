@@ -1,0 +1,14 @@
+.callout {
+  padding: $spacer;
+  margin-bottom: $spacer;
+  border: 1px solid gray("300");
+  border-left-width: 5px;
+  border-radius: $border-radius;
+  font-size: 105%;
+}
+
+@each $name, $color in $theme-colors {
+  .callout-#{$name} {
+    border-left-color: $color;
+  }
+}

@@ -36,14 +36,13 @@ private
   def create_or_update_user!(ils_user)
     User.transaction do
       user = User.where(ils_primary_id: ils_user.id).first_or_initialize
-
-      user.update_attributes!(
-        :ils_primary_id => ils_user.id,
-        :first_name     => ils_user.first_name,
-        :last_name      => ils_user.last_name,
-        :email          => ils_user.email
+      user.assign_attributes(
+        ils_primary_id: ils_user.id,
+        first_name:     ils_user.first_name,
+        last_name:      ils_user.last_name,
+        email:          ils_user.email
       )
-
+      user.save!
       user
     end
   end

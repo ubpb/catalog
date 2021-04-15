@@ -1,9 +1,3 @@
-// Load jQuery and Bootstrap
-import JQuery from "jquery";
-window.$ = window.JQuery = JQuery;
-import "popper.js"
-import "bootstrap"
-
 // Load / init stimulus.js and controllers in ./controllers
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"

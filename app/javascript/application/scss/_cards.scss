@@ -13,7 +13,7 @@
       border-left-color: rgba(0, 0, 0, 0);
       border-left-style: solid;
       border-left-width: 17px;
-      border-top-color: $page-background-color;
+      border-top-color: map-get($grays, '200');
       border-top-style: solid;
       border-top-width: 17px;
       box-sizing: border-box;

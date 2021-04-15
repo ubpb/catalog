@@ -10,14 +10,14 @@
 
     .mt-1
       - if loan.fine.present? && loan.fine > 0
-        span.badge.badge-danger.mr-2
+        span.badge.badge-danger.me-2
           = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
 
       - unless loan.renewable
         span.badge.badge-warning
           = t(".not_renewable")
 
-  .ml-3.w-75
+  .ms-3.w-75
     - if renew_result
       .alert.animate__animated.animate__flipInX(class="#{renew_result.success ? "alert-success" : "alert-danger"}")
         button(type="button" class="close" data-dismiss="alert" aria-label="Close")
@@ -48,7 +48,7 @@
         )
           i.fas.fa-redo
           =< t(".renew")
-        i.ml-2.fas.fa-spinner.fa-pulse(
+        i.ms-2.fas.fa-spinner.fa-pulse(
           data-target="loan.renewSpinner"
           style="display: none;"
         )

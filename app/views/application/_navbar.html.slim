@@ -1,13 +1,11 @@
-nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
-  .container
-    = link_to "http://www.ub.uni-paderborn.de", class: "navbar-brand" do
-      = image_tag("ub-logo.svg", height: "60", loading: "lazy")
-
-    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarContent")
+nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
+  .container.justify-content-end
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation")
+      ' Menü
       span.navbar-toggler-icon
 
     #navbarContent.collapse.navbar-collapse
-      ul.navbar-nav.ml-auto
+      ul.navbar-nav
         li.nav-item
           = link_to root_path, class: "nav-link" do
             i.fas.fa-home
@@ -21,10 +19,10 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
             i.fas.fa-bullhorn
             =< "Blog"
         li.nav-item.dropdown
-          a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#")
+          a.nav-link.dropdown-toggle(data-bs-toggle="dropdown" href="#")
             i.fas.fa-cogs
             =< "Weitere Dienste"
-          .dropdown-menu.dropdown-menu-right
+          .dropdown-menu
             = link_to "Neuerwerbungslisten", "https://blogs.uni-paderborn.de/ub-katalog/2014/08/27/neuerwerbungen/", target: "_blank", class: "dropdown-item"
             = link_to "Fachsystematik Bücher", "https://katalog.ub.uni-paderborn.de/fachsystematik/", target: "_blank", class: "dropdown-item"
             = link_to "Erwerbungsvorschlag", "http://www.ub.uni-paderborn.de/kontakt/erwerbungsvorschlag/", target: "_blank", class: "dropdown-item"
@@ -32,15 +30,73 @@ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
             = link_to "Fernleihe", "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
 
       - if current_user
-        .btn-group.d-flex.ml-lg-4.mt-2.mt-lg-0
-          = link_to account_root_path, class: "btn btn-primary w-100" do
-            i.far.fa-user
-            =< current_user.name
-          = link_to logout_path, class: "btn btn-outline-primary", data: {confirm: "Wirklich abmelden?"} do
-            i.fas.fa-power-off
+        .ms-auto
+          .dropdown
+            a.btn.btn-primary.btn-block.dropdown-toggle(data-bs-toggle="dropdown" href="#")
+              i.fas.fa-user
+              span.ms-2 = current_user.name
+            .dropdown-menu.dropdown-menu-end
+              = link_to account_root_path, class: "dropdown-item" do
+                i.fas.fa-user.fa-fw
+                span.ms-2 = "Mein Bibliothekskonto"
+              .dropdown-divider
+              = link_to logout_path, data: {confirm: "Wirklich abmelden?"}, class: "dropdown-item" do
+                i.fas.fa-power-off.fa-fw
+                span.ms-2 = "Abmelden"
       - else
-        .d-flex.ml-lg-4.mt-2.mt-lg-0
-          = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
-            i.far.fa-user
-            =< "Mein Bibliothekskonto"
+        .ms-auto
+          .d-flex.ms-lg-4.mt-2.mt-lg-0
+            = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
+              i.far.fa-user
+              =< "Anmelden"
+
+
+
+
+
+/ nav.navbar.navbar-light.bg-transparent.navbar-expand-lg
+/   .container
+/     = link_to "http://www.ub.uni-paderborn.de", class: "navbar-brand" do
+/       = image_tag("ub-logo.svg", height: "60", loading: "lazy")
+
+/     button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarContent")
+/       span.navbar-toggler-icon
+
+/     #navbarContent.collapse.navbar-collapse
+/       ul.navbar-nav.ms-auto
+/         li.nav-item
+/           = link_to root_path, class: "nav-link" do
+/             i.fas.fa-home
+/             =< "Start"
+/         li.nav-item
+/           = link_to "http://blogs.uni-paderborn.de/ub-katalog/hilfe/", class: "nav-link" do
+/             i.far.fa-lightbulb
+/             =< "Hilfe"
+/         li.nav-item
+/           = link_to "http://blogs.uni-paderborn.de/ub-katalog/", class: "nav-link" do
+/             i.fas.fa-bullhorn
+/             =< "Blog"
+/         li.nav-item.dropdown
+/           a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#")
+/             i.fas.fa-cogs
+/             =< "Weitere Dienste"
+/           .dropdown-menu.dropdown-menu-right
+/             = link_to "Neuerwerbungslisten", "https://blogs.uni-paderborn.de/ub-katalog/2014/08/27/neuerwerbungen/", target: "_blank", class: "dropdown-item"
+/             = link_to "Fachsystematik Bücher", "https://katalog.ub.uni-paderborn.de/fachsystematik/", target: "_blank", class: "dropdown-item"
+/             = link_to "Erwerbungsvorschlag", "http://www.ub.uni-paderborn.de/kontakt/erwerbungsvorschlag/", target: "_blank", class: "dropdown-item"
+/             = link_to "Bestellung aus dem Magazin", "", class: "dropdown-item"
+/             = link_to "Fernleihe", "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
+
+/       - if current_user
+/         .btn-group.d-flex.ms-lg-4.mt-2.mt-lg-0
+/           = link_to account_root_path, class: "btn btn-primary w-100" do
+/             i.far.fa-user
+/             =< current_user.name
+/           = link_to logout_path, class: "btn btn-outline-primary", data: {confirm: "Wirklich abmelden?"} do
+/             i.fas.fa-power-off
+/       - else
+/         .d-flex.ms-lg-4.mt-2.mt-lg-0
+/           = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
+/             i.far.fa-user
+/             =< "Mein Bibliothekskonto"
 

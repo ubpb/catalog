@@ -15,7 +15,7 @@
             .w-25
               div = l(fee.date.to_date)
               .badge.badge-danger = number_to_currency(fee.balance, unit: "€")
-            .w-75.ml-3
+            .w-75.ms-3
               div = fee.type
               - if fee.title.present?
                 div = fee.title

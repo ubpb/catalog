@@ -1,42 +1,80 @@
-// Pick selected variables from Bootstrap and make
-// them available in the global space so we can
-// reference the original value while overwrite them.
-%local {
-  @import "~bootstrap/scss/functions";
-  @import "~bootstrap/scss/variables";
-
-  $font-family-sans-serif: $font-family-sans-serif !global;
-  $white: $white !global;
-  $black: $black !global;
-  $grays: $grays !global;
-}
-
-$enable-rounded: true;
-$enable-shadows: true;
-
-$font-size-base: 0.9rem;
-
+// Custom colors
 $upb-blue: #003671;
 $upb-cyan: #18b0e2;
 
-$blue: $upb-blue;
-$cyan: $upb-cyan;
+// Bootstrap grays
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
 
-$font-family-sans-serif: "Signika", $font-family-sans-serif;
+// Bootstrap colors
+$blue:    $upb-blue;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    $upb-cyan;
 
-$primary: $upb-cyan;
+// Bootstrap theme colors
+$primary:       $upb-cyan;
+$secondary:     $gray-600;
+$accent:        $upb-blue; // Custom addition
+$success:       $green;
+$info:          tint-color($cyan, 40%);
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-800;
 
-$link-color: $upb-blue;
-$link-hover-color: $upb-cyan;
-$link-hover-decoration: none;
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "accent":     $accent,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
 
-$card-border-width: 0;
-$card-border-radius: 0;
+// Reduce contrast ratio to force white text on $upb-cyan
+$min-contrast-ratio: 2.5;
 
-$page-background-color: map-get($grays, '200');
+// Adjust font settings
+$font-family-sans-serif: Signika, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-size-base: 0.95rem;
 
-$navbar-light-color: map-get($grays, '900');
-$navbar-light-hover-color: $upb-cyan;
-$navbar-light-active-color: $upb-cyan;
-$navbar-light-disabled-color: map-get($grays, '400');
-$navbar-light-toggler-border-color: transparent;
+// Tweek links
+$link-color: $upb-blue !global;
+$link-decoration: none !global;
+$link-hover-color: $upb-cyan !global;
+$link-hover-decoration: none !global;
+
+// Tweek card component
+$card-border-width: 0 !global;
+$card-border-radius: 0 !global;
+
+// Tweek navbar component
+$navbar-dark-bg-color:              $white;
+$navbar-dark-color:                 $white;
+$navbar-dark-hover-color:           rgba($white, .75) !default;
+$navbar-dark-active-color:          $white !default;
+$navbar-dark-disabled-color:        rgba($white, .25) !default;
+$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
+
+// Tweek pagination
+$pagination-hover-color: $link-color;

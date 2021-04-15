@@ -1,5 +1,10 @@
+.navbar.bg-dark {
+  background-color: $gray-700 !important;
+}
+
 .navbar-nav {
-  font-size: 110%;
+  font-size: 100%;
+  font-weight: normal;
 
   .dropdown-menu {
     margin-bottom: $spacer;

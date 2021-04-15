@@ -4,7 +4,6 @@
     display: block;
     padding: $pagination-padding-y $pagination-padding-x;
     margin-left: -$pagination-border-width;
-    line-height: $pagination-line-height;
     color: $body-color;
     text-decoration: if($link-decoration == none, null, none);
     background-color: $pagination-bg;

@@ -11,7 +11,7 @@
               div = l(hold_request.requested_at)
               div = hold_request.status
               div = "Position: #{hold_request.queue_position}"
-            .w-75.ml-3
+            .w-75.ms-3
               div: strong = hold_request.title
               - if hold_request.author.present?
                 div = hold_request.author

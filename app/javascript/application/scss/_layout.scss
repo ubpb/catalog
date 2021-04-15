@@ -1,12 +1,12 @@
 body {
-  background-color: $primary;
+  background-color: $cyan;
 }
 
 #test-server-warning {
   text-align: center;
   padding: 8px;
-  background: #E20009;
-  color: white;
+  background: $red;
+  color: $white;
   font-weight: bold;
 
   a {
@@ -16,13 +16,21 @@ body {
 }
 
 header {
-  padding-top: $spacer / 2;
-  padding-bottom: $spacer / 2;
+  padding-top: 0;
+  padding-bottom: 0;
   background-color: $white;
 }
 
+#header-ub-logo {
+  height: 60px;
+}
+
+#header-app-logo {
+  height: 35px;
+}
+
 #page {
-  background-color: $page-background-color;
+  background-color: $gray-200;
   padding: $spacer 0;
 }
 
@@ -34,13 +42,16 @@ footer {
 
   a {
     color: $white;
+    &:hover {
+      color: map-get($theme-colors, 'accent');
+    }
   }
 
   .footer-claim {
     font-size: $font-size-sm;
     background-color: $white;
     font-style: italic;
-    color: $upb-blue;
+    color: map-get($theme-colors, 'accent');
     font-weight: bold;
     padding: 5px 0;
   }

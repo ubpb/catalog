@@ -5,7 +5,7 @@ div(
   data-loans-renew-all-redirect-url=account_loans_path
 )
   #loansLoader(
-    data-target="loans.loader"
+    data-loans-target="loader"
     style="display: block;"
   )
     .card.card-cutoff-corner
@@ -13,19 +13,19 @@ div(
         i.fas.fa-lg.fa-spinner.fa-pulse
 
   #loansOutput(
-    data-target="loans.output"
+    data-loans-target="output"
     style="display: none;"
   )
 
   #loansRenewAllModal.modal(
     role="dialog"
-    data-target="loans.renewAllModal"
+    data-loans-target="renewAllModal"
   )
     .modal-dialog.modal-lg.modal-dialog-scrollable
       .modal-content
         .modal-header
           h5.modal-title = t(".renew_all_modal.header")
-        .modal-body(data-target="loans.renewAllModalBody")
+        .modal-body(data-loans-target="renewAllModalBody")
           .text-center
             h5.modal-title
               i.fas.fa-spinner.fa-pulse
@@ -34,7 +34,7 @@ div(
         .modal-footer
           button.btn.btn-primary(
             type="button"
-            data-target="loans.renewAllModalButton"
+            data-loans-target="renewAllModalButton"
             data-action="click->loans#closeRenewAllModal"
           )
             = t(".renew_all_modal.button_text")

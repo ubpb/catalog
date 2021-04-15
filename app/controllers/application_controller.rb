@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user
+  helper_method :breadcrumb
 
   def current_user
     @current_user ||= begin
@@ -11,7 +12,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to(new_session_path) unless current_user
+    unless current_user
+      redirect_to(new_session_path)
+      return false
+    else
+      return true
+    end
   end
 
   def ensure_xhr!

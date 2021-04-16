@@ -10,11 +10,11 @@
 
     .mt-1
       - if loan.fine.present? && loan.fine > 0
-        span.badge.badge-danger.me-2
+        span.badge.bg-danger.me-2
           = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
 
       - unless loan.renewable
-        span.badge.badge-warning
+        span.badge.bg-warning
           = t(".not_renewable")
 
   .ms-3.w-75

@@ -1,29 +1,24 @@
 .card {
+  background-color: transparent;
+
+  .card-body {
+    background-color: $card-bg;
+  }
+
+  .card-header,
+  .card-footer {
+    background-color: rgba($card-bg, 0.7);
+  }
+
   &.card-primary {
     border-bottom-width: 4px;
     border-bottom-style: solid;
     border-bottom-color: $primary;
   }
 
-  &.card-cutoff-corner {
-    position: relative;
-
-    &:before {
-      content: " ";
-      border-left-color: rgba(0, 0, 0, 0);
-      border-left-style: solid;
-      border-left-width: 17px;
-      border-top-color: map-get($grays, '200');
-      border-top-style: solid;
-      border-top-width: 17px;
-      box-sizing: border-box;
-      display: block;
-      height: 17px;
-      position: absolute;
-      right: 0px;
-      top: 0px;
-      width: 17px;
-      z-index: 3;
-    }
+  &.card-shadowed {
+    // Use filter and drop-shadow instead of box-shadow
+    // to use the shadow together with "cutoff-corner".
+    filter: drop-shadow($box-shadow);
   }
 }

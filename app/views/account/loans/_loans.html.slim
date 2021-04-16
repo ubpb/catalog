@@ -1,12 +1,12 @@
 - paginator = paginate(loans, page_entries_info: page_entries_info(loans))
 
 - if loans.present?
-  .card.card-cutoff-corner
-    .card-header
+  .card.card-shadowed
+    .card-header.cutoff-corner-tr
       .d-flex.align-items-center
         h5.m-0
           = t(".header")
-        .ms-1.span.badge.badge-pill.badge-info = total_number_of_loans
+        .ms-1.span.badge.badge-pill.bg-info = total_number_of_loans
         /div.ms-auto
           ' ACTIONS TODO
       - if paginator.present?
@@ -36,7 +36,7 @@
       .card-footer
         = paginator
 - else
-  .card.card-cutoff-corner
+  .card
     .card-header
       h5.m-0 = t(".header")
     .card-body

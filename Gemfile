@@ -17,7 +17,7 @@ gem "rails-i18n",  "~> 6.0.0"
 gem "sass-rails",  ">= 6"
 gem "simple_form", "~> 5.1"
 gem "slim",        "~> 4.0"
-gem "turbolinks",  "~> 5"
+gem "turbo-rails", "~> 0.5.9"
 gem "webpacker",   "~> 5.0"
 
 gem "alma_api", "~> 1.0.0", path: "vendor/gems/alma_api"

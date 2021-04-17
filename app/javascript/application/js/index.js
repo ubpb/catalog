@@ -1,3 +1,9 @@
+// Load Rails stuff
+import "@hotwired/turbo"
+require("@rails/ujs").start()
+require("@rails/activestorage").start()
+require("channels")
+
 // Load / init stimulus.js and controllers in ./controllers
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"

@@ -1,8 +1,11 @@
 // Load Rails stuff
-import "@hotwired/turbo"
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+
+// Load / init turbo
+import { Turbo } from "@hotwired/turbo-rails"
+window.Turbo = Turbo
 
 // Load / init stimulus.js and controllers in ./controllers
 import { Application } from "stimulus"

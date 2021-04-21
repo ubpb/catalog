@@ -7,14 +7,11 @@
         h5.m-0
           = t(".header")
         .ms-1.span.badge.badge-pill.bg-info = total_number_of_loans
-        /div.ms-auto
-          ' ACTIONS TODO
-      - if paginator.present?
-        .mt-3 = paginator
 
-    .card-body
-      .d-flex
-        .ms-auto.button.btn.btn-sm.btn-primary(
+      .mt-3.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center
+        - if paginator.present?
+          = paginator
+        .ms-auto.mt-2.mt-sm-0.button.btn.btn-sm.btn-primary(
           data-loans-target="renewAllButton"
           data-action="click->loans#renewAll"
         )

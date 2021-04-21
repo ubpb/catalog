@@ -29,13 +29,13 @@ class Account::HoldRequestsController < Account::ApplicationController
 private
 
   def load_hold_requests
-    Ils[:default].get_hold_requests(
+    Ils.get_hold_requests(
       current_user.ils_primary_id
     )
   end
 
   def delete_hold_request(request_id)
-    Ils[:default].cancel_hold_request(
+    Ils.cancel_hold_request(
       current_user.ils_primary_id,
       request_id
     )

@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     password = params.dig("login", "password")
 
     if username.present? && password.present?
-      if Ils[:default].authenticate_user(username, password)
-        ils_user = Ils[:default].get_user(username)
+      if Ils.authenticate_user(username, password)
+        ils_user = Ils.get_user(username)
         db_user  = create_or_update_user!(ils_user)
 
         reset_session

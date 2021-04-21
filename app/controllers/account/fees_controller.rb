@@ -22,7 +22,7 @@ class Account::FeesController < Account::ApplicationController
 private
 
   def load_fees
-    Ils[:default].get_fees(
+    Ils.get_fees(
       current_user.ils_primary_id
     )
   end

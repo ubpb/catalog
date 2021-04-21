@@ -38,7 +38,7 @@ class Account::LoansController < Account::ApplicationController
 private
 
   def load_loans
-    result = Ils[:default].get_current_loans(
+    result = Ils.get_current_loans(
       current_user.ils_primary_id,
       {
         per_page: params[:per_page],
@@ -55,14 +55,14 @@ private
   end
 
   def renew_loan(loan_id)
-    Ils[:default].renew_loan(
+    Ils.renew_loan(
       current_user.ils_primary_id,
       loan_id
     )
   end
 
   def renew_loans
-    Ils[:default].renew_loans(
+    Ils.renew_loans(
       current_user.ils_primary_id
     )
   end

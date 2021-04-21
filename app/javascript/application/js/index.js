@@ -6,6 +6,7 @@ require("channels")
 // Load / init turbo
 import { Turbo } from "@hotwired/turbo-rails"
 window.Turbo = Turbo
+Turbo.setProgressBarDelay(200)
 
 // Load / init stimulus.js and controllers in ./controllers
 import { Application } from "stimulus"

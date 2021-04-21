@@ -3,11 +3,7 @@ class BaseIntegration
 
   class << self
     def [](scope, config_filename, environment)
-      if environment == "production"
-        (@_instances ||= {})[scope.to_s] ||= begin
-          create_instance(scope, config_filename, environment)
-        end
-      else
+      (@_instances ||= {})[scope.to_s] ||= begin
         create_instance(scope, config_filename, environment)
       end
     rescue Errno::ENOENT

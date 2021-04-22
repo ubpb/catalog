@@ -11,5 +11,6 @@
   .callout-#{$name} {
     border-color: $color;
     background-color: tint-color($color, 85%);
+    color: shift-color($color, 45%);
   }
 }

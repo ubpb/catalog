@@ -1,5 +1,7 @@
 class Account::HoldRequestsController < Account::ApplicationController
 
+  before_action { add_breadcrumb "Vormerkungen", account_hold_requests_path }
+
   def index
     if request.xhr?
       # Load hold requests

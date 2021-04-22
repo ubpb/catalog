@@ -1,5 +1,7 @@
 class Account::LoansController < Account::ApplicationController
 
+  before_action { add_breadcrumb "Ausgeliehene Medien", account_loans_path }
+
   def index
     if request.xhr?
       load_loans

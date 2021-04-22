@@ -1,5 +1,7 @@
 class Account::FeesController < Account::ApplicationController
 
+  before_action { add_breadcrumb "Gebühren", account_fees_path }
+
   def index
     if request.xhr?
       # Load fees

@@ -24,8 +24,8 @@ div(
       .modal-content
         .modal-header
           h5.modal-title = t(".renew_all_modal.header")
-        div(data-loans-target="renewAllModalBody")
-          .modal-body.text-center
+        .modal-body(data-loans-target="renewAllModalBody")
+          .text-center
             h5.modal-title
               i.fas.fa-spinner.fa-pulse
               =< t(".renew_all_modal.loading_message")

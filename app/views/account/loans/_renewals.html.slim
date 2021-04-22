@@ -1,14 +1,11 @@
 - if renewals.present?
-  .modal-body
-    .callout.callout-info
-      i.fas.fa-info-circle.fa-lg
-      span.ms-2 = t(".header")
+  .callout.callout-info
+    i.fas.fa-info-circle.fa-lg
+    span.ms-2 = t(".header")
 
-  ul.list-group.list-group-flush
-    - renewals.each do |renewal|
-      li.list-group-item
-        = render "loan", loan: renewal.loan, renew_result: renewal
+  - renewals.each do |renew_result|
+    = render "loan", loan: renew_result.loan, renew_result: renew_result
+    hr
 - else
-  .modal-body
-    .alert.alert-info.mb-0
-      = t(".no_renewals")
+  .alert.alert-info.mb-0
+    = t(".no_renewals")

@@ -57,4 +57,4 @@
         - unless past_due_date
           .fst-italic = distance_of_time_in_words(Time.zone.now, loan.due_date)
       dt = t(".loan_date")
-      dd = l(loan.loan_date)
+      dd.mb-0 = l(loan.loan_date)

@@ -24,8 +24,8 @@ div(
       .modal-content
         .modal-header
           h5.modal-title = t(".renew_all_modal.header")
-        .modal-body(data-loans-target="renewAllModalBody")
-          .text-center
+        div(data-loans-target="renewAllModalBody")
+          .modal-body.text-center
             h5.modal-title
               i.fas.fa-spinner.fa-pulse
               =< t(".renew_all_modal.loading_message")
@@ -33,7 +33,7 @@ div(
         .modal-footer
           button.btn.btn-primary(
             type="button"
-            data-loans-target="renewAllModalButton"
+            data-loans-target="renewAllModalCloseButton"
             data-action="click->loans#closeRenewAllModal"
           )
-            = t(".renew_all_modal.button_text")
+            = t(".renew_all_modal.close_button_text")

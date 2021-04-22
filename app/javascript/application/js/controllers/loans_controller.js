@@ -9,7 +9,7 @@ export default class extends Controller {
     "renewAllButton",
     "renewAllModal",
     "renewAllModalBody",
-    "renewAllModalButton"
+    "renewAllModalCloseButton"
   ]
 
   modal = null;
@@ -43,7 +43,7 @@ export default class extends Controller {
     const url = this.data.get("renew-all-url")
 
     this.disableRenewAllButton()
-    this.disableRenewAllModalButton()
+    this.disableRenewAllModalCloseButton()
     this.openRenewAllModal()
 
     axios.post(url)
@@ -52,7 +52,7 @@ export default class extends Controller {
       .catch(error => this.renewAllModalBodyTarget.innerHTML = error)
       .then(() => {
         this.updateRenewAllModalHeight()
-        this.enableRenewAllModalButton()
+        this.enableRenewAllModalCloseButton()
         this.enableRenewAllButton()
       })
   }
@@ -65,12 +65,12 @@ export default class extends Controller {
     this.renewAllButtonTarget.disabled = false
   }
 
-  disableRenewAllModalButton() {
-    this.renewAllModalButtonTarget.disabled = true
+  disableRenewAllModalCloseButton() {
+    this.renewAllModalCloseButtonTarget.disabled = true
   }
 
-  enableRenewAllModalButton() {
-    this.renewAllModalButtonTarget.disabled = false
+  enableRenewAllModalCloseButton() {
+    this.renewAllModalCloseButtonTarget.disabled = false
   }
 
   openRenewAllModal() {

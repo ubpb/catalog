@@ -24,6 +24,6 @@
     alert_class += " alert-dismissible" if dismissible
 
   div(class=alert_class role="alert")
+    == message
     - if dismissible
       button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
-    == message

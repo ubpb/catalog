@@ -1,12 +1,23 @@
 - renew_result = local_assigns.fetch(:renew_result) { nil }
 - allow_single_renew = local_assigns.fetch(:allow_single_renew) { false }
 
-.d-flex
-  .w-25
-    .font-weight-bold(class="#{loan.due_date.past? ? "text-danger" : "text-success"}")
-      = t(".due_date", date: l(loan.due_date))
-    .font-weight-normal
-      = t(".loan_date", date: l(loan.loan_date))
+- if renew_result
+  .alert.alert-dismissible.animate__animated.animate__flipInX(class="#{renew_result.success ? "alert-success" : "alert-danger"}" role="alert")
+    - if renew_result.success
+      i.far.fa-check-circle.fa-lg
+    - else
+      i.fas.fa-ban.fa-lg
+    span.ms-2 = renew_result.message
+    button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
+
+.row
+  .col-md-3
+    dl
+      dt = t(".due_date")
+      dd(class="#{loan.due_date.past? ? "text-danger" : "text-success"}")
+        = l(loan.due_date)
+      dt = t(".loan_date")
+      dd = l(loan.loan_date)
 
     .mt-1
       - if loan.fine.present? && loan.fine > 0
@@ -17,38 +28,29 @@
         span.badge.bg-warning
           = t(".not_renewable")
 
-  .ms-3.w-75
-    - if renew_result
-      .alert.animate__animated.animate__flipInX(class="#{renew_result.success ? "alert-success" : "alert-danger"}")
-        button(type="button" class="close" data-dismiss="alert" aria-label="Close")
-          span(aria-hidden="true")
-          ' &times;
-        = renew_result.message
+  .col-md-9
+    .d-flex.flex-row.align-items-start
+      div
+        .fst-italic = loan.title.presence || "n.n."
 
-    - if loan.title.present?
-      .font-weight-bold = loan.title
-    - else
-      .font-weight-bold = "n.n."
+        - if loan.author.present?
+          div = loan.author
 
-    - if loan.author.present?
-      div = loan.author
+        - if [loan.call_number.presence, loan.barcode.presence].any?
+          .mt-0
+            - if loan.call_number.present?
+              div = t(".call_number", call_number: loan.call_number)
+            - if loan.barcode.present?
+              div = t(".barcode", barcode: loan.barcode)
 
-    - if [loan.call_number.presence, loan.barcode.presence].any?
-      .mt-0
-        - if loan.call_number.present?
-          div = t(".call_number", call_number: loan.call_number)
-        - if loan.barcode.present?
-          div = t(".barcode", barcode: loan.barcode)
-
-    - if allow_single_renew && loan.renewable
-      .mt-2
-        button.btn.btn-sm.btn-primary(
-          data-action="click->loan#renew"
-          data-target="loan.renewButton"
-        )
-          i.fas.fa-redo
-          =< t(".renew")
-        i.ms-2.fas.fa-spinner.fa-pulse(
-          data-target="loan.renewSpinner"
-          style="display: none;"
-        )
+      div.ms-auto
+        - if allow_single_renew && loan.renewable
+          button.btn.btn-sm.btn-outline-primary.text-nowrap(
+            data-action="click->loan#renew"
+            data-loan-target="renewButton"
+          )
+            i.fas.fa-redo
+          i.ms-2.fas.fa-spinner.fa-pulse(
+            data-loan-target="renewSpinner"
+            style="display: none;"
+          )

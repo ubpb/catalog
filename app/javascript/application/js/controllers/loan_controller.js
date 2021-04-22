@@ -10,7 +10,7 @@ export default class extends Controller {
   renew() {
     const url = this.data.get("renew-url")
 
-    this.renewButtonTarget.disabled = true;
+    this.renewButtonTarget.hidden = true;
     this.renewSpinnerTarget.style.display = "inline-block";
 
     axios.post(url)
@@ -18,7 +18,7 @@ export default class extends Controller {
       .then(html => this.element.innerHTML = html)
       .catch(error => this.element.innerHTML = error)
       .then(() => {
-        this.renewButtonTarget.disabled = false;
+        this.renewButtonTarget.hidden = false;
         this.renewSpinnerTarget.style.display = "none";
       })
   }

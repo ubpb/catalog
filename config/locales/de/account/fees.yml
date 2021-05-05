@@ -1,6 +1,8 @@
 de:
   account:
     fees:
+      breadcrumb: "Gebühren"
+
       fees:
         header: "Gebühren"
         no-fees: "Aktuell keine Gebühren"

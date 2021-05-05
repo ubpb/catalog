@@ -1,6 +1,8 @@
 de:
   account:
     hold_requests:
+      breadcrumb: "Vormerkungen"
+
       hold_requests:
         header: "Vormerkungen"
         no-hold-requests: "Sie haben aktuell keine Medien vorgemerkt"

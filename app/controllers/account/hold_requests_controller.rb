@@ -1,6 +1,6 @@
 class Account::HoldRequestsController < Account::ApplicationController
 
-  before_action { add_breadcrumb "Vormerkungen", account_hold_requests_path }
+  before_action { add_breadcrumb t("account.hold_requests.breadcrumb"), account_hold_requests_path }
 
   def index
     if request.xhr?

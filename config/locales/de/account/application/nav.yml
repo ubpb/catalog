@@ -3,7 +3,6 @@ de:
     application:
       nav:
         nav-toggle: Menü
-        header: Menü
         loans: Ausgeliehene Medien
         fees: Gebühren
         hold_requests: Vormerkungen

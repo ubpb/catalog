@@ -5,9 +5,7 @@
 
 #collapseNav.collapse.d-lg-block
   .card.card-shadowed.mb-3
-    h5.card-header.cutoff-corner-tr
-      = t(".header")
-    nav.list-group.list-group-flush
+    nav.list-group.list-group-flush.cutoff-corner-tr
       = link_to account_loans_path, class: "list-group-item" do
         i.fas.fa-fw.fa-book
         =< t(".loans")

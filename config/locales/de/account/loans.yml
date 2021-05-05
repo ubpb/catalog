@@ -1,6 +1,8 @@
 de:
   account:
     loans:
+      breadcrumb: "Ausgeliehene Medien"
+
       index:
         renew_all_modal:
           header: "Medien verlängern"

@@ -14,8 +14,8 @@
   .col-md-8.col-xl-9
     .d-flex.flex-row.align-items-start
       .mb-3.mb-md-0
-        - if loan.fine.present? && loan.fine > 0
-          span.mb-3.me-1.badge.bg-danger.text-light = t(".fines", fines: number_to_currency(12, unit: "€"))
+        - if loan.fine > 0
+          span.mb-3.me-1.badge.bg-danger.text-light = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
         - unless loan.renewable
           span.mb-3.badge.bg-secondary.text-light = t(".not_renewable")
 

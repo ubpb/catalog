@@ -1,0 +1,15 @@
+.row
+  .col-md-8.col-xl-9.mb-2.mb-md-0
+    .fw-bold = fee.type
+    - if fee.title.present?
+      div = fee.title
+    - if fee.barcode.present?
+      div = fee.barcode
+
+  .col-md-4.col-xl-3.order-md-first
+    dl.mb-0
+      dt = t(".date")
+      dd = l(fee.date.to_date)
+      dt = t(".fine")
+      dd: .badge.bg-danger = number_to_currency(fee.balance, unit: "€")
+

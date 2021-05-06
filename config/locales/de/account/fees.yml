@@ -10,3 +10,7 @@ de:
           Hier werden Ihnen nur verbuchte Gebühren angezeigt. Bitte beachten Sie mögliche
           schwebene Gebühren, die sich aus überfälligen Medien ergeben können. Diese
           können Sie unter <a href="%{url}" class="alert-link">Ausgeliehene Medien</a> einsehen.
+
+      fee:
+        date: "Datum"
+        fine: "Gebühr"

@@ -32,17 +32,18 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
       - if current_user
         .ms-auto
           .dropdown
-            a.btn.btn-primary.btn-block.dropdown-toggle(data-bs-toggle="dropdown" href="#")
-              i.fas.fa-user
-              span.ms-2 = current_user.name
-            .dropdown-menu.dropdown-menu-end
-              = link_to account_root_path, class: "dropdown-item" do
-                i.fas.fa-user.fa-fw
-                span.ms-2 = "Mein Bibliothekskonto"
-              .dropdown-divider
-              = link_to logout_path, data: {confirm: "Wirklich abmelden?"}, class: "dropdown-item" do
-                i.fas.fa-power-off.fa-fw
-                span.ms-2 = "Abmelden"
+            .d-grid.gap-2.d-lg-block
+              a.btn.btn-primary.dropdown-toggle(data-bs-toggle="dropdown" href="#")
+                i.fas.fa-user
+                span.ms-2 = current_user.name
+              .dropdown-menu.dropdown-menu-lg-end
+                = link_to account_root_path, class: "dropdown-item" do
+                  i.fas.fa-user.fa-fw
+                  span.ms-2 = "Mein Bibliothekskonto"
+                .dropdown-divider
+                = link_to logout_path, data: {confirm: "Wirklich abmelden?"}, class: "dropdown-item" do
+                  i.fas.fa-power-off.fa-fw
+                  span.ms-2 = "Abmelden"
       - else
         .ms-auto
           .d-flex.ms-lg-4.mt-2.mt-lg-0

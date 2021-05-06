@@ -3,22 +3,17 @@
     h5.m-0
       => t(".header")
       .badge.bg-danger = number_to_currency(sum, unit: "€")
-    .callout.callout-info.mt-3.mb-0 = t(".fee-info", url: account_loans_path).html_safe
+
+  .card-body
+    .callout.callout-info.mb-0
+      i.fas.fa-info-circle
+      =< t(".fee-info", url: account_loans_path).html_safe
 
   - if fees.present?
     #feesListing.ul.list-group.list-group-flush
       - fees.each do |fee|
         li.list-group-item
-          .d-flex
-            .w-25
-              div = l(fee.date.to_date)
-              .badge.bg-danger = number_to_currency(fee.balance, unit: "€")
-            .w-75.ms-3
-              div = fee.type
-              - if fee.title.present?
-                div = fee.title
-              - if fee.barcode.present?
-                div = fee.barcode
+          = render "fee", fee: fee
   - else
     .card-body
       .alert.alert-info.mb-0.text-center

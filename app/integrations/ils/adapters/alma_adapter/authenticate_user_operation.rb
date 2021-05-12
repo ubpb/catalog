@@ -5,7 +5,7 @@ module Ils::Adapters
       def call(user_id, password)
         adapter.api.post("users/#{user_id}", params: {password: password})
         true
-      rescue AlmaApi::LogicalError
+      rescue ExlApi::LogicalError
         false
       end
 

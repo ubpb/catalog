@@ -5,7 +5,7 @@ module Ils::Adapters
       def call(user_id, hold_request_id)
         cancel_hold_request(user_id, hold_request_id)
         true
-      rescue AlmaApi::LogicalError
+      rescue ExlApi::LogicalError
         false
       end
 

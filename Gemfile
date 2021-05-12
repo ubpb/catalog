@@ -25,8 +25,12 @@ gem "webpacker",     "~> 5.0"
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :development, :test do
-  gem "pry-byebug", ">= 3.9", platform: :mri
-  gem "pry-rails",  ">= 0.3", platform: :mri
+  # Don't use byebug until https://github.com/deivid-rodriguez/byebug/issues/564
+  # is fixed. We use a directory structure in app/integrations that uses
+  # "explicit namespaces". When running byebug Zeitwerk autoloading breaks.
+  gem "pry",       ">= 0.14.1", platform: :mri
+  gem "pry-rails", ">= 0.3",    platform: :mri
+  #gem "pry-byebug", ">= 3.9", platform: :mri
 end
 
 group :development do

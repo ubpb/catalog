@@ -4,9 +4,9 @@ require "rest_client"
 require "nokogiri"
 require "oj"
 
-require "alma_api/configuration"
+require "exl_api/configuration"
 
-module AlmaApi
+module ExlApi
 
   class Error < StandardError
     attr_reader :code
@@ -145,7 +145,7 @@ module AlmaApi
         when /text\/xml/, /application\/xml/
           Nokogiri::XML.parse(response.body)
         else
-          raise ArgumentError, "Unsupported content type '#{content_type}' in response from Alma."
+          raise ArgumentError, "Unsupported content type '#{content_type}' in response from API."
         end
       end
     end
@@ -168,7 +168,7 @@ module AlmaApi
 
           {error_message: error_message, error_code: error_code}
         else
-          raise ArgumentError, "Unsupported content type '#{content_type}' in error response from Alma."
+          raise ArgumentError, "Unsupported content type '#{content_type}' in error response from API."
         end
       else
         {error_message: nil, error_code: nil}

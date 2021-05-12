@@ -1,4 +1,4 @@
-module AlmaApi
+module ExlApi
   class Configuration
 
     def api_key=(value)
@@ -6,7 +6,7 @@ module AlmaApi
     end
 
     def api_key
-      @api_key || ENV["ALMA_API_KEY"].presence
+      @api_key || ENV["exl_api_KEY"].presence
     end
 
     def api_base_url=(value)
@@ -15,7 +15,7 @@ module AlmaApi
     end
 
     def api_base_url
-      @api_base_url || ENV["ALMA_API_BASE_URL"].presence || "https://api-eu.hosted.exlibrisgroup.com/almaws/v1"
+      @api_base_url || ENV["EXL_API_BASE_URL"].presence
     end
 
     def default_format=(value)
@@ -27,7 +27,7 @@ module AlmaApi
     end
 
     def default_format
-      @default_format || ENV["ALMA_API_DEFAULT_FORMAT"].presence || "application/json"
+      @default_format || ENV["EXL_API_DEFAULT_FORMAT"].presence || "application/json"
     end
 
     def language=(value)
@@ -35,7 +35,7 @@ module AlmaApi
     end
 
     def language
-      @language || ENV["ALMA_API_LANGUAGE"].presence || "en"
+      @language || ENV["EXL_API_LANGUAGE"].presence || "en"
     end
 
   end

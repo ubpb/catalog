@@ -22,7 +22,7 @@ const csrfToken = document.querySelector("meta[name=csrf-token]").content
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
 axios.defaults.headers.common["X-CSRF-Token"] = csrfToken
-document.addEventListener("turbolinks:render", () => {
+document.addEventListener("turbo:render", () => {
   const csrfToken = document.querySelector("meta[name=csrf-token]").content
   axios.defaults.headers.common["X-CSRF-Token"] = csrfToken
 })

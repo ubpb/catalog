@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         redirect_to(account_root_path)
       else
         flash[:error] = t(".error")
-        render :new
+        render :new, status: :unprocessable_entity
       end
     else
       redirect_to(new_session_path)

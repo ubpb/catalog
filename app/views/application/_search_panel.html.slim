@@ -1,0 +1,13 @@
+#search_panel.card.card-shadowed.mb-4
+  .card-header.cutoff-corner-tr
+    ul.nav.nav-tabs.card-header-tabs
+      - Config[:search_scopes, default: {}].keys.each do |search_scope|
+        - if enabled = Config[:search_scopes, search_scope, :enabled, default: false]
+          - active_class = current_search_scope == search_scope ? "active" : "inactive"
+          li.nav-item
+            = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
+              = t("searches.#{search_scope}.label", default: "n.n.")
+
+  .card-body
+    ' TBD.
+

@@ -1,0 +1,13 @@
+de:
+  searches:
+    breadcrumb: "Suche"
+
+    local:
+      label: "Katalog"
+      breadcrumb: "im Katalog"
+
+    primo:
+      label: "Artikel+"
+      breadcrumb: "in Artikel+"
+
+

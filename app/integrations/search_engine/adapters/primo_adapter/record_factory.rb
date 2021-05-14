@@ -1,5 +1,5 @@
 module SearchEngine::Adapters
-  class PrimoCentralAdapter
+  class PrimoAdapter
     class RecordFactory
 
       def self.build(xml)

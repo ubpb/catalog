@@ -58,14 +58,14 @@ $font-family-sans-serif: Signika, system-ui, -apple-system, "Segoe UI", Roboto, 
 //$font-size-base: 0.95rem;
 
 // Tweek links
-$link-color: $upb-blue !global;
-$link-decoration: none !global;
-$link-hover-color: $upb-cyan !global;
-$link-hover-decoration: none !global;
+$link-color: $upb-blue;
+$link-decoration: none;
+$link-hover-color: $upb-cyan;
+$link-hover-decoration: none;
 
 // Tweek card component
-$card-border-width: 0 !global;
-$card-border-radius: 0 !global;
+$card-border-width: 0;
+$card-border-radius: 0;
 
 // Tweek navbar component
 $navbar-dark-bg-color:              $white;

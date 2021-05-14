@@ -1,0 +1,15 @@
+defaults: &defaults
+  search_scopes:
+    local:
+      enabled: true
+    primo:
+      enabled: true
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

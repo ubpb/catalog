@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user
+  helper_method :current_search_scope
   helper_method :breadcrumb
 
   def current_user
@@ -9,6 +10,12 @@ class ApplicationController < ActionController::Base
         User.find_by(id: user_id)
       end
     end
+  end
+
+  def current_search_scope
+    search_scopes = Config[:search_scopes]&.keys || []
+    search_scope  = search_scopes.find{|_| _ == params[:search_scope]&.to_sym}
+    search_scope || Config[:search_scopes].keys.first
   end
 
   def authenticate!

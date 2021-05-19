@@ -63,18 +63,12 @@ class SearchEngine
       end
     end
 
-
-    DEFAULT_OPTIONS = {
-      "from" => 0,
-      "size" => 10
-    }.freeze
-
     attr_reader :options
     attr_reader :parts
 
     def initialize(parts, options = {})
       @parts   = parts
-      @options = sanitize_options(options)
+      @options = options
     end
 
     def query_string
@@ -108,21 +102,6 @@ class SearchEngine
       end
 
       Addressable::URI.unencode_component(param_hash.to_param)
-    end
-
-  private
-
-    def sanitize_options(options)
-      s_options = DEFAULT_OPTIONS.merge(options)
-
-      s_options["from"] = options["from"].to_i
-      s_options["from"] = 0 if s_options["from"] <= 0
-
-      s_options["size"] = options["size"].to_i
-      s_options["size"] = 10 if s_options["size"] <= 0
-      s_options["size"] = 50 if s_options["size"] > 50
-
-      s_options.with_indifferent_access
     end
 
   end

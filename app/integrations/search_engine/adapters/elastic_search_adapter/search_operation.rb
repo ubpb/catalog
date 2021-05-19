@@ -1,14 +1,10 @@
 module SearchEngine::Adapters
   class ElasticSearchAdapter
-    class SearchOperation < Operation
+    class SearchOperation < PagedOperation
 
       def call(search_request, options = {})
-        from = search_request.options["from"]
-        size = search_request.options["size"]
-
-        if search_request.is_a?(String)
-          search_request = SearchEngine::SearchRequest[search_request]
-        end
+        # Call super to setup paged operation
+        super
 
         es_result = adapter.client.search(
           index: adapter.options[:index],
@@ -16,11 +12,11 @@ module SearchEngine::Adapters
             query: build_query(search_request),
             aggregations: build_aggregations
           },
-          from: from,
-          size: size
+          from: (page - 1) * per_page,
+          size: per_page
         )
 
-        build_search_result(es_result, from, size)
+        build_search_result(es_result)
       end
 
     private
@@ -99,7 +95,7 @@ module SearchEngine::Adapters
         aggregations.find{|e| e["name"] == field_name}.try(:[], "type").presence
       end
 
-      def build_search_result(es_result, from, size)
+      def build_search_result(es_result)
         total = es_result["hits"]["total"]
 
         hits = es_result["hits"]["hits"].map do |hit|
@@ -110,10 +106,10 @@ module SearchEngine::Adapters
         end
 
         SearchEngine::SearchResult.new(
+          hits: hits,
           total: total,
-          from: from,
-          size: size,
-          hits: hits
+          page: page,
+          per_page: per_page
         )
       end
 

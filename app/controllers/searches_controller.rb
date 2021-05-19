@@ -10,7 +10,18 @@ class SearchesController < ApplicationController
     # with the same name).
     if query_string = Addressable::URI.parse(request.url).query
       @search_request = SearchEngine::SearchRequest.parse(query_string)
-      @search_result  = SearchEngine[current_search_scope].search(@search_request)
+
+      # Extract default options from the query string. These options must
+      # be passed to SearchEngine#search to activate the integrated "pagination"
+      # feature.
+      page     = @search_request.options.delete("page")
+      per_page = @search_request.options.delete("per_page")
+
+      # Perform the search request against the selected search scope
+      @search_result = SearchEngine[current_search_scope].search(
+        @search_request,
+        {page: page, per_page: per_page}
+      )
     end
   end
 

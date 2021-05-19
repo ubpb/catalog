@@ -6,10 +6,6 @@ module SearchEngine::Adapters
         # Call super to setup paged operation
         super
 
-        # Primo uses offset and limit for pagination
-        offset = (page - 1) * per_page
-        limit  = per_page
-
         # Set onCampus
         # TODO: There is no flag in REST API
 
@@ -23,8 +19,8 @@ module SearchEngine::Adapters
           scope: "default_scope",
           q: q_param,
           lang: "en",
-          offset: offset,
-          limit: limit,
+          offset: (page - 1) * per_page,
+          limit: per_page,
           sort: "rank",
           pcAvailability: "true",
           getMore: "0",
@@ -36,7 +32,7 @@ module SearchEngine::Adapters
         })
 
         # Parse result
-        build_search_result(json_result, offset, limit)
+        build_search_result(json_result)
       end
 
     private
@@ -52,7 +48,7 @@ module SearchEngine::Adapters
         qs.join(";")
       end
 
-      def build_search_result(json_result, offset, limit)
+      def build_search_result(json_result)
         total = json_result.dig("info", "total") || 0
 
         hits = json_result["docs"]&.map do |doc|
@@ -63,10 +59,10 @@ module SearchEngine::Adapters
         end || []
 
         SearchEngine::SearchResult.new(
+          hits: hits,
           total: total,
-          from: offset,
-          size: limit,
-          hits: hits
+          page: page,
+          per_page: per_page
         )
       end
 

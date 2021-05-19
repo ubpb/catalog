@@ -13,42 +13,54 @@ class SearchEngine
     end
 
     class << self
-      # Hash: {"q"=>{"*"=>"foo", "title"=>["bar", "baz"], "-title"=>"xxx"}, "a"=>{"notation"=>"foo"}}
-      def [](params)
+      # q[any]=foo&q[title,contains]=bar&q[-title,exact]=baz&page=2&some_option=option_value
+      def [](query_string)
         parts   = []
         options = {}
 
-        if params.is_a?(Hash)
-          params.each do |query_type_key, query_type_params|
-            query_type = case query_type_key
-              when "q" then "query"
-              when "a" then "aggregation"
-              else "query"
-            end
-
-            if query_type_params.is_a?(Hash)
-              query_type_params.each do |k, v|
-                exclude = k.starts_with?("-")
-                field   = exclude ? k[1..-1] : k
-                values  = [*v]
-
-                values.each do |value|
-                  parts << RequestPart.new(
-                    query_type: query_type,
-                    exclude: exclude,
-                    field: field,
-                    value: value
-                  )
-                end
-              end
-            end
+        # Parse the query string.
+        query_values = Addressable::URI.parse("?#{query_string}").query_values(Array)
+        query_values.each do |key, value|
+          case key
+          when /\Aq/ then parse_query(key, value, parts)
+          when /\Aa/ then parse_aggregation(key, value, parts)
+          else parse_option(key, value, options)
           end
         end
 
-        SearchRequest.new(parts)
+        SearchRequest.new(parts, options)
       end
 
       alias_method :parse, :[]
+
+    private
+
+      # q[(-)FIELD(,PRECISION(,OPERATOR))]
+      def parse_query(key, value, parts)
+        exclude, field, precision, operator = key.match(
+          /q\[(-)?(\w+)(?:,(\w+))?(?:,(\w+))?\]/
+        ).try(:[], 1..-1)
+
+        if field.present? && value.present?
+          # TODO: Add precision and operator
+          parts << RequestPart.new(
+            query_type: "query",
+            exclude: exclude.present?,
+            field: field,
+            value: value
+          )
+        else
+          raise Error, "Invalid query syntax."
+        end
+      end
+
+      def parse_aggregation(key, value, parts)
+        # TODO
+      end
+
+      def parse_option(key, value, options)
+        options[key] = value
+      end
     end
 
 
@@ -65,22 +77,24 @@ class SearchEngine
       @options = sanitize_options(options)
     end
 
-    def to_h
+    def query_string
       param_hash = {}
 
       @parts.each do |part|
         query_type = case part.query_type
           when "query" then "q"
           when "aggregation" then "a"
-          else "q"
         end
-        field = part.field
-        field = "-#{field}" if part.exclude
-        value = Addressable::URI.encode_component(part.value, Addressable::URI::CharacterClasses::UNRESERVED)
 
-        param_hash[query_type]        ||= {}
-        param_hash[query_type][field] ||= []
-        param_hash[query_type][field] << value
+        if query_type
+          field = part.field
+          field = "-#{field}" if part.exclude
+          value = Addressable::URI.encode_component(part.value, Addressable::URI::CharacterClasses::UNRESERVED)
+
+          param_hash[query_type]        ||= {}
+          param_hash[query_type][field] ||= []
+          param_hash[query_type][field] << value
+        end
       end
 
       param_hash.each_value do |v|
@@ -93,11 +107,7 @@ class SearchEngine
         end
       end
 
-      param_hash
-    end
-
-    def to_param
-      Addressable::URI.unencode_component(to_h.to_param)
+      Addressable::URI.unencode_component(param_hash.to_param)
     end
 
   private

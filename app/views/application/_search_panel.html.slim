@@ -9,5 +9,13 @@
               = t("searches.#{search_scope}.label", default: "n.n.")
 
   .card-body
-    ' TBD.
+    = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
+      - if @search_request.present?
+        = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|
+          - @search_request.parts.each.with_index do |part, i|
+            = f.input part.field, input_html: { id: "q_#{part.field}_#{i}", name: "q[#{part.field}][]", value: part.value }
+          = f.submit "Search", class: "btn btn-primary"
+      - else
+          = f.input "any", input_html: { id: "q_any_0", name: "q[any][]" }
+          = f.submit "Search", class: "btn btn-primary"
 

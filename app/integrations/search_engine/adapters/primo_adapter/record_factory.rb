@@ -2,130 +2,130 @@ module SearchEngine::Adapters
   class PrimoAdapter
     class RecordFactory
 
-      def self.build(xml)
-        self.new.build(xml)
+      def self.build(json)
+        self.new.build(json)
       end
 
-      def build(xml)
+      def build(json)
         SearchEngine::Record.new(
-          id: get_id(xml),
-          title: get_title(xml),
-          year_of_publication: get_year_of_publication(xml),
-          creators_and_contributors: get_creators_and_contributors(xml),
-          part_of: get_part_of(xml),
-          publishers: get_publishers(xml),
-          identifiers: get_identifiers(xml),
-          descriptions: get_descriptions(xml),
-          resource_links: get_resource_links(xml),
-          subjects: get_subjects(xml),
-          edition: get_edition(xml),
-          source: get_source(xml),
-          languages: get_languages(xml)
+          id: get_id(json),
+          title: get_title(json),
+          year_of_publication: get_year_of_publication(json),
+          creators_and_contributors: get_creators_and_contributors(json),
+          publishers: get_publishers(json),
+          part_of: get_part_of(json),
+          identifiers: get_identifiers(json),
+          descriptions: get_descriptions(json),
+          resolver_link: get_resolver_link(json),
+          fulltext_links: get_fulltext_links(json),
+          subjects: get_subjects(json),
+          edition: get_edition(json),
+          source: get_source(json),
+          languages: get_languages(json)
         )
       end
 
     private
 
-      def get_id(xml)
-        id = xml.at_xpath(".//control/recordid")&.text
-        # Record IDs returning from Primo Central will hold a leading "TN_" infront of them.
-        # In order to query against such record IDs, we must remove the leading TN_
-        id.gsub(/\ATN_/, '')
+      def get_id(json)
+        json.dig("pnx", "control", "recordid")&.first&.gsub(/\ATN_/, "")
       end
 
-      def get_title(xml)
-        xml.at_xpath(".//display/title")&.text
+      def get_title(json)
+        json.dig("pnx", "display", "title")&.first
       end
 
-      def get_year_of_publication(xml)
-        xml.at_xpath(".//display/creationdate")&.text
+      def get_year_of_publication(json)
+        json.dig("pnx", "search", "creationdate")&.first
       end
 
-      def get_creators_and_contributors(xml)
+      def get_creators_and_contributors(json)
         cc = []
-
-        xml.xpath(".//addata/au").each do |cc_node|
-          cc << cc_node.text.presence
-        end
-
-        cc.compact.uniq
+        cc += json.dig("pnx", "display", "creator") || []
+        cc += json.dig("pnx", "display", "contributor") || []
+        cc.map{|s| s.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
       end
 
-      def get_publishers(xml)
-        if publisher = xml.at_xpath(".//display/publisher")&.text
-          [publisher]
-        end
+      def get_publishers(json)
+        json.dig("pnx", "display", "publisher")
       end
 
-      def get_part_of(xml)
-        if part_of = xml.at_xpath(".//display/ispartof")&.text
-          [SearchEngine::Relation.new(label: part_of)]
+      def get_part_of(json)
+        json.dig("pnx", "display", "ispartof")&.map do |label|
+          SearchEngine::Relation.new(label: label)
         end
       end
 
-      def get_identifiers(xml)
+      def get_identifiers(json)
         identifiers = []
 
-        if issn = xml.at_xpath(".//addata/issn")&.text
+        json.dig("pnx", "addata", "issn")&.each do |issn|
           identifiers << SearchEngine::Identifier.new(type: :issn, value: issn)
         end
 
-        if eissn = xml.at_xpath(".//addata/eissn")&.text
+        json.dig("pnx", "addata", "eissn")&.each do |eissn|
           identifiers << SearchEngine::Identifier.new(type: :eissn, value: eissn)
         end
 
-        if doi = xml.at_xpath(".//addata/doi")&.text
+        json.dig("pnx", "addata", "doi")&.each do |doi|
           identifiers << SearchEngine::Identifier.new(type: :doi, value: doi)
         end
 
         identifiers
       end
 
-      def get_descriptions(xml)
-        if description = xml.at_xpath(".//addata/abstract")&.text
-          [description]
+      def get_descriptions(json)
+        json.dig("pnx", "addata", "abstract")
+      end
+
+      def get_resolver_link(json)
+        availability = json.dig("delivery", "availability")&.first
+
+        unless availability =~ /linktorsrc/ # Ignore DirectLink resources
+          if url = json.dig("delivery", "link")&.find{|l| l["linkType"] == "http://purl.org/pnx/linkType/openurl"}.try(:[], "linkURL")
+
+            # Remove the language param to force the default language
+            url = url.split('&').map{|e| e.gsub(/req\.language=.+/, 'req.language=')}.join('&')
+            # See: https://github.com/ubpb/issues/issues/59
+            url = url.gsub(/primo3-Article/i, "primo3-article")
+
+            SearchEngine::ResolverLink.new(url: url, fulltext_available: availability == "fulltext")
+          end
         end
       end
 
-      def get_resource_links(xml)
+      def get_fulltext_links(json)
         links = []
 
-        if openurl = xml.at_xpath(".//LINKS/openurl")&.text
-          # Remove the language param to force the default language
-          openurl = openurl.split('&').map{|e| e.gsub(/req\.language=.+/, 'req.language=')}.join('&')
-          # See: https://github.com/ubpb/issues/issues/59
-          openurl = openurl.gsub(/primo3-Article/i, "primo3-article")
+        availability = json.dig("delivery", "availability")&.first
 
-          links << SearchEngine::Link.new(url: openurl)
+        if availability =~ /linktorsrc/ # Only DirectLink resources
+          if url = json.dig("delivery", "link")&.find{|l| l["linkType"] == "http://purl.org/pnx/linkType/linktorsrc"}.try(:[], "linkURL")
+            links << SearchEngine::Link.new(url: url)
+          end
         end
 
         links
       end
 
-      def get_subjects(xml)
-        subjects = []
-
-        xml.xpath(".//search/subject").each do |subject_node|
-          subjects << subject_node.text.presence
-        end
-
-        subjects.compact.uniq
+      def get_subjects(json)
+        subjects = json.dig("pnx", "search", "subject") || []
+        subjects.map{|s| s.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
       end
 
-      def get_edition(xml)
-        xml.at_xpath(".//display/edition")&.text
+      def get_edition(json)
+        json.dig("pnx", "display", "edition")&.first
       end
 
-      def get_source(xml)
-        if source = xml.at_xpath(".//display/source")&.text
+      def get_source(json)
+        if source = json.dig("pnx", "display", "source")&.first
           SearchEngine::Relation.new(label: source)
         end
       end
 
-      def get_languages(xml)
-        if language_text = xml.at_xpath(".//display/language")&.text
-          language_text.split(";").map(&:presence).compact.uniq
-        end
+      def get_languages(json)
+        languages = json.dig("pnx", "display", "language") || []
+        languages.map{|l| l.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
       end
 
     end

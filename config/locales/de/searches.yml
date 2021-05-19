@@ -6,8 +6,8 @@ de:
       label: "Katalog"
       breadcrumb: "im Katalog"
 
-    primo:
-      label: "Artikel+"
-      breadcrumb: "in Artikel+"
+    cdi:
+      label: "Central Discovery Index"
+      breadcrumb: "in CDI"
 
 

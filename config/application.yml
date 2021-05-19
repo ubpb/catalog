@@ -2,7 +2,7 @@ defaults: &defaults
   search_scopes:
     local:
       enabled: true
-    primo:
+    cdi:
       enabled: true
 
 development:

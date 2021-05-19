@@ -10,15 +10,18 @@ module SearchEngine::Adapters
         offset = (page - 1) * per_page
         limit  = per_page
 
+        # Set onCampus
+        # TODO: There is no flag in REST API
+
         # Build primo search queries
-        # TODO
+        q_param = build_q_param(search_request)
 
         # Perform search request
-        result = adapter.api.get("search", params: {
+        json_result = adapter.api.get("search", params: {
           vid: "49HBZPAD_V1",
           tab: "default_tab",
           scope: "default_scope",
-          q: "any,contains,linux",
+          q: q_param,
           lang: "en",
           offset: offset,
           limit: limit,
@@ -26,33 +29,48 @@ module SearchEngine::Adapters
           pcAvailability: "true",
           getMore: "0",
           conVoc: "true",
-          inst: "49PAD",
+          #inst: "49PAD",
           skipDelivery: "true",
-          disableSplitFacets: "true"
+          disableSplitFacets: "true",
+          searchCDI: "true"
         })
 
-        puts result
-
-        # from = search_request.options["from"]
-        # size = search_request.options["size"]
-
-        # on_campus = options[:on_campus] == true
-
-        # if search_request.is_a?(String)
-        #   search_request = SearchEngine::SearchRequest[search_request]
-        # end
-
-        # pc_result = adapter.xclient.search(
-        #   build_query(search_request),
-        #   on_campus: on_campus,
-        #   from: from + 1, # Primo uses a 1 based index. Our internal APIs assume a 0 based index.
-        #   size: size
-        # )
-
-        # build_search_result(pc_result, from, size)
+        # Parse result
+        build_search_result(json_result, offset, limit)
       end
 
     private
+
+      def build_q_param(search_request)
+        qs = []
+
+        search_request.parts.each do |part|
+          value = part.value.gsub(";", " ")
+          qs << "#{part.field},contains,#{value}"
+        end
+
+        qs.join(";")
+      end
+
+      def build_search_result(json_result, offset, limit)
+        total = json_result.dig("info", "total") || 0
+
+        hits = json_result["docs"]&.map do |doc|
+          SearchEngine::Hit.new(
+            score: 0.0, # The Primo REST API does not provide rank or score info
+            record: RecordFactory.build(doc)
+          )
+        end || []
+
+        SearchEngine::SearchResult.new(
+          total: total,
+          from: offset,
+          size: limit,
+          hits: hits
+        )
+      end
+
+      # -----------------------------
 
       # # See: https://developers.exlibrisgroup.com/primo/apis/webservices/xservices/search/briefsearch
       # def build_query(search_request)

@@ -28,9 +28,11 @@ class Operation
 
       begin
         op_class.new(self).(*args) if op_class
-      rescue => e
-        # Wrap all errors from integrations into an IntegrationError
-        raise IntegrationError, e
+      # FIXME: Cause is not set when raising IntegrationError. This hides the cause
+      # of the problem and we lost the backtrace. This should work.
+      #rescue => error
+      #  # Wrap all errors from integrations into an IntegrationError
+      #  raise IntegrationError
       end
     end
   end

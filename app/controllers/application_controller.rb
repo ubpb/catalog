@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user
+  helper_method :available_search_scopes
   helper_method :current_search_scope
   helper_method :breadcrumb
 
@@ -12,10 +13,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def available_search_scopes
+    Config[:search_scopes]&.keys.presence || raise("No search scope configured! Please configure at least one search scope in config/search_engine.yml.")
+  end
+
   def current_search_scope
-    search_scopes = Config[:search_scopes]&.keys || []
-    search_scope  = search_scopes.find{|_| _ == params[:search_scope]&.to_sym}
-    search_scope || Config[:search_scopes].keys.first
+    search_scope  = available_search_scopes.find{|_| _ == params[:search_scope]&.to_sym}
+    search_scope || available_search_scopes.first
   end
 
   def authenticate!
@@ -49,6 +53,6 @@ class ApplicationController < ActionController::Base
     else
       render "xhr_error", locals: {message: t("integrations.common_error_message")}, layout: false
     end
-  end
+  end if Rails.env.production?
 
 end

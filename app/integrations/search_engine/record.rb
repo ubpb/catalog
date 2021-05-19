@@ -48,8 +48,10 @@ class SearchEngine
     # List of notes
     attribute :notes, Types::Array.of(Types::String).default([].freeze)
 
-    # List of links to online ressources for the record
-    attribute :resource_links, Types::Array.of(Link).default([].freeze)
+    # Link to link resolver
+    attribute :resolver_link, ResolverLink.optional
+    # List of links to online ressources for the record (TOCs, Thumbnails, etc.)
+    #attribute :resource_links, Types::Array.of(Link).default([].freeze)
     # List of links to fulltexts of the record
     attribute :fulltext_links, Types::Array.of(Link).default([].freeze)
 

@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   end
 
   # Searches
-  get "/:search_scope/s", to: "searches#index", as: :searches
+  get  "/:search_scope/s", to: "searches#index", as: :searches
+  post "/:search_scope/s", to: "searches#create"
 
   # Kickers
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal

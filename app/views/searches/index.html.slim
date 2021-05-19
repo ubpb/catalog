@@ -1,18 +1,27 @@
 = render "search_panel"
 
 - if @search_result
-  .card.card-shadowed
-    .card-body.cutoff-corner-tr
-      - if @search_result.hits.blank?
+  - if @search_result.hits.blank?
+    .card.card-shadowed
+      .card-body.cutoff-corner-tr
         .alert.alert-info.mb-0
           = "NO RESULTS"
-      - else
-        div
-          = "Total:"
-          =< @search_result.total
-        hr
+  - else
+    ruby:
+      pa = Kaminari.paginate_array(
+        @search_result.hits,
+        total_count: @search_result.total
+      ).page(@search_result.page).per(@search_result.per_page)
+
+      paginator = paginate(pa, page_entries_info: page_entries_info(pa))
+
+    .card.card-shadowed
+      .card-header.cutoff-corner-tr
+        = paginator if paginator
+      .card-body
         - @search_result.hits.each do |hit|
           - record = hit.record
+
           div
             h5.mb-1 = record.title
 
@@ -37,3 +46,5 @@
                   - else
                     = link_to "Verfügbarkeit prüfen", rl.url
           hr
+      .card-footer
+        = paginator if paginator

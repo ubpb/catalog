@@ -1,4 +1,11 @@
-- paginator = paginate(loans, page_entries_info: page_entries_info(loans))
+ruby:
+  paginator = render("paginator",
+    page: loans_result.page,
+    per_page: loans_result.per_page,
+    total: loans_result.total
+  )
+
+  loans = loans_result.loans
 
 - if loans.present?
   .card.card-shadowed
@@ -6,7 +13,7 @@
       .d-flex.align-items-center
         h5.m-0
           = t(".header")
-        .ms-1.span.badge.rounded-pill.bg-dark = total_number_of_loans
+        .ms-1.span.badge.rounded-pill.bg-dark = loans_result.total
 
       .mt-2.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center
         - if paginator.present?
@@ -21,7 +28,7 @@
     #loansListing.ul.list-group.list-group-flush(
       data-loans-target="listing"
     )
-      - @loans.each do |loan|
+      - loans.each do |loan|
         li.list-group-item
           div(
             data-controller="loan"

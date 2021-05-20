@@ -42,7 +42,7 @@ module Ils::Adapters
         # Return a result
         Ils::GetLoansResult.new(
           loans: loans,
-          total_number_of_loans: total_number_of_loans,
+          total: total_number_of_loans,
           page: (options[:disable_pagination] ? nil : page),
           per_page: (options[:disable_pagination] ? nil : per_page)
         )

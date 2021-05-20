@@ -4,11 +4,10 @@ class Account::LoansController < Account::ApplicationController
 
   def index
     if request.xhr?
-      load_loans
+      result = load_loans
 
       render partial: "loans", locals: {
-        loans: @loans,
-        total_number_of_loans: @total_number_of_loans
+        loans_result: result
       }
     else
       render :index
@@ -40,20 +39,13 @@ class Account::LoansController < Account::ApplicationController
 private
 
   def load_loans
-    result = Ils.get_current_loans(
+    Ils.get_current_loans(
       current_user.ils_primary_id,
       {
-        per_page: params[:per_page],
+        per_page: 10,
         page: params[:page]
       }
     )
-
-    @total_number_of_loans = result.total_number_of_loans
-
-    @loans = Kaminari.paginate_array(
-      result.loans,
-      total_count: @total_number_of_loans
-    ).page(result.page).per(result.per_page)
   end
 
   def renew_loan(loan_id)

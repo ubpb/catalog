@@ -1,0 +1,4 @@
+de:
+  application:
+    paginator:
+      stats: "%{from} – %{to} von %{total}"

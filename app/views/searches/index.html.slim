@@ -1,50 +1,8 @@
-= render "search_panel"
+.mb-4 = render "search_panel"
 
 - if @search_result
-  - if @search_result.hits.blank?
-    .card.card-shadowed
-      .card-body.cutoff-corner-tr
-        .alert.alert-info.mb-0
-          = "NO RESULTS"
-  - else
-    ruby:
-      pa = Kaminari.paginate_array(
-        @search_result.hits,
-        total_count: @search_result.total
-      ).page(@search_result.page).per(@search_result.per_page)
-
-      paginator = paginate(pa, page_entries_info: page_entries_info(pa))
-
-    .card.card-shadowed
-      .card-header.cutoff-corner-tr
-        = paginator if paginator
-      .card-body
-        - @search_result.hits.each do |hit|
-          - record = hit.record
-
-          div
-            h5.mb-1 = record.title
-
-            / Part of...
-            - if part_of = record.part_of.presence
-              .mb-1.fst-italic = part_of.map(&:label).join("; ")
-
-            / Creators & Contributors
-            - if cc = record.creators_and_contributors.presence
-              .mb-1 = cc.join("; ")
-
-            / Links
-            - fl = record.fulltext_links.first
-            - rl = record.resolver_link
-            - if fl || rl
-              div
-                - if fl
-                  = link_to "Direkt zur Online-Ressource", fl.url
-                - elsif rl
-                  - if rl.fulltext_available
-                    = link_to "Direkt zur Online-Ressource", rl.url
-                  - else
-                    = link_to "Verfügbarkeit prüfen", rl.url
-          hr
-      .card-footer
-        = paginator if paginator
+  .mb-4
+    - if @search_result.hits.blank?
+      = render "no_hits"
+    - else
+      = render "hits", search_result: @search_result

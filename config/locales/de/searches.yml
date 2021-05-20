@@ -10,4 +10,7 @@ de:
       label: "Central Discovery Index"
       breadcrumb: "in CDI"
 
+    no_hits:
+      info: "Keine Treffer gefunden. Bitte verändern Sie Ihre Suche."
+
 

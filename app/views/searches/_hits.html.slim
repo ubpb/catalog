@@ -1,0 +1,21 @@
+ruby:
+  paginator = render("paginator",
+    page: search_result.page,
+    per_page: search_result.per_page,
+    total: search_result.total
+  )
+
+.row
+  .col-lg-9
+    .card.card-shadowed
+      .card-header.cutoff-corner-tr
+        .d-flex.align-items-center
+          div = paginator
+          div.ms-auto = "TODO: SORT"
+      .card-body
+        - search_result.hits.each do |hit|
+          = render "record", record: hit.record
+      .card-footer
+        = paginator
+  .col-lg-3.order-first.order-lg-last
+    ' TODO: FACETS

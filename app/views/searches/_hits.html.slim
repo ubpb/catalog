@@ -1,9 +1,9 @@
 ruby:
-  paginator = render("paginator",
+  paginator = render(PaginatorComponent.new(
     page: search_result.page,
     per_page: search_result.per_page,
     total: search_result.total
-  )
+  ))
 
 .row
   .col-lg-9

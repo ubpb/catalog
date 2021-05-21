@@ -1,14 +1,16 @@
 .d-flex.align-items-center
-  - spacer_class = (has_previous_page? || has_next_page?) ? "ms-2" : ""
-
   .btn-group
-    - if has_previous_page? || has_next_page?
-      = link_to previous_page_path, class: "btn btn-primary #{has_previous_page? ? '' : 'disabled'}" do
+    - if has_pages?
+      - btn_class = has_previous_page? ? "btn-primary" : "btn-outline-primary disabled"
+      = link_to previous_page_path, class: "btn #{btn_class}" do
         i.fas.fa-angle-left
-    - if has_previous_page? || has_next_page?
-      = link_to next_page_path, class: "btn btn-primary #{has_next_page? ? '' : 'disabled'}" do
+
+    - if has_pages?
+      - btn_class = has_next_page? ? "btn-primary" : "btn-outline-primary disabled"
+      = link_to next_page_path, class: "btn #{btn_class}" do
         i.fas.fa-angle-right
 
+  - spacer_class = has_pages? ? "ms-2" : ""
   div(class=spacer_class)
     = link_to first_page_path, class: "text-body" do
       = t(".stats", from: @from, to: @to, total: @total)

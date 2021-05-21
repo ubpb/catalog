@@ -28,6 +28,10 @@ class PaginatorComponent < ViewComponent::Base
     @page > @min_page
   end
 
+  def has_pages?
+    has_next_page? || has_previous_page?
+  end
+
   def first_page_path
     path_for(page: @min_page)
   end

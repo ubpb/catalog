@@ -3,23 +3,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby IO.read(".ruby-version").strip
 
-gem "addressable",   "~> 2.7.0"
-gem "bcrypt",        "~> 3.1.7"
-gem "bootsnap",      ">= 1.4.2", require: false
-gem "cancancan",     "~> 3.2.0"
-gem "dry-struct",    "~> 1.4.0"
-gem "elasticsearch", "~> 7.12"
-gem "jbuilder",      "~> 2.7"
-gem "mysql2",        ">= 0.5.3"
-gem "parallel",      "~> 1.19"
-gem "puma",          ">= 5.2"
-gem "rails",         "~> 6.1.0"
-gem "rails-i18n",    "~> 6.0.0"
-gem "sass-rails",    ">= 6"
-gem "simple_form",   "~> 5.1"
-gem "slim",          "~> 4.0"
-gem "turbo-rails",   "~> 0.5.9"
-gem "webpacker",     "~> 5.0"
+gem "addressable",    "~> 2.7.0"
+gem "bcrypt",         "~> 3.1.7"
+gem "bootsnap",       ">= 1.4.2", require: false
+gem "cancancan",      "~> 3.2.0"
+gem "dry-struct",     "~> 1.4.0"
+gem "elasticsearch",  "~> 7.12"
+gem "jbuilder",       "~> 2.7"
+gem "mysql2",         ">= 0.5.3"
+gem "parallel",       "~> 1.19"
+gem "puma",           ">= 5.2"
+gem "rails",          "~> 6.1.0"
+gem "rails-i18n",     "~> 6.0.0"
+gem "sass-rails",     ">= 6"
+gem "simple_form",    "~> 5.1"
+gem "slim",           "~> 4.0"
+gem "turbo-rails",    "~> 0.5.9"
+gem "view_component", "~> 2.31", require: "view_component/engine"
+gem "webpacker",      "~> 5.0"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 

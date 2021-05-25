@@ -26,13 +26,13 @@ class Operation
        EOT
       end
 
-      begin
-        op_class.new(self).(*args) if op_class
-      # FIXME: Cause is not set when raising IntegrationError. This hides the cause
-      # of the problem and we lost the backtrace. This should work.
-      #rescue => error
-      #  # Wrap all errors from integrations into an IntegrationError
-      #  raise IntegrationError
+      if op_class
+        begin
+          op_class.new(self).call(*args)
+        rescue => e
+         # Wrap all errors from integrations into an IntegrationError
+         raise IntegrationError
+        end
       end
     end
   end

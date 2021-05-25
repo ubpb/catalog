@@ -44,8 +44,12 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from IntegrationError do |e|
-    # TODO: Report such errors
-    Rails.logger.error [e.message, *e.backtrace].join($/)
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+
+    if cause = e.cause
+      Rails.logger.error "#{$/}CAUSED BY:"
+      Rails.logger.error [cause.message, *Rails.backtrace_cleaner.clean(cause.backtrace)].join($/)
+    end
 
     unless request.xhr?
       flash[:error] = t("integrations.common_error_message")
@@ -53,6 +57,6 @@ class ApplicationController < ActionController::Base
     else
       render "xhr_error", locals: {message: t("integrations.common_error_message")}, layout: false
     end
-  end if Rails.env.production?
+  end
 
 end

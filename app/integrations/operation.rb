@@ -30,8 +30,12 @@ class Operation
         begin
           op_class.new(self).call(*args)
         rescue => e
-         # Wrap all errors from integrations into an IntegrationError
-         raise IntegrationError
+          unless e.is_a?(IntegrationError)
+            # Wrap all errors from integrations into an IntegrationError
+            raise IntegrationError
+          else
+            raise
+          end
         end
       end
     end

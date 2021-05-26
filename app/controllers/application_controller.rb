@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :available_search_scopes
   helper_method :current_search_scope
   helper_method :breadcrumb
+  helper_method :new_search_request_path
 
   def current_user
     @current_user ||= begin
@@ -41,6 +42,14 @@ class ApplicationController < ActionController::Base
 
   def add_breadcrumb(label, path)
     breadcrumb << {label: label, path: path}
+  end
+
+  def new_search_request_path(search_request, options = {})
+    search_scope = options[:search_scope] || current_search_scope
+
+    path  = "#{searches_path(search_scope: search_scope)}"
+    path += "?#{search_request.query_string}" if search_request.present?
+    path
   end
 
   rescue_from IntegrationError do |e|

@@ -13,10 +13,11 @@
       - flash[:search_panel]&.each do |key, message|
         ruby:
           message_class = case key.to_sym
-            when :info  then "text-info"
-            when :error then "text-danger"
+            when :info  then "callout-info"
+            when :error then "callout-danger"
           end
-        p.fw-bold(class=message_class) == message
+        .callout(class=message_class)
+          == message
 
       - if @search_request.present?
         = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|

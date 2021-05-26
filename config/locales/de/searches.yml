@@ -13,4 +13,9 @@ de:
     no_hits:
       info: "Keine Treffer gefunden. Bitte verändern Sie Ihre Suche."
 
+    request_hints:
+      syntax_error: "TODO: Syntax-Error"
+      empty_after_validation: "TODO: Leere Suche nach Validierung"
+      modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
+
 

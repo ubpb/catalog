@@ -76,13 +76,16 @@ module SearchEngine::Adapters
       end
 
       def get_query_fields(field_name)
-        default_fields     = adapter.options["default_fields"]   || ["_all"]
+        #default_fields    = adapter.options["default_fields"]    || ["_all"]
         searchable_fields = adapter.options["searchable_fields"] || []
 
         field  = searchable_fields.find{|e| e["name"] == field_name}.try(:[], "field").presence
         fields = searchable_fields.find{|e| e["name"] == field_name}.try(:[], "fields").presence
 
-        field ? [field] : (fields || default_fields)
+        #binding.pry
+        query_fields =  field ? [field] : fields # || default_fields)
+        raise SearchEngine::SearchRequest::Error if query_fields.blank?
+        query_fields
       end
 
       def get_aggregation_field(field_name)

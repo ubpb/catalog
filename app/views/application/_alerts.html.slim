@@ -1,5 +1,5 @@
-- global  = local_assigns.fetch(:global) { false }
-- animate = local_assigns.fetch(:animate) { true }
+- global      = local_assigns.fetch(:global)      { false }
+- animate     = local_assigns.fetch(:animate)     { true }
 - dismissible = local_assigns.fetch(:dismissible) { true }
 
 - flash.each do |key, message|
@@ -23,7 +23,8 @@
     alert_class += " animate__animated animate__flipInX" if animate
     alert_class += " alert-dismissible" if dismissible
 
-  div(class=alert_class role="alert")
-    == message
-    - if dismissible
-      button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
+  - if message.is_a?(String)
+    div(class=alert_class role="alert")
+      == message
+      - if dismissible
+        button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")

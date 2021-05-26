@@ -53,7 +53,7 @@ class SearchesController < ApplicationController
     redirect_to(new_search_request_path(nil))
   end
 
-  # Called from search panel form submit.
+
   def create
     sr_parts = []
 

@@ -58,9 +58,13 @@ class BaseIntegration
     end
   end
 
+  attr_reader :adapter
+
   def initialize(adapter)
     @adapter = adapter
   end
 
-  attr_reader :adapter
+  def options
+    adapter.options
+  end
 end

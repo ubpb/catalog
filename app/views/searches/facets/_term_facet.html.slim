@@ -1,0 +1,8 @@
+.card.card-shadowed.card-primary.mb-3
+  .card-header.cutoff-corner-tr
+    = facet.name
+  .card-body
+    ul.mb-0
+      - facet.terms.each do |term|
+        li = "#{term.term} (#{term.count})"
+

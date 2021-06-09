@@ -9,6 +9,7 @@ class SearchesController < ApplicationController
     # on how Rails parses the query part of the url (more than one parameter
     # with the same name).
     if query_string = Addressable::URI.parse(request.url).query
+      # Parse the query and create a search request object.
       @search_request = SearchEngine::SearchRequest.parse(query_string)
 
       # Extract default options from the query string. These options must
@@ -27,7 +28,7 @@ class SearchesController < ApplicationController
       if @search_request.empty?
         # The given search request is empty. Let's silently
         # redirect to a default state.
-        redirect_to(new_search_request_path(nil))
+        redirect_to(new_search_request_path)
       elsif @search_request.validate!(current_search_scope)
         # The request is valid and was unchanged during validation.
         # Perform the search request against the selected search scope
@@ -36,21 +37,23 @@ class SearchesController < ApplicationController
           {page: page, per_page: per_page}
         )
       elsif @search_request.empty?
-        # The remaining request after validation is empty. Let's
-        # redirect to a default state.
+        # The request was changed during validation is empty now. Let's
+        # inform the user and redirect to a default state.
         flash[:search_panel] = {error: t("searches.request_hints.empty_after_validation")}
-        redirect_to(new_search_request_path(nil))
+        redirect_to(new_search_request_path)
       else
-        # The remaining search request is now valid (after validation) and
-        # not empty. In this case we just trigger the search request again
-        # (now with a valid query string)
+        # The request was changed during validation but is not empty now. That means
+        # we now have a valid search request. To refect that in the url let's trigger
+        # the search request (now with a valid query string).
         flash[:search_panel] = {info: t("searches.request_hints.modified_during_validation")}
         redirect_to(new_search_request_path(@search_request))
       end
     end
   rescue SearchEngine::SearchRequest::SyntaxError => e
+    # The given search request contains a syntax error. Let's
+    # inform the user a redirect to a default state.
     flash[:search_panel] = {error: t("searches.request_hints.syntax_error")}
-    redirect_to(new_search_request_path(nil))
+    redirect_to(new_search_request_path)
   end
 
 

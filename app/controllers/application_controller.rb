@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     breadcrumb << {label: label, path: path}
   end
 
-  def new_search_request_path(search_request, options = {})
+  def new_search_request_path(search_request = nil, options = {})
     search_scope = options[:search_scope] || current_search_scope
 
     path  = "#{searches_path(search_scope: search_scope)}"

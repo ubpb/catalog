@@ -5,4 +5,4 @@
     - if @search_result.hits.blank?
       = render "no_hits"
     - else
-      = render "hits", search_result: @search_result
+      = render "hits", search_request: @search_request, search_result: @search_result

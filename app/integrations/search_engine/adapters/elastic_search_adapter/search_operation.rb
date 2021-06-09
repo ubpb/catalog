@@ -16,6 +16,8 @@ module SearchEngine::Adapters
           size: per_page
         )
 
+        puts JSON.pretty_generate(es_result)
+
         build_search_result(es_result)
       end
 
@@ -108,8 +110,32 @@ module SearchEngine::Adapters
           )
         end
 
+        facets = es_result["aggregations"].map do |name, aggregation|
+          field   = get_aggregation_field(name)
+          type    = get_aggregation_type(name)
+
+          if name && field && type
+            case type
+            when "term"
+              terms = aggregation["buckets"].map do |bucket|
+                SearchEngine::Facets::TermFacet::Term.new(
+                  term: bucket["key"],
+                  count: bucket["doc_count"]
+                )
+              end
+
+              SearchEngine::Facets::TermFacet.new(
+                name: name,
+                field: field,
+                terms: terms
+              )
+            end
+          end
+        end.compact
+
         SearchEngine::SearchResult.new(
           hits: hits,
+          facets: facets,
           total: total,
           page: page,
           per_page: per_page

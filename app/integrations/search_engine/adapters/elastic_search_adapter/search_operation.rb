@@ -10,7 +10,7 @@ module SearchEngine::Adapters
           index: adapter.options[:index],
           body: {
             query: build_query(search_request),
-            aggregations: build_aggregations
+            aggs: build_aggregations
           },
           from: (page - 1) * per_page,
           size: per_page

@@ -42,7 +42,7 @@ class SearchEngine
           /q\[(-)?(\w+)(?:,(\w+))?(?:,(\w+))?\]/
         ).try(:[], 1..-1)
 
-        if field.present?
+        if field
           # TODO: Add precision and operator
           parts << RequestPart.new(
             query_type: "query",
@@ -55,8 +55,22 @@ class SearchEngine
         end
       end
 
+      # a[(-)FIELD]=VALUE
       def parse_aggregation(key, value, parts)
-        # TODO
+        exclude, field = key.match(
+          /a\[(-)?(\w+)\]/
+        ).try(:[], 1..-1)
+
+        if field
+          parts << RequestPart.new(
+            query_type: "aggregation",
+            exclude: exclude.present?,
+            field: field,
+            value: value
+          )
+        else
+          raise SyntaxError, "Invalid query syntax."
+        end
       end
 
       def parse_option(key, value, options)
@@ -81,11 +95,19 @@ class SearchEngine
       validated_parts = @parts.dup
 
       # Remove all parts with an empty value
-      validated_parts = validated_parts.reject{|p| p.value.blank?}
+      validated_parts = validated_parts.reject do |p|
+        p.value.blank?
+      end
+
       # Remove all queries with unknown fields
-      validated_parts = validated_parts.reject{|p| p.query_type == "query" && !searchable_fields(search_scope).include?(p.field)}
+      validated_parts = validated_parts.reject do |p|
+        p.query_type == "query" && !searchable_fields(search_scope).include?(p.field)
+      end
+
       # Remove all aggregations with unknown fields
-      # TODO
+      validated_parts = validated_parts.reject do |p|
+        p.query_type == "aggregation" && !aggregations(search_scope).include?(p.field)
+      end
 
       # Check if something has changed
       unless (@parts - validated_parts).empty?
@@ -135,6 +157,13 @@ class SearchEngine
       @_searchable_fields ||= SearchEngine[search_scope]
         .options
         .try(:[], "searchable_fields")
+        &.map{|_| _["name"]} || []
+    end
+
+    def aggregations(search_scope)
+      @_aggregations ||= SearchEngine[search_scope]
+        .options
+        .try(:[], "aggregations")
         &.map{|_| _["name"]} || []
     end
 

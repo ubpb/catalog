@@ -91,6 +91,7 @@ class SearchEngine
     end
 
     def validate!(search_scope)
+      adapter = SearchEngine[search_scope].adapter
       changed = false
       validated_parts = @parts.dup
 
@@ -101,12 +102,12 @@ class SearchEngine
 
       # Remove all queries with unknown fields
       validated_parts = validated_parts.reject do |p|
-        p.query_type == "query" && !searchable_fields(search_scope).include?(p.field)
+        p.query_type == "query" && !adapter.searchables_names.include?(p.field)
       end
 
       # Remove all aggregations with unknown fields
       validated_parts = validated_parts.reject do |p|
-        p.query_type == "aggregation" && !aggregations(search_scope).include?(p.field)
+        p.query_type == "aggregation" && !adapter.aggregations_names.include?(p.field)
       end
 
       # Check if something has changed
@@ -149,22 +150,6 @@ class SearchEngine
       end
 
       Addressable::URI.unencode_component(param_hash.to_param)
-    end
-
-  private
-
-    def searchable_fields(search_scope)
-      @_searchable_fields ||= SearchEngine[search_scope]
-        .options
-        .try(:[], "searchable_fields")
-        &.map{|_| _["name"]} || []
-    end
-
-    def aggregations(search_scope)
-      @_aggregations ||= SearchEngine[search_scope]
-        .options
-        .try(:[], "aggregations")
-        &.map{|_| _["name"]} || []
     end
 
   end

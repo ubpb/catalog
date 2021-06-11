@@ -1,5 +1,5 @@
 class SearchEngine
-  class Facets::BaseFacet < BaseStruct
+  class Aggregations::Base < BaseStruct
     attribute :name,  Types::String
     attribute :field, Types::String
   end

@@ -21,8 +21,16 @@
 
       - if @search_request.present?
         = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|
-          - @search_request.parts.each.with_index do |part, i|
+          - @search_request.query_parts.each.with_index do |part, i|
             = f.input part.field, input_html: { id: "q_#{part.field}_#{i}", name: "q[#{part.field}][]", value: part.value }
+
+          - if aggregation_parts = @search_request.aggregation_parts.presence
+            .mb-3
+              - aggregation_parts.each do |ap|
+                h5.d-inline: span.badge.bg-secondary.me-1
+                  i.fas.fa-filter
+                  =< "#{ap.field}: #{ap.value}"
+
           = f.submit "Search", class: "btn btn-primary"
       - else
           = f.input "any", input_html: { id: "q_any_0", name: "q[any][]" }

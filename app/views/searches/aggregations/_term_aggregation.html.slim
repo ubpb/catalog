@@ -4,5 +4,10 @@
   .card-body
     ul.mb-0
       - aggregation.terms.each do |term|
-        li = "#{term.term} (#{term.count})"
+        ruby:
+          nsr = SearchEngine::SearchRequest.new(search_request.parts.dup)
+          nsr.add_aggregation_part(aggregation.name, term.term)
+
+        = link_to new_search_request_path(nsr) do
+          li = "#{term.term} (#{term.count})"
 

@@ -1,0 +1,2 @@
+- aggregations.each do |aggregation|
+  = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation rescue nil

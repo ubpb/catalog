@@ -1,5 +1,5 @@
 class SearchEngine
-  class Facets::TermFacet < Facets::BaseFacet
+  class Aggregations::TermAggregation < Aggregations::Base
 
     class Term < BaseStruct
       attribute :count, Types::Integer.default(0)

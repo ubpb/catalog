@@ -82,12 +82,42 @@ class SearchEngine
     attr_reader :parts
 
     def initialize(parts, options = {})
-      @parts   = parts
+      @parts   = parts || []
       @options = options
     end
 
     def empty?
       parts.blank?
+    end
+
+    def query_parts
+      parts.select{|p| p.query_type == "query"}
+    end
+
+    def aggregation_parts
+      parts.select{|p| p.query_type == "aggregation"}
+    end
+
+    def add_query_part(field, value, exclude: false)
+      parts << RequestPart.new(
+        query_type: "query",
+        field: field,
+        value: value,
+        exclude: exclude
+      )
+
+      self
+    end
+
+    def add_aggregation_part(field, value, exclude: false)
+      parts << RequestPart.new(
+        query_type: "aggregation",
+        field: field,
+        value: value,
+        exclude: exclude
+      )
+
+      self
     end
 
     def validate!(search_scope)

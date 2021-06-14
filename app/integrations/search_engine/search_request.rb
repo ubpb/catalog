@@ -150,7 +150,7 @@ class SearchEngine
     end
 
     def query_string
-      param_hash = {}
+      query_string_parts = []
 
       @parts.each do |part|
         query_type = case part.query_type
@@ -162,24 +162,11 @@ class SearchEngine
           field = part.field
           field = "-#{field}" if part.exclude
           value = Addressable::URI.encode_component(part.value, Addressable::URI::CharacterClasses::UNRESERVED)
-
-          param_hash[query_type]        ||= {}
-          param_hash[query_type][field] ||= []
-          param_hash[query_type][field] << value
+          query_string_parts << "#{query_type}[#{field}]=#{value}"
         end
       end
 
-      param_hash.each_value do |v|
-        v.map do |k, fv|
-          if fv.length == 1
-            v[k] = fv.first
-          else
-            v[k] = fv
-          end
-        end
-      end
-
-      Addressable::URI.unencode_component(param_hash.to_param)
+      query_string_parts.join("&")
     end
 
   end

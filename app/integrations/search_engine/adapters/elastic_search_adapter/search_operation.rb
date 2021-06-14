@@ -95,7 +95,6 @@ module SearchEngine::Adapters
               aggregations[name] = {
                 terms: {
                   field: field,
-                  missing: "N/A",
                   size: size,
                   shard_size: 3 * size
                 }

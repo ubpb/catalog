@@ -1,13 +1,19 @@
-.card.card-shadowed.card-primary.mb-3
-  .card-header.cutoff-corner-tr
-    = aggregation.name
-  .card-body
-    ul.mb-0
-      - aggregation.terms.each do |term|
-        ruby:
-          nsr = SearchEngine::SearchRequest.new(search_request.parts.dup)
-          nsr.add_aggregation_part(aggregation.name, term.term)
-
-        = link_to new_search_request_path(nsr) do
-          li = "#{term.term} (#{term.count})"
+- if aggregation.terms.present?
+  .card.card-shadowed.card-primary.mb-3
+    .card-header.cutoff-corner-tr
+      = aggregation.name
+    .card-body
+      ul.list-unstyled.mb-0
+        - aggregation.terms.each do |term|
+          - unless selected = search_request.aggregation_value(aggregation.name, term.term)
+            ruby:
+              nsr_add = SearchEngine::SearchRequest.new(search_request.parts.dup)
+              nsr_add.add_aggregation_part(aggregation.name, term.term)
+              nsr_exclude = SearchEngine::SearchRequest.new(search_request.parts.dup)
+              nsr_exclude.add_aggregation_part(aggregation.name, term.term, exclude: true)
+            li
+              = link_to new_search_request_path(nsr_add) do
+                = "#{term.term} (#{term.count})"
+              = link_to new_search_request_path(nsr_exclude) do
+                span.ms-2: i.fas.fa-times
 

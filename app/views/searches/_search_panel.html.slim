@@ -27,9 +27,18 @@
           - if aggregation_parts = @search_request.aggregation_parts.presence
             .mb-3
               - aggregation_parts.each do |ap|
-                h5.d-inline: span.badge.bg-secondary.me-1
-                  i.fas.fa-filter
-                  =< "#{ap.field}: #{ap.value}"
+                ruby:
+                  nsr = SearchEngine::SearchRequest.new(@search_request.parts.dup)
+                  nsr.delete_aggregation_part(ap.field, ap.value)
+                  badge_class = ap.exclude ? "bg-danger" : "bg-success"
+                  value_class = ap.exclude ? "text-decoration-line-through" : ""
+
+                h5.d-inline.me-1: span.badge(class=badge_class)
+                  span.me-1 = "#{ap.field}:"
+                  span.me-2(class=value_class) = ap.value
+                  = link_to new_search_request_path(nsr) do
+                    i.fas.fa-times
+
 
           = f.submit "Search", class: "btn btn-primary"
       - else

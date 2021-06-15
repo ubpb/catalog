@@ -11,6 +11,12 @@ class SearchEngine
       attribute :field, Types::String
       attribute :value, Types::String
       attribute :exclude, Types::Bool.default(false)
+
+      def eql?(p)
+        self.query_type == p.query_type &&
+        self.field == p.field &&
+        self.value == p.value
+      end
     end
 
     class << self
@@ -86,16 +92,26 @@ class SearchEngine
       @options = options
     end
 
-    def empty?
-      parts.blank?
+    def parts
+      @parts
     end
 
     def query_parts
       parts.select{|p| p.query_type == "query"}
     end
 
-    def aggregation_parts
-      parts.select{|p| p.query_type == "aggregation"}
+    def aggregation_parts(field = nil)
+      aparts = parts.select{|p| p.query_type == "aggregation"}
+
+      if field
+        aparts.select{|p| p.field == field}
+      else
+        aparts
+      end
+    end
+
+    def aggregation_value(field, value)
+      aggregation_parts(field).find{|a| a.value == value}
     end
 
     def add_query_part(field, value, exclude: false)
@@ -109,6 +125,14 @@ class SearchEngine
       self
     end
 
+    def delete_query_part(field, value)
+      @parts = parts.reject do |p|
+        p.query_type == "query" && p.field == field && p.value == value
+      end
+
+      self
+    end
+
     def add_aggregation_part(field, value, exclude: false)
       parts << RequestPart.new(
         query_type: "aggregation",
@@ -118,6 +142,18 @@ class SearchEngine
       )
 
       self
+    end
+
+    def delete_aggregation_part(field, value)
+      @parts = parts.reject do |p|
+        p.query_type == "aggregation" && p.field == field && p.value == value
+      end
+
+      self
+    end
+
+    def empty?
+      parts.blank?
     end
 
     def validate!(search_scope)
@@ -140,8 +176,11 @@ class SearchEngine
         p.query_type == "aggregation" && !adapter.aggregations_names.include?(p.field)
       end
 
+      # Remove all "doubles"
+      validated_parts = validated_parts.uniq
+
       # Check if something has changed
-      unless (@parts - validated_parts).empty?
+      if @parts.count != validated_parts.count
         changed = true
         @parts = validated_parts
       end

@@ -1,2 +1,21 @@
+- if aggregation_parts = @search_request.aggregation_parts.presence
+  h5 = t(".active_aggregations_header")
+  .mb-3
+    - aggregation_parts.each do |ap|
+      ruby:
+        nsr = SearchEngine::SearchRequest.new(@search_request.parts.dup)
+        nsr.delete_aggregation_part(ap.field, ap.value)
+        badge_icon  = ap.exclude ? "far fa-minus-square" : "far fa-plus-square"
+        badge_class = ap.exclude ? "bg-danger" : "bg-primary"
+
+      div
+        .badge.me-1(class=badge_class)
+          i.me-1(class=badge_icon)
+          span.me-1 = "#{ap.field}:"
+          span.me-2 = ap.value
+          = link_to new_search_request_path(nsr) do
+            i.fas.fa-times.text-light
+
+h5 = t(".aggregations_header")
 - aggregations.each do |aggregation|
   = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation rescue nil

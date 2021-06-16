@@ -23,23 +23,6 @@
         = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|
           - @search_request.query_parts.each.with_index do |part, i|
             = f.input part.field, input_html: { id: "q_#{part.field}_#{i}", name: "q[#{part.field}][]", value: part.value }
-
-          - if aggregation_parts = @search_request.aggregation_parts.presence
-            .mb-3
-              - aggregation_parts.each do |ap|
-                ruby:
-                  nsr = SearchEngine::SearchRequest.new(@search_request.parts.dup)
-                  nsr.delete_aggregation_part(ap.field, ap.value)
-                  badge_class = ap.exclude ? "bg-danger" : "bg-success"
-                  value_class = ap.exclude ? "text-decoration-line-through" : ""
-
-                h5.d-inline.me-1: span.badge(class=badge_class)
-                  span.me-1 = "#{ap.field}:"
-                  span.me-2(class=value_class) = ap.value
-                  = link_to new_search_request_path(nsr) do
-                    i.fas.fa-times
-
-
           = f.submit "Search", class: "btn btn-primary"
       - else
           = f.input "any", input_html: { id: "q_any_0", name: "q[any][]" }

@@ -110,8 +110,8 @@ class SearchEngine
       end
     end
 
-    def aggregation_value(field, value)
-      aggregation_parts(field).find{|a| a.value == value}
+    def has_aggregation_value?(field, value)
+      aggregation_parts(field).find{|a| a.value == value}.present?
     end
 
     def add_query_part(field, value, exclude: false)

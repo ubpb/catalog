@@ -13,5 +13,5 @@
   - spacer_class = has_pages? ? "ms-2" : ""
   div(class=spacer_class)
     = link_to first_page_path, class: "text-body" do
-      = t(".stats", from: @from, to: @to, total: @total)
+      = t(".stats", from: @from, to: @to, total: number_with_precision(@total, precision: 0, delimiter: "."))
 

@@ -100,18 +100,8 @@ class SearchEngine
       parts.select{|p| p.query_type == "query"}
     end
 
-    def aggregation_parts(field = nil)
-      aparts = parts.select{|p| p.query_type == "aggregation"}
-
-      if field
-        aparts.select{|p| p.field == field}
-      else
-        aparts
-      end
-    end
-
-    def has_aggregation_value?(field, value)
-      aggregation_parts(field).find{|a| a.value == value}.present?
+    def has_query_value?(field, value)
+      query_parts(field).find{|a| a.value == value}.present?
     end
 
     def add_query_part(field, value, exclude: false)
@@ -131,6 +121,20 @@ class SearchEngine
       end
 
       self
+    end
+
+    def aggregation_parts(field = nil)
+      aparts = parts.select{|p| p.query_type == "aggregation"}
+
+      if field
+        aparts.select{|p| p.field == field}
+      else
+        aparts
+      end
+    end
+
+    def has_aggregation_value?(field, value)
+      aggregation_parts(field).find{|a| a.value == value}.present?
     end
 
     def add_aggregation_part(field, value, exclude: false)

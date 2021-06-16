@@ -18,4 +18,6 @@ de:
       empty_after_validation: "TODO: Leere Suche nach Validierung"
       modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
 
-
+    aggregations:
+      aggregations_header: Suchergebnisse filtern
+      active_aggregations_header: Aktive Filter

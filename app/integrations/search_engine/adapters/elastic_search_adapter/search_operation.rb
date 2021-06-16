@@ -18,7 +18,7 @@ module SearchEngine::Adapters
 
         # Perform the search request against ES.
         es_result = adapter.client.search(es_request)
-        puts JSON.pretty_generate(es_result)
+        #puts JSON.pretty_generate(es_result)
 
         # Build the search result from ES result.
         build_search_result(es_result)

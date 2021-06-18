@@ -1,8 +1,24 @@
 .mb-4 = render "searches/search_panel"
 
-- if @search_result
-  .mb-4
+- if @search_request && @search_result
+  - content_for :hits do
     - if @search_result.hits.blank?
       = render "no_hits"
     - else
       = render "hits", search_request: @search_request, search_result: @search_result
+
+  - content_for :sidebar
+    = render "aggregations", search_request: @search_request, search_result: @search_result
+
+  - if content_for? :sidebar
+    .row
+      .col-lg-9
+        = content_for :hits
+      .col-lg-3.order-first.order-lg-last
+        = content_for :sidebar
+  - else
+    .row
+      .col-12
+        = content_for :hits
+
+

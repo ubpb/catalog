@@ -3,7 +3,7 @@
   .mb-3
     - aggregation_parts.each do |ap|
       ruby:
-        nsr = SearchEngine::SearchRequest.new(@search_request.parts.dup)
+        nsr = @search_request.dup
         nsr.delete_aggregation_part(ap.field, ap.value)
         badge_icon  = ap.exclude ? "far fa-minus-square" : "far fa-plus-square"
         badge_class = ap.exclude ? "bg-danger" : "bg-primary"

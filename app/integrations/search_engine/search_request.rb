@@ -92,6 +92,12 @@ class SearchEngine
       @options = options
     end
 
+    def initialize_copy(orig)
+      super
+      @parts   = orig.parts.dup
+      @options = orig.options.dup
+    end
+
     def parts
       @parts
     end

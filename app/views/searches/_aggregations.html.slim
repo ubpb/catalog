@@ -21,7 +21,9 @@
 
 - content_for :aggregations do
   - search_result.aggregations.each do |aggregation|
-    = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation rescue nil
+    - begin
+      = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation
+    - rescue ActionView::MissingTemplate ; nil
 
 - if content_for? :aggregations
   h5 = t(".aggregations_header")

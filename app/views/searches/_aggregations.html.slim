@@ -1,4 +1,4 @@
-- if aggregation_parts = @search_request.aggregation_parts.presence
+- if aggregation_parts = search_request.aggregation_parts.presence
   h5 = t(".active_aggregations_header")
   .mb-3
     - aggregation_parts.each do |ap|
@@ -8,14 +8,21 @@
         badge_icon  = ap.exclude ? "far fa-minus-square" : "far fa-plus-square"
         badge_class = ap.exclude ? "bg-danger" : "bg-primary"
 
-      div
-        .badge.me-1(class=badge_class)
-          i.me-1(class=badge_icon)
-          span.me-1 = "#{ap.field}:"
-          span.me-2 = ap.value
+      .badge.mb-1.me-2.text-wrap.text-start.d-inline-flex(class=badge_class)
+        div.me-1
+          i(class=badge_icon)
+        div.flex-grow-1
+          span.text-uppercase.fw-bold.me-2 = "#{ap.field}"
+          span.fw-normal = ap.value
+        div.ms-2
           = link_to new_search_request_path(nsr) do
             i.fas.fa-times.text-light
 
-h5 = t(".aggregations_header")
-- aggregations.each do |aggregation|
-  = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation rescue nil
+
+- content_for :aggregations do
+  - search_result.aggregations.each do |aggregation|
+    = render "searches/aggregations/#{aggregation.class.name.demodulize.underscore}", search_request: search_request, aggregation: aggregation rescue nil
+
+- if content_for? :aggregations
+  h5 = t(".aggregations_header")
+  = content_for :aggregations

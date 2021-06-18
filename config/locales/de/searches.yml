@@ -19,5 +19,6 @@ de:
       modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
 
     aggregations:
+      expand: "Mehr anzeigen..."
       aggregations_header: Suchergebnisse filtern
       active_aggregations_header: Aktive Filter

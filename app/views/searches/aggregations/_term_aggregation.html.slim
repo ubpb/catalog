@@ -13,13 +13,18 @@ ruby:
     .card-header.cutoff-corner-tr
       = aggregation.name
     .card-body
-      ul.list-unstyled.mb-0
-        - non_selected_terms.each.with_index do |term, i|
-          li
-            = link_to new_search_request_path(nsr.(search_request, term, exclude: false)) do
-              = "#{term.term}"
-            .d-inline-flex.flex-nowrap
-              span.ms-1.text-muted = "(#{term.count})"
-              = link_to new_search_request_path(nsr.(search_request, term, exclude: true)) do
-                span.ms-2: i.fas.fa-times
+      div(data-controller="expandable-list")
+        ul.list-unstyled.mb-0(data-expandable-list-target="list")
+          - non_selected_terms.each.with_index do |term, i|
+            li
+              = link_to new_search_request_path(nsr.(search_request, term, exclude: false)) do
+                = "#{term.term}"
+              .d-inline-flex.flex-nowrap
+                span.ms-1.text-muted = "(#{term.count})"
+                = link_to new_search_request_path(nsr.(search_request, term, exclude: true)) do
+                  span.ms-2: i.fas.fa-times
+
+        .mt-1.fw-bold(data-expandable-list-target="expand")
+          a(href="#expand" data-action="click->expandable-list#expand")
+            = t("searches.aggregations.expand")
 

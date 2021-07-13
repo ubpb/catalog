@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby IO.read(".ruby-version").strip
 
-gem "addressable",    "~> 2.7.0"
+gem "addressable",    "~> 2.8.0"
 gem "bcrypt",         "~> 3.1.7"
 gem "bootsnap",       ">= 1.4.2", require: false
 gem "cancancan",      "~> 3.2.0"

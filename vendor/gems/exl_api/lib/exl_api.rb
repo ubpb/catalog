@@ -168,7 +168,7 @@ module ExlApi
 
           {error_message: error_message, error_code: error_code}
         else
-          raise ArgumentError, "Unsupported content type '#{content_type}' in error response from API."
+          {error_message: nil, error_code: nil}
         end
       else
         {error_message: nil, error_code: nil}

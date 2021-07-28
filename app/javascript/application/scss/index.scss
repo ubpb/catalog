@@ -18,11 +18,11 @@
 //
 // Import FontAwesome
 //
-$fa-font-path: "../../vendor/fonts/fontawesome-free/webfonts";
-@import "../../vendor/fonts/fontawesome-free/scss/fontawesome";
-@import "../../vendor/fonts/fontawesome-free/scss/regular";
-@import "../../vendor/fonts/fontawesome-free/scss/solid";
-@import "../../vendor/fonts/fontawesome-free/scss/brands";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 
 //
 // Import Bootstrap

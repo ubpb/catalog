@@ -1,7 +1,6 @@
 // Load Rails stuff
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
-require("channels")
 
 // Load / init turbo
 import { Turbo } from "@hotwired/turbo-rails"

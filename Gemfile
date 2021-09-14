@@ -20,7 +20,7 @@ gem "simple_form",    "~> 5.1"
 gem "slim",           "~> 4.0"
 gem "turbo-rails",    "~> 0.5.9"
 gem "view_component", "~> 2.31", require: "view_component/engine"
-gem "webpacker",      "~> 5.0"
+gem "webpacker",      "~> 6.0.0.rc.5"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 

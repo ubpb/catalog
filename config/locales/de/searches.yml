@@ -20,5 +20,6 @@ de:
 
     aggregations:
       expand: "Mehr anzeigen..."
+      collapse: "Weniger anzeigen..."
       aggregations_header: Suchergebnisse filtern
       active_aggregations_header: Aktive Filter

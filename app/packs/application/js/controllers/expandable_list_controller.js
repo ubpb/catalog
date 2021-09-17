@@ -3,21 +3,27 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [
     "list",
-    "expand"
+    "expand",
+    "collapse"
   ]
 
   connect() {
     this.collapse()
   }
 
-  collapse() {
-    const items = [...this.listTarget.getElementsByTagName('li')]
+  collapse(event) {
+    event?.preventDefault()
 
-    items.forEach((item, index) => {
-      if (index >= 5) {
-        item.style.display = "none";
+    const items = this.listTarget.getElementsByTagName('li')
+
+    for (let i = 0; i < items.length; i++) {
+      if (i >= 5) {
+        items[i].style.display = "none";
       }
-    });
+    }
+
+    this.hideCollapseTarget()
+    this.showExpandTarget()
 
     if (items.length <= 5) {
       this.hideExpandTarget()
@@ -25,14 +31,16 @@ export default class extends Controller {
   }
 
   expand(event) {
-    event.preventDefault()
-    const items = [...this.listTarget.getElementsByTagName('li')]
+    event?.preventDefault()
 
-    items.forEach((item, index) => {
-      item.style.display = "block";
-    });
+    const items = this.listTarget.getElementsByTagName('li')
+
+    for (let i = 0; i < items.length; i++) {
+      items[i].style.display = "block";
+    }
 
     this.hideExpandTarget()
+    this.showCollapseTarget()
   }
 
   hideExpandTarget() {
@@ -41,6 +49,14 @@ export default class extends Controller {
 
   showExpandTarget() {
     this.expandTarget.style.display = "block"
+  }
+
+  hideCollapseTarget() {
+    this.collapseTarget.style.display = "none"
+  }
+
+  showCollapseTarget() {
+    this.collapseTarget.style.display = "block"
   }
 
 }

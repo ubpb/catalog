@@ -37,21 +37,22 @@ class SearchesController < ApplicationController
           {page: page, per_page: per_page}
         )
       elsif @search_request.empty?
-        # The request was changed during validation is empty now. Let's
+        # The request was changed during validation and is empty now. Let's
         # inform the user and redirect to a default state.
         flash[:search_panel] = {error: t("searches.request_hints.empty_after_validation")}
         redirect_to(new_search_request_path)
       else
         # The request was changed during validation but is not empty now. That means
-        # we now have a valid search request. To refect that in the url let's trigger
-        # the search request (now with a valid query string).
+        # we now have a valid search request. To reflect that in the url let's trigger
+        # the search request (now with a valid query string) and inform the user about the
+        # change.
         flash[:search_panel] = {info: t("searches.request_hints.modified_during_validation")}
         redirect_to(new_search_request_path(@search_request))
       end
     end
   rescue SearchEngine::SearchRequest::SyntaxError => e
     # The given search request contains a syntax error. Let's
-    # inform the user a redirect to a default state.
+    # inform the user and redirect to a default state.
     flash[:search_panel] = {error: t("searches.request_hints.syntax_error")}
     redirect_to(new_search_request_path)
   end

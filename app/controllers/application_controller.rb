@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_search_scope
   helper_method :breadcrumb
   helper_method :new_search_request_path
+  helper_method :show_record_path
 
   def current_user
     @current_user ||= begin
@@ -46,6 +47,12 @@ class ApplicationController < ActionController::Base
 
   def new_search_request_path(search_request = nil, search_scope: current_search_scope)
     path  = "#{searches_path(search_scope: search_scope)}"
+    path += "?#{search_request.query_string}" if search_request.present?
+    path
+  end
+
+  def show_record_path(record_id, search_request = nil, search_scope: current_search_scope)
+    path  = "#{record_path(id: record_id, search_scope: search_scope)}"
     path += "?#{search_request.query_string}" if search_request.present?
     path
   end

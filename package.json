@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@hotwired/turbo-rails": "^7.0.0-rc.4",
+    "@hotwired/stimulus": "^3.0.0",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "@hotwired/turbo-rails": "^7.0.1",
     "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "latest",
     "@rails/activestorage": "latest",
@@ -17,7 +19,6 @@
     "mini-css-extract-plugin": "^2.3.0",
     "sass": "^1.41.1",
     "sass-loader": "^12.1.0",
-    "stimulus": "^2.0.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"

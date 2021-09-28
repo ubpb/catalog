@@ -14,6 +14,20 @@ class SearchEngine::Adapter < BaseAdapter
     ([field] + fields).compact
   end
 
+
+  def sortables
+    options["sortables"] || []
+  end
+
+  def sortables_names
+    sortables.map{|s| s["name"].presence}.compact
+  end
+
+  def sortables_field(name)
+    sortables.find{|s| s["name"] == name}.try(:[], "field").presence
+  end
+
+
   def aggregations
     options["aggregations"] || []
   end

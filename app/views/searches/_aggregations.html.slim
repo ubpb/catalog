@@ -1,19 +1,19 @@
-- if aggregation_parts = search_request.aggregation_parts.presence
+- if aggregations = search_request.aggregations.presence
   h5 = t(".active_aggregations_header")
   .mb-3
-    - aggregation_parts.each do |ap|
+    - aggregations.each do |aggregation|
       ruby:
         nsr = @search_request.dup
-        nsr.delete_aggregation_part(ap.field, ap.value)
-        badge_icon  = ap.exclude ? "far fa-minus-square" : "far fa-plus-square"
-        badge_class = ap.exclude ? "bg-danger" : "bg-primary"
+        nsr.delete_aggregation(aggregation.field, aggregation.value)
+        badge_icon  = aggregation.exclude ? "far fa-minus-square" : "far fa-plus-square"
+        badge_class = aggregation.exclude ? "bg-danger" : "bg-primary"
 
       .badge.mb-1.me-2.text-wrap.text-start.d-inline-flex(class=badge_class)
         div.me-1
           i(class=badge_icon)
         div.flex-grow-1
-          span.text-uppercase.fw-bold.me-2 = "#{ap.field}"
-          span.fw-normal = ap.value
+          span.text-uppercase.fw-bold.me-2 = "#{aggregation.field}"
+          span.fw-normal = aggregation.value
         div.ms-2
           = link_to new_search_request_path(nsr) do
             i.fas.fa-times.text-light
@@ -27,8 +27,8 @@
 
 - if content_for? :aggregations
   h5 = t(".aggregations_header")
-  a.btn.btn-sm.btn-light.d-block.d-lg-none.mb-3(data-bs-toggle="collapse" href="#collapseAggregations")
+  a.btn.btn-sm.btn-light.d-block.d-lg-none.mb-3(data-bs-toggle="collaggregationse" href="#collaggregationseAggregations")
     i.fas.fa-filter
     span.ms-1 = "Filter anzeigen"
-  #collapseAggregations.collapse.d-lg-block
+  #collaggregationseAggregations.collaggregationse.d-lg-block
     = content_for :aggregations

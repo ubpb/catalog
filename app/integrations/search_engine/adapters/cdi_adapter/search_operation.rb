@@ -1,15 +1,10 @@
 module SearchEngine::Adapters
   class CdiAdapter
-    class SearchOperation < PagedOperation
+    class SearchOperation < Operation
 
       def call(search_request, options = {})
-        # Call super to setup paged operation
-        super
-
         # Call CDI
         cdi_search = build_cdi_search(search_request)
-        #puts cdi_search
-        #puts "-------------------"
 
         cdi_response = RestClient.post(
           adapter.options["api_base_url"],
@@ -78,9 +73,7 @@ module SearchEngine::Adapters
           SearchEngine::SearchResult.new(
             hits: hits,
             aggregations: aggregations,
-            total: total,
-            page: page,
-            per_page: per_page
+            total: total
           )
         end
       end
@@ -90,54 +83,56 @@ module SearchEngine::Adapters
         institution = adapter.options["institution"] || "49PAD"
         on_campus   = true # TODO
 
-        start_index = (page - 1) * per_page
-        bulk_size   = per_page
+        start_index = search_request.page.from
+        bulk_size   = search_request.page.size
 
         query_terms = []
-        search_request.parts.each do |part|
-          case part.query_type
-          when "query"
-            if part.exclude
-              query_terms << <<-XML.strip_heredoc
-                <QueryTerm>
-                  <IndexField>#{part.field}</IndexField>
-                  <PrecisionOperator>contains</PrecisionOperator>
-                  <Value/>
-                  <excludeValue>#{part.value}</excludeValue>
-                </QueryTerm>
-              XML
-            else
-              query_terms << <<-XML.strip_heredoc
-                <QueryTerm>
-                  <IndexField>#{part.field}</IndexField>
-                  <PrecisionOperator>contains</PrecisionOperator>
-                  <Value/>
-                  <includeValue>#{part.value}</includeValue>
-                </QueryTerm>
-              XML
-            end
-          when "aggregation"
-            index_field = adapter.aggregations_field(part.field)
 
-            if part.exclude
-              query_terms << <<-XML.strip_heredoc
-                <QueryTerm>
-                  <IndexField>#{index_field}</IndexField>
-                  <PrecisionOperator>exact</PrecisionOperator>
-                  <Value/>
-                  <excludeValue>#{part.value}</excludeValue>
-                </QueryTerm>
-              XML
-            else
-              query_terms << <<-XML.strip_heredoc
-                <QueryTerm>
-                  <IndexField>#{index_field}</IndexField>
-                  <PrecisionOperator>exact</PrecisionOperator>
-                  <Value/>
-                  <includeValue>#{part.value}</includeValue>
-                </QueryTerm>
-              XML
-            end
+        # Queries
+        search_request.queries.each do |query|
+          if query.exclude
+            query_terms << <<-XML.strip_heredoc
+              <QueryTerm>
+                <IndexField>#{query.field}</IndexField>
+                <PrecisionOperator>contains</PrecisionOperator>
+                <Value/>
+                <excludeValue>#{query.value}</excludeValue>
+              </QueryTerm>
+            XML
+          else
+            query_terms << <<-XML.strip_heredoc
+              <QueryTerm>
+                <IndexField>#{query.field}</IndexField>
+                <PrecisionOperator>contains</PrecisionOperator>
+                <Value/>
+                <includeValue>#{query.value}</includeValue>
+              </QueryTerm>
+            XML
+          end
+        end
+
+        # Aggregrations
+        search_request.aggregations.each do |aggregation|
+          index_field = adapter.aggregations_field(aggregation.field)
+
+          if aggregation.exclude
+            query_terms << <<-XML.strip_heredoc
+              <QueryTerm>
+                <IndexField>#{index_field}</IndexField>
+                <PrecisionOperator>exact</PrecisionOperator>
+                <Value/>
+                <excludeValue>#{aggregation.value}</excludeValue>
+              </QueryTerm>
+            XML
+          else
+            query_terms << <<-XML.strip_heredoc
+              <QueryTerm>
+                <IndexField>#{index_field}</IndexField>
+                <PrecisionOperator>exact</PrecisionOperator>
+                <Value/>
+                <includeValue>#{aggregation.value}</includeValue>
+              </QueryTerm>
+            XML
           end
         end
 

@@ -1,5 +1,6 @@
 div
-  h5.mb-1 = record.title
+  h5.mb-1
+    = link_to record.title, show_record_path(record.id, @search_request)
 
   / Part of...
   - if part_of = record.part_of.presence

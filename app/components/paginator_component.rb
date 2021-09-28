@@ -1,7 +1,7 @@
 class PaginatorComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(page:, per_page:, total:)
+  def initialize(page:, per_page:, total:, page_param: "page")
     @page     = page
     @per_page = per_page
     @total    = total
@@ -18,6 +18,8 @@ class PaginatorComponent < ViewComponent::Base
     @from = @page * @per_page - @per_page + 1
     @to   = @from + @per_page - 1
     @to   = @total if @to >= @total
+
+    @page_param = page_param
   end
 
   def has_next_page?
@@ -59,18 +61,22 @@ private
   end
 
   def current_params
-    query = current_uri.query.presence || ""
-    query = query.gsub(/page=\d+/, "")
-
-    query.split("&").map(&:presence).compact
+    current_uri.query_values(Array) || []
   end
 
   def path_for(page:)
-    if (page == @min_page)
-      "#{current_path}?#{current_params.join("&")}"
-    else
-      "#{current_path}?#{current_params.prepend("page=#{page}").join("&")}"
+    params = current_params
+      .reject{ |k, v|
+        k == @page_param
+      }.map {|k, v|
+        "#{k}=#{Addressable::URI.encode_component(v, Addressable::URI::CharacterClasses::UNRESERVED)}"
+      }
+
+    if (page != @min_page)
+      params << "#{@page_param}=#{page}"
     end
+
+    "#{current_path}?#{params.join("&")}"
   end
 
 end

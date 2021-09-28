@@ -1,8 +1,9 @@
 ruby:
   paginator = render(PaginatorComponent.new(
-    page: search_result.page,
-    per_page: search_result.per_page,
-    total: search_result.total
+    page: search_request.page.page,
+    per_page: search_request.page.per_page,
+    total: search_result.total,
+    page_param: "sr[p]"
   ))
 
 .card.card-shadowed

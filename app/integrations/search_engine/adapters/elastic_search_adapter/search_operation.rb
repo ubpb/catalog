@@ -1,10 +1,8 @@
 module SearchEngine::Adapters
   class ElasticSearchAdapter
-    class SearchOperation < PagedOperation
+    class SearchOperation < Operation
 
       def call(search_request, options = {})
-        super # Call super to setup paged operation
-
         # Build up the search request for ES.
         es_request = {
           index: adapter.options[:index],
@@ -12,8 +10,8 @@ module SearchEngine::Adapters
             query: build_query(search_request),
             aggs: build_aggregations
           },
-          from: (page - 1) * per_page,
-          size: per_page
+          from: search_request.page.from,
+          size: search_request.page.size
         }
 
         # Perform the search request against ES.
@@ -29,37 +27,37 @@ module SearchEngine::Adapters
       def build_query(search_request)
         es_query = { bool: { must: [], must_not: [], should: [] } }
 
-        # Build queries
-        search_request.parts.each do |part|
-          case part.query_type
-          when "query"
-            fields = adapter.searchables_fields(part.field)
+        # Queries
+        search_request.queries.each do |q|
+          fields = adapter.searchables_fields(q.field)
 
-            if fields.present?
-              container = part.exclude == true ? es_query[:bool][:must_not] : es_query[:bool][:must]
+          if fields.present?
+            container = q.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
+            container << {
+              simple_query_string: {
+                fields: fields,
+                query: normalize_query_string(q.value),
+                default_operator: "and"
+              }
+            }
+          end
+        end
+
+        # Aggregations
+        search_request.aggregations.each do |a|
+          field = adapter.aggregations_field(a.field)
+          type  = adapter.aggregations_type(a.field)
+
+          if field && type
+            container = a.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
+
+            case type
+            when "term"
               container << {
-                simple_query_string: {
-                  fields: fields,
-                  query: normalize_query_string(part.value),
-                  default_operator: "and"
+                term: {
+                  field => a.value
                 }
               }
-            end
-          when "aggregation"
-            field = adapter.aggregations_field(part.field)
-            type  = adapter.aggregations_type(part.field)
-
-            if field && type
-              container = part.exclude == true ? es_query[:bool][:must_not] : es_query[:bool][:must]
-
-              case type
-              when "term"
-                container << {
-                  term: {
-                    field => part.value
-                  }
-                }
-              end
             end
           end
         end
@@ -142,9 +140,7 @@ module SearchEngine::Adapters
         SearchEngine::SearchResult.new(
           hits: hits,
           aggregations: aggregations,
-          total: total,
-          page: page,
-          per_page: per_page
+          total: total
         )
       end
 

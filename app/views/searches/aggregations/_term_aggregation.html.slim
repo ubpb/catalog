@@ -1,11 +1,13 @@
 ruby:
   non_selected_terms = aggregation.terms.select do |t|
-    !search_request.has_aggregation_value?(aggregation.name, t.term)
+    !search_request.has_aggregation?(aggregation.name, t.term)
   end
 
   nsr = ->(search_request, term, exclude: false) {
     search_request.dup
-      .add_aggregation_part(aggregation.name, term.term, exclude: exclude)
+      .add_aggregation(SearchEngine::SearchRequest::Aggregation.new(
+        field: aggregation.name, value: term.term, exclude: exclude)
+      )
   }
 
 - if non_selected_terms.present?

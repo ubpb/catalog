@@ -23,10 +23,10 @@ export default class extends Controller {
     }
 
     this.hideCollapseTarget()
-    this.showExpandTarget()
-
     if (items.length <= 5) {
       this.hideExpandTarget()
+    } else {
+      this.showExpandTarget()
     }
   }
 

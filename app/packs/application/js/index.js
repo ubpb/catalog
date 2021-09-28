@@ -8,12 +8,12 @@ window.Turbo = Turbo
 Turbo.setProgressBarDelay(200)
 
 // Load / init stimulus.js and controllers in ./controllers
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
+window.Stimulus = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
-const application = Application.start()
-application.load(definitionsFromContext(context))
+Stimulus.load(definitionsFromContext(context))
 
 // Load / init axios
 import axios from "axios"

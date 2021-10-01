@@ -29,7 +29,7 @@ class SearchEngine
             when /sr\[a,(-)?(\w+)\]/
               then aggregations << build_aggregation($1, $2, value)
             # Syntax: sr[s,FIELD]=DIRECTION
-            when /sr\[s,(\w+)]/
+            when /sr\[s,(\w+)\]/
               then sort = build_sort($1, value)
             # Syntax: sr[p]=PAGE
             when /sr\[p\]/

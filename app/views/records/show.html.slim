@@ -1,5 +1,41 @@
-- if @search_request
-  ' SEARCH_REQUEST
-  hr
+.card.card-shadowed
+  .card-header.cutoff-corner-tr
+    - if @search_request
+      .d-flex.align-items-center
+        = link_to new_search_request_path(@search_request), class: "btn btn-success" do
+          i.fas.fa-angle-left
+          span.ms-2 = t(".back_to_search")
 
-h3 RECORD_DETAILS
+        .ms-auto.me-2
+          - if @position_within_search_result && @total_hits
+            span.me-2
+              = t(".stepper.info", position: @position_within_search_result, total_hits: @total_hits)
+
+          .btn-group
+            - if @previous_record && @previous_record_search_request
+              = link_to show_record_path(@previous_record, search_request: @previous_record_search_request), class: "btn btn-success" do
+                i.fas.fa-angle-left
+            - else
+              = link_to "#", class: "btn btn-outline-success disabled" do
+                i.fas.fa-angle-left
+
+            - if @next_record && @next_record_search_request
+              = link_to show_record_path(@next_record, search_request: @next_record_search_request), class: "btn btn-success" do
+                i.fas.fa-angle-right
+            - else
+              = link_to "#", class: "btn btn-outline-success disabled" do
+                i.fas.fa-angle-right
+    - else
+      .d-flex.align-items-center
+        .ms-auto.me-2
+          = link_to new_search_request_path(), class: "btn btn-success" do
+            span = t(".new_search")
+  .card-body
+    h3.mb-0 = @record.title
+
+
+
+
+
+
+

@@ -51,8 +51,8 @@ class ApplicationController < ActionController::Base
     path
   end
 
-  def show_record_path(record_id, search_request = nil, search_scope: current_search_scope)
-    path  = "#{record_path(id: record_id, search_scope: search_scope)}"
+  def show_record_path(record, search_request: nil, search_scope: current_search_scope)
+    path  = "#{record_path(id: record.id, search_scope: search_scope)}"
     path += "?#{search_request.query_string}" if search_request.present?
     path
   end

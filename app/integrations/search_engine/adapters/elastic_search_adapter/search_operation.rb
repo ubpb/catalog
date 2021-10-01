@@ -8,10 +8,12 @@ module SearchEngine::Adapters
           index: adapter.options[:index],
           body: {
             query: build_query(search_request),
-            aggs: build_aggregations
+            aggs: build_aggregations,
+            sort: ["_score"]
           },
           from: search_request.page.from,
-          size: search_request.page.size
+          size: search_request.page.size,
+          preference: "_primary_first"
         }
 
         # Perform the search request against ES.
@@ -30,14 +32,28 @@ module SearchEngine::Adapters
         # Queries
         search_request.queries.each do |q|
           fields = adapter.searchables_fields(q.field)
+          query  = normalize_query_string(q.value)
 
           if fields.present?
             container = q.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
             container << {
-              simple_query_string: {
-                fields: fields,
-                query: normalize_query_string(q.value),
-                default_operator: "and"
+              query_string: {
+                default_operator: "AND",
+                fields:           fields,
+                query:            query,
+                quote_analyzer:   "default_with_stop_words_search"
+              }
+            }
+
+            # Use a "should" component that uses stop words for better ranking
+            container = es_query[:bool][:should]
+            container << {
+              query_string: {
+                default_operator: "AND",
+                fields:           fields,
+                query:            query,
+                quote_analyzer:   "default_with_stop_words_search",
+                analyzer:         "default_with_stop_words_search"
               }
             }
           end

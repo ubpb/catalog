@@ -29,8 +29,22 @@ class SearchEngine
         page == 1
       end
 
+      def last_page?(total)
+        page == total.fdiv(per_page).ceil
+      end
+
+      def from=(value)
+        _value = value.to_i
+        @from = (_value < 0) ? 0 : _value
+        @page = @from.fdiv(per_page).ceil
+      end
+
       def from
-        (@page - 1) * @per_page
+        if @from.present?
+          @from
+        else
+          (@page - 1) * @per_page
+        end
       end
 
       def size

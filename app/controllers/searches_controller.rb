@@ -5,12 +5,12 @@ class SearchesController < ApplicationController
   before_action :ensure_valid_search_scope
 
   def index
-    # Return if there are no query string params that may conatin a search request.
-    # This allows us to display the search panel and let the user select the
-    # search scope tab.
+    # Return if there are no query string params that may contain a search request.
+    # This allows us to display the search panel and let the user switch between the
+    # search scope tabs.
     return unless request.url.include?("?")
 
-    # There is a query string availabale. Let's try to parse it for a proper
+    # There is a query string available. Let's try to parse it for a proper
     # search request. We can't use Rails params hash, because the query syntax
     # is incompatible with how Rails parses the query part of the url
     # (more than one parameter with the same name).

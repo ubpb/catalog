@@ -4,7 +4,10 @@ module SearchEngine::Adapters
 
       def call(search_request, options = {})
         # Call CDI
-        cdi_search = build_cdi_search(search_request)
+        cdi_search = build_cdi_search(
+          search_request,
+          on_campus: options[:on_campus]
+        )
 
         cdi_response = RestClient.post(
           adapter.options["api_base_url"],
@@ -78,9 +81,8 @@ module SearchEngine::Adapters
         end
       end
 
-      def build_cdi_search(search_request)
+      def build_cdi_search(search_request, on_campus: false)
         institution = adapter.options["institution"] || "49PAD"
-        on_campus   = true # TODO
 
         start_index = search_request.page.from
         bulk_size   = search_request.page.size

@@ -4,7 +4,10 @@ module SearchEngine::Adapters
 
       def call(record_id, options = {})
         # Call CDI
-        cdi_search = build_cdi_search(record_id)
+        cdi_search = build_cdi_search(
+          record_id,
+          on_campus: options[:on_campus]
+        )
 
         cdi_response = RestClient.post(
           adapter.options["api_base_url"],
@@ -42,9 +45,8 @@ module SearchEngine::Adapters
         end
       end
 
-      def build_cdi_search(record_id)
+      def build_cdi_search(record_id, on_campus: false)
         institution = adapter.options["institution"] || "49PAD"
-        on_campus   = true # TODO
 
         <<-XML.strip_heredoc
         <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:impl="http://primo.kobv.de/PrimoWebServices/services/searcher" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">

@@ -28,7 +28,8 @@ class SearchesController < ApplicationController
       @search_result = SearchEngine[current_search_scope].search(
         @search_request,
         {
-          session_id: request&.session&.id
+          session_id: request&.session&.id,
+          on_campus: on_campus?
         }
       )
     elsif @search_request.empty?

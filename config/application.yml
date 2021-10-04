@@ -5,6 +5,11 @@ defaults: &defaults
     cdi:
       enabled: true
 
+  campus_networks:
+    - "127.0.0.1"
+    - "10.0.2.0/24"
+    - "131.234.0.0/1"
+
 development:
   <<: *defaults
 

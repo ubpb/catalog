@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :breadcrumb
   helper_method :new_search_request_path
   helper_method :show_record_path
+  helper_method :on_campus?
 
   def current_user
     @current_user ||= begin
@@ -35,6 +36,14 @@ class ApplicationController < ActionController::Base
 
   def ensure_xhr!
     raise ArgumentError, "This controller action expects an ajax request." unless request.xhr?
+  end
+
+  def on_campus?(ip_address = request.remote_ip)
+    campus_networks = Config[:campus_networks, default: []]
+
+    campus_networks.any? do |network|
+      IPAddr.new(network) === ip_address
+    end
   end
 
   def breadcrumb

@@ -4,5 +4,4 @@ de:
 
     stepper:
       back_to_search: "Zur Ergebnisliste"
-      new_search: "Neue Suche"
       info: "Ergebnis %{position} von %{total_hits}"

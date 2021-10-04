@@ -1,7 +1,10 @@
 .card.card-shadowed
-  .card-header.cutoff-corner-tr
-    = render "stepper"
-  .card-body
+  - if @search_request
+    .card-header.cutoff-corner-tr
+      = render "stepper"
+
+  - body_class = @search_request ? "" : "cutoff-corner-tr"
+  .card-body(class=body_class)
     h3.mb-0 = @record.title
 
 

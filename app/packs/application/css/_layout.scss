@@ -63,7 +63,7 @@ footer {
 
   .footer-content {
     font-size: $font-size-sm;
-    margin: $spacer/3 0;
+    margin: math.div($spacer, 3) 0;
   }
 
   .footer-image {

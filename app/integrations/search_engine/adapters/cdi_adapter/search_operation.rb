@@ -79,7 +79,6 @@ module SearchEngine::Adapters
       end
 
       def build_cdi_search(search_request)
-        enable_cdi  = adapter.options["enable_cdi"]  || true
         institution = adapter.options["institution"] || "49PAD"
         on_campus   = true # TODO
 
@@ -144,9 +143,6 @@ module SearchEngine::Adapters
                 <![CDATA[
                   <searchRequest xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents">
                     <PrimoSearchRequest xmlns="http://www.exlibris.com/primo/xsd/search/request">
-                      <RequestParams>
-                        <RequestParam key="searchCDI">#{enable_cdi}</RequestParam>
-                      </RequestParams>
                       <QueryTerms>
                         <BoolOpeator>AND</BoolOpeator>
                         #{query_terms.join("\n")}

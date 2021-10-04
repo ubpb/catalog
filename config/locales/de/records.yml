@@ -2,8 +2,7 @@ de:
   records:
     breadcrumb: "Details"
 
-    show:
+    stepper:
       back_to_search: "Zur Ergebnisliste"
       new_search: "Neue Suche"
-      stepper:
-        info: "Ergebnis %{position} von %{total_hits}"
+      info: "Ergebnis %{position} von %{total_hits}"

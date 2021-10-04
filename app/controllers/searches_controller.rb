@@ -26,7 +26,10 @@ class SearchesController < ApplicationController
       # The request is valid and was unchanged during validation.
       # Perform the search request against the selected search scope
       @search_result = SearchEngine[current_search_scope].search(
-        @search_request
+        @search_request,
+        {
+          session_id: request&.session&.id
+        }
       )
     elsif @search_request.empty?
       # The request was changed during validation and is empty now. Let's

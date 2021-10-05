@@ -32,5 +32,6 @@ Rails.application.routes.draw do
 
   # Compatability for records and searches of older versions
   get "/records/:id", to: "compat/v1_records#show", constraints: { id: /.+/ }
+  get "/:search_scope/records/:id", to: "compat/v2_records#show", constraints: { id: /.+/ }
 
 end

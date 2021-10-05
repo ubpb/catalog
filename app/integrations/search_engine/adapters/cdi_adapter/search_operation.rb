@@ -18,7 +18,6 @@ module SearchEngine::Adapters
         )
 
         cdi_result = parse_cdi_response(cdi_response)
-        #puts cdi_result.to_xml(ident: 2)
 
         # Build the search result from CDI result.
         build_search_result(cdi_result)

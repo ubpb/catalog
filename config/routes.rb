@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   # Records
   get "/:search_scope/r/:id", to: "records#show", as: :record
 
+  # Items
+  get "/:search_scope/r/:record_id/items", to: "items#index", as: :items
+
   # Kickers
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :privacy

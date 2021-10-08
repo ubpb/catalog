@@ -1,0 +1,10 @@
+de:
+  items:
+    listing:
+      no_items_message: "Keine Exemplare verfügbar"
+
+      header:
+        call_number: "Signatur"
+        library: "Bibliothek"
+        location: "Standort"
+        status: "Status"

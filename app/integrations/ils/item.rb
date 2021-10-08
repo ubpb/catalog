@@ -6,6 +6,8 @@ class Ils
     attribute :barcode, Types::String.optional
     attribute :library, Ils::Library.optional
     attribute :location, Ils::Location.optional
+    attribute :process_type, Ils::ProcessType.optional
+    attribute :due_date, Types::Time.optional
     #attribute :signature, Types::String
     #attribute :collection_code, Types::String
     #attribute :item_status_code, Types::String

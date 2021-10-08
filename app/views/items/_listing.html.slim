@@ -1,18 +1,25 @@
 turbo-frame#items
   - if items.present?
-    table.table.mb-0
+    table.table.align-middle.mb-0
       thead: tr
         th(scope="col") = t(".header.call_number")
         th(scope="col") = t(".header.library")
         th(scope="col") = t(".header.location")
         th(scope="col") = t(".header.status")
+        th(scope="col") = t(".header.process_type")
       tbody
         - items.each do |item|
           tr
             td = item.call_number
-            td = item.library.label
-            td = item.location.label
-            td = item.status.label
-
+            td = item.library&.label || "–"
+            td = item.location&.label || "–"
+            td = item.status&.label || "–"
+            td
+              - if item.process_type
+                = item.process_type.label
+                - if item.due_date
+                  div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
+              - else
+                = "–"
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

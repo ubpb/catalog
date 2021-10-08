@@ -13,7 +13,9 @@ module Ils::Adapters
           barcode: get_barcode(alma_item),
           status: get_status(alma_item),
           library: get_library(alma_item),
-          location: get_location(alma_item)
+          location: get_location(alma_item),
+          process_type: get_process_type(alma_item),
+          due_date: get_due_date(alma_item)
         )
 
         #binding.pry
@@ -37,24 +39,45 @@ module Ils::Adapters
       end
 
       def get_status(alma_item)
-        Ils::ItemStatus.new(
-          code: alma_item.dig("item_data", "base_status", "value"),
-          label: alma_item.dig("item_data", "base_status", "desc")
-        )
+        code  = alma_item.dig("item_data", "base_status", "value")
+        label = alma_item.dig("item_data", "base_status", "desc")
+
+        if code && label
+          Ils::ItemStatus.new(code: code,label: label)
+        end
       end
 
       def get_library(alma_item)
-        Ils::Library.new(
-          code: alma_item.dig("item_data", "library", "value"),
-          label: alma_item.dig("item_data", "library", "desc")
-        )
+        code  = alma_item.dig("item_data", "library", "value")
+        label = alma_item.dig("item_data", "library", "desc")
+
+        if code && label
+          Ils::Library.new(code: code,label: label)
+        end
       end
 
       def get_location(alma_item)
-        Ils::Location.new(
-          code: alma_item.dig("item_data", "location", "value"),
-          label: alma_item.dig("item_data", "location", "desc")
-        )
+        code  = alma_item.dig("item_data", "location", "value")
+        label = alma_item.dig("item_data", "location", "desc")
+
+        if code && label
+          Ils::Location.new(code: code,label: label)
+        end
+      end
+
+      def get_process_type(alma_item)
+        code  = alma_item.dig("item_data", "process_type", "value")
+        label = alma_item.dig("item_data", "process_type", "desc")
+
+        if code && label
+          Ils::ProcessType.new(code: code,label: label)
+        end
+      end
+
+      def get_due_date(alma_item)
+        if due_date_str = alma_item.dig("item_data", "due_date")
+          Time.zone.parse(due_date_str)
+        end
       end
 
     end

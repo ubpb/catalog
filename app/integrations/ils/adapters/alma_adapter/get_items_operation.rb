@@ -17,8 +17,8 @@ module Ils::Adapters
           "bibs/#{record_id}/holdings/ALL/items",
           format: "application/json",
           params: {
+            expand: "due_date_policy,due_date",
             view: "label"
-            #limit: 100
           }
         ).try(:[], "item")
       end

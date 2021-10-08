@@ -1,0 +1,18 @@
+turbo-frame#items
+  - if items.present?
+    table.table.mb-0
+      thead: tr
+        th(scope="col") = t(".header.call_number")
+        th(scope="col") = t(".header.library")
+        th(scope="col") = t(".header.location")
+        th(scope="col") = t(".header.status")
+      tbody
+        - items.each do |item|
+          tr
+            td = item.call_number
+            td = item.library.label
+            td = item.location.label
+            td = item.status.label
+
+  - else
+    .alert.alert-info.mb-0 = t(".no_items_message")

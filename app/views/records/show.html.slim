@@ -6,7 +6,11 @@
   - body_class = @search_request ? "" : "cutoff-corner-tr"
   .card-body(class=body_class)
     h3.mb-0 = @record.title
-    hr.mb-3
+    hr.mb-4
+
+    .mb-4
+      h4 = "Details"
+      = "TODO"
 
     h4 = "Exemplare"
     turbo-frame#items(src=items_path(search_scope: current_search_scope, record_id: @record.id))

@@ -1,5 +1,9 @@
 de:
   items:
+    index:
+      header: "Exemplare"
+      back_to_record: "Zurück zum Titel"
+
     listing:
       no_items_message: "Keine Exemplare verfügbar"
 
@@ -11,3 +15,4 @@ de:
         location: "Standort"
         status: "Status"
         process_type: "Prozess-Status"
+        due_date_policy: "Due-Date-Policy"

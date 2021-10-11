@@ -8,6 +8,7 @@ class Ils
     attribute :location, Ils::Location.optional
     attribute :process_type, Ils::ProcessType.optional
     attribute :due_date, Types::Time.optional
+    attribute :due_date_policy, Types::String.optional
     #attribute :signature, Types::String
     #attribute :collection_code, Types::String
     #attribute :item_status_code, Types::String

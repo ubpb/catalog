@@ -15,7 +15,8 @@ module Ils::Adapters
           library: get_library(alma_item),
           location: get_location(alma_item),
           process_type: get_process_type(alma_item),
-          due_date: get_due_date(alma_item)
+          due_date: get_due_date(alma_item),
+          due_date_policy: get_due_date_policy(alma_item)
         )
 
         #binding.pry
@@ -78,6 +79,10 @@ module Ils::Adapters
         if due_date_str = alma_item.dig("item_data", "due_date")
           Time.zone.parse(due_date_str)
         end
+      end
+
+      def get_due_date_policy(alma_item)
+        alma_item.dig("item_data", "due_date_policy")
       end
 
     end

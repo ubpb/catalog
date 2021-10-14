@@ -61,7 +61,7 @@ export default class extends Controller {
       let recordId = recordIdTarget.dataset.recordId
       // load the availabilities for the current recordId
       let matchedAvailabilities = availabilities.find(element => {
-        return element.availabilities.record_id == recordId
+        return element.record_id == recordId
       })
       // Select the output target: For each recordId target, there must
       // be a matching output target, so we can use the index of the

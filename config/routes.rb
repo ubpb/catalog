@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get "/:search_scope/r/:record_id/items", to: "items#index", as: :items
 
   # Availability
-  get "/availabilities", to: "availabilities#index", as: :availabilities
+  get "/availabilities(/:mode)", to: "availabilities#index", as: :availabilities
 
   # Kickers
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal

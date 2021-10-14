@@ -1,0 +1,12 @@
+- (availabilities[:availabilities] || []).each do |availability|
+  ruby:
+    availability_classes = case availability[:availability]
+      when "available"   then "text-success"
+      when "restricted"  then "text-warning"
+      when "unavailable" then "text-danger"
+      else "text-dark"
+      end
+
+  div.fst-italic
+    span = "#{availability[:library]} (#{availability[:location]}):"
+    span.ms-1(class=availability_classes) = t("availabilities.availability.#{availability[:availability]}", default: "n.a.")

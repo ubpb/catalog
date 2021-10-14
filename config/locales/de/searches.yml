@@ -2,6 +2,11 @@ de:
   searches:
     breadcrumb: "Suche"
 
+    availabilities:
+      error: >
+        Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte
+        versuchen Sie es zu einem späteren Zeitpunkt erneut.
+
     local:
       label: "Katalog"
       breadcrumb: "im Katalog"

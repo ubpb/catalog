@@ -1,3 +1,5 @@
+- record = hit.record
+
 div
   h5.mb-1
     = link_to record.title, show_record_path(record, search_request: @search_request)
@@ -22,4 +24,3 @@ div
           = link_to "Direkt zur Online-Ressource", rl.url
         - else
           = link_to "Verfügbarkeit prüfen", rl.url
-hr

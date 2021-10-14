@@ -117,5 +117,15 @@ class Ils
       try_operation(__method__, record_id)
     end
 
+    #
+    # Get the availability info for the given record ids.
+    #
+    # @param [Array<String>] List of record IDs.
+    # @return [Array<Ils::Availability] List of availability info for the given
+    #   record IDs.
+    def get_availabilities(record_ids)
+      try_operation(__method__, record_ids)
+    end
+
   end
 end

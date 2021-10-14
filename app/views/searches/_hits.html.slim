@@ -12,7 +12,27 @@ ruby:
       div = paginator
       div.ms-auto = "TODO: SORT"
   .card-body
-    - search_result.hits.each do |hit|
-      = render "record", record: hit.record
+    #hits(
+      data-controller="availabilities"
+      data-availabilities-url-value=availabilities_path
+    )
+      .alert.alert-warning(
+        data-availabilities-target="error"
+        style="display: none"
+      ) = t("searches.availabilities.error")
+
+      - search_result.hits.each.with_index do |hit, index|
+        - if index > 0
+          hr
+
+        / TODO: Remove fake record id, and replace with hit.record.id
+        .hit(
+          data-availabilities-target="recordId"
+          data-record-id=ItemsController::TEST_RECORDS.sample
+        )
+          = render "hit", hit: hit
+
+          .mt-2(data-availabilities-target="output")
+            i.fas.fa-sm.fa-spinner.fa-pulse
   .card-footer
     = paginator

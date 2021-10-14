@@ -6,6 +6,21 @@
   - body_class = @search_request ? "" : "cutoff-corner-tr"
   .card-body(class=body_class)
     h3.mb-0 = @record.title
+
+    / TODO: Remove me
+    - fake_record_id = ItemsController::TEST_RECORDS.sample
+
+    div(
+      data-controller="availabilities"
+      data-availabilities-url-value=availabilities_path(mode: "badge")
+      data-availabilities-target="recordId"
+      data-record-id=fake_record_id
+    )
+      div(
+        data-availabilities-target="output"
+      )
+        i.fas.fa-sm.fa-spinner.fa-pulse
+
     hr.mb-4
 
     .mb-4
@@ -13,5 +28,5 @@
       = "TODO"
 
     h4 = "Exemplare"
-    turbo-frame#items(src=items_path(search_scope: current_search_scope, record_id: @record.id))
+    turbo-frame#items(src=items_path(search_scope: current_search_scope, record_id: fake_record_id))
       i.fas.fa-lg.fa-spinner.fa-pulse

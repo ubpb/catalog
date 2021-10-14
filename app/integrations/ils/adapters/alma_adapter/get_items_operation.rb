@@ -4,15 +4,14 @@ module Ils::Adapters
 
       def call(record_id)
         # Get all items for that record id
-        items_result = get_items_result(record_id)
-
+        alma_items = get_items(record_id)
         # Return list of items
-        items_result.map{|_| ItemFactory.build(_)}
+        alma_items.map{|alma_item| ItemFactory.build(alma_item)}
       end
 
     private
 
-      def get_items_result(record_id)
+      def get_items(record_id)
         adapter.api.get(
           "bibs/#{record_id}/holdings/ALL/items",
           format: "application/json",
@@ -21,7 +20,28 @@ module Ils::Adapters
             view: "label"
           }
         ).try(:[], "item")
+      rescue ExlApi::LogicalError
+        []
       end
+
+      # def get_loan_info(record_id)
+      #   adapter.api.get(
+      #     "bibs/#{record_id}/loans",
+      #     format: "application/json",
+      #     params: {}
+      #   )
+      # end
+
+      # def get_booking_info(record_id)
+      #   adapter.api.get(
+      #     "bibs/#{record_id}/booking-availability",
+      #     format: "application/json",
+      #     params: {
+      #       period: 30,
+      #       period_type: "days"
+      #     }
+      #   )
+      # end
 
     end
   end

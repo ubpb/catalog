@@ -19,7 +19,6 @@ gem "rails-i18n",         "~> 6.0"
 gem "sass-rails",         ">= 6"
 gem "simple_form",        "~> 5.1"
 gem "slim",               "~> 4.0"
-#gem "turbo-rails",        "~> 7.1"
 gem "view_component",     "~> 2.31", require: "view_component/engine"
 gem "webpacker",          "~> 6.0.0.rc.5"
 

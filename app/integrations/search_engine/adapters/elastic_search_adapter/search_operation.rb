@@ -13,7 +13,7 @@ module SearchEngine::Adapters
           },
           from: search_request.page.from,
           size: search_request.page.size,
-          preference: options[:session_id].presence || "_primary_first"
+          preference: options[:session_id].presence || "_local"
         }
 
         # Perform the search request against ES.

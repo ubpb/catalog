@@ -21,7 +21,7 @@ ruby:
     .card-body
       div(data-controller="expandable-list")
         ul.list-unstyled.mb-0(data-expandable-list-target="list")
-          - non_selected_terms.each.with_index do |term, i|
+          - non_selected_terms.each do |term|
             li
               = link_to new_search_request_path(nsr.(search_request, term, exclude: false)) do
                 = t("searches.aggregations.#{aggregation.name.underscore}.terms.#{term.term.underscore}", default: term.term)

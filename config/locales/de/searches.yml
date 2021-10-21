@@ -28,3 +28,29 @@ de:
       collapse: "Weniger anzeigen..."
       aggregations_header: Suchergebnisse filtern
       active_aggregations_header: Aktive Filter
+
+      rtype:
+        header: "Art des Mediums"
+        terms:
+          print: "Gedrucktes Werk"
+          online_resource: "Online-Ressource"
+          data_storage: "Datenspeicher"
+          other: "Sonstiges"
+
+      erscheinungsform:
+        header: "Erscheinungsform"
+
+      creator:
+        header: "Autor / Autorin"
+
+      notation:
+        header: "Systemstelle"
+
+      subject:
+        header: "Schlagwort"
+
+      language:
+        header: "Sprache"
+
+      inhaltstyp:
+        header: "Art des Inhalts"

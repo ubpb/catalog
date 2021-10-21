@@ -5,8 +5,12 @@ ruby:
 
   nsr = ->(search_request, term, exclude: false) {
     search_request.dup
-      .add_aggregation(SearchEngine::SearchRequest::Aggregation.new(
-        field: aggregation.name, value: term.term, exclude: exclude)
+      .add_aggregation(
+        SearchEngine::SearchRequest::Aggregation.new(
+          field: aggregation.name,
+          value: term.term,
+          exclude: exclude
+        )
       )
   }
 

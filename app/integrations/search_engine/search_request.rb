@@ -93,14 +93,19 @@ class SearchEngine
     # Sort
     # ----------------------------------------------------
 
-    private def sort=(value)
-      @sort = value
+    private def sort=(sort)
+      if sort
+        @sort = sort
+      else
+        @sort = Sort.new # Default
+      end
     end
 
     attr_reader :sort
 
-    def sorted?
-      @sort.present?
+    def set_sort(sort)
+      self.sort = sort
+      self
     end
 
     # ----------------------------------------------------
@@ -157,10 +162,11 @@ class SearchEngine
         !adapter.aggregations_names.include?(a.name)
       end
 
-      # Remove sort for unknown field
-      if @sort && !adapter.sortables_names.include?(@sort.field)
-        @sort = nil
-      end
+      # Remove sort for unknown name
+      # FIXME
+      #if @sort && !adapter.sortables_names.include?(@sort.name)
+      #  @sort = nil
+      #end
 
       # Run validation checks ...
       if @queries.count != orig.queries.count ||
@@ -194,7 +200,13 @@ class SearchEngine
 
       sort = []
       if @sort
-        sort << "sr[s,#{@sort.field}]=#{@sort.direction}"
+        if @sort.default?
+          sort = []
+        #elsif @sort.default_direction?
+        #  sort << "sr[s]=#{@sort.name}"
+        else
+          sort << "sr[s,#{@sort.direction}]=#{@sort.name}"
+        end
       end
 
       page = []

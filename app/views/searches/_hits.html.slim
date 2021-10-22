@@ -6,11 +6,44 @@ ruby:
     page_param: "sr[p]"
   ))
 
+  sortables = SearchEngine[current_search_scope].adapter.sortables
+
+  nsr = ->(name, direction) {
+    search_request.dup
+      .set_sort(
+        SearchEngine::SearchRequest::Sort.new(
+          name: name,
+          direction: direction
+        )
+      )
+  }
+
 .card.card-shadowed
-  .card-header.cutoff-corner-tr
+  .card-header
     .d-flex.align-items-center
       div = paginator
-      div.ms-auto = "TODO: SORT"
+      - if sortables.present?
+        div.ms-auto
+          .d-flex.align-items-center
+            .me-2 = "Sortiert nach"
+            .btn-group
+              .btn-group
+                button#sort-button.btn.btn-primary.dropdown-toggle(data-bs-toggle="dropdown")
+                  = search_request.sort.name
+                ul.dropdown-menu.dropdown-menu-end(aria-labelledby="sort-button")
+                  li = link_to new_search_request_path(nsr.(nil, nil)), class: "dropdown-item" do
+                    = SearchEngine::SearchRequest::Sort::DEFAULT_NAME
+                  - sortables.each do |sortable|
+                    li = link_to new_search_request_path(nsr.(sortable[:name], sortable[:default_direction])), class: "dropdown-item" do
+                      = sortable[:name]
+              - unless search_request.sort.default?
+                - if search_request.sort.direction == "asc"
+                  = link_to new_search_request_path(nsr.(search_request.sort.name, "desc")), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-up-short-wide.fa-lg
+                - else
+                  = link_to new_search_request_path(nsr.(search_request.sort.name, "asc")), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-down-wide-short.fa-lg
+
   .card-body
     #hits(
       data-controller="availabilities"

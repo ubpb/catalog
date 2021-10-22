@@ -28,8 +28,9 @@ class SearchEngine
             # Syntax: sr[a,(-)NAME]=VALUE
             when /sr\[a,(-)?(\w+)\]/
               then aggregations << build_aggregation($1, $2, value)
-            # Syntax: sr[s,FIELD]=DIRECTION
-            when /sr\[s,(\w+)\]/
+            # Syntax: sr[s(,DIRECTION)]=VALUE
+            # ... in this case VALUE holds the name of the sort field
+            when /sr\[s(?:,(\w+))?\]/
               then sort = build_sort($1, value)
             # Syntax: sr[p]=VALUE
             when /sr\[p\]/

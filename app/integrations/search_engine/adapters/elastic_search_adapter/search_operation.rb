@@ -9,7 +9,7 @@ module SearchEngine::Adapters
           body: {
             query: build_query(search_request),
             aggs: build_aggregations,
-            sort: ["_score"]
+            sort: build_sort(search_request)
           },
           from: search_request.page.from,
           size: search_request.page.size,
@@ -118,6 +118,26 @@ module SearchEngine::Adapters
         end
 
         aggregations
+      end
+
+      def build_sort(search_request)
+        sr_sort = search_request.sort
+        es_sort = []
+
+        if sr_sort.nil? || sr_sort.default?
+          es_sort << "_score"
+        else
+          sort_field = adapter.sortables_field(sr_sort.name)
+          direction  = case sr_sort.direction
+          when "asc"  then "asc"
+          when "desc" then "desc"
+          else "asc"
+          end
+
+          es_sort << {sort_field => {"order" => direction}}
+        end
+
+        es_sort
       end
 
       def build_search_result(es_result)

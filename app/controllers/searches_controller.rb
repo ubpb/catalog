@@ -51,10 +51,10 @@ class SearchesController < ApplicationController
   def create
     queries = []
 
-    params[:q].each do |field, values|
+    params[:q].each do |name, values|
       values.each do |value|
         queries << SearchEngine::SearchRequest::Query.new(
-          field: field,
+          name: name,
           value: value
         )
       end

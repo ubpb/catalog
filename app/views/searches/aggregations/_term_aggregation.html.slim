@@ -7,7 +7,7 @@ ruby:
     search_request.dup
       .add_aggregation(
         SearchEngine::SearchRequest::Aggregation.new(
-          field: aggregation.name,
+          name: aggregation.name,
           value: term.term,
           exclude: exclude
         )

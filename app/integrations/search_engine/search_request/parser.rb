@@ -21,17 +21,17 @@ class SearchEngine
           .query_values(Array)
           .each do |key, value|
             case key
-            # Syntax: sr[q,(-)FIELD]
-            #   for two more optional parameter: /sr\[q,(-)?(\w+)(?:,(\w+))?(?:,(\w+))?\]/
+            # Syntax: sr[q,(-)NAME]=VALUE
+            # ... for two more optional parameter: /sr\[q,(-)?(\w+)(?:,(\w+))?(?:,(\w+))?\]/
             when /sr\[q,(-)?(\w+)\]/
               then queries << build_query($1, $2, value)
-            # Syntax: sr[a,(-)FIELD]
+            # Syntax: sr[a,(-)NAME]=VALUE
             when /sr\[a,(-)?(\w+)\]/
               then aggregations << build_aggregation($1, $2, value)
             # Syntax: sr[s,FIELD]=DIRECTION
             when /sr\[s,(\w+)\]/
               then sort = build_sort($1, value)
-            # Syntax: sr[p]=PAGE
+            # Syntax: sr[p]=VALUE
             when /sr\[p\]/
               then page = build_page(value)
             # The rest...
@@ -53,29 +53,29 @@ class SearchEngine
 
     private
 
-      def build_query(exclude, field, value)
-        if field
+      def build_query(exclude, name, value)
+        if name
           Query.new(
             exclude: exclude.present?,
-            field: field,
+            name: name,
             value: value
           )
         end
       end
 
-      def build_aggregation(exclude, field, value)
-        if field
+      def build_aggregation(exclude, name, value)
+        if name
           Aggregation.new(
             exclude: exclude.present?,
-            field: field,
+            name: name,
             value: value
           )
         end
       end
 
-      def build_sort(field, direction)
-        if field
-          Sort.new(field: field, direction: direction)
+      def build_sort(direction, name)
+        if name
+          Sort.new(name: name, direction: direction)
         end
       end
 

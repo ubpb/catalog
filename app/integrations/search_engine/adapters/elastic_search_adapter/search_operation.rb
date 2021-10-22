@@ -31,7 +31,7 @@ module SearchEngine::Adapters
 
         # Queries
         search_request.queries.each do |q|
-          fields = adapter.searchables_fields(q.field)
+          fields = adapter.searchables_fields(q.name)
           query  = normalize_query_string(q.value)
 
           if fields.present?
@@ -61,8 +61,8 @@ module SearchEngine::Adapters
 
         # Aggregations
         search_request.aggregations.each do |a|
-          field = adapter.aggregations_field(a.field)
-          type  = adapter.aggregations_type(a.field)
+          field = adapter.aggregations_field(a.name)
+          type  = adapter.aggregations_type(a.name)
 
           if field && type
             container = a.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]

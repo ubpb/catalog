@@ -4,7 +4,7 @@
     - aggregations.each do |aggregation|
       ruby:
         nsr = @search_request.dup
-        nsr.delete_aggregation(aggregation.field, aggregation.value)
+        nsr.delete_aggregation(aggregation.name, aggregation.value)
         badge_icon  = aggregation.exclude ? "far fa-minus-square" : "far fa-plus-square"
         badge_class = aggregation.exclude ? "bg-danger" : "bg-primary"
 
@@ -12,7 +12,7 @@
         div.me-1
           i(class=badge_icon)
         div.flex-grow-1
-          span.text-uppercase.fw-bold.me-2 = "#{aggregation.field}"
+          span.text-uppercase.fw-bold.me-2 = "#{aggregation.name}"
           span.fw-normal = aggregation.value
         div.ms-2
           = link_to new_search_request_path(nsr) do

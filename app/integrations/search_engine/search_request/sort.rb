@@ -5,16 +5,16 @@ class SearchEngine
       DIRECTIONS = ["asc", "desc"]
       DEFAULT_DIRECTION = "desc"
 
-      attr_reader :field
+      attr_reader :name
       attr_reader :direction
 
-      def initialize(field:, direction: DEFAULT_DIRECTION)
-        self.field = field
+      def initialize(name:, direction: DEFAULT_DIRECTION)
+        self.name = name
         self.direction = direction
       end
 
-      def field=(value)
-       @field = value&.to_s
+      def name=(value)
+       @name = value&.to_s
       end
 
       def direction=(value)

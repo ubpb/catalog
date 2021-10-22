@@ -2,22 +2,22 @@ class SearchEngine
   class SearchRequest
 
     class BasePart
-      attr_reader :field
+      attr_reader :name
       attr_reader :value
       attr_reader :exclude
 
-      def initialize(field:, value:, exclude: false)
-        self.field = field
+      def initialize(name:, value:, exclude: false)
+        self.name = name
         self.value = value
         self.exclude = exclude
       end
 
-      def field=(value) ; @field = value&.to_s ; end
+      def name=(value) ; @name = value&.to_s ; end
       def value=(value) ; @value = value&.to_s ; end
       def exclude=(value) ; @exclude = value == true ; end
 
-      def eql?(other)
-        self.field == other.field &&
+      def ==(other)
+        self.name == other.name &&
         self.value == other.value
       end
     end

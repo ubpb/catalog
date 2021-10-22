@@ -37,12 +37,12 @@ class SearchEngine
 
     attr_reader :queries
 
-    def find_query(field, value)
-      @queries.find{|q| q.field == field && q.value == value}
+    def find_query(name, value)
+      @queries.find{|q| q.name == name && q.value == value}
     end
 
-    def has_query?(field, value)
-      find_query(field, value).present?
+    def has_query?(name, value)
+      find_query(name, value).present?
     end
 
     def add_query(query)
@@ -50,9 +50,9 @@ class SearchEngine
       self
     end
 
-    def delete_query(field, value)
+    def delete_query(name, value)
       @queries = @queries.reject do |q|
-        q.field == field && q.value == value
+        q.name == name && q.value == value
       end
 
       self
@@ -68,12 +68,12 @@ class SearchEngine
 
     attr_reader :aggregations
 
-    def find_aggregation(field, value)
-      @aggregations.find{|a| a.field == field && a.value == value}
+    def find_aggregation(name, value)
+      @aggregations.find{|a| a.name == name && a.value == value}
     end
 
-    def has_aggregation?(field, value)
-      find_aggregation(field, value).present?
+    def has_aggregation?(name, value)
+      find_aggregation(name, value).present?
     end
 
     def add_aggregation(aggregation)
@@ -81,9 +81,9 @@ class SearchEngine
       self
     end
 
-    def delete_aggregation(field, value)
+    def delete_aggregation(name, value)
       @aggregations = @aggregations.reject do |a|
-        a.field == field && a.value == value
+        a.name == name && a.value == value
       end
 
       self
@@ -139,9 +139,9 @@ class SearchEngine
       # Make sure queries are unique
       @queries = @queries.uniq
 
-      # Remove all queries with unknown fields
+      # Remove all queries with unknown names
       @queries = @queries.reject do |q|
-        !adapter.searchables_names.include?(q.field)
+        !adapter.searchables_names.include?(q.name)
       end
 
       # Remove all aggregations with an empty value
@@ -152,9 +152,9 @@ class SearchEngine
       # Make sure aggregations are unique
       @aggregations = @aggregations.uniq
 
-      # Remove all aggregations with unknown fields
+      # Remove all aggregations with unknown names
       @aggregations = @aggregations.reject do |a|
-        !adapter.aggregations_names.include?(a.field)
+        !adapter.aggregations_names.include?(a.name)
       end
 
       # Remove sort for unknown field
@@ -179,17 +179,17 @@ class SearchEngine
 
     def query_string
       queries = @queries.map do |q|
-        field = q.field
-        field = "-#{field}" if q.exclude
+        name = q.name
+        name = "-#{name}" if q.exclude
         value = Addressable::URI.encode_component(q.value, Addressable::URI::CharacterClasses::UNRESERVED)
-        "sr[q,#{field}]=#{value}"
+        "sr[q,#{name}]=#{value}"
       end
 
       aggregations = @aggregations.map do |a|
-        field = a.field
-        field = "-#{field}" if a.exclude
+        name = a.name
+        name = "-#{name}" if a.exclude
         value = Addressable::URI.encode_component(a.value, Addressable::URI::CharacterClasses::UNRESERVED)
-        "sr[a,#{field}]=#{value}"
+        "sr[a,#{name}]=#{value}"
       end
 
       sort = []

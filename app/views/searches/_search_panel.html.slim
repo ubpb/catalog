@@ -22,7 +22,7 @@
       - if @search_request.present?
         = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|
           - @search_request.queries.each.with_index do |q, i|
-            = f.input q.field, input_html: { id: "q_#{q.field}_#{i}", name: "q[#{q.field}][]", value: q.value }
+            = f.input q.name, input_html: { id: "q_#{q.name}_#{i}", name: "q[#{q.name}][]", value: q.value }
           = f.submit "Search", class: "btn btn-primary"
       - else
           = f.input "any", input_html: { id: "q_any_0", name: "q[any][]" }

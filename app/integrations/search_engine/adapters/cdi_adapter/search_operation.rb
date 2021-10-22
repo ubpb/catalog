@@ -138,6 +138,10 @@ module SearchEngine::Adapters
           end
         end
 
+        # Sort
+        sort_field = adapter.sortables_field(search_request.sort.name)
+        sort_field = "rank" unless sort_field
+
         <<-XML.strip_heredoc
         <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:impl="http://primo.kobv.de/PrimoWebServices/services/searcher" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">
           <env:Body>
@@ -158,6 +162,9 @@ module SearchEngine::Adapters
                         <Language>ger</Language>
                         <Language>eng</Language>
                       </Languages>
+                      <SortByList>
+                        <SortField>#{sort_field}</SortField>
+                      </SortByList>
                       <Locations>
                         <uic:Location type="adaptor" value="primo_central_multiple_fe"/>
                       </Locations>

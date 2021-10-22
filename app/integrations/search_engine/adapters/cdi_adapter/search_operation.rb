@@ -90,10 +90,12 @@ module SearchEngine::Adapters
 
         # Queries
         search_request.queries.each do |query|
+          index_field = adapter.searchables_fields(query.name)&.first
+
           if query.exclude
             query_terms << <<-XML.strip_heredoc
               <QueryTerm>
-                <IndexField>#{query.field}</IndexField>
+                <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
                 <Value/>
                 <excludeValue>#{query.value}</excludeValue>
@@ -102,7 +104,7 @@ module SearchEngine::Adapters
           else
             query_terms << <<-XML.strip_heredoc
               <QueryTerm>
-                <IndexField>#{query.field}</IndexField>
+                <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
                 <Value/>
                 <includeValue>#{query.value}</includeValue>
@@ -113,7 +115,7 @@ module SearchEngine::Adapters
 
         # Aggregrations
         search_request.aggregations.each do |aggregation|
-          index_field = adapter.aggregations_field(aggregation.field)
+          index_field = adapter.aggregations_field(aggregation.name)
 
           if aggregation.exclude
             query_terms << <<-XML.strip_heredoc

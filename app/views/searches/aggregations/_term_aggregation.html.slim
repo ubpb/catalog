@@ -3,7 +3,7 @@ ruby:
     !search_request.has_aggregation?(aggregation.name, t.term)
   end
 
-  nsr = ->(search_request, term, exclude: false) {
+  nsr = ->(term, exclude: false) {
     search_request.dup
       .add_aggregation(
         SearchEngine::SearchRequest::Aggregation.new(
@@ -23,11 +23,11 @@ ruby:
         ul.list-unstyled.mb-0(data-expandable-list-target="list")
           - non_selected_terms.each do |term|
             li
-              = link_to new_search_request_path(nsr.(search_request, term, exclude: false)) do
+              = link_to new_search_request_path(nsr.(term, exclude: false)) do
                 = t("searches.aggregations.#{aggregation.name.underscore}.terms.#{term.term.underscore}", default: term.term)
               .d-inline-flex.flex-nowrap
                 span.ms-1.text-muted = "(#{term.count})"
-                = link_to new_search_request_path(nsr.(search_request, term, exclude: true)) do
+                = link_to new_search_request_path(nsr.(term, exclude: true)) do
                   span.ms-2: i.fas.fa-times
 
         .mt-1.fw-bold(data-expandable-list-target="expand")

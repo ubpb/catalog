@@ -80,6 +80,13 @@ module SearchEngine::Adapters
         end
       end
 
+      def clean_value(value)
+        value
+          .gsub("&", "")
+          .gsub("<", "")
+          .gsub(">", "")
+      end
+
       def build_cdi_search(search_request, on_campus: false)
         institution = adapter.options["institution"] || "49PAD"
 
@@ -91,6 +98,7 @@ module SearchEngine::Adapters
         # Queries
         search_request.queries.each do |query|
           index_field = adapter.searchables_fields(query.name)&.first
+          clean_value = clean_value(query.value)
 
           if query.exclude
             query_terms << <<-XML.strip_heredoc
@@ -98,7 +106,7 @@ module SearchEngine::Adapters
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
                 <Value/>
-                <excludeValue>#{query.value}</excludeValue>
+                <excludeValue>#{clean_value}</excludeValue>
               </QueryTerm>
             XML
           else
@@ -107,7 +115,7 @@ module SearchEngine::Adapters
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
                 <Value/>
-                <includeValue>#{query.value}</includeValue>
+                <includeValue>#{clean_value}</includeValue>
               </QueryTerm>
             XML
           end
@@ -116,6 +124,7 @@ module SearchEngine::Adapters
         # Aggregrations
         search_request.aggregations.each do |aggregation|
           index_field = adapter.aggregations_field(aggregation.name)
+          clean_value = clean_value(aggregation.value)
 
           if aggregation.exclude
             query_terms << <<-XML.strip_heredoc
@@ -123,7 +132,7 @@ module SearchEngine::Adapters
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>exact</PrecisionOperator>
                 <Value/>
-                <excludeValue>#{aggregation.value}</excludeValue>
+                <excludeValue>#{clean_value}</excludeValue>
               </QueryTerm>
             XML
           else
@@ -132,7 +141,7 @@ module SearchEngine::Adapters
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>exact</PrecisionOperator>
                 <Value/>
-                <includeValue>#{aggregation.value}</includeValue>
+                <includeValue>#{clean_value}</includeValue>
               </QueryTerm>
             XML
           end

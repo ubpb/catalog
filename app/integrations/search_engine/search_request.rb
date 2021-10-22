@@ -31,8 +31,8 @@ class SearchEngine
     # Queries
     # ----------------------------------------------------
 
-    private def queries=(value)
-      @queries = value || []
+    private def queries=(queries)
+      @queries = queries || []
     end
 
     attr_reader :queries
@@ -62,8 +62,8 @@ class SearchEngine
     # Aggregations
     # ----------------------------------------------------
 
-    private def aggregations=(value)
-      @aggregations = value || []
+    private def aggregations=(aggregations)
+      @aggregations = aggregations || []
     end
 
     attr_reader :aggregations

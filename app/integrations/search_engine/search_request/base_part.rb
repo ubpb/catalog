@@ -20,6 +20,10 @@ class SearchEngine
         self.name == other.name &&
         self.value == other.value
       end
+
+      def eql?(other)
+        self == other
+      end
     end
 
   end

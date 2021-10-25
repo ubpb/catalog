@@ -178,7 +178,7 @@ module SearchEngine::Adapters
                         <uic:Location type="adaptor" value="primo_central_multiple_fe"/>
                       </Locations>
                     </PrimoSearchRequest>
-                    <onCampus>#{on_campus == true}</onCampus>
+                    <onCampus>#{on_campus}</onCampus>
                     <institution>#{institution}</institution>
                   </searchRequest>
                   ]]>

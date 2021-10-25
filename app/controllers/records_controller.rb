@@ -2,7 +2,10 @@ class RecordsController < ApplicationController
 
   def show
     # Load record by the given id
-    @record = SearchEngine[current_search_scope].get_record(params[:id])
+    @record = SearchEngine[current_search_scope].get_record(
+      params[:id],
+      on_campus: on_campus?
+    )
 
     # Check for search request context
     @search_request = check_for_valid_search_request

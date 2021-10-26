@@ -5,6 +5,7 @@ class SearchEngine
       PER_PAGE_DEFAULT = 10
       PER_PAGE_MAX     = 100
       PAGE_DEFAULT     = 1
+      PAGE_MAX         = 100
 
       attr_reader :page
       attr_reader :per_page
@@ -15,14 +16,11 @@ class SearchEngine
       end
 
       def page=(value)
-       _value = value.to_i
-       @page = (_value <= 0) ? PAGE_DEFAULT : _value
+       @page = value.to_i
       end
 
       def per_page=(value)
-        _value = value.to_i
-        _value = (_value <= 0) ? PER_PAGE_DEFAULT : _value
-        @per_page = (_value >= 100) ? PER_PAGE_MAX : _value
+        @per_page = value.to_i
       end
 
       def first_page?
@@ -30,7 +28,8 @@ class SearchEngine
       end
 
       def last_page?(total)
-        page == total.fdiv(per_page).ceil
+        page == total.fdiv(per_page).ceil ||
+        page >= PAGE_MAX
       end
 
       def from=(value)
@@ -49,6 +48,27 @@ class SearchEngine
 
       def size
         @per_page
+      end
+
+      def ==(other)
+        self.page     == other&.page &&
+        self.per_page == other&.per_page
+      end
+
+      def eql?(other)
+        self == other
+      end
+
+      def validate!(adapter)
+        vp = self.dup
+
+        vp.page = PAGE_DEFAULT if self.page <= 0
+        vp.page = PAGE_MAX     if self.page > PAGE_MAX
+
+        vp.per_page = PER_PAGE_DEFAULT if self.per_page <= 0
+        vp.per_page = PER_PAGE_MAX     if self.per_page > PER_PAGE_MAX
+
+        return vp
       end
     end
 

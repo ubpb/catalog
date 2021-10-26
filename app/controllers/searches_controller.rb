@@ -14,36 +14,37 @@ class SearchesController < ApplicationController
     # search request. We can't use Rails params hash, because the query syntax
     # is incompatible with how Rails parses the query part of the url
     # (more than one parameter with the same name).
-    @search_request = SearchEngine::SearchRequest.parse(request.url)
+    search_request = SearchEngine::SearchRequest.parse(request.url)
 
-    # Validate the request in the context of the current search scope.
-    # Be aware that the validate! method is destructive. It manipulates
-    # the search request by removing all parts that are not valid
-    # based on search scope configuration. The method returns true if no
-    # changes where made. After validation the remaining search request
-    # is either valid or empty and these cases must also be handled.
-    if @search_request.validate!(search_scope: current_search_scope)
-      # The request is valid and was unchanged during validation.
+    # Validate the search request in the context of the current search engine adapter.
+    # #validate! returns a validated search request object or nil in case
+    # the search request does not contain a valid search request. The validated
+    # search request may be different from the one given by the request URL.
+    # In that case a redirect is needed to reflect the validated params in the URL.
+    validated_search_request = search_request.validate!(SearchEngine[current_search_scope].adapter)
+
+    if validated_search_request.nil?
+      # Search request was invalid. Inform the user that the search was invalid and
+      # redirect to a new default search panel.
+      flash[:search_panel] = {error: t("searches.request_hints.invalid_after_validation")}
+      redirect_to(new_search_request_path)
+    elsif validated_search_request != search_request
+      # The validated search request is different from the given search request. That means
+      # the validation changed the search request. To reflect the changes in the browser
+      # we redirect to validated search request.
+      flash[:search_panel] = {info: t("searches.request_hints.modified_during_validation")}
+      redirect_to(new_search_request_path(validated_search_request))
+    else
+      # The search request is valid and was unchanged during validation.
       # Perform the search request against the selected search scope
+      @search_request = validated_search_request
       @search_result = SearchEngine[current_search_scope].search(
-        @search_request,
+        validated_search_request,
         {
           session_id: request&.session&.id,
           on_campus: on_campus?
         }
       )
-    elsif @search_request.empty?
-      # The request was changed during validation and is empty now. Let's
-      # inform the user and redirect to a default state.
-      flash[:search_panel] = {error: t("searches.request_hints.empty_after_validation")}
-      redirect_to(new_search_request_path)
-    else
-      # The request was changed during validation but is not empty. That means
-      # we now have a valid search request. To reflect that in the url let's trigger
-      # the search request (now with a valid query string) and inform the user about the
-      # change.
-      flash[:search_panel] = {info: t("searches.request_hints.modified_during_validation")}
-      redirect_to(new_search_request_path(@search_request))
     end
   end
 

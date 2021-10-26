@@ -17,8 +17,8 @@ class SearchEngine
       def exclude=(value) ; @exclude = value == true ; end
 
       def ==(other)
-        self.name == other.name &&
-        self.value == other.value
+        self.name  == other&.name &&
+        self.value == other&.value
       end
 
       def eql?(other)

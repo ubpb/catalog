@@ -24,7 +24,19 @@ class SearchEngine
     # ----------------------------------------------------
 
     def empty?
-      @queries.blank?
+      self.queries.blank?
+    end
+
+    def ==(other)
+      self.queries      == other&.queries &&
+      self.aggregations == other&.aggregations &&
+      self.sort         == other&.sort &&
+      self.page         == other&.page &&
+      self.options      == other&.options
+    end
+
+    def eql?(other)
+      self == other
     end
 
     # ----------------------------------------------------
@@ -97,7 +109,7 @@ class SearchEngine
       if sort
         @sort = sort
       else
-        @sort = Sort.new # Default
+        @sort = Sort.default
       end
     end
 
@@ -132,51 +144,21 @@ class SearchEngine
     # Validation
     #
 
-    def validate!(search_scope:)
-      orig    = self.dup
-      adapter = SearchEngine[search_scope].adapter
+    def validate!(adapter)
+      validated_queries      = self.queries.map{|q| q.validate!(adapter)}.compact
+      validated_aggregations = self.aggregations.map{|a| a.validate!(adapter)}.compact
+      validated_sort         = self.sort.validate!(adapter)
+      validated_page         = self.page.validate!(adapter)
 
-      # Remove all queries with an empty value
-      @queries = @queries.reject do |q|
-        q.value.blank?
-      end
+      vsr = SearchRequest.new(
+        queries: validated_queries,
+        aggregations: validated_aggregations,
+        sort: validated_sort,
+        page: validated_page,
+        options: self.options
+      )
 
-      # Make sure queries are unique
-      @queries = @queries.uniq
-
-      # Remove all queries with unknown names
-      @queries = @queries.reject do |q|
-        !adapter.searchables_names.include?(q.name)
-      end
-
-      # Remove all aggregations with an empty value
-      @aggregations = @aggregations.reject do |a|
-        a.value.blank?
-      end
-
-      # Make sure aggregations are unique
-      @aggregations = @aggregations.uniq
-
-      # Remove all aggregations with unknown names
-      @aggregations = @aggregations.reject do |a|
-        !adapter.aggregations_names.include?(a.name)
-      end
-
-      # Remove sort for unknown name
-      # FIXME
-      #if @sort && !adapter.sortables_names.include?(@sort.name)
-      #  @sort = nil
-      #end
-
-      # Run validation checks ...
-      if @queries.count != orig.queries.count ||
-        @aggregations.count != orig.aggregations.count ||
-        @sort != orig.sort ||
-        empty?
-        false
-      else
-        true
-      end
+      return vsr.empty? ? nil : vsr
     end
 
     # ----------------------------------------------------
@@ -202,8 +184,8 @@ class SearchEngine
       if @sort
         if @sort.default?
           sort = []
-        #elsif @sort.default_direction?
-        #  sort << "sr[s]=#{@sort.name}"
+        elsif @sort.direction.nil?
+          sort << "sr[s]=#{@sort.name}"
         else
           sort << "sr[s,#{@sort.direction}]=#{@sort.name}"
         end

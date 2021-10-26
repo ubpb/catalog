@@ -7,14 +7,27 @@ class RecordsController < ApplicationController
       on_campus: on_campus?
     )
 
-    # Check for search request context
-    @search_request = check_for_valid_search_request
+    # Check for search request and validate it if available
+    if request.url.include?("?")
+      search_request = SearchEngine::SearchRequest.parse(request.url)
+      validated_search_request = search_request.validate!(SearchEngine[current_search_scope].adapter)
+
+      if validated_search_request.nil?
+        redirect_to(show_record_path(@record)) and return
+      elsif validated_search_request != search_request
+        redirect_to(show_record_path(@record, search_request: validated_search_request)) and return
+      else
+        @search_request = validated_search_request
+      end
+    end
 
     # Handle "record not found" case
     check_for_record(@record, @search_request) or return
 
     # Try to find previous and next record
-    find_previous_and_next_record(@search_request) if @search_request
+    if @search_request
+      find_previous_and_next_record(@search_request)
+    end
 
     # Set breadcrumb
     add_breadcrumb(t("searches.breadcrumb"), new_search_request_path(@search_request)) if @search_request
@@ -26,20 +39,14 @@ private
   def check_for_record(record, search_request)
     unless record
       flash[:search_panel] = {error: "ERROR: Record not found"}
-      redirect_to(new_search_request_path(search_request)) and return
+      if search_request
+        redirect_to(new_search_request_path(search_request)) and return
+      else
+        redirect_to(new_search_request_path) and return
+      end
     end
 
     return true
-  end
-
-  def check_for_valid_search_request
-    return nil unless request.url.include?("?")
-
-    search_request = SearchEngine::SearchRequest.parse(request.url)
-
-    if search_request.validate!(search_scope: current_search_scope)
-      search_request
-    end
   end
 
   def find_previous_and_next_record(search_request)

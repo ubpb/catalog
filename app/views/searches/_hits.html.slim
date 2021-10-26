@@ -9,13 +9,12 @@ ruby:
   sortables = SearchEngine[current_search_scope].adapter.sortables
 
   nsr = ->(name, direction) {
-    search_request.dup
-      .set_sort(
-        SearchEngine::SearchRequest::Sort.new(
-          name: name,
-          direction: direction
-        )
-      )
+    sort = name ? SearchEngine::SearchRequest::Sort.new(name: name, direction: direction) : SearchEngine::SearchRequest::Sort.default
+    search_request.dup.set_sort(sort)
+  }
+
+  omit_direction = ->(name) {
+    sortables.find{|s| s["name"] == name}.try(:[], "omit_direction") == true
   }
 
 .card.card-shadowed
@@ -36,7 +35,7 @@ ruby:
                   - sortables.each do |sortable|
                     li = link_to new_search_request_path(nsr.(sortable[:name], sortable[:default_direction])), class: "dropdown-item" do
                       = sortable[:name]
-              - unless search_request.sort.default?
+              - unless search_request.sort.default? || omit_direction.(search_request.sort.name)
                 - if search_request.sort.direction == "asc"
                   = link_to new_search_request_path(nsr.(search_request.sort.name, "desc")), class: "btn btn-secondary" do
                     i.fas.fa-arrow-up-short-wide.fa-lg

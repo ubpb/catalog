@@ -37,22 +37,22 @@ module SearchEngine::Adapters
           if fields.present?
             container = q.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
             container << {
-              query_string: {
+              simple_query_string: {
                 default_operator: "AND",
                 fields:           fields,
                 query:            query,
-                quote_analyzer:   "default_with_stop_words_search"
+                #quote_analyzer:   "default_with_stop_words_search"
               }
             }
 
             # Use a "should" component that uses stop words for better ranking
             container = es_query[:bool][:should]
             container << {
-              query_string: {
+              simple_query_string: {
                 default_operator: "AND",
                 fields:           fields,
                 query:            query,
-                quote_analyzer:   "default_with_stop_words_search",
+                #quote_analyzer:   "default_with_stop_words_search",
                 analyzer:         "default_with_stop_words_search"
               }
             }

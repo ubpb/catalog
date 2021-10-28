@@ -23,6 +23,20 @@ de:
       invalid_after_validation: "TODO: Leere Suche nach Validierung"
       modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
 
+    sortables:
+      local:
+        _default_: "Relevanz"
+        title: "Titel"
+        creator: "Autor / Autorin"
+        cdate: "Erscheinungsjahr"
+        notation: "Systemstelle"
+        volume: "Band"
+        catdate: "Katalogisierungsdatum"
+      cdi:
+        _default_: "Relevanz"
+        title: "Titel"
+        cdate: "Erscheinungsjahr"
+
     aggregations:
       expand: "Mehr anzeigen..."
       collapse: "Weniger anzeigen..."

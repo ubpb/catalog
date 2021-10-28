@@ -28,13 +28,15 @@ ruby:
             .btn-group
               .btn-group
                 button#sort-button.btn.btn-primary.dropdown-toggle(data-bs-toggle="dropdown")
-                  = search_request.sort.name
+                  - name = search_request.sort.name
+                  = t("searches.sortables.#{current_search_scope}.#{name.underscore}", default: name)
                 ul.dropdown-menu.dropdown-menu-end(aria-labelledby="sort-button")
                   li = link_to new_search_request_path(nsr.(nil, nil)), class: "dropdown-item" do
-                    = SearchEngine::SearchRequest::Sort::DEFAULT_NAME
+                    - default_name = SearchEngine::SearchRequest::Sort::DEFAULT_NAME
+                    = t("searches.sortables.#{current_search_scope}.#{default_name.underscore}", default: default_name)
                   - sortables.each do |sortable|
                     li = link_to new_search_request_path(nsr.(sortable[:name], sortable[:default_direction])), class: "dropdown-item" do
-                      = sortable[:name]
+                      = t("searches.sortables.#{current_search_scope}.#{sortable[:name].underscore}", default: sortable[:name])
               - unless search_request.sort.default? || omit_direction.(search_request.sort.name)
                 - if search_request.sort.direction == "asc"
                   = link_to new_search_request_path(nsr.(search_request.sort.name, "desc")), class: "btn btn-secondary" do

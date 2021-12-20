@@ -7,30 +7,26 @@ gem "addressable",        "~> 2.7"
 gem "bcrypt",             "~> 3.1"
 gem "bootsnap",           ">= 1.4.2", require: false
 gem "cancancan",          "~> 3.2"
+gem "cssbundling-rails",  "~> 1.0"
 gem "dry-struct",         "~> 1.4"
 gem "elasticsearch",      "~> 7.12"
 gem "jbuilder",           "~> 2.7"
+gem "jsbundling-rails",   "~> 1.0"
 gem "metacrunch-marcxml", "~> 4.0.0", github: "ubpb/metacrunch-marcxml", branch: "master"
 gem "mysql2",             ">= 0.5.3"
 gem "parallel",           "~> 1.19"
 gem "puma",               ">= 5.2"
 gem "rails",              "~> 7.0.0"
-gem "sass-rails",         ">= 6"
 gem "simple_form",        "~> 5.1"
 gem "slim",               "~> 4.0"
+gem "sprockets-rails",    "~> 3.4.2"
+gem "stimulus-rails",     "~> 1.0.2"
 gem "view_component",     "~> 2.31"
-gem "webpacker",          "~> 6.0.0.rc.5"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :development, :test do
-  gem "pry",       ">= 0.14.1", platform: :mri
-  gem "pry-rails", ">= 0.3",    platform: :mri
-
-  # Don't use byebug until https://github.com/deivid-rodriguez/byebug/issues/564
-  # is fixed. We use a directory structure in app/integrations that uses
-  # "explicit namespaces". When running byebug, Zeitwerk autoloading breaks.
-  #gem "pry-byebug", ">= 3.9", platform: :mri
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
@@ -39,10 +35,8 @@ group :development do
   gem "capistrano-passenger",  "~> 0.2"
   gem "capistrano-rails",      "~> 1.6"
   gem "capistrano-rvm",        "~> 0.1"
-  gem "listen",                "~> 3.2"
-  gem "spring",                "~> 2.1"
-  gem "spring-watcher-listen", "~> 2.0"
   gem "web-console",           ">= 3.3"
+  gem "foreman",               ">= 0.87"
 end
 
 group :test do

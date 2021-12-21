@@ -14,3 +14,10 @@ set :rvm_ruby_version, IO.read(".ruby-version").strip
 set :passenger_roles, :web
 
 set :rails_env, "production"
+
+set :keep_releases, 3
+set :keep_assets, 3
+
+#
+# NOTE: See lib/capistrano/tasks for more local tasks
+#

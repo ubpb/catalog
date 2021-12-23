@@ -17,5 +17,10 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browser-sync": "^2.27.7"
+  },
+  "resolutions": {
+    "debug": "^4.3.3"
+  }
 }

@@ -1,12 +1,10 @@
-= simple_form_for :login, url: session_path, method: :post do |f|
+= simple_form_for :password_reset, url: password_reset_path, method: :post do |f|
   .card.card-shadowed
     h5.card-header.cutoff-corner-tr
       = t(".header")
     .card-body
       = render "alerts"
       = f.input :username, autofocus: true
-      = f.input :password
-      = link_to t(".forgot_password"), password_reset_path
     .card-footer
       => f.submit t(".submit"), class: "btn btn-lg btn-primary"
-      => link_to t(".cancel"), root_path, class: "btn btn-lg btn-default"
+      => link_to t(".cancel"), new_session_path, class: "btn btn-lg btn-default"

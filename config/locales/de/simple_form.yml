@@ -1,15 +1,24 @@
 de:
   simple_form:
     labels:
-      login:
+      defaults:
         username: "Ausweisnummer"
         password: "Passwort"
+        password_confirmation: "Passwort wiederholen"
+
     placeholders:
-      login:
+      defaults:
         username: "Ihre Bibliotheksausweisnummer"
         password: "Ihr Bibliothekspasswort"
+        password_confirmation: "Bitte geben Sie Ihr Passwort erneut ein"
+
+      reset_password_form:
+        password: "Ihr neues Passwort"
+        password_confirmation: "Bitte geben Sie Ihr neues Passwort erneut ein"
+
     hints:
-      login:
+      defaults:
+        password: "Muss eine Zahl, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten. Min. 8 Zeichen. Max. 30 Zeichen. "
         username: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
-        password: "Das Standard-Passwort ist Ihr Geburtsdatum, in der Form: TTMMJJJJ (wenn Sie z.B. am 3. Mai 1991 geboren sind, dann lautet Ihr Passwort: 03051991)"
+
 

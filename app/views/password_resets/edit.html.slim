@@ -1,0 +1,11 @@
+= simple_form_for @reset_password_form, url: reset_password_path(token: @token), method: :put do |f|
+  .card.card-shadowed
+    h5.card-header.cutoff-corner-tr
+      = t(".header")
+    .card-body
+      = render "alerts"
+      = f.input :password, autofocus: true
+      = f.input :password_confirmation
+    .card-footer
+      => f.submit t(".submit"), class: "btn btn-lg btn-primary"
+      => link_to t(".cancel"), new_session_path, class: "btn btn-lg btn-default"

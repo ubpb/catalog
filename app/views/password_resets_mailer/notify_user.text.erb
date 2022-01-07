@@ -2,7 +2,7 @@ Sehr geehrte(r) <%= @user.name %>,
 
 Sie möchten Ihr Passwort für Ihr Bibliothekskonto mit der Nummer `<%= @user.ils_primary_id %>` zurücksetzen. Dazu klicken Sie bitte auf den folgenden Link.
 
-<%= reset_password_url(token: @user.password_reset_token) %>
+<%= password_reset_url(token: @user.password_reset_token) %>
 
 Bitte beachten Sie, dass dieser Link nur 6 Stunden gültig ist. Nach 6 Stunden müssen Sie über die Funktion 'Ich habe mein Passwort vergessen' einen neuen Link anfordern.
 

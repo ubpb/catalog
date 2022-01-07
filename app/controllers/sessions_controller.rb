@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
 
   def create
-    username = params.dig("login", "username")
+    user_id  = params.dig("login", "user_id")
     password = params.dig("login", "password")
 
-    if username.present? && password.present?
-      if Ils.authenticate_user(username, password)
-        ils_user = Ils.get_user(username)
+    if user_id.present? && password.present?
+      if Ils.authenticate_user(user_id, password)
+        ils_user = Ils.get_user(user_id)
         db_user  = User.create_or_update_from_ils_user!(ils_user)
 
         reset_session

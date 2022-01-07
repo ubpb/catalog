@@ -6,7 +6,7 @@ module ExlApi
     end
 
     def api_key
-      @api_key || ENV["exl_api_KEY"].presence
+      @api_key || ENV["EXL_API_KEY"].presence
     end
 
     def api_base_url=(value)

@@ -1,5 +1,5 @@
 #search_panel.card.card-shadowed
-  .card-header.cutoff-corner-tr
+  .card-header.bg-transparent
     ul.nav.nav-tabs.card-header-tabs
       - Config[:search_scopes, default: {}].keys.each do |search_scope|
         - if enabled = Config[:search_scopes, search_scope, :enabled, default: false]
@@ -8,7 +8,7 @@
             = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
               = t("searches.#{search_scope}.label", default: "n.n.")
 
-  .card-body
+  .card-body.cutoff-corner-tr
     = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
       - flash[:search_panel]&.each do |key, message|
         ruby:

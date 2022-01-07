@@ -2,13 +2,13 @@ de:
   simple_form:
     labels:
       defaults:
-        username: "Ausweisnummer"
+        user_id: "Ausweisnummer"
         password: "Passwort"
         password_confirmation: "Passwort wiederholen"
 
     placeholders:
       defaults:
-        username: "Ihre Bibliotheksausweisnummer"
+        user_id: "Ihre Bibliotheksausweisnummer"
         password: "Ihr Bibliothekspasswort"
         password_confirmation: "Bitte geben Sie Ihr Passwort erneut ein"
 
@@ -18,7 +18,7 @@ de:
 
     hints:
       defaults:
+        user_id: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
         password: "Muss eine Zahl, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten. Min. 8 Zeichen. Max. 30 Zeichen. "
-        username: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
 
 

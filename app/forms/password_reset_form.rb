@@ -1,4 +1,4 @@
-class ResetPasswordForm < ApplicationForm
+class PasswordResetForm < ApplicationForm
 
   PASSWORD_FORMAT = /\A
     (?=.*\d)           # Must contain a digit

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get  "/logout", to: "sessions#destroy", as: :logout
 
   # Password reset
-  get  "/password/reset",        to: "password_resets#new",    as: :password_reset
+  get  "/password/reset",        to: "password_resets#new",    as: :password_reset_request
   post "/password/reset",        to: "password_resets#create", as: nil
-  get  "/password/reset/:token", to: "password_resets#edit",   as: :reset_password
+  get  "/password/reset/:token", to: "password_resets#edit",   as: :password_reset
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
   # Library account

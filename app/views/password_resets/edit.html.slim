@@ -1,4 +1,4 @@
-= simple_form_for @reset_password_form, url: reset_password_path(token: @token), method: :put do |f|
+= simple_form_for @form, as: :form, url: password_reset_path(token: @token), method: :put do |f|
   .card.card-shadowed
     h5.card-header.cutoff-corner-tr
       = t(".header")

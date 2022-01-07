@@ -14,7 +14,7 @@
   },
   "scripts": {
     "parcel:clobber": "rm -fr ./app/assets/builds/*",
-    "parcel:watch": "parcel watch --no-content-hash --no-cache --dist-dir ./app/assets/builds ./app/assets/src/application.js",
+    "parcel:watch": "parcel watch --no-content-hash --dist-dir ./app/assets/builds ./app/assets/src/application.js",
     "parcel:build": "parcel build --no-content-hash --no-cache --dist-dir ./app/assets/builds ./app/assets/src/application.js"
   },
   "devDependencies": {

@@ -13,4 +13,8 @@ module ApplicationHelper
     end
   end
 
+  def mask_email(email_string)
+    email_string.gsub(/(?<=.)[^@\n](?=[^@\n]*?[^@\n]@)|(?:(?<=@.)|(?!^)\G(?=[^@\n]*$)).(?=.*[^@\n]\.)/, "*")
+  end
+
 end

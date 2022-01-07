@@ -5,24 +5,36 @@ class Ils
     #
     # Authenticates a user.
     #
-    # @param username [String] a username.
+    # @param user_id [String] a user ID.
     # @param password [String] a password.
     # @return [true, false] `true` if the user has been authenticated successfully,
     #   `false` otherwise.
     #
-    def authenticate_user(username, password)
-      try_operation(__method__, username, password)
+    def authenticate_user(user_id, password)
+      try_operation(__method__, user_id, password)
     end
 
     #
     # Get user details.
     #
-    # @param username [String] a username.
-    # @return [Ils::User, nil] returns the user with the given username
+    # @param user_id [String] a user ID.
+    # @return [Ils::User, nil] returns the user with the given user_id
     #   or `nil` if the user doesn't exists.
     #
-    def get_user(username)
-      try_operation(__method__, username)
+    def get_user(user_id)
+      try_operation(__method__, user_id)
+    end
+
+    #
+    # Set/Update the password for a user.
+    #
+    # @param user_id [String] a user ID.
+    # @param password [String] the new password fo the user.
+    # @return [true, false] `true` if the password was set successfully,
+    #   `false` otherwise.
+    #
+    def set_user_password(user_id, password)
+      try_operation(__method__, user_id, password)
     end
 
     #

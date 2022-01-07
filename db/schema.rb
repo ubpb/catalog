@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_091359) do
+ActiveRecord::Schema.define(version: 2022_01_06_144830) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email"
     t.string "ils_primary_id", null: false
+    t.string "password_reset_token"
+    t.timestamp "password_reset_token_created_at"
     t.index ["ils_primary_id"], name: "index_users_on_ils_primary_id", unique: true
   end
 

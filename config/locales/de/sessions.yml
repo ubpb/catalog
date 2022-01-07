@@ -1,6 +1,7 @@
 de:
   sessions:
     new:
+      header: "Anmelden"
       submit: "Anmelden"
       cancel: "Abbrechen"
       forgot_password: "Ich habe mein Passwort vergessen"

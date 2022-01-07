@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get  "/login",  to: "sessions#new", as: :new_session
   get  "/logout", to: "sessions#destroy", as: :logout
 
+  # Password reset
+  get  "/password/reset",        to: "password_resets#new",    as: :password_reset
+  post "/password/reset",        to: "password_resets#create", as: nil
+  get  "/password/reset/:token", to: "password_resets#edit",   as: :reset_password
+  put  "/password/reset/:token", to: "password_resets#update", as: nil
+
   # Library account
   namespace :account, path: "account" do
     root to: redirect("/account/loans")
@@ -47,5 +53,10 @@ Rails.application.routes.draw do
   get "/:search_scope/records/:id", to: "compat/v2_records#show", constraints: { id: /.+/ }
   # Version 2.x searches
   get "/:search_scope/searches", to: "compat/v2_searches#index"
+
+  # Dev Tools
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
 end

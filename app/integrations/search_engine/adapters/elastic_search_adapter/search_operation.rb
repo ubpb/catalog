@@ -45,17 +45,17 @@ module SearchEngine::Adapters
               }
             }
 
-            # Use a "should" component that uses stop words for better ranking
-            container = es_query[:bool][:should]
-            container << {
-              simple_query_string: {
-                default_operator: "AND",
-                fields:           fields,
-                query:            query,
-                #quote_analyzer:   "default_with_stop_words_search",
-                analyzer:         "default_with_stop_words_search"
-              }
-            }
+            # # Use a "should" component that uses stop words for better ranking
+            # container = es_query[:bool][:should]
+            # container << {
+            #   simple_query_string: {
+            #     default_operator: "AND",
+            #     fields:           fields,
+            #     query:            query,
+            #     #quote_analyzer:   "default_with_stop_words_search",
+            #     analyzer:         "default_with_stop_words_search"
+            #   }
+            # }
           end
         end
 
@@ -141,7 +141,7 @@ module SearchEngine::Adapters
       end
 
       def build_search_result(es_result)
-        total = es_result["hits"]["total"]
+        total = es_result.dig("hits", "total", "value") || 0
 
         hits = es_result["hits"]["hits"].map do |hit|
           SearchEngine::Hit.new(

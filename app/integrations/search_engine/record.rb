@@ -2,6 +2,8 @@ class SearchEngine
   class Record < BaseStruct
     # Unique ID of the record. REQUIRED.
     attribute :id, Types::String
+    # Old Aleph ID
+    attribute :aleph_id, Types::String.optional
     # Hbz ID (HT....)
     attribute :hbz_id, Types::String.optional
     # ZDB ID

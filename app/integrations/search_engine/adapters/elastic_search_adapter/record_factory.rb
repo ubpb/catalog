@@ -9,45 +9,46 @@ module SearchEngine::Adapters
       def build(data)
         SearchEngine::Record.new(
           id: data["_id"],
-          hbz_id: source_value(data, "ht_number"),
+          aleph_id: source_value(data, "aleph_id"),
+          hbz_id: source_value(data, "hbz_id"),
           zdb_id: source_value(data, "zdb_id"),
-          selection_codes: normalize_array(source_value(data, "selection_code")),
-          signature: source_value(data, "signature"),
-          notations: normalize_array(source_value(data, "notation")),
+          # selection_codes: normalize_array(source_value(data, "selection_code")),
+          # signature: source_value(data, "signature"),
+          # notations: normalize_array(source_value(data, "notation")),
 
-          content_type: source_value(data, "inhaltstyp_facet").to_sym,
-          media_type: source_value(data, "erscheinungsform_facet").to_sym,
-          carrier_type: source_value(data, "materialtyp_facet").to_sym,
+          # content_type: source_value(data, "inhaltstyp_facet").to_sym,
+          # media_type: source_value(data, "erscheinungsform_facet").to_sym,
+          # carrier_type: source_value(data, "materialtyp_facet").to_sym,
 
-          is_superorder: source_value(data, "is_superorder"),
-          is_secondary_form: source_value(data, "is_secondary_form"),
+          # is_superorder: source_value(data, "is_superorder"),
+          # is_secondary_form: source_value(data, "is_secondary_form"),
 
-          title: source_value(data, "title_display").presence || "n.n.",
-          creators_and_contributors: normalize_array(source_value(data, "creator_contributor_display")),
-          year_of_publication: source_value(data, "creationdate"),
-          edition: source_value(data, "edition"),
-          publishers: normalize_array(source_value(data, "publisher")),
-          format: source_value(data, "format"),
-          languages: normalize_array(source_value(data, "language")),
-          identifiers: build_identifiers(data),
-          subjects: normalize_array(source_value(data, "subject")),
-          descriptions: normalize_array(source_value(data, "description")),
-          notes: normalize_array(source_value(data, "local_comment")),
+          title: source_value(data, "title_display") || "n.n.",
+          # creators_and_contributors: normalize_array(source_value(data, "creator_contributor_display")),
+          # year_of_publication: source_value(data, "creationdate"),
+          # edition: source_value(data, "edition"),
+          # publishers: normalize_array(source_value(data, "publisher")),
+          # format: source_value(data, "format"),
+          # languages: normalize_array(source_value(data, "language")),
+          # identifiers: build_identifiers(data),
+          # subjects: normalize_array(source_value(data, "subject")),
+          # descriptions: normalize_array(source_value(data, "description")),
+          # notes: normalize_array(source_value(data, "local_comment")),
 
-          resource_links: build_resource_links(data),
-          fulltext_links: build_fulltext_links(data),
-          part_of: build_part_of(data),
-          source: build_source(data),
-          relations: build_relations(data),
+          # resource_links: build_resource_links(data),
+          # fulltext_links: build_fulltext_links(data),
+          # part_of: build_part_of(data),
+          # source: build_source(data),
+          # relations: build_relations(data),
 
-          journal_stocks: build_journal_stocks(data)
+          # journal_stocks: build_journal_stocks(data)
         )
       end
 
     private
 
       def source_value(data, key)
-        data["_source"][key]
+        data["_source"][key].presence
       end
 
       # Some data fields are sometimes Arrays and sometimes Strings

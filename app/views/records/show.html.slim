@@ -7,14 +7,11 @@
   .card-body(class=body_class)
     h3.mb-0 = @record.title
 
-    / TODO: Remove me
-    - fake_record_id = ItemsController::TEST_RECORDS.sample
-
     div(
       data-controller="availabilities"
       data-availabilities-url-value=availabilities_path(mode: "badge")
       data-availabilities-target="recordId"
-      data-record-id=fake_record_id
+      data-record-id=@record.id
     )
       div(
         data-availabilities-target="output"
@@ -28,5 +25,5 @@
       = "TODO"
 
     h4 = "Exemplare"
-    turbo-frame#items(src=items_path(search_scope: current_search_scope, record_id: fake_record_id))
+    turbo-frame#items(src=items_path(search_scope: current_search_scope, record_id: @record.id))
       i.fas.fa-lg.fa-spinner.fa-pulse

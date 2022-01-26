@@ -59,10 +59,9 @@ ruby:
         - if index > 0
           hr
 
-        / TODO: Remove fake record id, and replace with hit.record.id
         .hit(
           data-availabilities-target="recordId"
-          data-record-id=ItemsController::TEST_RECORDS.sample
+          data-record-id=hit.record.id
         )
           = render "hit", hit: hit
 

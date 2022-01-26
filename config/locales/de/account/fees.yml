@@ -10,7 +10,12 @@ de:
           Hier werden Ihnen nur verbuchte Gebühren angezeigt. Bitte beachten Sie mögliche
           schwebene Gebühren, die sich aus überfälligen Medien ergeben können. Diese
           können Sie unter <a href="%{url}" class="alert-link">Ausgeliehene Medien</a> einsehen.
+        payment-info: >
+          Bitte zahlen Sie ihre offenen Gebühren an unserem Kassenautomaten im Eingangsbereich der Bibliothek.
+        credit-info: >
+          Sie haben Guthaben. Bitte wenden Sie sich an die Ortsleihe, damit wir Ihnen den Betrag auszahlen können.
 
       fee:
         date: "Datum"
         fine: "Gebühr"
+        credit: "Gutschrift"

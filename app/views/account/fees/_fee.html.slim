@@ -10,6 +10,10 @@
     dl.mb-0
       dt = t(".date")
       dd = l(fee.date.to_date)
-      dt = t(".fine")
-      dd: .badge.bg-danger = number_to_currency(fee.balance, unit: "€")
+      - if fee.balance >= 0
+        dt = t(".fine")
+        dd: .badge.bg-danger = number_to_currency(fee.balance, unit: "€")
+      - else
+        dt = t(".credit")
+        dd: .badge.bg-success = number_to_currency(fee.balance.abs, unit: "€")
 

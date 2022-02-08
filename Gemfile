@@ -21,6 +21,11 @@ gem "sprockets-rails",    "~> 3.4.2"
 gem "stimulus-rails",     "~> 1.0.2"
 gem "view_component",     "~> 2.31"
 
+# Pin i18n to 1.8.x until
+# https://github.com/github/view_component/issues/1258
+# gets a fix.
+gem "i18n", "~> 1.8.11"
+
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :development, :test do

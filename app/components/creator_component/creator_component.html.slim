@@ -1,0 +1,17 @@
+- spacer_class = @iteration.last? ? "me-0" : "me-2"
+span(class=spacer_class)
+  span = @creator.name
+
+  ruby:
+    relationships = @creator.relationships.map do |r|
+      t("code_tables.creator_relationships.#{r}", default: nil)
+    end.compact
+
+  - if relationships.present?
+    span.ms-1 = "(#{relationships.join(", ")})"
+
+  - if gnd_id
+    span.ms-1 = link_to "http://d-nb.info/gnd/#{gnd_id}" do
+      i.fa-regular.fa-id-card
+  - else
+    span.ms-1: i.fa-regular.fa-id-card.text-muted

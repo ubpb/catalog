@@ -2,8 +2,9 @@ class Ils
   class Item < BaseStruct
     attribute :id, Types::String
     attribute :call_number, Types::String.optional
-    attribute :status, Ils::ItemStatus
     attribute :barcode, Types::String.optional
+    attribute :status, Ils::ItemStatus.optional
+    attribute :policy, Ils::ItemPolicy.optional
     attribute :library, Ils::Library.optional
     attribute :location, Ils::Location.optional
     attribute :process_type, Ils::ProcessType.optional

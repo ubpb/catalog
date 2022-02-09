@@ -12,14 +12,13 @@ module Ils::Adapters
           call_number: get_call_number(alma_item),
           barcode: get_barcode(alma_item),
           status: get_status(alma_item),
+          policy: get_policy(alma_item),
           library: get_library(alma_item),
           location: get_location(alma_item),
           process_type: get_process_type(alma_item),
           due_date: get_due_date(alma_item),
           due_date_policy: get_due_date_policy(alma_item)
         )
-
-        #binding.pry
 
         item
       end
@@ -45,6 +44,15 @@ module Ils::Adapters
 
         if code && label
           Ils::ItemStatus.new(code: code,label: label)
+        end
+      end
+
+      def get_policy(alma_item)
+        code  = alma_item.dig("item_data", "policy", "value")
+        label = alma_item.dig("item_data", "policy", "desc")
+
+        if code && label
+          Ils::ItemPolicy.new(code: code,label: label)
         end
       end
 

@@ -4,7 +4,7 @@ module Ils::Adapters
 
       def call(record_id)
         # Get all items for that record id
-        alma_items = get_items(record_id)
+        alma_items = get_items(record_id) || []
         # Return list of items
         alma_items.map{|alma_item| ItemFactory.build(alma_item)}
       end

@@ -4,3 +4,8 @@ de:
       oth: Sonstige
       aut: Autor
       edt: Herausgeber
+
+    process_types:
+      default: "Verfügbar"
+      loan: "Entliehen"
+

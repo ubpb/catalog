@@ -56,7 +56,8 @@ module Ils::Adapters
               total_items: datafield.subfields("f")&.first&.value,
               non_available_items: datafield.subfields("g")&.first&.value,
               library: datafield.subfields("q")&.first&.value,
-              location: datafield.subfields("c")&.first&.value
+              location: datafield.subfields("c")&.first&.value,
+              location_code: datafield.subfields("j")&.first&.value
             }
           end
           .compact

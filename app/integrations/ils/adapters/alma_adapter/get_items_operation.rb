@@ -4,7 +4,7 @@ module Ils::Adapters
 
       def call(record_id)
         # Get all items for that record id
-        alma_items = get_items(record_id) || []
+        alma_items = get_items(record_id)
         # Return list of items
         alma_items.map{|alma_item| ItemFactory.build(alma_item)}
       end
@@ -12,7 +12,7 @@ module Ils::Adapters
     private
 
       def get_items(record_id)
-        adapter.api.get(
+        items = adapter.api.get(
           "bibs/#{record_id}/holdings/ALL/items",
           format: "application/json",
           params: {
@@ -20,7 +20,11 @@ module Ils::Adapters
             view: "label",
             limit: 100 # TODO: Add pagination to show more than 100 items
           }
-        ).try(:[], "item")
+        ).try(:[], "item") || []
+
+        items.reject do |i|
+          i.dig("item_data", "location", "value") =~ /UNASSIGNED/
+        end
       rescue ExlApi::LogicalError
         []
       end

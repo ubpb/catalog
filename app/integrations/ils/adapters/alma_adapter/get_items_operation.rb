@@ -17,7 +17,8 @@ module Ils::Adapters
           format: "application/json",
           params: {
             expand: "due_date_policy,due_date",
-            view: "label"
+            view: "label",
+            limit: 100 # TODO: Add pagination to show more than 100 items
           }
         ).try(:[], "item")
       rescue ExlApi::LogicalError

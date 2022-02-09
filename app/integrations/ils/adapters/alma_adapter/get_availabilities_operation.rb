@@ -59,8 +59,12 @@ module Ils::Adapters
               location: datafield.subfields("c")&.first&.value,
               location_code: datafield.subfields("j")&.first&.value
             }
-          end
-          .compact
+          end.reject do |availability|
+            # Reject all locations that are UNASSIGNED in Alma
+            # TODO: Remove after these locations has been deleted after
+            # migration
+            availability[:location] =~ /UNASSIGNED/
+          end.compact
       end
 
     end

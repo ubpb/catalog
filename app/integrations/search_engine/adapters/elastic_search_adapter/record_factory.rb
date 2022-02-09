@@ -14,7 +14,10 @@ module SearchEngine::Adapters
           zdb_id: get_zdb_id(data),
 
           title: get_title(data),
-          creators: get_creators(data)
+          creators: get_creators(data),
+
+          host_item_id: get_host_item_id(data)
+
           # year_of_publication: source_value(data, "creationdate"),
           # edition: source_value(data, "edition"),
           # publishers: normalize_array(source_value(data, "publisher")),
@@ -76,6 +79,10 @@ module SearchEngine::Adapters
             )
           }
         )
+      end
+
+      def get_host_item_id(data)
+        source_value(data, "host_item_id")
       end
 
     private # Helper

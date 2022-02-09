@@ -48,7 +48,7 @@ ruby:
   .card-body
     #hits(
       data-controller="availabilities"
-      data-availabilities-url-value=availabilities_path
+      data-availabilities-url-value=availabilities_path(mode: "badge")
     )
       .alert.alert-warning(
         data-availabilities-target="error"

@@ -15,7 +15,9 @@ class SearchEngine
     # List of Creators
     attribute :creators, Types::Array.of(Creator).default([].freeze)
 
-
+    # Link to a host record that holds the items
+    # for the record (Marc field 773)
+    attribute :host_item_id, Types::String.optional
 
     # # Local selection codes (Selektionskennzeichen)
     # attribute :selection_codes, Types::Array.of(Types::String).default([].freeze)

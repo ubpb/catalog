@@ -7,12 +7,12 @@ de:
     listing:
       no_items_message: "Keine Exemplare verfügbar"
 
-      due_date_info: "Rückgabe vorauss. bis %{due_date}"
+      due_date_info: "Fällig am %{due_date}"
 
       header:
         call_number: "Signatur"
-        library: "Bibliothek"
         location: "Standort"
+        policy: "Leihart"
         status: "Status"
-        process_type: "Prozess-Status"
-        due_date_policy: "Due-Date-Policy"
+        #process_type: "Prozess-Status"
+        #due_date_policy: "Due-Date-Policy"

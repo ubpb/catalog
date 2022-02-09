@@ -8,5 +8,5 @@
       end
 
   div.fst-italic
-    span = "#{availability[:library]} (#{availability[:location]}):"
+    span = "#{availability[:location]} (#{availability[:location_code]}):"
     span.ms-1(class=availability_classes) = t("availabilities.availability.#{availability[:availability]}", default: "n.a.")

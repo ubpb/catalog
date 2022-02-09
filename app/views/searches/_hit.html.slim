@@ -8,11 +8,11 @@ div
   / - if part_of = record.part_of.presence
   /   .mb-1.fst-italic = part_of.map(&:label).join("; ")
 
-  / Creators & Contributors
+  / Creators
   ruby:
     creators = record.creators.select do |c|
       c.relationships.empty? ||
-      (c.relationships & ["aut", "edt"]).any?
+      (c.relationships & ["aut", "edt", "oth"]).any?
     end
 
   - if creators.present?

@@ -16,7 +16,7 @@
               ruby:
                 status = t(
                   "code_tables.process_types.#{code}",
-                  default: "–"
+                  default: (item.process_type.label || "–")
                 )
               = status
 

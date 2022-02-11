@@ -8,7 +8,7 @@ class CreatorComponent < ViewComponent::Base
 
   def gnd_id
     @gnd_id ||= @creator.authority_ids.find do |aid|
-      aid.type == "DE-588"
+      aid.type == "GND"
     end&.id
   end
 

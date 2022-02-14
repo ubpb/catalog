@@ -22,7 +22,12 @@
 
     .mb-4
       h4 = "Details"
-      = "TODO"
+      dl
+        dt = "Autor(en)"
+        - if @record.creators.present?
+          dd = render(CreatorComponent.with_collection(@record.creators))
+        - else
+          dd = "–"
 
     h4 = "Exemplare"
     ruby:

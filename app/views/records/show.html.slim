@@ -28,6 +28,11 @@
           dd = render(CreatorComponent.with_collection(@record.creators))
         - else
           dd = "–"
+        dt = "Erscheinungsjahr"
+        - if (yop = @record.year_of_publication).present?
+          dd = yop
+        - else
+          dd = "–"
 
     h4 = "Exemplare"
     ruby:

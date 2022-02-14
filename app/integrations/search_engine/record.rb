@@ -14,6 +14,8 @@ class SearchEngine
 
     # List of Creators
     attribute :creators, Types::Array.of(Creator).default([].freeze)
+    # Year of publication
+    attribute :year_of_publication, Types::String.optional
 
     # Link to a host record that holds the items
     # for the record (Marc field 773)

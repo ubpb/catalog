@@ -15,10 +15,10 @@ module SearchEngine::Adapters
 
           title: get_title(data),
           creators: get_creators(data),
+          year_of_publication: get_year_of_publication(data),
 
           host_item_id: get_host_item_id(data)
 
-          # year_of_publication: source_value(data, "creationdate"),
           # edition: source_value(data, "edition"),
           # publishers: normalize_array(source_value(data, "publisher")),
           # format: source_value(data, "format"),
@@ -79,6 +79,10 @@ module SearchEngine::Adapters
             )
           }
         )
+      end
+
+      def get_year_of_publication(data)
+        source_value(data, "year_of_publication")&.dig("label")
       end
 
       def get_host_item_id(data)

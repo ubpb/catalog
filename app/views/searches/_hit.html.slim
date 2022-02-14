@@ -18,6 +18,9 @@ div
   - if creators.present?
     .mb-1 = render(CreatorComponent.with_collection(creators))
 
+  - if (yop = record.year_of_publication).present?
+    = yop
+
   / Links
   / - fl = record.fulltext_links.first
   / - rl = record.resolver_link

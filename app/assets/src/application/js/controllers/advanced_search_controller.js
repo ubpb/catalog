@@ -32,11 +32,6 @@ export default class extends Controller {
     let newFieldContent = this.templateTarget.innerHTML
     let myInputGroup = event.target.closest(".input-group")
     myInputGroup.insertAdjacentHTML('afterend', newFieldContent)
-
-    // let newInputGroup =
-    // debugger
-    // let queryField = myInputGroup.querySelectorAll("input[type=text]")
-    // queryField.focus()
   }
 
   remove_field(event) {

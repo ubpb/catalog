@@ -1,5 +1,10 @@
 class SearchEngine
   class Record < BaseStruct
+    # When was the record created
+    attribute :created_at, Types::Date.optional
+    # Was the record deleted or supressed for discovery?
+    attribute :is_deleted, Types::Bool.default(false)
+
     # Unique ID of the record. REQUIRED.
     attribute :id, Types::String
     # Old Aleph ID
@@ -8,6 +13,8 @@ class SearchEngine
     attribute :hbz_id, Types::String.optional
     # ZDB ID
     attribute :zdb_id, Types::String.optional
+    # List of additional identifiers (e.g. ISBN, ISSN, etc.)
+    attribute :additional_identifiers, Types::Array.of(Identifier).default([].freeze)
 
     # The title of the record. REQUIRED.
     attribute :title, Types::String
@@ -16,10 +23,30 @@ class SearchEngine
     attribute :creators, Types::Array.of(Creator).default([].freeze)
     # Year of publication
     attribute :year_of_publication, Types::String.optional
+    # Place of publication
+    attribute :place_of_publication, Types::String.optional
+    # Publisher
+    attribute :publisher, Types::String.optional
+    # Edition
+    attribute :edition, Types::String.optional
+    # Physical description
+    attribute :physical_description, Types::String.optional
+
+    # Languages
+    attribute :languages, Types::Array.of(Types::String).default([].freeze)
+    # Subjects
+    attribute :subjects, Types::Array.of(Types::String).default([].freeze)
+    # Lokal notations
+    attribute :local_notations, Types::Array.of(Types::String).default([].freeze)
 
     # Link to a host record that holds the items
     # for the record (Marc field 773)
     attribute :host_item_id, Types::String.optional
+
+    # Related resource links
+    attribute :related_resource_links, Types::Array.of(Link).default([].freeze)
+    # Fulltext links
+    attribute :fulltext_links, Types::Array.of(Link).default([].freeze)
 
     # # Local selection codes (Selektionskennzeichen)
     # attribute :selection_codes, Types::Array.of(Types::String).default([].freeze)

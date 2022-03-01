@@ -5,3 +5,24 @@ de:
     stepper:
       back_to_search: "Zur Ergebnisliste"
       info: "Ergebnis %{position} von %{total_hits}"
+
+    show:
+      details:
+        header: "Details"
+        creators: "Autor(en) / Beteiligte"
+        year_of_publication: "Erscheinungsjahr"
+        place_of_publication: "Erscheinungsort"
+        publisher: "Verlag"
+        edition: "Auflage"
+        physical_description: "Physische Beschreibung"
+        languages: "Sprache(n)"
+        subjects: "Schlagworte"
+        related_resource_links: "Links zum Inhalt"
+        fulltext_links: "Links zum Volltext"
+
+      items:
+        header: "Exemplare"
+
+
+
+

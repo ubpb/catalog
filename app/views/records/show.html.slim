@@ -21,20 +21,53 @@
     hr.mb-4
 
     .mb-4
-      h4 = "Details"
+      h4 = t(".details.header")
       dl
-        dt = "Autor(en)"
-        - if @record.creators.present?
-          dd = render(CreatorComponent.with_collection(@record.creators))
-        - else
-          dd = "–"
-        dt = "Erscheinungsjahr"
-        - if (yop = @record.year_of_publication).present?
-          dd = yop
-        - else
-          dd = "–"
+        dt = t(".details.creators")
+        dd = optional_value(@record.creators) do |creators|
+          - render(CreatorComponent.with_collection(creators))
 
-    h4 = "Exemplare"
+        dt = t(".details.year_of_publication")
+        dd = optional_value(@record.year_of_publication)
+
+        dt = t(".details.place_of_publication")
+        dd = optional_value(@record.place_of_publication)
+
+        dt = t(".details.publisher")
+        dd = optional_value(@record.publisher)
+
+        dt = t(".details.edition")
+        dd = optional_value(@record.edition)
+
+        dt = t(".details.physical_description")
+        dd = optional_value(@record.physical_description)
+
+        dt = t(".details.languages")
+        dd = optional_value(@record.languages) do |languages|
+          - languages.join("; ").upcase
+
+        dt = t(".details.subjects")
+        dd = optional_value(@record.subjects) do |subjects|
+          - subjects.each do |subject|
+            span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
+
+        = optional_block(@record.related_resource_links) do |links|
+          dt = t(".details.related_resource_links")
+          dd
+            ul.mb-0
+              - links.each do |link|
+                li = link_to link.label, link.url
+
+        = optional_block(@record.fulltext_links) do |links|
+          dt = t(".details.fulltext_links")
+          dd
+            ul.mb-0
+              - links.each do |link|
+                li = link_to link.label, link.url
+
+
+
+    h4 = t(".items.header")
     ruby:
       path = items_path(
         search_scope: current_search_scope,

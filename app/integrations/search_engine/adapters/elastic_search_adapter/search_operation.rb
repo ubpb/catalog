@@ -15,6 +15,7 @@ module SearchEngine::Adapters
           size: search_request.page.size,
           preference: options[:session_id].presence || "_local"
         }
+        puts JSON.pretty_generate(es_request)
 
         # Perform the search request against ES.
         es_result = adapter.client.search(es_request)
@@ -80,7 +81,7 @@ module SearchEngine::Adapters
 
         # Ignore deleted records
         es_query[:bool][:must_not] << {
-          term: { status: "D" }
+          term: { is_deleted: true }
         }
 
         es_query

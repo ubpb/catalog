@@ -24,3 +24,6 @@ application.register("loans", LoansController)
 
 import RemoteLoaderController from "./remote_loader_controller.js"
 application.register("remote-loader", RemoteLoaderController)
+
+import AdvancedSearchController from "./advanced_search_controller.js"
+application.register("advanced-search", AdvancedSearchController)

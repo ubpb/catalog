@@ -9,22 +9,26 @@
               = t("searches.#{search_scope}.label", default: "n.n.")
 
   .card-body.cutoff-corner-tr
-    = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
-      - flash[:search_panel]&.each do |key, message|
-        ruby:
-          message_class = case key.to_sym
-            when :info  then "callout-info"
-            when :error then "callout-danger"
-          end
-        .callout(class=message_class)
-          == message
+    - flash[:search_panel]&.each do |key, message|
+      ruby:
+        message_class = case key.to_sym
+          when :info  then "callout-info"
+          when :error then "callout-danger"
+        end
+      .callout(class=message_class)
+        == message
 
-      - if @search_request.present?
-        = simple_form_for :q, url: searches_path(search_scope: current_search_scope), method: :post do |f|
-          - @search_request.queries.each.with_index do |q, i|
-            = f.input q.name, input_html: { id: "q_#{q.name}_#{i}", name: "q[#{q.name}][]", value: q.value }
-          = f.submit "Search", class: "btn btn-primary"
-      - else
-          = f.input "any", input_html: { id: "q_any_0", name: "q[any][]" }
-          = f.submit "Search", class: "btn btn-primary"
+    .row: .col-lg-9
+      = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
+        div(data-controller="advanced-search")
+          template(data-advanced-search-target="template")
+            = render "search_field", form: f
+
+          - if @search_request.present?
+            - @search_request.queries.each.with_index do |q, i|
+              = render "search_field", form: f, query: q
+            = f.submit t(".search"), class: "btn btn-primary"
+          - else # Default search panel
+            = render "search_field", form: f, autofocus: true
+            = f.submit t(".search"), class: "btn btn-primary"
 

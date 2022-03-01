@@ -1,0 +1,16 @@
+ruby:
+  query             = local_assigns.fetch(:query) { nil }
+  autofocus         = local_assigns.fetch(:autofocus) { false }
+  searchables_names = SearchEngine[current_search_scope].adapter.searchables_names
+
+.input-group.mb-3
+  = form.input "query", input_html: { name: "q[]", value: query&.value, "data-advanced-search-target": "input" }, label: false, wrapper: false, autofocus: autofocus
+
+  = form.input "field", input_html: { name: "f[]", class: "flex-grow-0 w-auto" }, collection: searchables_names, prompt: false, label: false, wrapper: false, label_method: ->(name){t("searches.searchables.#{current_search_scope}.#{name}", default: name)}, selected: query&.name
+
+  = link_to "#", class: "btn btn-secondary", "data-action": "advanced-search#add_field", "data-advanced-search-target": "addButton"
+    i.fas.fa-plus
+  = link_to "#", class: "btn btn-secondary", "data-action": "advanced-search#remove_field", "data-advanced-search-target": "removeButton"
+    i.fas.fa-minus
+
+

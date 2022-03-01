@@ -2,6 +2,9 @@ de:
   searches:
     breadcrumb: "Suche"
 
+    search_panel:
+      search: "Suchen"
+
     availabilities:
       error: >
         Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte
@@ -22,6 +25,13 @@ de:
       syntax_error: "TODO: Syntax-Error"
       invalid_after_validation: "TODO: Leere Suche nach Validierung"
       modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
+
+    searchables:
+      local:
+        any: "Alle Felder"
+        creator: "Autor(en) / Beteiligte"
+        title: "Titel"
+        yop: "Erscheinungsjahr"
 
     sortables:
       local:

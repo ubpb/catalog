@@ -52,13 +52,13 @@ class SearchesController < ApplicationController
   def create
     queries = []
 
-    params[:q].each do |name, values|
-      values.each do |value|
-        queries << SearchEngine::SearchRequest::Query.new(
-          name: name,
-          value: value
-        )
-      end
+    params[:q].each.with_index do |query, index|
+      next if query.blank?
+
+      queries << SearchEngine::SearchRequest::Query.new(
+        name: params[:f][index].presence || "any",
+        value: query
+      )
     end
 
     sr = SearchEngine::SearchRequest.new(queries: queries)

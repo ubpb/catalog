@@ -67,7 +67,7 @@
                 li = link_to link.label, link.url
 
 
-    - if current_search_scope == "local"
+    - if current_search_scope == :local
       h4 = t(".items.header")
       ruby:
         path = items_path(

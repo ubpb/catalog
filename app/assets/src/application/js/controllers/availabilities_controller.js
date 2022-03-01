@@ -3,7 +3,7 @@ import axios from "axios"
 
 export default class extends Controller {
   static targets = ["recordId", "output", "error"]
-  static values = { url: String }
+  static values = { url: String, scope: String }
 
   connect() {
     // Hide error target
@@ -18,7 +18,11 @@ export default class extends Controller {
 
     // Load availabilities from the server and update the
     // page.
-    this.getAvailabilities(recordIds)
+    if (this.scopeValue === "local") {
+      this.getAvailabilities(recordIds)
+    } else {
+      this.hideAllOutputTargets()
+    }
   }
 
   getAvailabilities(recordIds) {

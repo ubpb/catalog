@@ -323,7 +323,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
-    view_component (2.49.0)
+    view_component (2.49.1)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.2.0)
@@ -375,7 +375,7 @@ DEPENDENCIES
   slim (~> 4.0)
   sprockets-rails (~> 3.4.2)
   stimulus-rails (~> 1.0.2)
-  view_component (~> 2.31)
+  view_component (~> 2.49)
   web-console (>= 3.3)
   webdrivers (>= 4.3)
 

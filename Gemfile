@@ -19,7 +19,7 @@ gem "simple_form",        "~> 5.1"
 gem "slim",               "~> 4.0"
 gem "sprockets-rails",    "~> 3.4.2"
 gem "stimulus-rails",     "~> 1.0.2"
-gem "view_component",     "~> 2.31"
+gem "view_component",     "~> 2.49"
 
 # Pin i18n to 1.8.x until
 # https://github.com/github/view_component/issues/1258

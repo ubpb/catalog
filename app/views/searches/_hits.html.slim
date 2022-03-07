@@ -49,7 +49,6 @@ ruby:
     #hits(
       data-controller="availabilities"
       data-availabilities-url-value=availabilities_path(mode: "badge")
-      data-availabilities-scope-value=current_search_scope
     )
       .alert.alert-warning(
         data-availabilities-target="error"
@@ -57,16 +56,20 @@ ruby:
       ) = t("searches.availabilities.error")
 
       - search_result.hits.each.with_index do |hit, index|
+        ruby:
+          check_availabilities = current_search_scope == :local && !hit.record.is_online_resource
+
         - if index > 0
           hr
 
         .hit(
-          data-availabilities-target="recordId"
+          data-availabilities-target="record"
           data-record-id=hit.record.id
+          data-availabilities-enabled=check_availabilities
         )
           = render "hit", hit: hit
 
-          .mt-2(data-availabilities-target="output")
+          .mt-2(data-availabilities-output)
             i.fas.fa-sm.fa-spinner.fa-pulse
   .card-footer
     = paginator

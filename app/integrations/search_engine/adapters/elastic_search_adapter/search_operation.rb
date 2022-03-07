@@ -7,6 +7,7 @@ module SearchEngine::Adapters
         es_request = {
           index: adapter.options[:index],
           body: {
+            track_total_hits: true,
             query: build_query(search_request),
             aggs: build_aggregations,
             sort: build_sort(search_request)

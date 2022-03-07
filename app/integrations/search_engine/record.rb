@@ -1,7 +1,8 @@
 class SearchEngine
   class Record < BaseStruct
-    # When was the record created
-    attribute :created_at, Types::Date.optional
+    # When was the last time an item or electronic portfolio
+    # was linked to the title (used for 'Neuerwerbungslisten')
+    attribute :newtest_acquisition_date, Types::Date.optional
     # Was the record deleted or supressed for discovery?
     attribute :is_deleted, Types::Bool.default(false)
 

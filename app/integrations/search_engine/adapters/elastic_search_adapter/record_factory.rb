@@ -8,7 +8,7 @@ module SearchEngine::Adapters
 
       def build(data)
         record = SearchEngine::Record.new(
-          created_at: get_created_at(data),
+          newtest_acquisition_date: get_newtest_acquisition_date(data),
           is_deleted: get_is_deleted(data),
 
           id: get_id(data),
@@ -61,8 +61,8 @@ module SearchEngine::Adapters
 
     private
 
-      def get_created_at(data)
-        date = source_value(data, "meta", "created_at")
+      def get_newtest_acquisition_date(data)
+        date = source_value(data, "meta", "newtest_acquisition_date")
         Date.parse(date) if date
       end
 

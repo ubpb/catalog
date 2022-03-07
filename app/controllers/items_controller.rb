@@ -14,7 +14,7 @@ private
     items = []
     items += Ils.get_items(@record_id)
     items += Ils.get_items(host_item_id) if host_item_id
-    items.sort{ |a, b| a.call_number <=> b.call_number }
+    items
   end
 
 end

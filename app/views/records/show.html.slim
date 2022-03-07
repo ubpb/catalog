@@ -7,17 +7,18 @@
   .card-body(class=body_class)
     h3.mb-0 = @record.title
 
-    div(
-      data-controller="availabilities"
-      data-availabilities-url-value=availabilities_path(mode: "badge")
-      data-availabilities-scope-value=current_search_scope
-      data-availabilities-target="recordId"
-      data-record-id=@record.id
-    )
+    - if current_search_scope == :local && !@record.is_online_resource
       div(
-        data-availabilities-target="output"
+        data-controller="availabilities"
+        data-availabilities-url-value=availabilities_path(mode: "badge")
       )
-        i.fas.fa-sm.fa-spinner.fa-pulse
+        div(
+          data-availabilities-target="record"
+          data-record-id=@record.id
+          data-availabilities-enabled
+        )
+          div(data-availabilities-output)
+            i.fas.fa-sm.fa-spinner.fa-pulse
 
     hr.mb-4
 
@@ -67,7 +68,7 @@
                 li = link_to link.label, link.url
 
 
-    - if current_search_scope == :local
+    - if current_search_scope == :local && !@record.is_online_resource
       h4 = t(".items.header")
       ruby:
         path = items_path(

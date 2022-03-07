@@ -2,27 +2,28 @@ import { Controller } from "@hotwired/stimulus"
 import axios from "axios"
 
 export default class extends Controller {
-  static targets = ["recordId", "output", "error"]
-  static values = { url: String, scope: String }
+  static targets = ["record", "error"]
+  static values = { url: String }
 
   connect() {
     // Hide error target
     this.hideErrorTarget()
+    // Hide all outputs
+    this.hideAllOutputs()
 
-    // Fetch the record IDs from the DOM. For each
-    // recordID target there must be a data-record-id
-    // element on the node which holds the record ID value.
-    let recordIds = this.recordIdTargets.map(element => {
-      return element.dataset.recordId
+    // Check each record target if there is a recordId
+    // on that element and if availability checking is
+    // enabled for that record. If this is the case, select
+    // the recordId and show the output.
+    let recordIds = this.recordTargets.map(recordTarget => {
+      if (this.isCheckingEnabledForRecord(recordTarget)) {
+        this.showOutputForRecord(recordTarget)
+        return recordTarget.dataset.recordId
+      }
     }).filter(String)
 
-    // Load availabilities from the server and update the
-    // page.
-    if (this.scopeValue === "local") {
-      this.getAvailabilities(recordIds)
-    } else {
-      this.hideAllOutputTargets()
-    }
+    // For each recordId try to load availability information
+    this.getAvailabilities(recordIds)
   }
 
   getAvailabilities(recordIds) {
@@ -33,14 +34,40 @@ export default class extends Controller {
   }
 
   handleError() {
-    this.hideAllOutputTargets()
+    this.hideAllOutputs()
     this.showErrorTarget()
   }
 
-  hideAllOutputTargets() {
-    this.outputTargets.forEach(outputTarget => {
-      outputTarget.style.display = "none";
+  isCheckingEnabledForRecord(recordTarget) {
+    return recordTarget.hasAttribute("data-availabilities-enabled")
+  }
+
+  hideAllOutputs() {
+    this.recordTargets.forEach(recordTarget => {
+      this.hideOutputForRecord(recordTarget)
     })
+  }
+
+  hideOutputForRecord(recordTarget) {
+    let output = this.getOutputForRecord(recordTarget)
+    if (output) {
+      output.style.display = "none"
+    }
+  }
+
+  showOutputForRecord(recordTarget, innerHTML = null) {
+    let output = this.getOutputForRecord(recordTarget)
+    if (output) {
+      output.style.display = "block"
+
+      if (innerHTML) {
+        output.innerHTML = innerHTML
+      }
+    }
+  }
+
+  getOutputForRecord(recordTarget) {
+    return recordTarget.querySelector("[data-availabilities-output]")
   }
 
   hideErrorTarget() {
@@ -56,26 +83,24 @@ export default class extends Controller {
   }
 
   updatePage(availabilities) {
-    // Hide all output targets
-    this.hideAllOutputTargets()
+    // Hide all outputs
+    this.hideAllOutputs()
 
-    // Iterate over all recordId targets...
-    this.recordIdTargets.forEach((recordIdTarget, index) => {
-      // get the recordId value from the target
-      let recordId = recordIdTarget.dataset.recordId
+    // Iterate over all record targets...
+    this.recordTargets.forEach(recordTarget => {
       // load the availabilities for the current recordId
-      let matchedAvailabilities = availabilities.find(element => {
-        return element.record_id == recordId
+      let matchedAvailabilities = availabilities.find(availability => {
+        return availability.record_id == recordTarget.dataset.recordId
       })
-      // Select the output target: For each recordId target, there must
-      // be a matching output target, so we can use the index of the
-      // current recordId target to select the matching output target.
-      let outputTarget = this.outputTargets[index]
+
+      let output = this.getOutputForRecord(recordTarget)
 
       // Update the page using the output target
-      if (matchedAvailabilities && outputTarget) {
-        outputTarget.innerHTML = matchedAvailabilities.html_content
-        outputTarget.style.display = "block";
+      if (matchedAvailabilities) {
+        this.showOutputForRecord(
+          recordTarget,
+          matchedAvailabilities.html_content
+        )
       }
     })
   }

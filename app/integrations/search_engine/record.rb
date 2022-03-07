@@ -5,6 +5,8 @@ class SearchEngine
     attribute :newtest_acquisition_date, Types::Date.optional
     # Was the record deleted or supressed for discovery?
     attribute :is_deleted, Types::Bool.default(false)
+    # Is the record an online-resource?
+    attribute :is_online_resource, Types::Bool.default(false)
 
     # Unique ID of the record. REQUIRED.
     attribute :id, Types::String

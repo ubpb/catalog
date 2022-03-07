@@ -10,6 +10,7 @@ module SearchEngine::Adapters
         record = SearchEngine::Record.new(
           newtest_acquisition_date: get_newtest_acquisition_date(data),
           is_deleted: get_is_deleted(data),
+          is_online_resource: get_is_online_resource(data),
 
           id: get_id(data),
           aleph_id: get_aleph_id(data),
@@ -68,6 +69,10 @@ module SearchEngine::Adapters
 
       def get_is_deleted(data)
         source_value(data, "meta", "is_deleted")
+      end
+
+      def get_is_online_resource(data)
+        source_value(data, "meta", "is_online_resource")
       end
 
       def get_id(data)

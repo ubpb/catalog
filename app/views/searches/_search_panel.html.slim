@@ -22,13 +22,13 @@
       = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
         div(data-controller="advanced-search")
           template(data-advanced-search-target="template")
-            = render "search_field", form: f
+            = render "searches/search_field", form: f
 
           - if @search_request.present?
             - @search_request.queries.each.with_index do |q, i|
-              = render "search_field", form: f, query: q
+              = render "searches/search_field", form: f, query: q
             = f.submit t(".search"), class: "btn btn-primary"
           - else # Default search panel
-            = render "search_field", form: f, autofocus: true
+            = render "searches/search_field", form: f, autofocus: true
             = f.submit t(".search"), class: "btn btn-primary"
 

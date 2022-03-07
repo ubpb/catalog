@@ -5,6 +5,9 @@ de:
     search_panel:
       search: "Suchen"
 
+    search_field:
+      query_placeholder: "Suchbegriff eingeben..."
+
     availabilities:
       error: >
         Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte
@@ -79,3 +82,9 @@ de:
 
         inhaltstyp:
           header: "Art des Inhalts"
+
+        yop:
+          header: "Erscheinungsjahr"
+
+        local_notation:
+          header: "Systemstelle"

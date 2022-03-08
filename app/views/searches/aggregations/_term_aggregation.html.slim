@@ -5,6 +5,7 @@ ruby:
 
   nsr = ->(term, exclude: false) {
     search_request.dup
+      .reset_page
       .add_aggregation(
         SearchEngine::SearchRequest::Aggregation.new(
           name: aggregation.name,

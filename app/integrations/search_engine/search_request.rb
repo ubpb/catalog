@@ -130,6 +130,11 @@ class SearchEngine
 
     attr_reader :page
 
+    def reset_page
+      @page = Page.new
+      self
+    end
+
     # ----------------------------------------------------
     # Options
     # ----------------------------------------------------

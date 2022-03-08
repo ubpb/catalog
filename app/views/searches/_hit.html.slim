@@ -22,6 +22,12 @@ div
     = yop
 
   / Links
+  - fl = record.fulltext_links.first
+  - if fl
+    div
+      = link_to fl.url do
+        i.fas.fa-external-link
+        =< "Direkt zur Online-Ressource"
   / - fl = record.fulltext_links.first
   / - rl = record.resolver_link
   / - if fl || rl

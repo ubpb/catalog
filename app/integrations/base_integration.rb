@@ -31,7 +31,7 @@ class BaseIntegration
     end
 
     def load_config(scope, config_filename, environment)
-      config = YAML.load(File.read(config_filename))
+      config = YAML.load(File.read(config_filename), aliases: true)
       raise RuntimeError, "Config is empty" unless config
       raise RuntimeError, "Config for environment '#{environment}' is missing." unless config[environment]
 

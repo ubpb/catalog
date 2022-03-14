@@ -48,19 +48,36 @@
         dd = optional_value(@record.languages) do |languages|
           - languages.join("; ").upcase
 
+        dt = t(".details.local_notations")
+        dd = optional_value(@record.local_notations) do |local_notation|
+          - local_notation.join("; ").upcase
+
         dt = t(".details.subjects")
         dd = optional_value(@record.subjects) do |subjects|
           - subjects.each do |subject|
             span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
 
-        = optional_block(@record.related_resource_links) do |links|
+        dt = t(".details.identifiers.header")
+        dd
+          = optional_value(@record.id) do |id|
+            div = "#{t(".details.identifiers.id")}: #{id}"
+          = optional_value(@record.aleph_id) do |id|
+            div = "#{t(".details.identifiers.aleph_id")}: #{id}"
+          = optional_value(@record.hbz_id) do |id|
+            div = "#{t(".details.identifiers.hbz_id")}: #{id}"
+          = optional_value(@record.zdb_id) do |id|
+            div = "ZDB-ID: #{id}"
+          - @record.additional_identifiers.each do |id|
+            div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
+
+        = optional_value(@record.related_resource_links) do |links|
           dt = t(".details.related_resource_links")
           dd
             ul.mb-0
               - links.each do |link|
                 li = link_to link.label, link.url
 
-        = optional_block(@record.fulltext_links) do |links|
+        = optional_value(@record.fulltext_links) do |links|
           dt = t(".details.fulltext_links")
           dd
             ul.mb-0

@@ -14,6 +14,7 @@ class BaseIntegration
       raise RuntimeError, <<-EOT.strip_heredoc
         There was an error while trying to process the configuration file `#{config_filename}`.
         The original error message was: #{e.message}
+        The original backtrace:\n#{e.backtrace.join("\n")}
       EOT
     end
 

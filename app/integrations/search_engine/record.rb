@@ -46,6 +46,9 @@ class SearchEngine
     # for the record (Marc field 773)
     attribute :host_item_id, Types::String.optional
 
+    # Is part of ...
+    attribute :is_part_of, Types::Array.of(IsPartOf).default([].freeze)
+
     # Related resource links
     attribute :related_resource_links, Types::Array.of(Link).default([].freeze)
     # Fulltext links

@@ -1,12 +1,23 @@
 - record = hit.record
 
 div
-  h5.mb-1
+  / Title
+  h5.mb-0
     = link_to record.title, show_record_path(record, search_request: @search_request)
 
   / Part of...
-  / - if part_of = record.part_of.presence
-  /   .mb-1.fst-italic = part_of.map(&:label).join("; ")
+  = optional_value(record.is_part_of) do |is_part_of|
+    ruby:
+      links = is_part_of.map do |p|
+        if p.id.present?
+          sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+          link_to p.label, new_search_request_path(sr)
+        else
+          p.label
+        end
+      end
+    = "Teil von: "
+    span.me-2.fst-italic = links.join(", ").html_safe
 
   / Creators
   ruby:
@@ -16,15 +27,16 @@ div
     end
 
   - if creators.present?
-    .mb-1 = render(CreatorComponent.with_collection(creators))
+    .mb-0 = render(CreatorComponent.with_collection(creators))
 
+  / Year of publication
   - if (yop = record.year_of_publication).present?
-    = yop
+    .mb-0 = yop
 
   / Links
   - fl = record.fulltext_links.first
   - if fl
-    div
+    .mb-0
       = link_to fl.url do
         i.fas.fa-external-link
         =< "Direkt zur Online-Ressource"

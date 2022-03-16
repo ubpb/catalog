@@ -15,6 +15,7 @@ de:
         publisher: "Verlag"
         edition: "Auflage"
         physical_description: "Physische Beschreibung"
+        is_part_of: "Ist Teil von"
         languages: "Sprache(n)"
         local_notations: "Systemstelle"
         subjects: "Schlagworte"

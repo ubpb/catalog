@@ -35,6 +35,7 @@ de:
         creator: "Autor(en) / Beteiligte"
         title: "Titel"
         yop: "Erscheinungsjahr"
+        ids: "Identifikatoren"
 
     sortables:
       local:

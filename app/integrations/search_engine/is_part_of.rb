@@ -1,5 +1,5 @@
 class SearchEngine
-  class Relation < BaseStruct
+  class IsPartOf < BaseStruct
     attribute :label, Types::String
     attribute :id, Types::String.optional
   end

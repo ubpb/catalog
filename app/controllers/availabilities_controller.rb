@@ -26,7 +26,9 @@ private
   end
 
   def calculated_availability(availabilities)
-    if availabilities[:availabilities].any?{|a| a[:availability] == "available"}
+    if availabilities[:availabilities].blank?
+      nil
+    elsif availabilities[:availabilities].any?{|a| a[:availability] == "available"}
       "available"
     elsif availabilities[:availabilities].any?{|a| a[:availability] == "restricted"}
       "restricted"
@@ -52,14 +54,14 @@ private
   def badge_result(availabilities)
     availabilities.map do |availabilities|
       availability = calculated_availability(availabilities)
-
       {
         record_id: availabilities[:record_id],
-        #availability: availability,
         html_content: render_to_string(
           partial: "availabilities/badge",
           formats: :html,
-          locals: {availability: availability}
+          locals: {
+            availability: availability
+          }
         )
       }
     end

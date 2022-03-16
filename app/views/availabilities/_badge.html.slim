@@ -1,10 +1,13 @@
 ruby:
-  availability_classes = case availability
+  availability_style_class = case availability
     when "available"   then "text-success"
     when "restricted"  then "text-warning"
     when "unavailable" then "text-danger"
     else "text-dark"
     end
 
-div.fst-italic(class=availability_classes)
-  = t("availabilities.availability.#{availability}", default: "n.a.")
+- if availability.present?
+  div.fst-italic(class=availability_style_class)
+    = t("availabilities.availability.#{availability}", default: "n.a.")
+- else
+  span

@@ -13,7 +13,7 @@ module SearchEngine::Adapters
           year_of_publication: get_year_of_publication(xml),
           creators_and_contributors: get_creators_and_contributors(xml),
           publishers: get_publishers(xml),
-          part_of: get_part_of(xml),
+          is_part_of: get_is_part_of(xml),
           identifiers: get_identifiers(xml),
           descriptions: get_descriptions(xml),
           resolver_link: get_resolver_link(xml),
@@ -50,9 +50,9 @@ module SearchEngine::Adapters
         xml.css("display publisher")&.map(&:text)
       end
 
-      def get_part_of(xml)
+      def get_is_part_of(xml)
         xml.css("display ispartof")&.map(&:text)&.map do |label|
-          SearchEngine::Relation.new(label: label)
+          SearchEngine::IsPartOf.new(label: label)
         end
       end
 

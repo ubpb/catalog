@@ -31,6 +31,7 @@ module SearchEngine::Adapters
           local_notations: get_local_notations(data),
 
           host_item_id: get_host_item_id(data),
+          is_part_of: get_is_part_of(data),
 
           related_resource_links: get_related_resource_links(data),
           fulltext_links: get_fulltext_links(data)
@@ -174,6 +175,17 @@ module SearchEngine::Adapters
 
       def get_host_item_id(data)
         source_value(data, "host_item_id")
+      end
+
+      def get_is_part_of(data)
+        normalize_array(
+          source_value(data, "is_part_of")
+        ).map do |is_part_of_data|
+          SearchEngine::IsPartOf.new(
+            label: is_part_of_data["label"],
+            id: is_part_of_data["id"]
+          )
+        end
       end
 
       def get_related_resource_links(data)

@@ -44,6 +44,18 @@
         dt = t(".details.physical_description")
         dd = optional_value(@record.physical_description)
 
+        = optional_value(@record.is_part_of) do |is_part_of|
+          dt = t(".details.is_part_of")
+          dd
+            ul.mb-0
+              - is_part_of.each do |p|
+                - if p.id.present?
+                  - sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+                  li = link_to new_search_request_path(sr) do
+                    = p.label
+                - else
+                  li = p.label
+
         dt = t(".details.languages")
         dd = optional_value(@record.languages) do |languages|
           - languages.join("; ").upcase

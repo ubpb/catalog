@@ -18,7 +18,8 @@
       .callout(class=message_class)
         == message
 
-    .row: .col-lg-9
+    /.row: .col-lg-9
+    .row
       = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
         div(data-controller="advanced-search")
           template(data-advanced-search-target="template")

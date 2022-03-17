@@ -1,6 +1,11 @@
 - record = hit.record
 
 div
+  / Superorder
+  / TODO: REMOVE ME
+  - if record.is_superorder
+    span.badge.bg-primary.mb-1 = "Überordnung"
+
   / Title
   h5.mb-0
     = link_to record.title, show_record_path(record, search_request: @search_request)

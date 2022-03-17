@@ -35,8 +35,12 @@ header {
 }
 
 #page {
-  background-color: $gray-200;
   padding: $spacer 0;
+  background-color: $gray-200;
+
+  background-image: radial-gradient($gray-500 0.5px, transparent 0.5px), radial-gradient($cyan 0.5px, $gray-200 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
 }
 
 footer {

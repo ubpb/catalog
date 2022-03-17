@@ -7,6 +7,8 @@ class SearchEngine
     attribute :is_deleted, Types::Bool.default(false)
     # Is the record an online-resource?
     attribute :is_online_resource, Types::Bool.default(false)
+    # Is the record a superorder
+    attribute :is_superorder, Types::Bool.default(false)
 
     # Unique ID of the record. REQUIRED.
     attribute :id, Types::String

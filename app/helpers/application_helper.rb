@@ -17,7 +17,7 @@ module ApplicationHelper
     email_string.gsub(/(?<=.)[^@\n](?=[^@\n]*?[^@\n]@)|(?:(?<=@.)|(?!^)\G(?=[^@\n]*$)).(?=.*[^@\n]\.)/, "*")
   end
 
-  def optional_value(optional_value, default: "–", &block)
+  def optional_value(optional_value, default: nil, &block)
     if (present_value = optional_value).present?
       if block_given?
         capture(present_value, &block)
@@ -25,9 +25,7 @@ module ApplicationHelper
         present_value
       end
     else
-      unless block_given? && default.present?
-        default
-      end
+      default if default.present?
     end
   end
 

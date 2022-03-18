@@ -26,23 +26,21 @@
       h4 = t(".details.header")
       dl
         dt = t(".details.creators")
-        dd = optional_value(@record.creators) do |creators|
+        dd = optional_value(@record.creators, default: "–") do |creators|
           - render(CreatorComponent.with_collection(creators))
 
         dt = t(".details.year_of_publication")
-        dd = optional_value(@record.year_of_publication)
+        dd = optional_value(@record.year_of_publication, default: "–")
 
-        dt = t(".details.place_of_publication")
-        dd = optional_value(@record.place_of_publication)
-
-        dt = t(".details.publisher")
-        dd = optional_value(@record.publisher)
+        dt = t(".details.publication_notices")
+        dd = optional_value(@record.publication_notices, default: "–") do |notices|
+          - notices.join(", ")
 
         dt = t(".details.edition")
-        dd = optional_value(@record.edition)
+        dd = optional_value(@record.edition, default: "–")
 
         dt = t(".details.physical_description")
-        dd = optional_value(@record.physical_description)
+        dd = optional_value(@record.physical_description, default: "–")
 
         = optional_value(@record.is_part_of) do |is_part_of|
           dt = t(".details.is_part_of")
@@ -57,15 +55,15 @@
                   li = p.label
 
         dt = t(".details.languages")
-        dd = optional_value(@record.languages) do |languages|
+        dd = optional_value(@record.languages, default: "–") do |languages|
           - languages.join("; ").upcase
 
         dt = t(".details.local_notations")
-        dd = optional_value(@record.local_notations) do |local_notation|
+        dd = optional_value(@record.local_notations, default: "–") do |local_notation|
           - local_notation.join("; ").upcase
 
         dt = t(".details.subjects")
-        dd = optional_value(@record.subjects) do |subjects|
+        dd = optional_value(@record.subjects, default: "–") do |subjects|
           - subjects.each do |subject|
             span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
 

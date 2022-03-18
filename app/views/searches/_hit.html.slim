@@ -26,10 +26,11 @@ div
 
   / Creators
   ruby:
-    creators = record.creators.select do |c|
-      c.relationships.empty? ||
-      (c.relationships & ["aut", "edt", "oth"]).any?
-    end
+    #creators = record.creators.select do |c|
+    #  c.relationships.empty? ||
+    #  (c.relationships & ["aut", "edt", "oth"]).any?
+    #end
+    creators = record.creators
 
   - if creators.present?
     .mb-0 = render(CreatorComponent.with_collection(creators))

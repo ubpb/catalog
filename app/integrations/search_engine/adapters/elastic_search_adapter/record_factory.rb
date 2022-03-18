@@ -22,8 +22,7 @@ module SearchEngine::Adapters
           title: get_title(data),
           creators: get_creators(data),
           year_of_publication: get_year_of_publication(data),
-          place_of_publication: get_place_of_publication(data),
-          publisher: get_publisher(data),
+          publication_notices: get_publication_notices(data),
           edition: get_edition(data),
           physical_description: get_physical_description(data),
 
@@ -35,24 +34,15 @@ module SearchEngine::Adapters
           is_part_of: get_is_part_of(data),
 
           related_resource_links: get_related_resource_links(data),
-          fulltext_links: get_fulltext_links(data)
+          fulltext_links: get_fulltext_links(data),
 
-          # edition: source_value(data, "edition"),
-          # publishers: normalize_array(source_value(data, "publisher")),
-          # format: source_value(data, "format"),
-          # languages: normalize_array(source_value(data, "language")),
-          # identifiers: build_identifiers(data),
-          # subjects: normalize_array(source_value(data, "subject")),
+          journal_stocks: get_journal_stocks(data)
+
           # descriptions: normalize_array(source_value(data, "description")),
           # notes: normalize_array(source_value(data, "local_comment")),
 
-          # resource_links: build_resource_links(data),
-          # fulltext_links: build_fulltext_links(data),
-          # part_of: build_part_of(data),
           # source: build_source(data),
           # relations: build_relations(data),
-
-          # journal_stocks: build_journal_stocks(data)
         )
 
         pp data
@@ -144,12 +134,8 @@ module SearchEngine::Adapters
         source_value(data, "year_of_publication")&.dig("label")
       end
 
-      def get_place_of_publication(data)
-        source_value(data, "place_of_publication")
-      end
-
-      def get_publisher(data)
-        source_value(data, "publisher")
+      def get_publication_notices(data)
+        source_value(data, "publication_notices")
       end
 
       def get_edition(data)
@@ -211,6 +197,19 @@ module SearchEngine::Adapters
           SearchEngine::Link.new(
             label: link_data["label"],
             url: link_data["url"]
+          )
+        end
+      end
+
+      def get_journal_stocks(data)
+        normalize_array(
+          source_value(data, "journal_stocks")
+        ).map do |journal_stock|
+          SearchEngine::JournalStock.new(
+            label: journal_stock["label"],
+            call_number: journal_stock["call_number"],
+            location_name: journal_stock["location_name"],
+            location_code: journal_stock["location_code"],
           )
         end
       end

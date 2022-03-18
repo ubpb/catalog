@@ -28,10 +28,8 @@ class SearchEngine
     attribute :creators, Types::Array.of(Creator).default([].freeze)
     # Year of publication
     attribute :year_of_publication, Types::String.optional
-    # Place of publication
-    attribute :place_of_publication, Types::String.optional
-    # Publisher
-    attribute :publisher, Types::String.optional
+    # Publication notices (place of publication & publisher)
+    attribute :publication_notices, Types::Array.of(Types::String).default([].freeze)
     # Edition
     attribute :edition, Types::String.optional
     # Physical description
@@ -55,6 +53,10 @@ class SearchEngine
     attribute :related_resource_links, Types::Array.of(Link).default([].freeze)
     # Fulltext links
     attribute :fulltext_links, Types::Array.of(Link).default([].freeze)
+
+    # If the title is a print journal, the journal_stocks lists
+    # the locally available volumes of that journal.
+    attribute :journal_stocks, Types::Array.of(JournalStock).default([].freeze)
 
     # # Local selection codes (Selektionskennzeichen)
     # attribute :selection_codes, Types::Array.of(Types::String).default([].freeze)

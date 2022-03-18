@@ -94,6 +94,22 @@
               - links.each do |link|
                 li = link_to link.label, link.url
 
+    = optional_value(@record.journal_stocks) do |journal_stocks|
+      .mb-4
+        h4 = t(".details.journal_stocks")
+        table.table
+          thead
+            tr
+              th(scope="col") = "Signatur"
+              th(scope="col") = "Standort"
+              th(scope="col") = "Bestand"
+          tbody
+            - journal_stocks.each do |stock|
+              tr
+                td = stock.call_number
+                td = stock.location_name
+                td = stock.label
+
 
     - if current_search_scope == :local && !@record.is_online_resource
       h4 = t(".items.header")

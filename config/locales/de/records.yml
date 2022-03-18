@@ -11,8 +11,7 @@ de:
         header: "Details"
         creators: "Autor(en) / Beteiligte"
         year_of_publication: "Erscheinungsjahr"
-        place_of_publication: "Erscheinungsort"
-        publisher: "Verlag"
+        publication_notices: "Erscheinungsort / Verlag"
         edition: "Auflage"
         physical_description: "Physische Beschreibung"
         is_part_of: "Ist Teil von"
@@ -21,6 +20,7 @@ de:
         subjects: "Schlagworte"
         related_resource_links: "Links zum Inhalt"
         fulltext_links: "Links zum Volltext"
+        journal_stocks: "Zeitschriftenbestand"
         identifiers:
           header: "Identifikatoren"
           id: "System-ID"

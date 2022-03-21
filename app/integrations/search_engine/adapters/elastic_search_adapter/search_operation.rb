@@ -82,7 +82,7 @@ module SearchEngine::Adapters
 
         # Ignore deleted records
         es_query[:bool][:must_not] << {
-          term: { is_deleted: true }
+          term: { "meta.is_deleted": true }
         }
 
         es_query

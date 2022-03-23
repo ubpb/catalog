@@ -51,6 +51,10 @@ class SearchEngine
     # Is part of ...
     attribute :is_part_of, Types::Array.of(IsPartOf).default([].freeze)
 
+    # A list of other related records, that belong to this record
+    # (e.g. Vorgänger, Nachfolger, Parallelausgaben, etc.)
+    attribute :relations, Types::Array.of(Relation).default([].freeze)
+
     # Related resource links
     attribute :related_resource_links, Types::Array.of(Link).default([].freeze)
     # Fulltext links
@@ -113,9 +117,7 @@ class SearchEngine
     # attribute :part_of, Types::Array.of(Relation).default([].freeze)
     # # A relation to another record that is the source of this record
     # attribute :source, Relation.optional
-    # # A list of other related records, that belong to this record
-    # # (e.g. Vorgänger, Nachfolger, Parallelausgaben, etc.)
-    # attribute :relations, Types::Array.of(Relation).default([].freeze)
+
 
     # # A list of journal records, describing the available journal stock if
     # # this record is a journal.

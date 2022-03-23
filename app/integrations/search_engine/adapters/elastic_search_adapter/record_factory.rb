@@ -33,6 +33,7 @@ module SearchEngine::Adapters
 
           host_item_id: get_host_item_id(data),
           is_part_of: get_is_part_of(data),
+          relations: get_relations(data),
 
           related_resource_links: get_related_resource_links(data),
           fulltext_links: get_fulltext_links(data),
@@ -182,6 +183,17 @@ module SearchEngine::Adapters
           SearchEngine::IsPartOf.new(
             label: is_part_of_data["label"],
             id: is_part_of_data["id"]
+          )
+        end
+      end
+
+      def get_relations(data)
+        normalize_array(
+          source_value(data, "relations")
+        ).map do |relation|
+          SearchEngine::Relation.new(
+            label: relation["label"],
+            id: relation["id"]
           )
         end
       end

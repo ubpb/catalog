@@ -80,6 +80,13 @@
           - @record.additional_identifiers.each do |id|
             div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
 
+        = optional_value(@record.notes) do |notes|
+          dt = t(".details.notes")
+          dd
+            ul.mb-0
+              - notes.each do |note|
+                li = note
+
         = optional_value(@record.related_resource_links) do |links|
           dt = t(".details.related_resource_links")
           dd

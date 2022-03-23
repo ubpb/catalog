@@ -21,6 +21,7 @@ de:
         related_resource_links: "Links zum Inhalt"
         fulltext_links: "Links zum Volltext"
         journal_stocks: "Zeitschriftenbestand"
+        notes: "Beschreibungen/Notizen"
         identifiers:
           header: "Identifikatoren"
           id: "System-ID"

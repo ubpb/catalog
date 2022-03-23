@@ -41,6 +41,8 @@ class SearchEngine
     attribute :subjects, Types::Array.of(Types::String).default([].freeze)
     # Lokal notations
     attribute :local_notations, Types::Array.of(Types::String).default([].freeze)
+    # Notes
+    attribute :notes, Types::Array.of(Types::String).default([].freeze)
 
     # Link to a host record that holds the items
     # for the record (Marc field 773)

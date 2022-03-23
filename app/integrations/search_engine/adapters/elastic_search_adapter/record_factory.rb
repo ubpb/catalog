@@ -29,6 +29,7 @@ module SearchEngine::Adapters
           languages: get_languages(data),
           subjects: get_subjects(data),
           local_notations: get_local_notations(data),
+          notes: get_notes(data),
 
           host_item_id: get_host_item_id(data),
           is_part_of: get_is_part_of(data),
@@ -161,6 +162,12 @@ module SearchEngine::Adapters
       def get_local_notations(data)
         normalize_array(
           source_value(data, "local_notations")
+        )
+      end
+
+      def get_notes(data)
+        normalize_array(
+          source_value(data, "notes")
         )
       end
 

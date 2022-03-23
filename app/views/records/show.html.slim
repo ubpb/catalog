@@ -54,6 +54,18 @@
                 - else
                   li = p.label
 
+        = optional_value(@record.relations) do |relations|
+          dt = t(".details.relations")
+          dd
+            ul.mb-0
+              - relations.each do |r|
+                - if r.id.present?
+                  - sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{r.id}")
+                  li = link_to new_search_request_path(sr) do
+                    = r.label
+                - else
+                  li = r.label
+
         dt = t(".details.languages")
         dd = optional_value(@record.languages, default: "–") do |languages|
           - languages.join("; ").upcase

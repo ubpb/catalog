@@ -89,3 +89,48 @@ de:
 
         local_notation:
           header: "Systemstelle"
+
+        resource_type:
+          header: "Erscheinungsform"
+          terms:
+            article: "Artikel"
+            monograph: "Buch"
+            journal: "Zeitschrift"
+            series: "Serie"
+            newspaper: "Zeitung"
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+
+        material_type:
+          header: "Art des Mediums"
+          terms:
+            print: "Gedruckt"
+            online_resource: "Online-Ressource"
+            data_storage: "Datenspeicher"
+            microform: "Mikrofiche"
+            audio: "Audio"
+            video: "Video"
+            map: "Karte"
+            image: "Bild"
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+
+        content_type:
+          header: "Art des Inhalts"
+          terms:
+            dissertation: Hochschulschrift
+            bibliography: Bibliographie
+            catalog: Katalog
+            dictionary: Wörterbuch
+            encyclopedia: Enzyklopädie
+            festschrift: Festschrift
+            biography: Biografie
+            congress: Kongressbericht
+            music: Musik
+            standard: Standard / Norm
+            university_text: Universitätstext
+            textbook: Textbuch
+            thesis: Hochschulschrift (Sonstige)
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+

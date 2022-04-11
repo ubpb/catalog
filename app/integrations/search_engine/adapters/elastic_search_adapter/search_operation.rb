@@ -143,8 +143,10 @@ module SearchEngine::Adapters
       end
 
       def build_search_result(es_result)
+        # Total hits
         total = es_result.dig("hits", "total", "value") || 0
 
+        # Hits
         hits = es_result["hits"]["hits"].map do |hit|
           SearchEngine::Hit.new(
             score: hit["_score"],
@@ -152,6 +154,7 @@ module SearchEngine::Adapters
           )
         end
 
+        # Aggregations
         aggregations = (es_result["aggregations"] || []).map do |name, aggregation|
           field = adapter.aggregations_field(name)
           type  = adapter.aggregations_type(name)
@@ -175,6 +178,12 @@ module SearchEngine::Adapters
           end
         end.compact
 
+        # Sort aggregations as they are defined in the config file
+        aggregations = aggregations.sort_by do |a|
+          adapter.aggregations.find_index{|aa| aa["name"] == a.name} || 0
+        end
+
+        # Return result
         SearchEngine::SearchResult.new(
           hits: hits,
           aggregations: aggregations,

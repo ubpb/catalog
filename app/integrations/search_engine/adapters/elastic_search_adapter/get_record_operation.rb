@@ -3,7 +3,7 @@ module SearchEngine::Adapters
     class GetRecordOperation < Operation
 
       def call(record_id, options = {})
-        result = adapter.client.get(index: adapter.options[:index], type: "_all", id: record_id)
+        result = adapter.client.get(index: adapter.options[:index], id: record_id)
 
         marked_as_deleted = result["_source"].dig("meta", "is_deleted") == true
 
@@ -12,7 +12,7 @@ module SearchEngine::Adapters
         else
           nil
         end
-      rescue Elasticsearch::Transport::Transport::Errors::NotFound
+      rescue Elastic::Transport::Transport::Errors::NotFound
         nil
       end
 

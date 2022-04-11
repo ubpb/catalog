@@ -8,7 +8,7 @@ gem "bcrypt",             "~> 3.1"
 gem "bootsnap",           ">= 1.4.2", require: false
 gem "cancancan",          "~> 3.2"
 gem "dry-struct",         "~> 1.4"
-gem "elasticsearch",      "~> 7.12"
+gem "elasticsearch",      "~> 8.1"
 gem "jbuilder",           "~> 2.7"
 gem "metacrunch-marcxml", "~> 3.1.0" #, github: "ubpb/metacrunch-marcxml", branch: "master"
 gem "mysql2",             ">= 0.5.3"
@@ -20,11 +20,6 @@ gem "slim",               "~> 4.0"
 gem "sprockets-rails",    "~> 3.4.2"
 gem "stimulus-rails",     "~> 1.0.2"
 gem "view_component",     "~> 2.31"
-
-# Pin i18n to 1.8.x until
-# https://github.com/github/view_component/issues/1258
-# gets a fix.
-gem "i18n", "~> 1.8.11"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 

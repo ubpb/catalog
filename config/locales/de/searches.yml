@@ -36,6 +36,7 @@ de:
         title: "Titel"
         yop: "Erscheinungsjahr"
         ids: "Identifikatoren"
+        call_number: "Signatur"
 
     sortables:
       local:

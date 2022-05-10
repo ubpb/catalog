@@ -5,7 +5,10 @@ class WatchListsPanelComponent < ViewComponent::Base
     @user         = user
     @search_scope = search_scope
     @record_id    = record_id
-    @watch_lists  = @user.watch_lists.includes(:entries)
+
+    if user
+      @watch_lists  = @user.watch_lists.includes(:entries)
+    end
   end
 
 end

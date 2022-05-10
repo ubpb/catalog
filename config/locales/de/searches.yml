@@ -44,9 +44,10 @@ de:
         title: "Titel"
         creator: "Autor / Autorin"
         cdate: "Erscheinungsjahr"
-        notation: "Systemstelle"
+        local_notation: "Systemstelle"
         volume: "Band"
         catdate: "Katalogisierungsdatum"
+        newtest_acquisition_date: "Neuerwerbung"
       cdi:
         _default_: "Relevanz"
         title: "Titel"
@@ -72,9 +73,6 @@ de:
 
         creator:
           header: "Autor / Autorin"
-
-        notation:
-          header: "Systemstelle"
 
         subject:
           header: "Schlagwort"

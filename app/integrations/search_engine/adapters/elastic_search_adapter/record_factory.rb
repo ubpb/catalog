@@ -47,9 +47,9 @@ module SearchEngine::Adapters
           # relations: build_relations(data),
         )
 
-        pp data
-        puts "------"
-        pp record
+        # pp data
+        # puts "------"
+        # pp record
 
         record
       end

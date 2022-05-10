@@ -1,7 +1,8 @@
 .card.card-shadowed
-  .card-header.cutoff-corner-tr
+  .card-header.d-flex.align-items-center
     h5.m-0
       => t(".header")
+    .ms-auto
       - if sum == 0
         .badge.bg-success = t(".no-fees")
       - elsif sum > 0
@@ -12,8 +13,8 @@
   .card-body
     - if sum > 0
       .callout.callout-danger.mb-3 = t(".payment-info")
-    - else
-      .callout.callout-success.mb-3 = t(".credit-info")
+    - elsif sum < 0
+      .callout.callout-success.mb-3 = t(".credit-info", amount: number_to_currency(sum.abs, unit: "€"))
 
     .callout.callout-info.mb-0
       i.fas.fa-info-circle

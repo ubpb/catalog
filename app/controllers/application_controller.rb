@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     @breadcrumb ||= []
   end
 
-  def add_breadcrumb(label, path)
+  def add_breadcrumb(label, path = nil)
     breadcrumb << {label: label, path: path}
   end
 

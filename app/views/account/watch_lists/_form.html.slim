@@ -1,0 +1,8 @@
+= simple_form_for [:account, @watch_list] do |f|
+  = f.input :name, input_html: {autocomplete: "off"}
+  = f.input :description, input_html: {}
+  = f.button :submit, t("save"), class: "btn btn-primary"
+  - if @watch_list.new_record?
+    = link_to t("cancel"), account_watch_lists_path, class: "btn btn-link"
+  - else
+    = link_to t("cancel"), account_watch_list_path(@watch_list), class: "btn btn-link"

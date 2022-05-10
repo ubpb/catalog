@@ -5,7 +5,16 @@
 
   - body_class = @search_request ? "" : "cutoff-corner-tr"
   .card-body(class=body_class)
-    h3.mb-0 = @record.title
+    .d-flex
+      h3.mb-0 = @record.title
+      .ms-auto
+        ruby:
+          watch_lists_panel_component = WatchListsPanelComponent.new(
+            user: current_user,
+            search_scope: current_search_scope,
+            record_id: @record.id
+          )
+        = render(watch_lists_panel_component)
 
     - if current_search_scope == :local && !@record.is_online_resource
       div(

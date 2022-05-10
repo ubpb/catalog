@@ -1,0 +1,38 @@
+de:
+  account:
+    watch_lists:
+      breadcrumb: "Merklisten"
+
+      index:
+        header: "Merklisten"
+        no-watch-lists: "Sie haben keine Merklisten"
+        actions:
+          create: "Neue Merkliste erstellen"
+
+      show:
+        no-entries: "Keine Einträge in dieser Liste"
+        deleted-record: "Dieser Titel existiert nicht mehr"
+
+      new:
+        breadcrumb: "Neu"
+        header: "Neue Merkliste anlegen"
+
+      create:
+        success: "Merkliste gespeichert"
+
+      edit:
+        breadcrumb: "Bearbeiten"
+        header: "Merkliste bearbeiten"
+
+      update:
+        success: "Merkliste gespeichert"
+
+      destroy:
+        success: "Merkliste gelöscht"
+        error: "Merkliste konnte nicht gelöscht werden."
+
+      watch_list:
+        actions:
+          show: "Anzeigen"
+          edit: "Bearbeiten"
+          delete: "Löschen"

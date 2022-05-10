@@ -1,0 +1,39 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    .me-2 = link_to account_watch_lists_path do
+      i.fa-solid.fa-fw.fa-chevron-left
+
+    h5.m-0 = @watch_list.name
+    .dropdown.ms-auto
+      button.btn(type="button" data-bs-toggle="dropdown")
+        i.fa-solid.fa-ellipsis-vertical
+      ul.dropdown-menu.dropdown-menu-end
+        li = link_to edit_account_watch_list_path(@watch_list), class: "dropdown-item" do
+          i.fa-solid.fa-fw.fa-pencil
+          =< t("account.watch_lists.watch_list.actions.edit")
+        li: hr.dropdown-divider
+        li = link_to account_watch_list_path(@watch_list), method: :delete, class: "dropdown-item", data: {confirm: t("confirm-delete")} do
+          i.fa-solid.fa-fw.fa-trash-can
+          =< t("account.watch_lists.watch_list.actions.delete")
+  .card-body
+    - if @watch_list.description.present?
+      = simple_format(@watch_list.description, wrapper_tag: "div")
+    - if @resolved_entries.present?
+      ol.list-group
+        - @resolved_entries.each do |resolved_entry|
+          - record = resolved_entry[:record]
+          - entry  = resolved_entry[:entry]
+
+          li.list-group-item
+            .d-flex
+              div
+                - if record == :deleted
+                  em = t(".deleted-record")
+                - else
+                  = render "searches/record", record: record
+              .ms-auto
+                = link_to account_watch_list_entry_path(@watch_list, entry), method: :delete, class: "dropdown-item", data: {confirm: t("confirm-delete")}
+                  i.fa-solid.fa-fw.fa-trash-can
+    - else
+      .alert.alert-info.mb-0.text-center
+        = t(".no-entries")

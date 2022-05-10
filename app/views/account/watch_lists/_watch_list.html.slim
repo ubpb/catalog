@@ -1,10 +1,17 @@
 li.list-group-item.d-flex.justify-content-between.align-items-center
-	div.ms-2.me-auto
-		div.fw-bold = link_to watch_list.name, account_watch_list_path(watch_list)
-	.dropdown
-		button.btn(type="button" data-bs-toggle="dropdown")
-			i.fa-solid.fa-ellipsis-vertical
-		ul.dropdown-menu.dropdown-menu-end
-			li = link_to account_watch_list_path(watch_list), class: "dropdown-item" do
-				i.fa-solid.fa-fw.fa-glasses
-				=< t(".actions.show")
+  div.ms-2.me-auto
+    div.fw-bold = link_to watch_list.name, account_watch_list_path(watch_list)
+  .dropdown
+    button.btn(type="button" data-bs-toggle="dropdown")
+      i.fa-solid.fa-ellipsis-vertical
+    ul.dropdown-menu.dropdown-menu-end
+      li = link_to account_watch_list_path(watch_list), class: "dropdown-item" do
+        i.fa-solid.fa-fw.fa-glasses
+        =< t(".actions.show")
+      li = link_to edit_account_watch_list_path(watch_list), class: "dropdown-item" do
+          i.fa-solid.fa-fw.fa-pencil
+          =< t("account.watch_lists.watch_list.actions.edit")
+      li: hr.dropdown-divider
+      li = link_to account_watch_list_path(watch_list), method: :delete, class: "dropdown-item", data: {confirm: t("confirm-delete")} do
+        i.fa-solid.fa-fw.fa-trash-can
+        =< t("account.watch_lists.watch_list.actions.delete")

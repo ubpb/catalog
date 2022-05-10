@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+  # Relations
+  has_many :watch_lists, dependent: :destroy
+  has_many :notes, dependent: :destroy
+
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true

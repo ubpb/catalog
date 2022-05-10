@@ -11,8 +11,8 @@ import { Turbo } from "@hotwired/turbo-rails"
 window.Turbo = Turbo
 Turbo.setProgressBarDelay(200)
 
-// Load / init stimulus controllers
-import "./controllers"
+// Load / init stimulus controllers from ./stimulus/index.js
+import "./stimulus"
 
 // Load bootstrap
 import * as bootstrap from "bootstrap"

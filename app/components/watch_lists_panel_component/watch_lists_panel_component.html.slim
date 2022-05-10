@@ -1,0 +1,45 @@
+.dropdown(
+  data-controller="watch-lists-panel-component--component"
+  data-watch-lists-panel-component--component-create-url-value=watch_lists_panel_component_create_watch_list_path(search_scope: @search_scope, record_id: @record_id)
+  data-action="update-watch-lists-panel-component@window->watch-lists-panel-component--component#onUpdate"
+)
+  button.btn.btn-outline-primary.dropdown-toggle(type="button" data-bs-toggle="dropdown")
+    - if @watch_lists.any?{|wl| wl.has_record_id?(@record_id, search_scope: @search_scope)}
+      i.fa-solid.fa-heart
+    - else
+      i.fa-regular.fa-heart
+
+  ul.dropdown-menu.dropdown-menu-end
+    - if @user.present?
+      - if @watch_lists.present?
+        - @watch_lists.each do |watch_list|
+          li
+            - if watch_list.has_record_id?(@record_id, search_scope: @search_scope)
+              a.dropdown-item(
+                href=watch_lists_panel_component_remove_record_path(watch_list.id, @search_scope, @record_id)
+                data-action="watch-lists-panel-component--component#removeFromWatchList"
+              )
+                i.fa-regular.fa-square-check.fa-fw
+                =< watch_list.name
+            - else
+              a.dropdown-item(
+                href=watch_lists_panel_component_add_record_path(watch_list.id, @search_scope, @record_id)
+                data-action="watch-lists-panel-component--component#addToWatchList"
+              )
+                i.fa-regular.fa-square.fa-fw
+                =< watch_list.name
+      - else
+        li.px-2.text-muted = t(".no-lists")
+      li.dropdown-divider
+      li.px-2
+        input.form-control.form-control-sm(
+          type="text"
+          placeholder="Neue Merkliste"
+          data-watch-lists-panel-component--component-target="input"
+          data-action="keydown->watch-lists-panel-component--component#createWatchList"
+        )
+      li.dropdown-divider
+      li.px-2
+        = link_to t(".manage-lists"), account_watch_lists_path
+    - else
+      li.px-2.text-muted = t(".login")

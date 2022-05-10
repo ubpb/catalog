@@ -1,0 +1,14 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0
+      => t(".header")
+    .ms-auto = link_to new_account_watch_list_path, class: "btn btn-primary" do
+      i.fa-solid.fa-plus.fa-fw
+      =< t(".actions.create")
+  .card-body
+  	- if @watch_lists.present?
+  		ol.list-group
+  			= render partial: "watch_list", collection: @watch_lists
+  	- else
+  		.alert.alert-info.mb-0.text-center
+  			= t(".no-watch-lists")

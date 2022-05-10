@@ -1,4 +1,9 @@
 de:
+  save: Speichern
+  cancel: Abbrechen
+
+  confirm-delete: "Wirklich löschen?"
+
   date:
     formats:
       default: "%d.%m.%Y"

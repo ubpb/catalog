@@ -1,0 +1,8 @@
+ruby:
+  parts = ["UB Paderborn", "Katalog"]
+  breadcrumb.each do |b|
+    parts << b[:label]
+  end
+  title = parts.compact.join(" / ")
+
+= title

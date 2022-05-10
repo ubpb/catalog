@@ -48,5 +48,8 @@ yarn-debug.log*
 # Ignore parcel cache
 /.parcel-cache
 
+# Ignore all .env files
+*.env
+
 # MacOS stuff
 .DS_Store

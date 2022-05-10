@@ -23,6 +23,16 @@ Rails.application.routes.draw do
     end
     resources :fees, only: [:index]
     resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
+    resources :watch_lists, path: "watch-lists" do
+      resources :watch_list_entries, path: "entries", as: "entries", only: [:create, :destroy]
+    end
+  end
+
+  # Dedicated controllers for view components
+  scope "watch-lists-panel-component" do
+    post "create-watch-list/:search_scope/:record_id", to: "watch_lists_panel_component#create_watch_list", as: :watch_lists_panel_component_create_watch_list
+    put  "add-record/:watch_list_id/:search_scope/:record_id", to: "watch_lists_panel_component#add_record", as: :watch_lists_panel_component_add_record
+    put  "remove-record/:watch_list_id/:search_scope/:record_id", to: "watch_lists_panel_component#remove_record", as: :watch_lists_panel_component_remove_record
   end
 
   # Searches

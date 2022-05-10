@@ -1,59 +1,10 @@
-- record = hit.record
-
-div
-  / Superorder
-  / TODO: REMOVE ME
-  - if record.is_superorder
-    span.badge.bg-primary.mb-1 = "Überordnung"
-
-  / Title
-  h5.mb-0
-    = link_to record.title, show_record_path(record, search_request: @search_request)
-
-  / Part of...
-  = optional_value(record.is_part_of) do |is_part_of|
+.d-flex
+  div = render "record", record: hit.record
+  .ms-auto
     ruby:
-      links = is_part_of.map do |p|
-        if p.id.present?
-          sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-          link_to p.label, new_search_request_path(sr)
-        else
-          p.label
-        end
-      end
-    = "Teil von: "
-    span.me-2.fst-italic = links.join(", ").html_safe
-
-  / Creators
-  ruby:
-    #creators = record.creators.select do |c|
-    #  c.relationships.empty? ||
-    #  (c.relationships & ["aut", "edt", "oth"]).any?
-    #end
-    creators = record.creators
-
-  - if creators.present?
-    .mb-0 = render(CreatorComponent.with_collection(creators))
-
-  / Year of publication
-  - if (yop = record.year_of_publication).present?
-    .mb-0 = yop
-
-  / Links
-  - fl = record.fulltext_links.first
-  - if fl
-    .mb-0
-      = link_to fl.url do
-        i.fas.fa-external-link
-        =< "Direkt zur Online-Ressource"
-  / - fl = record.fulltext_links.first
-  / - rl = record.resolver_link
-  / - if fl || rl
-  /   div
-  /     - if fl
-  /       = link_to "Direkt zur Online-Ressource", fl.url
-  /     - elsif rl
-  /       - if rl.fulltext_available
-  /         = link_to "Direkt zur Online-Ressource", rl.url
-  /       - else
-  /         = link_to "Verfügbarkeit prüfen", rl.url
+      watch_lists_panel_component = WatchListsPanelComponent.new(
+        user: current_user,
+        search_scope: current_search_scope,
+        record_id: hit.record.id
+      )
+    = render(watch_lists_panel_component)

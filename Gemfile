@@ -18,10 +18,14 @@ gem "rails",              "~> 7.0.0"
 gem "simple_form",        "~> 5.1"
 gem "slim",               "~> 4.0"
 gem "sprockets-rails",    "~> 3.4.2"
-gem "stimulus-rails",     "~> 1.0.2"
 gem "view_component",     "~> 2.31"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
+
+# Just for migration tasks
+# TODO: Remove after migration.
+gem "sequel", ">= 5.55"
+gem "dotenv", ">= 2.7", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

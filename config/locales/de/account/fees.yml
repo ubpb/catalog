@@ -13,7 +13,7 @@ de:
         payment-info: >
           Bitte zahlen Sie ihre offenen Gebühren an unserem Kassenautomaten im Eingangsbereich der Bibliothek.
         credit-info: >
-          Sie haben Guthaben. Bitte wenden Sie sich an die Ortsleihe, damit wir Ihnen den Betrag auszahlen können.
+          Sie haben ein Guthaben von %{amount}. Bitte wenden Sie sich an die Ortsleihe, damit wir Ihnen den Betrag auszahlen können.
 
       fee:
         date: "Datum"

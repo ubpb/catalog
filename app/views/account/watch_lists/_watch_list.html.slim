@@ -12,6 +12,6 @@ li.list-group-item.d-flex.justify-content-between.align-items-center
           i.fa-solid.fa-fw.fa-pencil
           =< t("account.watch_lists.watch_list.actions.edit")
       li: hr.dropdown-divider
-      li = link_to account_watch_list_path(watch_list), method: :delete, class: "dropdown-item", data: {confirm: t("confirm-delete")} do
+      li = link_to account_watch_list_path(watch_list), class: "dropdown-item", data: { turbo_method: :delete, turbo_confirm: t("confirm-delete")} do
         i.fa-solid.fa-fw.fa-trash-can
         =< t("account.watch_lists.watch_list.actions.delete")

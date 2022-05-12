@@ -3,7 +3,6 @@
 //
 
 // Load Rails stuff
-require("@rails/ujs").start()
 //require("@rails/activestorage").start()
 
 // Load / init turbo

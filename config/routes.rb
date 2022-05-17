@@ -39,11 +39,11 @@ Rails.application.routes.draw do
   get  "/:search_scope/s", to: "searches#index", as: :searches
   post "/:search_scope/s", to: "searches#create"
 
-  # Records
-  get "/:search_scope/r/:id", to: "records#show", as: :record
-
-  # Items
-  get "/:search_scope/r/:record_id/items", to: "items#index", as: :items
+  # Records / Items / Hold requests
+  resources :records, path: "/:search_scope/r", only: [:show] do
+    resources :items, only: [:index]
+    resources :hold_requests, path: "hold-requests", only: [:create, :destroy]
+  end
 
   # Availability
   get "/availabilities(/:mode)", to: "availabilities#index", as: :availabilities

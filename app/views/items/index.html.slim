@@ -1,10 +1,8 @@
 .card.card-shadowed
   .card-header.cutoff-corner-tr
-    h5.mb-0 = t(".header")
+    h5.mb-0
+      span.me-2 = link_to record_path(id: @record.id, search_scope: current_search_scope) do
+        i.fa-solid.fa-angle-left
+      = t(".header", title: @record.title)
   .card-body
-    .mb-3 = link_to record_path(id: @record_id), class: "btn btn-primary"
-      i.fas.fa-angle-left
-      span.ms-2 = t(".back_to_record")
-
-    turbo-frame#items
-      = render "listing", items: @items
+    = render "listing"

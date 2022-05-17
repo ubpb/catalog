@@ -32,7 +32,7 @@ class Operation
         rescue => e
           unless e.is_a?(IntegrationError)
             # Wrap all errors from integrations into an IntegrationError
-            raise IntegrationError
+            raise IntegrationError, e
           else
             raise
           end

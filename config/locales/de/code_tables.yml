@@ -8,4 +8,5 @@ de:
     process_types:
       default: "Verfügbar"
       loan: "Entliehen"
+      holdshelf: "Für Vormerker bereitgestellt"
 

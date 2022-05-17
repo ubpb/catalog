@@ -6,21 +6,22 @@ module Ils::Adapters
         self.new.build(alma_item)
       end
 
-      def build(alma_item)
-        item = Ils::Item.new(
+      def build(alma_item, hold_requests:nil)
+        Ils::Item.new(
           id: get_id(alma_item),
           call_number: get_call_number(alma_item),
           barcode: get_barcode(alma_item),
-          status: get_status(alma_item),
+          is_available: get_is_available(alma_item),
+          reshelving_time: get_reshelving_time(alma_item),
           policy: get_policy(alma_item),
           library: get_library(alma_item),
           location: get_location(alma_item),
           process_type: get_process_type(alma_item),
           due_date: get_due_date(alma_item),
-          due_date_policy: get_due_date_policy(alma_item)
+          due_date_policy: get_due_date_policy(alma_item),
+          is_requested: get_is_requested(alma_item),
+          notes: get_notes(alma_item)
         )
-
-        item
       end
 
     private
@@ -38,12 +39,13 @@ module Ils::Adapters
         alma_item.dig("item_data", "barcode")
       end
 
-      def get_status(alma_item)
-        code  = alma_item.dig("item_data", "base_status", "value")
-        label = alma_item.dig("item_data", "base_status", "desc")
+      def get_is_available(alma_item)
+        alma_item.dig("item_data", "base_status", "value") == "1"
+      end
 
-        if code && label
-          Ils::ItemStatus.new(code: code,label: label)
+      def get_reshelving_time(alma_item)
+        if date_str = alma_item.dig("item_data", "reshelving_time")
+          Time.zone.parse(date_str)
         end
       end
 
@@ -90,7 +92,15 @@ module Ils::Adapters
       end
 
       def get_due_date_policy(alma_item)
-        alma_item.dig("item_data", "due_date_policy")
+        alma_item.dig("item_data", "due_date_policy").presence
+      end
+
+      def get_is_requested(alma_item)
+        alma_item.dig("item_data", "requested")
+      end
+
+      def get_notes(alma_item)
+        alma_item.dig("item_data", "public_note").presence
       end
 
     end

@@ -1,9 +1,13 @@
 class RecordsController < ApplicationController
 
-  def show
+  before_action :load_record
+
+private
+
+  def load_record
     # Load record by the given id
     @record = SearchEngine[current_search_scope].get_record(
-      params[:id],
+      params[:record_id] || params[:id],
       on_campus: on_campus?
     )
 
@@ -33,8 +37,6 @@ class RecordsController < ApplicationController
     add_breadcrumb(t("searches.breadcrumb"), new_search_request_path(@search_request)) if @search_request
     add_breadcrumb(t("records.breadcrumb"), show_record_path(@record, search_request: @search_request))
   end
-
-private
 
   def check_for_record(record, search_request)
     unless record

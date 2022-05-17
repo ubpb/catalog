@@ -107,6 +107,32 @@ class Ils
     end
 
     #
+    # Get the hold requests for a record.
+    #
+    # @param record_id [String] a record ID.
+    # @return [Array<Ils::HoldRequest>] List of hold requests that are active for the given record.
+    #
+    def get_hold_requests_for_record(record_id)
+      try_operation(__method__, record_id)
+    end
+
+    #
+    # Check if the given user can perform a hold request
+    # for the given record.
+    #
+    def can_perform_hold_request(record_id, user_id)
+      try_operation(__method__, record_id, user_id)
+    end
+
+    #
+    # Creates a hold request for a given record
+    # for a given user.
+    #
+    def create_hold_request(record_id, user_id)
+      try_operation(__method__, record_id, user_id)
+    end
+
+    #
     # Cancels a hold request for a user
     #
     # @param user_id [String] a user ID.

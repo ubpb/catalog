@@ -1,13 +1,54 @@
 de:
   items:
     index:
-      header: "Exemplare"
-      back_to_record: "Zurück zum Titel"
+      header: "Exemplare für %{title}"
+      breadcrumb: "Exemplare"
 
     listing:
-      no_items_message: "Keine Exemplare verfügbar"
+      stats:
+        no_of_items: "%{count} gefunden."
+        no_of_available_items:
+          zero: "Keine verfügbar."
+          one: "1 verfügbar."
+          other: "%{count} verfügbar."
+        no_of_hold_requests:
+          zero: "Keine Vormerkungen."
+          one: "1 Vormerkung."
+          other: "%{count} Vormerkungen."
 
+      hold_requests_available_info:
+        one: "Sie haben eine Vormerkung für diesen Titel"
+        other: "Sie haben %{count} Vormerkungen für diesen Titel"
+
+      no_items_message: "Keine Exemplare verfügbar"
       due_date_info: "Fällig am %{due_date}"
+
+      create_hold_request: "Ein Exemplar vormerken"
+      delete_hold_request: "Vormerkung löschen"
+
+      confirm_delete_hold_request: "Vormerkung wirklich löschen?"
+      confirm_create_hold_request: "Jetzt ein Exemplar vormerken?"
+
+      reshelving_info: Wiedereinstellen am Standort bis %{time}
+
+      hold_request_info: >
+        Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und
+        sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein
+        Exemplar für Sie verfügbar wird.
+
+      login_required: "Für Kontofunktionen bitte anmelden."
+
+      hold_requests:
+        header:
+          requested_at: "Vormerkung vom"
+          status: "Status"
+          queue_position: "Position in der Warteschlange"
+
+        status:
+          in_queue: "Vorgemerkt"
+          on_hold_shelf: "Bereitgestellt"
+
+        ready_for_pickup: "Sie können das Medium im Vormerkregal abholen"
 
       header:
         call_number: "Signatur"

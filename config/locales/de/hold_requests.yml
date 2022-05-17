@@ -1,0 +1,9 @@
+de:
+  hold_requests:
+    create:
+      success: "Vormerkung erfolgreich erstellt."
+      error: "Vormerkung konnte nicht erstellt werden. Bitte wenden Sie sich an die Ortsleihe."
+
+    destroy:
+      success: "Vormerkung erfolgreich gelöscht."
+      error: "Vormerkung konnte nicht gelöscht werden. Bitte wenden Sie sich an die Ortsleihe."

@@ -3,7 +3,7 @@
     i.fas.fa-angle-left
     span.ms-2 = t(".back_to_search")
 
-  .ms-auto.me-2
+  .ms-auto
     - if @position_within_search_result && @total_hits
       span.me-2
         = t(".info", position: @position_within_search_result, total_hits: @total_hits)

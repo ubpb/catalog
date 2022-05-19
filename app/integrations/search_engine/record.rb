@@ -59,6 +59,8 @@ class SearchEngine
     attribute :related_resource_links, Types::Array.of(Link).default([].freeze)
     # Fulltext links
     attribute :fulltext_links, Types::Array.of(Link).default([].freeze)
+    # Resolver links
+    attribute :resolver_link, ResolverLink.optional
 
     # If the title is a print journal, the journal_stocks lists
     # the locally available volumes of that journal.

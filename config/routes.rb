@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :fees, only: [:index]
     resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
     resources :watch_lists, path: "watch-lists" do
-      resources :watch_list_entries, path: "entries", as: "entries", only: [:create, :destroy]
+      resources :watch_list_entries, path: "entries", as: "entries", only: [:destroy]
     end
   end
 

@@ -2,6 +2,11 @@ de:
   searches:
     breadcrumb: "Suche"
 
+    record:
+      online_resource:
+        direct_link: "Direkt zur Online-Ressource"
+        resolver_link: "Verfügbarkeit prüfen"
+
     search_panel:
       search: "Suchen"
 

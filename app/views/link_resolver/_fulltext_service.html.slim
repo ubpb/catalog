@@ -1,0 +1,14 @@
+.d-flex.align-items-center
+  div
+    - if service.is_free?
+      .badge.bg-success = "TODO: Freie Resource"
+
+    div = service.package_name
+
+    - if service.public_note
+      div: em = service.public_note
+  .ms-auto
+    = link_to service.fulltext_url, target: "_blank", class: "btn btn-primary btn-sm" do
+      i.fa-solid.fa-external-link.fa-fw
+      = "Link aufrufen"
+

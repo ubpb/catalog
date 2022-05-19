@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     flash[:success] = t(".success")
-    redirect_to(root_path)
+    redirect_to(root_path, status: :see_other)
   end
 
 end

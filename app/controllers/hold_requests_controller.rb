@@ -12,7 +12,7 @@ class HoldRequestsController < RecordsController
     redirect_to record_items_path(
       record_id: @record.id,
       search_scope: current_search_scope
-    ), status: 303
+    ), status: :see_other
   end
 
   def destroy
@@ -25,7 +25,7 @@ class HoldRequestsController < RecordsController
     redirect_to record_items_path(
       record_id: @record.id,
       search_scope: current_search_scope
-    ), status: 303
+    ), status: :see_other
   end
 
 end

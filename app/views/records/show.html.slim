@@ -122,7 +122,16 @@
           dd
             ul.mb-0
               - links.each do |link|
-                li = link_to link.label, link.url
+                li = link_to link.url, target: "_blank" do
+                  i.fa-solid.fa-external-link
+                  =< link.label
+
+        - if @record.fulltext_links.blank? && @record.resolver_link.present?
+          dt = t(".details.fulltext_links")
+          dd = link_to @record.resolver_link.url, target: "_blank" do
+            i.fa-solid.fa-external-link
+            =< t("searches.record.online_resource.resolver_link")
+
 
     / ----------------------------------------
     / Journal stocks

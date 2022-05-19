@@ -79,17 +79,9 @@ module SearchEngine::Adapters
       end
 
       def get_resolver_link(xml)
-        availability = xml.at_css("delivery availability")&.text
-
-        unless availability =~ /linktorsrc/ # Ignore DirectLink resources
-          if url = xml.css("delivery link")&.map(&:text)&.find{|l| l["linkType"] == "http://purl.org/pnx/linkType/openurl"}.try(:[], "linkURL")
-
-            # Remove the language param to force the default language
-            url = url.split('&').map{|e| e.gsub(/req\.language=.+/, 'req.language=')}.join('&')
-            # See: https://github.com/ubpb/issues/issues/59
-            url = url.gsub(/primo3-Article/i, "primo3-article")
-
-            SearchEngine::ResolverLink.new(url: url, fulltext_available: availability == "fulltext")
+        if openurl = xml.at_css("LINKS openurl")&.text
+          if u_params = openurl.split("?").last.presence
+            SearchEngine::ResolverLink.new(url: "/openurl?#{u_params}")
           end
         end
       end
@@ -97,14 +89,14 @@ module SearchEngine::Adapters
       def get_fulltext_links(xml)
         links = []
 
-        availability = xml.at_css("delivery availability")&.text
-
-        if availability =~ /linktorsrc/ # Only DirectLink resources
-          if url = xml.css("delivery", "link")&.map(&:text)&.find{|l| l["linkType"] == "http://purl.org/pnx/linkType/linktorsrc"}.try(:[], "linkURL")
-            links << SearchEngine::Link.new(url: url)
-          end
+        if fulltext_url = xml.at_css("LINKS linktorsrc")&.text
+          # try to get a label
+          label = xml.at_css("links linktorsrc")&.text&.split("$$G")&.last
+          # add link
+          links << SearchEngine::Link.new(url: fulltext_url, label: label)
         end
 
+        # Return links
         links
       end
 

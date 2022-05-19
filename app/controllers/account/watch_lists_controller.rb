@@ -68,7 +68,7 @@ class Account::WatchListsController < Account::ApplicationController
       flash[:error] = t(".error")
     end
 
-    redirect_to account_watch_lists_path
+    redirect_to account_watch_lists_path, status: :see_other
   end
 
 private

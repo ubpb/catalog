@@ -25,7 +25,7 @@ class Account::HoldRequestsController < Account::ApplicationController
       flash[:error] = t(".error")
     end
 
-    redirect_to(account_hold_requests_path)
+    redirect_to(account_hold_requests_path, status: :see_other)
   end
 
 private

@@ -50,10 +50,11 @@ class SearchEngine
 
     # Is part of ...
     attribute :is_part_of, Types::Array.of(IsPartOf).default([].freeze)
-
     # A list of other related records, that belong to this record
     # (e.g. Vorgänger, Nachfolger, Parallelausgaben, etc.)
     attribute :relations, Types::Array.of(Relation).default([].freeze)
+    # A special relation to another record that is the source of this record
+    attribute :source, Relation.optional
 
     # Related resource links
     attribute :related_resource_links, Types::Array.of(Link).default([].freeze)

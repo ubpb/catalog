@@ -65,6 +65,10 @@
                 - else
                   li = p.label
 
+        = optional_value(@record.source) do |source|
+          dt = t(".details.source")
+          dd = source.label
+
         = optional_value(@record.relations) do |relations|
           dt = t(".details.relations")
           dd
@@ -124,9 +128,9 @@
               - links.each do |link|
                 li = link_to link.url, target: "_blank" do
                   i.fa-solid.fa-external-link
-                  =< link.label
+                  =< link.label || "zum Volltext"
 
-        - if @record.fulltext_links.blank? && @record.resolver_link.present?
+        - if @record.resolver_link.present?
           dt = t(".details.fulltext_links")
           dd = link_to @record.resolver_link.url, target: "_blank" do
             i.fa-solid.fa-external-link

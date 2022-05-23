@@ -6,80 +6,133 @@ module SearchEngine::Adapters
         self.new.build(xml)
       end
 
+      #
+      # xml =>
+      #   <DOC NO="1" SEARCH_ENGINE="primo_central_multiple_fe" SEARCH_ENGINE_TYPE="Primo Central Search Engine" RANK="2.4719088" LOCAL="false">
+      #     <PrimoNMBib>
+      #       <record>...</record>
+      #     <PrimoNMBib>
+      #     <LINKS>...</LINKS>
+      #   </DOC>
+      #
       def build(xml)
-        SearchEngine::Record.new(
+        xxx = SearchEngine::Record.new(
           id: get_id(xml),
           title: get_title(xml),
+          creators: get_creators(xml),
           year_of_publication: get_year_of_publication(xml),
-          creators_and_contributors: get_creators_and_contributors(xml),
-          publishers: get_publishers(xml),
-          is_part_of: get_is_part_of(xml),
-          identifiers: get_identifiers(xml),
-          descriptions: get_descriptions(xml),
-          resolver_link: get_resolver_link(xml),
-          fulltext_links: get_fulltext_links(xml),
-          subjects: get_subjects(xml),
+          publication_notices: get_publishers(xml),
           edition: get_edition(xml),
+          languages: get_languages(xml),
+          additional_identifiers: get_identifiers(xml),
+          subjects: get_subjects(xml),
+          notes: get_descriptions(xml),
+          is_part_of: get_is_part_of(xml),
           source: get_source(xml),
-          languages: get_languages(xml)
+          resolver_link: get_resolver_link(xml),
+          fulltext_links: get_fulltext_links(xml)
         )
+
+        #binding.b
+
+        puts xml
+        puts "-------------------------"
+        pp xxx
+
+        xxx
       end
 
     private
 
       def get_id(xml)
-        xml.at_css("control recordid")&.text&.gsub(/\ATN_/, "")
+        xml.at_xpath("//control/recordid")&.text&.gsub(/\ATN_/, "")
       end
 
       def get_title(xml)
-        xml.at_css("display title")&.text
+        xml.at_xpath("//display/title")&.text || "n.a."
+      end
+
+      def get_creators(xml)
+        names = []
+        names += xml.xpath("//display/creator")&.map(&:text) || []
+        names += xml.xpath("//display/contributor")&.map(&:text) || []
+
+        names.map do |n|
+          n.split(";").map(&:strip)
+        end
+        .flatten(1)
+        .map(&:presence)
+        .compact
+        .uniq
+        .map do |n|
+          SearchEngine::Creator.new(name: n)
+        end
       end
 
       def get_year_of_publication(xml)
-        xml.at_css("search creationdate")&.text
-      end
-
-      def get_creators_and_contributors(xml)
-        cc = []
-        cc += xml.css("display creator")&.map(&:text) || []
-        cc += xml.css("display contributor")&.map(&:text) || []
-        cc.map{|s| s.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
+        xml.at_xpath("//display/creationdate")&.text ||
+        xml.at_xpath("//search/creationdate")&.text
       end
 
       def get_publishers(xml)
-        xml.css("display publisher")&.map(&:text)
+        publishers = xml.xpath("//display/publisher")&.map(&:text) || []
+        publishers.map{|p| p.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
       end
 
-      def get_is_part_of(xml)
-        xml.css("display ispartof")&.map(&:text)&.map do |label|
-          SearchEngine::IsPartOf.new(label: label)
-        end
+      def get_edition(xml)
+        xml.xpath("//display/edition")&.text
+      end
+
+      def get_languages(xml)
+        languages = xml.xpath("//display/language")&.map(&:text) || []
+        languages.map{|l| l.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
       end
 
       def get_identifiers(xml)
         identifiers = []
 
-        xml.css("addata issn")&.each do |issn|
-          identifiers << SearchEngine::Identifier.new(type: :issn, value: issn.text)
+        xml.xpath("//addata/isbn")&.each do |i|
+          identifiers << SearchEngine::Identifier.new(type: :isbn, value: i.text)
         end
 
-        xml.css("addata eissn")&.each do |eissn|
-          identifiers << SearchEngine::Identifier.new(type: :eissn, value: eissn.text)
+        xml.xpath("//addata/issn")&.each do |i|
+          identifiers << SearchEngine::Identifier.new(type: :issn, value: i.text)
         end
 
-        xml.css("addata doi")&.each do |doi|
-          identifiers << SearchEngine::Identifier.new(type: :doi, value: doi.text)
+        xml.xpath("//addata/eissn")&.each do |i|
+          identifiers << SearchEngine::Identifier.new(type: :eissn, value: i.text)
+        end
+
+        xml.xpath("//addata/doi")&.each do |i|
+          identifiers << SearchEngine::Identifier.new(type: :doi, value: i.text)
         end
 
         identifiers
       end
 
+      def get_subjects(xml)
+        subjects = xml.xpath("//search/subject")&.map(&:text) || []
+        subjects.map{|s| s.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
+      end
+
       def get_descriptions(xml)
-        xml.css("addata abstract")&.map(&:text)
+        xml.xpath("//display/description")&.map(&:text)
+      end
+
+      def get_is_part_of(xml)
+        xml.xpath("//display/ispartof")&.map(&:text)&.map do |label|
+          SearchEngine::IsPartOf.new(label: label)
+        end
+      end
+
+      def get_source(xml)
+        if source = xml.at_xpath("//display/source")&.text
+          SearchEngine::Relation.new(label: source)
+        end
       end
 
       def get_resolver_link(xml)
-        if openurl = xml.at_css("LINKS openurl")&.text
+        if openurl = xml.at_xpath("//LINKS/openurl")&.text
           if u_params = openurl.split("?").last.presence
             SearchEngine::ResolverLink.new(url: "/openurl?#{u_params}")
           end
@@ -89,35 +142,41 @@ module SearchEngine::Adapters
       def get_fulltext_links(xml)
         links = []
 
-        if fulltext_url = xml.at_css("LINKS linktorsrc")&.text
-          # try to get a label
-          label = xml.at_css("links linktorsrc")&.text&.split("$$G")&.last
-          # add link
-          links << SearchEngine::Link.new(url: fulltext_url, label: label)
+        # Check //record/links/linktorsrc
+        if link_to_rsrc = get_link_elements(xml, xpath: "//record/links/linktorsrc")
+          if url = link_to_rsrc["U"]
+            links << SearchEngine::Link.new(
+              url: url,
+              label: link_to_rsrc["G"]
+            )
+          end
+        end
+
+        # Check for //record/links/linktopdf
+        if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktopdf")
+          if url = link_to_pdf["U"]
+            links << SearchEngine::Link.new(url: url)
+          end
+        end
+
+        # Check for //record/links/linktohtml
+        if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktohtml")
+          if url = link_to_pdf["U"]
+            links << SearchEngine::Link.new(url: url)
+          end
         end
 
         # Return links
         links
       end
 
-      def get_subjects(xml)
-        subjects = xml.css("search subject")&.map(&:text) || []
-        subjects.map{|s| s.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
-      end
-
-      def get_edition(xml)
-        xml.at_css("display edition")&.text
-      end
-
-      def get_source(xml)
-        if source = xml.at_css("display source")&.text
-          SearchEngine::Relation.new(label: source)
-        end
-      end
-
-      def get_languages(xml)
-        languages = xml.css("display language")&.map(&:text) || []
-        languages.map{|l| l.split(";").map(&:strip)}.flatten(1).map(&:presence).compact.uniq
+      def get_link_elements(xml, xpath:)
+        xml.at_xpath(xpath)
+          &.text
+          &.split("$$")
+          &.map(&:presence)
+          &.compact
+          &.inject({}){|memo, s| memo[s[0]] = s[1..-1]; memo}
       end
 
     end

@@ -38,17 +38,19 @@ module SearchEngine::Adapters
       end
 
       def build_search_result(cdi_result)
-        if docset = cdi_result.at_css("DOCSET")
+        if docset = cdi_result.at_xpath("./DOCSET")
           total = docset.attr("TOTALHITS").to_i
 
-          hits = docset.css("DOC").map do |doc|
+          hits = docset.xpath("./DOC").map do |doc|
             SearchEngine::Hit.new(
               score: doc.attr("RANK").to_f,
-              record: RecordFactory.build(doc)
+              record: RecordFactory.build(
+                Nokogiri::XML.parse(doc.to_xml)
+              )
             )
           end
 
-          aggregations = (cdi_result.css("FACETLIST FACET") || []).map do |facet|
+          aggregations = (cdi_result.xpath("//FACETLIST/FACET") || []).map do |facet|
             name  = facet.attr("NAME")
             field = adapter.aggregations_field(name)
             type  = adapter.aggregations_type(name)
@@ -56,7 +58,7 @@ module SearchEngine::Adapters
             if name && field && type
               case type
               when "term"
-                terms = facet.css("FACET_VALUES").map do |facet_value|
+                terms = facet.xpath("./FACET_VALUES").map do |facet_value|
                   SearchEngine::Aggregations::TermAggregation::Term.new(
                     term: facet_value.attr("KEY"),
                     count: facet_value.attr("VALUE").to_i

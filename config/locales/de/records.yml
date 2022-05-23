@@ -15,6 +15,7 @@ de:
         edition: "Auflage"
         physical_description: "Physische Beschreibung"
         is_part_of: "Ist Teil von"
+        source: "Quelle"
         relations: "Verknüpfte Titel"
         languages: "Sprache(n)"
         local_notations: "Systemstelle"

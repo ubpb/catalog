@@ -50,8 +50,9 @@
         dt = t(".details.edition")
         dd = optional_value(@record.edition, default: "–")
 
-        dt = t(".details.physical_description")
-        dd = optional_value(@record.physical_description, default: "–")
+        = optional_value(@record.physical_description) do |physical_description|
+          dt = t(".details.physical_description")
+          dd = physical_description
 
         = optional_value(@record.is_part_of) do |is_part_of|
           dt = t(".details.is_part_of")
@@ -81,23 +82,23 @@
                 - else
                   li = r.label
 
-        dt = t(".details.languages")
-        dd = optional_value(@record.languages, default: "–") do |languages|
-          - languages.join("; ").upcase
+        = optional_value(@record.languages) do |languages|
+          dt = t(".details.languages")
+          dd = languages.join("; ").upcase
 
-        dt = t(".details.local_notations")
-        dd = optional_value(@record.local_notations, default: "–") do |local_notation|
-          - local_notation.join("; ").upcase
+        = optional_value(@record.local_notations) do |local_notation|
+          dt = t(".details.local_notations")
+          dd = local_notation.join("; ").upcase
 
-        dt = t(".details.subjects")
-        dd = optional_value(@record.subjects, default: "–") do |subjects|
-          - subjects.each do |subject|
-            span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
+        = optional_value(@record.subjects) do |subjects|
+          dt = t(".details.subjects")
+          dd
+            - subjects.each do |subject|
+              span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
 
         dt = t(".details.identifiers.header")
         dd
-          = optional_value(@record.id) do |id|
-            div = "#{t(".details.identifiers.id")}: #{id}"
+          div = "#{t(".details.identifiers.id")}: #{@record.id}"
           = optional_value(@record.aleph_id) do |id|
             div = "#{t(".details.identifiers.aleph_id")}: #{id}"
           = optional_value(@record.hbz_id) do |id|
@@ -131,7 +132,7 @@
                   =< link.label || "zum Volltext"
 
         - if @record.resolver_link.present?
-          dt = t(".details.fulltext_links")
+          dt = t(".details.resolver_link")
           dd = link_to @record.resolver_link.url, target: "_blank" do
             i.fa-solid.fa-external-link
             =< t("searches.record.online_resource.resolver_link")

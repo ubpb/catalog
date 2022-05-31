@@ -10,6 +10,10 @@ defaults: &defaults
     - "10.0.2.0/24"
     - "131.234.0.0/1"
 
+  cover_images:
+    enabled: true
+    access_token: "ae9dcc0d-bc22-48ca-a343-e840429fd043"
+
 development:
   <<: *defaults
 

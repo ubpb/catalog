@@ -56,16 +56,13 @@ ruby:
       ) = t("searches.availabilities.error")
 
       - search_result.hits.each.with_index do |hit, index|
-        ruby:
-          check_availabilities = current_search_scope == :local && !hit.record.is_online_resource
-
         - if index > 0
           hr
 
         .hit(
           data-availabilities-target="record"
           data-record-id=hit.record.id
-          data-availabilities-enabled=check_availabilities
+          data-availabilities-enabled=show_availability?(hit.record, search_scope: current_search_scope)
         )
           = render "hit", hit: hit
 

@@ -15,7 +15,7 @@
           )
         = render(watch_lists_panel_component)
 
-    - if current_search_scope == :local && !@record.is_online_resource
+    - if show_availability?(@record, search_scope: current_search_scope)
       div(
         data-controller="availabilities"
         data-availabilities-url-value=availabilities_path(mode: "badge")

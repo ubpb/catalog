@@ -13,6 +13,10 @@ module SearchEngine::Adapters
           is_online_resource: get_is_online_resource(data),
           is_superorder: get_is_superorder(data),
 
+          resource_type: get_resource_type(data),
+          material_type: get_material_type(data),
+          content_type: get_content_type(data),
+
           id: get_id(data),
           aleph_id: get_aleph_id(data),
           hbz_id: get_hbz_id(data),
@@ -71,6 +75,18 @@ module SearchEngine::Adapters
 
       def get_is_superorder(data)
         source_value(data, "meta", "is_superorder")
+      end
+
+      def get_resource_type(data)
+        source_value(data, "resource_type")
+      end
+
+      def get_material_type(data)
+        source_value(data, "material_type")
+      end
+
+      def get_content_type(data)
+        source_value(data, "content_type")
       end
 
       def get_id(data)

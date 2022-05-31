@@ -1,52 +1,83 @@
-div
-  / Title
-  h5.mb-0
-    = link_to record.title, show_record_path(record, search_request: @search_request)
+ruby:
+  enable_availability = local_assigns.fetch(:enable_availability) { false } &&
+                        show_availability?(record, search_scope: current_search_scope)
+  enable_watch_lists_panel = local_assigns.fetch(:enable_watch_lists_panel) { false }
 
-  / Part of...
-  = optional_value(record.is_part_of) do |is_part_of|
-    ruby:
-      links = is_part_of.map do |p|
-        if p.id.present?
-          sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-          link_to p.label, new_search_request_path(sr)
-        else
-          p.label
+.d-flex(
+  data-availabilities-target="record"
+  data-record-id=record.id
+  data-availabilities-enabled=enable_availability
+)
+  div.align-self-start.text-center.text-muted.me-2(style="width: 55px; position: relative")
+    / Cover Image
+    i.fa-regular.fa-file.fa-3x
+    - isbn = record.additional_identifiers.select{|i| i.type == :isbn}.first&.value&.gsub("-", "")
+    - if isbn
+      = image_tag(cover_image_url(isbn, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid")
+  div
+    / Title
+    h5.mb-0
+      = link_to record.title, show_record_path(record, search_request: @search_request)
+
+    / Part of...
+    = optional_value(record.is_part_of) do |is_part_of|
+      ruby:
+        links = is_part_of.map do |p|
+          if p.id.present?
+            sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+            link_to p.label, new_search_request_path(sr)
+          else
+            p.label
+          end
         end
-      end
-    = "Teil von: "
-    span.me-2.fst-italic = links.join(", ").html_safe
+      = "Teil von: "
+      span.me-2.fst-italic = links.join(", ").html_safe
 
-  / Creators
-  ruby:
-    #creators = record.creators.select do |c|
-    #  c.relationships.empty? ||
-    #  (c.relationships & ["aut", "edt", "oth"]).any?
-    #end
-    creators = record.creators
+    / Creators
+    ruby:
+      #creators = record.creators.select do |c|
+      #  c.relationships.empty? ||
+      #  (c.relationships & ["aut", "edt", "oth"]).any?
+      #end
+      creators = record.creators
 
-  - if creators.present?
-    .mb-0 = render(CreatorComponent.with_collection(creators))
+    - if creators.present?
+      .mb-0 = render(CreatorComponent.with_collection(creators))
 
-  / Year of publication
-  - if (yop = record.year_of_publication).present?
-    .mb-0 = yop
+    / Year of publication
+    - if (yop = record.year_of_publication).present?
+      .mb-0 = yop
 
-  / Links
-  - fl = record.fulltext_links.first
-  - rl = record.resolver_link
-  - if fl || rl
-    div
-      - if fl
-        = link_to fl.url, target: "_blank" do
-          i.fas.fa-external-link
-          =< t(".online_resource.direct_link")
-      - elsif rl
-        - if rl.fulltext_available
-          = link_to rl.url, target: "_blank" do
+    / Links
+    - fl = record.fulltext_links.first
+    - rl = record.resolver_link
+    - if fl || rl
+      div
+        - if fl
+          = link_to fl.url, target: "_blank" do
             i.fas.fa-external-link
             =< t(".online_resource.direct_link")
-        - else
-          = link_to rl.url, target: "_blank" do
-            i.fas.fa-external-link
-            =< t(".online_resource.resolver_link")
+        - elsif rl
+          - if rl.fulltext_available
+            = link_to rl.url, target: "_blank" do
+              i.fas.fa-external-link
+              =< t(".online_resource.direct_link")
+          - else
+            = link_to rl.url, target: "_blank" do
+              i.fas.fa-external-link
+              =< t(".online_resource.resolver_link")
+
+    / Availability
+    - if enable_availability
+      .mt-2(data-availabilities-output)
+        i.fas.fa-sm.fa-spinner.fa-pulse
+
+  - if enable_watch_lists_panel
+    .ms-auto
+      ruby:
+        watch_lists_panel_component = WatchListsPanelComponent.new(
+          user: current_user,
+          search_scope: current_search_scope,
+          record_id: record.id
+        )
+      = render(watch_lists_panel_component)

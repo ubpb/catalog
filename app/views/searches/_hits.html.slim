@@ -58,15 +58,7 @@ ruby:
       - search_result.hits.each.with_index do |hit, index|
         - if index > 0
           hr
-
-        .hit(
-          data-availabilities-target="record"
-          data-record-id=hit.record.id
-          data-availabilities-enabled=show_availability?(hit.record, search_scope: current_search_scope)
-        )
-          = render "hit", hit: hit
-
-          .mt-2(data-availabilities-output)
-            i.fas.fa-sm.fa-spinner.fa-pulse
+        .hit
+          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_availability: true
   .card-footer
     = paginator

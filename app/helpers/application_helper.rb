@@ -29,4 +29,15 @@ module ApplicationHelper
     end
   end
 
+  def show_availability?(record, search_scope: current_search_scope)
+    # only on local search scope
+    search_scope == :local &&
+    # not for online resources
+    !record.is_online_resource? &&
+    # not for journals
+    record.resource_type != "journal" &&
+    # not for newspapers
+    record.resource_type != "newspaper"
+  end
+
 end

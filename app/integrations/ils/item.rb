@@ -13,24 +13,12 @@ class Ils
     attribute :due_date_policy, Types::String.optional
     attribute :is_requested, Types::Bool.default(false)
     attribute :notes, Types::String.optional
-    #attribute :signature, Types::String
-    #attribute :collection_code, Types::String
-    #attribute :item_status_code, Types::String
-    #attribute :process_status_code, Types::String.optional
-    #attribute :process_status, Types::ProcessStatus
-    #attribute :availability_status, Types::AvailabilityStatus
-    #attribute :due_date, Types::Date.optional
-    #attribute :note, Types::String.optional
-    #attribute :hold_request_count, Types::Integer.default(0)
-    #attribute :hold_request_allowed, Types::Bool.default(false)
+    attribute :expected_arrival_date, Types::Date.optional
+    attribute :description, Types::String.optional
 
-    #def expected?
-    #  process_status == :expected && due_date.present?
-    #end
-
-    #def loaned?
-    #  process_status == :loaned && due_date.present?
-    #end
+    def expected?
+      process_type&.code == "ACQ" && expected_arrival_date.present?
+    end
 
   end
 end

@@ -4,29 +4,31 @@
       = render "stepper"
 
   .card-body
-    .d-flex.align-items-center
-      h3.mb-0 = @record.title
-      .ms-auto
-        ruby:
-          watch_lists_panel_component = WatchListsPanelComponent.new(
-            user: current_user,
-            search_scope: current_search_scope,
-            record_id: @record.id
-          )
-        = render(watch_lists_panel_component)
+    = render "searches/record", record: @record, enable_watch_lists_panel: true
 
-    - if show_availability?(@record, search_scope: current_search_scope)
-      div(
-        data-controller="availabilities"
-        data-availabilities-url-value=availabilities_path(mode: "badge")
-      )
-        div(
-          data-availabilities-target="record"
-          data-record-id=@record.id
-          data-availabilities-enabled
-        )
-          div(data-availabilities-output)
-            i.fas.fa-sm.fa-spinner.fa-pulse
+    / .d-flex.align-items-center
+    /   h3.mb-0 = @record.title
+    /   .ms-auto
+    /     ruby:
+    /       watch_lists_panel_component = WatchListsPanelComponent.new(
+    /         user: current_user,
+    /         search_scope: current_search_scope,
+    /         record_id: @record.id
+    /       )
+    /     = render(watch_lists_panel_component)
+
+    / - if show_availability?(@record, search_scope: current_search_scope)
+    /   div(
+    /     data-controller="availabilities"
+    /     data-availabilities-url-value=availabilities_path(mode: "badge")
+    /   )
+    /     div(
+    /       data-availabilities-target="record"
+    /       data-record-id=@record.id
+    /       data-availabilities-enabled
+    /     )
+    /       div(data-availabilities-output)
+    /         i.fas.fa-sm.fa-spinner.fa-pulse
 
     hr.mb-4
 
@@ -156,12 +158,12 @@
                 td = stock.call_number
                 td = stock.location_name
                 td = stock.label
+        em = t(".journal_stocks.hint")
 
     / ----------------------------------------
     / Items
     / ----------------------------------------
     - if current_search_scope == :local && !@record.is_online_resource
-      h4 = t(".items.header")
       ruby:
         path = record_items_path(
           search_scope: current_search_scope,

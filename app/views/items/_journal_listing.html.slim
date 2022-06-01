@@ -1,0 +1,24 @@
+ruby:
+  expected_items = @items&.select{|i| i.expected?}
+
+turbo-frame#items
+  h4 = t(".header")
+
+  - if expected_items.present?
+    table.table.align-middle.mb-0
+        thead: tr
+          th(scope="col") = t(".items.header.call_number")
+          th(scope="col") = t(".items.header.location")
+          th(scope="col") = t(".items.header.description")
+        tbody
+          - expected_items.each do |item|
+            tr
+              td = item.call_number
+              td = item.location.label
+              td
+                - if item.description.present?
+                  div = item.description
+                - if item.expected_arrival_date.present? && item.expected_arrival_date > Date.today
+                  div = t(".items.expected_date_message", date: l(item.expected_arrival_date))
+  - else
+    .alert.alert-info.mb-0 = t(".no_items_message")

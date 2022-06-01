@@ -4,7 +4,19 @@ de:
       header: "Exemplare für %{title}"
       breadcrumb: "Exemplare"
 
+    journal_listing:
+      header: "Aktuelle und erwartete Hefte"
+      no_items_message: "Keine Informationen über aktuelle oder erwarte Hefte verfügbar."
+      items:
+        header:
+          call_number: "Signatur"
+          location: "Standort"
+          description: "Beschreibung"
+        expected_date_message: "Erwartet zum: %{date}"
+
     listing:
+      header: "Exemplare"
+
       stats:
         no_of_items: "%{count} gefunden."
         no_of_available_items:
@@ -50,10 +62,11 @@ de:
 
         ready_for_pickup: "Sie können das Medium im Vormerkregal abholen"
 
-      header:
-        call_number: "Signatur"
-        location: "Standort"
-        policy: "Leihart"
-        status: "Status"
-        #process_type: "Prozess-Status"
-        #due_date_policy: "Due-Date-Policy"
+      items:
+        header:
+          call_number: "Signatur"
+          location: "Standort"
+          policy: "Leihart"
+          status: "Status"
+          #process_type: "Prozess-Status"
+          #due_date_policy: "Due-Date-Policy"

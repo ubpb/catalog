@@ -7,6 +7,9 @@ de:
       info: "Ergebnis %{position} von %{total_hits}"
 
     show:
+      journal_stocks:
+        hint: Aktuelle Zeitschriftenjahrgänge finden Sie auf der entsprechenden Fachebene. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
+
       details:
         header: "Details"
         creators: "Autor(en) / Beteiligte"
@@ -35,10 +38,6 @@ de:
             isbn: "ISBN"
             issn: "ISSN"
             ocolc: "OCLC-Nummer"
-
-
-      items:
-        header: "Exemplare"
 
 
 

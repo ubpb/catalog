@@ -20,7 +20,9 @@ module Ils::Adapters
           due_date: get_due_date(alma_item),
           due_date_policy: get_due_date_policy(alma_item),
           is_requested: get_is_requested(alma_item),
-          notes: get_notes(alma_item)
+          notes: get_notes(alma_item),
+          expected_arrival_date: get_expected_arrival_date(alma_item),
+          description: get_description(alma_item)
         )
       end
 
@@ -81,7 +83,7 @@ module Ils::Adapters
         label = alma_item.dig("item_data", "process_type", "desc")
 
         if code && label
-          Ils::ProcessType.new(code: code,label: label)
+          Ils::ProcessType.new(code: code, label: label)
         end
       end
 
@@ -101,6 +103,16 @@ module Ils::Adapters
 
       def get_notes(alma_item)
         alma_item.dig("item_data", "public_note").presence
+      end
+
+      def get_expected_arrival_date(alma_item)
+        if date_str = alma_item.dig("item_data", "expected_arrival_date")
+          Date.parse(date_str)
+        end
+      end
+
+      def get_description(alma_item)
+        alma_item.dig("item_data", "description").presence
       end
 
     end

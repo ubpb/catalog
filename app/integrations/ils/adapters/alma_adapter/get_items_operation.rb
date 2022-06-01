@@ -23,7 +23,7 @@ module Ils::Adapters
         ).try(:[], "item") || []
 
         # Filter out items with an unassigned location
-        items.reject do |i|
+        items = items.reject do |i|
           i.dig("item_data", "location", "value") =~ /UNASSIGNED/
         end
 

@@ -5,4 +5,7 @@
         i.fa-solid.fa-angle-left
       = t(".header", title: @record.title)
   .card-body
-    = render "listing"
+    - if @record.journal_stocks.present?
+      = render "journal_listing"
+    - else
+      = render "listing"

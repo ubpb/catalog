@@ -1,4 +1,6 @@
 turbo-frame#items
+  h4 = t(".header")
+
   = render "alerts"
 
   - if @items.present?
@@ -32,7 +34,7 @@ turbo-frame#items
                     = t(".delete_hold_request")
         - elsif @can_perform_hold_request
           .mb-2 = t(".hold_request_info")
-          = link_to record_hold_requests_path(record_id: @record_id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
+          = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
               = t(".create_hold_request")
         - else
           / hold request not possible. Show nothing for now.
@@ -45,10 +47,10 @@ turbo-frame#items
 
     table.table.align-middle.mb-0
       thead: tr
-        th(scope="col") = t(".header.call_number")
-        th(scope="col") = t(".header.policy")
-        th(scope="col") = t(".header.location")
-        th(scope="col") = t(".header.status")
+        th(scope="col") = t(".items.header.call_number")
+        th(scope="col") = t(".items.header.policy")
+        th(scope="col") = t(".items.header.location")
+        th(scope="col") = t(".items.header.status")
       tbody
         - @items.each do |item|
           tr

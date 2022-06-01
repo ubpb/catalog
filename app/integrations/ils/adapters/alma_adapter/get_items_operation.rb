@@ -22,10 +22,12 @@ module Ils::Adapters
           }
         ).try(:[], "item") || []
 
+        # Filter out items with an unassigned location
         items.reject do |i|
           i.dig("item_data", "location", "value") =~ /UNASSIGNED/
         end
 
+        # Filter out items that are suppressed from publishing
         items.reject do |i|
           # For whatever reason this boolean flag is of type string.
           i.dig("holding_data", "holding_suppress_from_publishing") == "true"

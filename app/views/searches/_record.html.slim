@@ -48,6 +48,17 @@ ruby:
     - if (yop = record.year_of_publication).present?
       .mb-0 = yop
 
+    / Journal stock
+    - if record.journal_stocks.present?
+      ruby:
+        journal_stocks = record.journal_stocks.map do |js|
+          [js.label_prefix, js.label].join(" ")
+        end
+      .mb-0
+        = "Zeitschriftenbestand: #{journal_stocks.join("; ")}"
+
+
+
     / Links
     - fl = record.fulltext_links.first
     - rl = record.resolver_link

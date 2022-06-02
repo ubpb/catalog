@@ -171,4 +171,5 @@
           host_item_id: @record.host_item_id
         )
       turbo-frame#items(src=path)
-        i.fas.fa-lg.fa-spinner.fa-pulse
+        h4 = t(".loading_more")
+        = render "table_placeholder"

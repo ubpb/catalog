@@ -145,20 +145,28 @@
     / ----------------------------------------
     = optional_value(@record.journal_stocks) do |journal_stocks|
       .mb-4
-        h4 = t(".details.journal_stocks")
+        h4 = t(".journal_stocks.header")
         table.table
           thead
             tr
-              th(scope="col") = "Signatur"
-              th(scope="col") = "Standort"
-              th(scope="col") = "Bestand"
+              th(scope="col") = t(".journal_stocks.details.call_number")
+              th(scope="col") = t(".journal_stocks.details.location")
+              th(scope="col") = t(".journal_stocks.details.holdings")
           tbody
             - journal_stocks.each do |stock|
               tr
                 td = stock.call_number
                 td = stock.location_name
-                td = stock.label
-        em = t(".journal_stocks.hint")
+                td
+                  = [stock.label_prefix, stock.label].join(" ")
+                  - if stock.gap
+                    div = t(".journal_stocks.details.gap", gap: stock.gap)
+                  - if stock.comments.present?
+                    - stock.comments.each do |c|
+                      div = c
+        em
+          i.fa-solid.fa-info-circle
+          =< t(".journal_stocks.hint")
 
     / ----------------------------------------
     / Items

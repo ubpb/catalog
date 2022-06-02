@@ -8,8 +8,15 @@ de:
 
     show:
       loading_more: Lade weitere Informationen...
+
       journal_stocks:
+        header: "Zeitschriftenbestand"
         hint: Aktuelle Zeitschriftenjahrgänge finden Sie auf der entsprechenden Fachebene. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
+        details:
+          call_number: Signatur
+          location: Standort
+          holdings: Bestand
+          gap: "Nicht verfügbar: %{gap}"
 
       details:
         header: "Details"
@@ -27,7 +34,6 @@ de:
         related_resource_links: "Links zu verwandten Inhalten"
         fulltext_links: "Links zum Volltext"
         resolver_link: "Link-Resolver"
-        journal_stocks: "Zeitschriftenbestand"
         notes: "Beschreibungen/Notizen"
         identifiers:
           header: "Identifikatoren"

@@ -241,10 +241,13 @@ module SearchEngine::Adapters
           source_value(data, "journal_stocks")
         ).map do |journal_stock|
           SearchEngine::JournalStock.new(
+            label_prefix: journal_stock["label_prefix"],
             label: journal_stock["label"],
-            call_number: journal_stock["call_number"],
+            gap: journal_stock["gap"],
             location_name: journal_stock["location_name"],
             location_code: journal_stock["location_code"],
+            call_number: journal_stock["call_number"],
+            comments: journal_stock["comments"]
           )
         end
       end

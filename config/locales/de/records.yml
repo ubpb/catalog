@@ -7,6 +7,7 @@ de:
       info: "Ergebnis %{position} von %{total_hits}"
 
     show:
+      loading_more: Lade weitere Informationen...
       journal_stocks:
         hint: Aktuelle Zeitschriftenjahrgänge finden Sie auf der entsprechenden Fachebene. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
 

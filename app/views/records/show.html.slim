@@ -172,6 +172,6 @@
           record_id: @record.id,
           host_item_id: @record.host_item_id
         )
-      turbo-frame#items(src=path)
+      turbo-frame#items(src=path loading="lazy")
         h4 = t(".loading_more")
         = render "table_placeholder"

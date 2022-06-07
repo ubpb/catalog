@@ -75,14 +75,8 @@
         = optional_value(@record.relations) do |relations|
           dt = t(".details.relations")
           dd
-            ul.mb-0
-              - relations.each do |r|
-                - if r.id.present?
-                  - sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{r.id}")
-                  li = link_to new_search_request_path(sr) do
-                    = r.label
-                - else
-                  li = r.label
+            turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id))
+              i.fa-solid.fa-spinner.fa-spin
 
         = optional_value(@record.languages) do |languages|
           dt = t(".details.languages")

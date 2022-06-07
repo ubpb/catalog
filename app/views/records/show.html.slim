@@ -75,7 +75,7 @@
         = optional_value(@record.relations) do |relations|
           dt = t(".details.relations")
           dd
-            turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id))
+            turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
               i.fa-solid.fa-spinner.fa-spin
 
         = optional_value(@record.languages) do |languages|

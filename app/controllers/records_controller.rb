@@ -11,6 +11,18 @@ private
       on_campus: on_campus?
     )
 
+    # In case of a local search try Aleph ID field if the record is blank?
+    if current_search_scope == :local && @record.blank?
+      @record = SearchEngine[current_search_scope].get_record(
+        params[:record_id] || params[:id],
+        by_other_id: "aleph_id"
+      )
+
+      if @record
+        redirect_to(show_record_path(@record)) and return
+      end
+    end
+
     # Check for search request and validate it if available
     if request.url.include?("?")
       search_request = SearchEngine::SearchRequest.parse(request.url)

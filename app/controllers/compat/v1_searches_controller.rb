@@ -50,7 +50,7 @@ private
 
   def handle_simple_query
     query = SearchEngine::SearchRequest::Query.new(
-      field: "any",
+      name: "any",
       value: params[:q]
     )
 

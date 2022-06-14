@@ -10,7 +10,7 @@ class Compat::V2SearchesController < Compat::ApplicationController
     elsif search_request = params[:search_request]
       begin
         handle_search_request(JSON.parse(search_request))
-      rescue #JSON::ParserError
+      rescue JSON::ParserError
         # Search request json is somewhat broken. Just redirect
         # to new search.
         flash[:warning] = t("compat.v2_searches.broken_search_request_warning")
@@ -33,8 +33,8 @@ private
     end
   end
 
-  def map_query_field(v1_field)
-    case v1_field
+  def map_query_field(v2_field)
+    case v2_field
     when "custom_all"                  then "any"
     when "creator_contributor_search"  then "creator"
     when "title_search"                then "title"
@@ -44,7 +44,7 @@ private
     when "creationdate_search"         then "creation_date"
     when "isbn_search"                 then "isbn"
     when "issn"                        then "issn"
-    when "signature_search"            then "signature"
+    when "signature_search"            then "call_number"
     when "notation"                    then "notation"
     when "ht_number"                   then "hbz_id"
     when "superorder"                  then "superorder"
@@ -55,8 +55,8 @@ private
     end
   end
 
-  def map_aggregation_field(v1_field)
-    case v1_field
+  def map_aggregation_field(v2_field)
+    case v2_field
     when "materialtyp_facet"         then "rtype"
     when "creator_contributor_facet" then "creator"
     when "erscheinungsform_facet"    then "erscheinungsform"
@@ -73,7 +73,7 @@ private
   def handle_isbn_query(isbn)
     search_request = SearchEngine::SearchRequest.new(queries: [
       SearchEngine::SearchRequest::Query.new(
-        field: "isbn",
+        name: "isbn",
         value: isbn
       )
     ])
@@ -86,7 +86,7 @@ private
   def handle_issn_query(issn)
     search_request = SearchEngine::SearchRequest.new(queries: [
       SearchEngine::SearchRequest::Query.new(
-        field: "issn",
+        name: "issn",
         value: issn
       )
     ])
@@ -99,7 +99,7 @@ private
   def handle_oclc_id_query(oclc_id)
     search_request = SearchEngine::SearchRequest.new(queries: [
       SearchEngine::SearchRequest::Query.new(
-        field: "oclc_id",
+        name: "oclc_id",
         value: oclc_id
       )
     ])
@@ -110,19 +110,19 @@ private
   end
 
   def handle_search_request(search_request)
-    queries = search_request["queries"].map do |query|
+    queries = (search_request["queries"] || []).map do |query|
       if field = map_query_field(query["fields"].first)
         SearchEngine::SearchRequest::Query.new(
-          field: field,
+          name: field,
           value: query["query"]
         )
       end
     end.compact
 
-    aggregations = search_request["facet_queries"].map do |facet|
+    aggregations = (search_request["facet_queries"] || []).map do |facet|
       if field = map_aggregation_field(facet["field"])
         SearchEngine::SearchRequest::Aggregation.new(
-          field: field,
+          name: field,
           value: facet["query"],
           exclude: facet["exclude"] == "true"
         )
@@ -134,8 +134,9 @@ private
       aggregations: aggregations
     )
 
+
     redirect_to(
-      new_search_request_path(search_request, search_scope: "local")
+      new_search_request_path(search_request, search_scope: get_search_scope)
     )
   end
 

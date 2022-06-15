@@ -1,0 +1,16 @@
+de:
+  closed_stack_orders:
+    breadcrumb: "Magainbestellung"
+    undefined_error: >
+      "Es ist ein Fehler bei der Magazinbestellung aufgetreten. Bitte versuchen Sie es erneut, oder wenden Sie sich an das Informationszentrum der Bibliothek."
+
+    create:
+      microfiche_hint: >
+        "ACHTUNG!!! Sie bestellen gerade einen Mikrofiche. In diesem Fall tragen Sie bitte unbedingt den gewünschten Titel des Werkes ein."
+      success: "Ihre Bestellung wurde erfolgreich aufgegeben. Bitte beachten Sie die o.g. Informationen bzgl. der Bereitstellung bestellter Medien."
+      errors:
+        fehler_nicht_schonwieder: "Fehler: Diese Bestellung wurde bereits aufgegeben! Bitte erkundigen Sie sich ggf. an der Ortsleihtheke, wann die von Ihnen gewünschte Literatur abholbereit ist."
+        fehler_bestellangaben: "Fehler: Bitte geben Sie die Signatur des gewünschten Exemplares an."
+        fehler_jahrgang_band: "Fehler: Bitte geben Sie den Jahrgang und Nummer des Bandes an."
+        fehler_jahr_in_ebene: "Fehler: Sie haben einen Jahrgang ab 1996 eingegeben! Diese Zeitschriftenbände finden Sie in der Regel in den Fachbibliotheken (auf Ebene 4 und der Eingangsebene ab 1996). Wenn Sie sicher sind, dass sich der von Ihnen benötigte Band im Magazin befindet, schalten Sie bitte im Eingabeformular die Jahrgangsprüfung aus."
+        fehler_jahrgang_falsch: "Fehler: Sie haben den Zeitschriftenjahrgang nicht richtig eingegeben! Bitte geben Sie das Jahr vierstellig ein. Bitte beachten Sie dabei: Im Magazin sind nur Jahrgänge bis 1995. Neuere Zeitschriftenbände finden Sie in den Fachbibliotheken."

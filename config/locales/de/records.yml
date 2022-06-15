@@ -8,6 +8,7 @@ de:
 
     show:
       loading_more: Lade weitere Informationen...
+      closed_stack_order: Magazinbestellung aufgeben
 
       journal_stocks:
         header: "Zeitschriftenbestand"

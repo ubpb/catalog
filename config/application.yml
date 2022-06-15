@@ -14,6 +14,9 @@ defaults: &defaults
     enabled: true
     access_token: "ae9dcc0d-bc22-48ca-a343-e840429fd043"
 
+  closed_stack_orders:
+    url: "http://ubstage18.uni-paderborn.de:81/cgi-mag/magbest_via_katalog"
+
 development:
   <<: *defaults
 

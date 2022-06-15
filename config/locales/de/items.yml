@@ -62,6 +62,9 @@ de:
 
         ready_for_pickup: "Sie können das Medium im Vormerkregal abholen"
 
+      closed_stack_order_info: "Verfügbare Medien mit Standort <strong>Magazin</strong> sind nicht frei zugänglich. Bitte geben Sie eine Magazinbestellung auf."
+      closed_stack_order: Magazinbestellung aufgeben
+
       items:
         header:
           call_number: "Signatur"

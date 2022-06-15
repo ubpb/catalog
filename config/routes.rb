@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Closed stack orders
+  resources :closed_stack_orders, only: [:new, :create], path: "cso"
+
   # Dedicated controllers for view components
   scope "watch-lists-panel-component" do
     post "create-watch-list/:search_scope/:record_id", to: "watch_lists_panel_component#create_watch_list", as: :watch_lists_panel_component_create_watch_list

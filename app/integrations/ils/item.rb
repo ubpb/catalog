@@ -20,5 +20,15 @@ class Ils
       process_type&.code == "ACQ" && expected_arrival_date.present?
     end
 
+    def closed_stack_orderable?
+      if location&.code == "04"
+        false
+      elsif is_available && location&.label =~ /magazin/i
+        true
+      else
+        false
+      end
+    end
+
   end
 end

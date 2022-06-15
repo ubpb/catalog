@@ -45,6 +45,11 @@ turbo-frame#items
       .mb-3.bg-light.p-2
         = content_for :hold_request_panel
 
+    - if @items.any?(&:closed_stack_orderable?)
+      div
+        i.fa-solid.fa-info-circle.fa-lg.text-warning
+        em ==< t(".closed_stack_order_info")
+
     table.table.align-middle.mb-0
       thead: tr
         th(scope="col") = t(".items.header.call_number")
@@ -70,7 +75,12 @@ turbo-frame#items
                   div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
               - else
                 = t("code_tables.process_types.default")
+
                 - if item.reshelving_time
                   div: em = t(".reshelving_info", time: l(item.reshelving_time.to_time, format: :only_time))
+
+                - if item.closed_stack_orderable?
+                  div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
+                    = t(".closed_stack_order")
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

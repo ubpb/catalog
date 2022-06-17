@@ -5,6 +5,7 @@ class Ils
     attribute :status, Types::HoldRequestStatus
     attribute :queue_position, Types::Integer.default(1)
     attribute :requested_at, Types::Time
+    attribute :expiry_date, Types::Date
 
     attribute :title, Types::String.optional
     attribute :author, Types::String.optional

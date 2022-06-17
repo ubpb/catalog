@@ -13,6 +13,7 @@ module Ils::Adapters
           status: get_status(data),
           queue_position: get_queue_position(data),
           requested_at: get_requested_at(data),
+          expiry_date: get_expiry_date(data),
           title: get_title(data),
           author: get_author(data),
           description: get_description(data),
@@ -45,6 +46,12 @@ module Ils::Adapters
 
       def get_requested_at(data)
         Time.zone.parse(data["request_time"])
+      end
+
+      def get_expiry_date(data)
+        if date = data["expiry_date"]
+          Date.parse(date)
+        end
       end
 
       def get_title(data)

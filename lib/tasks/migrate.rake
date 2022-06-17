@@ -232,7 +232,7 @@ private
     @__source_db ||= Sequel.connect(
       adapter:  "mysql2",
       host:     ENV["SOURCE_DB_HOST"].presence || "localhost",
-      user:     ENV["SOURCE_DB_USER"].presence,
+      user:     ENV["SOURCE_DB_USERNAME"].presence,
       password: ENV["SOURCE_DB_PASSWORD"].presence,
       database: ENV["SOURCE_DB_NAME"].presence
     )

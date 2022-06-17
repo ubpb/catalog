@@ -18,6 +18,9 @@ de:
         Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte
         versuchen Sie es zu einem späteren Zeitpunkt erneut.
 
+    tools:
+      share_search: "Suche teilen"
+
     local:
       label: "Katalog"
       breadcrumb: "im Katalog"

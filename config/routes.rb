@@ -62,6 +62,10 @@ Rails.application.routes.draw do
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :privacy
 
+  # Permalinks
+  get "/p/:id", to: "permalinks#resolve", as: :resolve_permalink
+  resources :permalinks, only: [:create, :show]
+
   # Compatability for records and searches of older versions
   # Version 1.x records
   get "/records/:id", to: "compat/v1_records#show", constraints: { id: /.+/ }

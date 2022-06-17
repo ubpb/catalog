@@ -68,6 +68,13 @@ Rails.application.routes.draw do
   get "/p/:id", to: "permalinks#resolve", as: :resolve_permalink
   resources :permalinks, only: [:create, :show]
 
+  # API
+  namespace :api do
+    namespace :v1 do
+      get "user/calendar" => "calendar#show"
+    end
+  end
+
   # Compatability for records and searches of older versions
   # Version 1.x records
   get "/records/:id", to: "compat/v1_records#show", constraints: { id: /.+/ }

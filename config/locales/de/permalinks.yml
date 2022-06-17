@@ -1,0 +1,13 @@
+de:
+  permalinks:
+    create:
+      flash_error: "Permalink konnte nicht generiert werden. Es ist ein Fehler aufgetreten."
+    resolve:
+      flash_error: "Der von Ihnen aufgerufene Permalink ist leider nicht (mehr) verfügbar."
+    show:
+      flash_error: "Der von Ihnen aufgerufene Permalink ist leider nicht (mehr) verfügbar."
+      header: "Suche teilen"
+      message: >
+        Um die Suchergebnisse einfach teilen zu können (z.B. via E-Mail oder Social-Media),
+        nutzen Sie bitte den folgenden Link.
+      back: "Zurück zur Suche"

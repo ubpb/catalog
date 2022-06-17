@@ -1,0 +1,13 @@
+.card.card-shadowed
+  h5.card-header.cutoff-corner-tr
+    = t(".header")
+  .card-body
+    p = t(".message")
+
+    .mb-0.alert.alert-info
+      - url = resolve_permalink_url(@permalink)
+      = link_to url, url, target: "_blank"
+
+  .card-footer
+    .text-center
+      => link_to t(".back"), resolve_permalink_path(@permalink), class: "btn btn-primary"

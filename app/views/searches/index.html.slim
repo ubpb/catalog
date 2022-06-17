@@ -8,7 +8,9 @@
       = render "hits", search_request: @search_request, search_result: @search_result
 
   - content_for :sidebar
-    = render "aggregations", search_request: @search_request, search_result: @search_result
+    - if @search_result.hits.present?
+      = render "tools", search_request: @search_request
+      = render "aggregations", search_request: @search_request, search_result: @search_result
 
   - if content_for? :sidebar
     .row

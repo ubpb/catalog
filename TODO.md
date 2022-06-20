@@ -20,6 +20,7 @@
 
 * [ ] Es feht noch die Seite für Fernleihbestellungen
 * [ ] Die Details bei Gebühren und Ausleihen sind noch nicht 100%ig und noch nicht "schön"
+* [ ] Es können noch keine Notizen angezeigt und verwaltet werden.
 
 ## Suchindex
 

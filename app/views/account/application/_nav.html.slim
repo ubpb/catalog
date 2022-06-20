@@ -7,14 +7,17 @@
   .card.card-shadowed.mb-3
     nav.list-group.list-group-flush.cutoff-corner-tr
       = link_to account_loans_path, class: "list-group-item" do
-        i.fas.fa-fw.fa-book
+        i.fa-solid.fa-fw.fa-book
         =< t(".loans")
       = link_to account_fees_path, class: "list-group-item" do
-        i.fas.fa-fw.fa-euro-sign
+        i.fa-solid.fa-fw.fa-euro-sign
         =< t(".fees")
       = link_to account_hold_requests_path, class: "list-group-item" do
-        i.fas.fa-fw.fa-heart
+        i.fa-solid.fa-fw.fa-heart
         =< t(".hold_requests")
       = link_to account_watch_lists_path, class: "list-group-item" do
-        i.fas.fa-fw.fa-list
+        i.fa-solid.fa-fw.fa-list
         =< t(".watch_lists")
+      = link_to account_calendar_index_path, class: "list-group-item" do
+        i.fa-regular.fa-fw.fa-calendar
+        =< t(".calendar")

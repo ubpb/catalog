@@ -49,4 +49,14 @@ class User < ApplicationRecord
     )
   end
 
+  def api_key
+    read_attribute(:api_key) || recreate_api_key!
+  end
+
+  def recreate_api_key!
+    key = SecureRandom.hex(16)
+    update(:api_key, key)
+    key
+  end
+
 end

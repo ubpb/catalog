@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :watch_lists, path: "watch-lists" do
       resources :watch_list_entries, path: "entries", as: "entries", only: [:destroy]
     end
+    resources :calendar, only: [:index]
   end
 
   # Closed stack orders

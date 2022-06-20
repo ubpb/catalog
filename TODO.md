@@ -38,3 +38,4 @@ _Es fehlen bestimmt noch mehr Daten. Bitte Testen._
 * [ ] Icons und Cover noch nicht 100%ig
 * [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] "Alte" Urls für Suche / Detailseite etc. sollen so gut wie möglich weiter funktionieren. Dies muss noch weiter verbessert werden.
+* [ ] Anzeige Link-Resolver noch verbessern

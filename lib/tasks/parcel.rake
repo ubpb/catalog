@@ -1,14 +1,14 @@
 namespace :parcel do
   desc "Build bundle with parcel"
   task :build => :clobber do
-    unless system "yarn install && yarn parcel:build"
+    unless system "yarn parcel:build"
       raise "Task parcel:build failed. Ensure yarn is installed and `yarn parcel:build` runs without errors"
     end
   end
 
   desc "Remove parcel build"
   task :clobber do
-    unless system "yarn install && yarn parcel:clobber"
+    unless system "yarn parcel:clobber"
       raise "Task parcel:clobber failed. Ensure yarn is installed and `yarn parcel:clobber` runs without errors"
     end
   end

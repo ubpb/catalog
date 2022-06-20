@@ -24,6 +24,7 @@
 ## Suchindex
 
 * [ ] Es fehlen noch Daten zu Sekundärformen
+* [ ] Als gelöscht markierte Titel und als ausgesonderte makierte Exemplare werden angezeigt.
 
 _Es fehlen bestimmt noch mehr Daten. Bitte Testen._
 

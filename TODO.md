@@ -40,3 +40,4 @@ _Es fehlen bestimmt noch mehr Daten. Bitte Testen._
 * [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] "Alte" Urls für Suche / Detailseite etc. sollen so gut wie möglich weiter funktionieren. Dies muss noch weiter verbessert werden.
 * [ ] Anzeige Link-Resolver noch verbessern
+* [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen

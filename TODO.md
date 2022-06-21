@@ -33,6 +33,7 @@ _Es fehlen bestimmt noch mehr Daten. Bitte Testen._
 
 ## CDI
 
+* [ ] CDI verwendet noch nicht den Key für die Alma-Instanz, sondern noch unseren alten für die SFX Aktivierungen
 * [ ] Es fehlen in den Titeldetails noch ein paar Felder
 * [ ] Es fehlt noch die Integration von bX
 

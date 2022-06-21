@@ -8,6 +8,7 @@
 * [ ] Es fehlen noch einige Sortierfelder
 * [ ] Reihenfolge der Facetten noch nicht korrekt
 * [ ] Facette "Sprache" zeigt nur die Sprach-Codes an
+* [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette
 
 ## Titel Detailseite
 

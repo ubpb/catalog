@@ -26,10 +26,8 @@
 
 ## Suchindex
 
-* [ ] Es fehlen noch Daten zu Sekundärformen
+* [ ] Es fehlen noch Daten zu Sekundärformen (_Es fehlen bestimmt noch mehr Daten. Bitte Testen_)
 * [ ] Als gelöscht markierte Titel und als ausgesonderte makierte Exemplare werden angezeigt.
-
-_Es fehlen bestimmt noch mehr Daten. Bitte Testen._
 
 ## CDI
 

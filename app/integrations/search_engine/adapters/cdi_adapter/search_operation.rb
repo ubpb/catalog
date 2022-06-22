@@ -154,9 +154,9 @@ module SearchEngine::Adapters
         sort_field = "rank" unless sort_field
 
         <<-XML.strip_heredoc
-        <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:impl="http://primo.kobv.de/PrimoWebServices/services/searcher" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">
+        <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">
           <env:Body>
-            <impl:searchBrief>
+            <searchBrief>
               <searchRequestStr>
                 <![CDATA[
                   <searchRequest xmlns="http://www.exlibris.com/primo/xsd/wsRequest" xmlns:uic="http://www.exlibris.com/primo/xsd/primoview/uicomponents">
@@ -185,7 +185,7 @@ module SearchEngine::Adapters
                   </searchRequest>
                   ]]>
               </searchRequestStr>
-            </impl:searchBrief>
+            </searchBrief>
           </env:Body>
         </env:Envelope>
         XML

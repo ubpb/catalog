@@ -6,7 +6,7 @@
 
 * [ ] Es fehlen noch einige Suchfelder
 * [ ] Es fehlen noch einige Sortierfelder
-* [ ] Reihenfolge der Facetten noch nicht korrekt
+* [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [ ] Facette "Sprache" zeigt nur die Sprach-Codes an
 * [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette
 * [ ] Facette "Neuerwerbungen" fehlt noch

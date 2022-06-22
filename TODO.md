@@ -2,7 +2,7 @@
 
 Übersicht der mir bekannten, wichtigsten TODOs bis zum GoLive. Alles andere sollte funktionieren. Wenn darüberhinaus Punkte auffallen, bitte mir melden. Zunächst bitte nur "Blocker", d.h. Punkte die unbedingt zum 1.8. laufen müssen. Dies betrifft sowohl Funktionen als auch die Darstellung und Suchbarkeit von "Daten".
 
-## Suche / Facetten
+## Suche / Facetten (Lokal)
 
 * [ ] Es fehlen noch einige Suchfelder
 * [ ] Es fehlen noch einige Sortierfelder
@@ -10,6 +10,11 @@
 * [ ] Facette "Sprache" zeigt nur die Sprach-Codes an
 * [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette
 * [ ] Facette "Neuerwerbungen" fehlt noch
+
+## Suche / Facetten (CDI)
+
+* [ ] Es fehlen noch Suchfelder
+* [ ] Es fehlen noch Facetten
 
 ## Titel Detailseite
 

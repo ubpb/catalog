@@ -17,6 +17,8 @@
 * [ ] Es feht die Funktion "zeige Bände"
 * [ ] Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung. Integration mit Regaldatenbank fehlt noch.
 * [ ] Bei den Exemplaren fehlt noch die "Ampel"
+* [ ] Links zum Volltext sind noch nicht sortiert/priorisiert
+* [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
 
 ## Kontofunktionen
 

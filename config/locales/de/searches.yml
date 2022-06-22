@@ -42,19 +42,21 @@ de:
         any: "Alle Felder"
         creator: "Autor(en) / Beteiligte"
         title: "Titel"
+        subject: "Schlagwort"
+        pub: "Verlag / Erscheinungsort"
         yop: "Erscheinungsjahr"
         ids: "Identifikatoren"
         call_number: "Signatur"
+        local_notation: "Systemstelle"
 
     sortables:
       local:
         _default_: "Relevanz"
         title: "Titel"
         creator: "Autor / Autorin"
-        cdate: "Erscheinungsjahr"
+        yop: "Erscheinungsjahr"
         local_notation: "Systemstelle"
         volume: "Band"
-        catdate: "Katalogisierungsdatum"
         newtest_acquisition_date: "Neuerwerbung"
       cdi:
         _default_: "Relevanz"

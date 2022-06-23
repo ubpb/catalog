@@ -1,6 +1,6 @@
 # TODO's
 
-Übersicht der mir bekannten, wichtigsten TODOs bis zum GoLive. Alles andere sollte funktionieren. Wenn darüberhinaus Punkte auffallen, bitte mir melden. Zunächst bitte nur "Blocker", d.h. Punkte die unbedingt zum 1.8. laufen müssen. Dies betrifft sowohl Funktionen als auch die Darstellung und Suchbarkeit von "Daten".
+Übersicht der mir bekannten, wichtigsten TODOs bis zum GoLive. Alles andere sollte funktionieren. Wenn darüberhinaus Punkte auffallen, bitte mir melden. Zunächst bitte nur "Blocker", d.h. Punkte die unbedingt zum 1.8. laufen müssen. Dies betrifft sowohl Funktionen als auch die Darstellung und Suchbarkeit der Metadaten.
 
 ## Suche / Facetten (Lokal)
 

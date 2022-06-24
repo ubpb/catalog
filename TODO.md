@@ -10,6 +10,7 @@
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
 * [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette
 * [ ] Facette "Neuerwerbungen" fehlt noch
+* [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
 
 ## Suche / Facetten (CDI)
 

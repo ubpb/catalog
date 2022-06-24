@@ -1,0 +1,438 @@
+de:
+  searches:
+    defaults:
+      aggregations:
+        terms:
+          language:
+            aar: Danakil-Sprache
+            abk: Abchasisch
+            ace: Aceh-Sprache
+            ach: Acholi-Sprache
+            ada: Adangme-Sprache
+            afa: Hamitosemitische Sprachen (Andere)
+            afh: Afrihili
+            afr: Afrikaans
+            aka: Volta-Comoe-Sprachen
+            akk: Akkadisch
+            alb: Albanisch
+            ale: Aleutisch
+            alg: Algonkin-Sprachen
+            amh: Amharisch
+            ang: Altenglisch (ca. 450-1100)
+            apa: Apachen-Sprache
+            ara: Arabisch
+            arc: Aramäisch
+            arm: Armenisch
+            arn: Arauka-Sprachen
+            arp: Arapaho-Sprache
+            art: Welthilfssprache (Andere)
+            arw: Arawak-Sprachen
+            asm: Assamesisch
+            ath: Athapaskische Sprachen
+            aus: Australische Sprachen
+            ava: Awarisch
+            ave: Avestisch
+            awa: Awadhi
+            aym: Aymara-Sprache
+            aze: Aserbaidschanisch
+            bad: Banda-Sprache (Ubangi-Sprachen)
+            bai: Bamileke-Sprache
+            bak: Baschkirisch
+            bal: Belutschisch
+            bam: Bambara-Sprache
+            ban: Balinesisch
+            baq: Baskisch
+            bas: Basaa-Sprache
+            bat: Baltische Sprachen (Andere)
+            bej: Bedauye
+            bel: Weißrussisch
+            bem: Bemba-Sprache
+            ben: Bengali
+            ber: Berbersprachen (Andere)
+            bho: Bhojpuri
+            bih: Bihari
+            bik: Bikol
+            bin: Bini-Sprache
+            bis: Beach-la-mar
+            bla: Blackfoot-Sprache
+            bnt: Bantusprachen (Andere)
+            bra: Braj-Bhakha
+            bre: Bretonisch
+            btk: Batak-Sprache
+            bua: Burjatisch
+            bug: Bugi-Sprache
+            bul: Bulgarisch
+            bur: Birmanisch
+            cad: Caddo-Sprachen
+            cai: Indianersprachen / Zentralamerika (Andere)
+            car: Karibische Sprachen
+            cat: Katalanisch
+            cau: Kaukasische Sprachen (Andere)
+            ceb: Cebuano
+            cel: Keltische Sprachen (Andere)
+            cha: Chamorro-Sprache
+            chb: Chibcha-Sprachen
+            che: Tschetschenisch
+            chg: Tschagataisch
+            chi: Chinesisch
+            chk: Trukesisch
+            chm: Tscheremissisch
+            chn: Chinook-Jargon
+            cho: Choctaw-Sprache
+            chp: Chipewyan
+            chr: Cherokee-Sprache
+            chu: Kirchenslawisch
+            chv: Tschuwaschisch
+            chy: Cheyenne-Sprache
+            cmc: Cham-Sprachen
+            cop: Koptisch
+            cor: Kornisch
+            cos: Korsisch
+            cpe: Kreolisch-Englisch (Andere)
+            cpf: Kreolisch-Französisch (Andere)
+            cpp: Kreolisch-Portugiesisch (Andere)
+            cre: Cree-Sprache
+            crp: Kreolische Sprachen (Andere)
+            cus: Kuschitische Sprachen (Andere)
+            cze: Tschechisch
+            dak: Dakota-Sprache
+            dan: Dänisch
+            day: Dajakisch
+            del: Delaware-Sprache
+            den: Slave (Athapaskische Sprachen)
+            dgr: Dogrib-Sprache
+            din: Dinka-Sprache
+            div: Maledivisch
+            doi: Dogri
+            dra: Drawidische Sprachen (Andere)
+            dua: Duala-Sprachen
+            dum: Mittelniederländisch (ca. 1050-1350)
+            dut: Niederländisch
+            dyu: Dyula-Sprache
+            dzo: Dzongkha
+            efi: Efik
+            egy: Ägyptisch
+            eka: Ekajuk
+            elx: Elamisch
+            en: Englisch
+            eng: Englisch
+            english: Englisch
+            enm: Mittelenglisch (1100-1500)
+            epo: Esperanto
+            est: Estnisch
+            ewe: Ewe-Sprache
+            ewo: Ewondo
+            fan: Pangwe-Sprache
+            fao: Färöisch
+            fat: Fanti-Sprache
+            fij: Fidschi-Sprache
+            fin: Finnisch
+            fiu: Finnougrische Sprachen (Andere)
+            fon: Fon-Sprache
+            fre: Französisch
+            frm: Mittelfranzösisch (ca. 1400-1600)
+            fro: Altfranzösisch (842-ca. 1400)
+            fry: Friesisch
+            ful: Ful
+            fur: Friulisch
+            gaa: Gã
+            gay: Gayo-Sprache
+            gba: Gbaya-Sprache
+            gem: Germanische Sprachen (Andere)
+            geo: Georgisch
+            ger: Deutsch
+            gez: Altäthiopisch
+            gil: Gilbertesisch
+            gla: Gälisch-Schottisch
+            gle: Irisch
+            glg: Galicisch
+            glv: Manx
+            gmh: Mittelhochdeutsch (ca. 1050-1500)
+            goh: Althochdeutsch (ca. 750-1050)
+            gon: Gondi-Sprache
+            gor: Gorontalesisch
+            got: Gotisch
+            grb: Grebo
+            grc: Griechisch (bis 1453)
+            gre: Neugriechisch (nach 1453)
+            grn: Guaraní-Sprache
+            gui: Gujarati-Sprache
+            gwi: Kutchin
+            hai: Haida-Sprache
+            hau: Haussa-Sprache
+            haw: Hawaiisch
+            heb: Hebräisch
+            her: Herero-Sprache
+            hil: Hiligaynon-Sprache
+            him: Himachali
+            hin: Hindi
+            hit: Hethitisch
+            hmn: Miao-Sprachen
+            hmo: Hiri-Motu
+            hun: Ungarisch
+            hup: Hupa
+            iba: Iban
+            ibo: Ibo-Sprache
+            ice: Isländisch
+            ijo: Ijo-Sprache
+            iku: Inuktitut
+            ile: Interlingue
+            ilo: Ilokano-Sprache
+            ina: Interlingua (IALA)
+            inc: Indoarische Sprachen (Andere)
+            ind: Bahasa Indonesia
+            ine: Indogermanische Sprachen (Andere)
+            ipk: Inupiaq
+            ira: Iranische Sprachen (Andere)
+            iro: Irokesische Sprachen
+            ita: Italienisch
+            jav: Javanisch
+            jpn: Japanisch
+            jpr: Jüdisch-Persisch
+            jrb: Jüdisch-Arabisch
+            kaa: Karakalpakisch
+            kab: Kabylisch
+            kac: Kachin-Sprache
+            kal: Grönländisch
+            kam: Kamba
+            kan: Kannada
+            kar: Karenisch
+            kas: Kaschmiri
+            kau: Kanuri-Sprache
+            kaw: Kawi
+            kaz: Kasachisch
+            kha: Khasi-Sprache
+            khi: Khoisan-Sprachen (Andere)
+            khm: Kambodschanisch
+            kho: Sakisch
+            kik: Kikuyu-Sprache
+            kin: Rwanda-Sprache
+            kir: Kirgisisch
+            kmb: Mbundu-Sprache
+            kok: Konkani
+            kom: Komi-Sprachen
+            kon: Kongo
+            kor: Koreanisch
+            kos: Kosraeanisch
+            kpe: Kpelle-Sprache
+            kro: Kru-Sprachen
+            kru: Oraon-Sprache
+            kua: Kwanyama
+            kum: Kumükisch
+            kur: Kurdisch
+            kut: Kutenai-Sprache
+            lad: Judenspanisch
+            lah: Lahnda
+            lam: Lamba
+            lao: Laotisch
+            lat: Latein
+            lav: Lettisch
+            lez: Lesgisch
+            lin: LiNgala
+            lit: Litauisch
+            loi: Mongo-Sprache
+            loz: Rotse-Sprache
+            ltz: Luxemburgisch
+            lua: Lulua-Sprache
+            lub: Luba-Sprache
+            lug: Ganda-Sprache
+            lui: Luiseño-Sprache
+            lun: Lunda-Sprache
+            luo: Luo-Sprache (Kenia und Tansania)
+            lus: Lushai-Sprache
+            mac: Makedonisch
+            mad: Maduresisch
+            mag: Khotta
+            mah: Marschallesisch
+            mai: Maithili
+            mak: Makassarisch
+            mal: Malayalam
+            man: Malinke-Sprache
+            mao: Maori-Sprache
+            map: Austronesische Sprachen (Andere)
+            mar: Marathi
+            mas: Massai-Sprache
+            may: Malaiisch
+            mdr: Mandaresisch
+            men: Mende-Sprache
+            mga: Mittelirisch (900-1200)
+            mic: Micmac-Sprache
+            mig: Malagassi-Sprache
+            min: Minangkabau-Sprache
+            mis: Verschiedene Sprachen
+            mit: Maltesisch
+            mkh: Mon-Khmer-Sprachen (Andere)
+            mni: Meithei-Sprache
+            mno: Manobo-Sprache
+            moh: Mohawk-Sprache
+            mol: Moldauisch
+            mon: Mongolisch
+            mos: Mossi-Sprache
+            mul: Polyglott
+            mun: Mundasprachen
+            mus: Muskogee-Sprachen
+            mwr: Marwari
+            myn: Maya-Sprachen
+            nah: Nahuatl
+            nai: Indianersprachen / Nordamerika (Andere)
+            nau: Nauruanisch
+            nav: Navajo-Sprache
+            nbl: Ndebele-Sprache (Süd)
+            nde: Ndebele-Sprache (Nord)
+            ndo: Ndonga
+            nep: Nepali
+            new: Newari
+            nia: Nias-Sprache
+            nic: Nigerkordofanische Sprachen (Andere)
+            niu: Niue-Sprache
+            non: Altnorwegisch
+            nor: Norwegisch
+            nso: Sotho-Sprache (Nord)
+            nub: Nubische Sprachen
+            nya: Nyanja-Sprache
+            nym: Nyamwezi-Sprache
+            nyn: Nyankole
+            nyo: Nyoro
+            nzi: Nzima-Sprache
+            oci: Okzitanisch (nach 1500)
+            oji: Ojibwa-Sprache
+            ori: Oriya-Sprache
+            orm: Galla-Sprache
+            osa: Osage
+            oss: Ossetisch
+            ota: Osmanisch
+            oto: Otomangue-Sprachen
+            paa: Papuasprachen (Andere)
+            pag: Pangasinan-Sprache
+            pal: Pehlewi
+            pam: Pampanggan-Sprache
+            pan: Pandschabi-Sprache
+            pap: Papiamento
+            pau: Palau
+            peo: Altpersisch (ca. 600-400 v. Chr.)
+            per: Persisch
+            phi: Philippinen-Austronesisch (Andere)
+            phn: Phönikisch
+            pli: Pali
+            pol: Polnisch
+            pon: Ponapeanisch
+            por: Portugiesisch
+            pra: Prakrit
+            pro: Altprovenzalisch (bis 1500)
+            pus: Paschtu
+            que: Quechua-Sprache
+            raj: Rajasthani
+            rap: Osterinsel-Sprache
+            rar: Rarotonganisch
+            roa: Romanische Sprachen (Andere)
+            roh: Rätoromanisch
+            rom: Zigeunersprache
+            rum: Rumänisch
+            run: Rundi-Sprache
+            rus: Russisch
+            sad: Sandawe-Sprache
+            sag: Sango-Sprache
+            sah: Jakutisch
+            sai: Indianersprachen / Südamerika (Andere)
+            sal: Salish-Sprache
+            sam: Samaritanisch
+            san: Sanskrit
+            sas: Sasak
+            sat: Santali
+            scc: Serbisch
+            sco: Schottisch
+            scr: Kroatisch
+            sel: Selkupisch
+            sem: Semitische Sprachen (Andere)
+            sga: Altirisch (bis 900)
+            shn: Schan-Sprache
+            sid: Sidamo
+            sin: Singhalesisch
+            sio: Sioux-Sprachen
+            sit: Sinotibetische Sprachen (Andere)
+            sla: Slawische Sprachen (Andere)
+            slo: Slowakisch
+            slv: Slowenisch
+            smi: Saamisch
+            smo: Samoanisch
+            sna: Schona-Sprache
+            snd: Sindhi-Sprache
+            snk: Soninke-Sprache
+            sog: Sogdisch
+            som: Somali
+            son: Songhai-Sprache
+            sot: Sotho-Sprache (Süd)
+            spa: Spanisch
+            srd: Sardisch
+            srr: Serer-Sprache
+            ssa: Nilosaharanische Sprachen (Andere)
+            ssw: Swazi
+            suk: Sukuma-Sprache
+            sun: Sundanesisch
+            sus: Susu
+            sux: Sumerisch
+            swa: Swahili
+            swe: Schwedisch
+            syr: Syrisch
+            tah: Tahitisch
+            tai: Thaisprachen (Andere)
+            tam: Tamil
+            tat: Tatarisch
+            tel: Telugu-Sprache
+            tem: Temne
+            ter: Tereno-Sprache
+            tet: Tetum-Sprache
+            tgk: Tadschikisch
+            tgl: Tagalog
+            tha: Thailändisch
+            tib: Tibetisch
+            tig: Tigre-Sprache
+            tir: Tigrinja-Sprache
+            tiv: Tiv-Sprache
+            tkl: Tokelauanisch
+            tli: Tlingit-Sprache
+            tmh: Tamašeq
+            tog: Tonga (Bantusprache, Malawi)
+            ton: Tongaisch
+            tpi: Neumelanesisch
+            tsi: Tsimshian-Sprache
+            tsn: Tswana-Sprache
+            tso: Tsonga-Sprache
+            tuk: Turkmenisch
+            tum: Tumbuka
+            tur: Türkisch
+            tut: Altaische Sprachen (Andere)
+            tvl: Elliceanisch
+            twi: Akan-Sprache
+            tyv: Tuwinisch
+            uga: Ugaritisch
+            uig: Uigurisch
+            ukr: Ukrainisch
+            umb: Mbundu-Sprache
+            und: Nicht definiert
+            und: Unbestimmt
+            urd: Urdu
+            uzb: Usbekisch
+            vai: Vai-Sprache
+            ven: Venda-Sprache
+            vie: Vietnamesisch
+            vol: Volapük
+            vot: Wotisch
+            wak: Wakashanisch
+            wal: Walamo-Sprache
+            war: Waray
+            was: Washo-Sprache
+            wen: Sorbisch
+            wie: Kymrisch
+            wol: Wolof-Sprache
+            xho: Xhosa-Sprache
+            yao: Yao-Sprache
+            yap: Yapesisch
+            yid: Jiddisch
+            yor: Yoruba-Sprache
+            ypk: Yupik-Sprache
+            zap: Zapotekisch
+            zen: Zenaga
+            zha: Zhuang
+            znd: Zande-Sprachen
+            zuf: Zulu-Sprache

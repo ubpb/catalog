@@ -69,6 +69,7 @@ de:
       aggregations_header: Suchergebnisse filtern
       active_aggregations_header: Aktive Filter
 
+      # For defaults see searches/defaults/aggregations
       local:
         rtype:
           header: "Art des Mediums"

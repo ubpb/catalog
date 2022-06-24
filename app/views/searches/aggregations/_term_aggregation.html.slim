@@ -25,7 +25,7 @@ ruby:
           - non_selected_terms.each do |term|
             li
               = link_to new_search_request_path(nsr.(term, exclude: false)) do
-                = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.terms.#{term.term.underscore}", default: term.term)
+                = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.terms.#{term.term.underscore}", default: ["searches.defaults.aggregations.terms.#{aggregation.name.underscore}.#{term.term.underscore}".to_sym, term.term])
               .d-inline-flex.flex-nowrap
                 span.ms-1.text-muted = "(#{term.count})"
                 = link_to new_search_request_path(nsr.(term, exclude: true)) do

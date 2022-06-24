@@ -4,8 +4,8 @@
 
 ## Suche / Facetten (Lokal)
 
-* [ ] Es fehlen noch einige Suchfelder
-* [ ] Es fehlen noch einige Sortierfelder
+* [x] ~~Es fehlen noch einige Suchfelder~~
+* [ ] Es fehlen noch die Sortierung nach Bandzählung
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
 * [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette

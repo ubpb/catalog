@@ -11,11 +11,11 @@ class SearchEngine
     attribute :is_superorder, Types::Bool.default(false)
 
     # Resource type
-    attribute :resource_type, Types::String.default("unspecified")
+    attribute :resource_type, Types::String.default("unspecified".freeze)
     # Material type
-    attribute :material_type, Types::String.default("unspecified")
+    attribute :material_type, Types::String.default("unspecified".freeze)
     # Content type
-    attribute :content_type, Types::String.default("unspecified")
+    attribute :content_type, Types::String.default("unspecified".freeze)
 
     # Unique ID of the record. REQUIRED.
     attribute :id, Types::String

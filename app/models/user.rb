@@ -55,7 +55,7 @@ class User < ApplicationRecord
 
   def recreate_api_key!
     key = SecureRandom.hex(16)
-    update(:api_key, key)
+    update(api_key: key)
     key
   end
 

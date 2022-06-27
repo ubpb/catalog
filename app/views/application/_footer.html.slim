@@ -6,9 +6,9 @@ footer
     .footer-content
       = "© #{Date.today.year} Universitätsbibliothek Paderborn"
       =<> "|"
-      = link_to "Impressum", legal_path
+      = link_to "Impressum", go_legal_path
       =<> "|"
-      = link_to "Datenschutzerklärung", privacy_path
+      = link_to "Datenschutzerklärung", go_privacy_path
     .footer-image
       .d-none.d-sm-block
         = image_tag "footer-bg-lg.png", class: "img-fluid"

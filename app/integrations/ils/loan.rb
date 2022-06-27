@@ -7,14 +7,18 @@ class Ils
     attribute :item_id, Types::String
     attribute :record_id, Types::String
     attribute :barcode, Types::String.optional
-    attribute :call_number, Types::String.optional
     attribute :fine, Types::Float.default(0.0)
+
     attribute :title, Types::String.optional
     attribute :author, Types::String.optional
     attribute :description, Types::String.optional
+    attribute :year_of_publication, Types::String.optional
+
+    attribute :is_resource_sharing_loan, Types::Bool.default(false)
 
     def renewable?
-      self.renewable == true
+      renewable == true
     end
+
   end
 end

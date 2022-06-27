@@ -16,20 +16,23 @@
       .mb-3.mb-md-0
         - if loan.fine > 0
           span.mb-3.me-1.badge.bg-danger.text-light = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
+        - if loan.is_resource_sharing_loan
+          span.mb-3.me-1.badge.bg-primary.text-light = t(".resource_sharing_loan")
         - unless loan.renewable
-          span.mb-3.badge.bg-secondary.text-light = t(".not_renewable")
+          span.mb-3.badge.bg-warning.text-dark = t(".not_renewable")
 
-        .fs-5 = loan.title.presence || "n.n."
+        .fs-5
+          = link_to record_path(loan.record_id, search_scope: "local"), target: "_blank" do
+            = loan.title.presence || "n.n."
 
-        - if loan.author.present?
-          div = loan.author
+        - author_and_yop = [loan.author.presence, loan.year_of_publication.presence]
+        - if author_and_yop.any?
+          .mt-0 = author_and_yop.join("; ")
 
-        - if [loan.call_number.presence, loan.barcode.presence].any?
-          .mt-0
-            - if loan.call_number.present?
-              div = t(".call_number", call_number: loan.call_number)
-            - if loan.barcode.present?
-              div = t(".barcode", barcode: loan.barcode)
+        - if loan.barcode.present?
+          .mt-0 = t(".barcode", barcode: loan.barcode)
+        - else
+          .mt-0 = t(".barcode", barcode: "–")
 
       .ms-auto
         - if allow_single_renew && loan.renewable
@@ -53,8 +56,8 @@
           i.me-1.fas.fa-exclamation-triangle
         - else
           i.me-1.fas.fa-calendar-check
-        = l(loan.due_date)
+        = l(loan.due_date.to_date)
         - unless past_due_date
           .fst-italic = distance_of_time_in_words(Time.zone.now, loan.due_date)
       dt = t(".loan_date")
-      dd.mb-0 = l(loan.loan_date)
+      dd.mb-0 = l(loan.loan_date.to_date)

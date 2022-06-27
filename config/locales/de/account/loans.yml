@@ -19,8 +19,8 @@ de:
         due_date: "Fällig am:"
         fines: "Gebühren: %{fines}"
         not_renewable: "Nicht verlängerbar"
-        call_number: "Signatur: %{call_number}"
-        barcode: "Barcode: %{barcode}"
+        resource_sharing_loan: "Fernleihbestellung"
+        barcode: "Strichcode: %{barcode}"
 
       renew:
         success: "%{system_message}"

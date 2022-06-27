@@ -15,11 +15,12 @@ module Ils::Adapters
           item_id: get_item_id(alma_item_loan),
           record_id: get_record_id(alma_item_loan),
           barcode: get_barcode(alma_item_loan),
-          call_number: get_call_number(alma_item_loan),
           fine: get_fine(alma_item_loan),
           title: get_title(alma_item_loan),
           author: get_author(alma_item_loan),
-          description: get_description(alma_item_loan)
+          description: get_description(alma_item_loan),
+          year_of_publication: get_year_of_publication(alma_item_loan),
+          is_resource_sharing_loan: get_is_resource_sharing_loan(alma_item_loan)
         )
       end
 
@@ -53,10 +54,6 @@ module Ils::Adapters
         alma_item_loan["item_barcode"]
       end
 
-      def get_call_number(alma_item_loan)
-        alma_item_loan["call_number"]
-      end
-
       def get_fine(alma_item_loan)
         alma_item_loan["loan_fine"]
       end
@@ -71,6 +68,14 @@ module Ils::Adapters
 
       def get_description(alma_item_loan)
         alma_item_loan["description"]
+      end
+
+      def get_year_of_publication(alma_item_loan)
+        alma_item_loan["publication_year"]
+      end
+
+      def get_is_resource_sharing_loan(alma_item_loan)
+        alma_item_loan.dig("library", "value") == "RES_SHARE"
       end
 
     end

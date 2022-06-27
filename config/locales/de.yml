@@ -216,7 +216,8 @@ de:
   time:
     am: vormittags
     formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
+      default: "%d.%m.%Y, %H:%M Uhr"
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
+      only_time: "%H:%M Uhr"
     pm: nachmittags

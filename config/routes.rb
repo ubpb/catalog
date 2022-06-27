@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
   # Library account
+  # TODO: Map old "/user/*" routes "/account/*"
   namespace :account, path: "account" do
     root to: redirect("/account/loans")
     resources :loans, only: [:index] do
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :fees, only: [:index]
     resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
+    resources :inter_library_loans, only: [:index], path: "ill"
     resources :watch_lists, path: "watch-lists" do
       resources :watch_list_entries, path: "entries", as: "entries", only: [:destroy]
     end
@@ -62,6 +64,8 @@ Rails.application.routes.draw do
   # Kickers and static redirectd
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :go_legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy
+  get "/go/ill", to: redirect("https://ub-paderborn.digibib.net/"), as: :go_ill
+  get "/go/ill-info", to: redirect("https://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/"), as: :go_ill_info
   get "/fachsystematik", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/")
   get "/fachsystematik/*path", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/%{path}")
 

@@ -1,0 +1,20 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0 = t(".header")
+
+  .card-body
+    .callout.callout-info
+      p
+        i.fa-solid.fa-info-circle.fa-lg
+        =< t(".info1_html", ill_url: go_ill_path)
+      p
+        =< t(".info2_html", loans_url: account_loans_path)
+      p.mb-0
+        =< t(".info3_html", ill_info_url: go_ill_info_path)
+
+    p.text-center
+      = link_to t(".open_ill"), go_ill_path, class: "btn btn-primary"
+
+    h5 = t(".mono_list_header")
+    turbo-frame#resource-sharing-requests(src=account_inter_library_loans_path loading="lazy")
+      = render "table_placeholder"

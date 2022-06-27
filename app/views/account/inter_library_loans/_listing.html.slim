@@ -1,0 +1,19 @@
+turbo-frame#resource-sharing-requests
+  - if resource_sharing_requests
+    table.table
+      thead
+        tr
+          th = "Status"
+          th = "Bestellt am"
+          th = "Bestellnummer"
+          th = "Titel"
+      tbody
+        - resource_sharing_requests.each do |rsr|
+          tr
+            td = rsr.resource_sharing_status&.label || "–"
+            td = l(rsr.requested_at)
+            td = rsr.resource_sharing_id
+            td = rsr.title
+  - else
+    .alert.alert-info.mb-0.text-center
+      = "TODO: Keine Fernleihbestellungen"

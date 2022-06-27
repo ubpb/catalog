@@ -60,8 +60,8 @@ Rails.application.routes.draw do
   get "cover-images/:id", to: "cover_images#show", as: "cover_image"
 
   # Kickers and static redirectd
-  get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :legal
-  get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :privacy
+  get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :go_legal
+  get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy
   get "/fachsystematik", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/")
   get "/fachsystematik/*path", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/%{path}")
 

@@ -11,14 +11,14 @@
         .badge.bg-success = number_to_currency(sum.abs, unit: "€")
 
   .card-body
-    - if sum > 0
-      .callout.callout-danger.mb-3 = t(".payment-info")
-    - elsif sum < 0
-      .callout.callout-success.mb-3 = t(".credit-info", amount: number_to_currency(sum.abs, unit: "€"))
-
-    .callout.callout-info.mb-0
+    .callout.callout-info.mb-3
       i.fas.fa-info-circle
-      =< t(".fee-info", url: account_loans_path).html_safe
+      ==< t(".fee-info", account_url: account_loans_path)
+
+    - if sum > 0
+      .callout.callout-danger.fs-5 == t(".payment-info", amount: number_to_currency(sum, unit: "€"))
+    - elsif sum < 0
+      .callout.callout-success.fs-5 == t(".credit-info", amount: number_to_currency(sum.abs, unit: "€"))
 
   - if fees.present?
     #feesListing.ul.list-group.list-group-flush

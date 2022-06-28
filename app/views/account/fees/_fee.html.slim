@@ -4,7 +4,7 @@
     - if fee.title.present?
       div = fee.title
     - if fee.barcode.present?
-      div = fee.barcode
+      div = t(".barcode", barcode: fee.barcode)
 
   .col-md-4.col-xl-3.order-md-first
     dl.mb-0

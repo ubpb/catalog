@@ -16,6 +16,8 @@ module SearchEngine::Adapters
           size: search_request.page.size,
           preference: options[:session_id].presence || "_local"
         }
+
+        # TODO: Remove me
         puts JSON.pretty_generate(es_request)
 
         # Perform the search request against ES.

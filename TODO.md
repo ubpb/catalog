@@ -53,3 +53,4 @@
 * [ ] Anzeige Link-Resolver noch verbessern
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] NewRelic integrieren
+* [ ] BibTeX export fehlt noch

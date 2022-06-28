@@ -30,6 +30,8 @@
 
 * [x] ~~Es feht noch die Seite für Fernleihbestellungen~~
 * [x] ~~Die Details bei Gebühren und Ausleihen sind noch nicht 100%ig und noch nicht "schön"~~
+* [ ] Bisher keine Anziege hinterlegter Daten (z.B. E-Mail Adresse)
+* [ ] Änderung der E-Mail Adresse für "externe" Nutzer
 
 ## Suchindex
 

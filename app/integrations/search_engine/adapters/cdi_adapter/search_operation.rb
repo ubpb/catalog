@@ -51,7 +51,10 @@ module SearchEngine::Adapters
           end
 
           aggregations = (cdi_result.xpath("//FACETLIST/FACET") || []).map do |facet|
-            name  = facet.attr("NAME")
+            internal_name  = facet.attr("NAME")
+
+            name = adapter.aggregations.find{|s| s["internal_name"] == internal_name}.try(:[], "name").presence || internal_name
+
             field = adapter.aggregations_field(name)
             type  = adapter.aggregations_type(name)
 
@@ -70,9 +73,29 @@ module SearchEngine::Adapters
                   field: field,
                   terms: terms
                 )
+              when "histogram"
+                values = facet.xpath("./FACET_VALUES").sort do |x, y|
+                  x.attr("KEY") <=> y.attr("KEY")
+                end.map do |facet_value|
+                  SearchEngine::Aggregations::HistogramAggregation::Value.new(
+                    key: facet_value.attr("KEY").to_i,
+                    count: facet_value.attr("VALUE").to_i
+                  )
+                end
+
+                SearchEngine::Aggregations::HistogramAggregation.new(
+                  name: name,
+                  field: field,
+                  values: values
+                )
               end
             end
           end.compact
+
+          # Sort aggregations as they are defined in the config file
+          aggregations = aggregations.sort_by do |a|
+            adapter.aggregations.find_index{|aa| aa["name"] == a.name} || 0
+          end
 
           SearchEngine::SearchResult.new(
             hits: hits,
@@ -125,27 +148,43 @@ module SearchEngine::Adapters
 
         # Aggregrations
         search_request.aggregations.each do |aggregation|
+          type        = adapter.aggregations_type(aggregation.name)
           index_field = adapter.aggregations_field(aggregation.name)
           clean_value = clean_value(aggregation.value)
 
-          if aggregation.exclude
-            query_terms << <<-XML.strip_heredoc
-              <QueryTerm>
-                <IndexField>#{index_field}</IndexField>
-                <PrecisionOperator>exact</PrecisionOperator>
-                <Value/>
-                <excludeValue>#{clean_value}</excludeValue>
-              </QueryTerm>
-            XML
-          else
-            query_terms << <<-XML.strip_heredoc
-              <QueryTerm>
-                <IndexField>#{index_field}</IndexField>
-                <PrecisionOperator>exact</PrecisionOperator>
-                <Value/>
-                <includeValue>#{clean_value}</includeValue>
-              </QueryTerm>
-            XML
+          case type
+          when "term"
+            if aggregation.exclude
+              query_terms << <<-XML.strip_heredoc
+                <QueryTerm>
+                  <IndexField>#{index_field}</IndexField>
+                  <PrecisionOperator>exact</PrecisionOperator>
+                  <Value/>
+                  <excludeValue>#{clean_value}</excludeValue>
+                </QueryTerm>
+              XML
+            else
+              query_terms << <<-XML.strip_heredoc
+                <QueryTerm>
+                  <IndexField>#{index_field}</IndexField>
+                  <PrecisionOperator>exact</PrecisionOperator>
+                  <Value/>
+                  <includeValue>#{clean_value}</includeValue>
+                </QueryTerm>
+              XML
+            end
+          when "histogram"
+            gte, lte = clean_value.scan(/(\d{4})..(\d{4})/).flatten
+            if gte && lte
+              query_terms << <<-XML.strip_heredoc
+                <QueryTerm>
+                  <IndexField>#{index_field}</IndexField>
+                  <PrecisionOperator>exact</PrecisionOperator>
+                  <Value/>
+                  <includeValue>[#{gte} TO #{lte}]</includeValue>
+                </QueryTerm>
+              XML
+            end
           end
         end
 

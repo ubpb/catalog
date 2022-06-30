@@ -43,15 +43,13 @@ export default class extends Controller {
     })
 
     const myChart = new Chart(this.chartTarget, {
-      type: 'line',
+      type: 'bar',
       data: {
         datasets: [{
           label: false,
           data: this.chartDataValue,
-          fill: true,
-          borderColor: 'rgb(82, 173, 221)',
-          //tension: 0.1,
-          pointRadius: 0
+          backgroundColor: 'rgba(82, 173, 221, 0.5)',
+          borderRadius: 2
         }]
       },
       options: {

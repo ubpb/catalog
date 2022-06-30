@@ -17,11 +17,12 @@ module SearchEngine::Adapters
           preference: options[:session_id].presence || "_local"
         }
 
-        # TODO: Remove me
-        puts JSON.pretty_generate(es_request)
-
         # Perform the search request against ES.
         es_result = adapter.client.search(es_request)
+
+        # TODO: Remove me
+        #puts JSON.pretty_generate(es_request)
+        #puts "--------"
         #puts JSON.pretty_generate(es_result)
 
         # Build the search result from ES result.

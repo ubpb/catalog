@@ -101,6 +101,14 @@ class SearchEngine
       self
     end
 
+    def delete_all_aggregations(name)
+      @aggregations = @aggregations.reject do |a|
+        a.name == name
+      end
+
+      self
+    end
+
     # ----------------------------------------------------
     # Sort
     # ----------------------------------------------------

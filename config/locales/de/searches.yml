@@ -74,6 +74,24 @@ de:
         reset: "Filter zurücksetzen"
 
       # For defaults see searches/defaults/aggregations
+      cdi:
+        tlevel:
+          header: Nur zeigen
+        rtype:
+          header: Publikationsform
+        language:
+          header: Sprache
+        yop:
+          header: Erscheinungsjahr
+        topic:
+          header: Thema
+        domain:
+          header: Kollektion
+        jtitle:
+          header: Zeitschrift / Serie
+        newrecords:
+          header: Neu hinzugefügt
+
       local:
         rtype:
           header: "Art des Mediums"

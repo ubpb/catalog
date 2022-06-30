@@ -78,6 +78,18 @@ module SearchEngine::Adapters
                   field => a.value
                 }
               }
+            when "histogram"
+              gte, lte = a.value.scan(/(\d{4})..(\d{4})/).flatten
+              if gte && lte
+                container << {
+                  range: {
+                    field => {
+                      gte: gte,
+                      lte: lte
+                    }
+                  }
+                }
+              end
             end
           end
         end
@@ -115,6 +127,14 @@ module SearchEngine::Adapters
                   field: field,
                   size: size,
                   shard_size: 3 * size
+                }
+              }
+            when "histogram"
+              aggregations[name] = {
+                histogram: {
+                  field: field,
+                  interval: 1,
+                  min_doc_count: 1
                 }
               }
             end
@@ -175,6 +195,21 @@ module SearchEngine::Adapters
                 name: name,
                 field: field,
                 terms: terms
+              )
+            when "histogram"
+              values = aggregation["buckets"].sort do |x, y|
+                x["key"] <=> y["key"]
+              end.map do |bucket|
+                SearchEngine::Aggregations::HistogramAggregation::Value.new(
+                  key: bucket["key"].to_i,
+                  count: bucket["doc_count"]
+                )
+              end
+
+              SearchEngine::Aggregations::HistogramAggregation.new(
+                name: name,
+                field: field,
+                values: values
               )
             end
           end

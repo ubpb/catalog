@@ -35,6 +35,10 @@ application.register("loans", LoansController)
 import RemoteLoaderController from "./remote_loader_controller.js"
 application.register("remote-loader", RemoteLoaderController)
 
+// app/assets/src/application/js/stimulus/histogram_aggregation_controller.js
+import HistogramAggregationController from "./histogram_aggregation_controller.js"
+application.register("histogram-aggregation", HistogramAggregationController)
+
 // app/components/watch_lists_panel_component/component_controller.js
 import WatchListsPanelComponent__ComponentController from "../../../../../components/watch_lists_panel_component/component_controller.js"
 application.register("watch-lists-panel-component--component", WatchListsPanelComponent__ComponentController)

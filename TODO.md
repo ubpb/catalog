@@ -15,7 +15,7 @@
 ## Suche / Facetten (CDI)
 
 * [ ] Es fehlen noch Suchfelder
-* [ ] Es fehlen noch Facetten
+* [x] ~~Es fehlen noch Facetten~~
 
 ## Titel Detailseite
 
@@ -37,7 +37,7 @@
 ## Suchindex
 
 * [ ] Es fehlen noch Daten zu Sekundärformen (_Es fehlen bestimmt noch mehr Daten. Bitte Testen_)
-* [ ] Als gelöscht markierte Titel und als ausgesonderte makierte Exemplare werden angezeigt.
+* [x] ~~Als gelöscht markierte Titel und als ausgesonderte makierte Exemplare werden angezeigt.~~
 
 ## CDI
 

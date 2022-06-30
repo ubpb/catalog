@@ -20,7 +20,7 @@ module SearchEngine::Adapters
         cdi_result = parse_cdi_response(cdi_response)
 
         # Build the search result from CDI result.
-        build_search_result(cdi_result)
+        build_search_result(cdi_result, search_request: search_request)
       end
 
     private
@@ -37,7 +37,7 @@ module SearchEngine::Adapters
           end
       end
 
-      def build_search_result(cdi_result)
+      def build_search_result(cdi_result, search_request:)
         if docset = cdi_result.at_xpath("./DOCSET")
           total = docset.attr("TOTALHITS").to_i
 
@@ -81,6 +81,18 @@ module SearchEngine::Adapters
                     key: facet_value.attr("KEY").to_i,
                     count: facet_value.attr("VALUE").to_i
                   )
+                end
+
+                # CDI sometimes returns creation dates outside the selected range.
+                # We remove these to not confuse the user if the search request
+                # contains a conresponding range
+                if active_aggregation = search_request.aggregations.find{|a| a.name == name}
+                  lower_bound, upper_bound = active_aggregation.value.scan(/(\d{4})..(\d{4})/).flatten
+                  if lower_bound && upper_bound
+                    values = values.reject do |v|
+                      v.key < lower_bound.to_i || v.key > upper_bound.to_i
+                    end
+                  end
                 end
 
                 SearchEngine::Aggregations::HistogramAggregation.new(

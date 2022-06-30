@@ -3,6 +3,42 @@ de:
     defaults:
       aggregations:
         terms:
+          tlevel:
+            online_resources: Mit Volltextzugriff
+            peer_reviewed: Geprüft (Peer-Review)
+
+          newrecords:
+            "07 days back": "... seit 7 Tagen"
+            "30 days back": "... seit 30 Tagen"
+            "90 days back": "... seit 90 Tagen"
+
+          rtype:
+            articles: Artikel
+            book_chapters: Buchkapitel
+            books: Bücher
+            conference_proceedings: Tagungsberichte
+            databases: Datenbanken
+            datasets: Datensätze
+            dissertations: Dissertationen
+            Dissertations: Dissertationen # this is intentionally upcase
+            images: Bilder
+            journals: Zeitschriften
+            legal_documents: Gesetzestexte
+            maps: Karten
+            media: Multimedia
+            newsletterarticle: Newsletter-Artikel
+            newspaper_articles: Zeitungsartikel
+            other: Sonstige
+            reference_entrys: Referenzeintrag
+            reports: Berichte
+            research_datasets: Forschungsdaten
+            reviews: Reviews
+            technical_reports: Technischer Report
+            text_resources: Texte
+            web_resources: Webseiten
+            websites: Webseiten
+            standards: Normen
+
           language:
             aar: Danakil-Sprache
             abk: Abchasisch

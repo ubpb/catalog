@@ -8,7 +8,7 @@
 * [ ] Es fehlen noch die Sortierung nach Bandzählung
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
-* [ ] Facette "Erscheinungsjahr" ist noch keine "Range"-Facette
+* [x] ~~Facette "Erscheinungsjahr" ist noch keine "Range"-Facette~~
 * [ ] Facette "Neuerwerbungen" fehlt noch
 * [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
 

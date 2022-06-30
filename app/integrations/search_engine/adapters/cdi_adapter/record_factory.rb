@@ -16,7 +16,7 @@ module SearchEngine::Adapters
       #   </DOC>
       #
       def build(xml)
-        xxx = SearchEngine::Record.new(
+        SearchEngine::Record.new(
           id: get_id(xml),
           title: get_title(xml),
           creators: get_creators(xml),
@@ -32,14 +32,6 @@ module SearchEngine::Adapters
           resolver_link: get_resolver_link(xml),
           fulltext_links: get_fulltext_links(xml)
         )
-
-        #binding.b
-
-        puts xml
-        puts "-------------------------"
-        pp xxx
-
-        xxx
       end
 
     private

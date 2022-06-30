@@ -18,8 +18,8 @@
 
     div(
       data-controller="histogram-aggregation"
-      data-histogram-aggregation-lower-value=aggregation.lowest_value.key
-      data-histogram-aggregation-upper-value=aggregation.highest_value.key
+      data-histogram-aggregation-lower-value=aggregation.lowest_value&.key
+      data-histogram-aggregation-upper-value=aggregation.highest_value&.key
       data-histogram-aggregation-url-value=new_search_request_path(nsr)
       data-histogram-aggregation-chart-data-value=aggregation.chart_data.to_json
     )

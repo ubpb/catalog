@@ -76,6 +76,7 @@ $fa-font-path: "~node_modules/@fortawesome/fontawesome-free/webfonts";
 // Import other libs
 //
 @import "~node_modules/animate.css/animate.css";
+@import "~node_modules/nouislider/dist/nouislider.css";
 
 //
 // Import our stuff
@@ -87,3 +88,4 @@ $fa-font-path: "~node_modules/@fortawesome/fontawesome-free/webfonts";
 @import "./navbar";
 @import "./callouts";
 @import "./pagination";
+@import "./slider";

@@ -1,0 +1,46 @@
+.card.card-primary.mb-3
+  .card-header.cutoff-corner-tr
+    = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.header", default: aggregation.name)
+  .card-body
+    - active_aggregation = search_request.aggregations.find{|a| a.name == aggregation.name}
+
+    ruby:
+      nsr = search_request.dup
+        .reset_page
+        .delete_all_aggregations(aggregation.name)
+        .add_aggregation(
+          SearchEngine::SearchRequest::Aggregation.new(
+            name: aggregation.name,
+            value: "MIN..MAX",
+            exclude: false
+          )
+        )
+
+    div(
+      data-controller="histogram-aggregation"
+      data-histogram-aggregation-lower-value=aggregation.lowest_value.key
+      data-histogram-aggregation-upper-value=aggregation.highest_value.key
+      data-histogram-aggregation-url-value=new_search_request_path(nsr)
+      data-histogram-aggregation-chart-data-value=aggregation.chart_data.to_json
+    )
+
+      canvas.mb-2(
+        width="100%"
+        height="20"
+        data-histogram-aggregation-target="chart"
+      )
+
+      .row
+        .col
+          div(data-histogram-aggregation-target="lowerOutput") = "n.n"
+        .col.text-end
+          div(data-histogram-aggregation-target="upperOutput") = "n.n"
+
+      .mb-3
+        .slider(data-histogram-aggregation-target="slider")
+
+      .d-grid.gap-2
+        button.btn.btn-sm.btn-secondary(data-action="click->histogram-aggregation#setAggregation") = t(".set_aggregation")
+        - if active_aggregation
+          = link_to new_search_request_path(search_request.dup.reset_page.delete_all_aggregations(aggregation.name)), class: "btn btn-sm btn-outline-secondary" do
+            = t(".reset")

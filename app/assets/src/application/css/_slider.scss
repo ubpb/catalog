@@ -1,0 +1,28 @@
+.slider {
+  height: 10px;
+
+  .noUi-connect {
+    background: $primary;
+  }
+
+  .noUi-handle {
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px; /* half the width */
+    border-radius: 9px;
+  }
+
+  // .noUi-tooltip {
+  //   display: none;
+  // }
+
+  // .noUi-active .noUi-tooltip {
+  //   display: block;
+  // }
+
+  .noUi-handle:before,
+  .noUi-handle:after {
+    display: none;
+  }
+}

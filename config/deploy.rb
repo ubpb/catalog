@@ -21,3 +21,7 @@ set :keep_assets, 3
 #
 # NOTE: See lib/capistrano/tasks for more local tasks
 #
+
+# Hooks
+before "deploy:assets:precompile", "app:yarn:install"
+before "deploy:assets:precompile", "app:parcel:build"

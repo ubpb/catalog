@@ -65,7 +65,13 @@ export default class extends Controller {
         },
         scales: {
           x: {
-            display: false
+            grid: {
+              display: false,
+              borderColor: '#ccc'
+            },
+            ticks: {
+              display: false
+            }
           },
           y: {
             display: false

@@ -54,3 +54,4 @@
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] NewRelic integrieren
 * [ ] BibTeX export fehlt noch
+* [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen

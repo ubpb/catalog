@@ -9,7 +9,7 @@
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
 * [x] ~~Facette "Erscheinungsjahr" ist noch keine "Range"-Facette~~
-* [ ] Facette "Neuerwerbungen" fehlt noch
+* [x] ~~Facette "Neuerwerbungen" fehlt noch~~
 * [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
 
 ## Suche / Facetten (CDI)

@@ -70,7 +70,7 @@ de:
       active_aggregations_header: Aktive Filter
 
       histogram_aggregation:
-        set_aggregation: "Ergebnisse aktualisieren"
+        set_aggregation: "Ergebnisse filtern"
         reset: "Filter zurücksetzen"
 
       # For defaults see searches/defaults/aggregations

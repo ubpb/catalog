@@ -1,0 +1,31 @@
+ruby:
+  non_selected_ranges = aggregation.ranges.select do |r|
+    !search_request.has_aggregation?(aggregation.name, r.key)
+  end
+
+  nsr = ->(range, exclude: false) {
+    search_request.dup
+      .reset_page
+      .add_aggregation(
+        SearchEngine::SearchRequest::Aggregation.new(
+          name: aggregation.name,
+          value: range.key,
+          exclude: exclude
+        )
+      )
+  }
+
+- if non_selected_ranges.present?
+  .card.card-primary.mb-3
+    .card-header.cutoff-corner-tr
+      = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.header", default: aggregation.name)
+    .card-body
+      ul.list-unstyled.mb-0(data-expandable-list-target="list")
+        - non_selected_ranges.each do |range|
+          li
+            = link_to new_search_request_path(nsr.(range, exclude: false)) do
+              = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.ranges.#{range.key.underscore}", default: ["searches.defaults.aggregations.ranges.#{aggregation.name.underscore}.#{range.key.underscore}".to_sym, range.key])
+            .d-inline-flex.flex-nowrap
+              span.ms-1.text-muted = "(#{range.count})"
+              = link_to new_search_request_path(nsr.(range, exclude: true)) do
+                span.ms-2: i.fas.fa-times

@@ -101,6 +101,13 @@ de:
             data_storage: "Datenspeicher"
             other: "Sonstiges"
 
+        newrecords:
+          header: "Neu hinzugefügt"
+          ranges:
+            last_month: "... im letzten Monat"
+            last_three_months: "... in den letzten 3 Monaten"
+            last_twelve_months: "... in den letzten 12 Monaten"
+
         erscheinungsform:
           header: "Erscheinungsform"
 

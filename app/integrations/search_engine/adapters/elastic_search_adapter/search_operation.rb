@@ -21,9 +21,9 @@ module SearchEngine::Adapters
         es_result = adapter.client.search(es_request)
 
         # TODO: Remove me
-        #puts JSON.pretty_generate(es_request)
-        #puts "--------"
-        #puts JSON.pretty_generate(es_result)
+        # puts JSON.pretty_generate(es_request)
+        # puts "--------"
+        # puts JSON.pretty_generate(es_result.body)
 
         # Build the search result from ES result.
         build_search_result(es_result)
@@ -91,6 +91,24 @@ module SearchEngine::Adapters
                   }
                 }
               end
+            when "date_range"
+              aggregation_config = adapter.aggregations.find{|ac| ac["name"] == a.name}
+              next unless aggregation_config
+
+              range_config = (aggregation_config["ranges"] || []).find{|r| r["key"] == a.value}
+              next unless range_config
+
+              format_config = aggregation_config["format"].presence || "yyyy-MM-dd"
+
+              range = { field => {} }
+              range[field]["gte"] = gte if gte = range_config["from"]
+              range[field]["lte"] = gte if lte = range_config["to"]
+
+              if range.present?
+                container << {
+                  range: range
+                }
+              end
             end
           end
         end
@@ -138,6 +156,30 @@ module SearchEngine::Adapters
                   min_doc_count: 1
                 }
               }
+            when "date_range"
+              format = aggregation["format"].presence || "yyyy-MM-dd"
+              ranges = (aggregation["ranges"].presence || []).map do |r|
+                from = r["from"].presence
+                to   = r["to"].presence
+                key  = r["key"].presence
+
+                range = {}
+                range["from"] = from if from
+                range["to"]   = to   if to
+                range["key"]  = key  if key
+
+                (from || to) ? range : nil
+              end.compact
+
+              if ranges.present?
+                aggregations[name] = {
+                  date_range: {
+                    field: field,
+                    format: format,
+                    ranges: ranges
+                  }
+                }
+              end
             end
           end
         end
@@ -211,6 +253,20 @@ module SearchEngine::Adapters
                 name: name,
                 field: field,
                 values: values
+              )
+            when "date_range"
+              ranges = aggregation["buckets"].map do |bucket|
+                SearchEngine::Aggregations::DateRangeAggregation::Range.new(
+                  key: bucket["key"],
+                  count: bucket["doc_count"]
+                  # TODO: implement from and to
+                )
+              end
+
+              SearchEngine::Aggregations::DateRangeAggregation.new(
+                name: name,
+                field: field,
+                ranges: ranges
               )
             end
           end

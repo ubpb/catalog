@@ -1,0 +1,15 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0
+      => t(".header")
+  .card-body
+    dl.mb-0
+      dt = t(".data.first_name")
+      dd = current_user.first_name.presence || "–"
+      dt = t(".data.last_name")
+      dd = current_user.last_name.presence || "–"
+      dt = t(".data.email")
+      dd = current_user.email.presence || "–"
+      dt = t(".data.password")
+      dd = link_to edit_account_password_path do
+        = t(".change_password")

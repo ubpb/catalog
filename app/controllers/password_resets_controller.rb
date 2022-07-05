@@ -9,7 +9,7 @@ class PasswordResetsController < ApplicationController
 
   def create
     @form = PasswordResetRequestForm.new(
-      params.require(:form).permit(:user_id)
+      params.require(:password_reset_request_form).permit(:user_id)
     )
 
     if @form.valid?
@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     @form = PasswordResetForm.new(
-      params.require(:form).permit(:password, :password_confirmation)
+      params.require(:password_reset_form).permit(:password, :password_confirmation)
     )
 
     if @form.valid?

@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new
+    redirect_to account_root_path if current_user
+  end
+
   def create
     user_id  = params.dig("login", "user_id")
     password = params.dig("login", "password")

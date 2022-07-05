@@ -1,0 +1,15 @@
+de:
+  account:
+    profiles:
+      breadcrumb: Meine Daten
+
+      show:
+        header: "Meine Daten"
+
+        change_password: "Passwort ändern"
+
+        data:
+          first_name: "Vorname"
+          last_name: "Nachname"
+          email: "E-Mail"
+          password: "Passwort"

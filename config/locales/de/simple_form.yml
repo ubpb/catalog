@@ -5,22 +5,32 @@ de:
         user_id: "Ausweisnummer"
         password: "Passwort"
         password_confirmation: "Passwort wiederholen"
+        current_password: "Aktuelles Passwort"
         name: "Name"
         description: "Beschreibung"
+
+      change_password_form:
+        password: "Neues Passwort"
+        password_confirmation: "Neues Passwort wiederholen"
 
     placeholders:
       defaults:
         user_id: "Ihre Bibliotheksausweisnummer"
         password: "Ihr Bibliothekspasswort"
         password_confirmation: "Bitte geben Sie Ihr Passwort erneut ein"
+        current_password: "Bitte geben Sie Ihr aktuelles Passwort ein"
 
-      reset_password_form:
+      password_reset_form:
+        password: "Ihr neues Passwort"
+        password_confirmation: "Bitte geben Sie Ihr neues Passwort erneut ein"
+
+      password_change_form:
         password: "Ihr neues Passwort"
         password_confirmation: "Bitte geben Sie Ihr neues Passwort erneut ein"
 
     hints:
       defaults:
         user_id: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
-        password: "Muss eine Zahl, einen Kleinbuchstaben, einen Großbuchstaben und ein Sonderzeichen enthalten. Min. 8 Zeichen. Max. 30 Zeichen. "
+        password: "Muss min. eine Zahl und ein Sonderzeichen (z.B. $, %, @, usw.) enthalten. Min. 8 Zeichen. Max. 30 Zeichen. "
 
 

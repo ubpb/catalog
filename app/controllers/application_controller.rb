@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  before_action :set_robots_tag
+
   helper_method :current_user
   helper_method :available_search_scopes
   helper_method :current_search_scope
@@ -7,6 +9,10 @@ class ApplicationController < ActionController::Base
   helper_method :new_search_request_path
   helper_method :show_record_path
   helper_method :on_campus?
+
+  def set_robots_tag
+    response.headers["X-Robots-Tag"] = 'noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex'
+  end
 
   def current_user
     @current_user ||= begin

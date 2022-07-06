@@ -82,4 +82,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from CanCan::AccessDenied do |e|
+    flash[:error] = t("access_denied")
+    redirect_to(root_url)
+  end
+
 end

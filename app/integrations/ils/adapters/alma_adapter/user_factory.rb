@@ -9,6 +9,7 @@ module Ils::Adapters
       def build(alma_user_hash)
         Ils::User.new(
           id: get_id(alma_user_hash),
+          user_group: get_user_group(alma_user_hash),
           first_name: get_firstname(alma_user_hash),
           last_name: get_lastname(alma_user_hash),
           email: get_email(alma_user_hash),
@@ -20,6 +21,15 @@ module Ils::Adapters
 
       def get_id(alma_user_hash)
         alma_user_hash["primary_id"]
+      end
+
+      def get_user_group(alma_user_hash)
+        code  = alma_user_hash.dig("user_group", "value").presence
+        label = alma_user_hash.dig("user_group", "desc").presence
+
+        if code && label
+          Ils::UserGroup.new(code: code, label: label)
+        end
       end
 
       def get_firstname(alma_user_hash)

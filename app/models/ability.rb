@@ -6,7 +6,9 @@ class Ability
   def initialize(current_user)
     if current_user
       can :change_email, User do |user|
-        user == current_user && !user.ils_primary_id.match?(/\APS|\APA/i)
+        user == current_user &&
+        user.user_group_code != "01" && # No PS
+        user.user_group_code != "02"    # No PA
       end
     end
   end

@@ -14,10 +14,12 @@ class User < ApplicationRecord
       User.transaction do
         user = User.where(ils_primary_id: ils_user.id).first_or_initialize
         user.assign_attributes(
-          ils_primary_id: ils_user.id,
-          first_name:     ils_user.first_name,
-          last_name:      ils_user.last_name,
-          email:          ils_user.email
+          ils_primary_id:   ils_user.id,
+          user_group_code:  ils_user.user_group&.code,
+          user_group_label: ils_user.user_group&.label,
+          first_name:       ils_user.first_name,
+          last_name:        ils_user.last_name,
+          email:            ils_user.email
         )
         user.save!
         user

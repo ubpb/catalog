@@ -47,6 +47,7 @@
 * [ ] Es fehlen in den Titeldetails noch ein paar Felder
 * [ ] Es fehlt noch die Integration von bX
 * [ ] & in einem Facetten-Wert (z.B. Thema => Science & Technology) führt zu 0 Treffern.
+* [ ] Hinweis auf VPN/Shibboleth bei Suchen außerhalb des Campusnetzes anzeigen
 
 ## Sonstiges
 

@@ -1,0 +1,16 @@
+= simple_form_for @form, as: :email_change_form, url: account_email_path, method: :put do |f|
+  .card.card-shadowed
+    .card-header.d-flex.align-items-center
+      h5.m-0
+        => t(".header")
+    .card-body
+      = render "alerts"
+      = f.input :current_password, autofocus: true, input_html: { value: @form.current_password }
+      - if @form.errors.include?(:current_password)
+        = link_to password_reset_request_path do
+          = t("account.passwords.edit.forgot_password")
+      hr
+      = f.input :email
+    .card-footer
+      => f.submit t("save"), class: "btn btn-lg btn-primary"
+      => link_to t("cancel"), account_profile_path, class: "btn btn-lg btn-default"

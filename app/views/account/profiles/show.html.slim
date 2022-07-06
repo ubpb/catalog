@@ -4,12 +4,25 @@
       => t(".header")
   .card-body
     dl.mb-0
+      dt = t(".data.ils_id")
+      dd = current_user.ils_primary_id
       dt = t(".data.first_name")
       dd = current_user.first_name.presence || "–"
       dt = t(".data.last_name")
       dd = current_user.last_name.presence || "–"
       dt = t(".data.email")
-      dd = current_user.email.presence || "–"
+      dd
+        - email = current_user.email.presence
+        - if email
+          = email
+          - if can?(:change_email, current_user)
+            ==< "(#{link_to(t(".change"), edit_account_email_path)})"
+        - else
+          - if can?(:change_email, current_user)
+            = link_to edit_account_email_path, class: "btn btn-primary btn-sm" do
+              = t(".add_email")
+          - else
+            = "–"
       dt = t(".data.password")
       dd = link_to edit_account_password_path do
         = t(".change_password")

@@ -1,6 +1,6 @@
 .card.card-primary.mb-3
   .card-header.cutoff-corner-tr
-    = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.header", default: aggregation.name)
+    = aggregation_label(aggregation)
   .card-body
     - active_aggregation = search_request.aggregations.find{|a| a.name == aggregation.name}
 

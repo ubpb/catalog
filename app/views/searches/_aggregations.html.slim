@@ -12,8 +12,10 @@
         div.me-1
           i(class=badge_icon)
         div.flex-grow-1
-          span.text-uppercase.fw-bold.me-2 = "#{aggregation.name}"
-          span.fw-normal = aggregation.value
+          span.text-uppercase.fw-bold.me-2
+            = aggregation_label(aggregation)
+          span.fw-normal
+            = aggregation_value(aggregation, aggregation.value)
         div.ms-2
           = link_to new_search_request_path(nsr) do
             i.fas.fa-times.text-light

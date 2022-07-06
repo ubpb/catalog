@@ -1,0 +1,74 @@
+de:
+  searches:
+    aggregations:
+      local:
+        newrecords:
+          label: "Neu hinzugefügt"
+          values:
+            last_month: "... im letzten Monat"
+            last_three_months: "... in den letzten 3 Monaten"
+            last_twelve_months: "... in den letzten 12 Monaten"
+
+        creator:
+          label: "Autor / Autorin"
+
+        subject:
+          label: "Schlagwort"
+
+        language:
+          # See default
+
+        inhaltstyp:
+          label: "Art des Inhalts"
+
+        yop:
+          label: "Erscheinungsjahr"
+
+        local_notation:
+          label: "Systemstelle"
+
+        resource_type:
+          label: "Erscheinungsform"
+          values:
+            article: "Artikel"
+            monograph: "Buch"
+            journal: "Zeitschrift"
+            series: "Serie"
+            newspaper: "Zeitung"
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+
+        material_type:
+          label: "Art des Mediums"
+          values:
+            print: "Gedruckt"
+            online_resource: "Online-Ressource"
+            data_storage: "Datenspeicher"
+            microform: "Mikrofiche"
+            audio: "Audio"
+            video: "Video"
+            map: "Karte"
+            image: "Bild"
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+
+        content_type:
+          label: "Art des Inhalts"
+          values:
+            dissertation: Hochschulschrift
+            bibliography: Bibliographie
+            catalog: Katalog
+            dictionary: Wörterbuch
+            encyclopedia: Enzyklopädie
+            festschrift: Festschrift
+            biography: Biografie
+            congress: Kongressbericht
+            music: Musik
+            standard: Standard / Norm
+            university_text: Universitätstext
+            textbook: Textbuch
+            thesis: Hochschulschrift (Sonstige)
+            other: "Sonstiges"
+            unspecified: "Nicht angegeben"
+
+

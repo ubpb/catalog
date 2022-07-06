@@ -4,7 +4,6 @@
       h5.m-0
         => t(".header")
     .card-body
-      /- binding.b
       = render "alerts"
       = f.input :current_password, autofocus: true, input_html: { value: @form.current_password }
       - if @form.errors.include?(:current_password)

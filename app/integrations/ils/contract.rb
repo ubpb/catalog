@@ -38,6 +38,18 @@ class Ils
     end
 
     #
+    # Set/Update the email for a user.
+    #
+    # @param user_id [String] a user ID.
+    # @param email [String] the new email for the user.
+    # @return [true, false] `true` if the email was set successfully,
+    #   `false` otherwise.
+    #
+    def set_user_email(user_id, email)
+      try_operation(__method__, user_id, email)
+    end
+
+    #
     # Get the loans for a user.
     #
     # @param user_id [String] a user ID.

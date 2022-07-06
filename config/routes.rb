@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :calendar, only: [:index]
     resource :profile, only: [:show]
     resource :password, only: [:edit, :update]
+    resource :email, only: [:edit, :update]
   end
 
   # Closed stack orders

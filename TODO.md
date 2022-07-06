@@ -56,3 +56,4 @@
 * [ ] BibTeX export fehlt noch
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
 * [ ] Alle alten routen auf ggf. neue Routen umleiten
+* [ ] Alert für Search-Validation anpassen/abschalten

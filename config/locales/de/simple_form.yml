@@ -33,6 +33,9 @@ de:
     hints:
       defaults:
         user_id: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
-        password: "Muss min. eine Zahl und ein Sonderzeichen (z.B. $, %, @, usw.) enthalten. Min. 8 Zeichen. Max. 30 Zeichen. "
+        password: "Muss min. eine Zahl und ein Sonderzeichen (z.B. $, %, @, usw.) enthalten. Min. 8 Zeichen. Max. 30 Zeichen."
+
+      login:
+        password: ""
 
 

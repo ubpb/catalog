@@ -40,4 +40,24 @@ module ApplicationHelper
     record.resource_type != "newspaper"
   end
 
+  def aggregation_label(aggregation)
+    t(
+      "searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.label",
+      default: [
+        "searches.aggregations.default.#{aggregation.name.underscore}.label".to_sym,
+        aggregation.name
+      ]
+    )
+  end
+
+  def aggregation_value(aggregation, value)
+    t(
+      "searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.values.#{value.underscore}",
+      default: [
+        "searches.aggregations.default.#{aggregation.name.underscore}.values.#{value.underscore}".to_sym,
+        value
+      ]
+    )
+  end
+
 end

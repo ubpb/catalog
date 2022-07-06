@@ -18,14 +18,14 @@ ruby:
 - if non_selected_terms.present?
   .card.card-primary.mb-3
     .card-header.cutoff-corner-tr
-      = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.header", default: aggregation.name)
+      = aggregation_label(aggregation)
     .card-body
       div(data-controller="expandable-list")
         ul.list-unstyled.mb-0(data-expandable-list-target="list")
           - non_selected_terms.each do |term|
             li
               = link_to new_search_request_path(nsr.(term, exclude: false)) do
-                = t("searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.terms.#{term.term.underscore}", default: ["searches.defaults.aggregations.terms.#{aggregation.name.underscore}.#{term.term.underscore}".to_sym, term.term])
+                = aggregation_value(aggregation, term.term)
               .d-inline-flex.flex-nowrap
                 span.ms-1.text-muted = "(#{term.count})"
                 = link_to new_search_request_path(nsr.(term, exclude: true)) do

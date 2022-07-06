@@ -48,6 +48,12 @@ de:
         ids: "Identifikatoren"
         call_number: "Signatur"
         local_notation: "Systemstelle"
+      cdi:
+        any: "Alle Felder"
+        creator: "Autor(en) / Beteiligte"
+        title: "Titel"
+        yop: "Erscheinungsjahr"
+        subject: "Schlagwort"
 
     sortables:
       local:
@@ -61,7 +67,7 @@ de:
       cdi:
         _default_: "Relevanz"
         title: "Titel"
-        cdate: "Erscheinungsjahr"
+        yop: "Erscheinungsjahr"
 
     aggregations:
       expand: "Mehr anzeigen..."
@@ -72,104 +78,3 @@ de:
       histogram_aggregation:
         set_aggregation: "Ergebnisse filtern"
         reset: "Filter zurücksetzen"
-
-      # For defaults see searches/defaults/aggregations
-      cdi:
-        tlevel:
-          header: Nur zeigen
-        rtype:
-          header: Publikationsform
-        language:
-          header: Sprache
-        yop:
-          header: Erscheinungsjahr
-        topic:
-          header: Thema
-        domain:
-          header: Kollektion
-        jtitle:
-          header: Zeitschrift / Serie
-        newrecords:
-          header: Neu hinzugefügt
-
-      local:
-        rtype:
-          header: "Art des Mediums"
-          terms:
-            print: "Gedrucktes Werk"
-            online_resource: "Online-Ressource"
-            data_storage: "Datenspeicher"
-            other: "Sonstiges"
-
-        newrecords:
-          header: "Neu hinzugefügt"
-          ranges:
-            last_month: "... im letzten Monat"
-            last_three_months: "... in den letzten 3 Monaten"
-            last_twelve_months: "... in den letzten 12 Monaten"
-
-        erscheinungsform:
-          header: "Erscheinungsform"
-
-        creator:
-          header: "Autor / Autorin"
-
-        subject:
-          header: "Schlagwort"
-
-        language:
-          header: "Sprache"
-
-        inhaltstyp:
-          header: "Art des Inhalts"
-
-        yop:
-          header: "Erscheinungsjahr"
-
-        local_notation:
-          header: "Systemstelle"
-
-        resource_type:
-          header: "Erscheinungsform"
-          terms:
-            article: "Artikel"
-            monograph: "Buch"
-            journal: "Zeitschrift"
-            series: "Serie"
-            newspaper: "Zeitung"
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-
-        material_type:
-          header: "Art des Mediums"
-          terms:
-            print: "Gedruckt"
-            online_resource: "Online-Ressource"
-            data_storage: "Datenspeicher"
-            microform: "Mikrofiche"
-            audio: "Audio"
-            video: "Video"
-            map: "Karte"
-            image: "Bild"
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-
-        content_type:
-          header: "Art des Inhalts"
-          terms:
-            dissertation: Hochschulschrift
-            bibliography: Bibliographie
-            catalog: Katalog
-            dictionary: Wörterbuch
-            encyclopedia: Enzyklopädie
-            festschrift: Festschrift
-            biography: Biografie
-            congress: Kongressbericht
-            music: Musik
-            standard: Standard / Norm
-            university_text: Universitätstext
-            textbook: Textbuch
-            thesis: Hochschulschrift (Sonstige)
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-

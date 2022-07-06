@@ -32,9 +32,9 @@ module Ils::Adapters
 
       def get_email(alma_user_hash)
         emails = alma_user_hash["contact_info"]["email"]
-
-        emails.find(->{{}}){|email| email["preferred"] == true}["email_address"] ||
-          emails.first["email_address"]
+        emails.find{ |email| email["preferred"] == true }.try(:[], "email_address")
+        #emails.find(->{{}}){|email| email["preferred"] == true}["email_address"] ||
+        #  emails&.first.try(:[], "email_address")
       end
 
       def get_nodes(alma_user_hash)

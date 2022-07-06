@@ -9,7 +9,7 @@ de:
         name: "Name"
         description: "Beschreibung"
 
-      change_password_form:
+      password_change_form:
         password: "Neues Passwort"
         password_confirmation: "Neues Passwort wiederholen"
 

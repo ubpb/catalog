@@ -1,6 +1,6 @@
 class Account::PasswordsController < Account::ApplicationController
 
-  before_action { add_breadcrumb t("account.passwords.breadcrumb"), account_profile_path }
+  before_action { add_breadcrumb t("account.passwords.breadcrumb"), edit_account_password_path }
 
   def edit
     @form = PasswordChangeForm.new

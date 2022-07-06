@@ -15,6 +15,8 @@
 ## Suche / Facetten (CDI)
 
 * [ ] Es fehlen noch Suchfelder
+* [ ] Mit Volltext-Zugriff scheint noch nciht korrekt zu funktionieren
+* [ ] Anzahl Suchergebnisse leicht anders als im Produktionssystem
 * [x] ~~Es fehlen noch Facetten~~
 
 ## Titel Detailseite

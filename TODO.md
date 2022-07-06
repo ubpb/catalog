@@ -32,7 +32,7 @@
 * [x] ~~Die Details bei Gebühren und Ausleihen sind noch nicht 100%ig und noch nicht "schön"~~
 * [x] ~~Bisher keine Anziege hinterlegter Daten (z.B. E-Mail Adresse)~~
 * [x] ~~Änderung Passwort~~
-* [ ] Änderung der E-Mail Adresse für "externe" Nutzer
+* [x] ~~Änderung der E-Mail Adresse für "externe" Nutzer~~
 
 ## Suchindex
 

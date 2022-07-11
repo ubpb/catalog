@@ -8,10 +8,23 @@
         li.list-group-item
           .d-flex
             .w-25
-              div = l(hold_request.requested_at)
-              div = hold_request.status
-              div = "Position: #{hold_request.queue_position}"
+              dl.mb-0
+                dt = t(".requested_at")
+                dd = l(hold_request.requested_at)
+                dt = t(".status")
+                dd = t("code_tables.hold_request_status.#{hold_request.status}", default: hold_request.status)
+                - if hold_request.status == :on_hold_shelf
+                  dt = t(".expiry_date")
+                  dd = hold_request.expiry_date ? l(hold_request.expiry_date) : "–"
+                - else
+                  dt = t(".queue_position")
+                  dd = hold_request.queue_position
             .w-75.ms-3
+              - if hold_request.status == :on_hold_shelf
+                  strong.text-success
+                    i.fa-solid.fa-info-circle
+                    =< t(".on_hold_shelf_info", date: (hold_request.expiry_date ? l(hold_request.expiry_date) : "–"))
+
               div: strong = hold_request.title
               - if hold_request.author.present?
                 div = hold_request.author
@@ -20,7 +33,7 @@
 
               .mt-2
                 = link_to account_hold_request_path(hold_request.id), class: "btn btn-sm btn-danger", data: { turbo_method: :delete } do
-                  = "Vormerkung löschen"
+                  = t(".delete_hold_request")
   - else
     .card-body
       .alert.alert-info.mb-0.text-center

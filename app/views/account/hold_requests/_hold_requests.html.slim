@@ -29,7 +29,7 @@
               - if hold_request.author.present?
                 div = hold_request.author
               - if hold_request.barcode.present?
-                div = "Barcode: #{hold_request.barcode}"
+                div = t(".barcode", barcode: hold_request.barcode)
 
               .mt-2
                 = link_to account_hold_request_path(hold_request.id), class: "btn btn-sm btn-danger", data: { turbo_method: :delete } do

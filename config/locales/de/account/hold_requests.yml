@@ -13,6 +13,7 @@ de:
         expiry_date: "Abzuholen bis"
         on_hold_shelf_info:
           Der Titel steht bis zum %{date} für Sie im Selbstabholbereich der UB bereit.
+        barcode: "Strichcode: %{barcode}"
 
       destroy:
         error: "Die Vormerkung konnte nicht gelöscht werden"

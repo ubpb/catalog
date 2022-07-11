@@ -4,18 +4,18 @@
 
 ## Suche / Facetten (Lokal)
 
-* [x] ~~Es fehlen noch einige Suchfelder~~
 * [ ] Es fehlen noch die Sortierung nach Bandzählung
+* [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
+* [x] ~~Es fehlen noch einige Suchfelder~~
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
 * [x] ~~Facette "Erscheinungsjahr" ist noch keine "Range"-Facette~~
 * [x] ~~Facette "Neuerwerbungen" fehlt noch~~
-* [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
 
 ## Suche / Facetten (CDI)
 
-* [ ] Es fehlen noch Suchfelder
 * [ ] Mit Volltext-Zugriff scheint noch nicht korrekt zu funktionieren
+* [x] ~~Es fehlen noch Suchfelder~~
 * [x] ~~Anzahl Suchergebnisse leicht anders als im Produktionssystem~~
 * [x] ~~Es fehlen noch Facetten~~
 

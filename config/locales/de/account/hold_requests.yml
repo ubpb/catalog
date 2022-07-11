@@ -6,6 +6,13 @@ de:
       hold_requests:
         header: "Vormerkungen"
         no-hold-requests: "Sie haben aktuell keine Medien vorgemerkt"
+        delete_hold_request: "Vormerkung löschen"
+        requested_at: "Vorgemerkt am"
+        status: "Status"
+        queue_position: "Position in der Warteschlange"
+        expiry_date: "Abzuholen bis"
+        on_hold_shelf_info:
+          Der Titel steht bis zum %{date} für Sie im Selbstabholbereich der UB bereit.
 
       destroy:
         error: "Die Vormerkung konnte nicht gelöscht werden"

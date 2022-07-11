@@ -10,3 +10,9 @@ de:
       loan: "Entliehen"
       holdshelf: "Für Vormerker bereitgestellt"
 
+    hold_request_status:
+      in_queue: "Vorgemerkt"
+      on_hold_shelf: "Bereitgestellt"
+      in_process: "In Bearbeitung"
+      unknown: "Unbekannt"
+

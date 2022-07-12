@@ -31,6 +31,7 @@
 ## Exemplare
 
 * [ ] Vormerkungen & Standortanzeige für Handapparate klären. Beispiel: 990009300360106463
+* [ ] Ausgesonderte Exemplare oder Exemplare auf Standorten die nicht angezeigt werden sollen, müssen unterdrückt werden. Beispiel: 990009694420106463
 
 ## Kontofunktionen
 

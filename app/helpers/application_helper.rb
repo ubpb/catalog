@@ -60,4 +60,12 @@ module ApplicationHelper
     )
   end
 
+  def shelf_finder_enabled?
+    Config[:shelf_finder, :enabled, default: false]
+  end
+
+  def journal_call_number?(call_number)
+    call_number.starts_with?(/\d/)
+  end
+
 end

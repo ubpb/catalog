@@ -43,4 +43,6 @@ application.register("histogram-aggregation", HistogramAggregationController)
 import WatchListsPanelComponent__ComponentController from "../../../../../components/watch_lists_panel_component/component_controller.js"
 application.register("watch-lists-panel-component--component", WatchListsPanelComponent__ComponentController)
 
-
+// app/assets/src/application/js/stimulus/shelf_finder_controller.js
+import ShelfFinderController from "./shelf_finder_controller.js"
+application.register("shelf-finder", ShelfFinderController)

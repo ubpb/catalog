@@ -17,6 +17,10 @@ defaults: &defaults
   closed_stack_orders:
     url: "http://ubstage18.uni-paderborn.de:81/cgi-mag/magbest_via_katalog"
 
+  shelf_finder:
+    enabled: true
+    base_url: "https://regaldb.ub.uni-paderborn.de"
+
 development:
   <<: *defaults
 

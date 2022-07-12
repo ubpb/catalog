@@ -61,7 +61,16 @@ turbo-frame#items
           tr
             td = item.call_number || "–"
             td = item.policy&.label || "–"
-            td = item.location&.label || "–"
+            td
+              = item.location&.label || "–"
+              - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present? && !journal_call_number?(call_number)
+                div(
+                  data-controller="shelf-finder"
+                  data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
+                  data-shelf-finder-target="output"
+                )
+              - if item.process_type.present?
+                .text-danger.fst-italic = t(".items.not_on_location")
             td
               - if code = item.process_type&.code&.downcase
                 ruby:

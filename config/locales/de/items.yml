@@ -66,6 +66,8 @@ de:
       closed_stack_order: Magazinbestellung aufgeben
 
       items:
+        not_on_location: "Nicht am Standort"
+
         header:
           call_number: "Signatur"
           location: "Standort"

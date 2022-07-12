@@ -5,7 +5,6 @@
 ## Suche / Facetten (Lokal)
 
 * [ ] Es fehlen noch die Sortierung nach Bandzählung
-* [ ] In Facette "Systemstelle" sind Systemstellen von Zeitschriften enthalten
 * [x] ~~Es fehlen noch einige Suchfelder~~
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~

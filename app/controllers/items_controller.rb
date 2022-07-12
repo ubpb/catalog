@@ -10,6 +10,11 @@ class ItemsController < RecordsController
     @items += Ils.get_items(@record.id)
     @items += Ils.get_items(params[:host_item_id]) if params[:host_item_id].present?
 
+    # Sort items and handle nil case for call number
+    @items = @items.sort do |a, b|
+      a.call_number && b.call_number ? a.call_number <=> b.call_number : a.call_number ? -1 : 1
+    end
+
     if @items.present?
       # Item stats
       @no_of_items = @items.count

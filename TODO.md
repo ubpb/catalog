@@ -28,6 +28,10 @@
 * [ ] Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten
 * [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
 
+## Exemplare
+
+* [ ] Vormerkungen & Standortanzeige für Handapparate klären. Beispiel: 990009300360106463
+
 ## Kontofunktionen
 
 * [x] ~~Es feht noch die Seite für Fernleihbestellungen~~

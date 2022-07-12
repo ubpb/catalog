@@ -23,10 +23,11 @@
 
 * [ ] Die Darstellung der Metadaten ist noch nicht "schön"
 * [ ] Es feht die Funktion "zeige Bände"
-* [ ] Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung. Integration mit Regaldatenbank fehlt noch.
+* [ ] Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung. 
 * [ ] Bei den Exemplaren fehlt noch die "Ampel"
 * [ ] Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten
 * [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
+* [x] ~~Integration mit Regaldatenbank fehlt noch.~~
 
 ## Exemplare
 

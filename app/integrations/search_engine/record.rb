@@ -73,6 +73,9 @@ class SearchEngine
     # the locally available volumes of that journal.
     attribute :journal_stocks, Types::Array.of(JournalStock).default([].freeze)
 
+    # Secondary form data
+    attribute :secondary_form, SecondaryForm.optional
+
 
     def is_superorder?
       self.is_superorder
@@ -84,6 +87,10 @@ class SearchEngine
 
     def is_deleted?
       self.is_deleted
+    end
+
+    def is_secondary_form?
+      self.secondary_form.present?
     end
 
   end

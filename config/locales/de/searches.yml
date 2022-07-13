@@ -3,6 +3,7 @@ de:
     breadcrumb: "Suche"
 
     record:
+      all_volumes: Alle Bände
       online_resource:
         direct_link: "Direkt zur Online-Ressource"
         resolver_link: "Verfügbarkeit prüfen"
@@ -48,6 +49,7 @@ de:
         ids: "Identifikatoren"
         call_number: "Signatur"
         local_notation: "Systemstelle"
+        superorder_id: "ID der Überordnung"
       cdi:
         any: "Alle Felder"
         creator: "Autor(en) / Beteiligte"
@@ -62,7 +64,7 @@ de:
         creator: "Autor / Autorin"
         yop: "Erscheinungsjahr"
         local_notation: "Systemstelle"
-        volume: "Band"
+        volume: "Bandzählung"
         newtest_acquisition_date: "Neuerwerbung"
       cdi:
         _default_: "Relevanz"

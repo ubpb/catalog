@@ -24,8 +24,13 @@ ruby:
       ruby:
         links = is_part_of.map do |p|
           if p.id.present?
-            sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-            link_to p.label, new_search_request_path(sr)
+            sr_to_superorder = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+            sr_to_volumes    = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{p.id}&sr[s,asc]=volume")
+
+            link_to_superorder = link_to p.label, new_search_request_path(sr_to_superorder)
+            link_to_volumes    = link_to t(".all_volumes"), new_search_request_path(sr_to_volumes)
+
+            "#{link_to_superorder} (#{link_to_volumes})"
           else
             p.label
           end

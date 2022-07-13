@@ -36,6 +36,8 @@ de:
         fulltext_links: "Links zum Volltext"
         resolver_link: "Link-Resolver"
         notes: "Beschreibungen/Notizen"
+        volumes: "Bände"
+        show_volumes: "Zeige Bände"
         identifiers:
           header: "Identifikatoren"
           id: "System-ID"

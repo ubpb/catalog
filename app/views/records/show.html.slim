@@ -62,9 +62,15 @@
             ul.mb-0
               - is_part_of.each do |p|
                 - if p.id.present?
-                  - sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-                  li = link_to new_search_request_path(sr) do
-                    = p.label
+                  ruby:
+                    sr_to_superorder = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+                    sr_to_volumes    = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{p.id}&sr[s,asc]=volume")
+
+                    link_to_superorder = link_to p.label, new_search_request_path(sr_to_superorder)
+                    link_to_volumes    = link_to t("searches.record.all_volumes"), new_search_request_path(sr_to_volumes)
+                  li
+                    == link_to_superorder
+                    ==< "(#{link_to_volumes})"
                 - else
                   li = p.label
 
@@ -81,6 +87,16 @@
         = optional_value(@record.languages) do |languages|
           dt = t(".details.languages")
           dd = languages.join("; ").upcase
+
+        / TODO: Don't show if there are no volumes available
+        / TODO: If superorder_id contains an Alma ID, linking using hbz_id will not work.
+        /       We need to fix this in normalisation. This will become a problem if Alma is the leading
+        /       "Verbundsystem". Therefore we have some time to fix this.
+        - if @record.is_superorder? && @record.hbz_id.present?
+          ruby:
+            sr_to_volumes = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{@record.hbz_id}&sr[s,asc]=volume")
+          dt = t(".details.volumes")
+          dd = link_to t(".details.show_volumes"), new_search_request_path(sr_to_volumes)
 
         = optional_value(@record.local_notations) do |local_notation|
           dt = t(".details.local_notations")

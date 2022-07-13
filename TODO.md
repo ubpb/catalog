@@ -4,7 +4,7 @@
 
 ## Suche / Facetten (Lokal)
 
-* [ ] Es fehlen noch die Sortierung nach Bandzählung
+* [x] ~~Es fehlen noch die Sortierung nach Bandzählung~~
 * [x] ~~Es fehlen noch einige Suchfelder~~
 * [x] ~~Reihenfolge der Facetten noch nicht korrekt~~
 * [x] ~~Facette "Sprache" zeigt nur die Sprach-Codes an~~
@@ -21,18 +21,22 @@
 ## Titel Detailseite
 
 * [ ] Die Darstellung der Metadaten ist noch nicht "schön"
-* [ ] Es feht die Funktion "zeige Bände"
-* [ ] Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung. 
+* [x] ~~Es feht die Funktion "zeige Bände"~~
+* [ ] Zeige Bände wird angezeigt, auch wenn keine Bestände hinter der Überordnung zu finden sind.
+* [x] ~~Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung.~~
 * [ ] Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten
 * [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
 * [x] ~~Integration mit Regaldatenbank fehlt noch.~~
+* [ ] "Funktionsbezeichnugen" bei Personen und Köperschaften noch nicht vollständig udn korrekt.
 
 ## Exemplare
 
-* [ ] Handapparatsexemplare können vorgemerkt werden. => In Alma ändern.
+* [x] ~~Handapparatsexemplare können vorgemerkt werden. => In Alma ändern.~~
 * [ ] Standort-Sonderfall Handapparat: Beispiel: 990009300360106463
 * [ ] Standort-Sonderfall IEMAN
 * [ ] Standort-Sonderfall E-Seminarapparate
+* [x] ~~Standorte aus RegalDB für Monos anzeigen~~
+* [ ] Statische Standort-Tabelle auswerten für alles was nicht aus der RegalDB kommt oder ein Sonderfall ist.
 * [ ] Ausgesonderte Exemplare oder Exemplare auf Standorten die nicht angezeigt werden sollen, müssen unterdrückt werden. Beispiel: 990009694420106463
 * [ ] "Status-Ampel" fehlt
 
@@ -46,7 +50,7 @@
 
 ## Suchindex
 
-* [ ] Es fehlen noch Daten zu Sekundärformen (_Es fehlen bestimmt noch mehr Daten. Bitte Testen_)
+* [x] ~~Es fehlen noch Daten zu Sekundärformen~~
 * [x] ~~Als gelöscht markierte Titel und als ausgesonderte makierte Exemplare werden angezeigt.~~
 
 ## CDI
@@ -69,3 +73,4 @@
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
 * [ ] Alle alten routen auf ggf. neue Routen umleiten
 * [ ] Alert für Search-Validation anpassen/abschalten
+* [ ] Info-Text über den neuen Katalog erstellen

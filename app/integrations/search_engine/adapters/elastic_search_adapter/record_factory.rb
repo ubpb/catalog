@@ -42,7 +42,9 @@ module SearchEngine::Adapters
           related_resource_links: get_related_resource_links(data),
           fulltext_links: get_fulltext_links(data),
 
-          journal_stocks: get_journal_stocks(data)
+          journal_stocks: get_journal_stocks(data),
+
+          secondary_form: get_secondary_form(data)
 
           # descriptions: normalize_array(source_value(data, "description")),
           # notes: normalize_array(source_value(data, "local_comment")),
@@ -248,6 +250,17 @@ module SearchEngine::Adapters
             location_code: journal_stock["location_code"],
             call_number: journal_stock["call_number"],
             comments: journal_stock["comments"]
+          )
+        end
+      end
+
+      def get_secondary_form(data)
+        if sf_data = source_value(data, "secondary_form")
+          SearchEngine::SecondaryForm.new(
+            physical_description: sf_data["physical_description"],
+            year_of_publication: sf_data["year_of_publication"],
+            publication_notices: sf_data["publication_notices"],
+            is_part_of: sf_data["is_part_of"]
           )
         end
       end

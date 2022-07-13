@@ -164,6 +164,25 @@
           =< link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
             = t(".closed_stack_order")
 
+    / ----------------------------------------
+    / Secondary form
+    / ----------------------------------------
+    - if @record.is_secondary_form?
+      h4 = "Angaben zur Sekundärform"
+      p = "TODO: Was ist eine Sekundärform"
+      dl
+        = optional_value(@record.secondary_form.physical_description) do |value|
+          dt = "Erscheinungsform"
+          dd = value
+        = optional_value(@record.secondary_form.year_of_publication) do |value|
+          dt = "Erscheinungsjahr"
+          dd = value
+        = optional_value(@record.secondary_form.publication_notices) do |value|
+          dt = "Erscheinungsort / Verlag"
+          dd = value
+        = optional_value(@record.secondary_form.is_part_of) do |value|
+          dt = "Teil von"
+          dd = value
 
     / ----------------------------------------
     / Items

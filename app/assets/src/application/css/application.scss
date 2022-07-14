@@ -30,18 +30,30 @@ $fa-font-path: "~node_modules/@fortawesome/fontawesome-free/webfonts";
 //
 // Import Bootstrap
 //
-@import "bootstrap/scss/functions.scss";
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
 @import "./variables.scss"; // our custom variables
-@import "bootstrap/scss/variables.scss";
-@import "bootstrap/scss/mixins.scss";
-@import "bootstrap/scss/root.scss";
-// Layout & components
-@import "bootstrap/scss/utilities.scss";
-@import "bootstrap/scss/reboot.scss";
-@import "bootstrap/scss/type.scss";
-@import "bootstrap/scss/images.scss";
-@import "bootstrap/scss/containers.scss";
-@import "bootstrap/scss/grid.scss";
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
 @import "bootstrap/scss/tables.scss";
 @import "bootstrap/scss/forms.scss";
 @import "bootstrap/scss/buttons.scss";
@@ -67,10 +79,9 @@ $fa-font-path: "~node_modules/@fortawesome/fontawesome-free/webfonts";
 @import "bootstrap/scss/spinners.scss";
 @import "bootstrap/scss/offcanvas.scss";
 @import "bootstrap/scss/placeholders.scss";
-// Helpers
-@import "bootstrap/scss/helpers.scss";
-// Utilities (must be last)
-@import "bootstrap/scss/utilities/api.scss";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "bootstrap/scss/utilities/api";
 
 //
 // Import other libs

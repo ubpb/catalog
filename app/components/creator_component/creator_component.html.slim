@@ -1,6 +1,6 @@
 ruby:
   relationships = @creator.relationships.reject do |r|
-    r == "aut"
+    r == "aut" || r == "oth"
   end.map do |r|
     t("code_tables.creator_relationships.#{r}", default: r)
   end.compact

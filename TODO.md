@@ -29,6 +29,7 @@
 * [x] ~~Integration mit Regaldatenbank fehlt noch.~~
 * [x] ~~"Funktionsbezeichnugen" bei Personen und Köperschaften noch nicht vollständig udn korrekt.~~
 * [ ] "Funktionsbezeichnungen": Es fehlen noch Einträge in der Übersetzungstabelle für RDA-Codes.
+* [ ] "Virtueller" Zeitschriftenbestand bzw. Beschreibungen fehlen. Beispiel: 990017604110106463
 
 ## Exemplare
 

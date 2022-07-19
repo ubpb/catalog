@@ -18,14 +18,12 @@ module ApplicationHelper
   end
 
   def optional_value(optional_value, default: nil, &block)
-    if (present_value = optional_value).present?
-      if block_given?
-        capture(present_value, &block)
-      else
-        present_value
-      end
+    value = optional_value.presence || default.presence
+
+    if block_given?
+      capture(value, &block) if value
     else
-      default if default.present?
+      value if value
     end
   end
 
@@ -66,6 +64,16 @@ module ApplicationHelper
 
   def journal_call_number?(call_number)
     call_number.starts_with?(/\d/)
+  end
+
+  def vpn_info
+    # In case of request from an ip range outside of Uni Paderborn campus
+    # show hint about VPN.
+    unless on_campus?
+      content_tag(:div) do
+        t("vpn_info_html", url: "http://www.ub.uni-paderborn.de/recherche/hinweise-zur-nutzung-der-elektronischen-angebote/elektronische-informationsmedien-im-fernzugriff-vpn-shibboleth/")
+      end
+    end
   end
 
 end

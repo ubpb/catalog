@@ -4,62 +4,34 @@
       = render "stepper"
 
   .card-body
+    / Show compact version of the record
     = render "searches/record", record: @record, enable_watch_lists_panel: true
+    hr.mb-0
 
-    / .d-flex.align-items-center
-    /   h3.mb-0 = @record.title
-    /   .ms-auto
-    /     ruby:
-    /       watch_lists_panel_component = WatchListsPanelComponent.new(
-    /         user: current_user,
-    /         search_scope: current_search_scope,
-    /         record_id: @record.id
-    /       )
-    /     = render(watch_lists_panel_component)
-
-    / - if show_availability?(@record, search_scope: current_search_scope)
-    /   div(
-    /     data-controller="availabilities"
-    /     data-availabilities-url-value=availabilities_path(mode: "badge")
-    /   )
-    /     div(
-    /       data-availabilities-target="record"
-    /       data-record-id=@record.id
-    /       data-availabilities-enabled
-    /     )
-    /       div(data-availabilities-output)
-    /         i.fas.fa-sm.fa-spinner.fa-pulse
-
-    hr.mb-4
+    / Show record ID
+    .mb-3.fw-bold = "#{t(".details.identifiers.id")}: #{@record.id}"
 
     / ----------------------------------------
     / Record details
     / ----------------------------------------
     .mb-4
       h4 = t(".details.header")
-      dl
-        dt = t(".details.creators")
-        dd = optional_value(@record.creators, default: "–") do |creators|
-          - render(CreatorComponent.with_collection(creators))
+      dl.key-value-list
+        / Creators
+        = optional_value(@record.creators, default: "–") do |creators|
+          dt = t(".details.creators")
+          dd = render(CreatorComponent.with_collection(creators))
 
-        dt = t(".details.year_of_publication")
-        dd = optional_value(@record.year_of_publication, default: "–")
+        / Title
+        = optional_value(@record.title, default: "–") do |title|
+          dt = t(".details.title")
+          dd = title
 
-        dt = t(".details.publication_notices")
-        dd = optional_value(@record.publication_notices, default: "–") do |notices|
-          - notices.join(", ")
-
-        dt = t(".details.edition")
-        dd = optional_value(@record.edition, default: "–")
-
-        = optional_value(@record.physical_description) do |physical_description|
-          dt = t(".details.physical_description")
-          dd = physical_description
-
+        / Is part of...
         = optional_value(@record.is_part_of) do |is_part_of|
           dt = t(".details.is_part_of")
           dd
-            ul.mb-0
+            ul.mb-0.list-unstyled
               - is_part_of.each do |p|
                 - if p.id.present?
                   ruby:
@@ -74,52 +46,74 @@
                 - else
                   li = p.label
 
-        = optional_value(@record.source) do |source|
-          dt = t(".details.source")
-          dd = source.label
+        / Edition
+        = optional_value(@record.edition, default: "–") do |edition|
+          dt = t(".details.edition")
+          dd = edition
 
+        / Place of publication & publisher
+        = optional_value(@record.publication_notices, default: "–") do |notices|
+          dt = t(".details.publication_notices")
+          dd = notices.join(", ")
+
+        / Year of publication
+        = optional_value(@record.year_of_publication, default: "–") do |yop|
+          dt = t(".details.year_of_publication")
+          dd = yop
+
+        / Superorder
+        / TODO: Don't show if there are no volumes available
+        / TODO: If superorder_id contains an Alma ID, linking using hbz_id will not work.
+        /       We need to fix this in normalisation. This will only become a problem if Alma is the leading
+        /       "Verbundsystem". Therefore we have some time to fix this.
+        - if @record.is_superorder? && @record.hbz_id.present?
+          - sr_to_volumes = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{@record.hbz_id}&sr[s,asc]=volume")
+          dt = t(".details.volumes")
+          dd = link_to t(".details.show_volumes"), new_search_request_path(sr_to_volumes)
+
+        / Fulltext Links
+        = optional_value(@record.fulltext_links) do |links|
+          dt = t(".details.fulltext_links")
+          dd
+            ul.mb-0.list-unstyled
+              - links.each do |link|
+                li = link_to link.url, target: "_blank" do
+                  i.fa-solid.fa-external-link
+                  =< link.label || link.url
+                  /=< link.url
+            = vpn_info
+
+        / Fulltext Links by resolver URL
+        - if @record.resolver_link.present?
+          dt = t(".details.resolver_link")
+          dd = link_to @record.resolver_link.url, target: "_blank" do
+            i.fa-solid.fa-external-link
+            =< t("searches.record.online_resource.resolver_link")
+
+        / Links to related content (e.g. covers, table of contents)
+        = optional_value(@record.related_resource_links) do |links|
+          dt = t(".details.related_resource_links")
+          dd
+            ul.mb-0.list-unstyled
+              - links.each do |link|
+                li = link_to link.url, target: "_blank" do
+                  i.fa-solid.fa-external-link
+                  =< link.label || link.url
+
+        / Related records (e.g. predesessors, parallel titels, etc.)
         = optional_value(@record.relations) do |relations|
           dt = t(".details.relations")
           dd
             turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
               i.fa-solid.fa-spinner.fa-spin
 
-        = optional_value(@record.languages) do |languages|
-          dt = t(".details.languages")
-          dd = languages.join("; ").upcase
+        / Source
+        = optional_value(@record.source) do |source|
+          dt = t(".details.source")
+          / TODO: Add link in case there is an ID present
+          dd = source.label
 
-        / TODO: Don't show if there are no volumes available
-        / TODO: If superorder_id contains an Alma ID, linking using hbz_id will not work.
-        /       We need to fix this in normalisation. This will become a problem if Alma is the leading
-        /       "Verbundsystem". Therefore we have some time to fix this.
-        - if @record.is_superorder? && @record.hbz_id.present?
-          ruby:
-            sr_to_volumes = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{@record.hbz_id}&sr[s,asc]=volume")
-          dt = t(".details.volumes")
-          dd = link_to t(".details.show_volumes"), new_search_request_path(sr_to_volumes)
-
-        = optional_value(@record.local_notations) do |local_notation|
-          dt = t(".details.local_notations")
-          dd = local_notation.join("; ").upcase
-
-        = optional_value(@record.subjects) do |subjects|
-          dt = t(".details.subjects")
-          dd
-            - subjects.each do |subject|
-              span.badge.bg-dark.text-light.fw-normal.fs-6.me-1 = subject
-
-        dt = t(".details.identifiers.header")
-        dd
-          div = "#{t(".details.identifiers.id")}: #{@record.id}"
-          = optional_value(@record.aleph_id) do |id|
-            div = "#{t(".details.identifiers.aleph_id")}: #{id}"
-          = optional_value(@record.hbz_id) do |id|
-            div = "#{t(".details.identifiers.hbz_id")}: #{id}"
-          = optional_value(@record.zdb_id) do |id|
-            div = "ZDB-ID: #{id}"
-          - @record.additional_identifiers.each do |id|
-            div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
-
+        / Notes
         = optional_value(@record.notes) do |notes|
           dt = t(".details.notes")
           dd
@@ -127,28 +121,51 @@
               - notes.each do |note|
                 li = note
 
-        = optional_value(@record.related_resource_links) do |links|
-          dt = t(".details.related_resource_links")
-          dd
-            ul.mb-0
-              - links.each do |link|
-                li = link_to link.label, link.url
+      .row
+        .col-lg-6
+          dl.key-value-list
+            = optional_value(@record.languages, default: "–") do |languages|
+              dt = t(".details.languages")
+              dd = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
 
-        = optional_value(@record.fulltext_links) do |links|
-          dt = t(".details.fulltext_links")
-          dd
-            ul.mb-0
-              - links.each do |link|
-                li = link_to link.url, target: "_blank" do
-                  i.fa-solid.fa-external-link
-                  =< link.label || "zum Volltext"
+            dt = t(".details.identifiers.header")
+            dd
+              = optional_value(@record.aleph_id) do |id|
+                div
+                  = "#{t(".details.identifiers.aleph_id")}: #{id}"
+                  =< "(Noch raus)"
+              = optional_value(@record.hbz_id) do |id|
+                div
+                  = "#{t(".details.identifiers.hbz_id")}: #{id}"
+                  =< "(Noch raus)"
+              /= optional_value(@record.zdb_id) do |id|
+                div = "ZDB-ID: #{id}"
+              - @record.additional_identifiers.each do |id|
+                div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
 
-        - if @record.resolver_link.present?
-          dt = t(".details.resolver_link")
-          dd = link_to @record.resolver_link.url, target: "_blank" do
-            i.fa-solid.fa-external-link
-            =< t("searches.record.online_resource.resolver_link")
+        .col-lg-6
+          dl.key-value-list
+            = optional_value(@record.physical_description, default: "–") do |physical_description|
+              dt = t(".details.physical_description")
+              dd = physical_description
 
+            = optional_value(@record.local_notations) do |local_notations|
+              ruby:
+                linked_local_notations = local_notations.map do |local_notation|
+                  sr_to_local_notation = SearchEngine::SearchRequest.parse("sr[q,local_notation]=#{local_notation}")
+                  link_to local_notation.upcase, new_search_request_path(sr_to_local_notation)
+                end
+              dt = t(".details.local_notations")
+              dd = linked_local_notations.join(", ").html_safe
+
+            = optional_value(@record.subjects) do |subjects|
+              ruby:
+                linked_subjects = subjects.map do |subject|
+                  sr_to_subject = SearchEngine::SearchRequest.parse("sr[q,subject]=#{subject}")
+                  link_to subject, new_search_request_path(sr_to_subject)
+                end
+              dt = t(".details.subjects")
+              dd = linked_subjects.join(", ").html_safe
 
     / ----------------------------------------
     / Journal stocks

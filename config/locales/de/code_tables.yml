@@ -4,6 +4,7 @@ de:
       oth: Sonstige
       aut: Autor
       edt: Herausgeber
+      trl: Übersetzer
 
     process_types:
       default: "Verfügbar"

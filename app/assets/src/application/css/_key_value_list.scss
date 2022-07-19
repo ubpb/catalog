@@ -1,0 +1,41 @@
+$key-value-list-label-width: 12em !default;
+$key-value-list-label-gutter: 1em !default;
+$key-value-list-v-padding: 0.5em !default;
+
+@include media-breakpoint-up(md) {
+  dl.key-value-list {
+    margin: 0;
+    margin-bottom: $spacer;
+    padding: 0;
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    dt {
+      float: left;
+      padding-top: $key-value-list-v-padding;
+      margin-right: $key-value-list-label-gutter;
+      width: $key-value-list-label-width;
+      text-align: right;
+    }
+
+    dd {
+      margin: 0;
+      padding: $key-value-list-v-padding 0;
+      padding-left: $key-value-list-label-width + $key-value-list-label-gutter;
+      border-bottom: 1px solid $gray-300;
+
+      &:nth-child(2) {
+        border-top: 1px solid $gray-300;
+      }
+
+      &:nth-of-type(odd) {
+        background-color: $gray-100;
+      }
+    }
+
+  }
+}

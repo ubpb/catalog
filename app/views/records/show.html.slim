@@ -47,17 +47,17 @@
                   li = p.label
 
         / Edition
-        = optional_value(@record.edition, default: "–") do |edition|
+        = optional_value(@record.edition) do |edition|
           dt = t(".details.edition")
           dd = edition
 
         / Place of publication & publisher
-        = optional_value(@record.publication_notices, default: "–") do |notices|
+        = optional_value(@record.publication_notices) do |notices|
           dt = t(".details.publication_notices")
           dd = notices.join(", ")
 
         / Year of publication
-        = optional_value(@record.year_of_publication, default: "–") do |yop|
+        = optional_value(@record.year_of_publication) do |yop|
           dt = t(".details.year_of_publication")
           dd = yop
 
@@ -126,7 +126,11 @@
           dl.key-value-list
             = optional_value(@record.languages, default: "–") do |languages|
               dt = t(".details.languages")
-              dd = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
+              dd
+                - if languages.is_a?(String)
+                  = languages
+                - else
+                  = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
 
             dt = t(".details.identifiers.header")
             dd

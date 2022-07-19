@@ -1,19 +1,23 @@
-- spacer_class = @iteration.last? ? "me-0" : "me-2"
-span(class=spacer_class)
-  span = @creator.name
+ruby:
+  relationships = @creator.relationships.reject do |r|
+    r == "aut"
+  end.map do |r|
+    t("code_tables.creator_relationships.#{r}", default: r)
+  end.compact
 
-  ruby:
-    relationships = @creator.relationships.reject do |r|
-      r == "oth"
-    end.map do |r|
-      t("code_tables.creator_relationships.#{r}", default: nil)
-    end.compact
+  sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{@creator.name}")
+
+span(class=(@iteration.last? ? "me-0" : "me-1"))
+  span = link_to @creator.name, helpers.new_search_request_path(sr_to_author)
 
   - if relationships.present?
-    span.ms-1 = "(#{relationships.join(", ")})"
+    span.ms-1 = "[#{relationships.join(", ")}]"
 
-  - if gnd_id
-    span.ms-1 = link_to "http://d-nb.info/gnd/#{gnd_id}" do
-      i.fa-regular.fa-id-card
+  / - if gnd_id
+  /   span.ms-1 = link_to "http://d-nb.info/gnd/#{gnd_id}" do
+  /     i.fa-regular.fa-id-card
   / - else
   /   span.ms-1: i.fa-regular.fa-id-card.text-muted
+
+  - unless @iteration.last?
+    = ";"

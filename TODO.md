@@ -27,7 +27,8 @@
 * [ ] Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten
 * [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
 * [x] ~~Integration mit Regaldatenbank fehlt noch.~~
-* [ ] "Funktionsbezeichnugen" bei Personen und Köperschaften noch nicht vollständig udn korrekt.
+* [x] ~~"Funktionsbezeichnugen" bei Personen und Köperschaften noch nicht vollständig udn korrekt.~~
+* [ ] "Funktionsbezeichnungen": Es fehlen noch Einträge in der Übersetzungstabelle für RDA-Codes.
 
 ## Exemplare
 

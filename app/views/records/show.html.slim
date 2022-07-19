@@ -72,15 +72,15 @@
           dd = link_to t(".details.show_volumes"), new_search_request_path(sr_to_volumes)
 
         / Fulltext Links
-        = optional_value(@record.fulltext_links) do |links|
+        = optional_value(FulltextLinksFilter.filter(@record.fulltext_links)) do |links|
           dt = t(".details.fulltext_links")
           dd
             ul.mb-0.list-unstyled
               - links.each do |link|
                 li = link_to link.url, target: "_blank" do
                   i.fa-solid.fa-external-link
-                  =< link.label || link.url
-                  /=< link.url
+                  /=< link.label || link.url
+                  =< link.url
             = vpn_info
 
         / Fulltext Links by resolver URL

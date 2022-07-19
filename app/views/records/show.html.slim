@@ -18,7 +18,7 @@
       h4 = t(".details.header")
       dl.key-value-list
         / Creators
-        = optional_value(@record.creators, default: "–") do |creators|
+        = optional_value(@record.creators) do |creators|
           dt = t(".details.creators")
           dd = render(CreatorComponent.with_collection(creators))
 

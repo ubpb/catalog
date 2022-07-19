@@ -24,7 +24,7 @@
 * [x] ~~Es feht die Funktion "zeige Bände"~~
 * [ ] Zeige Bände wird angezeigt, auch wenn keine Bestände hinter der Überordnung zu finden sind.
 * [x] ~~Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung.~~
-* [ ] Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten
+* [x] ~~Links zum Volltext sind noch nicht sortiert/priorisiert und stehen zuweit unten~~
 * [ ] Virtuelle Exemplare um z.B. CD-Rom Beilagen via Magazinbestellung bestellen zu können, werden noch nicht generiert. Beispiel: 001458875
 * [x] ~~Integration mit Regaldatenbank fehlt noch.~~
 * [x] ~~"Funktionsbezeichnugen" bei Personen und Köperschaften noch nicht vollständig udn korrekt.~~

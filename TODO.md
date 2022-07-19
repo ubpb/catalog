@@ -20,7 +20,7 @@
 
 ## Titel Detailseite
 
-* [ ] Die Darstellung der Metadaten ist noch nicht "schön"
+* [x] ~~Die Darstellung der Metadaten ist noch nicht "schön"~~
 * [x] ~~Es feht die Funktion "zeige Bände"~~
 * [ ] Zeige Bände wird angezeigt, auch wenn keine Bestände hinter der Überordnung zu finden sind.
 * [x] ~~Es werden noch keine hilfreichen "Standorte" angezeigt, sondern nur die interne Standortbezeichnung.~~

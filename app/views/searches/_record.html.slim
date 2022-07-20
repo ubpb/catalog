@@ -8,12 +8,12 @@ ruby:
   data-record-id=record.id
   data-availabilities-enabled=enable_availability
 )
-  div.align-self-start.text-center.text-muted.me-2(style="width: 55px; position: relative")
+  div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative")
     / Cover Image
-    i.fa-regular.fa-file.fa-3x
+    div.fa-regular.fa-file.fa-3x.bg-light.w-100.p-2.pt-3.pb-3.rounded
     - isbn = record.additional_identifiers.select{|i| i.type == :isbn}.first&.value&.gsub("-", "")
     - if isbn
-      = image_tag(cover_image_url(isbn, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid")
+      = image_tag(cover_image_url(isbn, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
   div
     / Title
     h5.mb-0
@@ -39,15 +39,8 @@ ruby:
       span.me-2.fst-italic = links.join(", ").html_safe
 
     / Creators
-    ruby:
-      #creators = record.creators.select do |c|
-      #  c.relationships.empty? ||
-      #  (c.relationships & ["aut", "edt", "oth"]).any?
-      #end
-      creators = record.creators
-
-    - if creators.present?
-      .mb-0 = render(CreatorComponent.with_collection(creators))
+    - if record.creators.present?
+      .mb-0 = render(CreatorComponent.with_collection(record.creators))
 
     / Year of publication
     - if (yop = record.year_of_publication).present?
@@ -61,8 +54,6 @@ ruby:
         end
       .mb-0
         = "Zeitschriftenbestand: #{journal_stocks.join("; ")}"
-
-
 
     / Links
     - fl = record.fulltext_links.first
@@ -96,4 +87,4 @@ ruby:
           search_scope: current_search_scope,
           record_id: record.id
         )
-      = render(watch_lists_panel_component)
+      .ms-2 = render(watch_lists_panel_component)

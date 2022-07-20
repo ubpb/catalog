@@ -1,7 +1,7 @@
 .d-flex.align-items-center
   div
     - if service.is_free?
-      .badge.bg-success = "TODO: Freie Resource"
+      .badge.bg-success = t(".free_resource")
 
     div = service.package_name
 

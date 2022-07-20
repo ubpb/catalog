@@ -1,18 +1,21 @@
 .card.card-shadowed
   .card-header
-    = "Open URL Link-Resolver"
+    = t(".header")
   .card-body
     - if @context
-      - unless on_campus?
-        .callout.callout-info = "TODO: Nicht auf dem Campus. VPN / Shibboleth Hinweis."
-
       - if @fulltext_services.present?
-        h5 = "TODO: Wir haben folgende elektronische Volltexte gefunden"
+        h5 = t(".header_found")
+
         ul.list-group
           - @fulltext_services.each do |fulltext_service|
             li.list-group-item = render "fulltext_service", service: fulltext_service
-      - else
-        .alert.alert-warning.mb-0 = "TODO: Kein Volltext verfügbar."
 
+        - content_for :vpn_info, vpn_info
+        - if content_for? :vpn_info
+          .mt-3 = yield(:vpn_info)
+      - else
+        .callout.callout-warning.mb-0
+          i.fa-solid.fa-ban.fa-lg
+          =< t(".no_results")
     - else
-      .callout.callout-danger.mb-0 = "TODO: Resolving brachte kein Ergebnis (Error) oder die Seite wurde ohne Parameter aufgerufen."
+      .callout.callout-danger.mb-0 = t(".error")

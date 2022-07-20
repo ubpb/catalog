@@ -1,0 +1,9 @@
+de:
+  link_resolver:
+    breadcrumb: "Open URL Link-Resolver"
+    show:
+      header: "Open URL Link-Resolver"
+      header_found: "Es wurden folgende elektronische Volltexte gefunden"
+
+      error: "Fehler: Es konnte kein Ergebnis ermittelt werden."
+      no_results: "Leider kein Volltext verfügbar."

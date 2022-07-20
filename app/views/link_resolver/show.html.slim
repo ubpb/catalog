@@ -2,20 +2,21 @@
   .card-header
     = t(".header")
   .card-body
-    - if @context
-      - if @fulltext_services.present?
-        h5 = t(".header_found")
+    turbo-frame#link-resolver-results
+      - if @context
+        - if @fulltext_services.present?
+          h5.fs-6 = t(".header_found")
 
-        ul.list-group
-          - @fulltext_services.each do |fulltext_service|
-            li.list-group-item = render "fulltext_service", service: fulltext_service
+          ul.list-group
+            - @fulltext_services.each do |fulltext_service|
+              li.list-group-item = render "fulltext_service", service: fulltext_service
 
-        - content_for :vpn_info, vpn_info
-        - if content_for? :vpn_info
-          .mt-3 = yield(:vpn_info)
+          - content_for :vpn_info, vpn_info
+          - if content_for? :vpn_info
+            .mt-2 = yield(:vpn_info)
+        - else
+          .callout.callout-warning.mb-0
+            i.fa-solid.fa-ban.fa-lg
+            =< t(".no_results")
       - else
-        .callout.callout-warning.mb-0
-          i.fa-solid.fa-ban.fa-lg
-          =< t(".no_results")
-    - else
-      .callout.callout-danger.mb-0 = t(".error")
+        .callout.callout-danger.mb-0 = t(".error")

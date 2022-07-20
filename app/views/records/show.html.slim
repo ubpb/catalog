@@ -86,9 +86,13 @@
         / Fulltext Links by resolver URL
         - if @record.resolver_link.present?
           dt = t(".details.resolver_link")
-          dd = link_to @record.resolver_link.url, target: "_blank" do
-            i.fa-solid.fa-external-link
-            =< t("searches.record.online_resource.resolver_link")
+          dd
+            /= link_to @record.resolver_link.url, target: "_blank" do
+              i.fa-solid.fa-external-link
+              =< t("searches.record.online_resource.resolver_link")
+            div
+              turbo-frame#link-resolver-results(src=@record.resolver_link.url)
+                i.fa-solid.fa-spinner.fa-spin-pulse
 
         / Links to related content (e.g. covers, table of contents)
         = optional_value(@record.related_resource_links) do |links|

@@ -97,8 +97,6 @@ class LinkResolverController < ApplicationController
           )
         end
       end.compact
-
-      @fulltext_services = []
     end
   end
 

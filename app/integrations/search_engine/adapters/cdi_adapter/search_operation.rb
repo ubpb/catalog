@@ -119,9 +119,9 @@ module SearchEngine::Adapters
 
       def clean_value(value)
         value
-          .gsub("&", "")
-          .gsub("<", "")
-          .gsub(">", "")
+          .gsub("&", "&amp;")
+          .gsub("<", "&lt;")
+          .gsub(">", "&gt;")
       end
 
       def build_cdi_search(search_request, on_campus: false)

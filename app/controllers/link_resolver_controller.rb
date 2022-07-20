@@ -44,7 +44,7 @@ class LinkResolverController < ApplicationController
 
 
   def show
-    add_breadcrumb "TODO: Open URL Link-Resolver"
+    add_breadcrumb t("link_resolver.breadcrumb")
 
     # Check Open URL params against our local search index
     # Brauchen wir vielleicht gar nicht, weil Alma das ja eigentlich
@@ -55,7 +55,6 @@ class LinkResolverController < ApplicationController
       # The page was called without any Open URL params
     elsif alma_result = resolve_by_alma(get_open_url_params)
       # Check Open URL against Alma link Resolver
-      puts alma_result
 
       #
       # Parse context.
@@ -98,19 +97,22 @@ class LinkResolverController < ApplicationController
           )
         end
       end.compact
+
+      @fulltext_services = []
     end
   end
 
 private
 
   def resolve_by_alma(open_url_params)
-    response = RestClient.get(
-      "https://hbz-pad.userservices.exlibrisgroup.com/view/uresolver/49HBZ_PAD/openurl",
-      params: open_url_params
-    )
+    if base_url = Config[:link_resolver, :base_url]
+      response = RestClient.get(base_url,
+        params: open_url_params
+      )
 
-    if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
-      Nokogiri::XML.parse(response.body).remove_namespaces!
+      if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
+        Nokogiri::XML.parse(response.body).remove_namespaces!
+      end
     end
   rescue RestClient::ExceptionWithResponse
     nil
@@ -146,7 +148,7 @@ private
       .presence
 
     # Get clean value
-    value = case key_node.text
+    value = case key_node.text&.downcase
     when "0", "no", "false" then false
     when "1", "yes", "true" then true
     else key_node.text.presence

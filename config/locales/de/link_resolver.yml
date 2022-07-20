@@ -7,3 +7,6 @@ de:
 
       error: "Fehler: Es konnte kein Ergebnis ermittelt werden."
       no_results: "Leider kein Volltext verfügbar."
+
+    fulltext_service:
+      free_resource: "Freie Ressource"

@@ -66,6 +66,8 @@
 
 ## Sonstiges
 
+* [ ] !!!Alle alten routen auf ggf. neue Routen umleiten
+
 * [ ] Icons und Cover noch nicht 100%ig
 * [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] "Alte" Urls für Suche / Detailseite etc. sollen so gut wie möglich weiter funktionieren. Dies muss noch weiter verbessert werden.
@@ -74,6 +76,5 @@
 * [ ] NewRelic integrieren
 * [ ] BibTeX export fehlt noch
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
-* [ ] Alle alten routen auf ggf. neue Routen umleiten
 * [ ] Alert für Search-Validation anpassen/abschalten
 * [ ] Info-Text über den neuen Katalog erstellen

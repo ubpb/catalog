@@ -64,7 +64,9 @@ turbo-frame#items
               / Item Call number
               td = item.call_number || "–"
               / Policy
-              td = item.policy&.label || "–"
+              td
+                / TODO: Remove cleanup hack
+                = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
               / Location
               td
                 / Edge-Case "Seminarapparat"

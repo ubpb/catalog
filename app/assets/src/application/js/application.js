@@ -16,6 +16,15 @@ import "./stimulus"
 // Load bootstrap
 import * as bootstrap from "bootstrap"
 
+// Enable tooltips
+// We need a efficient way of enabling/disabling tooltips that work with regular
+// page loads, turbo renders and turbo-frame renders.
+// import * as Popper from "@popperjs/core"
+// document.addEventListener("turbo:frame-load", () => {
+//   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+//   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+// })
+
 // Load / init axios
 import axios from "axios"
 const csrfToken = document.querySelector("meta[name=csrf-token]").content

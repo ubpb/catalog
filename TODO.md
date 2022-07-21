@@ -68,12 +68,12 @@
 ## Sonstiges
 
 * [ ] !!!Alle alten routen auf ggf. neue Routen umleiten
-* [x] ~~Icons und Cover noch nicht 100%ig~~
 * [ ] RSS Feed für Suchergebnisse fehlt
-* [ ] Anzeige Link-Resolver noch verbessern
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] NewRelic integrieren
 * [ ] BibTeX export fehlt noch
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
 * [ ] Alert für Search-Validation anpassen/abschalten
 * [ ] Info-Text über den neuen Katalog erstellen
+* [x] ~~Anzeige Link-Resolver noch verbessern~~
+* [x] ~~Icons und Cover noch nicht 100%ig~~

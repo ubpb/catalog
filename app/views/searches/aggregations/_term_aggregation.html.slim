@@ -27,7 +27,7 @@ ruby:
               = link_to new_search_request_path(nsr.(term, exclude: false)) do
                 = aggregation_value(aggregation, term.term)
               .d-inline-flex.flex-nowrap
-                span.ms-1.text-muted = "(#{term.count})"
+                span.ms-1.text-muted = "(#{number_with_precision(term.count, precision: 0, delimiter: ".")})"
                 = link_to new_search_request_path(nsr.(term, exclude: true)) do
                   span.ms-2: i.fas.fa-times
 

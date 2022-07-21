@@ -14,24 +14,25 @@ turbo-frame#items
         - if @user_hold_requests.present?
           .mb-0: strong = t(".hold_requests_available_info", count: @hold_requests.count)
 
-          table.table.align-middle.mb-3
-            thead: tr
-              th(scope="col") = t(".hold_requests.header.requested_at")
-              th(scope="col") = t(".hold_requests.header.status")
-              th(scope="col") = t(".hold_requests.header.queue_position")
-              th(scope="col") = ""
-            tbody
-              - @user_hold_requests.each do |hr|
-                tr
-                  td = l(hr.requested_at.to_date)
-                  td = t(".hold_requests.status.#{hr.status}", default: "–")
-                  td
-                    - if hr.status != :on_hold_shelf
-                      = hr.queue_position
-                    - else
-                      = t(".hold_requests.ready_for_pickup")
-                  td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
-                    = t(".delete_hold_request")
+          .table-responsive
+            table.table.align-middle.mb-3
+              thead: tr
+                th(scope="col") = t(".hold_requests.header.requested_at")
+                th(scope="col") = t(".hold_requests.header.status")
+                th(scope="col") = t(".hold_requests.header.queue_position")
+                th(scope="col") = ""
+              tbody
+                - @user_hold_requests.each do |hr|
+                  tr
+                    td = l(hr.requested_at.to_date)
+                    td = t(".hold_requests.status.#{hr.status}", default: "–")
+                    td
+                      - if hr.status != :on_hold_shelf
+                        = hr.queue_position
+                      - else
+                        = t(".hold_requests.ready_for_pickup")
+                    td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
+                      = t(".delete_hold_request")
         - elsif @can_perform_hold_request
           .mb-2 = t(".hold_request_info")
           = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
@@ -50,46 +51,73 @@ turbo-frame#items
         i.fa-solid.fa-info-circle.fa-lg.text-warning
         em ==< t(".closed_stack_order_info")
 
-    table.table.align-middle.mb-0
-      thead: tr
-        th(scope="col") = t(".items.header.call_number")
-        th(scope="col") = t(".items.header.policy")
-        th(scope="col") = t(".items.header.location")
-        th(scope="col") = t(".items.header.status")
-      tbody
-        - @items.each do |item|
-          tr
-            td = item.call_number || "–"
-            td = item.policy&.label || "–"
-            td
-              = item.location&.label || "–"
-              - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present? && !journal_call_number?(call_number)
-                div(
-                  data-controller="shelf-finder"
-                  data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
-                  data-shelf-finder-target="output"
-                )
-              - if item.process_type.present?
-                .text-danger.fst-italic = t(".items.not_on_location")
-            td
-              - if code = item.process_type&.code&.downcase
-                ruby:
-                  status = t(
-                    "code_tables.process_types.#{code}",
-                    default: (item.process_type.label || "–")
-                  )
-                = status
+    .table-responsive
+      table.table.align-middle.mb-0
+        thead: tr
+          th(scope="col") = t(".items.header.call_number")
+          th(scope="col") = t(".items.header.policy")
+          th(scope="col") = t(".items.header.location")
+          th(scope="col") = t(".items.header.status")
+        tbody
+          - @items.each do |item|
+            tr
+              / Item Call number
+              td = item.call_number || "–"
+              / Policy
+              td = item.policy&.label || "–"
+              / Location
+              td
+                / Edge-Case "Seminarapparat"
+                - if item.policy&.label =~ /Seminarapparat/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  em =< t(".items.semapp_info")
+                / Edge-Case "Handapparat"
+                - elsif item.policy&.label =~ /Handapparat/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  em =< t(".items.handapparat_info")
+                / Edge-Case "IEMAN"
+                - elsif item.location&.label =~ /IEMAN/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "IEMAN", "https://kw.uni-paderborn.de/ieman/", target: "_blank"
+                / Edge-Case "ZfS"
+                - elsif item.location&.label =~ /zentrum.+sprachlehre|zfs/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "Zentrum für Sprachlehre (ZfS)", "https://www.uni-paderborn.de/zfs/wir-ueber-uns/mediathek-sprechraum/", target: "_blank"
+                / Edge-Case "IMT-Medien"
+                - elsif item.location&.label =~ /imt.+medien/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "Zentrum für Sprachlehre (ZfS)", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
+                - else
+                  = item.location&.label || "–"
+                  / Shelf finder (only for monos currently)
+                  - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present? && !journal_call_number?(call_number)
+                    div(
+                      data-controller="shelf-finder"
+                      data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
+                      data-shelf-finder-target="output"
+                    )
+                  - if item.process_type.present?
+                    .text-danger.fst-italic = t(".items.not_on_location")
+              / Process Status
+              td
+                - if code = item.process_type&.code&.downcase
+                  ruby:
+                    status = t(
+                      "code_tables.process_types.#{code}",
+                      default: (item.process_type.label || "–")
+                    )
+                  = status
 
-                - if item.due_date
-                  div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
-              - else
-                = t("code_tables.process_types.default")
+                  - if item.due_date
+                    div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
+                - else
+                  = t("code_tables.process_types.default")
 
-                - if item.reshelving_time
-                  div: em = t(".reshelving_info", time: l(item.reshelving_time.to_time, format: :only_time))
+                  - if item.reshelving_time
+                    div: em = t(".reshelving_info", time: l(item.reshelving_time.to_time, format: :only_time))
 
-                - if item.closed_stack_orderable?
-                  div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
-                    = t(".closed_stack_order")
+                  - if item.closed_stack_orderable?
+                    div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
+                      = t(".closed_stack_order")
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

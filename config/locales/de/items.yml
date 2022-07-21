@@ -67,6 +67,12 @@ de:
 
       items:
         not_on_location: "Nicht am Standort"
+        handapparat_info: >
+          Dieses Medium steht in einem Handapparat. Besitzt die Universitätsbibliothek kein weiteres Exemplar dieses Titels,
+          können Sie sich im Bedarfsfall an das Informationszentrum wenden.
+        semapp_info: >
+          Das Medium steht in einem Seminarapparat. Wir werden Ihnen in Kürze hier auch wieder den konkreten Standort/Seminarapparat
+          nennen können. In der Zwischenzeit wenden Sie sich bitte an das Informationszentrum.
 
         header:
           call_number: "Signatur"

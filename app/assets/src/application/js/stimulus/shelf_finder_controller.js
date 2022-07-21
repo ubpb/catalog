@@ -14,7 +14,7 @@ export default class extends Controller {
     axios.get(this.urlValue)
       .then(response => response.data)
       .then(data => this.outputLocation(data))
-      .catch(error => this.outputTarget.innerHTML = "ERROR")
+      .catch(error => {/* NOOP */})
   }
 
   outputLocation(data) {

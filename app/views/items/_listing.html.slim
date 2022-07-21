@@ -87,8 +87,10 @@ turbo-frame#items
                 - elsif item.location&.label =~ /imt.+medien/i
                   i.fa-solid.fa-info-circle.text-primary
                   =< link_to "Zentrum für Sprachlehre (ZfS)", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
+                / Default-Case
                 - else
-                  = item.location&.label || "–"
+                  - location = item.location&.label || "–"
+
                   / Shelf finder (only for monos currently)
                   - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present? && !journal_call_number?(call_number)
                     div(
@@ -96,6 +98,10 @@ turbo-frame#items
                       data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
                       data-shelf-finder-target="output"
                     )
+                      = location
+                  - else
+                    = location
+
                   - if item.process_type.present?
                     .text-danger.fst-italic = t(".items.not_on_location")
               / Process Status

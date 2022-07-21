@@ -33,12 +33,13 @@
 
 ## Exemplare
 
-* [ ] Standort-Sonderfall Handapparat: Beispiel: 990009300360106463
-* [ ] Standort-Sonderfall IEMAN
-* [ ] Standort-Sonderfall E-Seminarapparate
 * [ ] Statische Standort-Tabelle auswerten für alles was nicht aus der RegalDB kommt oder ein Sonderfall ist.
 * [ ] Ausgesonderte Exemplare oder Exemplare auf Standorten die nicht angezeigt werden sollen, müssen unterdrückt werden. Beispiel: 990009694420106463
+* [ ] Standort-Sonderfall E-Seminarapparate: Es wird noch nicht der konkrete Seminarapparat angezeigt.
 * [ ] "Status-Ampel" fehlt
+* [x] ~~Standort-Sonderfall Handapparat: Beispiel: 990009300360106463~~
+* [x] ~~Standort-Sonderfall IEMAN~~
+* [x] ~~Standort-Sonderfall E-Seminarapparate~~
 * [x] ~~Handapparatsexemplare können vorgemerkt werden. => In Alma ändern.~~
 * [x] ~~Standorte aus RegalDB für Monos anzeigen~~
 
@@ -67,7 +68,6 @@
 ## Sonstiges
 
 * [ ] !!!Alle alten routen auf ggf. neue Routen umleiten
-
 * [x] ~~Icons und Cover noch nicht 100%ig~~
 * [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] "Alte" Urls für Suche / Detailseite etc. sollen so gut wie möglich weiter funktionieren. Dies muss noch weiter verbessert werden.

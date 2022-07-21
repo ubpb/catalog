@@ -36,6 +36,7 @@
 * [ ] Ausgesonderte Exemplare oder Exemplare auf Standorten die nicht angezeigt werden sollen, müssen unterdrückt werden. Beispiel: 990009694420106463
 * [ ] Standort-Sonderfall E-Seminarapparate: Es wird noch nicht der konkrete Seminarapparat angezeigt.
 * [ ] "Status-Ampel" fehlt
+* [ ] Signaturen auf Webseite verlinken
 * [x] ~~Statische Standort-Tabelle auswerten für alles was nicht aus der RegalDB kommt oder ein Sonderfall ist.~~
 * [x] ~~Standort-Sonderfall Handapparat: Beispiel: 990009300360106463~~
 * [x] ~~Standort-Sonderfall IEMAN~~

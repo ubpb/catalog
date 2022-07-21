@@ -1,0 +1,766 @@
+---
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: AZY
+    excl: false
+  :fachgebiet: Allgemeines
+  :location: Ebene 3
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '01'
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: ZZZ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: IEMAN
+  :standortkennziffern:
+  - '28'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: ZZZ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: 'IMT: Medien'
+  :standortkennziffern:
+  - '88'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: ZZZ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  - '06'
+  - '07'
+  - '90'
+  - '91'
+  - '92'
+  - '93'
+  - '94'
+  - '95'
+  - '96'
+  - '97'
+  - '98'
+  :fachkennziffern:
+  - '01'
+  - '02'
+  - '03'
+  - '04'
+  - '05'
+  - '06'
+  - '07'
+  - '08'
+  - '09'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  - '15'
+  - '16'
+  - '17'
+  - '18'
+  - '19'
+  - '20'
+  - '21'
+  - '22'
+  - '23'
+  - '24'
+  - '25'
+  - '26'
+  - '27'
+  - '28'
+  - '29'
+  - '30'
+  - '31'
+  - '32'
+  - '33'
+  - '34'
+  - '35'
+  - '36'
+  - '37'
+  - '38'
+  - '39'
+  - '40'
+  - '41'
+  - '42'
+  - '43'
+  - '44'
+  - '45'
+  - '46'
+  - '47'
+  - '48'
+  - '49'
+  - '50'
+  - '51'
+  - '52'
+  - '53'
+  - '54'
+  - '55'
+  - '56'
+  - '57'
+  - '58'
+  - '59'
+  - '60'
+  - '61'
+  - '62'
+  - '63'
+  - '64'
+  - '65'
+  - '66'
+  - '67'
+  - '68'
+  - '69'
+  - '70'
+  - '71'
+  - '72'
+  - '73'
+  - '74'
+  - '75'
+  - '76'
+  - '77'
+  - '78'
+  - '79'
+  - '80'
+  - '81'
+  - '82'
+  - '83'
+  - '84'
+  - '85'
+  - '86'
+  - '87'
+  - '88'
+  - '89'
+  - '90'
+  - '91'
+  - '92'
+  - '93'
+  - '94'
+  - '95'
+  - '96'
+  - '97'
+  - '98'
+  - '99'
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: ZZZ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Zentrum für Sprachlehre
+  :standortkennziffern:
+  - '86'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: AAA
+    end: ZZZ
+    excl: false
+  :fachgebiet: Bibliografischer Apparat
+  :location: Ebene 3
+  :standortkennziffern:
+  - '08'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: BEA
+    end: BSK
+    excl: false
+  :fachgebiet: Sprach- und Literaturwissenschaft, allgemeine und vergleichende
+  :location: Ebene 4
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '04'
+- :systemstellen: !ruby/range
+    begin: BTA
+    end: DDZ
+    excl: false
+  :fachgebiet: Germanistik
+  :location: Ebene 4
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '07'
+- :systemstellen: !ruby/range
+    begin: D
+    end: D
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: DEA
+    end: EOF
+    excl: false
+  :fachgebiet: Anglistik und Amerikanistik
+  :location: Ebene 2, Gebäude I (Zugang über Ebene 4)
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '10'
+- :systemstellen: !ruby/range
+    begin: DQ
+    end: DQ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: EPA
+    end: FZT
+    excl: false
+  :fachgebiet: Romanistik
+  :location: Ebene 4
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '13'
+- :systemstellen: !ruby/range
+    begin: GTA
+    end: HGY
+    excl: false
+  :fachgebiet: Philologien, sonstige
+  :location: Ebene 4
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '16'
+- :systemstellen: !ruby/range
+    begin: HIA
+    end: HPQ
+    excl: false
+  :fachgebiet: Philosophie
+  :location: Ebene 2
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '19'
+- :systemstellen: !ruby/range
+    begin: HQA
+    end: HXQ
+    excl: false
+  :fachgebiet: Psychologie
+  :location: Ebene 2
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '22'
+- :systemstellen: !ruby/range
+    begin: HYA
+    end: IKY
+    excl: false
+  :fachgebiet: Erziehungswissenschaft
+  :location: Ebene 2
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '25'
+- :systemstellen: !ruby/range
+    begin: ILA
+    end: IVX
+    excl: false
+  :fachgebiet: Religionswissenschaft. Theologie
+  :location: Ebene 2
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '28'
+- :systemstellen: !ruby/range
+    begin: IWA
+    end: JSZ
+    excl: false
+  :fachgebiet: Autoren Geisteswissenschaften
+  :location: Ebene 0, Gebäude J (Zugang über Eingangsebene)
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: JXA
+    end: KKP
+    excl: false
+  :fachgebiet: Kunstwissenschaften
+  :location: Ebene 1, Gebäude J (Zugang über Eingangsebene)
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '34'
+- :systemstellen: !ruby/range
+    begin: K
+    end: K
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: KGA
+    end: KKP
+    excl: false
+  :fachgebiet: Musik
+  :location: Ebene 1, Gebäude J (Zugang über Eingangsebene)
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '34'
+- :systemstellen: !ruby/range
+    begin: KKS
+    end: KNZZ
+    excl: false
+  :fachgebiet: Medienwissenschaft
+  :location: Ebene 1, Gebäude J (Zugang über Eingangsebene)
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '36'
+- :systemstellen: !ruby/range
+    begin: KOA
+    end: KWV
+    excl: false
+  :fachgebiet: Sportwissenschaft
+  :location: Ebene 3
+  :standortkennziffern:
+  - '10'
+  - '11'
+  - '18'
+  :fachkennziffern:
+  - '37'
+- :systemstellen: !ruby/range
+    begin: KXA
+    end: MQX
+    excl: false
+  :fachgebiet: Geschichte
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '40'
+- :systemstellen: !ruby/range
+    begin: M
+    end: M
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: MQ
+    end: MQ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: MRA
+    end: NMU
+    excl: false
+  :fachgebiet: Geowissenschaften
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '43'
+- :systemstellen: !ruby/range
+    begin: NOA
+    end: NRX
+    excl: false
+  :fachgebiet: Sozialwissenschaften allgemein
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '46'
+- :systemstellen: !ruby/range
+    begin: NXA
+    end: OSG
+    excl: false
+  :fachgebiet: Soziologie
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '46'
+- :systemstellen: !ruby/range
+    begin: OTA
+    end: PFZ
+    excl: false
+  :fachgebiet: Politikwissenschaft
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '46'
+- :systemstellen: !ruby/range
+    begin: P
+    end: P
+    excl: false
+  :fachgebiet: Paderborner Dissertationen
+  :location: Magazin J
+  :standortkennziffern:
+  - '04'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: PHA
+    end: QKU
+    excl: false
+  :fachgebiet: Wirtschaftswissenschaften
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '49'
+- :systemstellen: !ruby/range
+    begin: PQ
+    end: PQ
+    excl: false
+  :fachgebiet: Paderborner Dissertationen
+  :location: Magazin J
+  :standortkennziffern:
+  - '04'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: QMA
+    end: QWW
+    excl: false
+  :fachgebiet: Rechtswissenschaft
+  :location: Ebene 5
+  :standortkennziffern:
+  - '30'
+  - '31'
+  - '38'
+  :fachkennziffern:
+  - '52'
+- :systemstellen: !ruby/range
+    begin: RMA
+    end: RQH
+    excl: false
+  :fachgebiet: Land- und Forstwirtschaft
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '54'
+- :systemstellen: !ruby/range
+    begin: RQI
+    end: RSX
+    excl: false
+  :fachgebiet: Haushalts-, Ernährungs- und Lebensmittelwissenschaften
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '55'
+- :systemstellen: !ruby/range
+    begin: SA
+    end: SA
+    excl: false
+  :fachgebiet: Akademieschriften
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: SB
+    end: SB
+    excl: false
+  :fachgebiet: NS-Belletristik
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: SE
+    end: SE
+    excl: false
+  :fachgebiet: Sammlung J. A. Schmoll gen. Eisenwerth
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: SF
+    end: SF
+    excl: false
+  :fachgebiet: Forschungsbibliothek Steinhoff
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: SR
+    end: SR
+    excl: false
+  :fachgebiet: Regionalliteratur
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: STA
+    end: SZO
+    excl: false
+  :fachgebiet: Naturwissenschaften allgemein
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '58'
+- :systemstellen: !ruby/range
+    begin: SU
+    end: SU
+    excl: false
+  :fachgebiet: Literatur zur Universität Paderborn
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: SZ
+    end: SZ
+    excl: false
+  :fachgebiet: Zugschwerdt'sche Leihbibliothek
+  :location: Magazin
+  :standortkennziffern:
+  - '02'
+  - '03'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: TAA
+    end: TSN
+    excl: false
+  :fachgebiet: Mathematik
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '61'
+- :systemstellen: !ruby/range
+    begin: TTA
+    end: TZZ
+    excl: false
+  :fachgebiet: Informatik
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '64'
+- :systemstellen: !ruby/range
+    begin: UAA
+    end: UMP
+    excl: false
+  :fachgebiet: Physik
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '67'
+- :systemstellen: !ruby/range
+    begin: UNA
+    end: UYO
+    excl: false
+  :fachgebiet: Chemie
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '70'
+- :systemstellen: !ruby/range
+    begin: VAA
+    end: VHO
+    excl: false
+  :fachgebiet: Astronomie
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '73'
+- :systemstellen: !ruby/range
+    begin: VNA
+    end: VTW
+    excl: false
+  :fachgebiet: Biologie
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '75'
+- :systemstellen: !ruby/range
+    begin: VUA
+    end: VZX
+    excl: false
+  :fachgebiet: Medizin
+  :location: Ebene 3
+  :standortkennziffern:
+  - '40'
+  - '41'
+  - '48'
+  :fachkennziffern:
+  - '77'
+- :systemstellen: !ruby/range
+    begin: W
+    end: W
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '07'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: WAA
+    end: WHR
+    excl: false
+  :fachgebiet: Technik allgemein
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  - '51'
+  - '58'
+  :fachkennziffern:
+  - '80'
+- :systemstellen: !ruby/range
+    begin: WSA
+    end: XHV
+    excl: false
+  :fachgebiet: Architektur. Bauingenieurwesen. Vermessungswesen
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  - '51'
+  - '58'
+  :fachkennziffern:
+  - '82'
+- :systemstellen: !ruby/range
+    begin: WQ
+    end: WQ
+    excl: false
+  :fachgebiet: Alle Fachgebiete
+  :location: Magazin
+  :standortkennziffern:
+  - '07'
+  :fachkennziffern: []
+- :systemstellen: !ruby/range
+    begin: XIA
+    end: XTV
+    excl: false
+  :fachgebiet: Maschinenbau
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  - '51'
+  - '58'
+  :fachkennziffern:
+  - '85'
+- :systemstellen: !ruby/range
+    begin: XVA
+    end: YGY
+    excl: false
+  :fachgebiet: Elektrotechnik
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  - '51'
+  - '58'
+  :fachkennziffern:
+  - '88'
+- :systemstellen: !ruby/range
+    begin: ZEA
+    end: ZWT
+    excl: false
+  :fachgebiet: Technik, sonstige Gebiete
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  - '51'
+  - '58'
+  :fachkennziffern:
+  - '91'
+- :systemstellen: !ruby/range
+    begin:
+    end:
+    excl: false
+  :fachgebiet: Akademieschriften
+  :location: Ebene 3
+  :standortkennziffern:
+  - '50'
+  :fachkennziffern:
+  - '97'

@@ -1,4 +1,46 @@
 namespace :application do
+  desc "Generate location lookup table"
+  task :generate_location_lookup_table => :environment do
+    html = Nokogiri::HTML(Net::HTTP.get(URI("https://www.ub.uni-paderborn.de/nutzen-und-leihen/medienaufstellung-nach-systemstellen/")))
+    medienaufstellung = html.css("table")
+
+    lookup_table = []
+
+    medienaufstellung.css("tr")[1..-1].each do |_row|
+      if (cells = _row.css("td")).length > 1
+        notation_range_min, notation_range_max = cells[0].content.split("-").map(&:strip).map(&:presence)
+
+        lookup_table.push({
+          systemstellen: notation_range_min..(notation_range_max || notation_range_min),
+          fachgebiet: cells[1].content&.gsub(/\u00a0/, " ")&.gsub(/\t/, '')&.strip,
+          location: cells[2].content&.gsub(/\u00a0/, " ")&.gsub(/\t/, '')&.strip,
+          standortkennziffern: cells[3].content.gsub(/[^\d,]/, "").split(","),
+          fachkennziffern: if cells[4].content.present?
+            first, last = cells[4].content.gsub(/[^\d-]/, "").split("-")
+            last ||= first
+            if first && last
+              Range.new(first, last).to_a
+            else
+              []
+            end
+          end
+        })
+      end
+    end
+
+    if lookup_table.present?
+      filename = File.join(Rails.root, "config", "location_lookup_table.yml")
+      File.write(
+        filename,
+        YAML.dump(lookup_table)
+      )
+      puts "File #{filename} written."
+    else
+      puts "Error: No data could be extracted."
+    end
+  end
+
+
   # namespace :stimulus do
   #   namespace :manifest do
   #     STIMULUS_ROOT             = Rails.root.join("app/assets/src/application/js/stimulus")

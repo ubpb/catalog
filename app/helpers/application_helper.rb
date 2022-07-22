@@ -62,10 +62,6 @@ module ApplicationHelper
     Config[:shelf_finder, :enabled, default: false]
   end
 
-  def journal_call_number?(call_number)
-    call_number.starts_with?(/\d/)
-  end
-
   def vpn_info
     # In case of request from an ip range outside of Uni Paderborn campus
     # show hint about VPN.

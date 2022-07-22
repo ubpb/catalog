@@ -200,10 +200,11 @@
                     - stock.comments.each do |c|
                       div = c
         .mb-2
-          i.fa-solid.fa-info-circle.fa-lg.text-warning
-          em =< t(".journal_stocks.hint")
-          =< link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
-            = t(".closed_stack_order")
+          .callout.callout-info
+            i.fa-solid.fa-info-circle.fa-lg.text-primary
+            em =< t(".journal_stocks.hint")
+            =< link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
+              = t(".closed_stack_order")
 
     / ----------------------------------------
     / Secondary form

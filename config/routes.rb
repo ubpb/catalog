@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy
   get "/go/ill", to: redirect("https://ub-paderborn.digibib.net/"), as: :go_ill
   get "/go/ill-info", to: redirect("https://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/"), as: :go_ill_info
+  get "/go/item-call-number-info", to: redirect("http://www.ub.uni-paderborn.de/nutzen-und-leihen/medienaufstellung-nach-systemstellen/"), as: :go_item_call_number_info
+  get "/go/journal-call-number-info", to: redirect("http://www.ub.uni-paderborn.de/nutzen-und-leihen/medienaufstellung-nach-fachkennziffern/"), as: :go_journal_call_number_info
   get "/fachsystematik", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/")
   get "/fachsystematik/*path", to: redirect("https://data.ub.uni-paderborn.de/fachsystematik/%{path}")
 

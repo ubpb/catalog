@@ -1,6 +1,6 @@
 Sehr geehrte(r) <%= @user.name %>,
 
-Sie möchten Ihr Passwort für Ihr Bibliothekskonto mit der Nummer `<%= @user.ils_primary_id %>` zurücksetzen. Dazu klicken Sie bitte auf den folgenden Link.
+Sie möchten Ihr Passwort für Ihr Bibliothekskonto zurücksetzen. Dazu klicken Sie bitte auf den folgenden Link.
 
 <%= password_reset_url(token: @user.password_reset_token) %>
 

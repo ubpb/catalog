@@ -1,2 +1,9 @@
+h5 = "Seminarapparat Standort für Exemplar #{@item_id}"
+
 = turbo_frame_tag(@item_id) do
-  = @username
+  - if @username.present?
+    = @username
+  - else
+    i.fa-solid.fa-info-circle.text-primary.me-1
+    em =< "Standort konnte nicht ermittelt werden. Wenden Sie sich bitte an das Informationszentrum der Bibliothek."
+

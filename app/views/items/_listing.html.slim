@@ -62,7 +62,14 @@ turbo-frame#items
           - @items.each do |item|
             tr
               / Item Call number
-              td = item.call_number || "–"
+              td
+                - if item.call_number
+                  - if journal_call_number?(item.call_number)
+                    = link_to item.call_number, go_journal_call_number_info_path, target: "_blank"
+                  - else
+                    = link_to item.call_number, go_item_call_number_info_path, target: "_blank"
+                - else
+                  = "–"
               / Policy
               td
                 / TODO: Remove cleanup hack
@@ -94,7 +101,7 @@ turbo-frame#items
                   - location = item.location&.label || "–"
 
                   / Shelf finder (only for monos currently)
-                  - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present? && !journal_call_number?(call_number)
+                  - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
                     div(
                       data-controller="shelf-finder"
                       data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"

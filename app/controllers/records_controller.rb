@@ -2,7 +2,25 @@ class RecordsController < ApplicationController
 
   before_action :load_record
 
+  def show
+    # augment journal stock locations label with data from the static location
+    # lookup table.
+    @record = augment_journal_stock_locations(@record)
+  end
+
 private
+
+  def augment_journal_stock_locations(record)
+    record.journal_stocks.each do |js|
+      if js.call_number.present? && js.location_code.present?
+        if (jls = journal_locations(js.call_number, js.location_code, stock: [js.label])).present?
+          js.attributes[:location_name] = jls.join("; ")
+        end
+      end
+    end
+
+    record
+  end
 
   def load_record
     # Load record by the given id

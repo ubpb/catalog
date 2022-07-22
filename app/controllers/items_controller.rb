@@ -46,28 +46,20 @@ private
 
   def augment_locations(items)
     items.each do |item|
-      if item.location.present?
-        location_code = item.location.code.presence
-        notation      = item.call_number.try(:[], /\A[A-Z]{1,3}/).presence
-
-        if location_code && notation
-          LOCATION_LOOKUP_TABLE.find do |row|
-            systemstellen_range = row[:systemstellen]
-            standortkennziffern = row[:standortkennziffern]
-
-            if systemstellen_range.present? && systemstellen_range.first.present? && systemstellen_range.last.present? && standortkennziffern.present?
-              # Expand systemstellen and notation to 4 chars to make ruby range include? work in this case.
-              justified_systemstellen_range = (systemstellen_range.first.ljust(4, "A") .. systemstellen_range.last.ljust( 4, "A"))
-              justified_notation = notation.ljust(4, "A")
-
-              standortkennziffern.include?(location_code) && justified_systemstellen_range.include?(justified_notation)
-            end
-          end.try do |row|
-            item.location.attributes[:label] = row[:location]
+      if item.call_number.present? && item.location&.code.present?
+        if journal_call_number?(item.call_number)
+          if (jls = journal_locations(item.call_number, item.location.code)).present?
+            item.location.attributes[:label] = jls.join("; ")
+          end
+        else
+          if (ml = mono_location(item.call_number, item.location.code)).present?
+            item.location.attributes[:label] = ml
           end
         end
       end
     end
+
+    items
   end
 
 end

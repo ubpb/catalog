@@ -22,15 +22,15 @@ module Ils::Adapters
           }
         ).try(:[], "item") || []
 
-        # Filter out items with an unassigned location
+        # Filter out items with we don't want in discovery
         items = items.reject do |i|
-          i.dig("item_data", "location", "value") =~ /UNASSIGNED/
-        end
-
-        # Filter out items that are suppressed from publishing
-        items.reject do |i|
+          # Unassigned holdings
+          i.dig("item_data", "location", "value") =~ /UNASSIGNED/ ||
+          # Items that are suppressed from publishing
           # For whatever reason this boolean flag is of type string.
-          i.dig("holding_data", "holding_suppress_from_publishing") == "true"
+          i.dig("holding_data", "holding_suppress_from_publishing") == "true" ||
+          # Items at location LL (Ausgesondert)
+          i.dig("item_data", "location", "value") == "LL"
         end
       rescue ExlApi::LogicalError
         []

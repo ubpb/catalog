@@ -4,6 +4,10 @@
       = t(".header")
     .card-body
       = render "alerts"
+
+      .callout.callout-info
+        = t(".migration_info_html")
+
       = f.input :user_id, autofocus: true
       = f.input :password
       = link_to t(".forgot_password"), password_reset_request_path

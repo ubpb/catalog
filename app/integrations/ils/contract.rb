@@ -177,5 +177,12 @@ class Ils
       try_operation(__method__, record_ids)
     end
 
+    #
+    # Get Semapp loction
+    #
+    def get_semapp_location(record_id, item_id)
+      try_operation(__method__, record_id, item_id)
+    end
+
   end
 end

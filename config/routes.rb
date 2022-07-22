@@ -50,7 +50,9 @@ Rails.application.routes.draw do
 
   # Records / Items / Hold requests / Relations
   resources :records, path: "/:search_scope/r", only: [:show] do
-    resources :items, only: [:index]
+    resources :items, only: [:index] do
+      get "semapp-location", on: :member
+    end
     resources :hold_requests, path: "hold-requests", only: [:create, :destroy]
     resources :relations, only: [:index]
   end

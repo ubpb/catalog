@@ -42,6 +42,11 @@ class ItemsController < RecordsController
     end
   end
 
+  def semapp_location
+    @item_id  = params[:id]
+    @username = Ils.get_semapp_location(@record.id, @item_id)
+  end
+
 private
 
   def augment_locations(items)

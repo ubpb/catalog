@@ -48,7 +48,7 @@ de:
         sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein
         Exemplar für Sie verfügbar wird.
 
-      login_required: "Für Kontofunktionen bitte anmelden."
+      login_required: "Für Kontofunktionen bitte anmelden"
 
       hold_requests:
         header:

@@ -41,7 +41,7 @@ turbo-frame#items
           / hold request not possible. Show nothing for now.
       - else
         .text-end
-          = link_to new_session_path, class: "btn btn-primary btn-sm" do
+          = link_to new_session_path, class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do
             i.fa-solid.fa-user.me-1
             =< t(".login_required")
 

@@ -37,6 +37,11 @@ class SearchesController < ApplicationController
       # The search request is valid and was unchanged during validation.
       # Perform the search request against the selected search scope
       @search_request = validated_search_request
+
+      if defined?(NewRelic)
+        NewRelic::Agent.add_custom_attributes(search_request: @search_request.as_json)
+      end
+
       @search_result = SearchEngine[current_search_scope].search(
         validated_search_request,
         {

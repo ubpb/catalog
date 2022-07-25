@@ -29,6 +29,10 @@ gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 gem "sequel", ">= 5.55"
 gem "dotenv", ">= 2.7", require: false
 
+group :production do
+  gem "newrelic_rpm", ">= 8.9.0"
+end
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

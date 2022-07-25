@@ -52,6 +52,10 @@ private
         redirect_to(show_record_path(@record, search_request: validated_search_request)) and return
       else
         @search_request = validated_search_request
+
+        if defined?(NewRelic) && @search_request.present?
+          NewRelic::Agent.add_custom_attributes(search_request: @search_request.as_json)
+        end
       end
     end
 

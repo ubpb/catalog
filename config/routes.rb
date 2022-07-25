@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
   # Library account
-  # TODO: Map old "/user/*" routes "/account/*"
   namespace :account, path: "account" do
     root to: redirect("/account/loans")
     resources :loans, only: [:index] do
@@ -98,6 +97,10 @@ Rails.application.routes.draw do
   get "/:search_scope/records/:id", to: "compat/v2_records#show", constraints: { id: /.+/ }
   # Version 2.x searches
   get "/:search_scope/searches", to: "compat/v2_searches#index"
+
+  # More compatability
+  get "/user", to: redirect("/account")
+  get "/user/*other", to: redirect("/account")
 
   # Dev Tools
   if Rails.env.development?

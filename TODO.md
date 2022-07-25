@@ -75,6 +75,7 @@
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
 * [ ] Alert für Search-Validation anpassen/abschalten
 * [ ] Info-Text über den neuen Katalog erstellen
+* [ ] Anpassung an Mobilegräte
 * [x] ~~!!!Alle alten routen auf ggf. neue Routen umleiten~~
 * [x] ~~Anzeige Link-Resolver noch verbessern~~
 * [x] ~~Icons und Cover noch nicht 100%ig~~

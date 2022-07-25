@@ -1,8 +1,13 @@
 / Permalinks
 .mb-4
-  = form_tag(permalinks_path, method: :post) do
+  .mb-2 = form_tag(permalinks_path, method: :post) do
     = hidden_field_tag("search_request", search_request.to_param)
     = hidden_field_tag("scope", current_search_scope)
     = button_tag(type: "submit", class: "btn btn-link", style: "padding: 0; border: none;") do
-      i.fa-solid.fa-share
+      i.fa-solid.fa-fw.fa-share
       =< t(".share_search")
+
+  .mb-0 = link_to rss_search_request_url(search_request: @search_request, format: :atom) do
+      i.fa-solid.fa-fw.fa-rss
+      =< t(".rss_search")
+

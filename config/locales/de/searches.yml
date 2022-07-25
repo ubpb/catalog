@@ -21,6 +21,7 @@ de:
 
     tools:
       share_search: "Suche teilen"
+      rss_search: "Suche als RSS-Feed"
 
     local:
       label: "Katalog"

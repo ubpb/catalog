@@ -65,7 +65,7 @@ de:
         yop: "Erscheinungsjahr"
         local_notation: "Systemstelle"
         volume: "Bandzählung"
-        newtest_acquisition_date: "Neuerwerbung"
+        newrecords: "Neuerwerbung"
       cdi:
         _default_: "Relevanz"
         title: "Titel"

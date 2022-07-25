@@ -39,33 +39,46 @@ private
     when "creator_contributor_search"  then "creator"
     when "title_search"                then "title"
     when "subject_search"              then "subject"
-    when "publisher"                   then "publisher"
-    when "toc"                         then "toc"
-    when "creationdate_search"         then "creation_date"
-    when "isbn_search"                 then "isbn"
-    when "issn"                        then "issn"
+    when "publisher"                   then "pub"
+    when "toc"                         then "any" # TODO: Change to toc if toc is available
+    when "creationdate_search"         then "yop"
+    when "isbn_search"                 then "ids"
+    when "issn"                        then "ids"
     when "signature_search"            then "call_number"
-    when "notation"                    then "notation"
-    when "ht_number"                   then "hbz_id"
-    when "superorder"                  then "superorder"
-    when "selection_code"              then "selection_code"
-    when "oclc_id"                     then "oclc_id"
-    when "collection_code"             then "collection_code"
+    when "notation"                    then "local_notation"
+    when "ht_number"                   then "ids"
+    when "superorder"                  then "superorder_id"
+    when "selection_code"              then "any"
+    when "oclc_id"                     then "ids"
+    when "collection_code"             then "any"
     else "any"
+    end
+  end
+
+  def map_sort_field(v2_field)
+    case v2_field
+    when "creator_contributor_facet" then "creator"
+    when "creationdate_facet"        then "yop"
+    when "notation_sort"             then "local_notation"
+    when "title_sort"                then "title"
+    when "volume_count_sort"         then "volume"
+    when "volume_count_sort2"        then "volume"
+    when "cataloging_date"           then "newrecords"
+    else nil
     end
   end
 
   def map_aggregation_field(v2_field)
     case v2_field
-    when "materialtyp_facet"         then "rtype"
+    when "materialtyp_facet"         then "material_type"
     when "creator_contributor_facet" then "creator"
-    when "erscheinungsform_facet"    then "erscheinungsform"
+    when "erscheinungsform_facet"    then "resource_type"
     when "subject_facet"             then "subject"
-    when "creationdate_facet"        then nil
+    when "creationdate_facet"        then "yop"
     when "language_facet"            then "language"
-    when "notation_facet"            then "notation"
-    when "inhaltstyp_facet"          then "inhaltstyp"
-    when "cataloging_date"           then nil
+    when "notation_facet"            then "local_notation"
+    when "inhaltstyp_facet"          then "content_type"
+    when "cataloging_date"           then "newrecords"
     else "any"
     end
   end
@@ -119,19 +132,39 @@ private
       end
     end.compact
 
+    if sort_field = map_sort_field((search_request["sort"] || []).first&.dig("field"))
+      sort = SearchEngine::SearchRequest::Sort.new(
+        name: sort_field,
+        direction: (search_request["sort"] || []).first&.dig("order") || "asc"
+      )
+    end
+
     aggregations = (search_request["facet_queries"] || []).map do |facet|
       if field = map_aggregation_field(facet["field"])
-        SearchEngine::SearchRequest::Aggregation.new(
-          name: field,
-          value: facet["query"],
-          exclude: facet["exclude"] == "true"
-        )
+        if field == "yop"
+          SearchEngine::SearchRequest::Aggregation.new(
+            name: field,
+            value: "#{facet["gte"]}..#{facet["lte"]}"
+          )
+        elsif field == "newrecords"
+          SearchEngine::SearchRequest::Aggregation.new(
+            name: field,
+            value: facet["gte"]
+          )
+        else
+          SearchEngine::SearchRequest::Aggregation.new(
+            name: field,
+            value: facet["query"],
+            exclude: facet["exclude"] == "true"
+          )
+        end
       end
     end.compact
 
     search_request = SearchEngine::SearchRequest.new(
       queries: queries,
-      aggregations: aggregations
+      aggregations: aggregations,
+      sort: sort
     )
 
 

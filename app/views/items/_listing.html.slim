@@ -12,7 +12,7 @@ turbo-frame#items
     - content_for :hold_request_panel do
       - if current_user
         - if @user_hold_requests.present?
-          .mb-0: strong = t(".hold_requests_available_info", count: @hold_requests.count)
+          .mb-0: strong = t(".hold_requests_available_info", count: @user_hold_requests.count)
 
           .table-responsive
             table.table.align-middle.mb-3

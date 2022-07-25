@@ -32,7 +32,6 @@ class SearchesController < ApplicationController
       # The validated search request is different from the given search request. That means
       # the validation changed the search request. To reflect the changes in the browser
       # we redirect to validated search request.
-      flash[:search_panel] = {info: t("searches.request_hints.modified_during_validation")}
       redirect_to(new_search_request_path(validated_search_request))
     else
       # The search request is valid and was unchanged during validation.

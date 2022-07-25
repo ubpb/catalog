@@ -34,9 +34,7 @@ de:
       info: "Keine Treffer gefunden. Bitte verändern Sie Ihre Suche."
 
     request_hints:
-      syntax_error: "TODO: Syntax-Error"
-      invalid_after_validation: "TODO: Leere Suche nach Validierung"
-      modified_during_validation: "TODO: Suche wurde während der Validierung verändert."
+      invalid_after_validation: "Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es erneut."
 
     searchables:
       local:

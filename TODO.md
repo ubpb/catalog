@@ -68,7 +68,6 @@
 
 ## Sonstiges
 
-* [ ] !!!Alle alten routen auf ggf. neue Routen umleiten
 * [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] NewRelic integrieren
@@ -76,5 +75,6 @@
 * [ ] Stopwörter bei Phrasensuche für Ranking berücksichtigen
 * [ ] Alert für Search-Validation anpassen/abschalten
 * [ ] Info-Text über den neuen Katalog erstellen
+* [x] ~~!!!Alle alten routen auf ggf. neue Routen umleiten~~
 * [x] ~~Anzeige Link-Resolver noch verbessern~~
 * [x] ~~Icons und Cover noch nicht 100%ig~~

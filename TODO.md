@@ -68,6 +68,7 @@
 
 ## Sonstiges
 
+* [ ] Piwik integrieren
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] BibTeX export fehlt noch
 * [ ] Info-Text über den neuen Katalog erstellen

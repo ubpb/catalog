@@ -10,7 +10,7 @@ module Ils::Adapters
 
         user = get_user(user_id)
 
-        if user.present? && (name = user.dig("full_name"))&.starts_with?("Seminarapparat")
+        if user.present? && (name = user.dig("full_name")) =~ /Seminarapparat/
           name
         else
           nil

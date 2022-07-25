@@ -13,8 +13,6 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all"
     = javascript_include_tag "application", "data-turbo-track": "reload"
 
-    = render "piwik_tracking"
-
   body
     = render "application/test_server_warning"
 
@@ -30,3 +28,5 @@ html
 
     #footer
       = render "footer"
+
+      = render "piwik_tracking"

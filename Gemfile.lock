@@ -233,6 +233,7 @@ GEM
       timeout
     net-ssh (6.1.0)
     netrc (0.11.0)
+    newrelic_rpm (8.9.0)
     nio4r (2.5.8)
     nokogiri (1.13.7-arm64-darwin)
       racc (~> 1.4)
@@ -370,6 +371,7 @@ DEPENDENCIES
   letter_opener_web (>= 2.0)
   metacrunch-marcxml (~> 3.1.0)
   mysql2 (>= 0.5.3)
+  newrelic_rpm (>= 4.5.0)
   parallel (~> 1.19)
   puma (>= 5.2)
   rails (~> 7.0.0)

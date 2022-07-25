@@ -1,0 +1,27 @@
+#piwik-tracking-vars(data=@piwik_tracking_vars)
+
+- if Config[:piwik_tracking, :enabled, default: false]
+  javascript:
+    var _paq = _paq || [];
+
+    // Setup custom vars based on trackings vars.
+    var trackingVarsSearchScope = document.getElementById("piwik-tracking-vars").getAttribute('data-search-scope');
+    var trackingVarsFacetSearch = document.getElementById("piwik-tracking-vars").getAttribute('data-facet-search');
+    if (trackingVarsSearchScope) {
+      _paq.push(['setCustomVariable', 1, 'SearchScope', trackingVarsSearchScope, 'page']);
+    }
+    if (trackingVarsFacetSearch) {
+      _paq.push(['setCustomVariable', 2, 'FacetSearch', trackingVarsFacetSearch, 'page']);
+    }
+    // end custom vars
+
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://#{Config[:piwik_tracking, :piwik_domain]}/";
+      _paq.push(["setTrackerUrl", u+"piwik.php"]);
+      _paq.push(["setSiteId", "#{Config[:piwik_tracking, :piwik_site_id]}"]);
+      var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+      g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+    })();

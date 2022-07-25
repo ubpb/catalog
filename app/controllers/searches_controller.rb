@@ -42,6 +42,13 @@ class SearchesController < ApplicationController
         NewRelic::Agent.add_custom_attributes(search_request: @search_request.as_json)
       end
 
+      # For custom Piwik analytics
+      # @see views/application/_piwik_tracking.html.slim
+      @piwik_tracking_vars = {
+        "search-scope" => current_search_scope,
+        "facet-search" => @search_request.aggregations.present?
+      }
+
       @search_result = SearchEngine[current_search_scope].search(
         validated_search_request,
         {

@@ -15,6 +15,56 @@ body {
   }
 }
 
+#beta-info {
+  text-align: center;
+  padding: 4px 8px;
+  background: $red;
+  color: $white;
+  font-weight: normal;
+  font-size: 0.8rem;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.scope-info {
+  $image-width: 120px;
+  $image-margin: 5px;
+
+  @include clearfix;
+
+  .image {
+    float: left;
+    width: $image-width;
+    margin-right: $image-margin;
+    margin-top: 7px;
+  }
+
+  .heading {
+    font-size: 110%;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  .info,
+  .heading {
+    margin-left: $image-width + $image-margin;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .image {
+      display: none;
+    }
+
+    .info,
+    .heading {
+      margin-left: 0;
+    }
+  }
+}
+
 .turbo-progress-bar {
   height: 3px;
   background-color: $cyan;

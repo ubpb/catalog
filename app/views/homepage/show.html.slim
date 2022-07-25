@@ -1,1 +1,21 @@
 .mb-4 = render "searches/search_panel"
+
+.card
+  .card-header.cutoff-corner-tr
+    h5.mb-0 = "Sucheinstiege"
+  .card-body
+    .row
+      .col-md-6
+        .scope-info
+          .image = image_tag "x-catalog.png", class: "img-fluid"
+          .heading Katalog
+          .info
+            p ca. 1,6 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
+
+      .col-md-6
+        .scope-info
+          .image = image_tag "x-primo-central.png", class: "img-fluid"
+          .heading Central Discovery Index
+          .info
+            p
+              ' Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.

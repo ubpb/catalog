@@ -24,6 +24,9 @@ gem "view_component",     "~> 2.31"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
+# TODO: Remove me
+gem "strscan", "3.0.3"
+
 # Just for migration tasks
 # TODO: Remove after migration.
 gem "sequel", ">= 5.55"

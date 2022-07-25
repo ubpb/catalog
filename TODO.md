@@ -68,11 +68,11 @@
 
 ## Sonstiges
 
-* [ ] Piwik integrieren
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] BibTeX export fehlt noch
 * [ ] Info-Text über den neuen Katalog erstellen
 * [ ] Anpassung an Mobilegräte
+* [x] ~~Piwik integrieren~~
 * [x] ~~NewRelic integrieren~~
 * [x] ~~RSS Feed für Suchergebnisse fehlt~~
 * [x] ~~Alert für Search-Validation anpassen/abschalten~~

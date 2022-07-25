@@ -69,10 +69,10 @@
 ## Sonstiges
 
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
-* [ ] NewRelic integrieren
 * [ ] BibTeX export fehlt noch
 * [ ] Info-Text über den neuen Katalog erstellen
 * [ ] Anpassung an Mobilegräte
+* [x] ~~NewRelic integrieren~~
 * [x] ~~RSS Feed für Suchergebnisse fehlt~~
 * [x] ~~Alert für Search-Validation anpassen/abschalten~~
 * [x] ~~!!!Alle alten routen auf ggf. neue Routen umleiten~~

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :breadcrumb
   helper_method :new_search_request_path
   helper_method :show_record_path
+  helper_method :rss_search_request_url
   helper_method :on_campus?
 
   def set_robots_tag
@@ -70,6 +71,12 @@ class ApplicationController < ActionController::Base
     path  = "#{record_path(id: record.id, search_scope: search_scope)}"
     path += "?#{search_request.query_string}" if search_request.present?
     path
+  end
+
+  def rss_search_request_url(search_request:, search_scope: current_search_scope, format: :atom)
+    url  = "#{searches_url(search_scope: search_scope, format: format)}"
+    url += "?#{search_request.query_string}" if search_request.present?
+    url
   end
 
   def journal_call_number?(call_number)

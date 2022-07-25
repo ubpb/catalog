@@ -1,21 +1,43 @@
 .mb-4 = render "searches/search_panel"
 
-.card
-  .card-header.cutoff-corner-tr
-    h5.mb-0 = "Sucheinstiege"
-  .card-body
-    .row
-      .col-md-6
-        .scope-info
-          .image = image_tag "x-catalog.png", class: "img-fluid"
-          .heading Katalog
-          .info
-            p ca. 1,6 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
+.row
+  .col-lg-8.col-md-6.mb-4
+    .card
+      .card-header.cutoff-corner-tr
+        h5.mb-0 = "Sucheinstiege"
+      .card-body
+        .row
+          .col-lg-6
+            .scope-info
+              .image = image_tag "x-catalog.png", class: "img-fluid"
+              .heading Katalog
+              .info
+                p ca. 1,6 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
 
-      .col-md-6
-        .scope-info
-          .image = image_tag "x-primo-central.png", class: "img-fluid"
-          .heading Central Discovery Index
-          .info
-            p
-              ' Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.
+          .col-lg-6
+            .scope-info
+              .image = image_tag "x-primo-central.png", class: "img-fluid"
+              .heading Central Discovery Index
+              .info
+                p
+                  ' Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.
+
+  .col-lg-4.col-md-6
+    .card
+      .card-header.cutoff-corner-tr
+        h5.mb-0 = "Neuigkeiten zum Katalog"
+      .card-body
+        - if @news.present?
+          - @news.each do |item|
+            div.feed-item
+              div.feed-item-date
+                = l(item[:date].to_date)
+              div.feed-item-title
+                a(href=item[:link] title=item[:description].html_safe)
+                  = "#{item[:title].html_safe}"
+        - else
+          ' Aktuell keine Neuigkeiten
+
+      .card-footer
+        = link_to "&raquo; Alle Neuigkeiten".html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
+

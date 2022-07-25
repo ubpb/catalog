@@ -284,6 +284,8 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    rss (0.2.9)
+      rexml
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.3.0)
@@ -371,6 +373,7 @@ DEPENDENCIES
   parallel (~> 1.19)
   puma (>= 5.2)
   rails (~> 7.0.0)
+  rss (~> 0.2)
   selenium-webdriver (>= 3.1)
   sequel (>= 5.55)
   simple_form (~> 5.1)

@@ -15,11 +15,12 @@ gem "mysql2",             ">= 0.5.3"
 gem "parallel",           "~> 1.19"
 gem "puma",               ">= 5.2"
 gem "rails",              "~> 7.0.0"
+gem "rss",                "~> 0.2"
 gem "simple_form",        "~> 5.1"
 gem "slim",               "~> 4.0"
 gem "sprockets-rails",    "~> 3.4.2"
-gem "view_component",     "~> 2.31"
 gem "turbo-rails",        "~> 1.1"
+gem "view_component",     "~> 2.31"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 

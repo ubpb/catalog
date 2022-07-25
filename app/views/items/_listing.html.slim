@@ -35,7 +35,7 @@ turbo-frame#items
                       = t(".delete_hold_request")
         - elsif @can_perform_hold_request
           .mb-2 = t(".hold_request_info")
-          = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
+          .text-start = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
               = t(".create_hold_request")
         - else
           / hold request not possible. Show nothing for now.
@@ -46,7 +46,7 @@ turbo-frame#items
             =< t(".login_required")
 
     - if content_for? :hold_request_panel
-      .mb-3.bg-light.p-2
+      .mb-3.bg-light.p-2.rounded
         = content_for :hold_request_panel
 
     - if @items.any?(&:closed_stack_orderable?)

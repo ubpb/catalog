@@ -68,12 +68,12 @@
 
 ## Sonstiges
 
-* [ ] RSS Feed für Suchergebnisse fehlt
 * [ ] 500 und 404 Fehlerseiten in Katalog-Design fehlen
 * [ ] NewRelic integrieren
 * [ ] BibTeX export fehlt noch
 * [ ] Info-Text über den neuen Katalog erstellen
 * [ ] Anpassung an Mobilegräte
+* [x] ~~RSS Feed für Suchergebnisse fehlt~~
 * [x] ~~Alert für Search-Validation anpassen/abschalten~~
 * [x] ~~!!!Alle alten routen auf ggf. neue Routen umleiten~~
 * [x] ~~Anzeige Link-Resolver noch verbessern~~

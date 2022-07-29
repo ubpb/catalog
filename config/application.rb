@@ -23,7 +23,7 @@ module Catalog
 
     # Setup the host to make full URLs work for the mailer.
     routes.default_url_options = {
-      host: ENV["CATALOG_HOST"] || "localhost:3000"
+      host: ENV["KATALOG_HOST"] || "localhost:3000"
     }
   end
 end

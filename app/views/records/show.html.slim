@@ -6,10 +6,7 @@
   .card-body
     / Show compact version of the record
     = render "searches/record", record: @record, enable_watch_lists_panel: true
-    hr.mb-0
-
-    / Show record ID
-    .mb-3.fw-bold = "#{t(".details.identifiers.id")}: #{@record.id}"
+    hr.mb-3
 
     / ----------------------------------------
     / Record details
@@ -136,7 +133,6 @@
                 - else
                   = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
 
-            = optional_value(@record.additional_identifiers, default: "–") do |ids|
               dt = t(".details.identifiers.header")
               dd
                 / = optional_value(@record.aleph_id) do |id|
@@ -147,8 +143,10 @@
                 /     = "#{t(".details.identifiers.hbz_id")}: #{id}"
                 /= optional_value(@record.zdb_id) do |id|
                   div = "ZDB-ID: #{id}"
-                - ids.each do |id|
+                - @record.additional_identifiers.each do |id|
                   div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
+
+                div = "#{t(".details.identifiers.id")}: #{@record.id}"
 
         .col-lg-6
           dl.key-value-list

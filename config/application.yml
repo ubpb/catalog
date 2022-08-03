@@ -22,8 +22,7 @@ defaults: &defaults
     base_url: "https://regaldb.ub.uni-paderborn.de"
 
   link_resolver:
-    #base_url: "https://hbz-pad.userservices.exlibrisgroup.com/view/uresolver/49HBZ_PAD/openurl"
-    base_url: "https://eu03.alma.exlibrisgroup.com/view/uresolver/49HBZ_PAD/openurl"
+    base_url: "https://hbz-pad.userservices.exlibrisgroup.com/view/uresolver/49HBZ_PAD/openurl"
 
   piwik_tracking:
     enabled: true

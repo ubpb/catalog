@@ -39,6 +39,9 @@ class LinkResolverController < ApplicationController
     def package_name; @keys["package_display_name"]; end
     def is_free?; @keys["is_free"]; end
     def public_note; @keys["public_note"]; end
+    def availability
+      @keys["availability"]&.gsub("<br>", "")
+    end
     #def authentication_note; @keys["authentication_note"]; end
   end
 

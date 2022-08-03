@@ -124,7 +124,7 @@ private
 
   def handle_search_request(search_request)
     queries = (search_request["queries"] || []).map do |query|
-      if field = map_query_field(query["fields"].first)
+      if field = map_query_field(query["fields"]&.first)
         SearchEngine::SearchRequest::Query.new(
           name: field,
           value: query["query"]

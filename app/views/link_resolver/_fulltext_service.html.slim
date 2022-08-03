@@ -5,7 +5,10 @@
 
     div = service.package_name
 
-    - if service.public_note
+    - if (availability = service.availability).present?
+      div.text-success: em = availability
+
+    - if service.public_note.present?
       div: em = service.public_note
   .ms-auto
     = link_to service.fulltext_url, target: "_blank", class: "btn btn-primary btn-sm" do

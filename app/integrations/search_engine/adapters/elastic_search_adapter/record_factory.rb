@@ -41,6 +41,7 @@ module SearchEngine::Adapters
 
           related_resource_links: get_related_resource_links(data),
           fulltext_links: get_fulltext_links(data),
+          resolver_link: get_resolver_link(data),
 
           journal_stocks: get_journal_stocks(data),
 
@@ -234,6 +235,15 @@ module SearchEngine::Adapters
           SearchEngine::Link.new(
             label: link_data["label"],
             url: link_data["url"]
+          )
+        end
+      end
+
+      def get_resolver_link(data)
+        if url = source_value(data, "resolver_link")
+          SearchEngine::ResolverLink.new(
+            url: url.gsub("https://katalog.ub.uni-paderborn.de", ""),
+            fulltext_available: true
           )
         end
       end

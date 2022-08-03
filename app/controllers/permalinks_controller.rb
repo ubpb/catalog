@@ -8,10 +8,10 @@ class PermalinksController < ApplicationController
         # We've found an search request that was created with the old "katalog".
         # Redirect to the old "searches" path and let our compat layer handle this case.
         path = "/#{permalink.scope}/searches?search_request=#{permalink.search_request}"
-        redirect_to(path)
+        redirect_to(path, allow_other_host: true)
       else
         path  = "#{searches_path(search_scope: permalink.scope)}?#{permalink.search_request}"
-        redirect_to(path)
+        redirect_to(path, allow_other_host: true)
       end
     else
       flash[:error] = t(".flash_error")

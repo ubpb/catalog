@@ -25,5 +25,6 @@
     "postcss": "^8.4.7",
     "process": "^0.11.10"
   },
-  "resolutions": {}
+  "resolutions": {},
+  "browserslist": "> 0.35%, not dead"
 }

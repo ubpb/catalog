@@ -12,7 +12,7 @@ class Ils
     attribute :due_date, Types::Time.optional
     attribute :due_date_policy, Types::String.optional
     attribute :is_requested, Types::Bool.default(false)
-    attribute :notes, Types::String.optional
+    attribute :public_note, Types::String.optional
     attribute :expected_arrival_date, Types::Date.optional
     attribute :description, Types::String.optional
 

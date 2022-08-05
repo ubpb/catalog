@@ -76,5 +76,6 @@ de:
           location: "Standort"
           policy: "Leihart"
           status: "Status"
+          public_note: "Notiz"
           #process_type: "Prozess-Status"
           #due_date_policy: "Due-Date-Policy"

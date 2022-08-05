@@ -4,6 +4,8 @@ turbo-frame#items
   = render "alerts"
 
   - if @items.present?
+    - any_public_note = @items.any?{|i| i.public_note.present?}
+
     .mb-3: strong
       =  t(".stats.no_of_items", count: @no_of_items)
       =< t(".stats.no_of_available_items", count: @no_of_available_items)
@@ -61,6 +63,8 @@ turbo-frame#items
           th(scope="col") = t(".items.header.policy")
           th(scope="col") = t(".items.header.location")
           th(scope="col") = t(".items.header.status")
+          - if any_public_note
+            th(scope="col") = t(".items.header.public_note")
         tbody
           - @items.each do |item|
             tr
@@ -137,5 +141,11 @@ turbo-frame#items
                   - if item.closed_stack_orderable?
                     div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
                       = t(".closed_stack_order")
+
+              / Public note
+              - if any_public_note
+                td
+                  = item.public_note.presence || "–"
+
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

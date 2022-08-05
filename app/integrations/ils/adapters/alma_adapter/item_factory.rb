@@ -20,7 +20,7 @@ module Ils::Adapters
           due_date: get_due_date(alma_item),
           due_date_policy: get_due_date_policy(alma_item),
           is_requested: get_is_requested(alma_item),
-          notes: get_notes(alma_item),
+          public_note: get_public_note(alma_item),
           expected_arrival_date: get_expected_arrival_date(alma_item),
           description: get_description(alma_item)
         )
@@ -101,7 +101,7 @@ module Ils::Adapters
         alma_item.dig("item_data", "requested")
       end
 
-      def get_notes(alma_item)
+      def get_public_note(alma_item)
         alma_item.dig("item_data", "public_note").presence
       end
 

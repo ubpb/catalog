@@ -4,6 +4,8 @@
       .advanced-search-search-input {
         > .form-control {
           border-radius: 0;
+          border-top-right-radius: $border-radius;
+          border-top-left-radius: $border-radius;
           border-color: $input-border-color;
           &:focus {
             box-shadow: none;
@@ -29,6 +31,12 @@
           border-color: $input-border-color;
           &:focus {
             box-shadow: none;
+          }
+          &:first-child {
+            border-bottom-left-radius: $border-radius;
+          }
+          &:last-child {
+            border-bottom-right-radius: $border-radius;
           }
         }
       }

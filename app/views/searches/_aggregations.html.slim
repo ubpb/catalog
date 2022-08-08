@@ -29,8 +29,8 @@
 
 - if content_for? :aggregations
   h5 = t(".aggregations_header")
-  a.btn.btn-sm.btn-light.d-block.d-lg-none.mb-3(data-bs-toggle="collaggregationse" href="#collaggregationseAggregations")
+  a.btn.btn-sm.btn-light.d-block.d-lg-none.mb-3(data-bs-toggle="collapse" href="#collapseAggregations")
     i.fas.fa-filter
     span.ms-1 = "Filter anzeigen"
-  #collaggregationseAggregations.collaggregationse.d-lg-block
+  #collapseAggregations.collapse.d-lg-block
     = content_for :aggregations

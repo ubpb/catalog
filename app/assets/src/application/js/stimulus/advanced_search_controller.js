@@ -30,13 +30,13 @@ export default class extends Controller {
   add_field(event) {
     event?.preventDefault()
     let newFieldContent = this.templateTarget.innerHTML
-    let myInputGroup = event.target.closest(".input-group")
+    let myInputGroup = event.target.closest(".advanced-search-row")
     myInputGroup.insertAdjacentHTML('afterend', newFieldContent)
   }
 
   remove_field(event) {
     event?.preventDefault()
-    let myInputGroup = event.target.closest(".input-group")
+    let myInputGroup = event.target.closest(".advanced-search-row")
     myInputGroup.remove()
   }
 

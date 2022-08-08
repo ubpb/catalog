@@ -1,0 +1,37 @@
+@include media-breakpoint-down(md) {
+  #search_panel {
+    .advanced-search-row {
+      .advanced-search-search-input {
+        > .form-control {
+          border-radius: 0;
+          border-color: $input-border-color;
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .advanced-search-field-input {
+        > .form-select {
+          border-top: none;
+          border-bottom: none;
+          border-radius: 0;
+          border-color: $input-border-color;
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .advanced-search-buttons {
+        > .btn {
+          border-radius: 0;
+          border-color: $input-border-color;
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}

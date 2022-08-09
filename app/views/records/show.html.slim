@@ -208,7 +208,6 @@
     / ----------------------------------------
     - if @record.is_secondary_form?
       h4 = "Angaben zur Sekundärform"
-      p = "TODO: Was ist eine Sekundärform"
       dl
         = optional_value(@record.secondary_form.physical_description) do |value|
           dt = "Erscheinungsform"

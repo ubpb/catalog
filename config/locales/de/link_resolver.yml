@@ -1,8 +1,8 @@
 de:
   link_resolver:
-    breadcrumb: "Open URL Link-Resolver"
+    breadcrumb: "Link-Resolver"
     show:
-      header: "Open URL Link-Resolver"
+      header: "Link-Resolver"
       header_found: "Es wurden folgende elektronische Volltexte gefunden"
 
       error: "Fehler: Es konnte kein Ergebnis ermittelt werden."

@@ -92,9 +92,9 @@ class ApplicationController < ActionController::Base
         systemstellen_range = row[:systemstellen]
         standortkennziffern = row[:standortkennziffern]
 
-        if systemstellen_range.present? && systemstellen_range.first.present? && systemstellen_range.last.present? && standortkennziffern.present?
+        if systemstellen_range.present? && systemstellen_range.begin.present? && systemstellen_range.end.present? && standortkennziffern.present?
           # Expand systemstellen and notation to 4 chars to make ruby range include? work in this case.
-          justified_systemstellen_range = (systemstellen_range.first.ljust(4, "A") .. systemstellen_range.last.ljust( 4, "A"))
+          justified_systemstellen_range = (systemstellen_range.begin.ljust(4, "A") .. systemstellen_range.end.ljust( 4, "A"))
           justified_notation = notation.ljust(4, "A")
 
           standortkennziffern.include?(location_code) && justified_systemstellen_range.include?(justified_notation)

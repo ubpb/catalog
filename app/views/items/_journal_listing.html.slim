@@ -1,17 +1,17 @@
 ruby:
-  expected_items = @items&.select{|i| i.expected?}
+  items = @items&.select{|i| i.expected? || i.public_note.present?}
 
 turbo-frame#items
   h4 = t(".header")
 
-  - if expected_items.present?
+  - if items.present?
     table.table.align-middle.mb-0
         thead: tr
           th(scope="col") = t(".items.header.call_number")
           th(scope="col") = t(".items.header.location")
           th(scope="col") = t(".items.header.description")
         tbody
-          - expected_items.each do |item|
+          - items.each do |item|
             tr
               td
                 - if item.call_number

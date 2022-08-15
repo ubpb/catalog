@@ -46,12 +46,6 @@ module SearchEngine::Adapters
           journal_stocks: get_journal_stocks(data),
 
           secondary_form: get_secondary_form(data)
-
-          # descriptions: normalize_array(source_value(data, "description")),
-          # notes: normalize_array(source_value(data, "local_comment")),
-
-          # source: build_source(data),
-          # relations: build_relations(data),
         )
 
         # pp data
@@ -290,93 +284,6 @@ module SearchEngine::Adapters
         else []
         end
       end
-
-      # def build_identifiers(data)
-      #   identifiers = []
-      #   # ISBN
-      #   normalize_array(source_value(data, "isbn")).each do |value|
-      #     identifiers << SearchEngine::Identifier.new(type: :isbn, value: value)
-      #   end
-      #   # ISSN
-      #   normalize_array(source_value(data, "issn")).each do |value|
-      #     identifiers << SearchEngine::Identifier.new(type: :issn, value: value)
-      #   end
-      #   # other
-      #   normalize_array(source_value(data, "identifier")).each do |identifier|
-      #     identifiers << SearchEngine::Identifier.new(type: identifier.type.to_sym, value: identifier.value)
-      #   end
-      #   # Return identifiers
-      #   identifiers
-      # end
-
-      # def build_resource_links(data)
-      #   links = []
-      #   # Create links
-      #   normalize_array(source_value(data, "resource_links")).each do |link|
-      #     links << SearchEngine::Link.new(url: link["url"], label: link["label"])
-      #   end
-      #   # Return links
-      #   links
-      # end
-
-      # def build_fulltext_links(data)
-      #   links = []
-      #   # Create links
-      #   normalize_array(source_value(data, "fulltext_links")).each do |link|
-      #     links << SearchEngine::Link.new(url: link)
-      #   end
-      #   # Filter / sort links
-      #   links = ResourceLinksFilter.new(links).filter
-      #   # Return links
-      #   links
-      # end
-
-      # def build_part_of(data)
-      #   part_of = []
-
-      #   normalize_array(source_value(data, "is_part_of")).each do |part_of_data|
-      #     label = part_of_data["label"]
-      #     label << ": #{[*part_of_data["label_additions"]].join(", ")}" if part_of_data["label_additions"].present?
-      #     label << "; #{part_of_data["volume_count"]}" if part_of_data["volume_count"].present?
-
-      #     part_of << SearchEngine::Relation.new(label: label, id: part_of_data["ht_number"])
-      #   end
-
-      #   part_of
-      # end
-
-      # def build_source(data)
-      #   if source_data = source_value(data, "source").presence
-      #     label = [source_data["label"], source_data["counting"]].compact.join(". ")
-
-      #     SearchEngine::Relation.new(label: label, id: source_data["ht_number"])
-      #   end
-      # end
-
-      # def build_relations(data)
-      #   relations = []
-      #   # Create relations
-      #   normalize_array(source_value(data, "relation")).each do |relation|
-      #     relations << SearchEngine::Relation.new(label: relation["label"], id: relation["ht_number"])
-      #   end
-      #   # Return relations
-      #   relations
-      # end
-
-      # def build_journal_stocks(data)
-      #   stocks = []
-
-      #   normalize_array(source_value(data, "journal_stock")).each do |journal_stock|
-      #     stocks << SearchEngine::Journal.new(
-      #       stocks: normalize_array(journal_stock["stock"]),
-      #       gaps: normalize_array(journal_stock["gaps"]),
-      #       signature: journal_stock["signature"],
-      #       label: journal_stock["leading_text"]
-      #     )
-      #   end
-
-      #   stocks
-      # end
 
     end
   end

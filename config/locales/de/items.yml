@@ -6,7 +6,7 @@ de:
 
     journal_listing:
       header: "Aktuelle und erwartete Hefte"
-      no_items_message: "Keine Informationen über aktuelle oder erwarte Hefte verfügbar."
+      no_items_message: "Keine Informationen über aktuelle oder erwartete Hefte verfügbar."
       items:
         header:
           call_number: "Signatur"

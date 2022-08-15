@@ -237,7 +237,7 @@ module SearchEngine::Adapters
         if url = source_value(data, "resolver_link")
           SearchEngine::ResolverLink.new(
             url: url.gsub("https://katalog.ub.uni-paderborn.de", ""),
-            fulltext_available: true
+            fulltext_available: false
           )
         end
       end

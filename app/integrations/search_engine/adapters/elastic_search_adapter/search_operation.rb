@@ -122,6 +122,12 @@ module SearchEngine::Adapters
       end
 
       def normalize_query_string(query_string)
+        # Mask out some simple query string operators
+        query_string = query_string.gsub("-", "\\-")
+        query_string = query_string.gsub("|", "\\|")
+        query_string = query_string.gsub("+", "\\+")
+
+        # Replace with our own operators
         query_string = query_string.gsub(/\s(AND|UND)\s/, " + ")
         query_string = query_string.gsub(/\s(OR|ODER)\s/, " | ")
         query_string = query_string.gsub(/\s(NOT|NICHT)\s/, " -")

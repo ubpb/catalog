@@ -12,15 +12,26 @@ module Ils::Adapters
     private
 
       def get_items(record_id)
-        items = adapter.api.get(
-          "bibs/#{record_id}/holdings/ALL/items",
-          format: "application/json",
-          params: {
-            expand: "due_date_policy,due_date",
-            #view: "label",
-            limit: 100 # TODO: Add pagination to show more than 100 items
-          }
-        ).try(:[], "item") || []
+        # Alma uses offset and limit for pagination
+        offset = 0
+        limit  = 100
+
+        # Load the first 100 items from Alma
+        response = load_items(record_id, offset: offset, limit: limit)
+        # Get total number of items
+        total_number_of_items = response["total_record_count"] || 0
+
+        # Build array of item objects
+        items = []
+        items += response["item"] || []
+
+        # Fetch the rest if there are more items
+        if limit < total_number_of_items
+          while (offset = offset + limit) < total_number_of_items
+            response = load_items(record_id, offset: offset, limit: limit)
+            items += response["item"] || []
+          end
+        end
 
         # Filter out items with we don't want in discovery
         items = items.reject do |i|
@@ -32,8 +43,20 @@ module Ils::Adapters
           # Items at location LL (Ausgesondert)
           i.dig("item_data", "location", "value") == "LL"
         end
-      rescue ExlApi::LogicalError
-        []
+      end
+
+      def load_items(record_id, limit:, offset:)
+        adapter.api.get(
+          "bibs/#{record_id}/holdings/ALL/items",
+          format: "application/json",
+          params: {
+            expand: "due_date_policy,due_date",
+            limit: limit,
+            offset: offset
+          }
+        )
+      rescue
+        {}
       end
 
     end

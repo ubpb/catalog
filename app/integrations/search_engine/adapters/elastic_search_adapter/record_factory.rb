@@ -22,6 +22,7 @@ module SearchEngine::Adapters
           hbz_id: get_hbz_id(data),
           zdb_id: get_zdb_id(data),
           additional_identifiers: get_identifiers(data),
+          call_numbers: get_call_numbers(data),
 
           title: get_title(data),
           creators: get_creators(data),
@@ -118,6 +119,19 @@ module SearchEngine::Adapters
         end
         # Return identifiers
         identifiers
+      end
+
+      def get_call_numbers(data)
+        all_call_numbers = normalize_array(source_value(data, "call_numbers"))
+
+        # calculate base call number
+        all_call_numbers = all_call_numbers.map do |call_number|
+          index = call_number.index("+") || call_number.length
+          call_number[0..index-1].presence
+        end
+
+        # return
+        all_call_numbers.compact.uniq
       end
 
       def get_title(data)

@@ -27,6 +27,8 @@ class SearchEngine
     attribute :zdb_id, Types::String.optional
     # List of additional identifiers (e.g. ISBN, ISSN, etc.)
     attribute :additional_identifiers, Types::Array.of(Identifier).default([].freeze)
+    # Call numbers (base versions from items to allow title identification)
+    attribute :call_numbers, Types::Array.of(Types::String).default([].freeze)
 
     # The title of the record. REQUIRED.
     attribute :title, Types::String

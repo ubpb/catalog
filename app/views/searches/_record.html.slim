@@ -73,6 +73,13 @@ ruby:
               i.fas.fa-external-link
               =< t(".online_resource.resolver_link")
 
+    / Call numbers
+    - if record.call_numbers.present?
+      div
+        = "Signatur:"
+        ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+
+
     / Availability
     - if enable_availability
       .mt-2(data-availabilities-output)

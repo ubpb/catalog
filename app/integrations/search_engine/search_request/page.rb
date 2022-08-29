@@ -2,7 +2,7 @@ class SearchEngine
   class SearchRequest
 
     class Page
-      PER_PAGE_DEFAULT = 10
+      PER_PAGE_DEFAULT = 25
       PER_PAGE_MAX     = 100
       PAGE_DEFAULT     = 1
       PAGE_MAX         = 100

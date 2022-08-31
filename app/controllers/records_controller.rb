@@ -42,7 +42,7 @@ private
     end
 
     # Check for search request and validate it if available
-    if request.url.include?("?")
+    if request.params&.include?("sr")
       search_request = SearchEngine::SearchRequest.parse(request.url)
       validated_search_request = search_request.validate!(SearchEngine[current_search_scope].adapter)
 

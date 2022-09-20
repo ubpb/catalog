@@ -1,0 +1,13 @@
+.card.card-shadowed
+  .card-header.cutoff-corner-tr
+    h5.mb-0
+      span.me-2 = link_to record_path(id: @record.id, search_scope: current_search_scope) do
+        i.fa-solid.fa-angle-left
+      = t(".header", title: @record.title)
+
+  .card-body
+    turbo-frame#volumes
+      - if @volumes.present?
+        = link_to t(".show-volumes"), new_search_request_path(VolumesController.search_request(@record))
+      - else
+        em = t(".no-volumes")

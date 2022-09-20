@@ -1,0 +1,7 @@
+de:
+  volumes:
+    index:
+      breadcrumb: "Bände"
+      header: "Bände für %{title}"
+      no-volumes: "Keine Bände verfügbar."
+      show-volumes: "Zeige Bände"

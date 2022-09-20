@@ -1,7 +1,7 @@
 class RelationsController < RecordsController
 
   def index
-    add_breadcrumb(t(".breadcrumb"), record_items_path(
+    add_breadcrumb(t(".breadcrumb"), record_relations_path(
       search_scope: current_search_scope,
       record_id: @record.id
     ))

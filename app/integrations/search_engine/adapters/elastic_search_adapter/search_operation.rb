@@ -27,6 +27,12 @@ module SearchEngine::Adapters
 
         # Build the search result from ES result.
         build_search_result(es_result)
+      rescue => e
+        if e.message&.match?("parse_exception")
+          raise SearchEngine::QuerySyntaxError, e
+        else
+          raise e
+        end
       end
 
     private
@@ -42,10 +48,11 @@ module SearchEngine::Adapters
           if fields.present?
             container = q.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
             container << {
-              simple_query_string: {
+              query_string: {
                 default_operator: "AND",
                 fields:           fields,
                 query:            query,
+                type:             "cross_fields"
                 #quote_analyzer:   "default_with_stop_words_search"
               }
             }
@@ -122,17 +129,36 @@ module SearchEngine::Adapters
       end
 
       def normalize_query_string(query_string)
-        # Mask out some simple query string operators
-        query_string = query_string.gsub("-", "\\-")
-        query_string = query_string.gsub("|", "\\|")
-        query_string = query_string.gsub("+", "\\+")
+        # Escape characters function
+        escape = -> (string) do
+          # \ has to be escaped be itself AND has to be the first, to
+          # avoid double escaping of other escape sequences
+          %w(\\ + - = && || > < ! { } [ ] ^ : / ~).inject(string) do |s, c|
+            # adapted from http://stackoverflow.com/questions/7074337/why-does-stringgsub-double-content
+            s.gsub(c) { |match| "\\#{match}" } # avoid regular expression replacement string issues
+          end
+        end
 
-        # Replace with our own operators
-        query_string = query_string.gsub(/\s(AND|UND)\s/, " + ")
-        query_string = query_string.gsub(/\s(OR|ODER)\s/, " | ")
-        query_string = query_string.gsub(/\s(NOT|NICHT)\s/, " -")
+        # Escape some special characters
+        normalized_query_string = escape.(query_string).presence || ""
 
-        query_string
+        # Allow german bool operators (for compatability reasons)
+        normalized_query_string = normalized_query_string
+          .gsub("UND", "AND")
+          .gsub("ODER", "OR")
+          .gsub("NICHT", "NOT")
+
+        # Replace german umlauts: This is somekind of a hack, in order to be able to use truncation (mütter*)
+        # for words with german umlauts. This modification assumes that umlauts are stored
+        # as ae, oe, ue representation in the index.
+        normalized_query_string = normalized_query_string
+          .gsub("Ä", "Ae").gsub("ä", "ae")
+          .gsub("Ö", "Oe").gsub("ö", "oe")
+          .gsub("Ü", "Ue").gsub("ü", "ue")
+          .gsub("ß", "ss")
+
+        # Return
+        normalized_query_string
       end
 
       def build_aggregations

@@ -36,6 +36,7 @@ de:
 
     request_hints:
       invalid_after_validation: "Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es erneut."
+      query_syntax_error: "Ihre Suchanfrage enthielt ungültige Zeichen bzw. ungültige Zeichenkombinationen."
 
     searchables:
       local:

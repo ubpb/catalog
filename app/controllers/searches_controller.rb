@@ -49,13 +49,19 @@ class SearchesController < ApplicationController
         "facet-search" => @search_request.aggregations.present?
       }
 
-      @search_result = SearchEngine[current_search_scope].search(
-        validated_search_request,
-        {
-          session_id: request&.session&.id,
-          on_campus: on_campus?
-        }
-      )
+      begin
+        @search_result = SearchEngine[current_search_scope].search(
+          validated_search_request,
+          {
+            session_id: request&.session&.id,
+            on_campus: on_campus?
+          }
+        )
+      rescue SearchEngine::QuerySyntaxError => e
+        # Handle a possible syntax error in the query
+        flash[:search_panel] = {error: t("searches.request_hints.query_syntax_error")}
+        redirect_to(new_search_request_path)
+      end
     end
   end
 

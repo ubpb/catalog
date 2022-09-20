@@ -43,7 +43,7 @@ de:
         creator: "Autor(en) / Beteiligte"
         title: "Titel"
         subject: "Schlagwort"
-        pub: "Verlag / Erscheinungsort"
+        pub: "Ort / Verlag"
         yop: "Erscheinungsjahr"
         ids: "Identifikatoren"
         call_number: "Signatur"

@@ -12,7 +12,7 @@ de:
       search: "Suchen"
 
     search_field:
-      query_placeholder: "Suchbegriff eingeben..."
+      query_placeholder: "Suchbegriff(e) eingeben..."
 
     availabilities:
       error: >

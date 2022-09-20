@@ -59,14 +59,11 @@
           dd = yop
 
         / Superorder
-        / TODO: Don't show if there are no volumes available
-        / TODO: If superorder_id contains an Alma ID, linking using hbz_id will not work.
-        /       We need to fix this in normalisation. This will only become a problem if Alma is the leading
-        /       "Verbundsystem". Therefore we have some time to fix this.
         - if @record.is_superorder? && @record.hbz_id.present?
-          - sr_to_volumes = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{@record.hbz_id}&sr[s,asc]=volume")
           dt = t(".details.volumes")
-          dd = link_to t(".details.show_volumes"), new_search_request_path(sr_to_volumes)
+          dd
+            turbo-frame#volumes(src=record_volumes_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
+              i.fa-solid.fa-spinner.fa-spin
 
         / Fulltext Links
         = optional_value(FulltextLinksFilter.filter(@record.fulltext_links)) do |links|

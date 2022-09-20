@@ -8,7 +8,7 @@
   .card-body
     turbo-frame#relations
       - if @relations.present?
-        ul.mb-0
+        ul.mb-0.ps-3
           - @relations.each do |r|
             - sr = SearchEngine::SearchRequest.parse("sr[q,ids]=#{r.id}")
             li = link_to new_search_request_path(sr) do

@@ -43,6 +43,11 @@ de:
 
       reshelving_info: Wiedereinstellen am Standort bis %{time}
 
+      04_location_hint: >
+        Das im Magazin J befindliche Archivexemplar der Paderborner Dissertation ist nicht ausleihbar.
+        Bitte nutzen Sie - sofern vorhanden - die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel") oder
+        ein anderes Printexemplar.
+
       hold_request_info: >
         Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und
         sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein

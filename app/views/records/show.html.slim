@@ -194,10 +194,11 @@
                     - stock.comments.each do |c|
                       div = c
         .mb-2
-          .callout.callout-info
-            i.fa-solid.fa-info-circle.fa-lg.text-primary
-            em =< t(".journal_stocks.hint")
-            =< link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
+          .callout.callout-info.d-md-flex.align-items-center
+            div
+              i.fa-solid.fa-info-circle.fa-lg.text-primary
+              em =< t(".journal_stocks.hint")
+            .ms-auto.ps-md-1.mt-1.mt-md-0 = link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
               = t(".closed_stack_order")
 
     / ----------------------------------------

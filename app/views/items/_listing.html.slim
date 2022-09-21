@@ -147,5 +147,9 @@ turbo-frame#items
                 td
                   = item.public_note.presence || "–"
 
+    - has_04_location = @items.any?{|item| item.location.code == "04"}
+    - if has_04_location
+      .mt-2: em = t(".04_location_hint")
+
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

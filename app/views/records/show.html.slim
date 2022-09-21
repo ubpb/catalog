@@ -175,6 +175,14 @@
     = optional_value(@record.journal_stocks) do |journal_stocks|
       .mb-4
         h4 = t(".journal_stocks.header")
+
+        .callout.callout-info.d-md-flex.align-items-center.mb-2.p-2
+          div
+            i.fa-solid.fa-info-circle.fa-lg.text-primary
+            em =< t(".journal_stocks.hint")
+          .ms-auto.ps-md-1.mt-1.mt-md-0 = link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
+            = t(".closed_stack_order")
+
         table.table
           thead
             tr
@@ -185,7 +193,11 @@
             - journal_stocks.each do |stock|
               tr
                 td = stock.call_number
-                td = stock.location_name
+                td
+                  / TODO: Remove cleanup hack
+                  = stock.location_name&.gsub(/\A\d\d/, "")&.strip || "–"
+                  - if stock.location_code == "00"
+                    =< "(nicht ausleibar**)"
                 td
                   = [stock.label_prefix, stock.label].join(" ")
                   - if stock.gap
@@ -193,13 +205,11 @@
                   - if stock.comments.present?
                     - stock.comments.each do |c|
                       div = c
-        .mb-2
-          .callout.callout-info.d-md-flex.align-items-center
-            div
-              i.fa-solid.fa-info-circle.fa-lg.text-primary
-              em =< t(".journal_stocks.hint")
-            .ms-auto.ps-md-1.mt-1.mt-md-0 = link_to new_closed_stack_order_path, target: "_blank", class: "btn btn-primary btn-sm" do
-              = t(".closed_stack_order")
+
+        - has_p00_location = journal_stocks.any?{|js| js.location_code == "00"}
+        - if has_p00_location
+          .mb-2
+            em = "**#{t(".journal_stocks.p00_hint")}"
 
     / ----------------------------------------
     / Secondary form

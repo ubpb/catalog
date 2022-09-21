@@ -7,7 +7,7 @@ de:
       trl: Übersetzer
 
     process_types:
-      default: "Verfügbar"
+      default: "Nicht entliehen"
       loan: "Entliehen"
       holdshelf: "Für Vormerker bereitgestellt"
 

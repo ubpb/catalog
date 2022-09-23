@@ -16,6 +16,8 @@
       dl.key-value-list
         / Creators
         = optional_value(@record.creators) do |creators|
+          / TODO: Remove filter after this is handled in normalization
+          - creators = creators.reject{|c| c.relationships.any?{|r| r == "pbl"}}
           dt = t(".details.creators")
           dd = render(CreatorComponent.with_collection(creators))
 

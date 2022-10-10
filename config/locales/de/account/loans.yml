@@ -13,6 +13,11 @@ de:
         header: Ausgeliehene Medien
         no-loans: "Sie haben aktuell keine Medien ausgeliehen."
         renewAll: "Alle Medien verlängern"
+        sortable_fields:
+          due_date: "Fällig am"
+          loan_date: "Entliehen am"
+          barcode: "Strichcode"
+          title: "Titel"
 
       loan:
         loan_date: "Entliehen am:"

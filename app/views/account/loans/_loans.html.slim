@@ -9,25 +9,50 @@ ruby:
 
 - if loans.present?
   .card.card-shadowed
-    .card-header.cutoff-corner-tr
+    .card-header
       .d-flex.align-items-center
         h5.m-0
           = t(".header")
         .ms-1.span.badge.rounded-pill.bg-dark = loans_result.total
 
-      .mt-2.d-flex.flex-column.flex-sm-row.align-items-start.align-items-sm-center
+      .mt-2.d-flex.flex-row.align-items-start.align-items-sm-center
         - if paginator.present?
           = paginator
-        .ms-0.ms-sm-auto.mt-2.mt-sm-0.button.btn.btn-sm.btn-primary(
+
+        - if sortable_fields.present? && sortable_field
+          ruby:
+            nsr = ->(field, direction) {
+              account_loans_path(params.permit(:s, :d, :page).merge(s: field, d: direction))
+            }
+
+          .ms-0.ms-auto
+            .d-flex.align-items-start.align-items-sm-center.flex-column.flex-sm-row
+              .me-2 = "Sortiert nach"
+              .btn-group
+                .btn-group
+                  button#sort-button.btn.btn-primary.dropdown-toggle(data-bs-toggle="dropdown")
+                    = t(".sortable_fields.#{sortable_field.underscore}", default: sortable_field.underscore)
+                  ul.dropdown-menu.dropdown-menu-end(aria-labelledby="sort-button")
+                    - sortable_fields.each do |field|
+                      li = link_to nsr.(field, sortable_direction), class: "dropdown-item" do
+                        = t(".sortable_fields.#{field.underscore}", default: field.underscore)
+                - if sortable_direction == "asc"
+                  = link_to nsr.(sortable_field, "desc"), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-up-short-wide.fa-lg
+                - else
+                  = link_to nsr.(sortable_field, "asc"), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-down-wide-short.fa-lg
+
+    #loansListing.ul.list-group.list-group-flush(
+      data-loans-target="listing"
+    )
+      li.list-group-item.text-end
+        button.btn.btn.btn-primary(
           data-loans-target="renewAllButton"
           data-action="click->loans#renewAll"
         )
           i.fas.fa-redo
           =< t(".renewAll")
-
-    #loansListing.ul.list-group.list-group-flush(
-      data-loans-target="listing"
-    )
       - loans.each do |loan|
         li.list-group-item
           div(

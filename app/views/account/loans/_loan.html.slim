@@ -25,7 +25,7 @@
           = link_to record_path(loan.record_id, search_scope: "local"), target: "_blank" do
             = loan.title.presence || "n.n."
 
-        - author_and_yop = [loan.author.presence, loan.year_of_publication.presence]
+        - author_and_yop = [loan.author.presence, loan.year_of_publication.presence].compact
         - if author_and_yop.any?
           .mt-0 = author_and_yop.join("; ")
 

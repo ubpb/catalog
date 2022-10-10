@@ -11,7 +11,7 @@ module Ils::Adapters
         limit  = options[:disable_pagination] ? 5 : per_page
 
         # Load loans from Alma
-        response = get_loans(user_id, offset: offset, limit: limit)
+        response = get_loans(user_id, offset: offset, limit: limit, order_by: options[:order_by], direction: options[:direction])
 
         # Get total number of loans
         total_number_of_loans = response["total_record_count"] || 0
@@ -31,7 +31,7 @@ module Ils::Adapters
           # Load remaining loans in parallel to speed up the loading process
           # Parallel.map will maintain the order
           loans += Parallel.map(offsets, in_threads: 5) do |offset|
-            response = get_loans(user_id, offset: offset, limit: limit)
+            response = get_loans(user_id, offset: offset, limit: limit, order_by: options[:order_by], direction: options[:direction])
             response["item_loan"] || []
           end.flatten(1)
         end
@@ -50,16 +50,25 @@ module Ils::Adapters
 
     private
 
-      def get_loans(user_id, offset:, limit:)
+      def get_loans(user_id, offset:, limit:, order_by: nil, direction: nil)
+        params = {
+          expand: "renewable",
+          limit: limit,
+          offset: offset
+        }
+
+        sortable_fields = adapter.current_loans_sortable_fields || []
+        sortable_field  = sortable_fields.find{|f| f == order_by}  || adapter.current_loans_sortable_default_field
+        direction       = ["asc", "desc"].find{|d| d == direction} || adapter.current_loans_sortable_default_direction
+
+        if sortable_field
+          params[:order_by]  = sortable_field
+          params[:direction] = direction.upcase
+        end
+
         adapter.api.get("users/#{user_id}/loans",
           format: "application/json",
-          params: {
-            expand: "renewable",
-            order_by: "due_date",
-            direction: "ASC",
-            limit: limit,
-            offset: offset
-          }
+          params: params
         )
       end
 

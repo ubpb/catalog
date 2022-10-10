@@ -63,7 +63,18 @@ module Ils::Adapters
       end
 
       def get_author(alma_item_loan)
-        alma_item_loan["author"]
+        author = alma_item_loan["author"].presence
+
+        if author
+          # Remove possbile authority refs e.g. (DE-588)12778022X
+          author = author.gsub(/\(.+\).+\Z/, "")
+          # Remove possbile dates e.g. 1910-2004, 1932-, -2005
+          author = author.gsub(/(\d{3,4})?(-)?(\d{3,4})?/, "")
+
+          author = author.strip.presence
+        end
+
+        author
       end
 
       def get_description(alma_item_loan)

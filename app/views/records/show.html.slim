@@ -199,7 +199,7 @@
                   / TODO: Remove cleanup hack
                   = stock.location_name&.gsub(/\A\d\d/, "")&.strip || "–"
                   - if stock.location_code == "00"
-                    =< "(nicht ausleibar**)"
+                    =< "(nicht ausleihbar**)"
                 td
                   = [stock.label_prefix, stock.label].join(" ")
                   - if stock.gap

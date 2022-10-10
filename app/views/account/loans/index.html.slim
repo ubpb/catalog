@@ -1,6 +1,6 @@
 div(
   data-controller="loans"
-  data-loans-url=account_loans_path(page: params[:page], per_page: params[:per_page])
+  data-loans-url=account_loans_path(page: params[:page], per_page: params[:per_page], s: params[:s], d: params[:d])
   data-loans-renew-all-url=renew_all_account_loans_path
   data-loans-renew-all-redirect-url=account_loans_path
 )

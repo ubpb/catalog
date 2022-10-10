@@ -4,10 +4,17 @@ class Account::LoansController < Account::ApplicationController
 
   def index
     if request.xhr?
-      result = load_loans
+      sortable_fields    = Ils.adapter.current_loans_sortable_fields || []
+      sortable_field     = sortable_fields.find{|f| f == params[:s]} || Ils.adapter.current_loans_sortable_default_field
+      sortable_direction = ["asc", "desc"].find{|d| d == params[:d]} || Ils.adapter.current_loans_sortable_default_direction
+
+      result = load_loans(order_by: sortable_field, direction: sortable_direction)
 
       render partial: "loans", locals: {
-        loans_result: result
+        loans_result: result,
+        sortable_fields: sortable_fields,
+        sortable_field: sortable_field,
+        sortable_direction: sortable_direction
       }
     else
       render :index
@@ -38,12 +45,15 @@ class Account::LoansController < Account::ApplicationController
 
 private
 
-  def load_loans
+  def load_loans(order_by: nil, direction: nil)
     Ils.get_current_loans(
       current_user.ils_primary_id,
       {
-        per_page: 10,
-        page: params[:page]
+        per_page: 25,
+        page: params[:page],
+        disable_pagination: false,
+        order_by: order_by,
+        direction: direction
       }
     )
   end

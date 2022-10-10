@@ -13,7 +13,7 @@ de:
       journal_stocks:
         header: "Zeitschriftenbestand"
         hint: Aktuelle Zeitschriftenjahrgänge finden Sie am angegebenen Standort. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
-        p00_hint: Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel"). In besonderen Einzelfällen wenden Sie sich bitte an die Ortsleihe.
+        p00_hint: Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel"). In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
         details:
           call_number: Signatur
           location: Standort

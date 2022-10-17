@@ -5,7 +5,7 @@ ruby:
     t("code_tables.creator_relationships.#{r}", default: r)
   end.compact
 
-  sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{@creator.name}")
+  sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{Addressable::URI.encode_component(@creator.name, Addressable::URI::CharacterClasses::UNRESERVED)}")
 
 span(class=(@iteration.last? ? "me-0" : "me-1"))
   span = link_to @creator.name, helpers.new_search_request_path(sr_to_author)

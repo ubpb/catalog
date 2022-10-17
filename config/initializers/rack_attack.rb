@@ -1,5 +1,11 @@
 class Rack::Attack
 
+  class Request < ::Rack::Request
+    def remote_ip
+      @remote_ip ||= (env["action_dispatch.remote_ip"] || ip).to_s
+    end
+  end
+
   ### Configure Cache ###
 
   # If you don't want to use Rails.cache (Rack::Attack's default), then
@@ -25,7 +31,7 @@ class Rack::Attack
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
   throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-    req.ip unless req.path.start_with?('/assets')
+    req.remote_ip unless req.path.start_with?('/assets')
   end
 
   ### Prevent Brute-Force Login Attacks ###
@@ -42,7 +48,7 @@ class Rack::Attack
   # Key: "rack::attack:#{Time.now.to_i/:period}:logins/ip:#{req.ip}"
   throttle('logins/ip', limit: 5, period: 20.seconds) do |req|
     if req.path == '/login' && req.post?
-      req.ip
+      req.remote_ip
     end
   end
 

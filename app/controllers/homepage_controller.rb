@@ -4,7 +4,7 @@ class HomepageController < ApplicationController
 
   def show
     if params[:q].present?
-      sr = SearchEngine::SearchRequest.parse("sr[q,any]=#{params[:q]}")
+      sr = SearchEngine::SearchRequest.parse("sr[q,any]=#{Addressable::URI.encode_component(params[:q], Addressable::URI::CharacterClasses::UNRESERVED)}")
 
       return redirect_to(
         new_search_request_path(sr)

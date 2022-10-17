@@ -165,7 +165,7 @@
             = optional_value(@record.subjects) do |subjects|
               ruby:
                 linked_subjects = subjects.map do |subject|
-                  sr_to_subject = SearchEngine::SearchRequest.parse("sr[q,subject]=#{subject}")
+                  sr_to_subject = SearchEngine::SearchRequest.parse("sr[q,subject]=#{Addressable::URI.encode_component(subject, Addressable::URI::CharacterClasses::UNRESERVED)}")
                   link_to subject, new_search_request_path(sr_to_subject)
                 end
               dt = t(".details.subjects")

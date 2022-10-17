@@ -14,6 +14,7 @@ gem "metacrunch-marcxml", "~> 3.1.0" #, github: "ubpb/metacrunch-marcxml", branc
 gem "mysql2",             ">= 0.5.3"
 gem "parallel",           "~> 1.19"
 gem "puma",               ">= 5.2"
+gem "rack-attack",        "~> 6.6"
 gem "rails",              "~> 7.0.0"
 gem "rss",                "~> 0.2"
 gem "simple_form",        "~> 5.1"

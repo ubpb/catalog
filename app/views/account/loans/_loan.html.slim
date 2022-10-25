@@ -18,7 +18,7 @@
           span.mb-3.me-1.badge.bg-danger.text-light = t(".fines", fines: number_to_currency(loan.fine, unit: "€"))
         - if loan.is_resource_sharing_loan
           span.mb-3.me-1.badge.bg-primary.text-light = t(".resource_sharing_loan")
-        - unless loan.renewable
+        - if renew_result.nil? && !loan.renewable
           span.mb-3.badge.bg-warning.text-dark = t(".not_renewable")
 
         .fs-5

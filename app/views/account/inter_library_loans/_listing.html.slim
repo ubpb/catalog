@@ -1,12 +1,12 @@
 turbo-frame#resource-sharing-requests
-  - if resource_sharing_requests
+  - if resource_sharing_requests.present?
     table.table
       thead
         tr
-          th = "Status"
-          th = "Bestellt am"
-          th = "Bestellnummer"
-          th = "Titel"
+          th = t(".table.status")
+          th = t(".table.requested_at")
+          th = t(".table.resource_sharing_id")
+          th = t(".table.title")
       tbody
         - resource_sharing_requests.each do |rsr|
           tr
@@ -16,4 +16,4 @@ turbo-frame#resource-sharing-requests
             td = rsr.title
   - else
     .alert.alert-info.mb-0.text-center
-      = "TODO: Keine Fernleihbestellungen"
+      = t(".no-ills")

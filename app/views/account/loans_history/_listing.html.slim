@@ -1,0 +1,54 @@
+ruby:
+  paginator = render(PaginatorComponent.new(
+    page: loans_result.page,
+    per_page: loans_result.per_page,
+    total: loans_result.total
+  ))
+
+turbo-frame#loans-history
+  - if loans_result.loans.present?
+    .d-flex.mb-3
+      = paginator
+
+      - if sortable_fields.present? && sortable_field
+          ruby:
+            nsr = ->(field, direction) {
+              account_loans_history_index_path(params.permit(:s, :d, :page).merge(s: field, d: direction))
+            }
+
+          .ms-0.ms-auto
+            .d-flex.align-items-start.align-items-sm-center.flex-column.flex-sm-row
+              .me-2 = t(".sorted_by")
+              .btn-group
+                .btn-group
+                  button#sort-button.btn.btn-primary.dropdown-toggle(data-bs-toggle="dropdown")
+                    = t(".sortable_fields.#{sortable_field.underscore}", default: sortable_field.underscore)
+                  ul.dropdown-menu.dropdown-menu-end(aria-labelledby="sort-button")
+                    - sortable_fields.each do |field|
+                      li = link_to nsr.(field, sortable_direction), class: "dropdown-item" do
+                        = t(".sortable_fields.#{field.underscore}", default: field.underscore)
+                - if sortable_direction == "asc"
+                  = link_to nsr.(sortable_field, "desc"), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-up-short-wide.fa-lg
+                - else
+                  = link_to nsr.(sortable_field, "asc"), class: "btn btn-secondary" do
+                    i.fas.fa-arrow-down-wide-short.fa-lg
+
+
+    table.table
+      thead
+        tr
+          th = t(".table.barcode")
+          th = t(".table.title")
+          th = t(".table.loan_date")
+          th = t(".table.return_date")
+      tbody
+        - loans_result.loans.each do |loan|
+          tr
+            td = loan.barcode.presence || "–"
+            td = [loan.title.presence, loan.author.presence, loan.year_of_publication.presence].compact.join("; ")
+            td = (date = loan.loan_date) ? l(date) : "–"
+            td = (date = loan.return_date) ? l(date) : "–"
+  - else
+    .alert.alert-info.mb-0.text-center
+      = t(".no-loans")

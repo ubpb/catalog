@@ -1,0 +1,22 @@
+de:
+  account:
+    loans_history:
+      breadcrumb: "Ausleihhistorie"
+
+      index:
+        header: "Ausleihhistorie"
+        info: "Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten 100 Tage angezeigt werden."
+
+      listing:
+        no-loans: "Keine abgeschlossenen Ausleihvorgänge"
+        sorted_by: "Sortiert nach"
+        table:
+          barcode: "Strichcode"
+          title: "Titel"
+          loan_date: "Entliehen am"
+          return_date: "Zurückgegeben am"
+        sortable_fields:
+          loan_date: "Entliehen am"
+          return_date: "Zurückgegeben am"
+          barcode: "Strichcode"
+          title: "Titel"

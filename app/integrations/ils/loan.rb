@@ -3,6 +3,7 @@ class Ils
     attribute :id, Types::String
     attribute :loan_date, Types::Time
     attribute :due_date, Types::Time
+    attribute :return_date, Types::Time.optional
     attribute :renewable, Types::Bool.default(false)
     attribute :item_id, Types::String
     attribute :record_id, Types::String

@@ -26,5 +26,17 @@ module Ils::Adapters
       "asc"
     end
 
+    def former_loans_sortable_fields
+      ["return_date", "loan_date", "barcode", "title"]
+    end
+
+    def former_loans_sortable_default_field
+      "return_date"
+    end
+
+    def former_loans_sortable_default_direction
+      "asc"
+    end
+
   end
 end

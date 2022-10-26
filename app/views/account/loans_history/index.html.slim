@@ -1,0 +1,11 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0 => t(".header")
+
+  .card-body
+    .callout.callout-info
+      i.fa-solid.fa-info-circle
+      =< t(".info")
+
+    turbo-frame#loans-history(src=account_loans_history_index_path loading="lazy" target="_top")
+      = render "table_placeholder"

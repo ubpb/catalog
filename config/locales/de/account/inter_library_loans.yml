@@ -20,3 +20,11 @@ de:
 
         open_ill: Fernleihkonto öffnen
         mono_list_header: Status Ihrer monografischen Fernleihbestellungen
+
+      listing:
+        no-ills: "Keine Fernleihbestellungen"
+        table:
+          status: "Status"
+          requested_at: "Bestellt am"
+          resource_sharing_id: "Bestellnummer"
+          title: "Titel"

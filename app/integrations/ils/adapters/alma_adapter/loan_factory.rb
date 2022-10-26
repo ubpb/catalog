@@ -11,6 +11,7 @@ module Ils::Adapters
           id: get_id(alma_item_loan),
           loan_date: get_loan_date(alma_item_loan),
           due_date: get_due_date(alma_item_loan),
+          return_date: get_return_date(alma_item_loan),
           renewable: get_renewable(alma_item_loan),
           item_id: get_item_id(alma_item_loan),
           record_id: get_record_id(alma_item_loan),
@@ -36,6 +37,12 @@ module Ils::Adapters
 
       def get_due_date(alma_item_loan)
         Time.zone.parse(alma_item_loan["due_date"])
+      end
+
+      def get_return_date(alma_item_loan)
+        if (date = alma_item_loan["return_date"])
+          Time.zone.parse(date)
+        end
       end
 
       def get_renewable(alma_item_loan)

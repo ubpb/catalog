@@ -15,6 +15,9 @@
       = link_to account_hold_requests_path, class: "list-group-item" do
         i.fa-solid.fa-fw.fa-bookmark
         =< t(".hold_requests")
+      = link_to account_loans_history_index_path, class: "list-group-item" do
+        i.fa-solid.fa-fw.fa-clock-rotate-left
+        =< t(".loans_history")
       = link_to account_watch_lists_path, class: "list-group-item" do
         i.fa-solid.fa-fw.fa-heart
         =< t(".watch_lists")

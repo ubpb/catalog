@@ -157,6 +157,18 @@ class Ils
     end
 
     #
+    # Get the holdings for a record.
+    #
+    # @param record_id [String] a record ID.
+    # @return [Array<Ils::Holding>] List of holdings for the given record ID. The  array
+    #   is empty if no holdings (or a record with that ID) exists.
+    #
+    def get_holdings(record_id)
+      try_operation(__method__, record_id)
+    end
+
+
+    #
     # Get the items for a record.
     #
     # @param record_id [String] a record ID.

@@ -95,5 +95,9 @@ class SearchEngine
       self.secondary_form.present?
     end
 
+    def is_journal_stücktitel?
+      self.resource_type == "monograph" && self.call_numbers.any?{|c| c.start_with?(/\d/)}
+    end
+
   end
 end

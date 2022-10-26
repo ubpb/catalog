@@ -1,12 +1,35 @@
 turbo-frame#items
   h4 = t(".header")
-
   = render "alerts"
+
+  - if @record.is_journal_stücktitel?
+    .callout.callout-info(class=(@items.present? ? "mb-3" : "mb-0"))
+      i.fa-solid.fa-info-circle.fa-lg.me-1
+      ' Zu Zeitschriften-Stücktiteln existieren in der Regel keine geonderten Exemplare für die Ausleihe. Stattdessen finden Sie diesen Titel
+      ' als Teil der Zeitschrift <strong>#{@journal_for_stücktitel || 'n.n.'}</strong> in Band <strong>#{@volume_for_stücktitel || 'n.n.'}</strong> am Standort
+
+      - location = @holding_for_journal_stücktitel&.location&.label || 'n.n.'
+      - if shelf_finder_enabled? && (cnumber = @holding_for_journal_stücktitel&.call_number).present? && (lcode = @holding_for_journal_stücktitel&.location&.code).present?
+        strong(
+          data-controller="shelf-finder"
+          data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{cnumber}|#{lcode}"
+          data-shelf-finder-target="output"
+        )
+          = location
+      - else
+        strong = location
+
+      '
+      ' unter der Singnatur <strong>#{@holding_for_journal_stücktitel&.call_number || 'n.n.'}</strong>.
+
+      - if @items.present?
+        p.mb-0.mt-2
+          ' In diesem Fall existieren jedoch <strong>zusätzliche Exemplare</strong> wie unten angegeben.
 
   - if @items.present?
     - any_public_note = @items.any?{|i| i.public_note.present?}
 
-    .mb-3: strong
+    .mb-2: strong
       =  t(".stats.no_of_items", count: @no_of_items)
       =< t(".stats.no_of_available_items", count: @no_of_available_items)
       =< t(".stats.no_of_hold_requests", count: @hold_requests.count)
@@ -118,7 +141,7 @@ turbo-frame#items
                   - else
                     = location
 
-                  - if item.process_type.present?
+                  - if item.process_type.present? && item.process_type.code != "unknown"
                     .text-danger.fst-italic = t(".items.not_on_location")
               / Process Status
               td
@@ -147,9 +170,10 @@ turbo-frame#items
                 td
                   = item.public_note.presence || "–"
 
-    - has_04_location = @items.any?{|item| item.location.code == "04"}
+    - has_04_location = @items.any?{|item| item.location&.code == "04"}
     - if has_04_location
       .mt-2: em = t(".04_location_hint")
 
   - else
-    .alert.alert-info.mb-0 = t(".no_items_message")
+    - if !@record.is_journal_stücktitel?
+      .alert.alert-info.mb-0 = t(".no_items_message")

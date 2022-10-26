@@ -15,6 +15,21 @@ class ItemsController < RecordsController
       a.call_number && b.call_number ? a.call_number <=> b.call_number : a.call_number ? -1 : 1
     end
 
+    # For journal Stücktitel load holdings. We use this to
+    # inform the user about Stücktitel locations.
+    if @record.is_journal_stücktitel?
+      # To give the user information about the location of the journal, we load the
+      # holdings for this journal Stücktitel record and pick the first one with a journal signature.
+      # TODO: Are there cases where more than one holding exists for the journal Stücktitel.
+      holdings_for_journal_stücktitel = Ils.get_holdings(@record.id)
+      holdings_for_journal_stücktitel = holdings_for_journal_stücktitel.select{|h| journal_call_number?(h.call_number)}
+      holdings_for_journal_stücktitel = augment_locations(holdings_for_journal_stücktitel)
+      @holding_for_journal_stücktitel = holdings_for_journal_stücktitel.first
+      # For the reference to the journal we pick the first "is part of" reference.
+      # TODO: Are there cases where a journal Stücktitel is linked to more than one journal?
+      @journal_for_stücktitel, @volume_for_stücktitel = @record.is_part_of.first&.label&.split(":")&.map(&:strip)&.map(&:presence)
+    end
+
     if @items.present?
       # Augment item location label with data from the static location
       # lookup table.
@@ -49,22 +64,22 @@ class ItemsController < RecordsController
 
 private
 
-  def augment_locations(items)
-    items.each do |item|
-      if item.call_number.present? && item.location&.code.present?
-        if journal_call_number?(item.call_number)
-          if (jls = journal_locations(item.call_number, item.location.code)).present?
-            item.location.attributes[:label] = jls.join("; ")
+  def augment_locations(items_or_holdings)
+    items_or_holdings.each do |ioh|
+      if ioh.call_number.present? && ioh.location&.code.present?
+        if journal_call_number?(ioh.call_number)
+          if (jls = journal_locations(ioh.call_number, ioh.location.code)).present?
+            ioh.location.attributes[:label] = jls.join("; ")
           end
         else
-          if (ml = mono_location(item.call_number, item.location.code)).present?
-            item.location.attributes[:label] = ml
+          if (ml = mono_location(ioh.call_number, ioh.location.code)).present?
+            ioh.location.attributes[:label] = ml
           end
         end
       end
     end
 
-    items
+    items_or_holdings
   end
 
 end

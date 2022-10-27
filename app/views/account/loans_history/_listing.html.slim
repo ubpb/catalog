@@ -46,7 +46,12 @@ turbo-frame#loans-history
         - loans_result.loans.each do |loan|
           tr
             td = loan.barcode.presence || "–"
-            td = [loan.title.presence, loan.author.presence, loan.year_of_publication.presence].compact.join("; ")
+            td
+              = link_to record_path(loan.record_id, search_scope: "local"), target: "_blank" do
+                = loan.title.presence || "n.n."
+              - add_info_str = [loan.author.presence, loan.year_of_publication.presence].compact.join("; ")
+              - if add_info_str.present?
+                div = add_info_str
             td = (date = loan.loan_date) ? l(date) : "–"
             td = (date = loan.return_date) ? l(date) : "–"
   - else

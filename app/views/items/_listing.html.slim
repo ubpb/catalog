@@ -5,7 +5,7 @@ turbo-frame#items
   - if @record.is_journal_stücktitel?
     .callout.callout-info(class=(@items.present? ? "mb-3" : "mb-0"))
       i.fa-solid.fa-info-circle.fa-lg.me-1
-      ' Zu Zeitschriften-Stücktiteln existieren in der Regel keine geonderten Exemplare für die Ausleihe. Stattdessen finden Sie diesen Titel
+      ' Zu Zeitschriften-Stücktiteln existieren in der Regel keine gesonderten Exemplare für die Ausleihe. Stattdessen finden Sie diesen Titel
       ' als Teil der Zeitschrift <strong>#{@journal_for_stücktitel || 'n.n.'}</strong> in Band <strong>#{@volume_for_stücktitel || 'n.n.'}</strong> am Standort
 
       - location = @holding_for_journal_stücktitel&.location&.label || 'n.n.'

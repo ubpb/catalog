@@ -61,9 +61,9 @@ module Ils::Adapters
         ).xpath("/bibs/bib")
 
         # Extract record IDs
-        record_ids = bibs.map do |bib|
-          bib.xpath("//datafield[@tag='AVA']/subfield[@code='0']").text
-        end
+        record_ids = bibs
+          .xpath("//datafield[@tag='AVA']/subfield[@code='0']")
+          .map(&:text)
 
         # Remove the given record id from the list, so that only related record ids
         # are left and make sure the ids are unique.

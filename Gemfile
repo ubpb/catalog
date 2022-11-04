@@ -25,11 +25,6 @@ gem "view_component",     "~> 2.31"
 
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
-# Just for migration tasks
-# TODO: Remove after migration.
-gem "sequel", ">= 5.55"
-gem "dotenv", ">= 2.7", require: false
-
 group :production do
   gem "newrelic_rpm", ">= 8.9.0"
 end

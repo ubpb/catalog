@@ -117,7 +117,6 @@ GEM
       reline (>= 0.3.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.8.1)
     dry-container (0.11.0)
       concurrent-ruby (~> 1.0)
     dry-core (0.9.1)
@@ -273,7 +272,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sequel (5.62.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -340,7 +338,6 @@ DEPENDENCIES
   capistrano-rvm (~> 0.1)
   capybara (>= 2.15)
   debug
-  dotenv (>= 2.7)
   dry-struct (~> 1.4)
   elasticsearch (~> 8.1)
   exl_api (~> 1.0.0)!
@@ -357,7 +354,6 @@ DEPENDENCIES
   rails (~> 7.0.0)
   rss (~> 0.2)
   selenium-webdriver (>= 3.1)
-  sequel (>= 5.55)
   simple_form (~> 5.1)
   slim (~> 4.0)
   sprockets-rails (~> 3.4.2)

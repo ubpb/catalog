@@ -67,6 +67,9 @@ Rails.application.routes.draw do
   # Cover images
   get "cover-images/:id", to: "cover_images#show", as: "cover_image"
 
+  # ZDB Journal, Online & Print Service
+  get "joap", to: "joap#show", as: "joap"
+
   # Kickers and static redirectd
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :go_legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy

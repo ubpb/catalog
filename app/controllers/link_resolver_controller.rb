@@ -40,7 +40,18 @@ class LinkResolverController < ApplicationController
     def is_free?; @keys["is_free"]; end
     def public_note; @keys["public_note"]; end
     def availability
-      @keys["availability"]&.gsub("<br>", "")
+      @keys["availability"]
+        &.gsub("<br>", " ")
+        &.gsub("Available", "Verfügbar")
+        &.gsub("from", "von")
+        &.gsub("volume:", "Band:")
+        &.gsub("issue:", "Heft:")
+        &.gsub("until", "bis")
+        &.gsub("Most recent", "Neuste")
+        &.gsub("year(s)", "Jahr(e)")
+        &.gsub("not available", "nicht verfügbar")
+        &.gsub("available", "verfügbar")
+        &.gsub("months", "Monate")
     end
     #def authentication_note; @keys["authentication_note"]; end
   end

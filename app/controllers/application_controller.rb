@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   end
 
   def journal_call_number?(call_number)
-    call_number.starts_with?(/\d/)
+    call_number&.starts_with?(/\d/)
   end
   helper_method :journal_call_number?
 

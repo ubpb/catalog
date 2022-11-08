@@ -8,7 +8,16 @@ class Account::LoansHistoryController < Account::ApplicationController
       sortable_field     = sortable_fields.find{|f| f == params[:s]} || Ils.adapter.former_loans_sortable_default_field
       sortable_direction = ["asc", "desc"].find{|d| d == params[:d]} || Ils.adapter.former_loans_sortable_default_direction
 
-      loans_result = Ils.get_former_loans(current_user.ils_primary_id)
+      loans_result = Ils.get_former_loans(
+        current_user.ils_primary_id,
+        {
+          per_page: 25,
+          page: params[:page],
+          disable_pagination: false,
+          order_by: sortable_field,
+          direction: sortable_direction
+        }
+      )
 
       render partial: "listing", locals: {
         loans_result: loans_result,

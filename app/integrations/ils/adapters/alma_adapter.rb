@@ -35,7 +35,7 @@ module Ils::Adapters
     end
 
     def former_loans_sortable_default_direction
-      "asc"
+      "desc"
     end
 
   end

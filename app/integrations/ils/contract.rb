@@ -73,8 +73,8 @@ class Ils
     # @option options :page [Integer] ... Optional. Default value: 1.
     # @return Ils::GetLoansResult former loans.
     #
-    def get_former_loans(user_id)
-      try_operation(__method__, user_id)
+    def get_former_loans(user_id, options = {})
+      try_operation(__method__, user_id, options)
     end
 
     #

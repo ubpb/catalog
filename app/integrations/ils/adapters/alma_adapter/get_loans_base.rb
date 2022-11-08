@@ -15,8 +15,6 @@ module Ils::Adapters
           user_id,
           offset: offset,
           limit: limit,
-          loan_status: loan_status,
-          expand: expand,
           order_by: options[:order_by],
           direction: options[:direction]
         )
@@ -43,8 +41,6 @@ module Ils::Adapters
               user_id,
               offset: offset,
               limit: limit,
-              loan_status: loan_status,
-              expand: expand,
               order_by: options[:order_by],
               direction: options[:direction]
             )
@@ -65,16 +61,28 @@ module Ils::Adapters
       end
 
       def loan_status
-        # override in subclass
+        # override in subclass. Can be "Active" or "Complete"
       end
 
       def expand
         # override in subclass
       end
 
+      def sortable_fields
+        # override in subclass
+      end
+
+      def sortable_default_field
+        # override in subclass
+      end
+
+      def sortable_default_direction
+        # override in subclass
+      end
+
     private
 
-      def get_loans(user_id, offset:, limit:, expand: nil, loan_status: nil, order_by: nil, direction: nil)
+      def get_loans(user_id, offset:, limit:, order_by: nil, direction: nil)
         params = {
           limit: limit,
           offset: offset
@@ -83,9 +91,8 @@ module Ils::Adapters
         params[:expand]      = expand if expand.present?
         params[:loan_status] = ["Active", "Complete"].find{|e| e == loan_status} || "Active"
 
-        sortable_fields = adapter.current_loans_sortable_fields || []
-        sortable_field  = sortable_fields.find{|f| f == order_by}  || adapter.current_loans_sortable_default_field
-        direction       = ["asc", "desc"].find{|d| d == direction} || adapter.current_loans_sortable_default_direction
+        sortable_field  = sortable_fields.find{|f| f == order_by}  || sortable_default_field
+        direction       = ["asc", "desc"].find{|d| d == direction} || sortable_default_direction
 
         if sortable_field
           params[:order_by]  = sortable_field

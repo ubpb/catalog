@@ -115,7 +115,7 @@ module SearchEngine::Adapters
         end
         # other
         normalize_array(source_value(data, "additional_identifiers")).each do |identifier|
-          identifiers << SearchEngine::Identifier.new(type: identifier["type"].to_sym, value: identifier["value"])
+          identifiers << SearchEngine::Identifier.new(type: identifier["type"].downcase.to_sym, value: identifier["value"])
         end
         # Return identifiers
         identifiers

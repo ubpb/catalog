@@ -131,6 +131,7 @@
       .row
         .col-lg-6
           dl.key-value-list
+            / Language
             = optional_value(@record.languages, default: "–") do |languages|
               dt = t(".details.languages")
               dd
@@ -139,20 +140,29 @@
                 - else
                   = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
 
-              dt = t(".details.identifiers.header")
-              dd
-                / = optional_value(@record.aleph_id) do |id|
-                /   div
-                /     = "#{t(".details.identifiers.aleph_id")}: #{id}"
-                / = optional_value(@record.hbz_id) do |id|
-                /   div
-                /     = "#{t(".details.identifiers.hbz_id")}: #{id}"
-                /= optional_value(@record.zdb_id) do |id|
-                  div = "ZDB-ID: #{id}"
-                - @record.additional_identifiers.each do |id|
-                  div = "#{t(".details.identifiers.additional.#{id.type.to_s.downcase}", default: id.type.to_s)}: #{id.value}"
-
-                div = "#{t(".details.identifiers.id")}: #{@record.id}"
+            / Identifiers
+            dt = t(".details.identifiers.header")
+            dd
+              / ISBN
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :isbn}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.isbn")}: #{ids.join(", ")}"
+              / ISSN
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :issn}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.issn")}: #{ids.join(", ")}"
+              / eISSN
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :eissn}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.eissn")}: #{ids.join(", ")}"
+              / DOI
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :doi}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.doi")}: #{ids.join(", ")}"
+              / ZDB ID
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :"de-599"}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.zdb")}: #{ids.join(", ")}"
+              / OCLC ID
+              = optional_value(@record.additional_identifiers.select{|i| i.type == :ocolc}.map(&:value)) do |ids|
+                div = "#{t(".details.identifiers.oclc")}: #{ids.join(", ")}"
+              / Local System ID
+              div = "#{t(".details.identifiers.id")}: #{@record.id}"
 
         .col-lg-6
           dl.key-value-list

@@ -43,31 +43,33 @@ module SearchEngine::Adapters
         # Queries
         search_request.queries.each do |q|
           fields = adapter.searchables_fields(q.name)
-          query  = normalize_query_string(q.value)
 
           if fields.present?
             container = q.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
-            container << {
-              query_string: {
-                default_operator: "AND",
-                fields:           fields,
-                query:            query,
-                type:             "cross_fields"
-                #quote_analyzer:   "default_with_stop_words_search"
-              }
-            }
 
-            # # Use a "should" component that uses stop words for better ranking
-            # container = es_query[:bool][:should]
-            # container << {
-            #   simple_query_string: {
-            #     default_operator: "AND",
-            #     fields:           fields,
-            #     query:            query,
-            #     #quote_analyzer:   "default_with_stop_words_search",
-            #     analyzer:         "default_with_stop_words_search"
-            #   }
-            # }
+            # Build different queries depending on the field that is searched.
+            # FIXME: This couples the implemenation to the config file, which is
+            # very wrong and MUST be adressed.
+            case q.name
+            when "ids", "superorder_id"
+              container << {
+                multi_match: {
+                  fields: fields,
+                  type: "cross_fields",
+                  query: q.value
+                }
+              }
+            else
+              container << {
+                query_string: {
+                  default_operator: "AND",
+                  fields:           fields,
+                  type:             "cross_fields",
+                  query:            normalize_query_string(q.value)
+                  #quote_analyzer:   "default_with_stop_words_search"
+                }
+              }
+            end
           end
         end
 

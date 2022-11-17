@@ -114,8 +114,17 @@ module SearchEngine::Adapters
           identifiers << SearchEngine::Identifier.new(type: :issn, value: value)
         end
         # other
-        normalize_array(source_value(data, "additional_identifiers")).each do |identifier|
-          identifiers << SearchEngine::Identifier.new(type: identifier["type"].downcase.to_sym, value: identifier["value"])
+        normalize_array(source_value(data, "additional_identifiers")).each do |composed_identifier|
+          # Additional identifiers are expected in composed form (TYPE)VALUE.
+          # We need to split them up
+          if match_data = composed_identifier.match(/\A\((.+)\)(.+)/)
+            type  = match_data[1].presence
+            value = match_data[2].presence
+
+            if type && value
+              identifiers << SearchEngine::Identifier.new(type: type.downcase.to_sym, value: value)
+            end
+          end
         end
         # Return identifiers
         identifiers

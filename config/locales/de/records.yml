@@ -43,14 +43,12 @@ de:
         identifiers:
           header: "Identifikatoren"
           id: "Titel-ID"
-          aleph_id: "Alte System-ID"
-          hbz_id: "Hbz-ID"
-          zdb_id: "ZDB-ID"
-          additional:
-            isbn: "ISBN"
-            issn: "ISSN"
-            ocolc: "OCLC-Nummer"
-
+          isbn: "ISBN"
+          issn: "ISSN"
+          eissn: "eISSN"
+          doi: "DOI"
+          zdb: "ZDB-ID"
+          oclc: "OCLC-Nummer"
 
 
 

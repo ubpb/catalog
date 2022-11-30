@@ -88,14 +88,7 @@ class LinkResolverController < ApplicationController
       #
       # Parse services (only full text services for now)
       #
-      @fulltext_services = alma_result.xpath("//context_services/context_service")
-      # Select only IZ services
-      .select do |service_node|
-        context_service_id = service_node.attr("context_service_id").presence
-        context_service_id && context_service_id.ends_with?("6463")
-      end
-      # Map IZ services
-      .map do |service_node|
+      @fulltext_services = alma_result.xpath("//context_services/context_service").map do |service_node|
         # Service type
         service_type = service_node.attr("service_type").presence
         next unless service_type == "getFullTxt"

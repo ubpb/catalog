@@ -88,7 +88,15 @@ class LinkResolverController < ApplicationController
       #
       # Parse services (only full text services for now)
       #
-      @fulltext_services = alma_result.xpath("//context_services/context_service").map do |service_node|
+      @fulltext_services = alma_result.xpath("//context_services/context_service")
+      # Reject services that are "filtered"
+      .reject do |service_node|
+        service_node.xpath("./keys/key").find do |key_node|
+          key_node.attr("id")&.downcase == "filtered" && key_node.text&.downcase == "true"
+        end
+      end
+      # Map remaining services
+      .map do |service_node|
         # Service type
         service_type = service_node.attr("service_type").presence
         next unless service_type == "getFullTxt"

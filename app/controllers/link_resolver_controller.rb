@@ -118,7 +118,14 @@ class LinkResolverController < ApplicationController
             keys: keys
           )
         end
-      end.compact
+      end
+      # Dedup services
+      # TODO: Verify which parameter we can use to dedub.
+      # .uniq do |service|
+      #   service.package_name
+      # end
+      # Compact list
+      .compact
     end
   end
 

@@ -71,21 +71,31 @@
         = optional_value(FulltextLinksFilter.filter(@record.fulltext_links)) do |links|
           dt = t(".details.fulltext_links")
           dd
-            ul.mb-0.list-unstyled
+            ul.list-group
               - links.each do |link|
-                li = link_to link.url, target: "_blank" do
-                  i.fa-solid.fa-external-link
-                  /=< link.label || link.url
-                  =< link.url
-            = vpn_info
+                li.list-group-item
+                  .d-flex.align-items-center
+                    div
+                      div = link.label
 
-        / Fulltext Links by resolver URL
-        - if @record.resolver_link.present?
+                      - if link.coverage
+                        div.text-success: em = link.coverage
+
+                      - if link.note
+                        div: em = link.note
+                    .ms-auto
+                      = link_to link.url, target: "_blank", class: "btn btn-primary btn-sm" do
+                        i.fa-solid.fa-external-link.fa-fw
+                        = "Link aufrufen"
+            - content_for :vpn_info, vpn_info
+            - if content_for? :vpn_info
+              .mt-2 = yield(:vpn_info)
+
+        / Fulltext Links by resolver URL (used by CDI)
+        / Only show for CDI scope and only if direct links via fulltext_links are not available.
+        - if current_search_scope == :cdi && @record.resolver_link.present? && @record.fulltext_links.empty?
           dt = t(".details.resolver_link")
           dd
-            /= link_to @record.resolver_link.url, target: "_blank" do
-              i.fa-solid.fa-external-link
-              =< t("searches.record.online_resource.resolver_link")
             div
               turbo-frame#link-resolver-results(src=@record.resolver_link.url)
                 i.fa-solid.fa-spinner.fa-spin-pulse

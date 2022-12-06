@@ -41,7 +41,7 @@ class LinkResolverController < ApplicationController
     def public_note; @keys["public_note"]; end
     def availability
       @keys["availability"]
-        &.gsub("<br>", " ")
+        &.gsub("<br>", "; ")
         &.gsub("Available", "Verfügbar")
         &.gsub("from", "von")
         &.gsub("volume:", "Band:")

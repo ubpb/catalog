@@ -139,24 +139,25 @@ module SearchEngine::Adapters
           if url = link_to_rsrc["U"]
             links << SearchEngine::Link.new(
               url: url,
-              label: link_to_rsrc["G"]
+              label: link_to_rsrc["G"].presence || "Volltext"
             )
           end
         end
 
-        # Check for //record/links/linktopdf
-        if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktopdf")
-          if url = link_to_pdf["U"]
-            links << SearchEngine::Link.new(url: url)
-          end
-        end
+        #
+        # # Check for //record/links/linktopdf
+        # if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktopdf")
+        #   if url = link_to_pdf["U"]
+        #     links << SearchEngine::Link.new(url: url)
+        #   end
+        # end
 
-        # Check for //record/links/linktohtml
-        if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktohtml")
-          if url = link_to_pdf["U"]
-            links << SearchEngine::Link.new(url: url)
-          end
-        end
+        # # Check for //record/links/linktohtml
+        # if link_to_pdf = get_link_elements(xml, xpath: "//record/links/linktohtml")
+        #   if url = link_to_pdf["U"]
+        #     links << SearchEngine::Link.new(url: url)
+        #   end
+        # end
 
         # Return links
         links

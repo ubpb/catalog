@@ -64,6 +64,6 @@ ruby:
         - if index > 0
           hr
         .hit
-          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_availability: false
+          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_availability: false, enable_fulltext_links: true
   .card-footer
     = paginator

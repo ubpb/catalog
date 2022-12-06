@@ -42,7 +42,6 @@ module SearchEngine::Adapters
 
           related_resource_links: get_related_resource_links(data),
           fulltext_links: get_fulltext_links(data),
-          resolver_link: get_resolver_link(data),
 
           journal_stocks: get_journal_stocks(data),
 
@@ -238,31 +237,35 @@ module SearchEngine::Adapters
         normalize_array(
           source_value(data, "related_resource_links")
         ).map do |link_data|
-          SearchEngine::Link.new(
-            label: link_data["label"],
-            url: link_data["url"]
-          )
-        end
+          label = link_data["label"]
+          url   = link_data["url"]
+
+          if label.present? && url.present?
+            SearchEngine::Link.new(label: label, url: url)
+          end
+        end.compact
       end
 
       def get_fulltext_links(data)
         normalize_array(
           source_value(data, "fulltext_links")
         ).map do |link_data|
-          SearchEngine::Link.new(
-            label: link_data["label"],
-            url: link_data["url"]
-          )
-        end
-      end
+          label = link_data["label"]
+          url   = link_data["url"]
 
-      def get_resolver_link(data)
-        if url = source_value(data, "resolver_link")
-          SearchEngine::ResolverLink.new(
-            url: url.gsub("https://katalog.ub.uni-paderborn.de", ""),
-            fulltext_available: false
-          )
-        end
+          if url.present?
+            if label.blank?
+              label = "Volltext"
+            end
+
+            SearchEngine::Link.new(
+              label: label,
+              url: url,
+              coverage: link_data["coverage"],
+              note: link_data["note"]
+            )
+          end
+        end.compact
       end
 
       def get_journal_stocks(data)

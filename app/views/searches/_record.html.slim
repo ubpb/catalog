@@ -15,7 +15,7 @@ ruby:
     - isbn = record.additional_identifiers.select{|i| i.type == :isbn}.first&.value&.gsub("-", "")
     - if isbn
       = image_tag(cover_image_url(isbn, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
-  div
+  div.flex-fill
     / Title
     h5.mb-0
       = link_to record.title, show_record_path(record, search_request: @search_request)
@@ -60,22 +60,42 @@ ruby:
 
     / Links
     - if enable_fulltext_links
-      - fl = record.fulltext_links.first
-      - rl = record.resolver_link
-      - if fl || rl
-        div
-          - if fl
-            = link_to fl.url, target: "_blank" do
+      / Normal fulltext links
+      - if record.fulltext_links.present?
+        - first_link  = record.fulltext_links.first
+        - other_links = record.fulltext_links[1..-1]
+
+        .mt-2.input-group.input-group-sm.flex-nowrap
+          .input-group-text
+            div
+              i.fa-solid.fa-globe
+              =< "Link zum Volltext"
+
+          .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
+            = link_to first_link.url, target: "_blank" do
               i.fas.fa-external-link
-              =< t(".online_resource.direct_link")
-          - elsif rl
-            - if rl.fulltext_available
-              = link_to rl.url, target: "_blank" do
-                i.fas.fa-external-link
-                =< t(".online_resource.direct_link")
-            - else
-              = link_to rl.url, target: "_blank" do
-                i.fas.fa-external-link
+              =< first_link.label
+
+          - if other_links.present?
+            button(type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false")
+              = "+#{other_links.count}"
+            ul.dropdown-menu.dropdown-menu-end
+              - other_links.each do |link|
+                li: a.dropdown-item(href=link.url target="_blank")
+                  i.fas.fa-external-link
+                  =< link.label
+      / resolver links for CDI
+      - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
+        .mt-2.input-group.input-group-sm.flex-nowrap
+          .input-group-text
+            div
+              i.fa-solid.fa-globe
+              =< "Link zum Volltext"
+
+          .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
+            turbo-frame#link-resolver-results.w-100
+              = link_to rl.url do
+                i.fa-solid.fa-clipboard-question
                 =< t(".online_resource.resolver_link")
 
     / Call numbers

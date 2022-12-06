@@ -75,18 +75,16 @@
               - links.each do |link|
                 li.list-group-item
                   .d-flex.align-items-center
-                    div
-                      div = link.label
+                    .ms-0
+                      div = link_to link.url do
+                        i.fa-solid.fa-external-link.fa-fw
+                        = link.label
 
                       - if link.coverage
                         div.text-success: em = link.coverage
 
                       - if link.note
                         div: em = link.note
-                    .ms-auto
-                      = link_to link.url, target: "_blank", class: "btn btn-primary btn-sm" do
-                        i.fa-solid.fa-external-link.fa-fw
-                        = "Link aufrufen"
             - content_for :vpn_info, vpn_info
             - if content_for? :vpn_info
               .mt-2 = yield(:vpn_info)

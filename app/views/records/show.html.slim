@@ -100,7 +100,7 @@
 
         / Link to print version via JOAP service
         - if @record.is_online_resource? && @record.is_journal? && (issn = @record.additional_identifiers.find{|i| i.type == :issn}&.value).present?
-          dt = "Print-Ausgabe"
+          dt = "Druckausgabe"
           dd
             turbo-frame#joap-results(src=joap_path(issn: issn))
               i.fa-solid.fa-spinner.fa-spin-pulse

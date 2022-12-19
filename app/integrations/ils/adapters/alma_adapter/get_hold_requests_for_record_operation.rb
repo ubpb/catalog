@@ -15,7 +15,7 @@ module Ils::Adapters
           "bibs/#{record_id}/requests",
           format: "application/json",
           params: {
-            request_type: "HOLD"
+            #request_type: "HOLD"
           }
         ).try(:[], "user_request") || []
       rescue ExlApi::LogicalError

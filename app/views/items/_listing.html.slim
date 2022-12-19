@@ -102,47 +102,57 @@ turbo-frame#items
                   = "–"
               / Policy
               td
-                / TODO: Remove cleanup hack
-                = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
+                - if item.temp_policy.present?
+                  div
+                    i.fa-solid.fa-clock.fa-fw
+                    =< item.temp_policy.label&.gsub(/\(\d\d\)/, "")&.strip
+                - else
+                  / TODO: Remove cleanup hack
+                  = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
               / Location
               td
-                / Edge-Case "Seminarapparat"
-                - if item.policy&.label =~ /Seminarapparat/i
-                  = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.id, id: item.id)) do
-                    i.fa-solid.fa-spinner.fa-spin
-                / Edge-Case "Handapparat"
-                - elsif item.policy&.label =~ /Handapparat/i
-                  i.fa-solid.fa-info-circle.text-primary
-                  em =< t(".items.handapparat_info")
-                / Edge-Case "IEMAN"
-                - elsif item.location&.label =~ /IEMAN/i
-                  i.fa-solid.fa-info-circle.text-primary
-                  =< link_to "IEMAN", "https://kw.uni-paderborn.de/ieman/", target: "_blank"
-                / Edge-Case "ZfS"
-                - elsif item.location&.label =~ /zentrum.+sprachlehre|zfs/i
-                  i.fa-solid.fa-info-circle.text-primary
-                  =< link_to "Zentrum für Sprachlehre (ZfS)", "https://www.uni-paderborn.de/zfs/wir-ueber-uns/mediathek-sprechraum/", target: "_blank"
-                / Edge-Case "IMT-Medien"
-                - elsif item.location&.label =~ /imt.+medien/i
-                  i.fa-solid.fa-info-circle.text-primary
-                  =< link_to "Zentrum für Sprachlehre (ZfS)", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
-                / Default-Case
+                - if item.temp_location.present?
+                  div
+                    i.fa-solid.fa-clock.fa-fw
+                    =< item.temp_location.label
                 - else
-                  - location = item.location&.label || "–"
-
-                  / Shelf finder (only for monos currently)
-                  - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
-                    div(
-                      data-controller="shelf-finder"
-                      data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
-                      data-shelf-finder-target="output"
-                    )
-                      = location
+                  / Edge-Case "Seminarapparat"
+                  - if item.policy&.label =~ /Seminarapparat/i
+                    = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.id, id: item.id)) do
+                      i.fa-solid.fa-spinner.fa-spin
+                  / Edge-Case "Handapparat"
+                  - elsif item.policy&.label =~ /Handapparat/i
+                    i.fa-solid.fa-info-circle.text-primary
+                    em =< t(".items.handapparat_info")
+                  / Edge-Case "IEMAN"
+                  - elsif item.location&.label =~ /IEMAN/i
+                    i.fa-solid.fa-info-circle.text-primary
+                    =< link_to "IEMAN", "https://kw.uni-paderborn.de/ieman/", target: "_blank"
+                  / Edge-Case "ZfS"
+                  - elsif item.location&.label =~ /zentrum.+sprachlehre|zfs/i
+                    i.fa-solid.fa-info-circle.text-primary
+                    =< link_to "Zentrum für Sprachlehre (ZfS)", "https://www.uni-paderborn.de/zfs/wir-ueber-uns/mediathek-sprechraum/", target: "_blank"
+                  / Edge-Case "IMT-Medien"
+                  - elsif item.location&.label =~ /imt.+medien/i
+                    i.fa-solid.fa-info-circle.text-primary
+                    =< link_to "Zentrum für Sprachlehre (ZfS)", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
+                  / Default-Case
                   - else
-                    = location
+                    - location = item.location&.label || "–"
 
-                  - if item.process_type.present? && item.process_type.code != "unknown"
-                    .text-danger.fst-italic = t(".items.not_on_location")
+                    / Shelf finder (only for monos currently)
+                    - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
+                      div(
+                        data-controller="shelf-finder"
+                        data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
+                        data-shelf-finder-target="output"
+                      )
+                        = location
+                    - else
+                      = location
+
+                    - if item.process_type.present? && item.process_type.code != "unknown"
+                      .text-danger.fst-italic = t(".items.not_on_location")
               / Process Status
               td
                 - if code = item.process_type&.code&.downcase

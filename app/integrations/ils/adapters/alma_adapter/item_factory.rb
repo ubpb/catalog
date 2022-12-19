@@ -14,8 +14,10 @@ module Ils::Adapters
           is_available: get_is_available(alma_item),
           reshelving_time: get_reshelving_time(alma_item),
           policy: get_policy(alma_item),
+          temp_policy: get_temp_policy(alma_item),
           library: get_library(alma_item),
           location: get_location(alma_item),
+          temp_location: get_temp_location(alma_item),
           process_type: get_process_type(alma_item),
           due_date: get_due_date(alma_item),
           due_date_policy: get_due_date_policy(alma_item),
@@ -60,6 +62,15 @@ module Ils::Adapters
         end
       end
 
+      def get_temp_policy(alma_item)
+        code  = alma_item.dig("holding_data", "temp_policy", "value")
+        label = alma_item.dig("holding_data", "temp_policy", "desc")
+
+        if code && label
+          Ils::ItemPolicy.new(code: code,label: label)
+        end
+      end
+
       def get_library(alma_item)
         code  = alma_item.dig("item_data", "library", "value")
         label = alma_item.dig("item_data", "library", "desc")
@@ -74,6 +85,16 @@ module Ils::Adapters
         label = alma_item.dig("item_data", "location", "desc")
 
         if code && label
+          Ils::Location.new(code: code,label: label)
+        end
+      end
+
+      def get_temp_location(alma_item)
+        in_temp_location = alma_item.dig("holding_data", "in_temp_location")
+        code  = alma_item.dig("holding_data", "temp_location", "value")
+        label = alma_item.dig("holding_data", "temp_location", "desc")
+
+        if in_temp_location && code && label
           Ils::Location.new(code: code,label: label)
         end
       end

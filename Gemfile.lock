@@ -175,7 +175,7 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -219,7 +219,7 @@ GEM
     public_suffix (5.0.1)
     puma (6.0.0)
       nio4r (~> 2.0)
-    racc (1.6.1)
+    racc (1.6.2)
     rack (2.2.4)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)

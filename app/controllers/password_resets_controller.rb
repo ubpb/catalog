@@ -29,7 +29,7 @@ class PasswordResetsController < ApplicationController
         db_user = User.create_or_update_from_ils_user!(ils_user)
         db_user.create_password_reset_token!
 
-        PasswordResetsMailer.notify_user(db_user).deliver_now
+        PasswordResetsMailer.notify_user(db_user).deliver_later
 
         flash[:success] = t(".success_flash", email: helpers.mask_email(ils_user.email))
         redirect_to(new_session_path)

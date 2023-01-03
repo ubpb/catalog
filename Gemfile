@@ -45,6 +45,7 @@ group :development do
   gem "i18n-debug",            ">= 1.2"
   gem "web-console",           ">= 3.3"
   gem "letter_opener_web",     ">= 2.0"
+  gem "ruby-lsp",              ">= 0.3"
 end
 
 group :test do

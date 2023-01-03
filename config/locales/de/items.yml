@@ -54,6 +54,13 @@ de:
         sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein
         Exemplar für Sie verfügbar wird.
 
+      temp_location_info: >
+        Diese Medien stehen temporär an einem anderen Standort und/oder unterliegen temporär anderen
+        Ausleihkonditionen. Möglicherweise können diese Medien nicht entliehen werden. Wurde ein Datum hinterlegt,
+        wann das Medium zu seinem ursprünglichen Standort und/oder seinen ursprünglichen Ausleihkonditionen zurückkehrt,
+        wird dies unter Status angegeben.
+      temp_due_back_date: "Von temporärer Aufstellung zurück am %{due_date}"
+
       login_required: "Für Kontofunktionen bitte anmelden"
 
       hold_requests:

@@ -18,6 +18,7 @@ class Ils
 
     attribute :temp_location, Ils::Location.optional
     attribute :temp_policy, Ils::ItemPolicy.optional
+    attribute :temp_due_back_date, Types::Date.optional
 
     def expected?
       process_type&.code == "ACQ" && expected_arrival_date.present?

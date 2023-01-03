@@ -104,7 +104,7 @@ turbo-frame#items
               td
                 - if item.temp_policy.present?
                   div
-                    i.fa-solid.fa-clock.fa-fw
+                    i.fa-regular.fa-clock.fa-fw
                     =< item.temp_policy.label&.gsub(/\(\d\d\)/, "")&.strip
                 - else
                   / TODO: Remove cleanup hack
@@ -113,7 +113,7 @@ turbo-frame#items
               td
                 - if item.temp_location.present?
                   div
-                    i.fa-solid.fa-clock.fa-fw
+                    i.fa-regular.fa-clock.fa-fw
                     =< item.temp_location.label
                 - else
                   / Edge-Case "Seminarapparat"
@@ -175,6 +175,11 @@ turbo-frame#items
                     div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
                       = t(".closed_stack_order")
 
+                  - if item.temp_due_back_date
+                    div
+                      i.fa-regular.fa-clock.fa-fw
+                      em = t(".temp_due_back_date", due_date: l(item.temp_due_back_date.to_date))
+
               / Public note
               - if any_public_note
                 td
@@ -183,6 +188,12 @@ turbo-frame#items
     - has_04_location = @items.any?{|item| item.location&.code == "04"}
     - if has_04_location
       .mt-2: em == t(".04_location_hint")
+
+    - has_item_with_temp_location = @items.any?{|item| item.temp_location.present? || item.temp_policy.present?}
+    - if has_item_with_temp_location
+      .mt-2: em
+        i.fa-regular.fa-clock.fa-fw
+        =< t(".temp_location_info")
 
   - else
     - if !@record.is_journal_stücktitel?

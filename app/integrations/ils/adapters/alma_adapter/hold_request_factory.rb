@@ -37,10 +37,10 @@ module Ils::Adapters
       end
 
       def get_status(data)
-        case data["request_status"]
-        when "NOT_STARTED"   then Ils::Types::HoldRequestStatus[:in_queue]
-        when "ON_HOLD_SHELF" then Ils::Types::HoldRequestStatus[:on_hold_shelf]
-        when "IN_PROCESS"    then Ils::Types::HoldRequestStatus[:in_process]
+        case data["request_status"]&.upcase
+        when "NOT STARTED"   then Ils::Types::HoldRequestStatus[:in_queue]
+        when "ON HOLD SHELF" then Ils::Types::HoldRequestStatus[:on_hold_shelf]
+        when "IN PROCESS"    then Ils::Types::HoldRequestStatus[:in_process]
         else Ils::Types::HoldRequestStatus[:unknown]
         end
       end

@@ -36,16 +36,17 @@ group :development, :test do
 end
 
 group :development do
-  gem "capistrano",            "~> 3.11"
   gem "capistrano-bundler",    "~> 2.0"
   gem "capistrano-passenger",  "~> 0.2"
   gem "capistrano-rails",      "~> 1.6"
   gem "capistrano-rvm",        "~> 0.1"
+  gem "capistrano",            "~> 3.11"
   gem "foreman",               ">= 0.87"
   gem "i18n-debug",            ">= 1.2"
-  gem "web-console",           ">= 3.3"
   gem "letter_opener_web",     ">= 2.0"
   gem "ruby-lsp",              ">= 0.3"
+  gem "sorbet",                ">= 0.5"
+  gem "web-console",           ">= 3.3"
 end
 
 group :test do

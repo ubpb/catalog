@@ -6,6 +6,11 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Enable debuggging via rdbg in "attach" mode.
+if defined?(Rails::Server) && Rails.env.development?
+  require "debug/open_nonstop"
+end
+
 module Catalog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

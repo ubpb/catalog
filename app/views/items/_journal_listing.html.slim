@@ -1,6 +1,6 @@
 ruby:
   items = @items&.select{|i| i.expected? || i.public_note.present?}
-  items = items&.sort_by{|i| [i.call_number, i.description]}
+  items = items&.sort_by{|i| [i.call_number, i.expected_arrival_date]}
 
 turbo-frame#items
   h4 = t(".header")

@@ -40,6 +40,7 @@ module Ils::Adapters
           # Items that are suppressed from publishing
           # For whatever reason this boolean flag is of type string.
           i.dig("holding_data", "holding_suppress_from_publishing") == "true" ||
+          i.dig("holding_data", "calculated_suppress_from_publishing") == "true" ||
           # Items at location LL (Ausgesondert)
           i.dig("item_data", "location", "value") == "LL"
         end

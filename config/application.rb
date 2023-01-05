@@ -7,7 +7,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 # Enable debuggging via rdbg in "attach" mode.
-if defined?(Rails::Server) && Rails.env.development?
+if defined?(Rails::Server) && Rails.env.development? && ENV["DEBUG_MODE"] == "attach"
   require "debug/open_nonstop"
 end
 

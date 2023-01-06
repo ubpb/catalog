@@ -14,7 +14,7 @@ Turbo.setProgressBarDelay(200)
 import "./stimulus"
 
 // Load bootstrap
-import * as bootstrap from "bootstrap"
+import "bootstrap"
 
 // Enable tooltips
 // We need a efficient way of enabling/disabling tooltips that work with regular

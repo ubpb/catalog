@@ -103,5 +103,9 @@ class SearchEngine
       self.resource_type == "monograph" && self.call_numbers.any?{|c| c.start_with?(/\d/)}
     end
 
+    def is_newspaper?
+      @record.resource_type == "newspaper"
+    end
+
   end
 end

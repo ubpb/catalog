@@ -35,7 +35,7 @@ module ApplicationHelper
     # not for journals
     record.resource_type != "journal" &&
     # not for newspapers
-    record.resource_type != "newspaper"
+    !record.is_newspaper?
   end
 
   def aggregation_label(aggregation)

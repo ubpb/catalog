@@ -33,7 +33,7 @@ module ApplicationHelper
     # not for online resources
     !record.is_online_resource? &&
     # not for journals
-    record.resource_type != "journal" &&
+    !record.is_journal? &&
     # not for newspapers
     !record.is_newspaper?
   end

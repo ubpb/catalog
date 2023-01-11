@@ -1,18 +1,14 @@
-ruby:
-  items = @items&.select{|i| i.expected? || i.public_note.present?}
-  items = items&.sort_by{|i| [(i.call_number || "zzz"), (i.expected_arrival_date&.to_s || "111")]}
-
 turbo-frame#items
   h4 = t(".header")
 
-  - if items.present?
+  - if @items.present?
     table.table.align-middle.mb-0
         thead: tr
           th(scope="col") = t(".items.header.call_number")
           th(scope="col") = t(".items.header.location")
           th(scope="col") = t(".items.header.description")
         tbody
-          - items.each do |item|
+          - @items.each do |item|
             tr
               td
                 - if item.call_number

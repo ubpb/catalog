@@ -10,11 +10,6 @@ class ItemsController < RecordsController
     @items += Ils.get_items(@record.id)
     @items += Ils.get_items(params[:host_item_id]) if params[:host_item_id].present?
 
-    # Sort items and handle nil case for call number
-    @items = @items.sort do |a, b|
-      a.call_number && b.call_number ? a.call_number <=> b.call_number : a.call_number ? -1 : 1
-    end
-
     # For journal Stücktitel load holdings. We use this to
     # inform the user about Stücktitel locations.
     if @record.is_journal_stücktitel?
@@ -30,28 +25,61 @@ class ItemsController < RecordsController
       @journal_for_stücktitel, @volume_for_stücktitel = @record.is_part_of.first&.label&.split(":")&.map(&:strip)&.map(&:presence)
     end
 
-    if @items.present?
-      # Augment item location label with data from the static location
-      # lookup table.
-      @items = augment_locations(@items)
+    # Handle the case where we want a special "journal listing" for the items
+    if @record.is_journal? || @record.is_newspaper?
+      # Make sure we render the special journal listing
+      @show_journal_listing = true
 
-      # Item stats
-      @no_of_items = @items.count
-      @no_of_available_items = @items.count{|i| i.is_available == true}
+      # For journals only show the expected items or items that have a public note set
+      @items = @items.select{|i| i.expected? || i.public_note.present?}
 
-      # Get hold requests for that record
-      @hold_requests = Ils.get_hold_requests_for_record(@record.id)
+      # Prepare items for display...
+      if @items.present?
+        # Sort journal items by description: The description holds the issue number.
+        # But the format is not always in a sortable form, so we fix the common ones
+        # n.yyyy and yyyy,n and make them sortable.
+        @items = @items.map do |item|
+          sort_key = case item.description
+          when /(\d{1,4})\.(\d{1,4})/ then "#{$2.rjust(4, "0")},#{$1.rjust(4, "0")}"
+          when /(\d{1,4})\,(\d{1,4})/ then "#{$1.rjust(4, "0")},#{$2.rjust(4, "0")}"
+          end
 
-      if current_user.present?
-        # Check if the current user can perform a hold request for that record
-        @can_perform_hold_request = Ils.can_perform_hold_request(
-          @record.id,
-          current_user.ils_primary_id
-        )
+          sort_key.present? ? item.new(sort_key: sort_key)
+                            : item.new(sort_key: item.call_number)
+        end.sort_by do |item|
+           [item.sort_key.present? ? 1 : 0, item.sort_key]
+        end
+      end
+    else
+      # Make sure we render the normal items listing
+      @show_journal_listing = false
 
-        # Check if the current user has a hold request for that record
-        @user_hold_requests = @hold_requests.select do |hr|
-          hr.user_id == current_user.ils_primary_id
+      # Prepare items for display...
+      if @items.present?
+        # Sort items by call number. Handle nil case for call number (sorted last)
+        @items = @items.sort_by{|item| [item.call_number ? 1 : 0, item.call_number]}
+
+        # Augment item location label with data from the static location lookup table
+        @items = augment_locations(@items)
+
+        # Item stats
+        @no_of_items = @items.count
+        @no_of_available_items = @items.count{|i| i.is_available == true}
+
+        # Get hold requests for that record
+        @hold_requests = Ils.get_hold_requests_for_record(@record.id)
+
+        if current_user.present?
+          # Check if the current user can perform a hold request for that record
+          @can_perform_hold_request = Ils.can_perform_hold_request(
+            @record.id,
+            current_user.ils_primary_id
+          )
+
+          # Check if the current user has a hold request for that record
+          @user_hold_requests = @hold_requests.select do |hr|
+            hr.user_id == current_user.ils_primary_id
+          end
         end
       end
     end

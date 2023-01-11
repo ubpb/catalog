@@ -104,7 +104,7 @@ class SearchEngine
     end
 
     def is_newspaper?
-      @record.resource_type == "newspaper"
+      self.resource_type == "newspaper"
     end
 
   end

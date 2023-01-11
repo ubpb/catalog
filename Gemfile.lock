@@ -139,10 +139,10 @@ GEM
     elastic-transport (8.1.0)
       faraday (< 3)
       multi_json
-    elasticsearch (8.5.2)
+    elasticsearch (8.6.0)
       elastic-transport (~> 8)
-      elasticsearch-api (= 8.5.2)
-    elasticsearch-api (8.5.2)
+      elasticsearch-api (= 8.6.0)
+    elasticsearch-api (8.6.0)
       multi_json
     erubi (1.12.0)
     faraday (2.7.2)
@@ -208,7 +208,7 @@ GEM
       net-protocol
     net-ssh (7.0.1)
     netrc (0.11.0)
-    newrelic_rpm (8.14.0)
+    newrelic_rpm (8.15.0)
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
@@ -281,7 +281,7 @@ GEM
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
-    sorbet-runtime (0.5.10600)
+    sorbet-runtime (0.5.10621)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -307,7 +307,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (2.80.0)
+    view_component (2.81.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)

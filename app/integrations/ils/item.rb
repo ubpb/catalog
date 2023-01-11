@@ -20,6 +20,12 @@ class Ils
     attribute :temp_policy, Ils::ItemPolicy.optional
     attribute :temp_due_back_date, Types::Date.optional
 
+    # Sorting items in the discovery is dependent on various
+    # factors that can only be decided on controller level.
+    # To give controllers a way to set a sorting strategy we add
+    # this optional sort_key field.
+    attribute :sort_key, Types::String.optional
+
     def expected?
       process_type&.code == "ACQ" && expected_arrival_date.present?
     end

@@ -5,8 +5,10 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # App config
+/config/application.yml
 /config/ils.yml
 /config/search_engine.yml
+/config/database.yml
 
 # Ignore bundler config.
 /.bundle

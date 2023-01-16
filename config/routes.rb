@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :hold_requests, path: "hold-requests", only: [:create, :destroy]
     resources :relations, only: [:index]
     resources :volumes, only: [:index]
+    resources :recommendations, only: [:index]
   end
 
   # Availability

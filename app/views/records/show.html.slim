@@ -11,196 +11,21 @@
     / ----------------------------------------
     / Record details
     / ----------------------------------------
-    .mb-4
-      h4 = t(".details.header")
-      dl.key-value-list
-        / Creators
-        = optional_value(@record.creators) do |creators|
-          / TODO: Remove filter after this is handled in normalization
-          - creators = creators.reject{|c| c.relationships.any?{|r| r == "pbl"}}
-          dt = t(".details.creators")
-          dd = render(CreatorComponent.with_collection(creators))
-
-        / Title
-        = optional_value(@record.title, default: "–") do |title|
-          dt = t(".details.title")
-          dd = title
-
-        / Is part of...
-        = optional_value(@record.is_part_of) do |is_part_of|
-          dt = t(".details.is_part_of")
-          dd
-            ul.mb-0.list-unstyled
-              - is_part_of.each do |p|
-                - if p.id.present?
-                  ruby:
-                    sr_to_superorder = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-                    sr_to_volumes    = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{p.id}&sr[s,asc]=volume")
-
-                    link_to_superorder = link_to p.label, new_search_request_path(sr_to_superorder)
-                    link_to_volumes    = link_to t("searches.record.all_volumes"), new_search_request_path(sr_to_volumes)
-                  li
-                    == link_to_superorder
-                    ==< "(#{link_to_volumes})"
-                - else
-                  li = p.label
-
-        / Edition
-        = optional_value(@record.edition) do |edition|
-          dt = t(".details.edition")
-          dd = edition
-
-        / Place of publication & publisher
-        = optional_value(@record.publication_notices) do |notices|
-          dt = t(".details.publication_notices")
-          dd = notices.join(", ")
-
-        / Year of publication
-        = optional_value(@record.year_of_publication) do |yop|
-          dt = t(".details.year_of_publication")
-          dd = yop
-
-        / Superorder
-        - if @record.is_superorder? && @record.hbz_id.present?
-          dt = t(".details.volumes")
-          dd
-            turbo-frame#volumes(src=record_volumes_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
-              i.fa-solid.fa-spinner.fa-spin
-
-        / Fulltext Links
-        = optional_value(FulltextLinksFilter.filter(@record.fulltext_links)) do |links|
-          dt = t(".details.fulltext_links")
-          dd
-            ul.list-group
-              - links.each do |link|
-                li.list-group-item
-                  .d-flex.align-items-center
-                    .ms-0
-                      div = link_to link.url do
-                        i.fa-solid.fa-external-link.fa-fw
-                        = link.label
-
-                      - if link.coverage
-                        div.text-success: em = link.coverage
-
-                      - if link.note
-                        div: em = link.note
-            - content_for :vpn_info, vpn_info
-            - if content_for? :vpn_info
-              .mt-2 = yield(:vpn_info)
-
-        / Fulltext Links by resolver URL (used by CDI)
-        / Only show for CDI scope and only if direct links via fulltext_links are not available.
-        - if current_search_scope == :cdi && @record.resolver_link.present? && @record.fulltext_links.empty?
-          dt = t(".details.fulltext_links")
-          dd
-            div
-              turbo-frame#link-resolver-results(src=@record.resolver_link.url)
-                i.fa-solid.fa-spinner.fa-spin-pulse
-
-        / Link to print version via JOAP service
-        - if @record.is_online_resource? && @record.is_journal? && (issn = @record.additional_identifiers.find{|i| i.type == :issn}&.value).present?
-          dt = "Druckausgabe"
-          dd
-            turbo-frame#joap-results(src=joap_path(issn: issn))
-              i.fa-solid.fa-spinner.fa-spin-pulse
-
-        / Links to related content (e.g. covers, table of contents)
-        = optional_value(@record.related_resource_links) do |links|
-          dt = t(".details.related_resource_links")
-          dd
-            ul.mb-0.list-unstyled
-              - links.each do |link|
-                li = link_to link.url, target: "_blank" do
-                  i.fa-solid.fa-external-link
-                  =< link.label || link.url
-
-        / Related records (e.g. predesessors, parallel titels, etc.)
-        = optional_value(@record.relations) do |relations|
-          dt = t(".details.relations")
-          dd
-            turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
-              i.fa-solid.fa-spinner.fa-spin
-
-        / Source
-        = optional_value(@record.source) do |source|
-          dt = t(".details.source")
-          / TODO: Add link in case there is an ID present
-          dd = source.label
-
-        / Notes
-        = optional_value(@record.notes) do |notes|
-          dt = t(".details.notes")
-          dd
-            ul.mb-0.ps-3
-              - notes.each do |note|
-                li = note
-
+    - if Config[:recommendations, :enabled, default: false] && current_search_scope == :cdi
       .row
-        .col-lg-6
-          dl.key-value-list
-            / Language
-            = optional_value(@record.languages, default: "–") do |languages|
-              dt = t(".details.languages")
-              dd
-                - if languages.is_a?(String)
-                  = languages
-                - else
-                  = languages.map{|l| t("searches.aggregations.default.language.values.#{l.downcase}", default: l.downcase) }.join("; ")
-
-            / Identifiers
-            dt = t(".details.identifiers.header")
-            dd
-              / ISBN
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :isbn}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.isbn")}: #{ids.join(", ")}"
-              / ISSN
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :issn}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.issn")}: #{ids.join(", ")}"
-              / eISSN
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :eissn}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.eissn")}: #{ids.join(", ")}"
-              / DOI
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :doi}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.doi")}: #{ids.join(", ")}"
-              / ZDB ID
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :"de-599"}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.zdb")}: #{ids.join(", ")}"
-              / OCLC ID
-              = optional_value(@record.additional_identifiers.select{|i| i.type == :ocolc}.map(&:value)) do |ids|
-                div = "#{t(".details.identifiers.oclc")}: #{ids.join(", ")}"
-              / Local System ID
-              div = "#{t(".details.identifiers.id")}: #{@record.id}"
-
-        .col-lg-6
-          dl.key-value-list
-            = optional_value(@record.physical_description, default: "–") do |physical_description|
-              dt = t(".details.physical_description")
-              dd = physical_description
-
-            = optional_value(@record.local_notations) do |local_notations|
-              ruby:
-                linked_local_notations = local_notations.map do |local_notation|
-                  sr_to_local_notation = SearchEngine::SearchRequest.parse("sr[q,local_notation]=#{local_notation}")
-                  link_to local_notation.upcase, new_search_request_path(sr_to_local_notation)
-                end
-              dt = t(".details.local_notations")
-              dd = linked_local_notations.join(", ").html_safe
-
-            = optional_value(@record.subjects) do |subjects|
-              ruby:
-                linked_subjects = subjects.map do |subject|
-                  sr_to_subject = SearchEngine::SearchRequest.parse("sr[q,subject]=#{Addressable::URI.encode_component(subject, Addressable::URI::CharacterClasses::UNRESERVED)}")
-                  link_to subject, new_search_request_path(sr_to_subject)
-                end
-              dt = t(".details.subjects")
-              dd = linked_subjects.join(", ").html_safe
+        .col-lg-8.col-xl-9
+          = render "details"
+        .col-lg-4.col-xl-3.mt-4.mt-lg-0
+          = render "recommendations"
+    - else
+      .mb-0
+        = render "details"
 
     / ----------------------------------------
     / Journal stocks
     / ----------------------------------------
     = optional_value(@record.journal_stocks) do |journal_stocks|
-      .mb-4
+      .mt-4
         h4 = t(".journal_stocks.header")
 
         .callout.callout-info.d-md-flex.align-items-center.mb-2.p-2
@@ -242,20 +67,21 @@
     / Secondary form
     / ----------------------------------------
     - if @record.is_secondary_form?
-      h4 = "Angaben zur Sekundärform"
-      dl
-        = optional_value(@record.secondary_form.physical_description) do |value|
-          dt = "Erscheinungsform"
-          dd = value
-        = optional_value(@record.secondary_form.year_of_publication) do |value|
-          dt = "Erscheinungsjahr"
-          dd = value
-        = optional_value(@record.secondary_form.publication_notices) do |value|
-          dt = "Ort / Verlag"
-          dd = value
-        = optional_value(@record.secondary_form.is_part_of) do |value|
-          dt = "Teil von"
-          dd = value
+      .mt-4
+        h4 = "Angaben zur Sekundärform"
+        dl.mb-0
+          = optional_value(@record.secondary_form.physical_description) do |value|
+            dt = "Erscheinungsform"
+            dd = value
+          = optional_value(@record.secondary_form.year_of_publication) do |value|
+            dt = "Erscheinungsjahr"
+            dd = value
+          = optional_value(@record.secondary_form.publication_notices) do |value|
+            dt = "Ort / Verlag"
+            dd = value
+          = optional_value(@record.secondary_form.is_part_of) do |value|
+            dt = "Teil von"
+            dd = value
 
     / ----------------------------------------
     / Items
@@ -267,6 +93,7 @@
           record_id: @record.id,
           host_item_id: @record.host_item_id
         )
-      turbo-frame#items(src=path loading="lazy")
-        h4 = t(".loading_more")
-        = render "table_placeholder"
+      .mt-4
+        turbo-frame#items(src=path loading="lazy")
+          h4 = t(".loading_more")
+          = render "table_placeholder"

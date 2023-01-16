@@ -1,0 +1,7 @@
+h4 = t(".header")
+p == t(".info", link: link_to("bX", "https://www.ub.uni-paderborn.de/recherche/hinweise-zur-nutzung-der-elektronischen-angebote/bx/"))
+
+= turbo_frame_tag("recommendations", src: record_recommendations_path(record_id: @record.id)) do
+  i.fa-solid.fa-spinner.fa-spin
+
+

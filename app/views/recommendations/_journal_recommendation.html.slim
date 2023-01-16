@@ -1,0 +1,19 @@
+ruby:
+  atitle = recommendation[:atitle]
+  jtitle = recommendation[:jtitle]
+  authors = recommendation[:authors].join("; ")
+  add_data = [
+    recommendation[:date],
+    recommendation[:volume] ? "Bd. #{recommendation[:volume]}" : nil,
+    recommendation[:issue] ? "H. #{recommendation[:issue]}" : nil,
+    recommendation[:pages] ? "S. #{recommendation[:pages]}" : nil
+  ].compact.join(", ")
+
+.recommendation
+  .title = link_to atitle, recommendation[:link], target: "_blank"
+  - if authors.present?
+    .authors = authors
+  - if jtitle
+    .jtitle = jtitle
+  - if add_data.present?
+    .add-data = add_data

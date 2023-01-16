@@ -1,0 +1,12 @@
+.card.card-shadowed
+  .card-header.cutoff-corner-tr
+    h5.mb-0
+      span.me-2 = link_to record_path(id: @record.id, search_scope: current_search_scope) do
+        i.fa-solid.fa-angle-left
+      = t(".header", title: @record.title)
+  .card-body
+    = turbo_frame_tag("recommendations")
+      - if @recommendations.blank?
+        .callout.callout-info.mb-0 = t(".not_found")
+      - else
+        = render "recommendations"

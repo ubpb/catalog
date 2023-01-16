@@ -7,6 +7,10 @@ export default class extends Controller {
     "collapse"
   ]
 
+  static values = {
+    itemCount: 5
+  }
+
   connect() {
     this.collapse()
   }
@@ -17,13 +21,13 @@ export default class extends Controller {
     const items = this.listTarget.getElementsByTagName('li')
 
     for (let i = 0; i < items.length; i++) {
-      if (i >= 5) {
+      if (i >= this.itemCountValue) {
         items[i].style.display = "none";
       }
     }
 
     this.hideCollapseTarget()
-    if (items.length <= 5) {
+    if (items.length <= this.itemCountValue) {
       this.hideExpandTarget()
     } else {
       this.showExpandTarget()

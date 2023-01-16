@@ -1,0 +1,11 @@
+ruby:
+  title = recommendation[:title]
+  authors = recommendation[:authors].join("; ")
+  date_and_publisher = [recommendation[:date], recommendation[:publisher]].compact.join(", ")
+
+.recommendation
+  .title = link_to title, recommendation[:link], target: "_blank"
+  - if authors.present?
+    .authors = authors
+  - if date_and_publisher.present?
+    .date-and-publisher = date_and_publisher

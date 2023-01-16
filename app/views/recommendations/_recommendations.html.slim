@@ -1,0 +1,15 @@
+div(data-controller="expandable-list", data-expandable-list-item-count-value="5")
+  ul.list-group(data-expandable-list-target="list")
+    - @recommendations.each do |r|
+      li.list-group-item
+        - if r[:type] == :book
+          = render "book_recommendation", recommendation: r
+        - elsif r[:type] == :journal
+          = render "journal_recommendation", recommendation: r
+
+  .mt-2.fw-bold(data-expandable-list-target="expand")
+    a(href="#expand" data-action="click->expandable-list#expand")
+      = t("searches.aggregations.expand")
+  .mt-2.fw-bold(data-expandable-list-target="collapse")
+    a(href="#collapse" data-action="click->expandable-list#collapse")
+      = t("searches.aggregations.collapse")

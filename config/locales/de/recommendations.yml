@@ -1,0 +1,5 @@
+de:
+  recommendations:
+    index:
+      header: "Weiterführende Literatur für: %{title}"
+      not_found: "Keine Empfehlungen verfügbar"

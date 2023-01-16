@@ -125,7 +125,7 @@ module SearchEngine::Adapters
 
       def get_resolver_link(xml)
         if openurl = xml.at_xpath("//LINKS/openurl")&.text
-          if u_params = openurl.split("?").last.presence
+          if u_params = openurl.split("?")[1..-1].join
             SearchEngine::ResolverLink.new(url: "/openurl?#{u_params}")
           end
         end

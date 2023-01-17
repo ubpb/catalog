@@ -10,12 +10,14 @@ export default class extends Controller {
 
   createWatchList(event) {
     if (event.key == "Enter") {
+      event.preventDefault()
+
       let listName = this.inputTarget.value
 
       if (listName) {
         axios.post(this.createUrlValue, {
           watch_list: { name: listName }
-        }).then(window.location.reload())
+        }).then(() => window.location.reload(true))
       }
     }
   }

@@ -112,7 +112,7 @@ dl.key-value-list
   = optional_value(@record.source) do |source|
     dt = t(".source")
     / TODO: Add link in case there is an ID present
-    dd = source.label
+    dd = strip_tags(source.label)
 
   / Notes
   = optional_value(@record.notes) do |notes|

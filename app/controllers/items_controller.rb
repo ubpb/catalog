@@ -1,6 +1,8 @@
 class ItemsController < RecordsController
 
   def index
+    @return_to = sanitize_return_to(params[:return_to])
+    
     add_breadcrumb(t(".breadcrumb"), record_items_path(
       search_scope: current_search_scope,
       record_id: @record.id

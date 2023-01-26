@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
 
   before_action :load_record
+  before_action :set_return_to, only: [:show]
 
   def show
     # augment journal stock locations label with data from the static location
@@ -134,4 +135,8 @@ private
     end
   end
 
+  def set_return_to
+    @return_to = request.original_fullpath
+  end
+  
 end

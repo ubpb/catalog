@@ -12,9 +12,9 @@ ruby:
   div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative")
     / Cover Image
     div.fa-regular.fa-file.fa-3x.bg-light.w-100.p-2.pt-3.pb-3.rounded
-    - isbn = record.additional_identifiers.select{|i| i.type == :isbn}.first&.value&.gsub("-", "")
-    - if isbn
-      = image_tag(cover_image_url(isbn, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
+    - isbn13 = record.first_isbn13
+    - if isbn13
+      = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
   div.flex-fill
     / Title
     h5.mb-0

@@ -107,5 +107,11 @@ class SearchEngine
       self.resource_type == "newspaper"
     end
 
+    def first_isbn13
+      isbn13 = self.additional_identifiers.select{|i| i.type == :isbn && i.value&.length >= 13}.first
+
+      #get and strip the value
+      isbn13&.value&.presence&.gsub("-", "")&.delete(" ").presence
+    end
   end
 end

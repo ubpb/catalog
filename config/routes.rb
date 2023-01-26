@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   get "openurl", to: "link_resolver#show"
 
   # Cover images
-  get "cover-images/:id", to: "cover_images#show", as: "cover_image"
+  get "cover-images/:search_scope/:id", to: "cover_images#show", as: "cover_image"
 
   # ZDB Journal, Online & Print Service
   get "joap", to: "joap#show", as: "joap"

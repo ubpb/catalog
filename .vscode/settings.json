@@ -6,5 +6,6 @@
   },
   "files.associations": {
       "*.erb": "erb"
-  }
+  },
+  "files.trimTrailingWhitespace": true
 }

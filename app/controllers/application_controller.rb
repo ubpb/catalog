@@ -159,4 +159,20 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url)
   end
 
+  def sanitize_return_uri(return_uri)
+    if return_uri.present?
+      uri = URI(return_uri)
+
+      path = uri.path.present? ? "#{uri.path}" : ""
+      fragment = uri.fragment.present? ? "##{uri.fragment}" : ""
+      query = uri.query.present? ? "?#{uri.query}" : ""
+
+      (path + query + fragment).presence
+    else
+      nil
+    end
+  rescue
+    nil
+  end
+
 end

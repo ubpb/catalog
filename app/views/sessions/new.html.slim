@@ -10,7 +10,11 @@
 
       = f.input :user_id, autofocus: true
       = f.input :password
+      = f.input :return_uri, as: :hidden, input_html: { value: @return_uri }
       = link_to t(".forgot_password"), password_reset_request_path
     .card-footer
       => f.submit t(".submit"), class: "btn btn-lg btn-primary"
-      => link_to t(".cancel"), root_path, class: "btn btn-lg btn-default"
+      - if @return_uri.presence
+        => link_to t(".cancel"), @return_uri, class: "btn btn-lg btn-default"
+      - else
+        => link_to t(".cancel"), root_path, class: "btn btn-lg btn-default"

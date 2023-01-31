@@ -6,6 +6,8 @@ class RecordsController < ApplicationController
     # augment journal stock locations label with data from the static location
     # lookup table.
     @record = augment_journal_stock_locations(@record)
+    # Remember return path
+    @return_uri = request.original_fullpath
   end
 
 private

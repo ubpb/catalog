@@ -91,7 +91,8 @@
         path = record_items_path(
           search_scope: current_search_scope,
           record_id: @record.id,
-          host_item_id: @record.host_item_id
+          host_item_id: @record.host_item_id,
+          return_uri: @return_uri
         )
       .mt-4
         turbo-frame#items(src=path loading="lazy")

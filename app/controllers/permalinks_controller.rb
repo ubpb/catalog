@@ -31,7 +31,6 @@ class PermalinksController < ApplicationController
     if permalink.save
       redirect_to(permalink_path(permalink))
     else
-      binding.b
       flash[:error] = t(".flash_error")
       redirect_to(root_path)
     end

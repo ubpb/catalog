@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    return_uri = capture_return_uri
+    @return_uri = capture_return_uri
 
     if current_user
-      if return_uri.present?
-        redirect_to return_uri
+      if @return_uri.present?
+        redirect_to  @return_uri
       else
         redirect_to account_root_path
       end

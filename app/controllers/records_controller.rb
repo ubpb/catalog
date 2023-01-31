@@ -1,12 +1,13 @@
 class RecordsController < ApplicationController
 
   before_action :load_record
-  before_action :set_return_uri, only: [:show]
 
   def show
     # augment journal stock locations label with data from the static location
     # lookup table.
     @record = augment_journal_stock_locations(@record)
+    # Remember return path
+    @return_uri = request.original_fullpath
   end
 
 private
@@ -135,8 +136,4 @@ private
     end
   end
 
-  def set_return_uri
-    @return_uri = request.original_fullpath
-  end
-  
 end

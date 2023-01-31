@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    @return_uri = capture_return_uri
+    @return_uri = sanitize_return_uri(params[:return_uri])
 
     if current_user
       if @return_uri.present?
@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user_id  = params.dig("login", "user_id")
-    password = params.dig("login", "password")
-    return_uri = sanitize_return_uri(params.dig("login", "return_uri").presence)
+    user_id     = params.dig("login", "user_id")
+    password    = params.dig("login", "password")
+    @return_uri = sanitize_return_uri(params.dig("login", "return_uri"))
 
     if user_id.present? && password.present?
       if Ils.authenticate_user(user_id, password)
@@ -27,20 +27,18 @@ class SessionsController < ApplicationController
         session[:current_user_id] = db_user.id
         flash[:success] = t(".success")
 
-        if return_uri.present?
-          redirect_to return_uri
+        if @return_uri.present?
+          redirect_to @return_uri
         else
           redirect_to account_root_path
         end
 
       else
-        @return_uri = return_uri
-
         flash[:error] = t(".error")
         render :new, status: :unprocessable_entity
       end
     else
-      redirect_to(new_session_path)
+      redirect_to(new_session_path(return_uri: @return_uri))
     end
   end
 
@@ -48,16 +46,6 @@ class SessionsController < ApplicationController
     reset_session
     flash[:success] = t(".success")
     redirect_to(root_path, status: :see_other)
-  end
-
-private
-
-  def capture_return_uri
-    return_uri = sanitize_return_uri(params[:return_uri].presence)
-
-    if return_uri.present?
-      return_uri
-    end
   end
 
 end

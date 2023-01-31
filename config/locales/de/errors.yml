@@ -1,0 +1,10 @@
+de:
+  errors:
+    not_found:
+      header: "Seite nicht gefunden"
+      description: "Die von Ihnen angeforderte Seite wurde nicht gefunden."
+      button: "Zurück zur Startseite"
+    internal_server_error:
+      header: "Interner Fehler"
+      description: "Bei der von Ihnen angeforderte Seite trat ein Fehler auf."
+      button: "Zurück zur Startseite"

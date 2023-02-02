@@ -1,4 +1,13 @@
-h4 = t(".header")
+.d-flex.mb-3
+  div
+    h4.mb-0.mt-2 = t(".header")
+  div.ms-auto
+    .dropdown
+      .button.btn.btn-outline-primary.dropdown-toggle(type="button" data-bs-toggle="dropdown")
+        i.fa-solid.fa-quote-right
+      ul.dropdown-menu.dropdown-menu-end
+        = link_to t(".bibtex"), record_path(current_search_scope, @record.id, format: :bib), class: "dropdown-item"
+
 dl.key-value-list
   / Creators
   = optional_value(@record.creators) do |creators|

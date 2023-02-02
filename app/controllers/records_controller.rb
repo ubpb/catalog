@@ -8,6 +8,11 @@ class RecordsController < ApplicationController
     @record = augment_journal_stock_locations(@record)
     # Remember return path
     @return_uri = request.original_fullpath
+
+    respond_to do |format|
+      format.html
+      format.bibtex { send_data BibtexExporter.parse(@record) }
+    end
   end
 
 private

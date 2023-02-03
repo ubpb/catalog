@@ -6,7 +6,9 @@
     .callout.callout-info
       i.fa-solid.fa-info-circle
       =< t(".info")
-      div: em =< "Am 3.2.2023 wurden auf Grund eines Konfigurationsfehlers leider alle abgeschlossenen Vorgänge gelöscht. Wir bitten die Unannehmlichkeit zu entschuldigen."
+      = "**"
 
     turbo-frame#loans-history(src=account_loans_history_index_path(page: params[:page], d: params[:d], s: params[:s]) loading="lazy" target="_top")
       = render "table_placeholder"
+
+    .mt-3: em =< "** Am 3.2.2023 wurden auf Grund eines Konfigurationsfehlers leider alle abgeschlossenen Vorgänge gelöscht. Wir bitten die Unannehmlichkeit zu entschuldigen."

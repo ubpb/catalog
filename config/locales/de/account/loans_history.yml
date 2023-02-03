@@ -5,7 +5,9 @@ de:
 
       index:
         header: "Ausleihhistorie"
-        info: "Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten 180 Tage angezeigt werden."
+        info: >
+          Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten
+          180 Tage angezeigt werden. Ältere Vorgänge werden automatisch gelöscht.
 
       listing:
         no-loans: "Keine abgeschlossenen Ausleihvorgänge"

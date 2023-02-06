@@ -33,7 +33,7 @@ class Account::LoansHistoryController < Account::ApplicationController
   def fixed
     @loans = FixedHistoryLoan
       .where(ils_primary_id: current_user.ils_primary_id)
-      #.where("return_date >= ?", Date.today - 180.days)
+      .where("return_date >= ?", Date.today - 180.days)
   end
 
 end

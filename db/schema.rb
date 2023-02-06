@@ -10,8 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_111524) do
-  create_table "notes", charset: "utf8mb4", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_093722) do
+  create_table "fixed_history_loans", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "ils_primary_id"
+    t.date "return_date"
+    t.string "barcode"
+    t.string "alma_id"
+    t.string "title"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "scope", null: false
     t.string "record_id", null: false
@@ -24,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_111524) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "permalinks", charset: "utf8mb4", force: :cascade do |t|
+  create_table "permalinks", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "scope", null: false
     t.text "search_request", null: false
@@ -35,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_111524) do
     t.index ["scope"], name: "index_permalinks_on_scope"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "ils_primary_id", null: false
     t.string "api_key"
     t.string "first_name", null: false
@@ -47,12 +58,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_111524) do
     t.datetime "updated_at", null: false
     t.string "user_group_code"
     t.string "user_group_label"
+    t.text "notes"
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["ils_primary_id"], name: "index_users_on_ils_primary_id", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true
   end
 
-  create_table "watch_list_entries", charset: "utf8mb4", force: :cascade do |t|
+  create_table "watch_list_entries", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "watch_list_id", null: false
     t.string "scope", null: false
     t.string "record_id", null: false
@@ -64,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_111524) do
     t.index ["watch_list_id"], name: "index_watch_list_entries_on_watch_list_id"
   end
 
-  create_table "watch_lists", charset: "utf8mb4", force: :cascade do |t|
+  create_table "watch_lists", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
     t.text "description"

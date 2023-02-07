@@ -49,7 +49,6 @@ de:
         doi: "DOI"
         zdb: "ZDB-ID"
         oclc: "OCLC-Nummer"
-      bibtex: "BibTeX-Format herunterladen"
 
     recommendations:
       header: "Weiterführende Literatur"

@@ -7,6 +7,8 @@ de:
       online_resource:
         direct_link: "Direkt zur Online-Ressource"
         resolver_link: "Verfügbarkeit prüfen"
+      citation: "Quellenangabe herunterladen:"
+      bibtex: ".bib"
 
     search_panel:
       search: "Suchen"

@@ -110,6 +110,11 @@ ruby:
       .mt-2(data-availabilities-output)
         i.fas.fa-sm.fa-spinner.fa-pulse
 
+    / Citation
+    div
+      = t(".citation")
+      ==< link_to t(".bibtex"), record_path(current_search_scope, record.id, format: :bib)
+
   - if enable_watch_lists_panel
     .ms-auto
       ruby:

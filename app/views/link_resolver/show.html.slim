@@ -8,6 +8,23 @@
 
     turbo-frame#link-resolver-results
       - if @context
+
+        dl.key-value-list
+          dt Autoren
+          dd = @context.authors
+
+          dt Titel
+          dd = @context.title
+
+          dt Verlag
+          dd = @context.publisher
+
+          dt Ort
+          dd = @context.place_of_publication
+
+          dt Erscheinungsjahr
+          dd = @context.date_of_publication
+
         - if @fulltext_services.present?
           h5.fs-6 = t(".header_found")
 

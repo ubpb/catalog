@@ -5,6 +5,7 @@ ruby IO.read(".ruby-version").strip
 
 gem "addressable",        "~> 2.7"
 gem "bcrypt",             "~> 3.1"
+gem "bibtex-ruby",        "~> 5.1.0", require: "bibtex"
 gem "bootsnap",           ">= 1.4.2", require: false
 gem "cancancan",          "~> 3.2"
 gem "dry-struct",         "~> 1.4"

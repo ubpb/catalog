@@ -26,13 +26,13 @@
 
           li.list-group-item
             .d-flex
-              div
+              .flex-fill
                 - if record == :deleted
                   em = t(".deleted-record")
                 - else
                   = render "searches/record", record: record
               .ms-auto
-                = link_to account_watch_list_entry_path(@watch_list, entry), class: "dropdown-item", data: {turbo_method: :delete, turbo_confirm: t("confirm-delete")}
+                .ms-2 = link_to account_watch_list_entry_path(@watch_list, entry), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: t("confirm-delete")}
                   i.fa-solid.fa-fw.fa-trash-can
     - else
       .alert.alert-info.mb-0.text-center

@@ -16,9 +16,30 @@ ruby:
     - if isbn13
       = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
   div.flex-fill
-    / Title
-    h5.mb-0
-      = link_to record.title, show_record_path(record, search_request: @search_request)
+    div.d-flex
+      / Title
+      h5.mb-0.me-auto.flex-fill.text-break
+        = link_to record.title, show_record_path(record, search_request: @search_request)
+
+      / Watchlist
+      - if enable_watch_lists_panel
+        ruby:
+          watch_lists_panel_component = WatchListsPanelComponent.new(
+            user: current_user,
+            search_scope: current_search_scope,
+            record_id: record.id
+          )
+        .ms-2 = render(watch_lists_panel_component)
+
+      / Citation / Export
+      .ms-2
+        .dropdown
+          button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+            i.fa-solid.fa-quote-left
+
+          ul.dropdown-menu.dropdown-menu-end
+            .px-3.py-1.text-muted.text-sm = t(".citations.header")
+            li.dropdown-item ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record.id, format: :bib)
 
     / Part of...
     = optional_value(record.is_part_of) do |is_part_of|
@@ -109,13 +130,3 @@ ruby:
     - if enable_availability
       .mt-2(data-availabilities-output)
         i.fas.fa-sm.fa-spinner.fa-pulse
-
-  - if enable_watch_lists_panel
-    .ms-auto
-      ruby:
-        watch_lists_panel_component = WatchListsPanelComponent.new(
-          user: current_user,
-          search_scope: current_search_scope,
-          record_id: record.id
-        )
-      .ms-2 = render(watch_lists_panel_component)

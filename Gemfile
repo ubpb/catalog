@@ -43,7 +43,7 @@ group :development do
   gem "foreman",               ">= 0.87"
   gem "i18n-debug",            ">= 1.2"
   gem "letter_opener_web",     ">= 2.0"
-  gem "ruby-lsp",              ">= 0.3"
+  gem "ruby-lsp",              ">= 0.3", require: false
   gem "web-console",           ">= 3.3"
 end
 

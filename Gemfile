@@ -23,8 +23,6 @@ gem "sprockets-rails",    "~> 3.4.2"
 gem "turbo-rails",        "~> 1.1"
 gem "view_component",     "~> 2.31"
 
-gem "mail", "< 2.8.0" # Pin mail until https://github.com/mikel/mail/issues/1538 gets resolved
-
 gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :production do

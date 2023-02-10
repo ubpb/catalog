@@ -4,11 +4,13 @@ footer
       ' Die Universität der Informationsgesellschaft
   .container
     .footer-content
-      = "© #{Date.today.year} Universitätsbibliothek Paderborn"
+      = t(".copyright_ub_upb", year: Date.today.year)
       =<> "|"
-      = link_to "Impressum", go_legal_path
+      = link_to t(".impressum"), go_legal_path
       =<> "|"
-      = link_to "Datenschutzerklärung", go_privacy_path
+      = link_to t(".privacy_policy"), go_privacy_path
+      =<> "|"
+      == t(".cover_images", link: link_to("buchhandel.de", "http://www.buchhandel.de", target: "_blank"))
     .footer-image
       .d-none.d-sm-block
         = image_tag "footer-bg-lg.png", class: "img-fluid"

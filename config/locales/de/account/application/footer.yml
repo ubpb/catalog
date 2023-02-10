@@ -4,4 +4,4 @@ de:
       copyright_ub_upb: "© %{year} Universitätsbibliothek Paderborn"
       impressum: "Impressum"
       privacy_policy: "Datenschutzerklärung"
-      cover_images: "Coverbilder von "
+      cover_images: "Coverbilder bereitgestellt von %{link}"

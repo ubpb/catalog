@@ -14,7 +14,6 @@ ruby:
     div.fa-regular.fa-file.fa-3x.bg-light.w-100.p-2.pt-3.pb-3.rounded
     - isbn13 = record.first_isbn13
     - if isbn13
-      = @cover_image_useage = true
       = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
   div.flex-fill
     / Title

@@ -5,7 +5,7 @@ de:
       header: "Link-Resolver"
       header_found: "Es wurden folgende elektronische Volltexte gefunden"
 
-      error: "Fehler: Es konnte kein Ergebnis ermittelt werden."
+      error: "Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt."
       no_results: "Leider kein Volltext verfügbar."
 
     fulltext_service:

@@ -1,14 +1,14 @@
 .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
   .ms-0
     - if service.is_free?
-      .badge.bg-success = t(".free_resource")
+      .mb-1.badge.bg-success = t(".free_resource")
 
     div = link_to service.fulltext_url, target: "_blank" do
-      i.fa-solid.fa-external-link.fa-fw
+      i.fa-solid.fa-external-link.fa-fw.me-1
       = service.package_name
 
     - if (availability = service.availability).present?
       div.text-success: em = availability
 
     - if service.public_note.present?
-      div: em = service.public_note
+      div: em = strip_tags(service.public_note)

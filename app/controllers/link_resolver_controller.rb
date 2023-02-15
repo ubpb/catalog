@@ -60,16 +60,12 @@ class LinkResolverController < ApplicationController
   def show
     add_breadcrumb t("link_resolver.breadcrumb")
 
-    # Check Open URL params against our local search index
-    # Brauchen wir vielleicht gar nicht, weil Alma das ja eigentlich
-    # wissen müsste. Benötigen Beispiel.
-    # TODO
+    #binding.b
 
-    if params.except(:action, :controller).blank?
-      # The page was called without any Open URL params
-    elsif alma_result = resolve_by_alma(get_open_url_params)
-      # Check Open URL against Alma link Resolver
-
+    # Check Open URL against Alma link Resolver if Open URL params present
+    # in the request.
+    open_url_params = get_open_url_params
+    if open_url_params.present? && alma_result = resolve_by_alma(open_url_params)
       #
       # Parse context.
       #
@@ -99,7 +95,7 @@ class LinkResolverController < ApplicationController
       .map do |service_node|
         # Service type
         service_type = service_node.attr("service_type").presence
-        next unless service_type == "getFullTxt"
+        next unless service_type == "getFullTxt" || service_type == "getOpenAccessFullText"
 
         # Resolution URL
         resolution_url = service_node.at_xpath("resolution_url")&.text.presence
@@ -133,10 +129,19 @@ private
 
   def resolve_by_alma(open_url_params)
     if base_url = Config[:link_resolver, :base_url]
-      response = RestClient.get(base_url,
-        params: open_url_params
-      )
+      # We need to create the request url from the
+      # open_url_params by hand
+      request_params = []
+      open_url_params.each do |key, values|
+        values.each do |value|
+          request_params << "#{key}=#{Addressable::URI.encode_component(value, Addressable::URI::CharacterClasses::UNRESERVED)}"
+        end
+      end
 
+      # Call the Alma Link Resolver
+      response = RestClient.get("#{base_url}?#{request_params.join("&")}")
+
+      # Check response
       if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
         Nokogiri::XML.parse(response.body).remove_namespaces!
       end
@@ -146,22 +151,33 @@ private
   end
 
   def get_open_url_params
+    # Open URL params like rft_id can occur multiple times.
+    # So the internal format is:
+    #   string_key => [string_value, ...]
     open_url_params = {}
 
-    # Extract all relevant parameters from the params hash
-    params.except(:action, :controller).each do |key, value|
-      open_url_params[key.to_sym] = value
-    end
+    # We can't rely on Rails params, because Open URL params
+    # can occur multiple times.
+    Addressable::URI
+      .parse(request.fullpath)
+      .query_values(Array)
+      &.each do |key, value|
+        open_url_params[key] ||= []
+        open_url_params[key] << value
+      end
 
-    # Required by Alma
-    open_url_params.merge(
-      "svc_dat": "CTO",
-      "response_type": "xml",
-      "ctx_enc": "info:ofi/enc:UTF-8",
-      "ctx_ver": "Z39.88-2004",
-      "url_ver": "Z39.88-2004",
-      #"user_ip": request.remote_ip
-    )
+    # Add params that are required by the Alma link resolver
+    open_url_params = open_url_params.merge(
+      "svc_dat"       => ["CTO"],
+      "response_type" => ["xml"],
+      "ctx_enc"       => ["info:ofi/enc:UTF-8"],
+      "ctx_ver"       => ["Z39.88-2004"],
+      "url_ver"       => ["Z39.88-2004"],
+      #"user_ip"       => [request.remote_ip]
+    ) if open_url_params.present?
+
+    # Return
+    open_url_params
   end
 
   # key_node example: <key id="rft.title">$ foo Perl-Magazin</key>

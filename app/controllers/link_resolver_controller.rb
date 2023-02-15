@@ -60,72 +60,90 @@ class LinkResolverController < ApplicationController
   def show
     add_breadcrumb t("link_resolver.breadcrumb")
 
-    #binding.b
-
     # Check Open URL against Alma link Resolver if Open URL params present
     # in the request.
-    open_url_params = get_open_url_params
-    if open_url_params.present? && alma_result = resolve_by_alma(open_url_params)
-      #
-      # Parse context.
-      #
-      context_hash = alma_result.xpath("//context_object/keys/key").inject({}) do |memo, key_node|
-        key, value = normalized_key_and_value(key_node)
-
-        if key
-          memo[key] ||= []
-          memo[key] << value
-        end
-
-        memo
-      end
-      @context = Context.new(context_hash)
-
-      #
-      # Parse services (only full text services for now)
-      #
-      @fulltext_services = alma_result.xpath("//context_services/context_service")
-      # Reject services that are "filtered"
-      .reject do |service_node|
-        service_node.xpath("./keys/key").find do |key_node|
-          key_node.attr("id")&.downcase == "filtered" && key_node.text&.downcase == "true"
-        end
-      end
-      # Map remaining services
-      .map do |service_node|
-        # Service type
-        service_type = service_node.attr("service_type").presence
-        next unless service_type == "getFullTxt" || service_type == "getOpenAccessFullText"
-
-        # Resolution URL
-        resolution_url = service_node.at_xpath("resolution_url")&.text.presence
-
-        # Keys
-        keys = service_node.xpath("./keys/key").inject({}) do |memo, key_node|
-          key, value = normalized_key_and_value(key_node)
-          memo[key] = value if key
-          memo
-        end.presence
-
-        # Return service
-        if resolution_url && keys
-          FulltextService.new(
-            resolution_url: resolution_url,
-            keys: keys
-          )
-        end
-      end
-      # Dedup services
-      # TODO: Verify which parameter we can use to dedub.
-      # .uniq do |service|
-      #   service.package_name
-      # end
-      # Compact list
-      .compact
+    if (open_url_params = get_open_url_params).present? && alma_result = resolve_by_alma(open_url_params)
+      # Get context
+      @context = get_context(alma_result)
+      # Get fulltext services
+      @fulltext_services = get_fulltext_services(alma_result)
     end
   end
 
 private
+
+  SERVICE_PRIORITY = [
+    /unpaywall/i
+  ]
+
+  def get_context(alma_result)
+    context_hash = alma_result.xpath("//context_object/keys/key").inject({}) do |memo, key_node|
+      key, value = normalized_key_and_value(key_node)
+
+      if key
+        memo[key] ||= []
+        memo[key] << value
+      end
+
+      memo
+    end
+
+    Context.new(context_hash)
+  end
+
+  def get_fulltext_services(alma_result)
+    # Get service nodes from alma result
+    services = alma_result.xpath("//context_services/context_service")
+
+    # Reject services that are "filtered"
+    services = services.reject do |service_node|
+      service_node.xpath("./keys/key").find do |key_node|
+        key_node.attr("id")&.downcase == "filtered" && key_node.text&.downcase == "true"
+      end
+    end
+
+    # Select only "getFullTxt" and "getOpenAccessFullText"
+    services = services.select do |service_node|
+      service_type = service_node.attr("service_type").presence
+      service_type == "getFullTxt" || service_type == "getOpenAccessFullText"
+    end
+
+    # Map remaining services
+    services = services.map do |service_node|
+      # Resolution URL
+      resolution_url = service_node.at_xpath("resolution_url")&.text.presence
+
+      # Keys
+      keys = service_node.xpath("./keys/key").inject({}) do |memo, key_node|
+        key, value = normalized_key_and_value(key_node)
+        memo[key] = value if key
+        memo
+      end.presence
+
+      # Fix is_free for unpaywall
+      if keys["package_display_name"] =~ /unpaywall/i
+        keys["is_free"] = true
+      end
+
+      # Return service
+      if resolution_url && keys
+        FulltextService.new(
+          resolution_url: resolution_url,
+          keys: keys
+        )
+      end
+    end.compact
+
+    # Sort services
+    services = services.sort do |a, b|
+      ia = SERVICE_PRIORITY.find_index{|regexp| regexp.match(a.package_name)} || 1000
+      ib = SERVICE_PRIORITY.find_index{|regexp| regexp.match(b.package_name)} || 1000
+      ia <=> ib
+    end
+
+    # Return
+    services
+  end
 
   def resolve_by_alma(open_url_params)
     if base_url = Config[:link_resolver, :base_url]

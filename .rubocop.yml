@@ -52,13 +52,6 @@ Style/CollectionMethods:
     # inject seems more common in the community.
     reduce: "inject"
 
-# Either allow this style or don't. Marking it as safe with parenthesis
-# is silly. Let's try to live without them for now.
-Style/ParenthesesAroundCondition:
-  AllowSafeAssignment: false
-Lint/AssignmentInCondition:
-  AllowSafeAssignment: false
-
 # A specialized exception class will take one or more arguments and construct the message from it.
 # So both variants make sense.
 Style/RaiseArgs:
@@ -120,6 +113,10 @@ Naming/BinaryOperatorParameterName:
 
 # Do not check accessor method name
 Naming/AccessorMethodName:
+  Enabled: false
+
+# Do not enforce predicate naming
+Naming/PredicateName:
   Enabled: false
 
 # There are valid cases, for example debugging Cucumber steps,

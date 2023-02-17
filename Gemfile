@@ -11,7 +11,7 @@ gem "cancancan",          "~> 3.2"
 gem "dry-struct",         "~> 1.4"
 gem "elasticsearch",      "~> 8.1"
 gem "jbuilder",           "~> 2.7"
-gem "metacrunch-marcxml", "~> 3.1.0" #, github: "ubpb/metacrunch-marcxml", branch: "master"
+gem "metacrunch-marcxml", "~> 3.1.0" # , github: "ubpb/metacrunch-marcxml", branch: "master"
 gem "mysql2",             ">= 0.5.3"
 gem "parallel",           "~> 1.19"
 gem "puma",               ">= 5.2"
@@ -24,28 +24,27 @@ gem "sprockets-rails",    "~> 3.4.2"
 gem "turbo-rails",        "~> 1.1"
 gem "view_component",     "~> 2.31"
 
-gem "exl_api",  "~> 1.0.0", path: "vendor/gems/exl_api"
+gem "exl_api", "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :production do
   gem "newrelic_rpm", ">= 8.9.0"
 end
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
+  gem "capistrano",            "~> 3.11"
   gem "capistrano-bundler",    "~> 2.0"
   gem "capistrano-passenger",  "~> 0.2"
   gem "capistrano-rails",      "~> 1.6"
   gem "capistrano-rvm",        "~> 0.1"
-  gem "capistrano",            "~> 3.11"
   gem "foreman",               ">= 0.87"
   gem "i18n-debug",            ">= 1.2"
   gem "letter_opener_web",     ">= 2.0"
-  gem "ruby-lsp",              ">= 0.3", require: false
+  gem "rubocop",               ">= 1.45", require: false
   gem "solargraph",            ">= 0.48", require: false
-  gem "rubocop",               '>= 1.45', require: false
   gem "web-console",           ">= 3.3"
 end
 

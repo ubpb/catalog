@@ -34,11 +34,13 @@ class LinkResolverController < ApplicationController
       @resolution_url = resolution_url
       @keys = keys
     end
+
     # Convenient methods for fields we use in the UI
-    def fulltext_url; @resolution_url; end
-    def package_name; @keys["package_display_name"]; end
-    def is_free?; @keys["is_free"]; end
-    def public_note; @keys["public_note"]; end
+    def fulltext_url = @resolution_url
+    def package_name = @keys["package_display_name"]
+    def is_free? = @keys["is_free"]
+    def public_note = @keys["public_note"]
+
     def availability
       @keys["availability"]
         &.gsub("<br>", "; ")
@@ -61,12 +63,13 @@ class LinkResolverController < ApplicationController
 
     # Check Open URL against Alma link Resolver if Open URL params present
     # in the request.
-    if (open_url_params = get_open_url_params).present? && alma_result = resolve_by_alma(open_url_params)
-      # Get context
-      @context = get_context(alma_result)
-      # Get fulltext services
-      @fulltext_services = get_fulltext_services(alma_result)
-    end
+    alma_result = resolve_by_alma(open_url_params)
+    return unless alma_result.present?
+
+    # Get context
+    @context = get_context(alma_result)
+    # Get fulltext services
+    @fulltext_services = get_fulltext_services(alma_result)
   end
 
 private
@@ -138,7 +141,7 @@ private
   end
 
   def resolve_by_alma(open_url_params)
-    if base_url = Config[:link_resolver, :base_url]
+    if (base_url = Config[:link_resolver, :base_url])
       # We need to create the request url from the
       # open_url_params by hand
       request_params = []
@@ -162,7 +165,7 @@ private
     nil
   end
 
-  def get_open_url_params
+  def open_url_params
     # Open URL params like rft_id can occur multiple times.
     # So the internal format is:
     #   string_key => [string_value, ...]
@@ -185,7 +188,7 @@ private
         "response_type" => ["xml"],
         "ctx_enc"       => ["info:ofi/enc:UTF-8"],
         "ctx_ver"       => ["Z39.88-2004"],
-        "url_ver"       => ["Z39.88-2004"],
+        "url_ver"       => ["Z39.88-2004"]
         # "user_ip"       => [request.remote_ip]
       )
     end

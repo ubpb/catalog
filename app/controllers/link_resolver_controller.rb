@@ -53,9 +53,8 @@ class LinkResolverController < ApplicationController
         &.gsub("available", "verfügbar")
         &.gsub("months", "Monate")
     end
-    #def authentication_note; @keys["authentication_note"]; end
+    # def authentication_note; @keys["authentication_note"]; end
   end
-
 
   def show
     add_breadcrumb t("link_resolver.breadcrumb")
@@ -74,10 +73,10 @@ private
 
   SERVICE_PRIORITY = [
     /unpaywall/i
-  ]
+  ].freeze
 
   def get_context(alma_result)
-    context_hash = alma_result.xpath("//context_object/keys/key").inject({}) do |memo, key_node|
+    context_hash = alma_result.xpath("//context_object/keys/key").each_with_object({}) do |key_node, memo|
       key, value = normalized_key_and_value(key_node)
 
       if key
@@ -105,44 +104,37 @@ private
     # Select only "getFullTxt" and "getOpenAccessFullText"
     services = services.select do |service_node|
       service_type = service_node.attr("service_type").presence
-      service_type == "getFullTxt" || service_type == "getOpenAccessFullText"
+      ["getFullTxt", "getOpenAccessFullText"].include?(service_type)
     end
 
     # Map remaining services
-    services = services.map do |service_node|
+    services = services.map { |service_node|
       # Resolution URL
       resolution_url = service_node.at_xpath("resolution_url")&.text.presence
 
       # Keys
-      keys = service_node.xpath("./keys/key").inject({}) do |memo, key_node|
+      keys = service_node.xpath("./keys/key").each_with_object({}) { |key_node, memo|
         key, value = normalized_key_and_value(key_node)
         memo[key] = value if key
         memo
-      end.presence
+      }.presence
 
       # Fix is_free for unpaywall
-      if keys["package_display_name"] =~ /unpaywall/i
-        keys["is_free"] = true
-      end
+      keys["is_free"] = true if keys["package_display_name"] =~ /unpaywall/i
+
+      next unless resolution_url
+      next unless keys
 
       # Return service
-      if resolution_url && keys
-        FulltextService.new(
-          resolution_url: resolution_url,
-          keys: keys
-        )
-      end
-    end.compact
+      FulltextService.new(resolution_url:, keys:)
+    }.compact
 
-    # Sort services
-    services = services.sort do |a, b|
-      ia = SERVICE_PRIORITY.find_index{|regexp| regexp.match(a.package_name)} || 1000
-      ib = SERVICE_PRIORITY.find_index{|regexp| regexp.match(b.package_name)} || 1000
+    # Sort services & return
+    services.sort do |a, b|
+      ia = SERVICE_PRIORITY.find_index { |regexp| regexp.match(a.package_name) } || 1000
+      ib = SERVICE_PRIORITY.find_index { |regexp| regexp.match(b.package_name) } || 1000
       ia <=> ib
     end
-
-    # Return
-    services
   end
 
   def resolve_by_alma(open_url_params)
@@ -152,12 +144,14 @@ private
       request_params = []
       open_url_params.each do |key, values|
         values.each do |value|
-          request_params << "#{key}=#{Addressable::URI.encode_component(value, Addressable::URI::CharacterClasses::UNRESERVED)}"
+          request_params << "#{key}=#{Addressable::URI.encode_component(
+            value, Addressable::URI::CharacterClasses::UNRESERVED
+          )}"
         end
       end
 
       # Call the Alma Link Resolver
-      response = RestClient.get("#{base_url}?#{request_params.join("&")}")
+      response = RestClient.get("#{base_url}?#{request_params.join('&')}")
 
       # Check response
       if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
@@ -185,14 +179,16 @@ private
       end
 
     # Add params that are required by the Alma link resolver
-    open_url_params = open_url_params.merge(
-      "svc_dat"       => ["CTO"],
-      "response_type" => ["xml"],
-      "ctx_enc"       => ["info:ofi/enc:UTF-8"],
-      "ctx_ver"       => ["Z39.88-2004"],
-      "url_ver"       => ["Z39.88-2004"],
-      #"user_ip"       => [request.remote_ip]
-    ) if open_url_params.present?
+    if open_url_params.present?
+      open_url_params = open_url_params.merge(
+        "svc_dat"       => ["CTO"],
+        "response_type" => ["xml"],
+        "ctx_enc"       => ["info:ofi/enc:UTF-8"],
+        "ctx_ver"       => ["Z39.88-2004"],
+        "url_ver"       => ["Z39.88-2004"],
+        # "user_ip"       => [request.remote_ip]
+      )
+    end
 
     # Return
     open_url_params
@@ -202,18 +198,18 @@ private
   def normalized_key_and_value(key_node)
     # Get clean key
     key = key_node.attr("id")
-      &.underscore
-      &.downcase
-      &.squish
-      &.tr(" ", "_")
-      .presence
+                  &.underscore
+                  &.downcase
+                  &.squish
+                  &.tr(" ", "_")
+                  .presence
 
     # Get clean value
     value = case key_node.text&.downcase
-    when "0", "no", "false" then false
-    when "1", "yes", "true" then true
-    else key_node.text.presence
-    end
+            when "0", "no", "false" then false
+            when "1", "yes", "true" then true
+            else key_node.text.presence
+            end
 
     # Return key and value
     [key, value]

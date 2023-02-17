@@ -19,7 +19,7 @@ gem "rack-attack",        "~> 6.6"
 gem "rails",              "~> 7.0.0"
 gem "rss",                "~> 0.2"
 gem "simple_form",        "~> 5.1"
-gem "slim",               "~> 4.0"
+gem "slim",               ">= 5.0"
 gem "sprockets-rails",    "~> 3.4.2"
 gem "turbo-rails",        "~> 1.1"
 gem "view_component",     "~> 2.31"
@@ -44,6 +44,8 @@ group :development do
   gem "i18n-debug",            ">= 1.2"
   gem "letter_opener_web",     ">= 2.0"
   gem "ruby-lsp",              ">= 0.3", require: false
+  gem "solargraph",            ">= 0.48", require: false
+  gem "rubocop",               '>= 1.45', require: false
   gem "web-console",           ">= 3.3"
 end
 

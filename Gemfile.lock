@@ -83,7 +83,7 @@ GEM
     backport (1.2.0)
     bcrypt (3.1.18)
     benchmark (0.2.1)
-    bibtex-ruby (5.1.6)
+    bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -389,7 +389,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.7)
   bcrypt (~> 3.1)
-  bibtex-ruby (~> 5.1.0)
+  bibtex-ruby (~> 6.0.0)
   bootsnap (>= 1.4.2)
   cancancan (~> 3.2)
   capistrano (~> 3.11)

@@ -11,6 +11,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.json { render json: @record.to_json }
       format.bibtex { send_data BibtexExporter.parse(@record) }
     end
   end

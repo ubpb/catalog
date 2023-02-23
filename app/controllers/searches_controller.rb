@@ -63,8 +63,12 @@ class SearchesController < ApplicationController
         redirect_to(new_search_request_path)
       end
     end
-  end
 
+    respond_to do |format|
+      format.html
+      format.json { render json: @search_result.to_json }
+    end
+  end
 
   def create
     queries = []

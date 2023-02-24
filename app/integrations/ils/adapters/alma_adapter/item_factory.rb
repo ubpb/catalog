@@ -6,7 +6,7 @@ module Ils::Adapters
         self.new.build(alma_item)
       end
 
-      def build(alma_item, hold_requests:nil)
+      def build(alma_item, hold_requests: nil)
         Ils::Item.new(
           id: get_id(alma_item),
           call_number: get_call_number(alma_item),
@@ -23,6 +23,7 @@ module Ils::Adapters
           public_note: get_public_note(alma_item),
           expected_arrival_date: get_expected_arrival_date(alma_item),
           description: get_description(alma_item),
+          physical_material_type: get_physical_material_type(alma_item),
           temp_location: get_temp_location(alma_item),
           temp_policy: get_temp_policy(alma_item),
           temp_due_back_date: get_temp_due_back_date(alma_item)
@@ -116,6 +117,15 @@ module Ils::Adapters
 
       def get_description(alma_item)
         alma_item.dig("item_data", "description").presence
+      end
+
+      def get_physical_material_type(alma_item)
+        code  = alma_item.dig("item_data", "physical_material_type", "value")
+        label = alma_item.dig("item_data", "physical_material_type", "desc")
+
+        if code && label
+          Ils::CodeLabelType.new(code: code,label: label)
+        end
       end
 
       def get_temp_policy(alma_item)

@@ -32,8 +32,8 @@ class ItemsController < RecordsController
       # Make sure we render the special journal listing
       @show_journal_listing = true
 
-      # For journals only show the expected items or items that have a public note set
-      @items = @items.select{|i| i.expected? || i.public_note.present?}
+      # For journals only show the current and expected items or items that have a public note set
+      @items = @items.select { |i| i.expected_or_current_issue? || i.public_note.present? }
 
       # Prepare items for display...
       if @items.present?

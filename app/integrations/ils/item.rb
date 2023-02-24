@@ -15,6 +15,7 @@ class Ils
     attribute :public_note, Types::String.optional
     attribute :expected_arrival_date, Types::Date.optional
     attribute :description, Types::String.optional
+    attribute :physical_material_type, CodeLabelType.optional
 
     attribute :temp_location, Ils::Location.optional
     attribute :temp_policy, Ils::ItemPolicy.optional
@@ -26,8 +27,14 @@ class Ils
     # this optional sort_key field.
     attribute :sort_key, Types::String.optional
 
-    def expected?
-      process_type&.code == "ACQ" && expected_arrival_date.present?
+    # For journals this flag indicates if the issue is expected for arrival
+    # or is a current "unbound" issue. This flag can be used to filter out
+    # "bounded" issues.
+    def expected_or_current_issue?
+      # Eingegangene (aktuelle) Hefte haben Materialart = "Heft" => ISSUE
+      # und Exemplarrichtline = 32. Erwartete Hefte haben Materialart = "Heft"
+      # und ein expected_arrival_date gesetzt.
+      physical_material_type&.code == "ISSUE" && (policy&.code == "32" || expected_arrival_date.present?)
     end
 
     def closed_stack_orderable?

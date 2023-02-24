@@ -37,20 +37,29 @@ class ItemsController < RecordsController
 
       # Prepare items for display...
       if @items.present?
+        # Create sort key to sort the items.
         # Sort journal items by description: The description holds the issue number.
         # But the format is not always in a sortable form, so we fix the common ones
-        # n.yyyy and yyyy,n and make them sortable.
+        # "n.yyyy", "n.yyyy,m" and "yyyy,n" and make them sortable.
         @items = @items.map do |item|
           sort_key = case item.description
-          when /(\d{1,4})\.(\d{1,4})/ then "#{$2.rjust(4, "0")},#{$1.rjust(4, "0")}"
-          when /(\d{1,4})\,(\d{1,4})/ then "#{$1.rjust(4, "0")},#{$2.rjust(4, "0")}"
-          end
+                     # n.yyyy,m
+                     when /(\d{1,2})\.(\d{4}),(\d{1,2})/ then "#{$2.rjust(4, '0')}-#{$1.rjust(4, '0')}-#{$3.rjust(4, '0')}"
+                     # n.yyyy
+                     when /(\d{1,2})\.(\d{4})/           then "#{$2.rjust(4, '0')}-#{$1.rjust(4, '0')}-0000"
+                     # yyyy,n
+                     when /(\d{4}),(\d{1,2})/            then "#{$1.rjust(4, '0')}-#{$2.rjust(4, '0')}-0000"
+                     # yyyy
+                     when /(\d{4})/                      then "#{$1.rjust(4, '0')}-0000-0000"
+                     # ...
+                     else item.description
+                     end
 
-          sort_key.present? ? item.new(sort_key: sort_key)
-                            : item.new(sort_key: item.call_number)
-        end.sort_by do |item|
-           [item.sort_key.present? ? 1 : 0, item.sort_key]
+          item.new(sort_key:)
         end
+
+        # Finally sort the items
+        @items = @items.sort_by(&:sort_key)
       end
     else
       # Make sure we render the normal items listing

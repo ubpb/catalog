@@ -14,6 +14,7 @@ de:
         on_hold_shelf_info:
           Der Titel steht bis zum %{date} für Sie im Selbstabholbereich der UB bereit.
         barcode: "Strichcode: %{barcode}"
+        call_number: "Signatur: %{call_number}"
 
       destroy:
         error: "Die Vormerkung konnte nicht gelöscht werden"

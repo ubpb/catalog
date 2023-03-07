@@ -24,6 +24,21 @@ module Ils::Adapters
           end
         end
 
+        # For each hold request fetch detailed item information and
+        # extract the item call number and add it to the hold request object as
+        # "call_number".
+        # This is required becuase the "user request" object from Alma
+        # does not include the item call number for "HOLD" requests.
+        Parallel.each(hold_requests, in_threads: 3) do |hr|
+          next unless (barcode = hr["barcode"]).presence
+
+          item = get_item_by_barcode(barcode)
+          call_number = item.dig("item_data", "alternative_call_number").presence
+          next unless call_number
+
+          hr["call_number"] = call_number
+        end
+
         # Build array of hold request objects
         hold_requests.map{|_| HoldRequestFactory.build(_)}
       end
@@ -31,14 +46,22 @@ module Ils::Adapters
     private
 
       def get_hold_requests(user_id, offset:, limit:)
-        adapter.api.get("users/#{user_id}/requests",
+        adapter.api.get(
+          "users/#{user_id}/requests",
           format: "application/json",
           params: {
             request_type: "HOLD",
-            status: "active",
-            limit: limit,
-            offset: offset
+            status:       "active",
+            limit:        limit,
+            offset:       offset
           }
+        )
+      end
+
+      def get_item_by_barcode(barcode)
+        adapter.api.get(
+          "items?item_barcode=#{barcode}",
+          format: "application/json"
         )
       end
 

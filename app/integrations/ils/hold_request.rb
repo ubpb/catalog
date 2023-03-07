@@ -15,5 +15,6 @@ class Ils
     attribute :author, Types::String.optional
     attribute :description, Types::String.optional
     attribute :barcode, Types::String.optional
+    attribute :call_number, Types::String.optional
   end
 end

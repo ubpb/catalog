@@ -22,7 +22,8 @@ module Ils::Adapters
           title: get_title(data),
           author: get_author(data),
           description: get_description(data),
-          barcode: get_barcode(data)
+          barcode: get_barcode(data),
+          call_number: get_call_number(data)
         )
       end
 
@@ -90,6 +91,10 @@ module Ils::Adapters
 
       def get_barcode(data)
         data["barcode"]
+      end
+
+      def get_call_number(data)
+        data["call_number"]
       end
 
     end

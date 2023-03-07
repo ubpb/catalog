@@ -33,7 +33,7 @@ module Ils::Adapters
           next unless (barcode = hr["barcode"]).presence
 
           item = get_item_by_barcode(barcode)
-          call_number = item.dig("item_data", "alternative_call_number").presence
+          call_number = item&.dig("item_data", "alternative_call_number").presence
           next unless call_number
 
           hr["call_number"] = call_number
@@ -59,10 +59,14 @@ module Ils::Adapters
       end
 
       def get_item_by_barcode(barcode)
+        barcode = Addressable::URI.encode_component(barcode, Addressable::URI::CharacterClasses::UNRESERVED)
+
         adapter.api.get(
           "items?item_barcode=#{barcode}",
           format: "application/json"
         )
+      rescue ExlApi::Error
+        nil
       end
 
     end

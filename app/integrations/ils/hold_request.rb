@@ -1,6 +1,7 @@
 class Ils
   class HoldRequest < BaseStruct
     attribute :id, Types::String
+    attribute :record_id, Types::String.optional
     attribute :user_id, Types::String.optional # TODO: Remove .optional flag. This is only to fix the temp problem with broken hold requests.
     attribute :status, Types::HoldRequestStatus
     attribute :queue_position, Types::Integer.default(1)

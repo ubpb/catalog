@@ -25,7 +25,12 @@
                     i.fa-solid.fa-info-circle
                     =< t(".on_hold_shelf_info", date: (hold_request.expiry_date ? l(hold_request.expiry_date) : "–"))
 
-              div: strong = hold_request.title
+              div: strong
+                - title = hold_request.title.presence || "n.n."
+                - if (record_id = hold_request.record_id).present?
+                  = link_to title, record_path(record_id, search_scope: "local"), target: "_blank"
+                - else
+                  = title
               - if hold_request.author.present?
                 div = hold_request.author
               - if hold_request.call_number.present?

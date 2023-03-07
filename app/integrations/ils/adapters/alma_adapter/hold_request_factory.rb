@@ -9,6 +9,7 @@ module Ils::Adapters
       def build(data)
         Ils::HoldRequest.new(
           id: get_id(data),
+          record_id: get_record_id(data),
           user_id: get_user_id(data),
           status: get_status(data),
           queue_position: get_queue_position(data),
@@ -31,6 +32,10 @@ module Ils::Adapters
 
       def get_id(data)
         data["request_id"]
+      end
+
+      def get_record_id(data)
+        data["mms_id"]
       end
 
       def get_user_id(data)

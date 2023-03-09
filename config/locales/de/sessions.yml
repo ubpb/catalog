@@ -5,17 +5,6 @@ de:
       submit: "Anmelden"
       cancel: "Abbrechen"
       forgot_password: "Ich habe mein Passwort vergessen"
-      migration_info_html: >
-        <p>
-          <i class="fa-solid fa-info-circle fa-lg me-1"></i>
-          Ihr Passwort zur Anmeldung an Ihrem Bibliothekskonto ist nach Umstellung auf das
-          <a href="https://www.ub.uni-paderborn.de/ueber-uns/aktuelle-mitteilungen/mitteilungen-2022/neues-bibliotheksmanagementsystem">neue Bibliotheksmanagementsystem</a>
-          ab dem <strong>1.8.2022</strong> nicht mehr gültig und muss neu gesetzt werden.
-        </p>
-        <ul class="mb-0">
-          <li>Haben Sie eine E-Mail-Adresse in Ihrem Bibliothekskonto hinterlegt, so erfolgt die Setzung eines neuen Passwortes zur Anmeldung an Ihrem Bibliothekskonto über die Funktion „<a href="/password/reset">Ich habe mein Passwort vergessen</a>“.</li>
-          <li>Ist in Ihrem Bibliothekskonto keine E-Mail-Adresse eingetragen, so können Sie sich erstmals nach Umstellung des Bibliothekssystem mit Ihrem Geburtsdatum in der Form TTMMJJJJ als Passwort anmelden. Aus Sicherheitsgründen sollten Sie Ihr Passwort umgehend nach der ersten Anmeldung über die Funktion „Meine Daten -> Passwort ändern“ in Ihrem Bibliothekskonto ändern.</li>
-        </ul>
     create:
       error: "Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist falsch."
       success: "Sie wurden erfolgreich angemeldet."

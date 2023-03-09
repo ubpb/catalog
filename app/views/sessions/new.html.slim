@@ -5,9 +5,6 @@
     .card-body
       = render "alerts"
 
-      .callout.callout-info
-        = t(".migration_info_html")
-
       = f.input :user_id, autofocus: true
       = f.input :password
       = f.input :return_uri, as: :hidden, input_html: { value: @return_uri }

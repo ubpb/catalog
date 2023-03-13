@@ -233,7 +233,7 @@ GEM
     oj (3.14.2)
     ox (2.14.14)
     parallel (1.22.1)
-    parser (3.2.1.0)
+    parser (3.2.1.1)
       ast (~> 2.4.1)
     public_suffix (5.0.1)
     puma (6.1.1)
@@ -285,7 +285,7 @@ GEM
     rexml (3.2.5)
     rss (0.2.9)
       rexml
-    rubocop (1.48.0)
+    rubocop (1.48.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)

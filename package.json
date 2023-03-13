@@ -33,7 +33,7 @@
     "@parcel/transformer-sass": "^2.7.0",
     "autoprefixer": "^10.4.4",
     "buffer": "^5.5.0",
-    "eslint": "^8.33.0",
+    "eslint": "^8.36.0",
     "parcel": "^2.8.0",
     "postcss": "^8.4.7",
     "process": "^0.11.10"

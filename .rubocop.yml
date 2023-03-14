@@ -147,3 +147,7 @@ Layout/AccessModifierIndentation:
 # Allow inner slashes in reg exp
 Style/RegexpLiteral:
   AllowInnerSlashes: true
+
+# Do not remoprt on missing super
+Lint/MissingSuper:
+  Enabled: false

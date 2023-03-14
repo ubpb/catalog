@@ -148,6 +148,6 @@ Layout/AccessModifierIndentation:
 Style/RegexpLiteral:
   AllowInnerSlashes: true
 
-# Do not remoprt on missing super
+# Do not report on missing super
 Lint/MissingSuper:
   Enabled: false

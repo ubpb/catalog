@@ -1,0 +1,54 @@
+dl.key-value-list.mb-3
+  dt = t("activerecord.attributes.registration.reg_type")
+  dd = t("registrations.form.reg_types.#{registration.reg_type}", default: registration.reg_type)
+
+  dt = t("activerecord.attributes.registration.academic_title")
+  dd
+    - if registration.academic_title.present?
+      = t("registrations.form.academic_titles.#{registration.academic_title}", default: registration.academic_title)
+    - else
+      = "–"
+
+  dt = t("activerecord.attributes.registration.gender")
+  dd
+    - if registration.gender.present?
+      = t("registrations.form.genders.#{registration.gender}", default: registration.gender)
+    - else
+      = t("registrations.form.genders.none")
+
+  dt = t("activerecord.attributes.registration.firstname")
+  dd = registration.firstname
+
+  dt = t("activerecord.attributes.registration.lastname")
+  dd = registration.lastname
+
+  dt = t("activerecord.attributes.registration.birthdate")
+  dd = l(registration.birthdate, format: "%d.%m.%Y")
+
+  dt = t("activerecord.attributes.registration.email")
+  dd = registration.email
+
+  dt = t("registrations.form.address")
+  dd
+    ul.list-group
+      li.list-group-item
+        = registration.street_address
+      li.list-group-item
+        = [registration.zip_code, registration.city].join(" ")
+
+  dt = t("registrations.form.additional_address")
+  dd
+    - if registration.street_address2.present? && registration.zip_code2.present? && registration.city2.present?
+      ul.list-group
+        li.list-group-item
+          = registration.street_address2
+        li.list-group-item
+          = [registration.zip_code2, registration.city2].join(" ")
+    - else
+      = "–"
+
+- if registration.terms_of_use
+  em = t("registrations.form.terms_of_use.accepted")
+- else
+  em = t("registrations.form.terms_of_use.declined")
+

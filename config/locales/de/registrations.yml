@@ -1,0 +1,191 @@
+de:
+  registrations:
+    index:
+      description: >
+        <p>
+          Die Universitätsbibliothek Paderborn ist eine öffentliche Bibliothek und für jeden zugänglich.
+        </p>
+        <p>
+          Der Bibliotheksausweis ermöglicht einen persönlichen Zugang zum Katalog, das Ausleihen von
+          Informationsmedien aus dem Bestand der UB und die Bestellung von Informationsmedien aus anderen
+          Bibliotheken (Fernleihe). Er ermöglicht zudem (mit Ausnahme der Externen Benutzerinnen und Benutzern)
+          die Nutzung der Internet-PCs in der Bibliothek.
+        </p>
+        <p class="mb-0">
+          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen. Weitere Infromationen finden
+          Sie <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis">auf unseren Webseiten</a>.
+        </p>
+
+      select_reg_type: Bitte wählen Sie Ihre Nutzergruppe
+      register: Online beantragen
+      more_info: Weitere Informationen...
+
+      emeritus:
+        description: >
+          <p>
+            Falls Sie bereits einen Bibliotheksausweis besitzen, bitten wir Sie, diesen 'umschreiben' zu lassen.
+            Dafür benötigen wir keinerlei weitere Unterlagen, nur Ihren alten Ausweis.
+            In diesem Fall wenden Sie sich bitte an die Kolleginnen und Kollegen an der Theke im Sachgebiet
+            Ortsleihe.
+          </p>
+          <p>
+            Anderfalls können Sie hier einen neuen Ausweis online beantragen.
+          </p>
+
+      guest:
+        description: >
+          <p>
+            Gäste der Universität Paderborn (z.B. Promovierende/Promotionsstudierende, Privatdozentinnen und -dozenten,
+            Gastwissenschaftlerinnen und -wissenschaftler, Lehrbeauftragte ohne Arbeitsvertrag mit der Universität)
+          </p>
+
+      guest_student:
+        description: >
+          <p>
+            Studierende anderer Hochschulen.
+          </p>
+
+      external:
+        description: >
+          <p>
+            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn).
+          </p>
+
+      external_u18:
+        description: >
+          <p>
+            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
+            <strong>unter 18 Jahren</strong>. Mindestalter ist 16 Jahre.
+          </p>
+
+      student:
+        description: >
+          <p class="mb-0">
+            Studierende der Universität Paderborn erhalten ihren Bibliotheksausweis in Form eines kombinierten
+            Studierenden- und Bibliotheksausweises vom Studierendensekretariat der Universität zugesandt.
+          </p>
+
+      employee:
+        description: >
+          <p>
+            Mitarbeitende mit einem Vertrag der Universität Paderborn haben die Möglichkeit, sich einen kombinierten
+            Dienst-/Bibliotheksausweis oder einen Bibliotheksausweis ausstellen zu lassen, vorausgesetzt, Sie haben
+            einen gültigen Uni-Account.
+          </p>
+          <p class="mb-0">
+            Die Beantragung des kombinierten Dienst-/Bibliotheksausweis erfolgt im
+            <a href="https://serviceportal.uni-paderborn.de/">IMT Serviceportal</a>.
+          </p>
+
+    new:
+      breadcrumb: Einen neuen Bibliotheksausweis beantragen
+      header: Einen neuen Bibliotheksausweis beantragen
+
+    create:
+      success: >
+        Die Benutzerregistrierung wurde erfolgreich abgeschlossen. Bitte beachten Sie die Hinweise unten.
+
+    show:
+      breadcrumb: Meine Registrierung
+      header: Meine Registrierung
+      callout:
+        success: >
+          <p>Sie haben sich erfolgreich registriert. Ihre Registrierungsnummer lautet
+          <code>%{code}</code>.</p>
+        pickup_info: >
+          <p>
+            Bitte zeigen Sie diese Nummer (Ausdruck oder auf dem Smartphone) in der Bibliothek vor, um Ihren
+            Bibliothsausweis zu erhalten. Bitte beachten Sie die
+            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
+            <i class="fa-solid fa-external-link"></i>
+            Servicezeiten des Sachgebiets Ortsleihe</a>.
+          </p>
+        additional_info:
+          header: "Sie benötigen vor Ort folgende Unterlagen, um Ihren Bibliotheksausweis erhalten zu können:"
+          id_card: >
+            Ihren Personalausweis, oder eine Meldebescheinigung des Einwohnermeldeamtes, falls Sie ausländische
+            Staatsbürgerin/ausländischer Staatsbürger sind
+          emeritus: Einen Nachweis über Ihr ehemaliges Beschäftigungsverhältnis an der Universität Paderborn
+          guest: Eine Bescheinigung der Universität über Ihren Status als "Gast"
+          guest_student: Eine aktuelle Studienbescheinigung
+          extern_u18: >
+            Die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf"
+            target="_blank"><i class="fa-solid fa-external-link"></i> schriftliche Einwilligung
+            (PDF Download)</a> eines gesetzlichen Vertreters
+
+      details:
+        header: Sie haben folgende Daten eingegeben
+        edit: Bearbeiten
+
+    edit:
+      header: Meine Registrierung bearbeiten
+      breadcrumb: Meine Registrierung bearbeiten
+
+    update:
+      success: Ihre Daten wurde erfolgreich aktualisiert.
+
+    form:
+      error:
+        one: >
+          Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
+          rot makrierte Felder.
+        other:
+          "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
+          rot makrierte Felder."
+      address: Adresse
+      additional_address: Zweitanschrift (optional)
+      terms_of_use_label:
+        Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Benutzungsordnung</a>
+        und die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Gebührenodnung</a> gelesen und
+        akzeptiere diese.
+      terms_of_use:
+        accepted: Benutzungs- und Gebührenordnung akzeptiert
+        declined: Benutzungs- und Gebührenordnung NICHT akzeptiert
+
+      register: Registrierung abschließen
+      save: Änderungen speichern
+      cancel: Abbrechen
+      genders:
+        none: Keine Angabe
+        male: Männlich
+        female: Weiblich
+        other: Divers
+      academic_titles:
+        dr: "Dr."
+        dr_dr: "Dr. Dr."
+        dr_ing: "Dr.-Ing."
+        jprof: "JProf."
+        jprof_dr: "JProf. Dr."
+        pd_dr: "PD Dr."
+        prof: "Prof."
+        prof_dr: "Prof. Dr."
+        prof_dr_ing: "Prof. Dr.-Ing."
+      reg_types:
+        emeritus: Emeritierte und im Ruhestand befindliche Professorinnen und Professoren der Universität Paderborn
+        guest: Gäste der Universität Paderborn
+        guest_student: Gasthörende der Universität Paderborn und Studierende anderer Hochschulen
+        external: Externe Benutzerinnen und Benutzer
+        external_u18: Externe Benutzerinnen und Benutzer unter 18 Jahren
+        student: Studierende der Universität Paderborn
+        employee: Mitarbeitende der Universität Paderborn
+
+  activerecord:
+    attributes:
+      registration:
+        reg_type: Nutzergruppe
+        gender: Geschlecht
+        academic_title: Akademischer Titel
+        firstname: Vorname
+        lastname: Nachname
+        birthdate: Geburtstag
+        email: E-Mail
+        street_address: Straße & Hausnummer
+        zip_code: PLZ
+        city: Ort
+        street_address2: Straße & Hausnummer
+        zip_code2: PLZ
+        city2: Ort
+
+

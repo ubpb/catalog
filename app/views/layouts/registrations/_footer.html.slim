@@ -1,0 +1,16 @@
+footer
+  .footer-claim
+    .container
+      ' Die Universität der Informationsgesellschaft
+  .container
+    .footer-content
+      = t("application.footer.copyright_ub_upb", year: Date.today.year)
+      =<> "|"
+      = link_to t("application.footer.impressum"), go_legal_path
+      =<> "|"
+      = link_to t("application.footer.privacy_policy"), go_privacy_path
+    .footer-image
+      .d-none.d-sm-block
+        = image_tag "footer-bg-lg.png", class: "img-fluid"
+      .d-block.d-sm-none
+        = image_tag "footer-bg-sm.jpg", class: "img-fluid"

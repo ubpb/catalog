@@ -10,6 +10,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "cancancan", "~> 3.2"
 gem "dry-struct", "~> 1.4"
 gem "elasticsearch", "~> 8.1"
+gem "hashids", "~> 1.0"
 gem "jbuilder", "~> 2.7"
 gem "metacrunch-marcxml", "~> 3.1.0" # , github: "ubpb/metacrunch-marcxml", branch: "master"
 gem "mysql2", ">= 0.5.3"

@@ -1,0 +1,33 @@
+.row.mb-4
+  .col-lg-4.col-xl-3
+    h5 Registrierungsdetails
+  .col
+    .card.card-shadowed
+      .card-header
+        h6.mb-0
+          = "ID:"
+          =< @registration.hashed_id
+      .card-body
+        .callout.callout-warning
+          i.fa-solid.fa-triangle-exclamation.fa-fw.fa-lg
+          =< "Bitte folgenden Dokumente prüfen:"
+          ul.mb-0
+            li = "Personalausweis, oder eine Meldebescheinigung des Einwohnermeldeamtes"
+            - if @registration.reg_type == "emeritus"
+              li = "Nachweis über ehemaliges Beschäftigungsverhältnis an der Universität Paderborn"
+            - if @registration.reg_type == "guest"
+              li = "Bescheinigung der Universität über Status als Gast"
+            - if @registration.reg_type == "guest_student"
+              li = "Aktuelle Studienbescheinigung"
+            - if @registration.reg_type == "extern_u18"
+              li = "schriftliche Einwilligung eines gesetzlichen Vertreters"
+
+        = render "registrations/details", registration: @registration
+      .card-footer
+        .d-flex.justify-content-between
+          div
+            = link_to "Bearbeiten", edit_admin_registration_path(@registration), class: "btn btn-primary"
+            =< link_to "Löschen", admin_registration_path(@registration), data: { turbo_method: :delete, turbo_confirm: "Sind Sie sicher?" }, class: "btn btn-danger"
+            =< link_to "Abbrechen", admin_registrations_path, class: "btn btn-link"
+          div
+            = link_to "Konto in Alma Anlegen", confirm_admin_registration_path(@registration), class: "btn btn-success"

@@ -1,0 +1,36 @@
+- if @registration.errors.any?
+  .callout.callout-danger
+    = t("registrations.form.error", count: @registration.errors.count)
+
+= f.input :reg_type, as: :select, collection: Registration::REG_TYPES, include_blank: false, \
+    label_method: ->(code){ t("registrations.form.reg_types.#{code}", default: code) }
+= f.input :gender, as: :select, collection: Registration::GENDERS, include_blank: false, \
+    prompt: t("registrations.form.genders.none"), \
+    label_method: ->(code){ t("registrations.form.genders.#{code}", default: code) }
+= f.input :academic_title, as: :select, collection: Registration::ACADEMIC_TITLES, include_blank: true, \
+    label_method: ->(code){ t("registrations.form.academic_titles.#{code}", default: code) }
+.row
+  .col
+    = f.input :firstname
+  .col
+    = f.input :lastname
+= f.input :birthdate, as: :date, start_year: Date.today.year - 16, end_year: Date.today.year - 90, prompt: true
+= f.input :email
+
+fieldset.border.p-3.mb-3
+  legend: h5.mb-0 = t("registrations.form.address")
+  = f.input :street_address
+  .row
+    .col-3
+      = f.input :zip_code
+    .col
+      = f.input :city
+
+fieldset.border.p-3.mb-3
+  legend: h5.mb-0 = t("registrations.form.additional_address")
+  = f.input :street_address2
+  .row
+    .col-3
+      = f.input :zip_code2
+    .col
+      = f.input :city2

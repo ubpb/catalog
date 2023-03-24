@@ -167,6 +167,7 @@ GEM
     foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashids (1.0.6)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -403,6 +404,7 @@ DEPENDENCIES
   elasticsearch (~> 8.1)
   exl_api (~> 1.0.0)!
   foreman (>= 0.87)
+  hashids (~> 1.0)
   i18n-debug (>= 1.2)
   jbuilder (~> 2.7)
   letter_opener_web (>= 2.0)

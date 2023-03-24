@@ -18,6 +18,19 @@ Rails.application.routes.draw do
   get  "/password/reset/:token", to: "password_resets#edit",   as: :password_reset
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
+  # User registration for external users
+  resources :registrations,
+            path_names: {new: "new/:type"},
+            only:       [:index, :new, :create, :show, :edit, :update] do
+  end
+
+  # Admin routes (for now, just for registrations)
+  namespace :admin do
+    resources :registrations, only: [:index, :show, :edit, :update, :destroy] do
+      get :confirm, on: :member
+    end
+  end
+
   # Library account
   namespace :account, path: "account" do
     root to: redirect("/account/loans")
@@ -118,8 +131,5 @@ Rails.application.routes.draw do
   get "/user/*other", to: redirect("/account")
 
   # Dev Tools
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
-
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

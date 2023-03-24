@@ -1,0 +1,11 @@
+= simple_form_for @registration do |f|
+  .card.card-shadowed
+    .card-body
+      = render "form_fields", f: f
+      = f.input :terms_of_use, as: :boolean, label: t("registrations.form.terms_of_use_label").html_safe
+
+    .card-footer
+      - abort_path   = @registration.new_record? ? registrations_path : registration_path(@registration)
+      - submit_label = @registration.new_record? ? t("registrations.form.register") : t("registrations.form.save")
+      = f.submit submit_label, class: "btn btn-primary"
+      = link_to t("registrations.form.cancel"), abort_path, class: "btn btn-link"

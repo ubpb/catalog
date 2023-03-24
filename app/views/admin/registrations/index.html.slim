@@ -1,0 +1,36 @@
+.card.card-shadowed
+  .card-header
+    = "Registrierungen"
+  .card-body
+    .mb-3 = form_tag admin_registrations_path, method: :get do
+      .input-group
+        span.input-group-text
+          i.fa-solid.fa-search
+        =< text_field_tag :q, params[:q], placeholder: "Suche", class: "form-control", autofocus: true
+        - if params[:q].present?
+          span.input-group-text
+            = link_to admin_registrations_path do
+              i.fa-solid.fa-times
+
+    - if @registrations.present?
+      table.table.table-striped
+        thead
+          tr
+            th = "ID"
+            th = "Erstellt am"
+            th = "Vorname"
+            th = "Nachname"
+            th = "E-Mail"
+            th = "Aktionen"
+        tbody
+          - @registrations.each do |registration|
+            tr
+              td = registration.hashed_id
+              td = registration.created_at
+              td = registration.firstname
+              td = registration.lastname
+              td = registration.email
+              td
+                = link_to "Anzeigen", admin_registration_path(registration)
+    - else
+      .alert.alert-info = "Keine Registrierungen vorhanden."

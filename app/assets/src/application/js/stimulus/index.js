@@ -54,3 +54,7 @@ application.register("modal", ModalController)
 // app/assets/src/application/js/stimulus/modal_dialog_controller.js
 import ModalDialogController from "./modal_dialog_controller.js"
 application.register("modal-dialog", ModalDialogController)
+
+// app/assets/src/application/js/stimulus/barcode_controller.js
+import BarcodeController from "./barcode_controller.js"
+application.register("barcode", BarcodeController)

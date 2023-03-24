@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @registration] do |f|
+  .card.card-shadowed
+    .card-body
+      = render "registrations/form_fields", f: f
+
+    .card-footer
+      = f.submit "Änderungen speichern", class: "btn btn-primary"
+      = link_to "Abbrechen", admin_registration_path(@registration), class: "btn btn-link"

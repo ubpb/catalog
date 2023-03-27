@@ -1,0 +1,27 @@
+Sehr geehrte(r) <%= @registration.firstname -%> <%= @registration.lastname -%>,
+
+Sie haben sich am <%= @registration.created_at.strftime("%d.%m.%Y um %H:%M Uhr") %> mit der E-Mail Adresse "<%= @registration.email -%>" Online für einen Bibliotheksausweis für die Universitätsbibliothek Paderborn registriert.
+
+Sie können die Details zur Registrierung, sowie weitere Informationen zur Abholung Ihres Bibliotheksausweises unter folgendem Link abrufen:
+
+<%= registration_url(@registration) %>
+
+Sollten Sie den Bibliotheksausweis nicht innerhalb von 30 Tagen abholen, wird Ihre Registrierung automatisch gelöscht.
+
+Für Rückfragen stehen wir Ihnen gerne zur Verfügung.
+
+Mit freundlichen Grüßen
+
+Ihre Universitätsbibliothek
+
+P.S. Sollten Sie keine Registrierung durchgeführt haben, hat jemand bei der Registreriung Ihre E-Mail Adresse verwendet. In diesem Fall kontaktieren Sie uns bitte (s.u.).
+
+---
+Universitätsbibliothek Paderborn
+Dezernat Benutzung & Service
+Sachgebiet Ortsleihe
+Warburger Str. 100
+33098 Paderborn
+Tel. 05251 / 60-2012
+E-Mail: ortsleihe@ub.uni-paderborn.de
+WWW: http://www.ub.uni-paderborn.de

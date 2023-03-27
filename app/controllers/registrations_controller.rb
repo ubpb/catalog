@@ -17,6 +17,7 @@ class RegistrationsController < ApplicationController
     add_breadcrumb(t("registrations.new.breadcrumb"), registrations_path)
 
     if @registration.save
+      RegistrationsMailer.notify_user(@registration).deliver_later
       session[:registration_id] = @registration.hashed_id
       flash[:success] = t("registrations.create.success")
       redirect_to registration_path(@registration)

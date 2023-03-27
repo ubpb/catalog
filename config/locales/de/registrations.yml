@@ -124,6 +124,22 @@ de:
     update:
       success: Ihre Daten wurde erfolgreich aktualisiert.
 
+    authorize:
+      breadcrumb: Autorisierung
+      header: Autorisierung erforderlich
+      info: >
+        <p>Um Ihre Registrierung erneut aufzurufen bzw. zu bearbeiten, müssen Sie sich erneut autorisieren.
+        Bitte geben Sie dazu im folgenden Feld Ihr bei der Registrierung angegebenes Geburtsdatum ein.</p>
+        <p class="text-success">
+          <i class="fa-solid fa-info-circle"></i>
+          Bitte geben Sie Ihr Geburtsdatum 8-stellig in der folgenden Form ein TTMMJJJJ.
+          D.h. wenn Sie z.B. am 3. Mai 1991 geboren sind dann geben Sie bitte ein: 03051991
+        </p>
+      submit: Autorisieren
+      placeholder: Ihr Geburtsdatum
+      error: >
+        Die Autorisierung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe.
+
     form:
       error:
         one: >

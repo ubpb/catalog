@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :registrations,
             path_names: {new: "new/:type"},
             only:       [:index, :new, :create, :show, :edit, :update] do
+    member do
+      match "authorize", via: [:get, :post]
+    end
   end
 
   # Admin routes (for now, just for registrations)

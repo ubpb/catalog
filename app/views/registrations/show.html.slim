@@ -25,6 +25,7 @@
 
         h5 = t("registrations.show.details.header")
         .mb-3 = render "details", registration: @registration
-        = link_to t("registrations.show.details.edit"), edit_registration_path(@registration), class: "btn btn-primary"
+        .d-print-none
+          = link_to t("registrations.show.details.edit"), edit_registration_path(@registration), class: "btn btn-primary"
 
 

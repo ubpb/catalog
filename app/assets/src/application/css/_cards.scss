@@ -20,6 +20,9 @@
     // Use filter and drop-shadow instead of box-shadow
     // to use the shadow together with "cutoff-corner".
     filter: drop-shadow($box-shadow);
+    @media print {
+      filter: none;
+    }
   }
 }
 

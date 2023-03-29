@@ -13,7 +13,7 @@ ruby:
       = form.input "field", input_html: { name: "f[]", class: "" }, collection: searchables_names, prompt: false, label: false, wrapper: false, label_method: ->(name){t("searches.searchables.#{current_search_scope}.#{name}", default: name)}, selected: query&.name
 
   .col-md-2.col-lg-2.col-xl-1
-    .advanced-search-buttons.btn-group.d-flex
+    .advanced-search-buttons.btn-group.d-flex.d-print-none
       = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#add_field", "data-advanced-search-target": "addButton"
         i.fas.fa-plus
       = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#remove_field", "data-advanced-search-target": "removeButton"

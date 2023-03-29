@@ -24,6 +24,10 @@
       filter: none;
     }
   }
+
+  @media print {
+    border: 1px solid $gray-300;
+  }
 }
 
 @media print {

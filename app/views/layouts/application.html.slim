@@ -20,7 +20,7 @@ html
       = render "header"
 
     #page
-      .container.pb-4
+      .container
         = render "breadcrumb"
         = render "alerts", global: true
         = content_for?(:main) ? yield(:main) : yield

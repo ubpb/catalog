@@ -20,8 +20,8 @@
               li == t("registrations.show.callout.additional_info.guest")
             - if @registration.reg_type == "guest_student"
               li == t("registrations.show.callout.additional_info.guest_student")
-            - if @registration.reg_type == "extern_u18"
-              li == t("registrations.show.callout.additional_info.extern_u18")
+            - if @registration.reg_type == "external_u18"
+              li == t("registrations.show.callout.additional_info.external_u18")
 
         h5 = t("registrations.show.details.header")
         .mb-3 = render "details", registration: @registration

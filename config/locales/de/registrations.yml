@@ -139,6 +139,11 @@ de:
       placeholder: Ihr Geburtsdatum
       error: >
         Die Autorisierung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe.
+      already_created: >
+        Ihre Registrierung wurde bereits bestätigt und kann von Ihnen nicht mehr aufgerufen werden.
+        Bitte melden Sie sich in Ihrem <a href="https://katalog.ub.uni-paderborn.de/login" class="alert-link">
+        <i class="fa-solid fa-external-link"></i> Bibliotheskonto</a>
+        an, um Ihre Daten einzusehen.
 
     form:
       error:

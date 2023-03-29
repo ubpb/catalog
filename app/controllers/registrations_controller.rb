@@ -99,6 +99,12 @@ private
       return false
     end
 
+    if registration.created_in_alma?
+      flash[:error] = t("registrations.authorize.already_created")
+      redirect_to registrations_path
+      return false
+    end
+
     true
   end
 

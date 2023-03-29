@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_103449) do
     t.string "zip_code2"
     t.string "city2"
     t.boolean "terms_of_use", default: false, null: false
+    t.boolean "created_in_alma", default: false, null: false
+    t.string "alma_primary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

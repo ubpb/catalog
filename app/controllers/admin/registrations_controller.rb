@@ -47,10 +47,23 @@ class Admin::RegistrationsController < Admin::ApplicationController
   def confirm
     registration = Registration.find(Registration.to_id(params[:id]))
 
-    create_user_in_alma(registration)
+    if registration.created_in_alma?
+      flash[:error] = "Registrierung wurde bereits in Alma erstellt."
+      redirect_to admin_registration_path(registration)
+      return
+    end
 
-    flash[:success] = "TODO: CONFIRMED!"
-    redirect_to admin_registrations_path
+    primary_alma_id = create_user_in_alma(registration)
+
+    if primary_alma_id.present?
+      registration.update(created_in_alma: true, alma_primary_id: primary_alma_id)
+      flash[:success] = "Konto erfolgreich in Alma erstellt. Ausweis kann jetzt gedruckt werden."
+    else
+      flash[:error] = "Konto konnte in Alma nicht erstellt werden. Bitte wiederholen Sie den Vorgang. Sollte
+      der Fehler weiterhin auftreten, wenden Sie sich bitte an die IT."
+    end
+
+    redirect_to admin_registration_path(registration)
   end
 
 private
@@ -92,13 +105,12 @@ private
 
   def create_user_in_alma(registration)
     alma_user = alma_user_from_registration(registration)
-    pp alma_user
 
     result = Ils.adapter.api.post("/users", body: alma_user.to_json, format: "application/json")
-    puts result
-    # TODO: FINISH ME
-  rescue => e
-    binding.b
+    result["primary_id"].presence || false
+  rescue ExlApi::Error => e
+    Rails.logger.error("Error creating user in Alma [#{e.code}]: #{e.message}")
+    false
   end
 
   def alma_user_from_registration(registration)

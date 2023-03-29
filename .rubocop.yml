@@ -30,4 +30,3 @@ inherit_from:
 AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 3.2
-

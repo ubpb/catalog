@@ -26,7 +26,7 @@
           - @registrations.each do |registration|
             tr
               td = registration.hashed_id
-              td = registration.created_at
+              td = l(registration.created_at)
               td = registration.firstname
               td = registration.lastname
               td = registration.email

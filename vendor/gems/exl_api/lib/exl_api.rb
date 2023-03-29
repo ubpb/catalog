@@ -151,28 +151,32 @@ module ExlApi
     end
 
     def parse_error_response(response)
-      if response.body.present? && response.headers[:content_type].present?
-        content_type = response.headers[:content_type]
+      if response.body&.starts_with?("<") # XML
+        xml = Nokogiri::XML.parse(response.body)
+        error_message = xml.at("errorMessage")&.text
+        error_code    = xml.at("errorCode")&.text
 
-        case content_type
-        when /application\/json/
-          json = Oj.load(response.body)
-          error_message = json["errorList"]["error"][0]["errorMessage"]
-          error_code    = json["errorList"]["error"][0]["errorCode"]
-
-          {error_message: error_message, error_code: error_code}
-        when /text\/xml/, /application\/xml/
-          xml = Nokogiri::XML.parse(response.body)
-          error_message = xml.at("errorMessage")&.text
-          error_code    = xml.at("errorCode")&.text
-
-          {error_message: error_message, error_code: error_code}
-        else
-          {error_message: nil, error_code: nil}
-        end
-      else
-        {error_message: nil, error_code: nil}
+        return {error_message: error_message, error_code: error_code}
       end
+
+      if response.body&.starts_with?("{") # JSON
+        json = Oj.load(response.body)
+
+        # Sometimes the format is:
+        #   {"errorList":{"error":[{"errorCode":"xxx","errorMessage":"xxx"}]}}
+        error_message = json.dig("errorList", "error", 0, "errorMessage")
+        error_code    = json.dig("errorList", "error", 0, "errorCode")
+
+        # Sometimes the format is:
+        #   {"web_service_result":{"errorList":{"error":{"errorMessage":"xxx","errorCode":"xxx"}}}}
+        error_message = json.dig("web_service_result", "errorList", "error", "errorMessage") if error_message.blank?
+        error_code    = json.dig("web_service_result", "errorList", "error", "errorCode")    if error_code.blank?
+
+        return {error_message: error_message, error_code: error_code}
+      end
+
+      # Otherwise...
+      return {error_message: nil, error_code: nil}
     end
 
     def set_remaining_api_calls(response)

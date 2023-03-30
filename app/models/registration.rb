@@ -6,11 +6,11 @@ class Registration < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
 
   REG_TYPES = [
-    "emeritus",
     "guest",
     "guest_student",
     "external",
-    "external_u18"
+    "external_u18",
+    "emeritus"
   ].freeze
 
   ACADEMIC_TITLES = [

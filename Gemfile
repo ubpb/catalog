@@ -22,6 +22,7 @@ gem "rss", "~> 0.2"
 gem "simple_form", "~> 5.1"
 gem "slim", ">= 5.0"
 gem "sprockets-rails", "~> 3.4.2"
+gem "strip_attributes", "~> 1.13"
 gem "turbo-rails", "~> 1.1"
 gem "view_component", "~> 3.0"
 

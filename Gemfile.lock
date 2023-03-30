@@ -348,6 +348,8 @@ GEM
       lint_roller (~> 1.0)
       rubocop-rails (~> 2.19.0)
     temple (0.10.2)
+      strip_attributes (1.13.0)
+      activemodel (>= 3.0, < 8.0)
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.3.2)
@@ -420,6 +422,7 @@ DEPENDENCIES
   simple_form (~> 5.1)
   slim (>= 5.0)
   sprockets-rails (~> 3.4.2)
+  strip_attributes (~> 1.13)
   turbo-rails (~> 1.1)
   ubpb-rubocop-config!
   view_component (~> 3.0)

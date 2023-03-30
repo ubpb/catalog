@@ -14,6 +14,7 @@ class Ils
     attribute :is_requested, Types::Bool.default(false)
     attribute :public_note, Types::String.optional
     attribute :expected_arrival_date, Types::Date.optional
+    attribute :arrival_date, Types::Date.optional
     attribute :description, Types::String.optional
     attribute :physical_material_type, CodeLabelType.optional
 
@@ -31,10 +32,23 @@ class Ils
     # or is a current "unbound" issue. This flag can be used to filter out
     # "bounded" issues.
     def expected_or_current_issue?
-      # Eingegangene (aktuelle) Hefte haben Materialart = "Heft" => ISSUE
-      # und Exemplarrichtline = 32. Erwartete Hefte haben Materialart = "Heft"
-      # und ein expected_arrival_date gesetzt.
-      physical_material_type&.code == "ISSUE" && (policy&.code == "32" || expected_arrival_date.present?)
+      expected_issue? || current_issue?
+    end
+
+    # Erwartete Hefte haben Materialart = "Heft", Exemplarrichtline = 32, expected_arrival_date gesetzt und
+    # ein leeres arrival_date.
+    def expected_issue?
+      physical_material_type&.code == "ISSUE" &&
+      # policy&.code == "32" && # Diabled for now because not all issues has this set. This will be correted later.
+      expected_arrival_date.present? &&
+      arrival_date.blank?
+    end
+
+    # Aktuelle Hefte haben Materialart = "Heft", Exemplarrichtline = 32, ein arrival_date gesetzt
+    def current_issue?
+      physical_material_type&.code == "ISSUE" &&
+      policy&.code == "32" &&
+      arrival_date.present?
     end
 
     def closed_stack_orderable?

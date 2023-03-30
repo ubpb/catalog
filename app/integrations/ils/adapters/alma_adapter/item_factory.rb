@@ -22,6 +22,7 @@ module Ils::Adapters
           is_requested: get_is_requested(alma_item),
           public_note: get_public_note(alma_item),
           expected_arrival_date: get_expected_arrival_date(alma_item),
+          arrival_date: get_arrival_date(alma_item),
           description: get_description(alma_item),
           physical_material_type: get_physical_material_type(alma_item),
           temp_location: get_temp_location(alma_item),
@@ -111,6 +112,12 @@ module Ils::Adapters
 
       def get_expected_arrival_date(alma_item)
         if date_str = alma_item.dig("item_data", "expected_arrival_date")
+          Date.parse(date_str)
+        end
+      end
+
+      def get_arrival_date(alma_item)
+        if date_str = alma_item.dig("item_data", "arrival_date")
           Date.parse(date_str)
         end
       end

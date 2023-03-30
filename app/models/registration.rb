@@ -29,18 +29,20 @@ class Registration < ApplicationRecord
     "male", "female", "other"
   ].freeze
 
+  attribute :ignore_missing_email, :boolean, default: false
+
   validates :reg_type, inclusion: {in: REG_TYPES}
   validates :gender, inclusion: {in: GENDERS}, allow_blank: true
   validates :academic_title, inclusion: {in: ACADEMIC_TITLES}, allow_blank: true
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :birthdate, presence: true
-  validates :email, presence: true, format: {with: EMAIL_REGEX}
   validates :street_address, presence: true
   validates :zip_code, presence: true
   validates :city, presence: true
   validates :terms_of_use, acceptance: true
 
+  validate :validate_email
   validate :validate_second_address
 
   def hashed_id
@@ -53,6 +55,11 @@ class Registration < ApplicationRecord
 
   def to_param
     hashed_id
+  end
+
+  def validate_email
+    errors.add(:email, :invalid) if email.present? && email !~ EMAIL_REGEX
+    errors.add(:email, :blank)   if email.blank?   && !ignore_missing_email
   end
 
   def validate_second_address

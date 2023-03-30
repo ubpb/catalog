@@ -15,7 +15,13 @@
   .col
     = f.input :lastname
 = f.input :birthdate, as: :date, start_year: Date.today.year - 16, end_year: Date.today.year - 90, prompt: true
-= f.input :email
+= f.input :email, required: true
+- if @registration.errors.include?(:email)
+  .callout.callout-danger
+    == t("registrations.form.missing_email.info")
+    = f.input :ignore_missing_email, as: :boolean, \
+      label: t("registrations.form.missing_email.confirmation"), \
+      wrapper_html: { style: "margin-bottom: 0 !important" }
 
 fieldset.border.p-3.mb-3
   legend: h5.mb-0 = t("registrations.form.address")

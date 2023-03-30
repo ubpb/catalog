@@ -17,7 +17,8 @@ class RegistrationsController < ApplicationController
     add_breadcrumb(t("registrations.new.breadcrumb"), registrations_path)
 
     if @registration.save
-      RegistrationsMailer.notify_user(@registration).deliver_later
+      RegistrationsMailer.notify_user(@registration).deliver_later if @registration.email.present?
+
       session[:registration_id] = @registration.hashed_id
       flash[:success] = t("registrations.create.success")
       redirect_to registration_path(@registration)
@@ -89,7 +90,8 @@ private
       :street_address2,
       :zip_code2,
       :city2,
-      :terms_of_use
+      :terms_of_use,
+      :ignore_missing_email
     )
   end
 

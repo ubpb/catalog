@@ -157,13 +157,27 @@ de:
       additional_address: Zweitanschrift (optional)
       terms_of_use_label:
         Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank">
-        <i class="fa-solid fa-external-link"></i> Benutzungsordnung</a>
-        und die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
-        <i class="fa-solid fa-external-link"></i> Gebührenodnung</a> gelesen und
-        akzeptiere diese.
+        <i class="fa-solid fa-external-link"></i> Benutzungsordnung</a>,
+        die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Gebührenodnung</a>
+        und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Datenschutzerklärung</a>
+        gelesen und akzeptiere diese.
+
       terms_of_use:
-        accepted: Benutzungs- und Gebührenordnung akzeptiert
-        declined: Benutzungs- und Gebührenordnung NICHT akzeptiert
+        accepted: Benutzungs- und Gebührenordnung und Datenschutzerklärung akzeptiert
+        declined: Benutzungs- und Gebührenordnung und Datenschutzerklärung NICHT akzeptiert
+
+      missing_email:
+        info: >
+          <p>
+            Sie haben keine E-Mail Adressse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail Adresse
+            für Ihr Bibliothekskonto damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben, Gebühren und
+            breitgestellten Vormerkungen per E-Mail benachrichtigen können.
+          </p>
+        confirmation: >
+          Ich möchte keine E-Mail Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail
+          Benachrichtigungen über mein Bibliothekskonto erhalten werde.
 
       register: Registrierung abschließen
       save: Änderungen speichern

@@ -7,17 +7,26 @@ ruby:
 
   sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{Addressable::URI.encode_component(@creator.name, Addressable::URI::CharacterClasses::UNRESERVED)}")
 
-span(class=(@iteration.last? ? "me-0" : "me-1"))
-  span = link_to @creator.name, helpers.new_search_request_path(sr_to_author)
+span.px-2.py-1.rounded(
+  class=(@iteration.last? ? "me-0" : "me-1")
+  style="background-color: var(--bs-gray-200)"
+)
+  = link_to helpers.new_search_request_path(sr_to_author) do
+    span = @creator.name
 
-  - if relationships.present?
-    span.ms-1 = "[#{relationships.join(", ")}]"
+    - if relationships.present?
+      span.ms-1 = "[#{relationships.join(", ")}]"
 
-  / - if gnd_id
-  /   span.ms-1 = link_to "http://d-nb.info/gnd/#{gnd_id}" do
-  /     i.fa-regular.fa-id-card
-  / - else
-  /   span.ms-1: i.fa-regular.fa-id-card.text-muted
+  - if gnd_id
+    span.ms-2
+      = link_to "#modal-#{gnd_id}", data: {"bs-toggle": "modal", "bs-backdrop": "static"} do
+        / gnd_path(gnd_id)
+        i.fa-regular.fa-id-card
 
-  - unless @iteration.last?
-    = ";"
+    .modal.fade(id="modal-#{gnd_id}")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h1 = "Foo"
+          .modal-body
+            = "TODO"

@@ -77,6 +77,9 @@ Rails.application.routes.draw do
   # ZDB Journal, Online & Print Service
   get "joap", to: "joap#show", as: "joap"
 
+  # Lobid Gnd API
+  get "gnd/:id", to: "gnd#show", as: "gnd"
+
   # Kickers and static redirectd
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :go_legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy

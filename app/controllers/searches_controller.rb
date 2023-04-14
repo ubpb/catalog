@@ -66,6 +66,7 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.atom
       format.json { render json: @search_result.to_json }
     end
   end

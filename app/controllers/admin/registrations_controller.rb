@@ -10,12 +10,11 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
   def index
     @registrations = Registration.order(created_at: :desc)
+    return if (query = params[:q]).blank?
 
-    if (query = params[:q]).present?
-      @registrations = @registrations.where(
-        "firstname like :q OR lastname like :q OR id = :id", q: "%#{query}%", id: Registration.to_id(query)
-      )
-    end
+    @registrations = @registrations.where(
+      "firstname like :q OR lastname like :q OR id = :id", q: "%#{query}%", id: Registration.to_id(query)
+    )
   end
 
   def show

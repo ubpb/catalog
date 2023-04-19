@@ -222,7 +222,7 @@ private
 
   def alma_expiry_date_from_registration(registration)
     date = case registration.reg_type
-           when "emeritus"          then nil                  # PP - Emeriti u.im Ruhestand bef. Prof.
+           when "emeritus"          then Date.today + 5.years # PP - Emeriti u.im Ruhestand bef. Prof.
            when "guest"             then Date.today + 5.years # PG - Gast der Universität
            when "guest_student"     then Date.today + 2.years # PZ - Gast der Bibliothek
            when "external"          then Date.today + 5.years # PE - Externe Benutzer

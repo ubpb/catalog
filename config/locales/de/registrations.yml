@@ -12,7 +12,7 @@ de:
           die Nutzung der Internet-PCs in der Bibliothek.
         </p>
         <p class="mb-0">
-          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen. Weitere Infromationen finden
+          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen. Weitere Informationen finden
           Sie <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis">auf unseren Webseiten</a>.
         </p>
 
@@ -42,13 +42,13 @@ de:
       guest_student:
         description: >
           <p>
-            Studierende anderer Hochschulen.
+            Studierende anderer Hochschulen
           </p>
 
       external:
         description: >
           <p>
-            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn).
+            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
           </p>
 
       external_u18:
@@ -69,7 +69,7 @@ de:
         description: >
           <p>
             Mitarbeitende mit einem Vertrag der Universität Paderborn haben die Möglichkeit, sich einen kombinierten
-            Dienst-/Bibliotheksausweis oder einen Bibliotheksausweis ausstellen zu lassen, vorausgesetzt, Sie haben
+            Dienst-/Bibliotheksausweis oder einen Bibliotheksausweis ausstellen zu lassen, vorausgesetzt, sie haben
             einen gültigen Uni-Account.
           </p>
           <p class="mb-0">
@@ -165,8 +165,8 @@ de:
         gelesen und akzeptiere diese.
 
       terms_of_use:
-        accepted: Benutzungs- und Gebührenordnung und Datenschutzerklärung akzeptiert
-        declined: Benutzungs- und Gebührenordnung und Datenschutzerklärung NICHT akzeptiert
+        accepted: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung akzeptiert
+        declined: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung NICHT akzeptiert
 
       missing_email:
         info: >

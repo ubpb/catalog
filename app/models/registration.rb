@@ -5,13 +5,19 @@ class Registration < ApplicationRecord
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
 
-  REG_TYPES = [
-    "guest",
-    "guest_student",
-    "external",
-    "external_u18",
-    "emeritus"
-  ].freeze
+  USER_GROUPS = {
+    "guest":         {can_register: true},
+    "guest_student": {can_register: true},
+    "external":      {can_register: true},
+    "external_u18":  {can_register: true},
+    "emeritus":      {can_register: true},
+    "student":       {can_register: false},
+    "employee":      {can_register: false}
+  }.with_indifferent_access.freeze
+
+  REGISTRABLE_USER_GROUPS = USER_GROUPS.select { |_, data| data[:can_register] }.freeze
+
+  NON_REGISTRABLE_USER_GROUPS = USER_GROUPS.reject { |_, data| data[:can_register] }.freeze
 
   ACADEMIC_TITLES = [
     "dr",
@@ -33,7 +39,7 @@ class Registration < ApplicationRecord
 
   attribute :ignore_missing_email, :boolean, default: false
 
-  validates :reg_type, inclusion: {in: REG_TYPES}
+  validates :user_group, inclusion: {in: REGISTRABLE_USER_GROUPS.keys}
   validates :gender, inclusion: {in: GENDERS}, allow_blank: true
   validates :academic_title, inclusion: {in: ACADEMIC_TITLES}, allow_blank: true
   validates :firstname, presence: true

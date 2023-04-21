@@ -1,0 +1,13 @@
+- user_group = local_assigns.fetch(:user_group) { nil }
+
+ul.mb-0
+  li = t("registrations.required_documents.documents.id")
+
+  - if @registration.user_group == "emeritus"
+    li == t("registrations.required_documents.documents.certificate_of_former_employment")
+  - if @registration.user_group == "guest"
+    li == t("registrations.required_documents.documents.guest_certificate")
+  - if @registration.user_group == "guest_student"
+    li == t("registrations.required_documents.documents.guest_student_certificate")
+  - if @registration.user_group == "external_u18"
+    li == t("registrations.required_documents.documents.u18")

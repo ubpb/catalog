@@ -2,8 +2,8 @@
   .callout.callout-danger
     = t("registrations.form.error", count: @registration.errors.count)
 
-= f.input :reg_type, as: :select, collection: Registration::REG_TYPES, include_blank: false, \
-    label_method: ->(code){ t("registrations.form.reg_types.#{code}", default: code) }
+= f.input :user_group, as: :select, collection: Registration::REGISTRABLE_USER_GROUPS.keys, include_blank: false, \
+    label_method: ->(group){ t("registrations.user_groups.#{group}.title", default: group) }
 = f.input :gender, as: :select, collection: Registration::GENDERS, include_blank: false, \
     prompt: t("registrations.form.genders.none"), \
     label_method: ->(code){ t("registrations.form.genders.#{code}", default: code) }

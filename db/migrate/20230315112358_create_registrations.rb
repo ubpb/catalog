@@ -1,7 +1,7 @@
 class CreateRegistrations < ActiveRecord::Migration[7.0]
   def change
     create_table :registrations do |t|
-      t.string :reg_type
+      t.string :user_group
       t.string :academic_title
       t.string :gender
       t.string :firstname

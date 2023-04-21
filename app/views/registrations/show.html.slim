@@ -1,31 +1,21 @@
-.row
-  .col-lg-4.col-xl-3
-    h5 = t("registrations.show.header")
-  .col
-    .card.card-shadowed
-      .card-body
-        .callout.callout-success
-          == t("registrations.show.callout.success", code: @registration.hashed_id)
-          .bg-white.p-3.rounded.text-center.mb-3
-            div(data-controller="barcode", data-barcode-text-value="#{@registration.hashed_id}")
+.card.card-shadowed
+  .card-header.cutoff-corner-tr
+    .d-flex.align-items-center
+      h5.mb-0 = t("registrations.show.header")
+      .ms-auto.d-print-none
+        = link_to t("registrations.show.details.edit"), edit_registration_path(@registration), class: "btn btn-primary btn-sm"
+  .card-body
+    .callout.callout-success
+      == t("registrations.show.callout.success", code: @registration.hashed_id)
+      .bg-white.p-3.rounded.text-center.mb-3
+        div(data-controller="barcode", data-barcode-text-value="#{@registration.hashed_id}")
 
-          == t("registrations.show.callout.pickup_info")
+      == t("registrations.show.callout.pickup_info")
 
-          mb.1 == t("registrations.show.callout.additional_info.header")
-          ul.mb-0
-            li = t("registrations.show.callout.additional_info.id_card")
-            - if @registration.reg_type == "emeritus"
-              li == t("registrations.show.callout.additional_info.emeritus")
-            - if @registration.reg_type == "guest"
-              li == t("registrations.show.callout.additional_info.guest")
-            - if @registration.reg_type == "guest_student"
-              li == t("registrations.show.callout.additional_info.guest_student")
-            - if @registration.reg_type == "external_u18"
-              li == t("registrations.show.callout.additional_info.external_u18")
+      = render "required_documents", user_group: @registration.user_group
 
-        .d-print-none
-          h5 = t("registrations.show.details.header")
-          .mb-3 = render "details", registration: @registration
-          = link_to t("registrations.show.details.edit"), edit_registration_path(@registration), class: "btn btn-primary"
+    .d-print-none
+      h5 = t("registrations.show.details.header")
+      = render "details", registration: @registration
 
 

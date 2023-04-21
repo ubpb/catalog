@@ -87,7 +87,7 @@ private
 
   def registration_params
     params.require(:registration).permit(
-      :reg_type,
+      :user_group,
       :academic_title,
       :gender,
       :firstname,
@@ -210,7 +210,7 @@ private
   end
 
   def alma_user_group_from_registration(registration)
-    case registration.reg_type
+    case registration.user_group
     when "emeritus"          then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
     when "guest"             then "13" # PG - Gast der Universität
     when "guest_student"     then "03" # PZ - Gast der Bibliothek
@@ -221,7 +221,7 @@ private
   end
 
   def alma_expiry_date_from_registration(registration)
-    date = case registration.reg_type
+    date = case registration.user_group
            when "emeritus"          then Date.today + 5.years # PP - Emeriti u.im Ruhestand bef. Prof.
            when "guest"             then Date.today + 5.years # PG - Gast der Universität
            when "guest_student"     then Date.today + 2.years # PZ - Gast der Bibliothek
@@ -233,7 +233,7 @@ private
   end
 
   def alma_statistical_category_from_registration(registration)
-    case registration.reg_type
+    case registration.user_group
     when "emeritus"          then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
     when "guest"             then "13" # PG - Gast der Universität
     when "guest_student"     then "03" # PZ - Gast der Bibliothek

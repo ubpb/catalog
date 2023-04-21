@@ -1,6 +1,11 @@
+- header = local_assigns.fetch(:header) { nil }
+
 = simple_form_for @registration do |f|
   .card.card-shadowed
-    .card-body.cutoff-corner-tr
+    - if header
+      .card-header.cutoff-corner-tr
+        h5.mb-0 = header
+    .card-body
       = render "form_fields", f: f
       = f.input :terms_of_use, as: :boolean, label: t("registrations.form.terms_of_use_label").html_safe
 

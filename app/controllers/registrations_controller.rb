@@ -3,10 +3,11 @@ class RegistrationsController < ApplicationController
   def index; end
 
   def new
-    reg_type = ensure_valid_reg_type!
+    user_group = params[:type]
+    ensure_valid_user_group!(user_group)
 
     @registration = Registration.new
-    @registration.reg_type = reg_type
+    @registration.user_group = user_group
 
     add_breadcrumb(t("registrations.new.breadcrumb"), registrations_path)
   end
@@ -77,7 +78,7 @@ private
 
   def registration_params
     params.require(:registration).permit(
-      :reg_type,
+      :user_group,
       :academic_title,
       :gender,
       :firstname,
@@ -110,15 +111,16 @@ private
     true
   end
 
-  def ensure_valid_reg_type!
-    reg_type = Registration::REG_TYPES.find { |t| t == params[:type] }
+  def ensure_valid_user_group!(user_group)
+    registrable_user_group = Registration::REGISTRABLE_USER_GROUPS.keys.find { |t| t == user_group }
 
-    if reg_type.blank?
+    if registrable_user_group.blank?
+      flash[:error] = t("registrations.ensure_valid_user_group!.error")
       redirect_to registrations_path
-      nil
+      return false
     end
 
-    reg_type
+    true
   end
 
 end

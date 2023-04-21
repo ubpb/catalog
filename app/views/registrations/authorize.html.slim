@@ -1,14 +1,12 @@
-.row
-  .col-lg-4.col-xl-3
-    h5 = t("registrations.authorize.header")
-  .col
-    .card.card-shadowed
-      .card-body
-        == t("registrations.authorize.info")
-        = form_tag authorize_registration_path, method: :post do
-          .input-group
-            span.input-group-text
-              i.fa-solid.fa-lock
-            =< text_field_tag :authtoken, params[:authtoken], placeholder: t("registrations.authorize.placeholder"), \
-              class: "form-control", autofocus: true
-            = submit_tag t("registrations.authorize.submit"), class: "btn btn-primary"
+.card.card-shadowed
+  .card-header.cutoff-corner-tr
+    h5.mb-0 = t("registrations.authorize.header")
+  .card-body
+    == t("registrations.authorize.info")
+    = form_tag authorize_registration_path, method: :post do
+      .input-group
+        span.input-group-text
+          i.fa-solid.fa-lock
+        =< text_field_tag :authtoken, params[:authtoken], placeholder: t("registrations.authorize.placeholder"), \
+          class: "form-control", autofocus: true
+        = submit_tag t("registrations.authorize.submit"), class: "btn btn-primary"

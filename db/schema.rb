@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_103449) do
   end
 
   create_table "registrations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "reg_type"
+    t.string "user_group"
     t.string "academic_title"
     t.string "gender"
     t.string "firstname"

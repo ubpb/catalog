@@ -1,45 +1,20 @@
-ruby:
-  user_groups = {
-    "guest": {
-      can_register: true
-    },
-    "guest_student": {
-      can_register: true
-    },
-    "external": {
-      can_register: true
-    },
-    "external_u18": {
-      can_register: true
-    },
-    "emeritus": {
-      can_register: true
-    },
-    "student": {
-      can_register: false
-    },
-    "employee": {
-      can_register: false
-    }
-  }
-
 .card.card-shadowed.card-primary.mb-4
   .card-header.cutoff-corner-tr
     h5.mb-0 = "Benutzerregistrierung"
   .card-body
     == t("registrations.index.description")
 
-h5.mb-4 = t("registrations.index.select_reg_type")
+h5.mb-4 = t("registrations.index.select_user_group")
 
 .row.row-cols-1.row-cols-md-2.row-cols-lg-3.row-cols-xxl-4.g-4
-  - user_groups.each do |group, data|
+  - Registration::USER_GROUPS.each do |group, data|
     .col
       .card.card-shadowed.h-100
         .card-body.cutoff-corner-tr
-          h5.text-accent = t("registrations.form.reg_types.#{group}")
-          == t("registrations.index.#{group}.description")
+          h5.text-accent = t("registrations.user_groups.#{group}.title")
+          == t("registrations.user_groups.#{group}.description")
         .card-footer
           .d-grid.gap-2
             - if data[:can_register] == true
               = link_to t("registrations.index.register"), new_registration_path(type: group), class: "btn btn-primary"
-            = link_to t("registrations.index.more_info"), t("registrations.index.#{group}.more_info_link"), class: "btn btn-link", target: "_blank"
+            = link_to t("registrations.index.more_info"), t("registrations.user_groups.#{group}.more_info_link"), class: "btn btn-link", target: "_blank"

@@ -50,13 +50,7 @@ class Registration < ApplicationRecord
   def cleanup_attributes
     cleaned_attributes = StripAttributes.strip(self, collapse_spaces: true).attributes
 
-    cleaned_attributes["firstname"]        = cleaned_attributes["firstname"]&.capitalize
-    cleaned_attributes["lastname"]         = cleaned_attributes["lastname"]&.capitalize
-    cleaned_attributes["email"]            = cleaned_attributes["email"]&.downcase
-    cleaned_attributes["street_address"]   = cleaned_attributes["street_address"]&.capitalize
-    cleaned_attributes["city"]             = cleaned_attributes["city"]&.capitalize
-    cleaned_attributes["street_address2"]  = cleaned_attributes["street_address2"]&.capitalize
-    cleaned_attributes["city2"]            = cleaned_attributes["city2"]&.capitalize
+    cleaned_attributes["email"] = cleaned_attributes["email"]&.downcase
 
     self.attributes = cleaned_attributes
   end

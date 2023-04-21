@@ -1,6 +1,6 @@
 = simple_form_for @registration do |f|
   .card.card-shadowed
-    .card-body
+    .card-body.cutoff-corner-tr
       = render "form_fields", f: f
       = f.input :terms_of_use, as: :boolean, label: t("registrations.form.terms_of_use_label").html_safe
 

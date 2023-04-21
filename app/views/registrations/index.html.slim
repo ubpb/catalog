@@ -1,82 +1,45 @@
-.card.card-shadowed.cutoff-corner-tr.card-primary.mb-4
-  .card-header
-    = "Benutzerregistrierung"
+ruby:
+  user_groups = {
+    "guest": {
+      can_register: true
+    },
+    "guest_student": {
+      can_register: true
+    },
+    "external": {
+      can_register: true
+    },
+    "external_u18": {
+      can_register: true
+    },
+    "emeritus": {
+      can_register: true
+    },
+    "student": {
+      can_register: false
+    },
+    "employee": {
+      can_register: false
+    }
+  }
+
+.card.card-shadowed.card-primary.mb-4
+  .card-header.cutoff-corner-tr
+    h5.mb-0 = "Benutzerregistrierung"
   .card-body
     == t("registrations.index.description")
 
-h4.mb-4 = t("registrations.index.select_reg_type")
+h5.mb-4 = t("registrations.index.select_reg_type")
 
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.guest")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.guest.description")
-        = link_to t("registrations.index.register"), new_registration_path(type: "guest"), class: "btn btn-primary"
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gaeste-der-universitaet-paderborn"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.guest_student")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.guest_student.description")
-        = link_to t("registrations.index.register"), new_registration_path(type: "guest_student"), class: "btn btn-primary"
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gasthoerende-der-universitaet-paderborn-und-studierende-anderer-hochschulen"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.external")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.external.description")
-        = link_to t("registrations.index.register"), new_registration_path(type: "external"), class: "btn btn-primary"
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.external_u18")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.external_u18.description")
-        = link_to t("registrations.index.register"), new_registration_path(type: "external_u18"), class: "btn btn-primary"
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer-unter-18-jahren"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.emeritus")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.emeritus.description")
-        = link_to t("registrations.index.register"), new_registration_path(type: "emeritus"), class: "btn btn-primary"
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/emeritierte-und-im-ruhestand-befindliche-professoren"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.student")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.student.description")
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/studierende-der-universitaet-paderborn"
-
-.row.mb-4
-  .col-md-4.col-xl-3
-    h5 = t("registrations.form.reg_types.employee")
-  .col
-    .card.card-shadowed.h-100
-      .card-body
-        == t("registrations.index.employee.description")
-      .card-footer
-        = link_to t("registrations.index.more_info"), "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/mitarbeitende-der-universitaet-paderborn"
+.row.row-cols-1.row-cols-md-2.row-cols-lg-3.row-cols-xxl-4.g-4
+  - user_groups.each do |group, data|
+    .col
+      .card.card-shadowed.h-100
+        .card-body.cutoff-corner-tr
+          h5.text-accent = t("registrations.form.reg_types.#{group}")
+          == t("registrations.index.#{group}.description")
+        .card-footer
+          .d-grid.gap-2
+            - if data[:can_register] == true
+              = link_to t("registrations.index.register"), new_registration_path(type: group), class: "btn btn-primary"
+            = link_to t("registrations.index.more_info"), t("registrations.index.#{group}.more_info_link"), class: "btn btn-link", target: "_blank"

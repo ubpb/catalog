@@ -12,15 +12,45 @@ de:
           die Nutzung der Internet-PCs in der Bibliothek.
         </p>
         <p class="mb-0">
-          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen. Weitere Informationen finden
-          Sie <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis">auf unseren Webseiten</a>.
+          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen.
         </p>
 
       select_reg_type: Bitte wählen Sie Ihre Nutzergruppe
       register: Online beantragen
       more_info: Weitere Informationen...
 
+      guest:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gaeste-der-universitaet-paderborn"
+        description: >
+          <p>
+            Gäste der Universität Paderborn (z.B. Promovierende/Promotionsstudierende, Privatdozentinnen und -dozenten,
+            Gastwissenschaftlerinnen und -wissenschaftler, Lehrbeauftragte ohne Arbeitsvertrag mit der Universität)
+          </p>
+
+      guest_student:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gasthoerende-der-universitaet-paderborn-und-studierende-anderer-hochschulen"
+        description: >
+          <p>
+            Studierende anderer Hochschulen
+          </p>
+
+      external:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer"
+        description: >
+          <p>
+            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
+          </p>
+
+      external_u18:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer-unter-18-jahren"
+        description: >
+          <p>
+            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
+            <strong>unter 18 Jahren</strong>. Mindestalter ist 16 Jahre.
+          </p>
+
       emeritus:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/emeritierte-und-im-ruhestand-befindliche-professoren"
         description: >
           <p>
             Falls Sie bereits einen Bibliotheksausweis besitzen, bitten wir Sie, diesen 'umschreiben' zu lassen.
@@ -32,33 +62,8 @@ de:
             Anderfalls können Sie hier einen neuen Ausweis online beantragen.
           </p>
 
-      guest:
-        description: >
-          <p>
-            Gäste der Universität Paderborn (z.B. Promovierende/Promotionsstudierende, Privatdozentinnen und -dozenten,
-            Gastwissenschaftlerinnen und -wissenschaftler, Lehrbeauftragte ohne Arbeitsvertrag mit der Universität)
-          </p>
-
-      guest_student:
-        description: >
-          <p>
-            Studierende anderer Hochschulen
-          </p>
-
-      external:
-        description: >
-          <p>
-            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
-          </p>
-
-      external_u18:
-        description: >
-          <p>
-            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
-            <strong>unter 18 Jahren</strong>. Mindestalter ist 16 Jahre.
-          </p>
-
       student:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/studierende-der-universitaet-paderborn"
         description: >
           <p class="mb-0">
             Studierende der Universität Paderborn erhalten ihren Bibliotheksausweis in Form eines kombinierten
@@ -66,6 +71,7 @@ de:
           </p>
 
       employee:
+        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/mitarbeitende-der-universitaet-paderborn"
         description: >
           <p>
             Mitarbeitende mit einem Vertrag der Universität Paderborn haben die Möglichkeit, sich einen kombinierten

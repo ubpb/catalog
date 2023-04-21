@@ -7,7 +7,7 @@ ruby:
 
   sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{Addressable::URI.encode_component(@creator.name, Addressable::URI::CharacterClasses::UNRESERVED)}")
 
-span.px-2.py-1.rounded(
+.d-inline-block.px-2.py-1.rounded(
   class=(@iteration.last? ? "me-0" : "me-1")
   style="background-color: var(--bs-gray-200)"
 )
@@ -18,15 +18,16 @@ span.px-2.py-1.rounded(
       span.ms-1 = "[#{relationships.join(", ")}]"
 
   - if gnd_id
-    span.ms-2
-      = link_to "#modal-#{gnd_id}", data: {"bs-toggle": "modal", "bs-backdrop": "static"} do
-        / gnd_path(gnd_id)
+    .d-inline-block.ms-2(data-controller="popover")
+      = link_to gnd_path(gnd_id), data: {action: "click->popover#show"} do
         i.fa-regular.fa-id-card
+      div.popover(data-popover-target="output") = "TODO"
 
-    .modal.fade(id="modal-#{gnd_id}")
-      .modal-dialog
-        .modal-content
-          .modal-header
-            h1 = "Foo"
-          .modal-body
-            = "TODO"
+      .modal(tabindex="-1" data-popover-target="modal")
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h5.modal-title = "Modal title"
+              button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+            .modal-body
+              = "Modal body text goes here"

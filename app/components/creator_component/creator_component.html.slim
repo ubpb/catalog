@@ -18,16 +18,8 @@ ruby:
       span.ms-1 = "[#{relationships.join(", ")}]"
 
   - if gnd_id
-    .d-inline-block.ms-2(data-controller="popover")
-      = link_to gnd_path(gnd_id), data: {action: "click->popover#show"} do
+    .d-inline-block.ms-2(data-controller="modal" data-modal-modal-dialog-outlet="#modal-dialog")
+      = link_to gnd_path(gnd_id), "data-action": "click->modal#open" do
         i.fa-regular.fa-id-card
-      div.popover(data-popover-target="output") = "TODO"
 
-      .modal(tabindex="-1" data-popover-target="modal")
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h5.modal-title = "Modal title"
-              button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-            .modal-body
-              = "Modal body text goes here"
+

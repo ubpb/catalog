@@ -50,3 +50,11 @@ application.register("shelf-finder", ShelfFinderController)
 // app/assets/src/application/js/stimulus/popover_controller.js
 import PopoverController from "./popover_controller.js"
 application.register("popover", PopoverController)
+
+// app/assets/src/application/js/stimulus/modal_controller.js
+import ModalController from "./modal_controller.js"
+application.register("modal", ModalController)
+
+// app/assets/src/application/js/stimulus/modal_dialog_controller.js
+import ModalDialogController from "./modal_dialog_controller.js"
+application.register("modal-dialog", ModalDialogController)

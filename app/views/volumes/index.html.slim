@@ -7,7 +7,7 @@
 
   .card-body
     turbo-frame#volumes
-      - if @volumes.present?
-        = link_to t(".show-volumes"), new_search_request_path(VolumesController.search_request(@record))
+      - if @has_volumes
+        = link_to t(".show-volumes"), new_search_request_path(VolumesController.search_request(@record)), data: {"turbo-frame": "_top"}
       - else
         em = t(".no-volumes")

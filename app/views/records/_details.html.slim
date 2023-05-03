@@ -47,7 +47,7 @@ dl.key-value-list
     dd = yop
 
   / Superorder
-  - if @record.is_superorder? && @record.hbz_id.present?
+  - if @record.is_superorder?
     dt = t(".volumes")
     dd
       turbo-frame#volumes(src=record_volumes_path(search_scope: current_search_scope, record_id: @record.id) target="_top")

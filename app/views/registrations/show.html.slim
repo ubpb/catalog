@@ -12,6 +12,9 @@
 
       == t("registrations.show.callout.pickup_info")
 
+      .mb-1
+        i.fas.fa-info-circle.fa-lg.fa-fw.me-1
+        == t("registrations.required_documents.header")
       = render "required_documents", user_group: @registration.user_group
 
     .d-print-none

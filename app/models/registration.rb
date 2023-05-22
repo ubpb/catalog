@@ -52,6 +52,7 @@ class Registration < ApplicationRecord
 
   validate :validate_email
   validate :validate_second_address
+  validate :validate_u18_in_context_of_birthdate
 
   def cleanup_attributes
     cleaned_attributes = StripAttributes.strip(self, collapse_spaces: true).attributes
@@ -84,6 +85,12 @@ class Registration < ApplicationRecord
     errors.add(:street_address2, :blank) if street_address2.blank?
     errors.add(:zip_code2, :blank)       if zip_code2.blank?
     errors.add(:city2, :blank)           if city2.blank?
+  end
+
+  def validate_u18_in_context_of_birthdate
+    return unless user_group == "external_u18" && birthdate.present? && birthdate < 18.years.ago
+
+    errors.add(:birthdate, :u18_group_but_over_18)
   end
 
 end

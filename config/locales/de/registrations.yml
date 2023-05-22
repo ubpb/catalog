@@ -220,6 +220,14 @@ de:
         prof_dr_ing: "Prof. Dr.-Ing."
 
   activerecord:
+    errors:
+      models:
+        registration:
+          attributes:
+            birthdate:
+              u18_group_but_over_18: >
+                Sie haben eine Nutzergruppe für Personen unter 18 Jahren gewählt,
+                aber Ihr Geburtsdatum zeigt, dass Sie über 18 Jahre alt sind.
     attributes:
       registration:
         user_group: Nutzergruppe

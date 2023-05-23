@@ -35,19 +35,17 @@ class Ils
       expected_issue? || current_issue?
     end
 
-    # Erwartete Hefte haben Materialart = "Heft", Exemplarrichtline = 32, expected_arrival_date gesetzt und
+    # Erwartete Hefte haben Materialart = "Heft", expected_arrival_date gesetzt und
     # ein leeres arrival_date.
     def expected_issue?
       physical_material_type&.code == "ISSUE" &&
-      # policy&.code == "32" && # Diabled for now because not all issues has this set. This will be correted later.
       expected_arrival_date.present? &&
       arrival_date.blank?
     end
 
-    # Aktuelle Hefte haben Materialart = "Heft", Exemplarrichtline = 32, ein arrival_date gesetzt
+    # Aktuelle Hefte haben Materialart = "Heft", ein arrival_date gesetzt
     def current_issue?
       physical_material_type&.code == "ISSUE" &&
-      policy&.code == "32" &&
       arrival_date.present?
     end
 

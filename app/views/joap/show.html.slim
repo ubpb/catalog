@@ -24,7 +24,7 @@
                 .ms-auto
                   - if pr.call_number.present?
                     - sr = SearchEngine::SearchRequest.parse("sr[q,call_number]=#{pr.call_number}")
-                    = link_to new_search_request_path(sr), class: "btn btn-primary btn-sm" do
+                    = link_to new_search_request_path(sr), class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do
                       i.fa-solid.fa-external-link.fa-fw
                       = "Zur Print-Ausgabe"
       - else

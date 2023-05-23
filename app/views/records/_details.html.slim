@@ -105,7 +105,7 @@ dl.key-value-list
   = optional_value(@record.relations) do |relations|
     dt = t(".relations")
     dd
-      turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
+      turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id))
         i.fa-solid.fa-spinner.fa-spin
 
   / Source

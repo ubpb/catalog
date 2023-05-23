@@ -150,8 +150,8 @@ dl.key-value-list
         = optional_value(@record.additional_identifiers.select{|i| i.type == :doi}.map(&:value)) do |ids|
           div = "#{t(".identifiers.doi")}: #{ids.join(", ")}"
         / ZDB ID
-        = optional_value(@record.additional_identifiers.select{|i| i.type == :"de-599"}.map(&:value)) do |ids|
-          div = "#{t(".identifiers.zdb")}: #{ids.join(", ")}"
+        = optional_value(@record.zdb_id) do |id|
+          div = "#{t(".identifiers.zdb")}: #{id}"
         / OCLC ID
         = optional_value(@record.additional_identifiers.select{|i| i.type == :ocolc}.map(&:value)) do |ids|
           div = "#{t(".identifiers.oclc")}: #{ids.join(", ")}"

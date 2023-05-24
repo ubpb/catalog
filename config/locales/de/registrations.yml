@@ -1,5 +1,21 @@
 de:
   registrations:
+    user_groups:
+      guest:
+        title: Gäste der Universität Paderborn
+      guest_student:
+        title: Gasthörende der Universität Paderborn und Studierende anderer Hochschulen
+      external:
+        title: Externe Benutzerinnen und Benutzer
+      external_u18:
+        title: Externe Benutzerinnen und Benutzer unter 18 Jahren
+      emeritus:
+        title: Emeritierte und im Ruhestand befindliche Professorinnen und Professoren der Universität Paderborn
+      student:
+        title: Studierende der Universität Paderborn
+      employee:
+        title: Mitarbeitende der Universität Paderborn
+
     ensure_valid_user_group!:
       error: "Die gewählte Nutzergruppe kann sich nicht online registrieren."
 

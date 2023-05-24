@@ -2,8 +2,14 @@
   .callout.callout-danger
     = t("registrations.form.error", count: @registration.errors.count)
 
-= f.input :user_group, as: :select, collection: Registration::REGISTRABLE_USER_GROUPS.keys, include_blank: false, \
-    label_method: ->(group){ t("registrations.user_groups.#{group}.title", default: group) }
+- if controller_path == "admin/registrations"
+  = f.input :user_group, as: :select, collection: Registration::REGISTRABLE_USER_GROUPS.keys, include_blank: false, \
+      label_method: ->(group){ t("registrations.user_groups.#{group}.title", default: group) }, \
+      input_html: { read: controller_name != "admin_registrations" }
+- else
+  = f.input :user_group, as: :string, input_html: { readonly: true, disabled: true, value: t("registrations.user_groups.#{@registration.user_group}.title", default: @registration.user_group)}
+  = f.input :user_group, as: :hidden
+
 = f.input :gender, as: :select, collection: Registration::GENDERS, include_blank: false, \
     prompt: t("registrations.form.genders.none"), \
     label_method: ->(code){ t("registrations.form.genders.#{code}", default: code) }

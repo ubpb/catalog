@@ -1,21 +1,23 @@
 class RegistrationsController < ApplicationController
 
-  def index; end
+  def index
+    redirect_to "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis", allow_other_host: true
+  end
 
   def new
+    add_breadcrumb(t("registrations.new.breadcrumb"))
+
     user_group = params[:type]
     ensure_valid_user_group!(user_group)
 
     @registration = Registration.new
     @registration.user_group = user_group
-
-    add_breadcrumb(t("registrations.new.breadcrumb"), registrations_path)
   end
 
   def create
-    @registration = Registration.new(registration_params)
+    add_breadcrumb(t("registrations.new.breadcrumb"))
 
-    add_breadcrumb(t("registrations.new.breadcrumb"), registrations_path)
+    @registration = Registration.new(registration_params)
 
     if @registration.save
       RegistrationsMailer.notify_user(@registration).deliver_later if @registration.email.present?
@@ -104,7 +106,7 @@ private
 
     if registration.created_in_alma?
       flash[:error] = t("registrations.authorize.already_created")
-      redirect_to registrations_path
+      redirect_to root_path
       return false
     end
 
@@ -116,7 +118,7 @@ private
 
     if registrable_user_group.blank?
       flash[:error] = t("registrations.ensure_valid_user_group!.error")
-      redirect_to registrations_path
+      redirect_to root_path
       return false
     end
 

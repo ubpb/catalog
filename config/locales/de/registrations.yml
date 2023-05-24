@@ -67,11 +67,10 @@ de:
           <code>%{code}</code>.</p>
         pickup_info: >
           <p>
-            Bitte zeigen Sie diese Nummer (Ausdruck oder auf dem Smartphone) in der Bibliothek vor, um Ihren
-            Bibliothsausweis zu erhalten. Bitte beachten Sie die
-            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
-            <i class="fa-solid fa-external-link"></i>
-            Servicezeiten des Sachgebiets Ortsleihe</a>.
+            Ihren Bibliotheksausweis können Sie während der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
+            <i class="fa-solid fa-external-link"></i> Servicezeiten des Sachgebiets Ortsleihe</a> in der Bibliothek
+            abholen. Sie können die o.g. Registrierungsnummer (Ausdruck oder auf dem Smartphone) vorzeigen, um eine schnelle
+            Bearbeitung zu ermöglichen.
           </p>
 
       details:

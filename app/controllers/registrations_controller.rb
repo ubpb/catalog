@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
 
   def index
-    redirect_to "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis", allow_other_host: true
+    add_breadcrumb(t("registrations.new.breadcrumb"))
   end
 
   def new
@@ -106,7 +106,7 @@ private
 
     if registration.created_in_alma?
       flash[:error] = t("registrations.authorize.already_created")
-      redirect_to root_path
+      redirect_to registrations_path
       return false
     end
 
@@ -118,7 +118,7 @@ private
 
     if registrable_user_group.blank?
       flash[:error] = t("registrations.ensure_valid_user_group!.error")
-      redirect_to root_path
+      redirect_to registrations_path
       return false
     end
 

@@ -1,79 +1,7 @@
 de:
   registrations:
-    user_groups:
-      guest:
-        title: Gäste der Universität Paderborn
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gaeste-der-universitaet-paderborn"
-        description: >
-          <p>
-            Gäste der Universität Paderborn (z.B. Promovierende/Promotionsstudierende, Privatdozentinnen und -dozenten,
-            Gastwissenschaftlerinnen und -wissenschaftler, Lehrbeauftragte ohne Arbeitsvertrag mit der Universität)
-          </p>
-
-      guest_student:
-        title: Gasthörende der Universität Paderborn und Studierende anderer Hochschulen
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/gasthoerende-der-universitaet-paderborn-und-studierende-anderer-hochschulen"
-        description: >
-          <p>
-            Studierende anderer Hochschulen
-          </p>
-
-      external:
-        title: Externe Benutzerinnen und Benutzer
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer"
-        description: >
-          <p>
-            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
-          </p>
-
-      external_u18:
-        title: Externe Benutzerinnen und Benutzer unter 18 Jahren
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/externe-benutzerinnen-und-benutzer-unter-18-jahren"
-        description: >
-          <p>
-            Externe Benutzerinnen und Benutzer (z.B. Bürgerinnen und Bürger aus Stadt und Region Paderborn)
-            <strong>unter 18 Jahren</strong>. Mindestalter ist 16 Jahre.
-          </p>
-
-      emeritus:
-        title: Emeritierte und im Ruhestand befindliche Professorinnen und Professoren der Universität Paderborn
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/emeritierte-und-im-ruhestand-befindliche-professoren"
-        description: >
-          <p>
-            Falls Sie bereits einen Bibliotheksausweis besitzen, bitten wir Sie, diesen 'umschreiben' zu lassen.
-            Dafür benötigen wir keinerlei weitere Unterlagen, nur Ihren alten Ausweis.
-            In diesem Fall wenden Sie sich bitte an die Kolleginnen und Kollegen an der Theke im Sachgebiet
-            Ortsleihe.
-          </p>
-          <p>
-            Anderfalls können Sie hier einen neuen Ausweis online beantragen.
-          </p>
-
-      student:
-        title: Studierende der Universität Paderborn
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/studierende-der-universitaet-paderborn"
-        description: >
-          <p class="mb-0">
-            Studierende der Universität Paderborn erhalten ihren Bibliotheksausweis in Form eines kombinierten
-            Studierenden- und Bibliotheksausweises vom Studierendensekretariat der Universität zugesandt.
-          </p>
-
-      employee:
-        title: Mitarbeitende der Universität Paderborn
-        more_info_link: "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis/mitarbeitende-der-universitaet-paderborn"
-        description: >
-          <p>
-            Mitarbeitende mit einem Vertrag der Universität Paderborn haben die Möglichkeit, sich einen kombinierten
-            Dienst-/Bibliotheksausweis oder einen Bibliotheksausweis ausstellen zu lassen, vorausgesetzt, sie haben
-            einen gültigen Uni-Account.
-          </p>
-          <p class="mb-0">
-            Die Beantragung des kombinierten Dienst-/Bibliotheksausweis erfolgt im
-            <a href="https://serviceportal.uni-paderborn.de/">IMT Serviceportal</a>.
-          </p>
-
     ensure_valid_user_group!:
-      error: "Die gewählte Nutzergruppe ist kann sich nicht online registrieren."
+      error: "Die gewählte Nutzergruppe kann sich nicht online registrieren."
 
     required_documents:
       header: >
@@ -92,23 +20,19 @@ de:
 
 
     index:
+      header: Bibliotheksausweis beantragen
       description: >
         <p>
           Die Universitätsbibliothek Paderborn ist eine öffentliche Bibliothek und für jeden zugänglich.
         </p>
-        <p>
+        <p class="mb-0">
           Der Bibliotheksausweis ermöglicht einen persönlichen Zugang zum Katalog, das Ausleihen von
           Informationsmedien aus dem Bestand der UB und die Bestellung von Informationsmedien aus anderen
           Bibliotheken (Fernleihe). Er ermöglicht zudem (mit Ausnahme der Externen Benutzerinnen und Benutzern)
           die Nutzung der Internet-PCs in der Bibliothek.
         </p>
-        <p class="mb-0">
-          Sie können auf dieser Seite online einen neuen Bibliotheksausweis beantragen.
-        </p>
 
-      select_user_group: Bitte wählen Sie Ihre Nutzergruppe
-      register: Online beantragen
-      more_info: Weitere Informationen...
+      register: Bibliotheksausweis jetzt beantragen
 
     new:
       breadcrumb: Einen neuen Bibliotheksausweis beantragen

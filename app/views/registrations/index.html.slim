@@ -1,0 +1,9 @@
+.card.card-shadowed.card-primary.mb-4
+  .card-header.cutoff-corner-tr
+    h5.mb-0 = t("registrations.index.header")
+  .card-body
+    == t("registrations.index.description")
+    .mt-3.text-center
+      = link_to t("registrations.index.register"), \
+        "https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis", \
+        class: "btn btn-primary btn-lg"

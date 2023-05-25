@@ -21,31 +21,31 @@ de:
 
     required_documents:
       header: >
-        Sie benötigen vor Ort bei Abholung folgende Dokumente, um Ihren Bibliotheksausweis erhalten zu können:
+        Sie benötigen vor Ort bei Abholung noch folgende Unterlagen:
       documents:
-        id: >
-          Personalausweis, oder eine Meldebescheinigung des Einwohnermeldeamtes, bei ausländischen
-          Staatsbürgern
-        certificate_of_former_employment: Nachweis über ein ehemaliges Beschäftigungsverhältnis an der Universität Paderborn
-        guest_certificate: Bescheinigung der Universität Paderborn über den Status als "Gast"
-        guest_student_certificate: Aktuelle Studienbescheinigung
+        id: Personalausweis oder Reisepass mit einer Meldebescheinigung des Einwohnermeldeamtes
+        certificate_of_former_employment: Nachweis über das ehemaliges Beschäftigungsverhältnis an der Universität Paderborn
+        guest_certificate: >
+          Bescheinigung der Universität Paderborn oder Bescheinigung der Theologischen Fakultät bzw.
+          Fachhochschule der Wirtschaft (FHdW) über den Status als "Gast"
+        guest_student_certificate: >
+          Aktuelle Studienbescheinigung (Gasthörerausweis oder Studierendenausweis anderer Hochschulen)
         u18: >
           <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf"
           target="_blank"><i class="fa-solid fa-external-link"></i> Schriftliche Einwilligung
-          (PDF Download)</a> eines gesetzlichen Vertreters
+          (PDF Download)</a> eines/r gesetzlichen Vertreters/in
 
 
     index:
       header: Bibliotheksausweis beantragen
       description: >
         <p>
-          Die Universitätsbibliothek Paderborn ist eine öffentliche Bibliothek und für jeden zugänglich.
+          Die Universitätsbibliothek Paderborn ist eine öffentlich zugängliche wissenschaftliche Bibliothek.
         </p>
         <p class="mb-0">
-          Der Bibliotheksausweis ermöglicht einen persönlichen Zugang zum Katalog, das Ausleihen von
-          Informationsmedien aus dem Bestand der UB und die Bestellung von Informationsmedien aus anderen
-          Bibliotheken (Fernleihe). Er ermöglicht zudem (mit Ausnahme der Externen Benutzerinnen und Benutzern)
-          die Nutzung der Internet-PCs in der Bibliothek.
+          Der Bibliotheksausweis ermöglicht das Ausleihen von Informationsmedien aus dem Bestand der UB und die
+          Bestellung von Informationsmedien aus dem Magazin sowie aus anderen Bibliotheken (Fernleihe). Er bietet
+          zudem einen persönlichen Zugang zum Katalog.
         </p>
 
       register: Bibliotheksausweis jetzt beantragen
@@ -67,10 +67,11 @@ de:
           <code>%{code}</code>.</p>
         pickup_info: >
           <p>
-            Ihren Bibliotheksausweis können Sie während der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
-            <i class="fa-solid fa-external-link"></i> Servicezeiten des Sachgebiets Ortsleihe</a> in der Bibliothek
-            abholen. Sie können die o.g. Registrierungsnummer (Ausdruck oder auf dem Smartphone) vorzeigen, um eine schnelle
-            Bearbeitung zu ermöglichen.
+            Ihren Bibliotheksausweis können Sie in der Bibliothek an der Theke des Sachgebiets Ortsleihe abholen.
+            Sie können die o.g. Registrierungsnummer (Ausdruck oder elektronisch bspw. auf einem Smartphone) vorzeigen,
+            um eine schnelle Bearbeitung zu ermöglichen. Bitte beachten Sie hierbei die
+            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
+            <i class="fa-solid fa-external-link"></i> Servicezeiten für Ausweise</a>.
           </p>
 
       details:
@@ -92,8 +93,8 @@ de:
         Bitte geben Sie dazu im folgenden Feld Ihr bei der Registrierung angegebenes Geburtsdatum ein.</p>
         <p class="text-success">
           <i class="fa-solid fa-info-circle"></i>
-          Bitte geben Sie Ihr Geburtsdatum 8-stellig in der folgenden Form ein TTMMJJJJ.
-          D.h. wenn Sie z.B. am 3. Mai 1991 geboren sind dann geben Sie bitte ein: 03051991
+          Bitte geben Sie Ihr Geburtsdatum in der folgenden Form ein TT.MM.JJJJ.
+          D.h. wenn Sie z.B. am 13. Mai 1991 geboren sind dann geben Sie bitte ein: 13.05.1991
         </p>
       submit: Autorisieren
       placeholder: Ihr Geburtsdatum
@@ -131,13 +132,13 @@ de:
       missing_email:
         info: >
           <p>
-            Sie haben keine E-Mail Adressse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail Adresse
-            für Ihr Bibliothekskonto damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben, Gebühren und
-            breitgestellten Vormerkungen per E-Mail benachrichtigen können.
+            Sie haben keine E-Mail-Adresse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail-Adresse
+            für Ihr Bibliothekskonto, damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben,
+            Gebühren und bereitgestellte Vormerkungen per E-Mail benachrichtigen können.
           </p>
         confirmation: >
-          Ich möchte keine E-Mail Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail
-          Benachrichtigungen über mein Bibliothekskonto erhalten werde.
+          Ich möchte keine E-Mail-Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail-Benachrichtigungen
+          über mein Bibliothekskonto erhalten werde.
 
       register: Registrierung abschließen
       save: Änderungen speichern

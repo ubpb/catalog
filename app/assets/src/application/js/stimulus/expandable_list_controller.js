@@ -18,8 +18,6 @@ export default class extends Controller {
 
   collapse(event) {
     event?.preventDefault()
-
-    //const items = this.listTarget.getElementsByTagName('li')
     const items = this.itemTargets
 
     for (let i = 0; i < items.length; i++) {

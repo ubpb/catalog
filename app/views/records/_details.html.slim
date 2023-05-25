@@ -70,7 +70,7 @@ dl.key-value-list
                   div.text-success: em = link.coverage
 
                 - if link.note
-                  div: em = link.note
+                  div: em == link.note
       - content_for :vpn_info, vpn_info
       - if content_for? :vpn_info
         .mt-2 = yield(:vpn_info)

@@ -83,9 +83,8 @@ ruby:
     - if enable_fulltext_links
       / Normal fulltext links
       - if record.fulltext_links.present?
-        - links       = record.fulltext_links
-        - first_link  = links.first
-        - other_links = links[1..-1]
+        - links = record.fulltext_links
+        - additional_links = links[1..-1]
 
         .d-flex.mt-2.bg-light.rounded.p-2.flex-wrap
           .mb-1.me-2
@@ -103,39 +102,20 @@ ruby:
                     div.text-success: em = link.coverage
 
                   - if link.note
-                    div: em = link.note
-              li.list-group-item(data-expandable-list-target="expand")
-              li.list-group-item(data-expandable-list-target="collapse")
+                    div: em == link.note
 
+              - if additional_links.present?
+                li.list-group-item.m-0.p-0.px-2.bg-light
+                  .fw-normal(data-expandable-list-target="expand")
+                      a(href="#expand" data-action="click->expandable-list#expand")
+                        i.fa-solid.fa-angles-down.fa-fw
+                        =< pluralize(additional_links.count, "weiteren Link anzeigen", "weitere Links anzeigen")
 
-              /- if other_links.present?
-                li.list-group-item(data-expandable-list-target="expand")
-                  .mt-1.fw-bold
-                    a(href="#expand" data-action="click->expandable-list#expand")
-                      = "+"
-                      =< pluralize(other_links.count, "weiteren Link anzeigen", "weitere Links anzeigen")
-                li.list-group-item(data-expandable-list-target="collapse")
-                  .mt-1.fw-bold
-                    a(href="#collapse" data-action="click->expandable-list#collapse")
-                      = "weniger Links anzeigen"
+                  .fw-normal(data-expandable-list-target="collapse")
+                      a(href="#collapse" data-action="click->expandable-list#collapse")
+                        i.fa-solid.fa-angles-up.fa-fw
+                        =< "weniger anzeigen"
 
-          / - content_for :vpn_info, vpn_info
-          / - if content_for? :vpn_info
-          /   .mt-2 = yield(:vpn_info)
-
-          / .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-          /   = link_to first_link.url, target: "_blank" do
-          /     i.fas.fa-external-link
-          /     =< first_link.label
-
-          / - if other_links.present?
-          /   button(type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false")
-          /     = "+#{other_links.count}"
-          /   ul.dropdown-menu.dropdown-menu-end
-          /     - other_links.each do |link|
-          /       li: a.dropdown-item(href=link.url target="_blank")
-          /         i.fas.fa-external-link
-          /         =< link.label
       / resolver links for CDI
       - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
         .mt-2.input-group.input-group-sm.flex-nowrap

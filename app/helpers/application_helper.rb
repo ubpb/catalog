@@ -62,14 +62,4 @@ module ApplicationHelper
     Config[:shelf_finder, :enabled, default: false]
   end
 
-  def vpn_info
-    # In case of request from an ip range outside of Uni Paderborn campus
-    # show hint about VPN.
-    unless on_campus?
-      content_tag(:div) do
-        t("vpn_info_html", url: "http://www.ub.uni-paderborn.de/recherche/hinweise-zur-nutzung-der-elektronischen-angebote/elektronische-informationsmedien-im-fernzugriff-vpn-shibboleth/")
-      end
-    end
-  end
-
 end

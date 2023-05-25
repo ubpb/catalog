@@ -1,0 +1,6 @@
+span(class=@text_class)
+  i.fa-solid.fa-exclamation-triangle.fa-fw
+  =< t(".info_text")
+=< link_to(t(".more_info_url"), target: "_blank", class: @link_class) do
+  i.fa-solid.fa-external-link.fa-fw
+  =< t(".more_info_text")

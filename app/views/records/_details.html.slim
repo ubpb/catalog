@@ -1,3 +1,8 @@
+- if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger"))
+  .mb-3.bg-white
+    .bg-danger.bg-opacity-10.px-4.p-2.fst-italic.rounded
+      = vpn_info
+
 h4 = t(".header")
 dl.key-value-list
   / Creators
@@ -71,9 +76,6 @@ dl.key-value-list
 
                 - if link.note
                   div: em == link.note
-      - content_for :vpn_info, vpn_info
-      - if content_for? :vpn_info
-        .mt-2 = yield(:vpn_info)
 
   / Fulltext Links by resolver URL (used by CDI)
   / Only show for CDI scope and only if direct links via fulltext_links are not available.

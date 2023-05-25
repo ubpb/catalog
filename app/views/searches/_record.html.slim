@@ -83,28 +83,39 @@ ruby:
     - if enable_fulltext_links
       / Normal fulltext links
       - if record.fulltext_links.present?
-        - first_link  = record.fulltext_links.first
-        - other_links = record.fulltext_links[1..-1]
+        - links = record.fulltext_links
+        - additional_links = links[1..-1]
 
-        .mt-2.input-group.input-group-sm.flex-nowrap
-          .input-group-text
-            div
-              i.fa-solid.fa-globe
-              =< "Link zum Volltext"
+        .d-flex.mt-2.bg-light.rounded.p-2.flex-wrap
+          .mb-1.me-2
+            i.fa-solid.fa-globe
+            =< "Link zum Volltext"
+          .flex-grow-1(data-controller="expandable-list" data-expandable-list-item-count-value="1")
+            ul.list-group(data-expandable-list-target="list")
+              - links.each do |link|
+                li.list-group-item(data-expandable-list-target="item")
+                  div = link_to link.url do
+                    i.fa-solid.fa-external-link.fa-fw
+                    = link.label
 
-          .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-            = link_to first_link.url, target: "_blank" do
-              i.fas.fa-external-link
-              =< first_link.label
+                  - if link.coverage
+                    div.text-success: em = link.coverage
 
-          - if other_links.present?
-            button(type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false")
-              = "+#{other_links.count}"
-            ul.dropdown-menu.dropdown-menu-end
-              - other_links.each do |link|
-                li: a.dropdown-item(href=link.url target="_blank")
-                  i.fas.fa-external-link
-                  =< link.label
+                  - if link.note
+                    div: em == link.note
+
+              - if additional_links.present?
+                li.list-group-item.m-0.p-0.px-2.bg-light
+                  .fw-normal(data-expandable-list-target="expand")
+                      a(href="#expand" data-action="click->expandable-list#expand")
+                        i.fa-solid.fa-angles-down.fa-fw
+                        =< pluralize(additional_links.count, "weiteren Link anzeigen", "weitere Links anzeigen")
+
+                  .fw-normal(data-expandable-list-target="collapse")
+                      a(href="#collapse" data-action="click->expandable-list#collapse")
+                        i.fa-solid.fa-angles-up.fa-fw
+                        =< "weniger anzeigen"
+
       / resolver links for CDI
       - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
         .mt-2.input-group.input-group-sm.flex-nowrap

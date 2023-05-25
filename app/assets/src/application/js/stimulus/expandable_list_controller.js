@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [
     "list",
     "expand",
-    "collapse"
+    "collapse",
+    "item"
   ]
 
   static values = {
@@ -17,8 +18,7 @@ export default class extends Controller {
 
   collapse(event) {
     event?.preventDefault()
-
-    const items = this.listTarget.getElementsByTagName('li')
+    const items = this.itemTargets
 
     for (let i = 0; i < items.length; i++) {
       if (i >= this.itemCountValue) {

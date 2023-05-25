@@ -5,8 +5,3 @@ de:
   confirm-delete: "Wirklich löschen?"
 
   access_denied: "Zugriff verweigert"
-
-  vpn_info_html: >
-    <a href="%{url}" target="_blank">
-      <i class="fa fa-exclamation-triangle"></i> Gegebenenfalls nur via VPN oder Shibboleth (DFN-AAI) erreichbar
-    </a>

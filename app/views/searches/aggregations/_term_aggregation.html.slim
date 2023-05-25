@@ -23,7 +23,7 @@ ruby:
       div(data-controller="expandable-list")
         ul.list-unstyled.mb-0(data-expandable-list-target="list")
           - non_selected_terms.each do |term|
-            li
+            li(data-expandable-list-target="item")
               = link_to new_search_request_path(nsr.(term, exclude: false)) do
                 = aggregation_value(aggregation, term.term)
               .d-inline-flex.flex-nowrap

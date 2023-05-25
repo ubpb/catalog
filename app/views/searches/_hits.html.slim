@@ -45,7 +45,7 @@ ruby:
                   = link_to new_search_request_path(nsr.(search_request.sort.name, "asc")), class: "btn btn-secondary" do
                     i.fas.fa-arrow-down-wide-short.fa-lg
 
-  - if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger"))
+  - if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger")).present?
     .bg-white
       .bg-danger.bg-opacity-10.px-4.p-2.fst-italic.text-center
         = vpn_info

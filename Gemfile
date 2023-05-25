@@ -22,7 +22,7 @@ gem "simple_form", "~> 5.1"
 gem "slim", ">= 5.0"
 gem "sprockets-rails", "~> 3.4.2"
 gem "turbo-rails", "~> 1.1"
-gem "view_component", "~> 2.31"
+gem "view_component", "~> 3.0"
 
 gem "exl_api", "~> 1.0.0", path: "vendor/gems/exl_api"
 

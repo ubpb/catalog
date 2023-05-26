@@ -17,6 +17,7 @@
         thead
           tr
             th = "ID"
+            th = "In Alma?"
             th = "Erstellt am"
             th = "Vorname"
             th = "Nachname"
@@ -26,6 +27,11 @@
           - @registrations.each do |registration|
             tr
               td = registration.hashed_id
+              td
+                - if registration.created_in_alma?
+                  i.fa-solid.fa-check.fa-fw
+                - else
+                  i.fa-solid.fa-minus.fa-fw
               td = l(registration.created_at)
               td = registration.firstname
               td = registration.lastname

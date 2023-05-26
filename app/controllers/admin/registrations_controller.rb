@@ -9,7 +9,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
   }
 
   def index
-    @registrations = Registration.order(created_at: :desc)
+    @registrations = Registration.order(created_in_alma: :asc, created_at: :desc)
     return if (query = params[:q]).blank?
 
     @registrations = @registrations.where(

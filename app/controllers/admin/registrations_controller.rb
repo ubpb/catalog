@@ -53,9 +53,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
     primary_alma_id = create_user_in_alma(registration)
 
-    if primary_alma_id.present?
-      registration.update_attribute(:created_in_alma, true)
-      registration.update_attribute(:alma_primary_id, primary_alma_id)
+    if primary_alma_id.present? && registration.update({created_in_alma: true, alma_primary_id: primary_alma_id})
       flash[:success] = "Konto erfolgreich in Alma erstellt. Ausweis kann jetzt gedruckt werden."
     else
       flash[:error] = "Konto konnte in Alma nicht erstellt werden. Bitte wiederholen Sie den Vorgang. Sollte

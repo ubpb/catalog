@@ -1,5 +1,4 @@
 class Admin::RegistrationsController < Admin::ApplicationController
-
   layout "registrations"
 
   before_action :authenticate!
@@ -66,7 +65,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
     redirect_to admin_registration_path(registration)
   end
 
-private
+  private
 
   def authenticate!
     config_username = Rails.application.credentials.registrations&.dig(:admin_username)
@@ -116,16 +115,16 @@ private
 
   def alma_user_from_registration(registration)
     alma_user = {
-      record_type:           {value: "PUBLIC"},
-      account_type:          {value: "INTERNAL"},
-      preferred_language:    {value: "de"},
-      status:                {value: "ACTIVE"},
-      first_name:            registration.firstname,
-      last_name:             registration.lastname,
-      birth_date:            registration.birthdate.strftime("%Y-%m-%d"),
-      expiry_date:           alma_expiry_date_from_registration(registration),
-      user_group:            {value: alma_user_group_from_registration(registration)},
-      password:              registration.birthdate.strftime("%d%m%Y"),
+      record_type: {value: "PUBLIC"},
+      account_type: {value: "INTERNAL"},
+      preferred_language: {value: "de"},
+      status: {value: "ACTIVE"},
+      first_name: registration.firstname,
+      last_name: registration.lastname,
+      birth_date: registration.birthdate.strftime("%Y-%m-%d"),
+      expiry_date: alma_expiry_date_from_registration(registration),
+      user_group: {value: alma_user_group_from_registration(registration)},
+      password: registration.birthdate.strftime("%d%m%Y"),
       force_password_change: true
     }
 
@@ -138,38 +137,38 @@ private
     end
 
     if registration.email.present?
-      alma_user[:contact_info]         ||= {}
+      alma_user[:contact_info] ||= {}
       alma_user[:contact_info][:email] ||= []
       alma_user[:contact_info][:email] << {
-        preferred:     true,
-        segment_type:  "Internal",
+        preferred: true,
+        segment_type: "Internal",
         email_address: registration.email,
-        email_type:    [{value: "personal"}]
+        email_type: [{value: "personal"}]
       }
     end
 
     if registration.street_address.present? && registration.zip_code.present? && registration.city.present?
-      alma_user[:contact_info]           ||= {}
+      alma_user[:contact_info] ||= {}
       alma_user[:contact_info][:address] ||= []
       alma_user[:contact_info][:address] << {
-        preferred:    true,
+        preferred: true,
         segment_type: "Internal",
-        line1:        registration.street_address,
-        postal_code:  registration.zip_code,
-        city:         registration.city,
+        line1: registration.street_address,
+        postal_code: registration.zip_code,
+        city: registration.city,
         address_type: [{value: "home"}]
       }
     end
 
     if registration.street_address2.present? && registration.zip_code2.present? && registration.city2.present?
-      alma_user[:contact_info]           ||= {}
+      alma_user[:contact_info] ||= {}
       alma_user[:contact_info][:address] ||= []
       alma_user[:contact_info][:address] << {
-        preferred:    false,
+        preferred: false,
         segment_type: "Internal",
-        line1:        registration.street_address2,
-        postal_code:  registration.zip_code2,
-        city:         registration.city2,
+        line1: registration.street_address2,
+        postal_code: registration.zip_code2,
+        city: registration.city2,
         address_type: [{value: "alternative"}]
       }
     end
@@ -177,9 +176,9 @@ private
     if (sc = alma_statistical_category_from_registration(registration))
       alma_user[:user_statistic] ||= []
       alma_user[:user_statistic] << {
-        segment_type:       "Internal",
+        segment_type: "Internal",
         statistic_category: {value: sc},
-        category_type:      {value: "Benutzertyp"}
+        category_type: {value: "Benutzertyp"}
       }
     end
 
@@ -189,32 +188,32 @@ private
 
   def alma_user_title_from_registration(registration)
     case registration.academic_title
-    when "dr"          then "Dr."
-    when "dr_dr"       then "Dr. Dr."
-    when "dr_ing"      then "Dr.-Ing."
-    when "jprof"       then "JProf."
-    when "jprof_dr"    then "JProf. Dr."
-    when "pd_dr"       then "PD Dr."
-    when "prof"        then "Prof."
-    when "prof_dr"     then "Prof. Dr."
+    when "dr" then "Dr."
+    when "dr_dr" then "Dr. Dr."
+    when "dr_ing" then "Dr.-Ing."
+    when "jprof" then "JProf."
+    when "jprof_dr" then "JProf. Dr."
+    when "pd_dr" then "PD Dr."
+    when "prof" then "Prof."
+    when "prof_dr" then "Prof. Dr."
     when "prof_dr_ing" then "Prof. Dr.-Ing."
     end
   end
 
   def alma_gender_for_registration(registration)
     case registration.gender
-    when "male"   then "MALE"
+    when "male" then "MALE"
     when "female" then "FEMALE"
-    when "other"  then "OTHER"
+    when "other" then "OTHER"
     end
   end
 
   def alma_user_group_from_registration(registration)
     case registration.user_group
-    when "emeritus"          then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
-    when "guest"             then "13" # PG - Gast der Universität
-    when "guest_student"     then "03" # PZ - Gast der Bibliothek
-    when "external"          then "04" # PE - Externe Benutzer
+    when "emeritus" then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
+    when "guest" then "13" # PG - Gast der Universität
+    when "guest_student" then "03" # PZ - Gast der Bibliothek
+    when "external" then "04" # PE - Externe Benutzer
     when "external_u18 then" then "04" # PE - Externe Benutzer
     else "04"
     end
@@ -222,24 +221,23 @@ private
 
   def alma_expiry_date_from_registration(registration)
     date = case registration.user_group
-           when "emeritus"          then Date.today + 5.years # PP - Emeriti u.im Ruhestand bef. Prof.
-           when "guest"             then Date.today + 5.years # PG - Gast der Universität
-           when "guest_student"     then Date.today + 2.years # PZ - Gast der Bibliothek
-           when "external"          then Date.today + 5.years # PE - Externe Benutzer
-           when "external_u18 then" then Date.today + 5.years # PE - Externe Benutzer
-           end
+    when "emeritus" then Time.zone.today + 5.years # PP - Emeriti u.im Ruhestand bef. Prof.
+    when "guest" then Time.zone.today + 5.years # PG - Gast der Universität
+    when "guest_student" then Time.zone.today + 2.years # PZ - Gast der Bibliothek
+    when "external" then Time.zone.today + 5.years # PE - Externe Benutzer
+    when "external_u18 then" then Time.zone.today + 5.years # PE - Externe Benutzer
+    end
 
     date.strftime("%Y-%m-%d") if date.present?
   end
 
   def alma_statistical_category_from_registration(registration)
     case registration.user_group
-    when "emeritus"          then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
-    when "guest"             then "13" # PG - Gast der Universität
-    when "guest_student"     then "03" # PZ - Gast der Bibliothek
-    when "external"          then "04" # PE - Externe Benutzer
+    when "emeritus" then "12" # PP - Emeriti u.im Ruhestand bef. Prof.
+    when "guest" then "13" # PG - Gast der Universität
+    when "guest_student" then "03" # PZ - Gast der Bibliothek
+    when "external" then "04" # PE - Externe Benutzer
     when "external_u18 then" then "04" # PE - Externe Benutzer
     end
   end
-
 end

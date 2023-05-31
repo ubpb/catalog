@@ -6,7 +6,7 @@ export default class extends Controller {
     text: {type: String, default: ""},
     format: {type: String, default: "CODE128"},
     class: {type: String, default: "barcode"},
-    margin: {type: Number, default: 0},
+    margin: {type: Number, default: 5},
     height: {type: Number, default: 60},
     width: {type: Number, default: 2},
     displayValue: {type: Boolean, default: true}

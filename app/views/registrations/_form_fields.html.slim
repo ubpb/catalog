@@ -20,7 +20,7 @@
     = f.input :firstname
   .col
     = f.input :lastname
-= f.input :birthdate, as: :date, start_year: Date.today.year - 16, end_year: Date.today.year - 90, prompt: true
+= f.input :birthdate, as: :date, html5: true, start_year: Date.today.year - 16, end_year: Date.today.year - 90, prompt: true
 = f.input :email, required: true
 - if @registration.errors.include?(:email)
   .callout.callout-danger

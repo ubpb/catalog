@@ -18,20 +18,6 @@ body {
   }
 }
 
-#beta-info {
-  text-align: center;
-  padding: 4px 8px;
-  background: $red;
-  color: $white;
-  font-weight: normal;
-  font-size: 0.8rem;
-
-  a {
-    color: white;
-    text-decoration: underline;
-  }
-}
-
 .scope-info {
   $image-width: 120px;
   $image-margin: 5px;

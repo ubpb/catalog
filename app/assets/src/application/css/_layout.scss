@@ -112,7 +112,7 @@ footer {
   a {
     color: $white;
     &:hover {
-      color: map-get($theme-colors, 'accent');
+      color: $upb-blue;
     }
   }
 
@@ -120,7 +120,7 @@ footer {
     font-size: $font-size-sm;
     background-color: $white;
     font-style: italic;
-    color: map-get($theme-colors, 'accent');
+    color: $upb-blue;
     font-weight: bold;
     padding: 5px 0;
   }

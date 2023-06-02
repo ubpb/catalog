@@ -2,12 +2,12 @@
   background-color: transparent;
 
   .card-body {
-    background-color: $card-bg;
+    background-color: $white;
   }
 
   .card-header,
   .card-footer {
-    background-color: rgba($card-bg, 0.7);
+    background-color: $gray-100;
   }
 
   &.card-primary {

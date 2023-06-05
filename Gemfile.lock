@@ -170,7 +170,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     i18n-debug (1.2.0)
       i18n (< 2)
@@ -356,7 +356,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
-    view_component (3.0.0)
+    view_component (3.1.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -416,7 +416,7 @@ DEPENDENCIES
   sprockets-rails (~> 3.4.2)
   turbo-rails (~> 1.1)
   ubpb-rubocop-config!
-  view_component (~> 3.0)
+  view_component (~> 3.1)
   web-console (>= 3.3)
   webdrivers (>= 4.3)
 

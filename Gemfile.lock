@@ -1,14 +1,14 @@
 GIT
   remote: https://github.com/ubpb/rubocop-config.git
-  revision: f82fd738c517a92d3293743138c76f195c7b4520
+  revision: b364bd5514ba87f6d105702a828cfb2b1835bfcb
   branch: main
   specs:
     ubpb-rubocop-config (1.0.0)
       railties (>= 6.0.0)
       rubocop (>= 1.0)
       rubocop-performance (>= 1.0)
-      rubocop-rails (>= 2.0)
       standard (>= 1.0)
+      standard-rails (>= 0.1.0)
 
 PATH
   remote: vendor/gems/exl_api
@@ -170,7 +170,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     i18n-debug (1.2.0)
       i18n (< 2)
@@ -289,7 +289,7 @@ GEM
     rexml (3.2.5)
     rss (0.2.9)
       rexml
-    rubocop (1.50.2)
+    rubocop (1.52.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -299,9 +299,9 @@ GEM
       rubocop-ast (>= 1.28.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.28.1)
+    rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-performance (1.16.0)
+    rubocop-performance (1.18.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     rubocop-rails (2.19.1)
@@ -331,17 +331,20 @@ GEM
     sshkit (1.21.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    standard (1.28.5)
+    standard (1.29.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.50.2)
+      rubocop (~> 1.52.0)
       standard-custom (~> 1.0.0)
-      standard-performance (~> 1.0.1)
-    standard-custom (1.0.0)
+      standard-performance (~> 1.1.0)
+    standard-custom (1.0.1)
       lint_roller (~> 1.0)
-    standard-performance (1.0.1)
+    standard-performance (1.1.0)
       lint_roller (~> 1.0)
-      rubocop-performance (~> 1.16.0)
+      rubocop-performance (~> 1.18.0)
+    standard-rails (0.1.0)
+      lint_roller (~> 1.0)
+      rubocop-rails (~> 2.19.0)
     temple (0.10.2)
     thor (1.2.2)
     tilt (2.1.0)

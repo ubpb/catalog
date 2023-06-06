@@ -1,4 +1,10 @@
 = content_for :main do
+
+  - if current_user.force_password_change && !@hide_force_password_change_alert.presence
+    .row
+      .col-md-12
+        = render "force_change_password"
+
   .row
     .col-md-12.col-lg-3.order-lg-last.d-print-none
       = render "nav"

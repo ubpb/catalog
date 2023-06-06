@@ -19,7 +19,8 @@ class User < ApplicationRecord
           user_group_label: ils_user.user_group&.label,
           first_name:       ils_user.first_name,
           last_name:        ils_user.last_name,
-          email:            ils_user.email
+          email:            ils_user.email,
+          force_password_change: ils_user.force_password_change
         )
         user.save!
         user

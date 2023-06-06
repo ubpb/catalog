@@ -8,6 +8,13 @@ de:
         info: >
           Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten
           180 Tage angezeigt werden. Ältere Vorgänge werden automatisch gelöscht.
+        fixed_info_html: >
+          ** Am 3.2.2023 wurden auf Grund eines Konfigurationsfehlers leider alle abgeschlossenen Vorgänge gelöscht.
+          Wir konnten die Einträge aus einem Backup zurückholen und stellen Ihnen diese
+          <a href="%{link}">hier gesondert zur Ansicht zur Verfügung</a>.
+
+      fixed:
+        header: "Ausleihhistorie vor dem 3.2.2023"
 
       listing:
         no-loans: "Keine abgeschlossenen Ausleihvorgänge"

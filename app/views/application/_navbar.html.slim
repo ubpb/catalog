@@ -9,25 +9,25 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
         li.nav-item
           = link_to root_path, class: "nav-link" do
             i.fas.fa-home
-            =< "Start"
+            =< t(".home")
         li.nav-item
           = link_to "http://blogs.uni-paderborn.de/ub-katalog/hilfe/", class: "nav-link" do
             i.far.fa-lightbulb
-            =< "Hilfe"
+            =< t(".help")
         li.nav-item
           = link_to "http://blogs.uni-paderborn.de/ub-katalog/", class: "nav-link" do
             i.fas.fa-bullhorn
-            =< "Blog"
+            =< t(".blog")
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(data-bs-toggle="dropdown" href="#")
             i.fas.fa-cogs
-            =< "Weitere Dienste"
+            =< t(".further_services")
           .dropdown-menu
-            = link_to "Neuerwerbungslisten", "https://blogs.uni-paderborn.de/ub-katalog/2014/08/27/neuerwerbungen/", target: "_blank", class: "dropdown-item"
-            = link_to "Fachsystematik Bücher", "https://katalog.ub.uni-paderborn.de/fachsystematik/", target: "_blank", class: "dropdown-item"
-            = link_to "Erwerbungsvorschlag", "http://www.ub.uni-paderborn.de/kontakt/erwerbungsvorschlag/", target: "_blank", class: "dropdown-item"
-            = link_to "Bestellung aus dem Magazin", new_closed_stack_order_path, class: "dropdown-item"
-            = link_to "Fernleihe", "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
+            = link_to t(".new_acquisition"), "https://blogs.uni-paderborn.de/ub-katalog/2014/08/27/neuerwerbungen/", target: "_blank", class: "dropdown-item"
+            = link_to t(".systematic"), "https://katalog.ub.uni-paderborn.de/fachsystematik/", target: "_blank", class: "dropdown-item"
+            = link_to t(".purchase_requests"), "http://www.ub.uni-paderborn.de/kontakt/erwerbungsvorschlag/", target: "_blank", class: "dropdown-item"
+            = link_to t(".closed_stack_orders"), new_closed_stack_order_path, class: "dropdown-item"
+            = link_to t(".interlibrary_loan"), "http://www.ub.uni-paderborn.de/nutzen-und-leihen/fernleihe/", target: "_blank", class: "dropdown-item"
 
       - if current_user
         .ms-auto
@@ -39,17 +39,17 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
               .dropdown-menu.dropdown-menu-lg-end
                 = link_to account_root_path, class: "dropdown-item" do
                   i.fas.fa-user.fa-fw
-                  span.ms-2 = "Mein Bibliothekskonto"
+                  span.ms-2 = t(".my_account")
                 .dropdown-divider
-                = link_to logout_path, data: {turbo_confirm: "Wirklich abmelden?"}, class: "dropdown-item" do
+                = link_to logout_path, data: {turbo_confirm: t(".logout_msg")}, class: "dropdown-item" do
                   i.fas.fa-power-off.fa-fw
-                  span.ms-2 = "Abmelden"
+                  span.ms-2 = t(".logout")
       - else
         .ms-auto
           .d-flex.ms-lg-4.mt-2.mt-lg-0
             = link_to new_session_path, class: "btn btn-primary w-100 w-lg-auto" do
               i.far.fa-user
-              =< "Anmelden"
+              =< t(".login")
 
 
 

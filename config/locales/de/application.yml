@@ -4,6 +4,21 @@ de:
       ub_pb: UB Paderborn
       app_name: Katalog
 
+    navbar:
+      home: Start
+      help: Hilfe
+      blog: Blog
+      further_services: Weitere Dienste
+      new_acquisition: Neuerwerbungslisten
+      systematic: Fachsystematik Bücher
+      purchase_requests: Erwerbungsvorschlag
+      closed_stack_orders: Bestellung aus dem Magazin
+      interlibrary_loan: Fernleihe
+      my_account: Mein Bibliothekskonto
+      logout: Abmelden
+      logout_msg: Wirklich abmelden?
+      login: Anmelden
+
   save: Speichern
   cancel: Abbrechen
 

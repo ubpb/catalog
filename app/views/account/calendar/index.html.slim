@@ -4,51 +4,39 @@
 
   .card-body
     p
-      ' Mit der Kalender-Funktion des Katalogs bieten wir Ihnen die Möglichkeit, relevante Termine,
-      ' die Ihr Bibliothekskonto betreffen, direkt in Ihr gewohntes Kalenderprogramm zu integrieren.
-      ' Aktuell stellen wir Ihnen die folgenden Termine zur Verfügung:
+      = t(".main_description")
     ol
       li
-        strong Ende von Leihfristen
+        strong = t(".due_date.title")
         p
-          ' Der Kalender zeigt Ihnen das Ende von Leihfristen an. Enden die Leihfristen von mehreren
-          ' Medien am gleichen Tag, fassen wir die Informationen zu einem übersichtlichen Termin zusammen.
-          ' So vergessen Sie keine Rückgabe mehr und ersparen sich lästige Gebühren.
+          = t(".due_date.description")
       li
-        strong Bereitgestellte Vormerkungen
+        strong = t(".hold_requests.title")
         p
-          ' Der Kalender zeigt Ihnen an, dass für Sie Vormerkungen bereitgestellt wurden und auf Abholung warten.
-          ' Die Einträge sind so gestaltet, dass Sie direkt sehen können, wie lange die Medien max.
-          ' zur Abholung bereit liegen.
+          = t(".hold_requests.description")
     p
-      ' Die Termine werden durch Ihr Kalenderprogramm abonniert und automatisch aktuell gehalten. Das
-      ' bedeutet, dass sich die Einträge selbstständig aktualisieren, wenn Sie z.B. Verlängerungen
-      ' durchführen. Sie sollten daher darauf achten, Ihr Programm entsprechend zu konfigurieren.
+      = t(".technical_description")
 
     p(style="text-align: center")
       = link_to "#{root_url(protocol: 'webcal')}api/v1/user/calendar.ics?access_token=#{current_user.api_key}", class: 'btn btn-primary btn-lg' do
           i.fa-regular.fa-calendar
-          '
-          ' Termine jetzt abonnieren
+          = t(".subscribe_btn")
 
     p
-      ' Mit einem Klick auf den Knopf sollte sich Ihr Standard-Kalenderprogramm öffnen. Sollte dies
-      ' nicht funktionieren, wählen Sie bitte in dem Kalenderprogramm Ihrer Wahl die Funktion,
-      ' mit der Sie einen neuen Kalender über eine Webadresse anlegen können und geben Sie bitte die
-      ' folgende Adresse ein
+      = t(".subscribe_description")
 
     .alert.alert-info(style="text-align: center; font-size: 120%")
       = "#{root_url(protocol: request.protocol)}api/v1/user/calendar.ics?access_token=#{current_user.api_key}"
 
     p
-      ' In den gängigen Kalenderprogrammen finden Sie die Funktion folgendermaßen
+      = t(".howto.description")
     ul.mb-0
       li
-        strong Outlook
-        div = "Kalender öffnen → Aus dem Internet..."
+        strong = t(".howto.outlook.title")
+        div = t(".howto.outlook.description")
       li
-        strong Apple iCal
-        div = "Ablage → Neues Kalenderabonnement"
+        strong = t(".howto.ical.title")
+        div = t(".howto.ical.description")
       li
-        strong Google Calendar
-        div = "Weitere Kalender → Über URL hinzufügen"
+        strong = t(".howto.google.title")
+        div = t(".howto.google.description")

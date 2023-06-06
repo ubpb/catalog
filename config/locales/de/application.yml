@@ -1,4 +1,9 @@
 de:
+  application:
+    title:
+      ub_pb: UB Paderborn
+      app_name: Katalog
+
   save: Speichern
   cancel: Abbrechen
 

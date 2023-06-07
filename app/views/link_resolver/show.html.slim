@@ -10,20 +10,25 @@
       - if @context
 
         dl.key-value-list
-          dt Autoren
-          dd = @context.authors
+          - if @context.authors.present?
+            dt Autoren
+            dd = @context.authors
 
-          dt Titel
-          dd = @context.title
+          - if @context.title.present?
+            dt Titel
+            dd = @context.title
 
-          dt Verlag
-          dd = @context.publisher
+          - if @context.publisher.present?
+            dt Verlag
+            dd = @context.publisher
 
-          dt Ort
-          dd = @context.place_of_publication
+          - if @context.place_of_publication.present?
+            dt Ort
+            dd = @context.place_of_publication
 
-          dt Erscheinungsjahr
-          dd = @context.date_of_publication
+          - if @context.date_of_publication.present?
+            dt Erscheinungsjahr
+            dd = @context.date_of_publication
 
         - if @fulltext_services.present?
           h5.fs-6 = t(".header_found")

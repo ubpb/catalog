@@ -17,7 +17,7 @@ ruby:
 
 - if non_selected_terms.present?
   .card.card-primary.mb-3
-    .card-header.cutoff-corner-tr
+    .card-header
       = aggregation_label(aggregation)
     .card-body
       div(data-controller="expandable-list")

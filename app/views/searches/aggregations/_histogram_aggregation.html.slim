@@ -1,5 +1,5 @@
 .card.card-primary.mb-3
-  .card-header.cutoff-corner-tr
+  .card-header
     = aggregation_label(aggregation)
   .card-body
     - active_aggregation = search_request.aggregations.find{|a| a.name == aggregation.name}

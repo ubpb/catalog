@@ -1,15 +1,4 @@
 .card {
-  background-color: transparent;
-
-  .card-body {
-    background-color: $white;
-  }
-
-  .card-header,
-  .card-footer {
-    background-color: $gray-100;
-  }
-
   &.card-primary {
     border-bottom-width: 4px;
     border-bottom-style: solid;

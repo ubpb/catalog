@@ -29,7 +29,7 @@ $link-hover-decoration: none;
 
 // Tweek card component
 $card-border-width: 0;
-$card-border-radius: 0;
+//$card-border-radius: 0;
 
 // Tweek navbar component
 $navbar-dark-bg-color:              $white;
@@ -42,3 +42,9 @@ $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
 // Tweek pagination
 $pagination-hover-color: $link-color;
+
+
+:root {
+  --upb-blue: $upb-blue;
+  --upb-cyan: $upb-cyan;
+}

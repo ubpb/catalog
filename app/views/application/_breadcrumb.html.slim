@@ -1,14 +1,14 @@
 nav(aria-label="breadcrumb")
   ol.breadcrumb.p-0
     li.breadcrumb-item
-      = link_to "Universitätsbibliothek", "https://ub.uni-paderborn.de"
+      = link_to t("application.ub"), "https://ub.uni-paderborn.de"
 
     - if breadcrumb.empty?
       li.breadcrumb-item.active
-        = "Katalog"
+        = t("application.app_name")
     - else
       li.breadcrumb-item
-        = link_to "Katalog", root_path
+        = link_to t("application.app_name"), root_path
 
     - breadcrumb.each.with_index do |b, i|
       - last_element = (i+1) == breadcrumb.count

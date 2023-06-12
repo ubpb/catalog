@@ -1,8 +1,8 @@
 de:
   application:
-    title:
-      ub_pb: UB Paderborn
-      app_name: Katalog
+    ub: Universitätsbibliothek
+    ub_pb: UB Paderborn
+    app_name: Katalog
 
     navbar:
       home: Start

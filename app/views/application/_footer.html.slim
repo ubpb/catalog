@@ -1,7 +1,7 @@
 footer
   .footer-claim
     .container
-      ' Die Universität der Informationsgesellschaft
+      = t(".slogan")
   .container
     .footer-content
       = t(".copyright_ub_upb", year: Date.today.year)
@@ -10,7 +10,7 @@ footer
       =<> "|"
       = link_to t(".privacy_policy"), go_privacy_path
       =<> "|"
-      == t(".cover_images", link: link_to("buchhandel.de", "http://www.buchhandel.de", target: "_blank"))
+      == t(".cover_images", link: link_to(t(".cover_images_link_text"), "http://www.buchhandel.de", target: "_blank"))
     .footer-image
       .d-none.d-sm-block
         = image_tag "footer-bg-lg.png", class: "img-fluid"

@@ -13,7 +13,8 @@ module Ils::Adapters
           first_name: get_firstname(alma_user_hash),
           last_name: get_lastname(alma_user_hash),
           email: get_email(alma_user_hash),
-          notes: get_nodes(alma_user_hash)
+          notes: get_nodes(alma_user_hash),
+          force_password_change: get_force_password_change(alma_user_hash)
         )
       end
 
@@ -49,6 +50,10 @@ module Ils::Adapters
 
       def get_nodes(alma_user_hash)
         alma_user_hash["user_note"].find_all{|note| note["user_viewable"] == true}.map{|note| note["note_text"]}
+      end
+
+      def get_force_password_change(alma_user_hash)
+        alma_user_hash["force_password_change"].presence&.casecmp?("true") ? true : false
       end
 
     end

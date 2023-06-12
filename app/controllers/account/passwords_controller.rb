@@ -3,6 +3,7 @@ class Account::PasswordsController < Account::ApplicationController
   before_action { add_breadcrumb t("account.passwords.breadcrumb"), edit_account_password_path }
 
   def edit
+    @hide_force_password_change_alert = true
     @form = PasswordChangeForm.new
   end
 

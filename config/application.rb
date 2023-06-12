@@ -30,5 +30,9 @@ module Catalog
     routes.default_url_options = {
       host: ENV["KATALOG_HOST"] || "localhost:3000"
     }
+
+    # Bypass internal error logic.
+    # Errors are matched via routes to the corrosponing errors#type in the ErrorsController.
+    config.exceptions_app = self.routes
   end
 end

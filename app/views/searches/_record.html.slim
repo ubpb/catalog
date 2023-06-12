@@ -29,10 +29,10 @@ ruby:
             search_scope: current_search_scope,
             record_id: record.id
           )
-        .ms-2 = render(watch_lists_panel_component)
+        .ms-2.d-print-none = render(watch_lists_panel_component)
 
       / Citation / Export
-      .ms-2
+      .ms-2.d-print-none
         .dropdown
           button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
             i.fa-solid.fa-quote-left

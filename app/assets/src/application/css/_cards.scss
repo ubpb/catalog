@@ -22,3 +22,13 @@
     filter: drop-shadow($box-shadow);
   }
 }
+
+@media print {
+  .card {
+    border: 1px solid $gray-300;
+
+    &.card-shadowed {
+      filter: none;
+    }
+  }
+}

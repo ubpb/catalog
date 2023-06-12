@@ -1,5 +1,5 @@
 .d-flex.align-items-left.align-items-sm-center.flex-column.flex-sm-row
-  .btn-group.order-1.order-sm-0
+  .btn-group.order-1.d-print-none.order-sm-0
     - if has_pages?
       - btn_class = has_previous_page? ? "btn-primary" : "btn-outline-primary disabled"
       = link_to previous_page_path, class: "btn #{btn_class}" do

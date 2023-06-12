@@ -4,14 +4,14 @@ footer
       = t(".slogan")
   .container
     .footer-content
-      = t(".copyright_ub_upb", year: Date.today.year)
-      =<> "|"
-      = link_to t(".impressum"), go_legal_path
-      =<> "|"
-      = link_to t(".privacy_policy"), go_privacy_path
-      =<> "|"
-      == t(".cover_images", link: link_to(t(".cover_images_link_text"), "http://www.buchhandel.de", target: "_blank"))
-    .footer-image
+      span = t(".copyright_ub_upb", year: Date.today.year)
+      span.d-print-none =<> "|"
+      span.d-print-none = link_to t(".impressum"), go_legal_path
+      span.d-print-none =<> "|"
+      span.d-print-none = link_to t(".privacy_policy"), go_privacy_path
+      span.d-print-none =<> "|"
+      span.d-print-none == t(".cover_images", link: link_to(t(".cover_images_link_text"), "http://www.buchhandel.de", target: "_blank"))
+    .footer-image.d-print-none
       .d-none.d-sm-block
         = image_tag "footer-bg-lg.png", class: "img-fluid"
       .d-block.d-sm-none

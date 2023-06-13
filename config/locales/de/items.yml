@@ -13,6 +13,7 @@ de:
           location: "Standort"
           description: "Beschreibung"
         expected_date_message: "Erwartet zum: %{date}"
+        public_note_message: "Hinweis: %{note}"
 
     listing:
       header: "Exemplare"

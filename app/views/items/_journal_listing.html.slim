@@ -37,6 +37,6 @@ turbo-frame#items
                 - if item.expected_issue? && item.expected_arrival_date.present?
                   div = t(".items.expected_date_message", date: l(item.expected_arrival_date))
                 - if item.public_note.present?
-                  div = "Hinweis: #{item.public_note}"
+                  div = t(".items.public_note_message", note: item.public_note)
   - else
     .alert.alert-info.mb-0 = t(".no_items_message")

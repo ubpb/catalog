@@ -4,28 +4,27 @@
   .col-lg-8.col-md-6.mb-4
     .card
       .card-header.cutoff-corner-tr
-        h5.mb-0 = "Sucheinstiege"
+        h5.mb-0 = t(".search_entries.title")
       .card-body
         .row
           .col-lg-6
             .scope-info
               .image = image_tag "x-catalog.png", class: "img-fluid"
-              .heading Katalog
+              .heading = t(".search_entries.catalog.title")
               .info
-                p ca. 2,5 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
+                p = t(".search_entries.catalog.text")
 
           .col-lg-6
             .scope-info
               .image = image_tag "x-primo-central.png", class: "img-fluid"
-              .heading Central Discovery Index
+              .heading = t(".search_entries.cdi.title")
               .info
-                p
-                  ' Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.
+                p = t(".search_entries.cdi.text")
 
   .col-lg-4.col-md-6
     .card
       .card-header.cutoff-corner-tr
-        h5.mb-0 = "Neuigkeiten zum Katalog"
+        h5.mb-0 = t(".news.title")
       .card-body
         - if @news.present?
           - @news.each do |item|
@@ -36,8 +35,8 @@
                 a(href=item[:link] title=item[:description].html_safe)
                   = "#{item[:title].html_safe}"
         - else
-          ' Aktuell keine Neuigkeiten
+          = t(".news.none_message")
 
       .card-footer
-        = link_to "&raquo; Alle Neuigkeiten".html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
+        = link_to t(".news.all_link_text").html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
 

@@ -37,7 +37,7 @@ permalink_mappings = [
   {
     key: "fd51716f039c31d4064f3fe04c761b84",
     original_search_request: "sr[q,title]=Fachspezifisch%2A&sr[q,title]=Komparatistik&sr[q,any]=Zwei-Fach&sr[a,material_type]=online_resource&sr[s,desc]=yop",
-    new_search_request: "sr[q,title]=Prüfungsordnung&sr[q,title]=Zwei-Fach-Bachelor%2A&sr[q,title]=Komparatistik%2FVergleichende%20Literatur-%20und%20Kulturwissenschaft&sr[a,material_type]=online_resource&sr[s,desc]=volume"
+    new_search_request: "sr[q,title]=Prüfungsordnung&sr[q,title]=Zwei-Fach-Bachelor%2A&sr[q,title]=Komparatistik%20%2F%20Vergleichende%20Literatur-%20und%20Kulturwissenschaft&sr[a,material_type]=online_resource&sr[s,desc]=volume"
   },
   {
     key: "ea031d43eff1dd9d74924510cfc141cf",

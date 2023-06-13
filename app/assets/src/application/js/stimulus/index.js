@@ -47,10 +47,6 @@ application.register("watch-lists-panel-component--component", WatchListsPanelCo
 import ShelfFinderController from "./shelf_finder_controller.js"
 application.register("shelf-finder", ShelfFinderController)
 
-// app/assets/src/application/js/stimulus/popover_controller.js
-import PopoverController from "./popover_controller.js"
-application.register("popover", PopoverController)
-
 // app/assets/src/application/js/stimulus/modal_controller.js
 import ModalController from "./modal_controller.js"
 application.register("modal", ModalController)

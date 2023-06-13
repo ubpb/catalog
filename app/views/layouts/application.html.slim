@@ -31,11 +31,11 @@ html
 
     #modal-dialog(data-controller="modal-dialog")
       .d-none(data-modal-dialog-target="loadingTemplate")
-        .modal-body = "LOADING..."
+        .modal-body
+          .text-center
+            i.fa-solid.fa-spinner.fa-spin-pulse.fa-lg
 
       .modal(tabindex="-1" data-modal-dialog-target="modal")
         .modal-dialog
           .modal-content
             = turbo_frame_tag "modal", "data-modal-dialog-target": "frame"
-
-

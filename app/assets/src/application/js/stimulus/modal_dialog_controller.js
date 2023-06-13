@@ -22,7 +22,13 @@ export default class extends Controller {
     if (this.hasLoadingTemplateTarget) {
       this.frameTarget.innerHTML = this.loadingTemplateTarget.innerHTML
     } else {
-      this.frameTarget.innerHTML = `<div class="modal-body">XXXX</div>`
+      this.frameTarget.innerHTML = `
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-lg"></i>
+          </div>
+        </div>
+      `
     }
 
     this.modal.show()

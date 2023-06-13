@@ -1,7 +1,7 @@
 class GndController < ApplicationController
 
   def show
-    sleep(3)
+    sleep(2)
     if turbo_frame_request?
       render "show-modal"
     else

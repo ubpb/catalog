@@ -4,6 +4,7 @@ export default class extends Controller {
   static outlets = [ "modal-dialog" ]
 
   connect() {
+    console.log("ModalController#connect")
   }
 
   open(event) {

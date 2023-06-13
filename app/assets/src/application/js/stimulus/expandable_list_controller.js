@@ -48,19 +48,27 @@ export default class extends Controller {
   }
 
   hideExpandTarget() {
-    this.expandTarget.style.display = "none"
+    if (this.hasExpandTarget) {
+      this.expandTarget.style.display = "none"
+    }
   }
 
   showExpandTarget() {
-    this.expandTarget.style.display = "block"
+    if (this.hasExpandTarget) {
+      this.expandTarget.style.display = "block"
+    }
   }
 
   hideCollapseTarget() {
-    this.collapseTarget.style.display = "none"
+    if (this.hasCollapseTarget) {
+      this.collapseTarget.style.display = "none"
+    }
   }
 
   showCollapseTarget() {
-    this.collapseTarget.style.display = "block"
+    if (this.hasCollapseTarget) {
+      this.collapseTarget.style.display = "block"
+    }
   }
 
 }

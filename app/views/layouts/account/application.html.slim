@@ -1,6 +1,6 @@
 = content_for :main do
 
-  - if current_user.force_password_change && !@hide_force_password_change_alert.presence
+  - if current_user.force_password_change && controller.controller_path != "account/passwords"
     .row
       .col-md-12
         = render "force_change_password"

@@ -53,12 +53,16 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
     primary_alma_id = create_user_in_alma(registration)
 
-    if primary_alma_id.present? && registration.update({created_in_alma: true, alma_primary_id: primary_alma_id})
+    # rubocop:disable Rails/SkipsModelValidations
+    if primary_alma_id &&
+        registration.update_attribute(:alma_primary_id, primary_alma_id) &&
+        registration.update_attribute(:created_in_alma, true)
       flash[:success] = "Konto erfolgreich in Alma erstellt. Ausweis kann jetzt gedruckt werden."
     else
       flash[:error] = "Konto konnte in Alma nicht erstellt werden. Bitte wiederholen Sie den Vorgang. Sollte
       der Fehler weiterhin auftreten, wenden Sie sich bitte an die IT."
     end
+    # rubocop:enable Rails/SkipsModelValidations
 
     redirect_to admin_registration_path(registration)
   end
@@ -105,10 +109,10 @@ class Admin::RegistrationsController < Admin::ApplicationController
     alma_user = alma_user_from_registration(registration)
 
     result = Ils.adapter.api.post("/users", body: alma_user.to_json, format: "application/json")
-    result["primary_id"].presence || false
+    result["primary_id"].presence
   rescue ExlApi::Error => e
     Rails.logger.error("Error creating user in Alma [#{e.code}]: #{e.message}")
-    false
+    nil
   end
 
   def alma_user_from_registration(registration)

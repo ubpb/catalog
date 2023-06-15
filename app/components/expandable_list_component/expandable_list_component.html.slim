@@ -1,0 +1,16 @@
+div(data-controller="expandable-list" data-expandable-list-item-count-value=@initial_items)
+  - list_options = @list_options.merge({"data-expandable-list-target": "list"})
+  ul.mb-0.ps-3*list_options
+    - @items.each do |item|
+      - item_options = @item_options.merge({"data-expandable-list-target": "item"})
+      li*item_options = item
+
+  .mt-1(data-expandable-list-target="expand")
+    a(href="#expand" data-action="click->expandable-list#expand")
+      i.fa-solid.fa-angles-down.fa-fw
+      = "mehr..."
+
+  .mt-1(data-expandable-list-target="collapse")
+    a(href="#collapse" data-action="click->expandable-list#collapse")
+      i.fa-solid.fa-angles-up.fa-fw
+      =< "weniger..."

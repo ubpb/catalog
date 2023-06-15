@@ -4,12 +4,15 @@ export default class extends Controller {
   static outlets = [ "modal-dialog" ]
 
   connect() {
-    console.log("ModalController#connect")
+    //console.log("ModalController#connect")
   }
 
   open(event) {
     event.preventDefault()
-    this.modalDialogOutlet.open(event.currentTarget.href)
+    let src = event.currentTarget.href
+    if (src) {
+      this.modalDialogOutlet.open(src)
+    }
   }
 
   close(event) {

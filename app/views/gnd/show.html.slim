@@ -1,2 +1,4 @@
-h1 GND
-= "GND CONTENT IN PAGE"
+.card.card-shadowed
+  h5.card-header = @gnd_result ? @gnd_result[:preferred_name] : t("gnd.error")
+  .card-body
+    = render "details"

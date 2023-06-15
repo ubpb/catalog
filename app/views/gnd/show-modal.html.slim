@@ -1,13 +1,6 @@
 = turbo_frame_tag "modal" do
-  div(
-    data-controller="modal"
-    data-modal-modal-dialog-outlet="#modal-dialog"
-  )
-    .modal-header
-      h5.modal-title = "GND MODAL"
-      button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
-    .modal-body
-      = "GND CONTENT IN MODAL"
-    .modal-footer
-      button(type="button" class="btn btn-primary" data-action="click->modal#close")
-        = "Close"
+  .modal-header
+    h5.modal-title = @gnd_result ? @gnd_result[:preferred_name] : t("gnd.error")
+    button(type="button" class="btn-close" data-bs-dismiss="modal")
+  .modal-body
+    = render "details"

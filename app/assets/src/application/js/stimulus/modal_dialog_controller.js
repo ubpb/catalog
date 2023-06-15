@@ -12,10 +12,9 @@ export default class extends Controller {
       show: false
     });
 
-    this.modalTarget.addEventListener("show.bs.modal", (event) => {
-      console.log("show.bs.modal")
-      //this.frameTarget.src = ""
-    })
+    // this.modalTarget.addEventListener("show.bs.modal", (event) => {
+    //   console.log("show.bs.modal")
+    // })
   }
 
   open(src) {
@@ -32,7 +31,6 @@ export default class extends Controller {
     }
 
     this.modal.show()
-
     this.frameTarget.src = src
   }
 

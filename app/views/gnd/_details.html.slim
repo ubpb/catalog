@@ -1,7 +1,7 @@
 - unless @gnd_result
   .alert.alert-danger
     i.fa-solid.fa-warning.fa-fw.fa-lg
-    == t("gnd.error_message", dnb_url: "https://d-nb.info/gnd/#{params[:id]}")
+    == t("gnd.error_message", dnb_url: "https://d-nb.info/gnd/#{@gnd_id}")
 - else
   = optional_value(@gnd_result[:biographical_infos]) do |value|
     .mb-3.fst-italic = value.join("; ")

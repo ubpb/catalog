@@ -7,8 +7,8 @@ class GndController < ApplicationController
     end
 
     begin
-      gnd_id = Addressable::URI.encode_component(params[:id], Addressable::URI::CharacterClasses::UNRESERVED)
-      gnd_raw_result = conn.get("/gnd/#{gnd_id}.json").body
+      @gnd_id = Addressable::URI.encode_component(params[:id], Addressable::URI::CharacterClasses::UNRESERVED)
+      gnd_raw_result = conn.get("/gnd/#{@gnd_id}.json").body
       @gnd_result = build_gnd_result(gnd_raw_result)
     rescue Faraday::Error
       @gnd_result = nil

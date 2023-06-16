@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     this.modal = new bootstrap.Modal(this.modalTarget, {
-      backdrop: "static",
+      backdrop: true,
       keyboard: true,
       show: false
     });

@@ -40,7 +40,7 @@ export default class extends Controller {
     const items = this.listTarget.getElementsByTagName('li')
 
     for (let i = 0; i < items.length; i++) {
-      items[i].style.display = "block";
+      items[i].style.removeProperty("display")
     }
 
     this.hideExpandTarget()

@@ -5,19 +5,23 @@ ruby:
     t("code_tables.creator_relationships.#{r}", default: r)
   end.compact
 
-  sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{Addressable::URI.encode_component(@creator.name, Addressable::URI::CharacterClasses::UNRESERVED)}")
+  sr_to_author = SearchEngine::SearchRequest.parse("sr[q,creator]=#{Addressable::URI.encode_component(
+    gnd_id.presence || @creator.name, Addressable::URI::CharacterClasses::UNRESERVED)}"
+  )
 
-span(class=(@iteration.last? ? "me-0" : "me-1"))
-  span = link_to @creator.name, helpers.new_search_request_path(sr_to_author)
+.d-inline-block.px-2.py-1.rounded(
+  class=(@iteration.last? ? "me-0" : "me-1")
+  style="background-color: var(--bs-gray-100)"
+)
+  = link_to helpers.new_search_request_path(sr_to_author) do
+    span = @creator.name
 
-  - if relationships.present?
-    span.ms-1 = "[#{relationships.join(", ")}]"
+    - if relationships.present?
+      span.ms-1 = "[#{relationships.join(", ")}]"
 
-  / - if gnd_id
-  /   span.ms-1 = link_to "http://d-nb.info/gnd/#{gnd_id}" do
-  /     i.fa-regular.fa-id-card
-  / - else
-  /   span.ms-1: i.fa-regular.fa-id-card.text-muted
+  - if gnd_id
+    .d-inline-block.ms-2(data-controller="modal" data-modal-modal-dialog-outlet="#modal-dialog")
+      = link_to gnd_path(gnd_id), "data-action": "click->modal#open" do
+        i.fa-regular.fa-id-card
 
-  - unless @iteration.last?
-    = ";"
+

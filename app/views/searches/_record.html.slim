@@ -64,7 +64,7 @@ ruby:
       / TODO: Remove filter after this is handled in normalization
       - creators = record.creators
       - creators = creators.reject{|c| c.relationships.any?{|r| r == "pbl"}}
-      .mb-0 = render(CreatorComponent.with_collection(creators))
+      .mb-1.mt-1 = render(CreatorComponent.with_collection(creators))
 
     / Year of publication
     - if (yop = record.year_of_publication).present?

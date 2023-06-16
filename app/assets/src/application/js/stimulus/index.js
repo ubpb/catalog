@@ -46,3 +46,11 @@ application.register("watch-lists-panel-component--component", WatchListsPanelCo
 // app/assets/src/application/js/stimulus/shelf_finder_controller.js
 import ShelfFinderController from "./shelf_finder_controller.js"
 application.register("shelf-finder", ShelfFinderController)
+
+// app/assets/src/application/js/stimulus/modal_controller.js
+import ModalController from "./modal_controller.js"
+application.register("modal", ModalController)
+
+// app/assets/src/application/js/stimulus/modal_dialog_controller.js
+import ModalDialogController from "./modal_dialog_controller.js"
+application.register("modal-dialog", ModalDialogController)

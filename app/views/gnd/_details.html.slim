@@ -1,0 +1,87 @@
+- unless @gnd_result
+  .alert.alert-danger
+    i.fa-solid.fa-warning.fa-fw.fa-lg
+    == t("gnd.error_message", dnb_url: "https://d-nb.info/gnd/#{@gnd_id}")
+- else
+  = optional_value(@gnd_result[:biographical_infos]) do |value|
+    .mb-3.fst-italic = value.join("; ")
+
+  dl.key-value-list.mb-3
+    = optional_value(@gnd_result[:entity_types]) do |values|
+      dt = t("gnd.details.entity_types")
+      dd = values.map{ |value| t("gnd.entity_types.#{value}", default: value) }.join(", ")
+
+    = optional_value(@gnd_result[:preferred_name]) do |value|
+      dt = t("gnd.details.preferred_name")
+      dd = value
+
+    = optional_value(@gnd_result[:variant_names]) do |values|
+      dt = t("gnd.details.variant_names")
+      dd = render ExpandableListComponent.new(items: values, initial_items: 4)
+
+    = optional_value(@gnd_result[:gender]) do |value|
+      dt = t("gnd.details.gender")
+      dd = value
+
+    = optional_value(@gnd_result[:geographic_areas]) do |values|
+      dt = t("gnd.details.geographic_areas")
+      dd = render ExpandableListComponent.new(items: values, initial_items: 2)
+
+    = optional_value(@gnd_result[:preceding_corporate_body]) do |value|
+      dt = t("gnd.details.preceding_corporate_body")
+      dd = value
+
+    = optional_value(@gnd_result[:succeeding_corporate_body]) do |value|
+      dt = t("gnd.details.succeeding_corporate_body")
+      dd = value
+
+    = optional_value(@gnd_result[:date_of_birth]) do |value|
+      dt = t("gnd.details.date_of_birth")
+      dd = value
+
+    = optional_value(@gnd_result[:date_of_death]) do |value|
+      dt = t("gnd.details.date_of_death")
+      dd = value
+
+    = optional_value(@gnd_result[:date_of_establishment]) do |value|
+      dt = t("gnd.details.date_of_establishment")
+      dd = value
+
+    = optional_value(@gnd_result[:date_of_termination]) do |value|
+      dt = t("gnd.details.date_of_termination")
+      dd = value
+
+    = optional_value(@gnd_result[:place_of_business]) do |value|
+      dt = t("gnd.details.place_of_business")
+      dd = value
+
+    = optional_value(@gnd_result[:affiliations]) do |values|
+      dt = t("gnd.details.affiliations")
+      dd = render ExpandableListComponent.new(items: values, initial_items: 4)
+
+    = optional_value(@gnd_result[:professions_or_occupations]) do |values|
+      dt = t("gnd.details.professions_or_occupations")
+      dd = render ExpandableListComponent.new(items: values, initial_items: 4)
+
+    = optional_value(@gnd_result[:gnd_id]) do |value|
+      dt = t("gnd.details.gnd_id")
+      dd = value
+
+    = optional_value(@gnd_result[:gnd_subject_categories]) do |values|
+      dt = t("gnd.details.gnd_subject_categories")
+      dd = render ExpandableListComponent.new(items: values, initial_items: 4)
+
+    dt = t("gnd.details.more_information")
+    dd
+      ul.mb-0.ps-3
+        - if gnd_id = @gnd_result[:gnd_id]
+          li = link_to "lobid.org", "https://lobid.org/gnd/#{gnd_id}", target: "_blank"
+          li = link_to "Deutsche Nationalbibliothek (DNB)", "https://d-nb.info/gnd/#{gnd_id}", target: "_blank"
+
+        - if wikipedia_url = @gnd_result[:wikipedia_url]
+          li = link_to "Wikipedia", wikipedia_url, target: "_blank"
+
+.d-sm-flex.justify-content-between.align-items-center
+  .text-muted: em
+    == t("gnd.details.data_provided_by", lobid_url: "https://lobid.org", hbz_url: "https://www.hbz-nrw.de")
+  .mt-2.mt-sm-0 = image_tag "lobid-logo.svg", alt: "lobid.org Logo", height: "30"

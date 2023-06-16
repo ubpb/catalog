@@ -31,7 +31,7 @@ de:
         Daten bereitgestellt von
         <a href="%{lobid_url}" target="_blank">lobid-gnd</a>,
         ein Dienst des
-        <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>.
+        <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>
 
     entity_types:
       authority_resource: Normdatensatz

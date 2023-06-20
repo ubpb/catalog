@@ -167,6 +167,7 @@ GEM
     foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashids (1.0.6)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -346,6 +347,8 @@ GEM
     standard-rails (0.1.0)
       lint_roller (~> 1.0)
       rubocop-rails (~> 2.19.0)
+    strip_attributes (1.13.0)
+      activemodel (>= 3.0, < 8.0)
     temple (0.10.2)
     thor (1.2.2)
     tilt (2.2.0)
@@ -403,6 +406,7 @@ DEPENDENCIES
   elasticsearch (~> 8.1)
   exl_api (~> 1.0.0)!
   foreman (>= 0.87)
+  hashids (~> 1.0)
   i18n-debug (>= 1.2)
   jbuilder (~> 2.7)
   letter_opener_web (>= 2.0)
@@ -418,6 +422,7 @@ DEPENDENCIES
   simple_form (~> 5.1)
   slim (>= 5.0)
   sprockets-rails (~> 3.4.2)
+  strip_attributes (~> 1.13)
   turbo-rails (~> 1.1)
   ubpb-rubocop-config!
   view_component (~> 3.0)

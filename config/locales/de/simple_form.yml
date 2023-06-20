@@ -1,5 +1,8 @@
 de:
   simple_form:
+    required:
+      text: 'Erforderliche Angabe'
+      mark: '*'
     labels:
       defaults:
         user_id: "Ausweisnummer"

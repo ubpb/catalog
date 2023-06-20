@@ -17,25 +17,15 @@ html
     = render "application/test_server_warning"
 
     #header
-      = render "header"
+      = render "layouts/registrations/header"
 
     #page
       .container
-        = render "breadcrumb"
+        = render "layouts/registrations/breadcrumb"
         = render "alerts", global: true
         = content_for?(:main) ? yield(:main) : yield
 
     #footer
-      = render "footer"
+      = render "layouts/registrations/footer"
+
       = render "piwik_tracking"
-
-    #modal-dialog(data-controller="modal-dialog")
-      .d-none(data-modal-dialog-target="loadingTemplate")
-        .modal-body
-          .text-center
-            i.fa-solid.fa-spinner.fa-spin-pulse.fa-lg
-
-      .modal.modal-lg.fade(tabindex="-1" data-modal-dialog-target="modal")
-        .modal-dialog
-          .modal-content
-            = turbo_frame_tag "modal", "data-modal-dialog-target": "frame", "target": "_top"

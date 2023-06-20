@@ -5,12 +5,9 @@ module Ils::Adapters
       def call(record_id, user_id)
         create_hold_request(record_id, user_id)
         true
-      rescue ExlApi::LogicalError => e
+      rescue ExlApi::Error => e
         puts e.message
-        binding.b
         false
-      rescue => e
-        binding.b
       end
 
     private

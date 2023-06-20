@@ -1,0 +1,13 @@
+- header = local_assigns.fetch(:header) { nil }
+
+= simple_form_for [:admin, @registration] do |f|
+  .card.card-shadowed
+    - if header
+      .card-header.cutoff-corner-tr
+        h5.mb-0 = header
+    .card-body
+      = render "registrations/form_fields", f: f
+
+    .card-footer
+      = f.submit "Änderungen speichern", class: "btn btn-primary"
+      = link_to "Abbrechen", admin_registration_path(@registration), class: "btn btn-link"

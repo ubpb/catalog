@@ -1,0 +1,48 @@
+- if @registration.errors.any?
+  .callout.callout-danger
+    = t("registrations.form.error", count: @registration.errors.count)
+
+- if controller_path == "admin/registrations"
+  = f.input :user_group, as: :select, collection: Registration::REGISTRABLE_USER_GROUPS.keys, include_blank: false, \
+      label_method: ->(group){ t("registrations.user_groups.#{group}.title", default: group) }, \
+      input_html: { read: controller_name != "admin_registrations" }
+- else
+  = f.input :user_group, as: :string, input_html: { readonly: true, disabled: true, value: t("registrations.user_groups.#{@registration.user_group}.title", default: @registration.user_group)}
+  = f.input :user_group, as: :hidden
+
+= f.input :gender, as: :select, collection: Registration::GENDERS, include_blank: false, \
+    prompt: t("registrations.form.genders.none"), \
+    label_method: ->(code){ t("registrations.form.genders.#{code}", default: code) }
+= f.input :academic_title, as: :select, collection: Registration::ACADEMIC_TITLES, include_blank: true, \
+    label_method: ->(code){ t("registrations.form.academic_titles.#{code}", default: code) }
+.row
+  .col
+    = f.input :firstname
+  .col
+    = f.input :lastname
+= f.input :birthdate, as: :date, html5: true, start_year: Date.today.year - 16, end_year: Date.today.year - 90, prompt: true
+= f.input :email, required: true
+- if @registration.errors.include?(:email)
+  .callout.callout-danger
+    == t("registrations.form.missing_email.info")
+    = f.input :ignore_missing_email, as: :boolean, \
+      label: t("registrations.form.missing_email.confirmation"), \
+      wrapper_html: { style: "margin-bottom: 0 !important" }
+
+fieldset.border.p-3.mb-3
+  legend: h5.mb-0 = t("registrations.form.address")
+  = f.input :street_address
+  .row
+    .col-3
+      = f.input :zip_code
+    .col
+      = f.input :city
+
+fieldset.border.p-3.mb-3
+  legend: h5.mb-0 = t("registrations.form.additional_address")
+  = f.input :street_address2
+  .row
+    .col-3
+      = f.input :zip_code2
+    .col
+      = f.input :city2

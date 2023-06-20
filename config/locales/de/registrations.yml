@@ -1,0 +1,187 @@
+de:
+  registrations:
+    user_groups:
+      guest:
+        title: Gäste der Universität Paderborn
+      guest_student:
+        title: Gasthörende der Universität Paderborn und Studierende anderer Hochschulen
+      external:
+        title: Externe Benutzerinnen und Benutzer
+      external_u18:
+        title: Externe Benutzerinnen und Benutzer unter 18 Jahren
+      emeritus:
+        title: Emeritierte und im Ruhestand befindliche Professorinnen und Professoren der Universität Paderborn
+      student:
+        title: Studierende der Universität Paderborn
+      employee:
+        title: Mitarbeitende der Universität Paderborn
+
+    ensure_valid_user_group!:
+      error: "Die gewählte Nutzergruppe kann sich nicht online registrieren."
+
+    required_documents:
+      header: >
+        Sie benötigen vor Ort bei Abholung noch folgende Unterlagen:
+      documents:
+        id: Personalausweis oder Reisepass mit einer Meldebescheinigung des Einwohnermeldeamtes
+        certificate_of_former_employment: Nachweis über das ehemalige Beschäftigungsverhältnis an der Universität Paderborn
+        guest_certificate: >
+          Bescheinigung der Universität Paderborn oder Bescheinigung der Theologischen Fakultät bzw.
+          Fachhochschule der Wirtschaft (FHdW) über den Status als "Gast"
+        guest_student_certificate: >
+          Aktuelle Studienbescheinigung (Gasthörerausweis oder Studierendenausweis anderer Hochschulen)
+        u18: >
+          <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf"
+          target="_blank"><i class="fa-solid fa-external-link"></i> Schriftliche Einwilligung
+          (PDF Download)</a> eines/r gesetzlichen Vertreters/in
+
+
+    index:
+      header: Bibliotheksausweis beantragen
+      description: >
+        <p>
+          Die Universitätsbibliothek Paderborn ist eine öffentlich zugängliche wissenschaftliche Bibliothek.
+        </p>
+        <p class="mb-0">
+          Der Bibliotheksausweis ermöglicht das Ausleihen von Informationsmedien aus dem Bestand der UB und die
+          Bestellung von Informationsmedien aus dem Magazin sowie aus anderen Bibliotheken (Fernleihe). Er bietet
+          zudem einen persönlichen Zugang zum Katalog.
+        </p>
+
+      register: Bibliotheksausweis jetzt beantragen
+
+    new:
+      breadcrumb: Einen neuen Bibliotheksausweis beantragen
+      header: Einen neuen Bibliotheksausweis beantragen
+
+    create:
+      success: >
+        Die Benutzerregistrierung wurde erfolgreich abgeschlossen. Bitte beachten Sie die Hinweise unten.
+
+    show:
+      breadcrumb: Meine Registrierung
+      header: Meine Registrierung
+      callout:
+        success: >
+          <p>Sie haben sich erfolgreich registriert. Ihre Registrierungsnummer lautet
+          <code>%{code}</code>.</p>
+        pickup_info: >
+          <p>
+            Ihren Bibliotheksausweis können Sie in der Bibliothek an der Theke des Sachgebiets Ortsleihe abholen.
+            Sie können die o.g. Registrierungsnummer (Ausdruck oder elektronisch bspw. auf einem Smartphone) vorzeigen,
+            um eine schnelle Bearbeitung zu ermöglichen. Bitte beachten Sie hierbei die
+            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
+            <i class="fa-solid fa-external-link"></i> Servicezeiten für Ausweise</a>.
+          </p>
+
+      details:
+        header: Sie haben folgende Daten eingegeben
+        edit: Bearbeiten
+
+    edit:
+      header: Meine Registrierung bearbeiten
+      breadcrumb: Meine Registrierung bearbeiten
+
+    update:
+      success: Ihre Daten wurde erfolgreich aktualisiert.
+
+    authorize:
+      breadcrumb: Autorisierung
+      header: Autorisierung erforderlich
+      info: >
+        <p>Um Ihre Registrierung erneut aufzurufen bzw. zu bearbeiten, müssen Sie sich erneut autorisieren.
+        Bitte geben Sie dazu im folgenden Feld Ihr bei der Registrierung angegebenes Geburtsdatum ein.</p>
+        <p class="text-success">
+          <i class="fa-solid fa-info-circle"></i>
+          Bitte geben Sie Ihr Geburtsdatum in der folgenden Form ein TT.MM.JJJJ.
+          D.h. wenn Sie z.B. am 13. Mai 1991 geboren sind dann geben Sie bitte ein: 13.05.1991
+        </p>
+      submit: Autorisieren
+      placeholder: Ihr Geburtsdatum
+      error: >
+        Die Autorisierung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe.
+      already_created: >
+        Ihre Registrierung wurde bereits bestätigt und kann von Ihnen nicht mehr aufgerufen werden.
+        Bitte melden Sie sich in Ihrem <a href="https://katalog.ub.uni-paderborn.de/login" class="alert-link">
+        <i class="fa-solid fa-external-link"></i> Bibliotheskonto</a>
+        an, um Ihre Daten einzusehen.
+
+    form:
+      error:
+        one: >
+          Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
+          rot makrierte Felder.
+        other:
+          "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
+          rot makrierte Felder."
+      address: Adresse
+      additional_address: Zweitanschrift (optional)
+      terms_of_use_label:
+        Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Benutzungsordnung</a>,
+        die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Gebührenodnung</a>
+        und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Datenschutzerklärung</a>
+        gelesen und akzeptiere diese.
+
+      terms_of_use:
+        accepted: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung akzeptiert
+        declined: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung NICHT akzeptiert
+
+      missing_email:
+        info: >
+          <p>
+            Sie haben keine E-Mail-Adresse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail-Adresse
+            für Ihr Bibliothekskonto, damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben,
+            Gebühren und bereitgestellte Vormerkungen per E-Mail benachrichtigen können.
+          </p>
+        confirmation: >
+          Ich möchte keine E-Mail-Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail-Benachrichtigungen
+          über mein Bibliothekskonto erhalten werde.
+
+      register: Registrierung abschließen
+      save: Änderungen speichern
+      cancel: Abbrechen
+      genders:
+        none: Keine Angabe
+        male: Männlich
+        female: Weiblich
+        other: Divers
+      academic_titles:
+        dr: "Dr."
+        dr_dr: "Dr. Dr."
+        dr_ing: "Dr.-Ing."
+        jprof: "JProf."
+        jprof_dr: "JProf. Dr."
+        pd_dr: "PD Dr."
+        prof: "Prof."
+        prof_dr: "Prof. Dr."
+        prof_dr_ing: "Prof. Dr.-Ing."
+
+  activerecord:
+    errors:
+      models:
+        registration:
+          attributes:
+            birthdate:
+              u18_group_but_over_18: >
+                Sie haben eine Nutzergruppe für Personen unter 18 Jahren gewählt,
+                aber Ihr Geburtsdatum zeigt, dass Sie über 18 Jahre alt sind.
+    attributes:
+      registration:
+        user_group: Nutzergruppe
+        gender: Geschlecht
+        academic_title: Akademischer Titel
+        firstname: Vorname
+        lastname: Nachname
+        birthdate: Geburtstag
+        email: E-Mail
+        street_address: Straße & Hausnummer
+        zip_code: PLZ
+        city: Ort
+        street_address2: Straße & Hausnummer
+        zip_code2: PLZ
+        city2: Ort
+
+

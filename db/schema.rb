@@ -46,6 +46,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_103449) do
     t.index ["scope"], name: "index_permalinks_on_scope"
   end
 
+  create_table "registrations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "user_group"
+    t.string "academic_title"
+    t.string "gender"
+    t.string "firstname"
+    t.string "lastname"
+    t.date "birthdate"
+    t.string "email"
+    t.string "street_address"
+    t.string "zip_code"
+    t.string "city"
+    t.string "street_address2"
+    t.string "zip_code2"
+    t.string "city2"
+    t.boolean "terms_of_use", default: false, null: false
+    t.boolean "created_in_alma", default: false, null: false
+    t.string "alma_primary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "ils_primary_id", null: false
     t.string "api_key"

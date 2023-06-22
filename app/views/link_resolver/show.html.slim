@@ -6,30 +6,35 @@
       .mb-3.bg-danger.bg-opacity-10.px-4.p-2.fst-italic.rounded
         = vpn_info
 
-    turbo-frame#link-resolver-results
-      - if @context
+    - if @context
 
-        dl.key-value-list
-          - if @context.authors.present?
-            dt Autoren
-            dd = @context.authors
+      dl.key-value-list
+        - if @context.authors.present?
+          dt Autor(en)
+          dd = @context.authors
 
-          - if @context.title.present?
-            dt Titel
-            dd = @context.title
+        - if @context.is_journal?
+          - if @context.value("rft.atitle").present?
+            dt Artikel
+            dd = @context.value("rft.atitle")
 
-          - if @context.publisher.present?
-            dt Verlag
-            dd = @context.publisher
+        - if @context.title.present?
+          dt Titel
+          dd = @context.title
 
-          - if @context.place_of_publication.present?
-            dt Ort
-            dd = @context.place_of_publication
+        - if @context.publisher.present?
+          dt Verlag
+          dd = @context.publisher
 
-          - if @context.date_of_publication.present?
-            dt Erscheinungsjahr
-            dd = @context.date_of_publication
+        - if @context.place_of_publication.present?
+          dt Ort
+          dd = @context.place_of_publication
 
+        - if @context.date_of_publication.present?
+          dt Erscheinungsjahr
+          dd = @context.date_of_publication
+
+      turbo-frame#link-resolver-results
         - if @fulltext_services.present?
           h5.fs-6 = t(".header_found")
 
@@ -40,5 +45,33 @@
           .callout.callout-warning.mb-0
             i.fa-solid.fa-ban.fa-lg
             =< t(".no_results")
-      - else
-        .callout.callout-danger.mb-0 = t(".error")
+
+          - if @context.title.present?
+            h5.fs-6.mt-3 Weitere Recherchemöglichkeiten
+            ul.list-group
+              li.list-group-item
+                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                  .ms-0
+                    div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}")), target: "_blank" do
+                      i.fa-solid.fa-external-link.fa-fw.me-1
+                      = "Katalog - Suche nach: \"#{@context.title}\""
+              li.list-group-item
+                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                  .ms-0
+                    div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}"), search_scope: "cdi"), target: "_blank" do
+                      i.fa-solid.fa-external-link.fa-fw.me-1
+                      = "Central Discovery Index - Suche nach: \"#{@context.title}\""
+              li.list-group-item
+                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                  .ms-0
+                    div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
+                      i.fa-solid.fa-external-link.fa-fw.me-1
+                      = "Fernleihe - Buchsuche nach: \"#{@context.title}\""
+              li.list-group-item
+                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                  .ms-0
+                    div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
+                      i.fa-solid.fa-external-link.fa-fw.me-1
+                      = "Fernleihe - Artikelsuche nach: \"#{@context.title}\""
+    - else
+      .callout.callout-danger.mb-0 = t(".error")

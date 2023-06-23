@@ -23,7 +23,7 @@ de:
       header: >
         Sie benötigen vor Ort bei Abholung noch folgende Unterlagen:
       documents:
-        id: Personalausweis oder Reisepass mit einer Meldebescheinigung des Einwohnermeldeamtes
+        id: Personalausweis oder Reisepass mit einer Anmeldebestätigung des Einwohnermeldeamtes (Meldebescheinigung), die nicht älter als 1 Jahr sein darf, oder ein anderes gültiges amtliches Personaldokument mit Lichtbild und Adressen-Angabe
         certificate_of_former_employment: Nachweis über das ehemalige Beschäftigungsverhältnis an der Universität Paderborn
         guest_certificate: >
           Bescheinigung der Universität Paderborn oder Bescheinigung der Theologischen Fakultät bzw.
@@ -110,10 +110,10 @@ de:
       error:
         one: >
           Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
-          rot makrierte Felder.
+          rot makierte Felder.
         other:
           "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf
-          rot makrierte Felder."
+          rot makierte Felder."
       address: Adresse
       additional_address: Zweitanschrift (optional)
       terms_of_use_label:

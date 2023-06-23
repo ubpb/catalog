@@ -21,7 +21,7 @@ export default class extends Controller {
     const items = this.itemTargets
 
     for (let i = 0; i < items.length; i++) {
-      if (i >= this.itemCountValue) {
+      if (this.itemCountValue >= 0 && i >= this.itemCountValue) {
         items[i].style.display = "none";
       }
     }

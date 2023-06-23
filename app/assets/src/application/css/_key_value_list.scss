@@ -26,14 +26,14 @@ $key-value-list-v-padding: 0.5em !default;
       margin: 0;
       padding: $key-value-list-v-padding 0;
       padding-left: $key-value-list-label-width + $key-value-list-label-gutter;
-      border-bottom: 1px solid $gray-300;
+      border-bottom: 1px solid var(--bs-border-color);
 
       &:nth-child(2) {
-        border-top: 1px solid $gray-300;
+        border-top: 1px solid var(--bs-border-color);
       }
 
       &:nth-of-type(odd) {
-        background-color: $gray-100;
+        background-color: var(--bs-tertiary-bg);
       }
     }
 

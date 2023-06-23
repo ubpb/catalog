@@ -1,0 +1,34 @@
+ul.list-inline.mb-0(
+  data-controller="expandable-list"
+  data-expandable-list-item-count-value=@item_count
+  data-expandable-list-target="list"
+)
+  - @creators.each do |creator|
+    li.list-inline-item.rounded.border.mb-1.px-1(
+      style="background-color: var(--bs-light-bg-subtle)"
+      data-expandable-list-target="item"
+    )
+      = link_to helpers.new_search_request_path(search_request_for(creator:)) do
+        span = creator.name
+
+        - if (relationships = relationships_for(creator:)).present?
+          span.ms-1 = "[#{relationships.join(", ")}]"
+
+      - if (gnd_id = gnd_id_for(creator:)).present?
+        span.ms-1(data-controller="modal" data-modal-modal-dialog-outlet="#modal-dialog")
+          = link_to gnd_path(gnd_id), "data-action": "click->modal#open" do
+            i.fa-regular.fa-id-card
+
+  - if @item_count != -1 && @creators.count > @item_count
+    li.list-inline-item.mb-1(
+      data-expandable-list-target="expand"
+    )
+      a.link-primary(href="#expand" data-action="click->expandable-list#expand")
+        i.fa-solid.fa-square-plus.fa-fw.fa-xl
+
+    li.list-inline-item.mb-1(
+      data-expandable-list-target="collapse"
+    )
+      a.link-primary(href="#collapse" data-action="click->expandable-list#collapse")
+        i.fa-solid.fa-square-minus.fa-fw.fa-xl
+

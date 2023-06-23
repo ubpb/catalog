@@ -7,10 +7,8 @@ h4 = t(".header")
 dl.key-value-list
   / Creators
   = optional_value(@record.creators) do |creators|
-    / TODO: Remove filter after this is handled in normalization
-    - creators = creators.reject{|c| c.relationships.any?{|r| r == "pbl"}}
     dt = t(".creators")
-    dd = render(CreatorComponent.with_collection(creators))
+    dd = render(CreatorsComponent.new(creators: creators, item_count: -1))
 
   / Title
   = optional_value(@record.title, default: "–") do |title|

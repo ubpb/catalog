@@ -60,11 +60,8 @@ ruby:
       span.me-2.fst-italic = links.join(", ").html_safe
 
     / Creators
-    - if record.creators.present?
-      / TODO: Remove filter after this is handled in normalization
-      - creators = record.creators
-      - creators = creators.reject{|c| c.relationships.any?{|r| r == "pbl"}}
-      .mb-1.mt-1 = render(CreatorComponent.with_collection(creators))
+    - if (creators = record.creators).present?
+      .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
 
     / Year of publication
     - if (yop = record.year_of_publication).present?

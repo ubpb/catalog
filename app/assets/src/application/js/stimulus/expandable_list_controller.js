@@ -55,7 +55,7 @@ export default class extends Controller {
 
   showExpandTarget() {
     if (this.hasExpandTarget) {
-      this.expandTarget.style.display = "block"
+      this.expandTarget.style.removeProperty("display")
     }
   }
 
@@ -67,7 +67,7 @@ export default class extends Controller {
 
   showCollapseTarget() {
     if (this.hasCollapseTarget) {
-      this.collapseTarget.style.display = "block"
+      this.collapseTarget.style.removeProperty("display")
     }
   }
 

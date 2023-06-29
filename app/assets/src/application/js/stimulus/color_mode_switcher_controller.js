@@ -26,7 +26,7 @@ export default class extends Controller {
       return storedColorMode
     }
 
-    return 'auto'
+    return 'light'
   }
 
   setColorMode(colorMode) {

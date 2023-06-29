@@ -58,3 +58,7 @@ application.register("modal-dialog", ModalDialogController)
 // app/assets/src/application/js/stimulus/barcode_controller.js
 import BarcodeController from "./barcode_controller.js"
 application.register("barcode", BarcodeController)
+
+// app/assets/src/application/js/stimulus/color_mode_switcher_controller.js
+import ColorModeSwitcherController from "./color_mode_switcher_controller.js"
+application.register("color-mode-switcher", ColorModeSwitcherController)

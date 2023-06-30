@@ -46,9 +46,8 @@ ruby:
                     i.fas.fa-arrow-down-wide-short.fa-lg
 
   - if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger")).present?
-    .bg-white
-      .bg-danger.bg-opacity-10.px-4.p-2.fst-italic.text-center
-        = vpn_info
+    .bg-danger.bg-opacity-10.px-4.p-2.fst-italic.text-center
+      = vpn_info
 
   .card-body
     #hits(

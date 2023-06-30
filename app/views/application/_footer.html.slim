@@ -12,7 +12,4 @@ footer
       span.d-print-none =<> "|"
       span.d-print-none == t(".cover_images", link: link_to(t(".cover_images_link_text"), "http://www.buchhandel.de", target: "_blank"))
     .footer-image.d-print-none
-      .d-none.d-sm-block
-        = image_tag "footer-bg-lg.png", class: "img-fluid"
-      .d-block.d-sm-none
-        = image_tag "footer-bg-sm.jpg", class: "img-fluid"
+      = image_tag "footer-bg-lg-transparent.gif", class: "img-fluid"

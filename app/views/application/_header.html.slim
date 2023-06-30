@@ -1,12 +1,12 @@
 header
   .container.pb-3.pt-3
     .d-flex.flex-row.align-items-center.justify-content-between
-      = link_to "http://www.ub.uni-paderborn.de" do
-        .d-none.d-md-inline = image_tag("ub-logo.svg", height: "60", loading: "lazy")
-        .d-md-none = image_tag("ub-logo.svg", height: "50", loading: "lazy")
+      .ub-logo = link_to "http://www.ub.uni-paderborn.de" do
+        .d-none.d-md-inline = inline_svg_tag("ub-logo.svg", height: "60")
+        .d-md-none = inline_svg_tag("ub-logo.svg", height: "50")
 
-      = link_to "/" do
-        .d-none.d-md-inline = image_tag("app-logo.svg", height: "18", loading: "lazy")
-        .d-md-none = image_tag("app-logo.svg", height: "14", loading: "lazy")
+      .app-logo = link_to "/" do
+        .d-none.d-md-inline = inline_svg_tag("app-logo.svg", height: "18")
+        .d-md-none = inline_svg_tag("app-logo.svg", height: "14")
 
   .d-print-none = render "navbar"

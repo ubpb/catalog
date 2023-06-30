@@ -1,15 +1,4 @@
 .card {
-  background-color: transparent;
-
-  .card-body {
-    background-color: $white;
-  }
-
-  .card-header,
-  .card-footer {
-    background-color: $gray-100;
-  }
-
   &.card-primary {
     border-bottom-width: 4px;
     border-bottom-style: solid;
@@ -17,8 +6,9 @@
   }
 
   &.card-shadowed {
-    // Use filter and drop-shadow instead of box-shadow
-    // to use the shadow together with "cutoff-corner".
+    // Use filter and drop-shadow instead of box-shadow.
+    // This allows us to use the shadow on cards with transparent
+    // headers (e.g. the search panel)
     filter: drop-shadow($box-shadow);
     @media print {
       filter: none;

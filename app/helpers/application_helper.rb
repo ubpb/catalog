@@ -62,4 +62,8 @@ module ApplicationHelper
     Config[:shelf_finder, :enabled, default: false]
   end
 
+  def color_mode_enabled?
+    Config[:color_mode, :enabled, default: false]
+  end
+
 end

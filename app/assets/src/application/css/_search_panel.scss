@@ -1,3 +1,16 @@
+#search_panel {
+  background-color: transparent;
+
+  card-header {
+    background-color: transparent;
+  }
+
+  .card-body {
+    background-color: var(--bs-card-bg);
+    border-radius: $border-radius;
+  }
+}
+
 @include media-breakpoint-down(md) {
   #search_panel {
     .advanced-search-row {

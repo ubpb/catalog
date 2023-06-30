@@ -8,7 +8,7 @@
             = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
               = t("searches.#{search_scope}.label", default: "n.n.")
 
-  .card-body.cutoff-corner-tr
+  .card-body
     - flash[:search_panel]&.each do |key, message|
       ruby:
         message_class = case key.to_sym

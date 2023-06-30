@@ -51,44 +51,9 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-lg.d-print-none
                 i.far.fa-user
                 =< t(".login")
 
-          .ms-1
-            .dropdown(
-              data-controller="color-mode-switcher"
-            )
-              .d-grid.gap-2.d-lg-block
-                button.btn.btn-secondary.dropdown-toggle(
-                  data-bs-toggle="dropdown"
-                  data-color-mode-switcher-target="colorModeButton"
-                )
-                  i.fa-solid.fa-circle-half-stroke
-                .dropdown-menu.dropdown-menu-lg-end
-                  li
-                    button.dropdown-item(
-                      type="button"
-                      data-action="click->color-mode-switcher#setLightColorMode"
-                    )
-                      i.fa-solid.fa-sun.fa-fw(
-                        data-color-mode-switcher-target="lightIcon"
-                      )
-                      span.ms-1 = "Hell"
-                  li
-                    button.dropdown-item(
-                      type="button"
-                      data-action="click->color-mode-switcher#setDarkColorMode"
-                    )
-                      i.fa-solid.fa-moon.fa-fw(
-                        data-color-mode-switcher-target="darkIcon"
-                      )
-                      span.ms-1 = "Dunkel"
-                  li
-                    button.dropdown-item(
-                      type="button"
-                      data-action="click->color-mode-switcher#setAutoColorMode"
-                    )
-                      i.fa-solid.fa-circle-half-stroke.fa-fw(
-                        data-color-mode-switcher-target="autoIcon"
-                      )
-                      span.ms-1 = "Auto"
+          - if color_mode_enabled?
+            .ms-1 = render("application/color_mode_switcher")
+
 
 
 

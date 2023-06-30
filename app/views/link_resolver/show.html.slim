@@ -13,10 +13,9 @@
           dt Autor(en)
           dd = @context.authors
 
-        - if @context.is_journal?
-          - if @context.value("rft.atitle").present?
-            dt Artikel
-            dd = @context.value("rft.atitle")
+        - if @context.value("rft.atitle").present?
+          dt Artikel
+          dd = @context.value("rft.atitle")
 
         - if @context.title.present?
           dt Titel
@@ -54,24 +53,26 @@
                   .ms-0
                     div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}")), target: "_blank" do
                       i.fa-solid.fa-external-link.fa-fw.me-1
-                      = "Katalog - Suche nach: \"#{@context.title}\""
+                      = "Katalog - Suche nach Druckausgabe: \"#{@context.title}\""
               li.list-group-item
                 .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
                   .ms-0
                     div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}"), search_scope: "cdi"), target: "_blank" do
                       i.fa-solid.fa-external-link.fa-fw.me-1
                       = "Central Discovery Index - Suche nach: \"#{@context.title}\""
-              li.list-group-item
-                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                  .ms-0
-                    div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
-                      i.fa-solid.fa-external-link.fa-fw.me-1
-                      = "Fernleihe - Buchsuche nach: \"#{@context.title}\""
-              li.list-group-item
-                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                  .ms-0
-                    div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
-                      i.fa-solid.fa-external-link.fa-fw.me-1
-                      = "Fernleihe - Artikelsuche nach: \"#{@context.title}\""
+              - if @context.is_book?
+                li.list-group-item
+                  .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                    .ms-0
+                      div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
+                        i.fa-solid.fa-external-link.fa-fw.me-1
+                        = "Fernleihe - Buchsuche nach: \"#{@context.title}\""
+              - if @context.is_journal?
+                li.list-group-item
+                  .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+                    .ms-0
+                      div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
+                        i.fa-solid.fa-external-link.fa-fw.me-1
+                        = "Fernleihe - Zeitschriftensuche nach: \"#{@context.title}\""
     - else
       .callout.callout-danger.mb-0 = t(".error")

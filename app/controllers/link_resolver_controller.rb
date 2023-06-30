@@ -36,6 +36,7 @@ class LinkResolverController < ApplicationController
     def place_of_publication; value("rft.place"); end
     def date_of_publication; value("rft.pubdate"); end
 
+    def is_book?; value("rft.btitle").present?; end
     def is_journal?; value("rft.jtitle").present?; end
 
   end

@@ -79,6 +79,12 @@ header {
       * {
         fill: $light;
       }
+
+      @media print {
+        * {
+          fill: $upb-blue;
+        }
+      }
     }
   }
 }

@@ -1,8 +1,14 @@
 #search_panel {
   background-color: transparent;
 
-  card-header {
+  .card-header {
     background-color: transparent;
+    .card-header-tabs {
+      .nav-link {
+        border-color: transparent;
+        transition: none;
+      }
+    }
   }
 
   .card-body {

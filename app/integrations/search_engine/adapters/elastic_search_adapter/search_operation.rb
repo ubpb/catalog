@@ -28,7 +28,7 @@ module SearchEngine::Adapters
         # Build the search result from ES result.
         build_search_result(es_result)
       rescue => e
-        if e.message&.match?("parse_exception")
+        if e.message&.match?("parse_exception") || e.message&.match?("query_shard_exception")
           raise SearchEngine::QuerySyntaxError, e
         else
           raise e

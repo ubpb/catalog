@@ -66,7 +66,6 @@ module SearchEngine::Adapters
                   fields: fields,
                   type: "cross_fields",
                   query: normalize_query_string(q.value, query: q)
-                  # quote_analyzer: "default_with_stop_words_search"
                 }
               }
             end

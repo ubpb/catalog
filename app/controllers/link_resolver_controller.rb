@@ -18,15 +18,15 @@ class LinkResolverController < ApplicationController
       @context_hash = context_hash
     end
     # # Accessor for values
-    # def values(id); @context_hash[id]; end
-    # def value(id); values(id)&.last; end
+    def values(id); @context_hash[id]; end
+    def value(id); values(id)&.last; end
     # # Convenient methods for fields we use in the UI
     # def alma_id; value("rft.mms_id"); end
-    # def title; value("rft.title"); end
-    # def authors; value("rft.au"); end
-    # def publisher; value("rft.pub"); end
-    # def place_of_publication; value("rft.place"); end
-    # def date_of_publication; value("rft.pubdate"); end
+    def title; value("rft.title"); end
+    def authors; value("rft.au"); end
+    def publisher; value("rft.pub"); end
+    def place_of_publication; value("rft.place"); end
+    def date_of_publication; value("rft.pubdate"); end
   end
 
   class FulltextService

@@ -35,10 +35,10 @@ module SearchEngine::Adapters
         end
       end
 
-    private
+      private
 
       def build_query(search_request)
-        es_query = { bool: { must: [], must_not: [], should: [] } }
+        es_query = {bool: {must: [], must_not: [], should: []}}
 
         # Queries
         search_request.queries.each do |q|
@@ -50,9 +50,9 @@ module SearchEngine::Adapters
             # Build different queries depending on the field that is searched.
             # FIXME: This couples the implemenation to the config file, which is
             # very wrong and MUST be adressed.
-            case q.name
+            container << case q.name
             when "ids", "superorder_id"
-              container << {
+              {
                 multi_match: {
                   fields: fields,
                   type: "cross_fields",
@@ -60,13 +60,13 @@ module SearchEngine::Adapters
                 }
               }
             else
-              container << {
+              {
                 query_string: {
                   default_operator: "AND",
-                  fields:           fields,
-                  type:             "cross_fields",
-                  query:            normalize_query_string(q.value)
-                  #quote_analyzer:   "default_with_stop_words_search"
+                  fields: fields,
+                  type: "cross_fields",
+                  query: normalize_query_string(q.value)
+                  # quote_analyzer: "default_with_stop_words_search"
                 }
               }
             end
@@ -76,7 +76,7 @@ module SearchEngine::Adapters
         # Aggregations
         search_request.aggregations.each do |a|
           field = adapter.aggregations_field(a.name)
-          type  = adapter.aggregations_type(a.name)
+          type = adapter.aggregations_type(a.name)
 
           if field && type
             container = a.exclude ? es_query[:bool][:must_not] : es_query[:bool][:must]
@@ -101,17 +101,17 @@ module SearchEngine::Adapters
                 }
               end
             when "date_range"
-              aggregation_config = adapter.aggregations.find{|ac| ac["name"] == a.name}
+              aggregation_config = adapter.aggregations.find { |ac| ac["name"] == a.name }
               next unless aggregation_config
 
-              range_config = (aggregation_config["ranges"] || []).find{|r| r["key"] == a.value}
+              range_config = (aggregation_config["ranges"] || []).find { |r| r["key"] == a.value }
               next unless range_config
 
-              format_config = aggregation_config["format"].presence || "yyyy-MM-dd"
+              # format_config = aggregation_config["format"].presence || "yyyy-MM-dd"
 
-              range = { field => {} }
-              range[field]["gte"] = gte if gte = range_config["from"]
-              range[field]["lte"] = gte if lte = range_config["to"]
+              range = {field => {}}
+              range[field]["gte"] = gte if (gte = range_config["from"])
+              range[field]["lte"] = lte if (lte = range_config["to"])
 
               if range.present?
                 container << {
@@ -124,7 +124,7 @@ module SearchEngine::Adapters
 
         # Ignore deleted records
         es_query[:bool][:must_not] << {
-          term: { "meta.is_deleted": true }
+          term: {"meta.is_deleted": true}
         }
 
         es_query
@@ -142,7 +142,7 @@ module SearchEngine::Adapters
         # See: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_grouping
 
         # Escape characters function
-        escape = -> (string) do
+        escape = ->(string) do
           # \ has to be escaped by itself AND has to be the first, to
           # avoid double escaping of other escape sequences
           #
@@ -186,10 +186,10 @@ module SearchEngine::Adapters
         aggregations = {}
 
         adapter.aggregations.each do |aggregation|
-          name  = aggregation["name"].presence
+          name = aggregation["name"].presence
           field = aggregation["field"].presence
-          type  = aggregation["type"].presence
-          size  = aggregation["size"] || 20
+          type = aggregation["type"].presence
+          size = aggregation["size"] || 20
 
           if name && field && type
             case type
@@ -213,13 +213,13 @@ module SearchEngine::Adapters
               format = aggregation["format"].presence || "yyyy-MM-dd"
               ranges = (aggregation["ranges"].presence || []).map do |r|
                 from = r["from"].presence
-                to   = r["to"].presence
-                key  = r["key"].presence
+                to = r["to"].presence
+                key = r["key"].presence
 
                 range = {}
                 range["from"] = from if from
-                range["to"]   = to   if to
-                range["key"]  = key  if key
+                range["to"] = to if to
+                range["key"] = key if key
 
                 (from || to) ? range : nil
               end.compact
@@ -248,8 +248,8 @@ module SearchEngine::Adapters
           es_sort << "_score"
         else
           sort_field = adapter.sortables_field(sr_sort.name)
-          direction  = case sr_sort.direction
-          when "asc"  then "asc"
+          direction = case sr_sort.direction
+          when "asc" then "asc"
           when "desc" then "desc"
           else "asc"
           end
@@ -275,7 +275,7 @@ module SearchEngine::Adapters
         # Aggregations
         aggregations = (es_result["aggregations"] || []).map do |name, aggregation|
           field = adapter.aggregations_field(name)
-          type  = adapter.aggregations_type(name)
+          type = adapter.aggregations_type(name)
 
           if name && field && type
             case type
@@ -293,9 +293,7 @@ module SearchEngine::Adapters
                 terms: terms
               )
             when "histogram"
-              values = aggregation["buckets"].sort do |x, y|
-                x["key"] <=> y["key"]
-              end.map do |bucket|
+              values = aggregation["buckets"].sort_by { |a| a["key"] }.map do |bucket|
                 SearchEngine::Aggregations::HistogramAggregation::Value.new(
                   key: bucket["key"].to_i,
                   count: bucket["doc_count"]
@@ -327,7 +325,7 @@ module SearchEngine::Adapters
 
         # Sort aggregations as they are defined in the config file
         aggregations = aggregations.sort_by do |a|
-          adapter.aggregations.find_index{|aa| aa["name"] == a.name} || 0
+          adapter.aggregations.find_index { |aa| aa["name"] == a.name } || 0
         end
 
         # Return result

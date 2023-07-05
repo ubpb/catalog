@@ -164,7 +164,7 @@ private
           )}"
         end
       end
-      puts "#{base_url}?#{request_params.join('&')}"
+
       # Call the Alma Link Resolver
       response = RestClient.get("#{base_url}?#{request_params.join('&')}")
 

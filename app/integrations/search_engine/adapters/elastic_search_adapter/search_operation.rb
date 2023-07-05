@@ -164,7 +164,7 @@ module SearchEngine::Adapters
         normalize_query_string = query_string.gsub(/<|>/, "")
 
         # Escape some special characters
-        normalized_query_string = escape.(normalize_query_string).presence || ""
+        normalized_query_string = escape.call(normalize_query_string).presence || ""
 
         # Allow german bool operators (for compatability reasons)
         normalized_query_string = normalized_query_string
@@ -175,14 +175,11 @@ module SearchEngine::Adapters
         # Replace german umlauts: This is somekind of a hack, in order to be able to use truncation (mütter*)
         # for words with german umlauts. This modification assumes that umlauts are stored
         # as ae, oe, ue representation in the index.
-        normalized_query_string = normalized_query_string
+        normalized_query_string
           .gsub("Ä", "Ae").gsub("ä", "ae")
           .gsub("Ö", "Oe").gsub("ö", "oe")
           .gsub("Ü", "Ue").gsub("ü", "ue")
           .gsub("ß", "ss")
-
-        # Return
-        normalized_query_string
       end
 
       def build_aggregations

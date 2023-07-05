@@ -20,13 +20,25 @@ class LinkResolverController < ApplicationController
     # # Accessor for values
     def values(id); @context_hash[id]; end
     def value(id); values(id)&.last; end
+    def value_first(id); values(id)&.first; end
     # # Convenient methods for fields we use in the UI
     # def alma_id; value("rft.mms_id"); end
-    def title; value("rft.title"); end
-    def authors; value("rft.au"); end
+
+    def title
+      if is_journal?
+        return value("rft.jtitle") || value("rft.title")
+      end
+
+      value_first("rft.btitle").presence || value("rft.title")
+    end
+    def authors; values("rft.au")&.join("; "); end
     def publisher; value("rft.pub"); end
     def place_of_publication; value("rft.place"); end
     def date_of_publication; value("rft.pubdate"); end
+
+    def is_book?; value("rft.btitle").present?; end
+    def is_journal?; value("rft.jtitle").present?; end
+
   end
 
   class FulltextService

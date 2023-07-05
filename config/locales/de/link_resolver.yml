@@ -8,5 +8,20 @@ de:
       error: "Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt."
       no_results: "Leider kein Volltext verfügbar."
 
+      authors: "Autor(en)"
+      atitle: "Artikel"
+      title: "Titel"
+      publisher: "Verlag"
+      place_of_publication: "Ort"
+      date_of_publication: "Erscheinungsjahr"
+
+      further_research: "Weitere Recherchemöglichkeiten"
+      search_link:
+        catalog:    "Suche im Bibliotheksbestand"
+        cdi:        "Thematische Suche im Central Discovery Index"
+        interlibrary_loan:
+          book:     "Buchsuche über die Fernleihe"
+          journal:  "Zeitschriftensuche über die Fernleihe"
+
     fulltext_service:
       free_resource: "Freie Ressource"

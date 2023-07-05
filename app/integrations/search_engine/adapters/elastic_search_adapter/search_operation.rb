@@ -151,8 +151,9 @@ module SearchEngine::Adapters
           #   (, ) => to support grouping
           #   "    => to support phase search
           #   *, ? => to support wildcards
+          #   ~    => to support fuzziness and proximity searches
           #
-          %w(\\ + - = && || ! { } [ ] ^ : / ~ ).inject(string) do |s, c|
+          %w(\\ + - = && || ! { } [ ] ^ : /).inject(string) do |s, c|
             # adapted from http://stackoverflow.com/questions/7074337/why-does-stringgsub-double-content
             s.gsub(c) { |match| "\\#{match}" } # avoid regular expression replacement string issues
           end

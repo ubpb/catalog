@@ -8,5 +8,13 @@ de:
       error: "Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt."
       no_results: "Leider kein Volltext verfügbar."
 
+      further_research: "Weitere Recherchemöglichkeiten"
+      search_link:
+        catalog:    "Suche im Bibliotheksbestand"
+        cdi:        "Thematische Sucheim Central Discovery Index"
+        interlibrary_loan:
+          book:     "Buchsuche über die Fernleihe"
+          journal:  "Zeitschriftensuche über die Fernleihe"
+
     fulltext_service:
       free_resource: "Freie Ressource"

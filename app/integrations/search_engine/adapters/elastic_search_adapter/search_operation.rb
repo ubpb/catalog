@@ -9,6 +9,7 @@ module SearchEngine::Adapters
           body: {
             track_total_hits: true,
             query: build_query(search_request),
+            suggest: build_suggest(search_request),
             aggs: build_aggregations,
             sort: build_sort(search_request)
           },
@@ -21,9 +22,11 @@ module SearchEngine::Adapters
         es_result = adapter.client.search(es_request)
 
         # TODO: Remove me
-        # puts JSON.pretty_generate(es_request)
-        # puts "--------"
-        # puts JSON.pretty_generate(es_result.body)
+        puts JSON.pretty_generate(es_request)
+        puts "--------"
+        puts JSON.pretty_generate(es_result.body)
+
+        #binding.b
 
         # Build the search result from ES result.
         build_search_result(es_result)
@@ -127,6 +130,32 @@ module SearchEngine::Adapters
         }
 
         es_query
+      end
+
+      def build_suggest(search_request)
+        suggest = {}
+        suggest_fields = [
+          "creators.name",
+          "creators.additional_names",
+          "titles",
+          "subjects"
+        ]
+
+        search_request.queries.each.with_index do |q, i|
+          suggest_fields.each do |field|
+            field_name = field.tr(".", "_")
+
+            suggest["suggest_#{field_name}_#{i}"] = {
+              text: q.value, # TODO: Maybe cleanup the value?
+              term: {
+                field: field
+              }
+            }
+          end
+        end
+
+        # Return suggest
+        suggest
       end
 
       def normalize_query_string(query_string, query: nil)

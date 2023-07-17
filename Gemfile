@@ -25,7 +25,7 @@ gem "slim", ">= 5.0"
 gem "sprockets-rails", "~> 3.4.2"
 gem "strip_attributes", "~> 1.13"
 gem "turbo-rails", "~> 1.1"
-gem "view_component", "~> 3.0"
+gem "view_component", "~> 3.4"
 
 gem "exl_api", "~> 1.0.0", path: "vendor/gems/exl_api"
 

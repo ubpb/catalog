@@ -35,7 +35,7 @@ private
       end
       response if response.is_a?(Net::HTTPSuccess)
     end
-  rescue Net::ReadTimeout
+  rescue Net::ReadTimeout, SocketError
     nil
   end
 

@@ -1,14 +1,14 @@
-require 'open-uri'
+require "open-uri"
 
 class CoverImagesController < ActionController::Base
 
-  ENABLED      = Config[:cover_images, :enabled, default: false]
-  BASE_URL     = Config[:cover_images, :base_url, default: "https://api.vlb.de/api/v1/cover"]
+  ENABLED = Config[:cover_images, :enabled, default: false]
+  BASE_URL = Config[:cover_images, :base_url, default: "https://api.vlb.de/api/v1/cover"]
   ACCESS_TOKEN = Config[:cover_images, :access_token, default: ""]
   READ_TIMEOUT = Config[:cover_images, :read_timeout, default: 0.5]
 
   def show
-    id   = params[:id]
+    id = params[:id]
     size = params[:size].presence || "m"
 
     response = Rails.cache.fetch("cover-#{id}-#{size}", expires_in: 24.hours) do
@@ -23,7 +23,7 @@ class CoverImagesController < ActionController::Base
     end
   end
 
-private
+  private
 
   def load_cover_image(id, size: "m")
     if ENABLED && ACCESS_TOKEN.present?

@@ -24,6 +24,8 @@ class GndController < ApplicationController
   private
 
   def build_gnd_result(gnd_raw_result)
+    return nil if gnd_raw_result.blank?
+
     {
       gnd_id: get_gnd_id(gnd_raw_result),
       entity_types: get_entity_types(gnd_raw_result),

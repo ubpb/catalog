@@ -1,0 +1,13 @@
+en:
+  account:
+    application:
+      nav:
+        nav-toggle: Menu
+        loans: Loaned Media
+        fees: Fees
+        hold_requests: Hold requests
+        watch_lists: Watchlists
+        calendar: Calendar
+        ill: Interlibrary loan
+        profile: My Account
+        loans_history: Lending History

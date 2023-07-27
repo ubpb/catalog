@@ -1,0 +1,6 @@
+en:
+  compat:
+    v1_searches:
+      unsupported_query_warning: >
+        The link that brought you to this page uses a search syntax that is no longer supported.
+        Please start here with a new search.

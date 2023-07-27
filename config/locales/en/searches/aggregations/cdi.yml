@@ -1,0 +1,60 @@
+en:
+  searches:
+    aggregations:
+      cdi:
+        rtype:
+          label: Form of publication
+          values:
+            articles: Articles
+            book_chapters: Book chapters
+            books: Books
+            conference_proceedings: Conference Reports
+            databases: Databases
+            datasets: Datasets
+            dissertations: Dissertations
+            Dissertations: Dissertations # this is intentionally upcase
+            images: Images
+            journals: Journals
+            legal_documents: Legal texts
+            maps: Maps
+            media: Multimedia
+            newsletterarticle: Newsletter articles
+            newspaper_articles: Newspaper articles
+            other: Other
+            reference_entrys: Reference entry
+            reports: Reports
+            research_datasets: Research data
+            reviews: Reviews
+            technical_reports: Technical report
+            text_resources: Texts
+            web_resources: Websites
+            websites: Websites
+            standards: Standards
+
+        language:
+          # See default
+
+        yop:
+          label: Year of publication
+
+        topic:
+          label: Topic
+
+        domain:
+          label: Collection
+
+        jtitle:
+          label: Journal / Series
+
+        newrecords:
+          label: Newly added
+          values:
+            "07 days back": "... since 7 days"
+            "30 days back": "... since 30 days"
+            "90 days back": "... since 90 days"
+
+        tlevel:
+          label: Show only
+          values:
+            online_resources: With full text access
+            peer_reviewed: Peer-Reviewed

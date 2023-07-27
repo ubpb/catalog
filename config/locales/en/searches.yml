@@ -1,0 +1,85 @@
+en:
+  searches:
+    breadcrumb: "Search"
+
+    record:
+      all_volumes: All volumes
+      online_resource:
+        direct_link: "Go directly to the online resource"
+        resolver_link: "Check availability"
+      citations:
+        header: "Export record as..."
+        bibtex: "BibTeX"
+
+    search_panel:
+      search: "Search"
+
+    search_field:
+      query_placeholder: "Enter search term(s)..."
+
+    availabilities:
+      error: >
+        An error occurred while loading the availability information. Please
+        try again at a later time.
+
+    tools:
+      share_search: "Share search"
+      rss_search: "Search as RSS-Feed"
+
+    local:
+      label: "Catalog"
+      breadcrumb: "in Catalog"
+
+    cdi:
+      label: "Central Discovery Index"
+      breadcrumb: "in CDI"
+
+    no_hits:
+      info: "No matches found. Please change your search term(s)."
+
+    request_hints:
+      invalid_after_validation: "The search query was incorrect and could not be executed. Please try again."
+      query_syntax_error: "Your search query contained invalid characters or invalid character combinations."
+
+    searchables:
+      local:
+        any: "All fields"
+        creator: "Author(s) / Involved"
+        title: "Title"
+        subject: "Subject heading"
+        pub: "Place / Publisher"
+        yop: "Year of publication"
+        ids: "Identifiers"
+        call_number: "Call number"
+        local_notation: "Local notation"
+        superorder_id: "Superorder ID"
+      cdi:
+        any: "All fields"
+        creator: "Author(s) / Involved"
+        title: "Title"
+        yop: "Year of publication"
+        subject: "Subject heading"
+
+    sortables:
+      local:
+        _default_: "Relevance"
+        title: "Titel"
+        creator: "Author(s) / Involved"
+        yop: "Year of publication"
+        local_notation: "Local notation"
+        volume: "Volume count"
+        newrecords: "New acquisition"
+      cdi:
+        _default_: "Relevance"
+        title: "Title"
+        yop: "Year of publication"
+
+    aggregations:
+      expand: "Show more..."
+      collapse: "Show less..."
+      aggregations_header: Filter search results
+      active_aggregations_header: Active filters
+
+      histogram_aggregation:
+        set_aggregation: "Filter results"
+        reset: "Reset filter"

@@ -1,0 +1,9 @@
+en:
+  hold_requests:
+    create:
+      success: "Hold request successfully created."
+      error: "Hold request could not be created. Please contact the staff at the local circulation desk."
+
+    destroy:
+      success: "Hold request successfully deleted."
+      error: "Hold request could not be deleted. Please contact the staff at the local circulation desk."

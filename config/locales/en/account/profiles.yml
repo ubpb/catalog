@@ -1,0 +1,18 @@
+en:
+  account:
+    profiles:
+      breadcrumb: My Account
+
+      show:
+        header: "My Account"
+
+        change: "change"
+        change_password: "Change password"
+        add_email: "Enter e-mail address"
+
+        data:
+          ils_id: "Library-ID"
+          first_name: "First name"
+          last_name: "Last name"
+          email: "E-mail"
+          password: "Password"

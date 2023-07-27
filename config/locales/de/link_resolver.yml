@@ -18,7 +18,7 @@ de:
       further_research: "Weitere Recherchemöglichkeiten"
       search_link:
         catalog:    "Suche im Bibliotheksbestand"
-        cdi:        "Thematische Suche im Central Discovery Index"
+        cdi:        "Suche im Central Discovery Index (CDI)"
         interlibrary_loan:
           book:     "Buchsuche über die Fernleihe"
           journal:  "Zeitschriftensuche über die Fernleihe"

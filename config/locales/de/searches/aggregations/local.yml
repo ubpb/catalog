@@ -18,9 +18,6 @@ de:
         language:
           # See default
 
-        inhaltstyp:
-          label: "Art des Inhalts"
-
         yop:
           label: "Erscheinungsjahr"
 

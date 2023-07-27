@@ -20,7 +20,7 @@
     p(style="text-align: center")
       = link_to "#{root_url(protocol: 'webcal')}api/v1/user/calendar.ics?access_token=#{current_user.api_key}", class: 'btn btn-primary btn-lg' do
           i.fa-regular.fa-calendar
-          = t(".subscribe_btn")
+          =< t(".subscribe_btn")
 
     p
       = t(".subscribe_description")

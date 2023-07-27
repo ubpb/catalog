@@ -64,7 +64,7 @@ de:
       local:
         _default_: "Relevanz"
         title: "Titel"
-        creator: "Autor / Autorin"
+        creator: "Autor(en) / Beteiligte"
         yop: "Erscheinungsjahr"
         local_notation: "Systemstelle"
         volume: "Bandzählung"

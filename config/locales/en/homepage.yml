@@ -1,0 +1,18 @@
+en:
+  homepage:
+    breadcrumb: "Homepage"
+    show:
+      search_entries:
+        title: "Search entries"
+        catalog:
+          title: Catalog
+          text: approx. 2.5 million titles in the UB's offer, e.g. books, journals, e-books, e-journals, CDs and DVDs
+        cdi:
+          title: Central Discovery Index
+          text: >
+            Millions of records from licensed bibliographic data and full-text databases, such as journal articles,
+            e-book chapters, entries from reference works, audio and video files, and other materials.
+      news:
+        title: "Catalog news"
+        none_message: No news at the moment
+        all_link_text: "&raquo; All news"

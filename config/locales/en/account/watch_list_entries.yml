@@ -1,0 +1,6 @@
+en:
+  account:
+    watch_list_entries:
+      destroy:
+        success: "Entry deleted"
+        error: "Entry could not be deleted."

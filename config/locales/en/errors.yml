@@ -1,0 +1,10 @@
+en:
+  errors:
+    not_found:
+      header: "Page not found"
+      description: "The page you requested was not found."
+      button: "Back to homepage"
+    internal_server_error:
+      header: "Internal error"
+      description: "An error occurred with the page you requested."
+      button: "Back to homepage"

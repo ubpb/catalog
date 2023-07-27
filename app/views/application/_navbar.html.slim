@@ -52,8 +52,12 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-lg.d-print-none
               i.far.fa-user
               =< t(".login")
 
-          - if color_mode_enabled?
-            .ms-auto.ms-lg-1 = render("application/color_mode_switcher")
+          - if [color_mode_enabled?, locale_switching_enabled?].any?
+            .ms-auto.ms-lg-2.d-flex.align-items-center
+              - if locale_switching_enabled?
+                .ms-1 = render("application/locale_switcher")
+              - if color_mode_enabled?
+                .ms-1 = render("application/color_mode_switcher")
 
 
 

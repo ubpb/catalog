@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+  before_action :set_locale
   before_action :set_robots_tag
 
   helper_method :current_user
@@ -10,6 +11,16 @@ class ApplicationController < ActionController::Base
   helper_method :show_record_path
   helper_method :rss_search_request_url
   helper_method :on_campus?
+
+  def set_locale
+    return unless helpers.locale_switching_enabled?
+
+    locale = (session[:locale] || I18n.default_locale).to_sym
+
+    if I18n.available_locales.include?(locale)
+      I18n.locale = locale
+    end
+  end
 
   def set_robots_tag
     response.headers["X-Robots-Tag"] = 'noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex'

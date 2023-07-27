@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get  "/password/reset/:token", to: "password_resets#edit",   as: :password_reset
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
+  # Locale switching
+  get "/locale/:locale", to: "locales#switch", as: :locale
+
   # User registration for external users
   resources :registrations,
             path_names: {new: "new/:type"},

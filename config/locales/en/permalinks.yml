@@ -1,0 +1,13 @@
+en:
+  permalinks:
+    create:
+      flash_error: "Permalink could not be generated. An error occurred."
+    resolve:
+      flash_error: "Sorry, the permalink you requested is not available (anymore)."
+    show:
+      flash_error: "Sorry, the permalink you requested is not available (anymore)."
+      header: "Share Search"
+      message: >
+        To easily share the search results (e.g. via e-mail or social media),
+        please use the following link.
+      back: "Back to the search"

@@ -1,5 +1,6 @@
 de:
   code_tables:
+    # https://www.loc.gov/marc/relators/relacode.html
     creator_relationships:
       abr: "Kürzender"
       acp: "Art copyist"
@@ -274,7 +275,6 @@ de:
       wit: "Zeuge"
       wpr: "Verfasser eines Vorworts"
       wst: "Verfasser von ergänzendem Text"
-
 
     process_types:
       default: "Nicht entliehen"

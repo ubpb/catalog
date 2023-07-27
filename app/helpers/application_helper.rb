@@ -66,4 +66,8 @@ module ApplicationHelper
     Config[:color_mode, :enabled, default: false]
   end
 
+  def locale_switching_enabled?
+    Config[:locale_switching, :enabled, default: false]
+  end
+
 end

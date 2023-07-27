@@ -1,0 +1,7 @@
+en:
+  volumes:
+    index:
+      breadcrumb: "Volumes"
+      header: "Volumes for %{title}"
+      no-volumes: "No volumes available."
+      show-volumes: "Show volumes"

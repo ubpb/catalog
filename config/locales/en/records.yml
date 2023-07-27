@@ -1,0 +1,57 @@
+en:
+  records:
+    breadcrumb: "Details"
+
+    stepper:
+      back_to_search: "Back to search results"
+      info: "Result %{position} of %{total_hits}"
+
+    show:
+      loading_more: Loading more information...
+      closed_stack_order: Create closed stack order
+
+      journal_stocks:
+        header: "Journal holdings"
+        hint: Current journal volumes can be found at the indicated location. For older volumes up to 1995, please place a closed stack order.
+        p00_hint: >
+          The volumes of this journal are not available for loan. Please use the online edition (see "Linked Title" section above).
+          In special individual cases, please contact <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+        details:
+          call_number: Call number
+          location: Location
+          holdings: Holdings
+          gap: "Not available: %{gap}"
+
+    details:
+      header: "Details"
+      creators: "Author(s) / Involved"
+      title: "Title"
+      year_of_publication: "Year of publication"
+      publication_notices: "Place / Publisher"
+      edition: "Edition"
+      physical_description: "Format"
+      is_part_of: "Is part of"
+      source: "Source"
+      relations: "Linked Titel"
+      languages: "Language"
+      local_notations: "Local notation"
+      subjects: "Subject heading"
+      related_resource_links: "Link to other content"
+      fulltext_links: "Link to full text"
+      resolver_link: "Link-Resolver"
+      notes: "Descriptions/Notes"
+      volumes: "Volumes"
+      show_volumes: "Show volumes"
+      identifiers:
+        header: "Identifiers"
+        id: "Title-ID"
+        isbn: "ISBN"
+        issn: "ISSN"
+        eissn: "eISSN"
+        doi: "DOI"
+        zdb: "ZDB-ID"
+        oclc: "OCLC-Number"
+
+    recommendations:
+      header: "Further reading"
+      info: "Recommendations on the same topic automatically suggested by %{link}"

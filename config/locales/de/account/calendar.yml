@@ -25,7 +25,6 @@ de:
           bedeutet, dass sich die Einträge selbstständig aktualisieren, wenn Sie z.B. Verlängerungen
           durchführen. Sie sollten daher darauf achten, Ihr Programm entsprechend zu konfigurieren.
         subscribe_btn: >
-
           Termine jetzt abonnieren
         subscribe_description: >
           Mit einem Klick auf den Knopf sollte sich Ihr Standard-Kalenderprogramm öffnen. Sollte dies
@@ -38,7 +37,7 @@ de:
             title: Outlook
             description: Kalender öffnen → Aus dem Internet...
           ical:
-            title: Apple iCal
+            title: Apple Kalender
             description: Ablage → Neues Kalenderabonnement
           google:
             title: Google Calendar

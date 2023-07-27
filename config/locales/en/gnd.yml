@@ -1,0 +1,87 @@
+en:
+  gnd:
+    error: Error
+    error_message: >
+      No data could be loaded. There may be a technical problem at the service provider.
+      Alternatively, you can try to retrieve the data via the
+      <a href="%{dnb_url}" target="_blank" class="alert-link">
+        <i class="fa-solid fa-external-link fa-fw"></i>
+        German National Library
+      </a> retrieve.
+
+    details:
+      entity_types: Entity type
+      preferred_name: Preferred name
+      variant_names: Variant names
+      gender: Gender
+      geographic_areas: Geographical assignment
+      date_of_birth: Date of birth
+      date_of_death: Date of death
+      date_of_establishment: Date of establishment
+      date_of_termination: Date of termination
+      affiliations: Affiliations
+      professions_or_occupations: Professions/Occupations
+      gnd_id: GND-ID
+      gnd_subject_categories: GND subject categories
+      succeeding_corporate_body: Succeeding corporate body
+      preceding_corporate_body: Precending corporate body
+      place_of_business: Place of business
+      more_information: More information
+      data_provided_by: >
+        Data provided by
+        <a href="%{lobid_url}" target="_blank">lobid-gnd</a>,
+        a service of the
+        <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>
+
+    entity_types:
+      authority_resource: Authority resource
+      person: Person
+      differentiated_person: Differentiated person
+      corporate_body: Corporate body
+      conference_or_event: Conference or event
+      work: Work
+      place_or_geographic_name: Place or geographic name
+      musical_work: Musical work
+      subject_heading: Subject heading
+      territorial_corporate_body_or_administrative_unit: Territorial corporate body or administrative unit
+      subject_heading_senso_stricto: Subject heading sensu stricto
+      organ_of_corporate_body: Body of a corporate body
+      series_of_conference_or_event: Series of conference or event
+      building_or_memorial: Building or memorial
+      musical_corporate_body: Musical corporate body
+      company: Company
+      nomenclature_in_biology_or_chemistry: Nomencalture in biology or chemistry
+      natural_geographic_unit: Natural geographic unit
+      family: Family
+      administrative_unit: Administrative Unit
+      religious_corporate_body: Religious corporate body
+      software_product: Software product
+      product_name_or_brand_name: Product name or brand name
+      provenance_characteristic: Provenance characteristic
+      manuscript: Manuscript
+      language: Language
+      expression: Expression
+      way_border_or_line: Way, border or line
+      historic_single_event_or_era: Historic single event or era
+      religious_administrative_unit: Religious administrative unit
+      ethnographic_name: Ethnographic name
+      royal_or_member_of_a_royal_house: Royal or member of a royal house
+      project_or_program: Project or program
+      characters_or_morphemes: Characters or morphemes
+      version_of_a_musical_work: Version of a musical work
+      religious_territory: Religious territory
+      name_of_small_geographic_unit_lying_within_another_geographic_unit: Name of small geographic unit lying within another geographic unit
+      collection: Collection
+      literary_or_legendary_character: Literary or legendary character
+      means_of_transport_with_individual_name:  Means of transport with individual name
+      group_of_persons: Person group
+      collective_pseudonym: Collective pseudonym
+      gods: Gods
+      member_state: Member state
+      extraterrestrial_territory: Extraterrestrial territory
+      country: Country
+      spirits: Spirits
+      fictive_place: Fictional place
+      fictive_corporate_body: Fictional corporate body
+      undifferentiated_person: Undifferentiated person
+

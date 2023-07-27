@@ -1,0 +1,71 @@
+en:
+  searches:
+    aggregations:
+      local:
+        newrecords:
+          label: "Newly added"
+          values:
+            last_month: "... last month"
+            last_three_months: "... last 3 months"
+            last_twelve_months: "... last 12 months"
+
+        creator:
+          label: "Author / Involved"
+
+        subject:
+          label: "Subject heading"
+
+        language:
+          # See default
+
+        yop:
+          label: "Year of publication"
+
+        local_notation:
+          label: "Local notation"
+
+        resource_type:
+          label: "Resource type"
+          values:
+            article: "Article"
+            monograph: "Book"
+            journal: "Journal"
+            series: "Series"
+            newspaper: "Newspaper"
+            other: "Other"
+            unspecified: "Not specified"
+
+        material_type:
+          label: "Material type"
+          values:
+            print: "Print"
+            online_resource: "Online-Resource"
+            data_storage: "Data storage"
+            microform: "Microfiche"
+            audio: "Audio"
+            video: "Video"
+            map: "Map"
+            image: "Image"
+            other: "Other"
+            unspecified: "Not specified"
+
+        content_type:
+          label: "Content type"
+          values:
+            dissertation: Dissertation
+            bibliography: Bibliography
+            catalog: Catalog
+            dictionary: Dictionary
+            encyclopedia: Encyclopedia
+            festschrift: Festschrift
+            biography: Biography
+            congress: Congress Report
+            music: Music
+            standard: Standard / Norm
+            university_text: University text
+            textbook: Textbook
+            thesis: Thesis (Other)
+            other: "Other"
+            unspecified: "Not specified"
+
+

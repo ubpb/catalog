@@ -19,9 +19,20 @@ de:
       logout_msg: Wirklich abmelden?
       login: Anmelden
 
+    footer:
+      slogan: Die Universität der Informationsgesellschaft
+      copyright_ub_upb: "© %{year} Universitätsbibliothek Paderborn"
+      impressum: "Impressum"
+      privacy_policy: "Datenschutzerklärung"
+      cover_images: "Coverbilder bereitgestellt von %{link}"
+      cover_images_link_text: "buchhandel.de"
+
   save: Speichern
   cancel: Abbrechen
 
   confirm-delete: "Wirklich löschen?"
 
   access_denied: "Zugriff verweigert"
+
+  german: Deutsch
+  english: Englisch

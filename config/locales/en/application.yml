@@ -1,0 +1,38 @@
+en:
+  application:
+    ub: University Library
+    ub_pb: UB Paderborn
+    app_name: Catalog
+
+    navbar:
+      home: Start
+      help: Help
+      blog: Blog
+      further_services: Other services
+      new_acquisition: New acquisitions
+      systematic: Subject classification books
+      purchase_requests: Purchase request
+      closed_stack_orders: Closed stack order
+      interlibrary_loan: Interlibrary loan
+      my_account: My library account
+      logout: Logout
+      logout_msg: Really log out?
+      login: Login
+
+    footer:
+      slogan: The University for the Information Society
+      copyright_ub_upb: "© %{year} Paderborn University Library"
+      impressum: "Impressum"
+      privacy_policy: "Privacy policy"
+      cover_images: "Cover images provided by %{link}"
+      cover_images_link_text: "buchhandel.de"
+
+  save: Save
+  cancel: Cancel
+
+  confirm-delete: "Really delete?"
+
+  access_denied: "Access denied"
+
+  german: German
+  english: English

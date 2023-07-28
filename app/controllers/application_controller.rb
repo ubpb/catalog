@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_robots_tag
-    response.headers["X-Robots-Tag"] = 'noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex'
+    response.headers["X-Robots-Tag"] = "noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex"
   end
 
   def current_user
@@ -44,11 +44,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    unless current_user
-      redirect_to(new_session_path)
-      return false
+    if current_user
+      true
     else
-      return true
+      redirect_to(new_session_path)
+      false
     end
   end
 

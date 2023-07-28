@@ -2,3 +2,10 @@ de:
   login: "Bitte anmelden um Merklisten zu nutzen"
   no-lists: "Keine Merklisten"
   manage-lists: "Merklisten verwalten"
+  new_watchlist: "Neue Merkliste"
+
+en:
+  login: "Please log in to use watchlists"
+  no-lists: "No watchlists"
+  manage-lists: "Manage watchlists"
+  new_watchlist: "New watchlist"

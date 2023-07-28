@@ -3,7 +3,13 @@ de:
     breadcrumb: "Suche"
 
     record:
+      call_number: "Signatur:"
+      journal_stock: "Zeitschriftenbestand:"
       all_volumes: Alle Bände
+      show_less: "Weniger anzeigen"
+      show_more_links:
+        one: "Einen weiteren Link anzeigen"
+        other: "%{count} weitere Links anzeigen"
       online_resource:
         direct_link: "Direkt zur Online-Ressource"
         resolver_link: "Verfügbarkeit prüfen"
@@ -13,6 +19,10 @@ de:
 
     search_panel:
       search: "Suchen"
+      ebook_notice: >
+        Bitte beachten Sie auch das <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i>
+        verfügbare Angebot an E-Books, die zurzeit noch nicht in unserem Katalog nachgewiesen sind</a>,
+        aber über die Verlagsportale bereits freigeschaltet sind.
 
     search_field:
       query_placeholder: "Suchbegriff(e) eingeben..."

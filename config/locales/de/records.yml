@@ -40,6 +40,7 @@ de:
       notes: "Beschreibungen/Notizen"
       volumes: "Bände"
       show_volumes: "Zeige Bände"
+      print_version: "Druckausgabe"
       identifiers:
         header: "Identifikatoren"
         id: "Titel-ID"

@@ -1,0 +1,7 @@
+en:
+  joap:
+    show:
+      call_number: "Call number:"
+      holdings: "Holdings:"
+      no_print_available: "No link to a matching print edition could be found"
+      to_print_edition: "Go to print edition"

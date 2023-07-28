@@ -42,6 +42,7 @@ en:
       notes: "Descriptions/Notes"
       volumes: "Volumes"
       show_volumes: "Show volumes"
+      print_version: "Print edition"
       identifiers:
         header: "Identifiers"
         id: "Title-ID"

@@ -12,11 +12,11 @@
                   div = pr.title
                   - if pr.call_number.present?
                     div
-                      = "Signatur:"
+                      = t(".call_number")
                       =< pr.call_number
                   - if pr.period.present?
                     div
-                      = "Bestand:"
+                      = t(".holdings")
                       =< pr.period
                   - if pr.comment.present?
                     div: em
@@ -27,5 +27,6 @@
                     = link_to new_search_request_path(sr), class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do
                       i.fa-solid.fa-external-link.fa-fw
                       = "Zur Print-Ausgabe"
+                      = t(".to_print_edition")
       - else
-        .text-danger = "Es konnte keine Verknüpfung zu einer passenden Print-Ausgabe ermittelt werden"
+        .text-danger = t(".no_print_available")

@@ -3,7 +3,13 @@ en:
     breadcrumb: "Search"
 
     record:
+      call_number: "Call number:"
+      journal_stock: "Journal holdings:"
       all_volumes: All volumes
+      show_less: "Show less"
+      show_more_links:
+        one: "Show one additional link"
+        other: "Show %{count} more links"
       online_resource:
         direct_link: "Go directly to the online resource"
         resolver_link: "Check availability"
@@ -13,6 +19,9 @@ en:
 
     search_panel:
       search: "Search"
+      ebook_notice: >
+        Please also note the <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i>
+        available range of e-books, which are currently not yet listed in our catalog</a>, but have already been activated via the publisher portals.
 
     search_field:
       query_placeholder: "Enter search term(s)..."

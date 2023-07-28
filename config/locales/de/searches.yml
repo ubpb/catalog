@@ -1,6 +1,7 @@
 de:
   searches:
     breadcrumb: "Suche"
+    sorted_by: "Sortiert nach"
 
     record:
       call_number: "Signatur:"

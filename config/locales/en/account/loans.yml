@@ -13,6 +13,7 @@ en:
         header: Loaned Media
         no-loans: "You do not currently have any media on loan."
         renewAll: "Renew all"
+        sorted_by: "Sorted by"
         sortable_fields:
           due_date: "Due on"
           loan_date: "Loaned on"

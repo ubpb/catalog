@@ -1,2 +1,5 @@
 de:
   stats: "%{from} – %{to} von %{total}"
+
+en:
+  stats: "%{from} – %{to} of %{total}"

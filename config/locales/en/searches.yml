@@ -1,6 +1,7 @@
 en:
   searches:
     breadcrumb: "Search"
+    sorted_by: "Sorted by"
 
     record:
       call_number: "Call number:"

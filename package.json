@@ -34,7 +34,7 @@
     "@parcel/transformer-sass": "^2.9.3",
     "autoprefixer": "^10.4.4",
     "buffer": "^5.5.0||^6.0.0",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "parcel": "^2.9.3",
     "postcss": "^8.4.27",
     "process": "^0.11.10"

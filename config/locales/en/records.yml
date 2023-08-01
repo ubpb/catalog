@@ -32,7 +32,7 @@ en:
       physical_description: "Format"
       is_part_of: "Is part of"
       source: "Source"
-      relations: "Linked Titel"
+      relations: "Linked Title"
       languages: "Language"
       local_notations: "Local notation"
       subjects: "Subject heading"

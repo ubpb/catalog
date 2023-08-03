@@ -1,21 +1,23 @@
 .dropdown
-  .d-grid.gap-2.d-lg-block
-    button.btn.btn-secondary.dropdown-toggle(
-      data-bs-toggle="dropdown"
-    )
-      i.fa-regular.fa-flag
-      - if I18n.locale == :de
-        span.ms-2 = t("german")
-      - elsif I18n.locale == :en
-        span.ms-2 = t("english")
-    .dropdown-menu.dropdown-menu-end
-      li
-        = link_to locale_path(locale: :de), class: "dropdown-item d-flex" do
-          = t("german")
-          - if I18n.locale == :de
-            span.ms-auto: i.fa-solid.fa-check
-      li
-        = link_to locale_path(locale: :en), class: "dropdown-item d-flex" do
-          = t("english")
-          - if I18n.locale == :en
-            span.ms-auto: i.fa-solid.fa-check
+  a.dropdown-toggle(
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+  )
+    i.fa-regular.fa-flag
+    - if I18n.locale == :de
+      span.ms-2 = t("german")
+    - elsif I18n.locale == :en
+      span.ms-2 = t("english")
+
+  .dropdown-menu.dropdown-menu-end
+    li
+      = link_to locale_path(locale: :de), class: "dropdown-item d-flex" do
+        = t("german")
+        - if I18n.locale == :de
+          span.ms-auto: i.fa-solid.fa-check
+    li
+      = link_to locale_path(locale: :en), class: "dropdown-item d-flex" do
+        = t("english")
+        - if I18n.locale == :en
+          span.ms-auto: i.fa-solid.fa-check

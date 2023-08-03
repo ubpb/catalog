@@ -32,8 +32,12 @@ $key-value-list-v-padding: 0.5em !default;
         border-top: 1px solid var(--bs-border-color);
       }
 
-      &:nth-of-type(odd) {
+      &:nth-of-type(even) {
         background-color: var(--bs-tertiary-bg);
+      }
+
+      &:nth-of-type(odd) {
+        background-color: var(--bs-body-bg);
       }
     }
 

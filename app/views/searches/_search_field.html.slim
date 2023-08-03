@@ -3,18 +3,15 @@ ruby:
   autofocus         = local_assigns.fetch(:autofocus) { false }
   searchables_names = SearchEngine[current_search_scope].adapter.searchables_names
 
-.advanced-search-row.row.mb-3
-  .col-md-6.col-lg-7.col-xl-8
-    .advanced-search-search-input
-      = form.input "query", input_html: { name: "q[]", value: query&.value, "data-advanced-search-target": "input", class: ""}, label: false, wrapper: false, autofocus: autofocus, placeholder: t(".query_placeholder")
+.advanced-search-row.d-flex.mb-3.column-gap-2.flex-column.flex-md-row
+  .advanced-search-search-input.flex-grow-1
+    = form.input "query", input_html: { name: "q[]", value: query&.value, "data-advanced-search-target": "input", class: ""}, label: false, wrapper: false, autofocus: autofocus, placeholder: t(".query_placeholder")
 
-  .col-md-4.col-lg-3.col-xl-3
-    .advanced-search-field-input
-      = form.input "field", input_html: { name: "f[]", class: "" }, collection: searchables_names, prompt: false, label: false, wrapper: false, label_method: ->(name){t("searches.searchables.#{current_search_scope}.#{name}", default: name)}, selected: query&.name
+  .advanced-search-field-input
+    = form.input "field", input_html: { name: "f[]", class: "" }, collection: searchables_names, prompt: false, label: false, wrapper: false, label_method: ->(name){t("searches.searchables.#{current_search_scope}.#{name}", default: name)}, selected: query&.name
 
-  .col-md-2.col-lg-2.col-xl-1
-    .advanced-search-buttons.btn-group.d-flex.d-print-none
-      = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#add_field", "data-advanced-search-target": "addButton"
-        i.fas.fa-plus
-      = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#remove_field", "data-advanced-search-target": "removeButton"
-        i.fas.fa-minus
+  .advanced-search-buttons.btn-group.d-flex.d-print-none
+    = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#add_field", "data-advanced-search-target": "addButton"
+      i.fas.fa-plus
+    = link_to "#", class: "btn btn-outline-primary", "data-action": "advanced-search#remove_field", "data-advanced-search-target": "removeButton"
+      i.fas.fa-minus

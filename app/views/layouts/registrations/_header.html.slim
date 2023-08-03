@@ -1,11 +1,10 @@
 header
-  .container.pb-3.pt-3
-    .d-flex.flex-row.align-items-center.justify-content-between
+  .container.d-flex.flex-row.align-items-center.justify-content-between
+    #ub-logo
       = link_to "http://www.ub.uni-paderborn.de" do
-        .d-none.d-md-inline = image_tag("ub-logo.svg", height: "60", loading: "lazy")
-        .d-md-none = image_tag("ub-logo.svg", height: "50", loading: "lazy")
+        = inline_svg_tag("ub-logo.svg", height: "60")
 
-      = link_to "/" do
-        .d-none.d-md-inline = image_tag("app-logo-regis.svg", height: "40", loading: "lazy")
-        .d-md-none = image_tag("app-logo-regis.svg", height: "36", loading: "lazy")
-
+    .d-flex.flex-row.align-items-center.gap-2.d-print-none
+      #app-name
+        = link_to "/registrations" do
+            = "Benutzerregistrierung"

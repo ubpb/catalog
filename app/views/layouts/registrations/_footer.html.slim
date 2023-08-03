@@ -1,13 +1,71 @@
 footer
-  .footer-claim.d-print-none
+  .app-footer
     .container
-      ' Die Universität der Informationsgesellschaft
-  .container
-    .footer-content
-      = t("application.footer.copyright_ub_upb", year: Date.today.year)
-      span.d-print-none =<> "|"
-      span.d-print-none = link_to t("application.footer.impressum"), go_legal_path
-      span.d-print-none =<> "|"
-      span.d-print-none = link_to t("application.footer.privacy_policy"), go_privacy_path
-    .footer-image.d-print-none
-      = image_tag "footer-bg-lg-transparent.gif", class: "img-fluid"
+      .row.d-print-none
+        h2.mb-3.fw-lighter = "Universitätsbibliothek (UB)"
+
+        .col-md-4.mb-3
+          address
+            = "Universitätsbibliothek Paderborn"
+            br/
+            = "Warburger Str. 100"
+            br/
+            = "33098 Paderborn"
+
+          email
+            = "E-Mail: "
+            = mail_to "bibliothek@ub.uni-paderborn.de"
+
+        .col-md-4.mb-3
+          h4 = t("application.footer.quicklinks")
+
+          ul.nav.flex-column
+            li.nav-item
+              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/anschrift", class: "nav-link" do
+                i.icon.fa-solid.fa-arrow-right
+                = t("application.footer.address")
+            li.nav-item
+              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten", class: "nav-link" do
+                i.icon.fa-solid.fa-arrow-right
+                = t("application.footer.opening_hours")
+
+        .col-md-4
+          h4 = t("application.footer.legal_notices")
+
+          ul.nav.flex-column
+            li.nav-item
+              = link_to go_legal_path, class: "nav-link" do
+                i.icon.fa-solid.fa-arrow-right
+                = t("application.footer.impressum")
+
+            li.nav-item
+              = link_to go_privacy_path, class: "nav-link" do
+                i.icon.fa-solid.fa-arrow-right
+                = t("application.footer.privacy_policy")
+            li.nav-item
+              = link_to "http://www.buchhandel.de", target: "_blank", class: "nav-link" do
+                i.icon.fa-solid.fa-arrow-right
+                = t("application.footer.cover_images")
+
+  .upb-footer
+    .container
+      .d-flex.flex-column.flex-md-row.justify-content-center.justify-content-md-between.align-items-center.align-items-md-end
+        = link_to "https://www.uni-paderborn.de/", target: "_blank", title: "Universität Paderborn" do
+          = image_tag "upb-logo-negativ-de.svg", alt: "Universität Paderborn", class: "img-fluid", width: 230
+
+        ul.nav.social-nav.mt-5.mt-md-0
+          li.nav-item
+            = link_to "https://www.instagram.com/uni_paderborn/?hl=de", class: "nav-link", target: "_blank", title: "Instagram" do
+              i.fa-brands.fa-instagram
+          li.nav-item
+            = link_to "https://www.facebook.com/unipaderborn/?locale=de_DE", class: "nav-link", target: "_blank", title: "Facebook" do
+              i.fa-brands.fa-facebook
+          li.nav-item
+            = link_to "https://de.linkedin.com/school/uni-paderborn/", class: "nav-link", target: "_blank", title: "LinkedIn" do
+              i.fa-brands.fa-linkedin
+          li.nav-item
+            = link_to "https://twitter.com/unipb/", class: "nav-link", target: "_blank", title: "Twitter" do
+              i.fa-brands.fa-twitter
+          li.nav-item
+            = link_to "https://www.youtube.com/user/upbvideo", class: "nav-link", target: "_blank", title: "Youtube" do
+              i.fa-brands.fa-youtube

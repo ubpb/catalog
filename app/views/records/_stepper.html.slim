@@ -1,6 +1,6 @@
 .d-flex
   div.align-self-end
-    = link_to new_search_request_path(@search_request), class: "btn btn-success" do
+    = link_to new_search_request_path(@search_request), class: "btn btn-primary" do
       i.fas.fa-angle-left
       span.ms-2.d-none.d-md-inline = t(".back_to_search")
 
@@ -12,15 +12,15 @@
 
       .btn-group.align-self-end
         - if @previous_record && @previous_record_search_request
-          = link_to show_record_path(@previous_record, search_request: @previous_record_search_request), class: "btn btn-success" do
+          = link_to show_record_path(@previous_record, search_request: @previous_record_search_request), class: "btn btn-primary" do
             i.fas.fa-angle-left
         - else
-          = link_to "#", class: "btn btn-outline-success disabled" do
+          = link_to "#", class: "btn btn-outline-primary disabled" do
             i.fas.fa-angle-left
 
         - if @next_record && @next_record_search_request
-          = link_to show_record_path(@next_record, search_request: @next_record_search_request), class: "btn btn-success" do
+          = link_to show_record_path(@next_record, search_request: @next_record_search_request), class: "btn btn-primary" do
             i.fas.fa-angle-right
         - else
-          = link_to "#", class: "btn btn-outline-success disabled" do
+          = link_to "#", class: "btn btn-outline-primary disabled" do
             i.fas.fa-angle-right

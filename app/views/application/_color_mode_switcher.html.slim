@@ -1,37 +1,44 @@
 .dropdown(
   data-controller="color-mode-switcher"
 )
-  .d-grid.gap-2.d-lg-block
-    button.btn.btn-secondary.dropdown-toggle(
-      data-bs-toggle="dropdown"
-      data-color-mode-switcher-target="colorModeButton"
-    )
-      i.fa-solid.fa-circle-half-stroke
-    .dropdown-menu.dropdown-menu-end
-      li
-        button.dropdown-item(
-          type="button"
-          data-action="click->color-mode-switcher#setLightColorMode"
+  a.dropdown-toggle(
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+    data-color-mode-switcher-target="colorModeButton"
+  )
+    i.fa-solid.fa-circle-half-stroke
+  .dropdown-menu.dropdown-menu-end
+    li
+      button.dropdown-item(
+        type="button"
+        data-action="click->color-mode-switcher#setLightColorMode"
+      )
+        i.fa-solid.fa-sun.fa-fw(
+          data-color-mode-switcher-target="lightIcon"
         )
-          i.fa-solid.fa-sun.fa-fw(
-            data-color-mode-switcher-target="lightIcon"
-          )
-          span.ms-1 = "Hell"
-      li
-        button.dropdown-item(
-          type="button"
-          data-action="click->color-mode-switcher#setDarkColorMode"
+        span.ms-1(
+          data-color-mode-switcher-target="lightText"
+        ) = t("application.color_modes.light")
+    li
+      button.dropdown-item(
+        type="button"
+        data-action="click->color-mode-switcher#setDarkColorMode"
+      )
+        i.fa-solid.fa-moon.fa-fw(
+          data-color-mode-switcher-target="darkIcon"
         )
-          i.fa-solid.fa-moon.fa-fw(
-            data-color-mode-switcher-target="darkIcon"
-          )
-          span.ms-1 = "Dunkel"
-      li
-        button.dropdown-item(
-          type="button"
-          data-action="click->color-mode-switcher#setAutoColorMode"
+        span.ms-1(
+          data-color-mode-switcher-target="darkText"
+        ) = t("application.color_modes.dark")
+    li
+      button.dropdown-item(
+        type="button"
+        data-action="click->color-mode-switcher#setAutoColorMode"
+      )
+        i.fa-solid.fa-circle-half-stroke.fa-fw(
+          data-color-mode-switcher-target="autoIcon"
         )
-          i.fa-solid.fa-circle-half-stroke.fa-fw(
-            data-color-mode-switcher-target="autoIcon"
-          )
-          span.ms-1 = "Auto"
+        span.ms-1(
+          data-color-mode-switcher-target="autoText"
+        ) = t("application.color_modes.auto")

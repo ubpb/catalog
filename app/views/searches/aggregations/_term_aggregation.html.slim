@@ -16,25 +16,30 @@ ruby:
   }
 
 - if non_selected_terms.present?
-  .card.card-primary.mb-3
+  - initial_item_count = 5
+  - additional_terms = non_selected_terms[initial_item_count..-1]
+
+  .card.card-primary.mb-3(data-controller="expandable-list" data-expandable-list-item-count-value="#{initial_item_count}")
     .card-header
       = aggregation_label(aggregation)
     .card-body
-      div(data-controller="expandable-list")
-        ul.list-unstyled.mb-0(data-expandable-list-target="list")
-          - non_selected_terms.each do |term|
-            li(data-expandable-list-target="item")
-              = link_to new_search_request_path(nsr.(term, exclude: false)) do
-                = aggregation_value(aggregation, term.term)
-              .d-inline-flex.flex-nowrap
-                span.ms-1.text-muted = "(#{number_with_precision(term.count, precision: 0, delimiter: ".")})"
-                = link_to new_search_request_path(nsr.(term, exclude: true)) do
-                  span.ms-2: i.fas.fa-times
-
-        .mt-1.fw-bold(data-expandable-list-target="expand")
+      ul.list-unstyled.mb-0(data-expandable-list-target="list")
+        - non_selected_terms.each do |term|
+          li(data-expandable-list-target="item")
+            = link_to new_search_request_path(nsr.(term, exclude: false)) do
+              = aggregation_value(aggregation, term.term)
+            .d-inline-flex.flex-nowrap
+              span.ms-1.text-muted = "(#{number_with_precision(term.count, precision: 0, delimiter: ".")})"
+              = link_to new_search_request_path(nsr.(term, exclude: true)) do
+                span.ms-2: i.fas.fa-times
+    - if additional_terms.present?
+      .card-footer.py-1
+        .fw-normal(data-expandable-list-target="expand")
           a(href="#expand" data-action="click->expandable-list#expand")
-            = t("searches.aggregations.expand")
-        .mt-1.fw-bold(data-expandable-list-target="collapse")
+            i.fa-solid.fa-angles-down.fa-fw
+            = t("searches.aggregations.expand", count: additional_terms.count)
+        .fw-normal(data-expandable-list-target="collapse")
           a(href="#collapse" data-action="click->expandable-list#collapse")
+            i.fa-solid.fa-angles-up.fa-fw
             = t("searches.aggregations.collapse")
 

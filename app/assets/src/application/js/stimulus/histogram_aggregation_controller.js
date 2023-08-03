@@ -42,13 +42,13 @@ export default class extends Controller {
         }
     })
 
-    const myChart = new Chart(this.chartTarget, {
+    new Chart(this.chartTarget, {
       type: 'bar',
       data: {
         datasets: [{
           label: false,
           data: this.chartDataValue,
-          backgroundColor: 'rgba(82, 173, 221, 0.5)',
+          backgroundColor: '#50D1D1',
           borderRadius: 2
         }]
       },

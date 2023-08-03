@@ -1,19 +1,36 @@
 #search_panel {
-  background-color: transparent;
+  .card {
+    border: none;
+    background-color: transparent;
+  }
 
   .card-header {
+    border: none;
+    border-bottom: 1px solid var(--bs-card-border-color);
     background-color: transparent;
+
     .card-header-tabs {
       .nav-link {
         border-color: transparent;
+        border-radius: $card-border-radius;
         transition: none;
+
+        &.active {
+          background-color: $card-bg;
+          border-color: var(--bs-card-border-color);
+          border-bottom-color: transparent;
+          border-radius: $card-border-radius;
+        }
       }
     }
   }
 
   .card-body {
-    background-color: var(--bs-card-bg);
-    border-radius: $border-radius;
+    background-color: $card-bg;
+    border: 1px solid var(--bs-card-border-color);
+    border-top: none;
+    border-bottom-left-radius: $card-border-radius;
+    border-bottom-right-radius: $card-border-radius;
   }
 }
 
@@ -23,9 +40,10 @@
       .advanced-search-search-input {
         > .form-control {
           border-radius: 0;
-          border-top-right-radius: $border-radius;
-          border-top-left-radius: $border-radius;
-          border-color: $input-border-color;
+          border-top-right-radius: $card-border-radius;
+          border-top-left-radius: $card-border-radius;
+          border-color: $upb-arktisblau-60p;
+          transition: none;
           &:focus {
             box-shadow: none;
           }
@@ -37,7 +55,8 @@
           border-top: none;
           border-bottom: none;
           border-radius: 0;
-          border-color: $input-border-color;
+          border-color: $upb-arktisblau-60p;
+          transition: none;
           &:focus {
             box-shadow: none;
           }
@@ -47,15 +66,16 @@
       .advanced-search-buttons {
         > .btn {
           border-radius: 0;
-          border-color: $input-border-color;
+          border-color: $upb-arktisblau-60p;
+          transition: none;
           &:focus {
             box-shadow: none;
           }
           &:first-child {
-            border-bottom-left-radius: $border-radius;
+            border-bottom-left-radius: $card-border-radius;
           }
           &:last-child {
-            border-bottom-right-radius: $border-radius;
+            border-bottom-right-radius: $card-border-radius;
           }
         }
       }

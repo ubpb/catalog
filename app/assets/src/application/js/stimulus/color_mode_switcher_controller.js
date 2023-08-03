@@ -5,7 +5,10 @@ export default class extends Controller {
     "colorModeButton",
     "lightIcon",
     "darkIcon",
-    "autoIcon"
+    "autoIcon",
+    "lightText",
+    "darkText",
+    "autoText"
   ]
 
   static values = {
@@ -66,11 +69,11 @@ export default class extends Controller {
 
   setUI(colorMode) {
     if (colorMode === 'light') {
-      this.colorModeButtonTarget.innerHTML = this.lightIconTarget.outerHTML
+      this.colorModeButtonTarget.innerHTML = `${this.lightIconTarget.outerHTML}${this.lightTextTarget.outerHTML}`
     } else if (colorMode === 'dark') {
-      this.colorModeButtonTarget.innerHTML = this.darkIconTarget.outerHTML
+      this.colorModeButtonTarget.innerHTML = `${this.darkIconTarget.outerHTML}${this.darkTextTarget.outerHTML}`
     } else {
-      this.colorModeButtonTarget.innerHTML = this.autoIconTarget.outerHTML
+      this.colorModeButtonTarget.innerHTML = `${this.autoIconTarget.outerHTML}${this.autoTextTarget.outerHTML}`
     }
   }
 

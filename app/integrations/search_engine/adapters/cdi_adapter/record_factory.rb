@@ -41,7 +41,11 @@ module SearchEngine::Adapters
       end
 
       def get_title(xml)
-        xml.at_xpath("//display/title")&.text || "n.a."
+        title = xml.at_xpath("//display/title")&.text || "n.a."
+        # HighlithingEnabled is set to false for CDI queries,
+        # but titles still can contain <h></h> tags.
+        # We remove them here.
+        title.gsub(/<\/?h>/, "")
       end
 
       def get_creators(xml)

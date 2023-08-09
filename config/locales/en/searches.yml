@@ -54,7 +54,7 @@ en:
     searchables:
       local:
         any: "All fields"
-        creator: "Author(s) / Involved"
+        creator: "Author(s) / Participant(s)"
         title: "Title"
         subject: "Subject heading"
         pub: "Place / Publisher"
@@ -62,10 +62,10 @@ en:
         ids: "Identifiers"
         call_number: "Call number"
         local_notation: "Local notation"
-        superorder_id: "Superorder ID"
+        superorder_id: "Series ID"
       cdi:
         any: "All fields"
-        creator: "Author(s) / Involved"
+        creator: "Author(s) / Participant(s)"
         title: "Title"
         yop: "Year of publication"
         subject: "Subject heading"
@@ -74,7 +74,7 @@ en:
       local:
         _default_: "Relevance"
         title: "Titel"
-        creator: "Author(s) / Involved"
+        creator: "Author(s) / Participant(s)"
         yop: "Year of publication"
         local_notation: "Local notation"
         volume: "Volume count"

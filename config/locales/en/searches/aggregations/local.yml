@@ -10,7 +10,7 @@ en:
             last_twelve_months: "... last 12 months"
 
         creator:
-          label: "Author / Involved"
+          label: "Author / Participant(s)"
 
         subject:
           label: "Subject heading"

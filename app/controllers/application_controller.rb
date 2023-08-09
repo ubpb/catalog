@@ -15,11 +15,16 @@ class ApplicationController < ActionController::Base
   def set_locale
     return unless helpers.locale_switching_enabled?
 
-    locale = (session[:locale] || I18n.default_locale).to_sym
+    locale = (cookies[:_catalog_locale] || I18n.default_locale).to_sym
 
-    if I18n.available_locales.include?(locale)
-      I18n.locale = locale
+    locale = if I18n.available_locales.include?(locale)
+      locale
+    else
+      I18n.default_locale
     end
+
+    cookies[:_catalog_locale] = {value: locale, expires: 1.year.from_now}
+    I18n.locale = locale
   end
 
   def set_robots_tag

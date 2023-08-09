@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = locale
   end
 
+  def extract_locale_from_accept_language_header
+    request.env["HTTP_ACCEPT_LANGUAGE"]&.scan(/^[a-z]{2}/)&.first&.to_sym
+  end
+
   def set_robots_tag
     response.headers["X-Robots-Tag"] = "noindex,nofollow,noarchive,nosnippet,notranslate,noimageindex"
   end

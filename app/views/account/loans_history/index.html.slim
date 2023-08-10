@@ -6,10 +6,6 @@
     .callout.callout-info
       i.fa-solid.fa-info-circle
       =< t(".info")
-      = "**"
 
     turbo-frame#loans-history(src=account_loans_history_index_path(page: params[:page], d: params[:d], s: params[:s]) loading="lazy" target="_top")
       = render "table_placeholder"
-
-    .mt-3: em
-      = t(".fixed_info_html", link: fixed_account_loans_history_index_path)

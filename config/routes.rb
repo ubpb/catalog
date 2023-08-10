@@ -42,9 +42,7 @@ Rails.application.routes.draw do
       post :renew, on: :member
       post :renew_all, on: :collection, path: "renew"
     end
-    resources :loans_history, only: [:index], path: "loans-history" do
-      get :fixed, on: :collection, path: "restored"
-    end
+    resources :loans_history, only: [:index], path: "loans-history"
     resources :fees, only: [:index]
     resources :hold_requests, only: [:index, :destroy], path: "hold-requests"
     resources :inter_library_loans, only: [:index], path: "ill"

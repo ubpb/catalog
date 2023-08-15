@@ -40,6 +40,10 @@ namespace :application do
     end
   end
 
+  desc "Cleanup old registrations"
+  task :cleanup_registrations => :environment do
+    Registration.where("created_at < ?", 30.days.ago).destroy_all
+  end
 
   # namespace :stimulus do
   #   namespace :manifest do

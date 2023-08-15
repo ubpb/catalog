@@ -1,0 +1,20 @@
+= turbo_frame_tag(@registration) do
+  - if @error.present?
+    .callout.callout-danger
+      = "Beim Prüfen der Dubletten ist ein Fehler aufgetreten. Bitte IT informieren."
+      div: em = @error
+  - else
+    - if @name_duplicates.present? || @email_duplicates.present?
+      .callout.callout-warning
+        .mb-1
+          i.fa-solid.fa-triangle-exclamation.fa-fw.fa-lg.me-1
+          = "Es wurden Dubletten gefunden! Bitte zuerst in Alma prüfen!"
+
+        ul.mb-0
+          - @name_duplicates&.each do |u|
+            li = "= Name/Geburtsdatum: #{u[:first_name]} #{u[:last_name]}, Geb.: #{l(u[:birth_date], default: "–")}, ID: #{u[:primary_id]}"
+          - @email_duplicates&.each do |u|
+            li = "= E-Mail: #{u[:first_name]} #{u[:last_name]}, Geb.: #{l(u[:birth_date], default: "–")}, ID: #{u[:primary_id]}"
+    - else
+      .callout.callout-success
+        ' Keine Dubletten gefunden!

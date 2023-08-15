@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :registrations, only: [:index, :show, :edit, :update, :destroy] do
       get :confirm, on: :member
+      get :check_duplicates, on: :member, path: "check-duplicates"
     end
   end
 

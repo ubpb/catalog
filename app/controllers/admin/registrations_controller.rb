@@ -67,7 +67,53 @@ class Admin::RegistrationsController < Admin::ApplicationController
     redirect_to admin_registration_path(registration)
   end
 
+  def check_duplicates
+    @registration = Registration.find(Registration.to_id(params[:id]))
+
+    names_query_string = "
+      last_name~#{@registration.lastname}* AND
+      first_name~#{@registration.firstname}* AND
+      birth_date~#{@registration.birthdate.strftime("%Y-%m-%d")}
+    "
+    @name_duplicates = check_duplicates_in_alma(@registration, names_query_string)
+
+    if @registration.email.present?
+      email_query_string = "email~#{@registration.email}"
+      @email_duplicates = check_duplicates_in_alma(@registration, email_query_string)
+    end
+  rescue ExlApi::Error => e
+    msg = "Error checking duplicate users in Alma [#{e.code}]: #{e.message}"
+    Rails.logger.error(msg)
+    @error = msg
+  end
+
   private
+
+  def check_duplicates_in_alma(registration, query_string)
+    alma_users = Ils.adapter.api.get(
+      "/users",
+      format: "application/json",
+      params: {
+        q: query_string,
+        expand: "full"
+      }
+    )["user"]
+
+    #puts JSON.pretty_generate(alma_users)
+
+    if alma_users.present?
+      alma_users.map do |alma_user|
+        {
+          primary_id: alma_user["primary_id"],
+          first_name: alma_user["first_name"],
+          last_name: alma_user["last_name"],
+          birth_date: alma_user["birth_date"].present? ? Date.parse(alma_user["birth_date"]) : nil
+        }
+      end
+    else
+      []
+    end
+  end
 
   def authenticate!
     config_username = Rails.application.credentials.registrations&.dig(:admin_username)

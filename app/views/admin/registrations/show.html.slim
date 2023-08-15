@@ -19,6 +19,10 @@
           - else
             em
               =< "Druck-URL nicht konfiguriert. Bitte kontaktieren Sie die Bibliotehks-IT."
+    - else
+      .mb-3 = turbo_frame_tag(@registration, src: check_duplicates_admin_registration_path(@registration)) do
+        i.fa-solid.fa-spinner.fa-spin
+        =< "Prüfe auf Dubletten..."
 
     .callout.callout-warning
       .mb-1

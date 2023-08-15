@@ -2,6 +2,10 @@
   .card-header.cutoff-corner-tr
     = "Registrierungen"
   .card-body
+    .mb-3.callout.callout-info
+      ' Registrierungen werden aus Datenschutzgründen nach 30 Tagen automatisch gelöscht. Registrierungen die
+      ' bis dahin nicht bearbeitet wurden, müssen neu erstellt werden.
+
     .mb-3 = form_tag admin_registrations_path, method: :get do
       .input-group
         span.input-group-text

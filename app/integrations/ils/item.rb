@@ -51,6 +51,8 @@ class Ils
     def closed_stack_orderable?
       if location&.code == "04"
         false
+      elsif temp_location.present?
+        false
       elsif is_available && location&.label =~ /magazin/i
         true
       else

@@ -135,7 +135,7 @@ turbo-frame#items
                   / Edge-Case "IMT-Medien"
                   - elsif item.location&.label =~ /imt.+medien/i
                     i.fa-solid.fa-info-circle.text-primary
-                    =< link_to "Zentrum für Sprachlehre (ZfS)", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
+                    =< link_to "IMT-Medien", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
                   / Default-Case
                   - else
                     - location = item.location&.label || "–"

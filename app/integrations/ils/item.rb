@@ -39,14 +39,13 @@ class Ils
     # ein leeres arrival_date.
     def expected_issue?
       physical_material_type&.code == "ISSUE" &&
-      expected_arrival_date.present? &&
-      arrival_date.blank?
+        expected_arrival_date.present? &&
+        arrival_date.blank?
     end
 
     # Aktuelle Hefte haben Materialart = "Heft", ein arrival_date gesetzt
     def current_issue?
-      physical_material_type&.code == "ISSUE" &&
-      arrival_date.present?
+      physical_material_type&.code == "ISSUE" && arrival_date.present?
     end
 
     def closed_stack_orderable?

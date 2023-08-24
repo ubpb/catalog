@@ -28,7 +28,7 @@ en:
           label: "Resource type"
           values:
             article: "Article"
-            monograph: "Book"
+            monograph: "Monograph"
             journal: "Journal"
             series: "Series"
             newspaper: "Newspaper"

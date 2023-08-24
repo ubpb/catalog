@@ -28,7 +28,7 @@ de:
           label: "Erscheinungsform"
           values:
             article: "Artikel"
-            monograph: "Buch"
+            monograph: "Monographie"
             journal: "Zeitschrift"
             series: "Serie"
             newspaper: "Zeitung"

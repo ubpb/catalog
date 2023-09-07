@@ -6,7 +6,6 @@
 // Bootstrap options
 // -------------------------------------------------------------------------------------------
 $enable-negative-margins: true;
-$enable-cssgrid: true;
 $min-contrast-ratio: 1.8;
 
 // -------------------------------------------------------------------------------------------
@@ -235,7 +234,7 @@ $link-color-dark: $upb-himmelblau-80p;
 $font-family-sans-serif: Karla, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
                          Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
                          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-//$font-size-base: 0.95rem;
+$font-size-base: 0.95rem;
 
 // -------------------------------------------------------------------------------------------
 // Tweek globals, text, links, components, ...

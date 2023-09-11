@@ -1,14 +1,14 @@
 header
   .container.d-flex.flex-row.align-items-center.justify-content-between
-    #ub-logo
-      = link_to "http://www.ub.uni-paderborn.de" do
-        = inline_svg_tag("ub-logo.svg", height: "60")
+    = link_to "http://www.ub.uni-paderborn.de" do
+      = inline_svg_tag("ub-logo.svg", id: "ub-logo")
 
-    .d-flex.flex-row.align-items-center.gap-2.d-print-none
-      #app-name.me-3
+    .d-flex.flex-column.align-items-end.gap-2
+      #app-name
         = link_to "/" do
           = t("application.app_name")
-      #main-menu
-        = render "main_menu"
-      #account-menu
-        = render "account_menu"
+      .d-flex.flex-row.align-items-center.gap-2.d-print-none
+        #main-menu
+          = render "main_menu"
+        #account-menu
+          = render "account_menu"

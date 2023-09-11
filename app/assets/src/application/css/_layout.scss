@@ -56,10 +56,10 @@
   padding: 1.5rem 0;
 
   #ub-logo {
+    height: 62px;
+
     @include media-breakpoint-up(md) {
-      //border-right: 1px solid var(--bs-secondary-border-subtle);
-      margin-right: calc($spacer / 2);
-      padding-right: calc($spacer / 2);
+      height: 72px;
     }
   }
 
@@ -67,12 +67,7 @@
     font-size: 1.3rem;
     text-transform: uppercase;
     color: var(--upb-ultrablau);
-  }
-
-  #app-name {
-    @include media-breakpoint-down(md) {
-      display: none;
-    }
+    text-align: end;
   }
 }
 

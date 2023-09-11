@@ -71,7 +71,7 @@ turbo-frame#items
             =< t(".login_required")
 
     - if content_for? :hold_request_panel
-      .mb-3.bg-light.p-2.rounded
+      .mb-3.p-2.rounded(style="background-color: var(--bs-tertiary-bg)")
         = content_for :hold_request_panel
 
     - if @items.any?(&:closed_stack_orderable?)

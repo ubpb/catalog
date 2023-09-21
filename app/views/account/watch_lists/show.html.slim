@@ -30,7 +30,7 @@
                 - if record == :deleted
                   em = t(".deleted-record")
                 - else
-                  = render "searches/record", record: record
+                  = render "searches/record", record: record, search_scope: entry.scope
               .ms-auto.d-print-none
                 .ms-2 = link_to account_watch_list_entry_path(@watch_list, entry), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: t("confirm-delete")}
                   i.fa-solid.fa-fw.fa-trash-can

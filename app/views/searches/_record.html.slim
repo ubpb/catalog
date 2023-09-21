@@ -3,6 +3,7 @@ ruby:
                         show_availability?(record, search_scope: current_search_scope)
   enable_watch_lists_panel = local_assigns.fetch(:enable_watch_lists_panel) { false }
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
+  search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
 
 .d-flex(
   data-availabilities-target="record"
@@ -19,7 +20,7 @@ ruby:
     div.d-flex
       / Title
       h5.mb-0.me-auto.flex-fill.text-break
-        = link_to record.title, show_record_path(record, search_request: @search_request)
+        = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
 
       / Watchlist
       - if enable_watch_lists_panel

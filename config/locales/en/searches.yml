@@ -63,6 +63,7 @@ en:
         call_number: "Call number"
         local_notation: "Local notation"
         superorder_id: "Series ID"
+        toc: "Table of contents"
       cdi:
         any: "All fields"
         creator: "Author(s) / Participant(s)"

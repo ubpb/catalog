@@ -64,6 +64,7 @@ de:
         call_number: "Signatur"
         local_notation: "Systemstelle"
         superorder_id: "ID der Überordnung"
+        toc: "Inhaltsverzeichnis"
       cdi:
         any: "Alle Felder"
         creator: "Autor(en) / Beteiligte"

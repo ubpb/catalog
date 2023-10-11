@@ -51,8 +51,10 @@ ruby:
 
   .card-body
     #hits(
-      data-controller="availabilities"
+      data-controller="availabilities notes"
       data-availabilities-url-value=availabilities_path(mode: "badge")
+      data-notes-enabled-value=current_user.present?
+      data-notes-url-value=account_notes_path
     )
       .alert.alert-warning(
         data-availabilities-target="error"
@@ -63,6 +65,6 @@ ruby:
         - if index > 0
           hr
         .hit
-          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_availability: false, enable_fulltext_links: true
+          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_availability: false, enable_fulltext_links: true, enable_notes: true
   .card-footer
     = paginator

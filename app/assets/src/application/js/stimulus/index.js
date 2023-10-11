@@ -11,6 +11,10 @@ application.register("advanced-search", AdvancedSearchController)
 import AvailabilitiesController from "./availabilities_controller.js"
 application.register("availabilities", AvailabilitiesController)
 
+// app/assets/src/application/js/stimulus/notes_controller.js
+import NotesController from "./notes_controller.js"
+application.register("notes", NotesController)
+
 // app/assets/src/application/js/stimulus/expandable_list_controller.js
 import ExpandableListController from "./expandable_list_controller.js"
 application.register("expandable-list", ExpandableListController)

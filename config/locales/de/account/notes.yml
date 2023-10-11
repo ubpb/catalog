@@ -1,0 +1,10 @@
+de:
+  account:
+    notes:
+      breadcrumb: "Notizen"
+
+      index:
+        header: "Notizen"
+        no-notes: "Keine Notizen vorhanden"
+        deleted-record: "Dieser Titel existiert nicht mehr"
+

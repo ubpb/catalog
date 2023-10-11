@@ -17,6 +17,16 @@ en:
       citations:
         header: "Export record as..."
         bibtex: "BibTeX"
+      notes:
+        dropdown: "Note"
+        add: "Add"
+        edit: "Edit"
+        delete: "Delete"
+        save: "Save"
+        cancel: "Cancel"
+        placeholder: "Note"
+        error: "An error occurred while saving the changes to the note."
+        no_user: "Please login to create and edit notes"
 
     search_panel:
       search: "Search"

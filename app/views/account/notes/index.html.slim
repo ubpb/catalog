@@ -1,0 +1,27 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0
+      => t(".header")
+  .card-body
+    #hits(
+      data-controller="notes"
+      data-notes-enabled-value=current_user.present?
+      data-notes-url-value=account_notes_path
+    )
+      - if @resolved_entries.present?
+        ol.list-group
+          - @resolved_entries.each do |resolved_entry|
+            - record = resolved_entry[:record]
+            - note  = resolved_entry[:note]
+
+            li.list-group-item
+              .d-flex
+                .flex-fill
+                  - if record == :deleted
+                    p = note.record_id
+                    p = t(".deleted-record")
+                  - else
+                    = render "searches/record", record: record, search_scope: note.scope, enable_notes: true
+      - else
+        .alert.alert-info.mb-0.text-center
+          = t(".no-notes")

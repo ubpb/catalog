@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :watch_lists, path: "watch-lists" do
       resources :watch_list_entries, path: "entries", as: "entries", only: [:destroy]
     end
+    resources :notes, only: [:index, :create, :update, :destroy], path: "notes"
     resources :calendar, only: [:index]
     resource :profile, only: [:show]
     resource :password, only: [:edit, :update]

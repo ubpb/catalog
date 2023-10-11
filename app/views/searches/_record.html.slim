@@ -4,11 +4,14 @@ ruby:
   enable_watch_lists_panel = local_assigns.fetch(:enable_watch_lists_panel) { false }
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
   search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
+  enable_notes = local_assigns.fetch(:enable_notes) { false }
 
 .d-flex(
   data-availabilities-target="record"
+  data-record-scope=search_scope
   data-record-id=record.id
   data-availabilities-enabled=enable_availability
+  data-notes-target="record"
 )
   div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative")
     / Cover Image
@@ -21,6 +24,40 @@ ruby:
       / Title
       h5.mb-0.me-auto.flex-fill.text-break
         = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
+
+      / Note
+      - if enable_notes
+        .ms-2.d-print-none
+          .dropdown
+            button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+              i.fa-regular.fa-sticky-note(data-notes-btn-icon)
+
+            ul.dropdown-menu.dropdown-menu-end
+              - if current_user.present?
+                .px-3.py-1.text-muted.text-sm = t(".notes.dropdown")
+                li
+                  a.dropdown-item(
+                    href=""
+                    data-notes-button-add
+                    data-action="click->notes#edit"
+                    data-record-id=record.id
+                  ) = t(".notes.add")
+                li
+                  a.dropdown-item(
+                    href=""
+                    data-notes-button-edit
+                    data-action="click->notes#edit"
+                    data-record-id=record.id
+                  ) = t(".notes.edit")
+                li
+                  a.dropdown-item(
+                    href=""
+                    data-notes-button-delete
+                    data-action="click->notes#delete"
+                    data-record-id=record.id
+                  ) = t(".notes.delete")
+              - else
+                .px-3.text-muted.text-sm = t(".notes.no_user")
 
       / Watchlist
       - if enable_watch_lists_panel
@@ -40,7 +77,7 @@ ruby:
 
           ul.dropdown-menu.dropdown-menu-end
             .px-3.py-1.text-muted.text-sm = t(".citations.header")
-            li.dropdown-item ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record.id, format: :bib)
+            li ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record.id, format: :bib), class: "dropdown-item"
 
     / Part of...
     = optional_value(record.is_part_of) do |is_part_of|
@@ -140,3 +177,35 @@ ruby:
     - if enable_availability
       .mt-2(data-availabilities-output)
         i.fas.fa-sm.fa-spinner.fa-pulse
+
+    - if enable_notes
+      .mt-2(data-notes-error)
+        .alert.alert-danger
+          = t(".notes.error")
+      .mt-3.mb-2(data-notes-output)
+        .d-flex
+          .p-0.flex-grow-1(data-notes-output-content)
+      .mt-2(data-notes-form)
+        .d-flex
+          .p-0.flex-grow-1
+            input.form-control(
+              type="text"
+              data-notes-form-input
+              data-action="keydown.esc->notes#cancel"
+              data-record-id=record.id
+              placeholder=t(".notes.placeholder")
+            )
+          .p-1
+          .p-0
+            button.btn.btn-primary(
+              type="button"
+              data-action="click->notes#save"
+              data-record-id=record.id
+            ) = t(".notes.save")
+          .p-1
+          .p-0
+            button.btn.btn-secondary(
+              type="button"
+              data-action="click->notes#cancel"
+              data-record-id=record.id
+            ) = t(".notes.cancel")

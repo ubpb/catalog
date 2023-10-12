@@ -178,18 +178,21 @@ ruby:
       .mt-2(data-availabilities-output)
         i.fas.fa-sm.fa-spinner.fa-pulse
 
+    / Notes
     - if enable_notes
       .mt-2(data-notes-error)
         .alert.alert-danger
           = t(".notes.error")
-      .mt-3.mb-2(data-notes-output)
+
+      .mt-2.border.rounded.overflow-hidden.shadow-sm(data-notes-output)
         .d-flex
-          .p-0.me-2
-            i.fa-regular.fa-sticky-note(data-notes-btn-icon)
-          .p-0.flex-grow-1(data-notes-output-content)
+          .p-2.text-muted(style="background-color: var(--bs-tertiary-bg)")
+            i.fa-regular.fa-sticky-note.fa-fw(data-notes-btn-icon)
+          .p-2.flex-grow-1.text-muted(data-notes-output-content)
+
       .mt-2(data-notes-form)
-        .d-flex
-          .p-0.flex-grow-1
+        .d-flex.gap-2.flex-column.flex-md-row
+          .flex-grow-1
             input.form-control(
               type="text"
               data-notes-form-input
@@ -197,15 +200,14 @@ ruby:
               data-record-id=record.id
               placeholder=t(".notes.placeholder")
             )
-          .p-1
-          .p-0
+
+          .d-flex.gap-1
             button.btn.btn-primary(
               type="button"
               data-action="click->notes#save"
               data-record-id=record.id
             ) = t(".notes.save")
-          .p-1
-          .p-0
+
             button.btn.btn-secondary(
               type="button"
               data-action="click->notes#cancel"

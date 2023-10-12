@@ -1,8 +1,18 @@
+ruby:
+  paginator = render(PaginatorComponent.new(
+    page: @page,
+    per_page: @per_page,
+    total: @total_count
+  ))
+
 .card.card-shadowed
   .card-header.d-flex.align-items-center
     h5.m-0
       => t(".header")
   .card-body
+    - if paginator.present?
+      .mb-3 = paginator
+
     #hits(
       data-controller="notes"
       data-notes-enabled-value=current_user.present?

@@ -31,7 +31,7 @@ class Account::NotesController < Account::ApplicationController
   def create
     @note = current_user.notes.new(permitted_params)
     if @note.save
-      render json: @note, status: :created
+      render json: @note, status: :created, except: [:user_id, :record_id_migrated, :created_at, :updated_at]
     else
       render json: @note.errors, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class Account::NotesController < Account::ApplicationController
 
   def update
     if @note.update(permitted_params)
-      render json: @note
+      render json: @note, except: [:user_id, :record_id_migrated, :created_at, :updated_at]
     else
       render json: @note.errors, status: :unprocessable_entity
     end

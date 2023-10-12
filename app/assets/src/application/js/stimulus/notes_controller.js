@@ -118,7 +118,7 @@ export default class extends Controller {
             record_id: event.target.dataset.recordId, value: input.value, scope: recordTarget.dataset.recordScope
           })
           .then(response => {
-            this.notes.push ({id:-1, record_id: event.target.dataset.recordId, value: input.value})
+            this.notes.push (response.data)
             this.updateTarget(recordTarget)
           })
           .catch(error => {

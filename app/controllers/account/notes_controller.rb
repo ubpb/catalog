@@ -10,7 +10,13 @@ class Account::NotesController < Account::ApplicationController
         # This might fail, because records may be removed from the index
         # after it has been placed on the watch list. For this cases we mark
         # the record as :deleted
-        @resolved_entries = current_user.notes.order(updated_at: :desc).map do |note|
+        arel = current_user.notes.order(updated_at: :desc).page(params[:page]).per(25)
+
+        @page = arel.current_page
+        @total_count = arel.total_count
+        @per_page = arel.limit_value
+
+        @resolved_entries = arel.map do |note|
           next unless available_search_scopes.include?(note.scope.to_sym)
 
           if record = SearchEngine[note.scope].get_record(note.record_id, on_campus: on_campus?)
@@ -20,6 +26,7 @@ class Account::NotesController < Account::ApplicationController
           end
         end.compact
       }
+
       format.json {
         notes = current_user.notes.where(record_id: clean_record_ids)
 

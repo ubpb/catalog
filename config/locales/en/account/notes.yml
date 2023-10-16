@@ -6,5 +6,6 @@ en:
       index:
         header: "Notes"
         no-notes: "There are no notes available"
-        deleted-record: "This title no longer exists"
+        deleted-record: "The title with the ID \"%{record_id}\" no longer exists"
+        delete: "Delete"
 

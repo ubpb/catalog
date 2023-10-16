@@ -4,7 +4,7 @@ de:
       guest:
         title: Gäste der Universität Paderborn
       guest_student:
-        title: Gasthörende der Universität Paderborn und Studierende anderer Hochschulen
+        title: Gasthörende der Universität Paderborn
       external:
         title: Externe Benutzerinnen und Benutzer
       external_u18:
@@ -29,7 +29,7 @@ de:
           Bescheinigung der Universität Paderborn oder Bescheinigung der Theologischen Fakultät bzw.
           Fachhochschule der Wirtschaft (FHdW) über den Status als "Gast"
         guest_student_certificate: >
-          Aktuelle Studienbescheinigung (Gasthörerausweis oder Studierendenausweis anderer Hochschulen)
+          Aktuelle Studienbescheinigung (Gasthörerausweis)
         u18: >
           <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf"
           target="_blank"><i class="fa-solid fa-external-link"></i> Schriftliche Einwilligung

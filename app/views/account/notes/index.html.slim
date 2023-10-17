@@ -10,7 +10,7 @@ ruby:
     h5.m-0
       => t(".header")
   .card-body
-    - if paginator.present?
+    - if @resolved_entries.present? && paginator.present?
       .mb-3 = paginator
 
     #hits(

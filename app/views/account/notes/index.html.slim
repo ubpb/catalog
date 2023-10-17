@@ -25,23 +25,7 @@ ruby:
             - note  = resolved_entry[:note]
 
             li.list-group-item
-              - if record == :deleted
-                .d-flex(
-                  data-record-id=note.record_id
-                  data-notes-target="record"
-                )
-                  .flex-fill
-                    em = t(".deleted-record", record_id: note.record_id)
-                  /.ms-auto.d-print-none
-                    .ms-2
-                      .btn.btn-outline-danger.btn-sm(
-                        href=""
-                        data-notes-button-delete
-                        data-action="click->notes#delete"
-                        data-record-id=note.record_id
-                      ) = t(".delete")
-              - else
-                = render "searches/record", record: record, search_scope: note.scope, enable_watch_lists_panel: true, enable_notes: true
+              = render "searches/record", record: record, deleted_record_id: note.record_id, search_scope: note.scope, enable_watch_lists_panel: true, enable_notes: true
 
       - else
         .alert.alert-info.mb-0.text-center

@@ -27,6 +27,7 @@ de:
         placeholder: "Notiz"
         error: "Beim Speichern der Änderungen an der Notiz ist ein Fehler aufgetreten."
         no_user: "Bitte anmelden um Notizen zu nutzen"
+        deleted-record: "Der Titel mit der ID \"%{record_id}\" existiert nicht mehr"
 
     search_panel:
       search: "Suchen"

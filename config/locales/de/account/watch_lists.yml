@@ -11,7 +11,6 @@ de:
 
       show:
         no-entries: "Keine Einträge in dieser Liste"
-        deleted-record: "Der Titel mit der ID \"%{record_id}\" existiert nicht mehr"
 
       new:
         breadcrumb: "Neu"

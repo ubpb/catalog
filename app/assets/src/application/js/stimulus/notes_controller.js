@@ -67,25 +67,8 @@ export default class extends Controller {
       recordTarget.classList.add("note");
 
       let output_content = recordTarget.querySelector("[data-notes-output-content]")
-      if (output_content.textContent !== undefined) {
+      if (output_content && output_content.textContent !== undefined) {
         output_content.textContent = decodeURI(note?.value)
-      }
-    }
-
-    this.updateDropDownIcon(recordTarget, note);
-  }
-
-  updateDropDownIcon(recordTarget, note) {
-    let dd_btn = recordTarget.querySelector("[data-notes-btn-icon]");
-
-    if (dd_btn) {
-      if (note) {
-        dd_btn.classList.add("fa-solid");
-        dd_btn.classList.remove("fa-regular");
-      }
-      else {
-        dd_btn.classList.remove("fa-solid");
-        dd_btn.classList.add("fa-regular");
       }
     }
   }

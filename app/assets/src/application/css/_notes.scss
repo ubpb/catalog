@@ -1,0 +1,36 @@
+[data-notes-target] {
+  [data-notes-output],
+  [data-notes-button-edit],
+  [data-notes-button-delete],
+  [data-notes-error],
+  [data-notes-form] {
+     display: none;
+  }
+}
+
+[data-notes-target].note {
+  [data-notes-button-edit],
+  [data-notes-button-delete],
+  [data-notes-output] {
+    display: block;
+  }
+  [data-notes-button-add] {
+     display: none;
+  }
+}
+
+[data-notes-target].edit {
+  [data-notes-button-add],
+  [data-notes-output] {
+    display: none;
+  }
+  [data-notes-form] {
+     display: block;
+  }
+}
+
+[data-notes-target].error {
+  [data-notes-error] {
+     display: block;
+  }
+}

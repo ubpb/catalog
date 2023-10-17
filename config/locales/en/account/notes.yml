@@ -1,0 +1,9 @@
+en:
+  account:
+    notes:
+      breadcrumb: "Notes"
+
+      index:
+        header: "Notes"
+        no-notes: "There are no notes available"
+

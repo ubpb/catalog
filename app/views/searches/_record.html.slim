@@ -1,142 +1,228 @@
 ruby:
+  record_id = (record != :deleted) ? record.id : local_assigns.fetch(:deleted_record_id) {}
   enable_availability = local_assigns.fetch(:enable_availability) { false } &&
                         show_availability?(record, search_scope: current_search_scope)
   enable_watch_lists_panel = local_assigns.fetch(:enable_watch_lists_panel) { false }
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
   search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
+  enable_notes = local_assigns.fetch(:enable_notes) { false }
 
 .d-flex(
   data-availabilities-target="record"
-  data-record-id=record.id
+  data-record-scope=search_scope
+  data-record-id=record_id
   data-availabilities-enabled=enable_availability
+  data-notes-target="record"
 )
   div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative")
-    / Cover Image
-    div.fa-regular.fa-file.fa-3x.w-100.p-2.pt-3.pb-3.rounded
-    - isbn13 = record.first_isbn13
-    - if isbn13
-      = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
+    - if record != :deleted
+      / Cover Image
+      div.fa-regular.fa-file.fa-3x.w-100.p-2.pt-3.pb-3.rounded
+      - isbn13 = record.first_isbn13
+      - if isbn13
+        = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
+
   div.flex-fill
-    div.d-flex
-      / Title
-      h5.mb-0.me-auto.flex-fill.text-break
-        = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
-
-      / Watchlist
-      - if enable_watch_lists_panel
-        ruby:
-          watch_lists_panel_component = WatchListsPanelComponent.new(
-            user: current_user,
-            search_scope: current_search_scope,
-            record_id: record.id
-          )
-        .ms-2.d-print-none = render(watch_lists_panel_component)
-
-      / Citation / Export
-      .ms-2.d-print-none
-        .dropdown
-          button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
-            i.fa-solid.fa-quote-left
-
-          ul.dropdown-menu.dropdown-menu-end
-            .px-3.py-1.text-muted.text-sm = t(".citations.header")
-            li.dropdown-item ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record.id, format: :bib)
-
-    / Part of...
-    = optional_value(record.is_part_of) do |is_part_of|
-      ruby:
-        links = is_part_of.map do |p|
-          if p.id.present?
-            sr_to_superorder = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
-            sr_to_volumes    = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{p.id}&sr[s,asc]=volume")
-
-            link_to_superorder = link_to p.label, new_search_request_path(sr_to_superorder)
-            link_to_volumes    = link_to t(".all_volumes"), new_search_request_path(sr_to_volumes)
-
-            "#{link_to_superorder} (#{link_to_volumes})"
-          else
-            p.label
-          end
-        end
-      span.me-2.fst-italic = links.join(", ").html_safe
-
-    / Creators
-    - if (creators = record.creators).present?
-      .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
-
-    / Year of publication
-    - if (yop = record.year_of_publication).present?
-      .mb-0 = yop
-
-    / Journal stock
-    - if record.journal_stocks.present?
-      ruby:
-        journal_stocks = record.journal_stocks.map do |js|
-          [js.label_prefix, js.label].join(" ")
-        end
-      .mb-0
-        = t(".journal_stock")
-        =< journal_stocks.join("; ")
-
-    / Links
-    - if enable_fulltext_links
-      / Normal fulltext links
-      - if record.fulltext_links.present?
-        - links = record.fulltext_links
-        - additional_links = links[1..-1]
-
-        .d-flex.mt-2.flex-wrap
-          .flex-grow-1(data-controller="expandable-list" data-expandable-list-item-count-value="1")
-            ul.list-group.shadow-sm(data-expandable-list-target="list")
-              li.list-group-item.m-0.py-1.px-2.bg-light-subtle
-                = t("records.details.fulltext_links")
-
-              - links.each do |link|
-                li.list-group-item.px-2(data-expandable-list-target="item")
-                  div = link_to link.url do
-                    i.fa-solid.fa-external-link.fa-fw
-                    =< link.label
-
-                  - if link.coverage
-                    div.text-success: em = link.coverage
-
-                  - if link.note
-                    div: em == link.note
-
-              - if additional_links.present?
-                li.list-group-item.m-0.py-1.px-2.bg-light-subtle
-                  .fw-normal(data-expandable-list-target="expand")
-                      a(href="#expand" data-action="click->expandable-list#expand")
-                        i.fa-solid.fa-angles-down.fa-fw
-                        =< t(".show_more_links", count: additional_links.count)
-
-                  .fw-normal(data-expandable-list-target="collapse")
-                      a(href="#collapse" data-action="click->expandable-list#collapse")
-                        i.fa-solid.fa-angles-up.fa-fw
-                        =< t(".show_less")
-
-      / resolver links for CDI
-      - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
-        .mt-2.input-group.input-group-sm.flex-nowrap
-          .input-group-text
-            div
-              i.fa-solid.fa-globe
-              =< t("records.details.fulltext_links")
-
-          .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-            turbo-frame#link-resolver-results.w-100
-              = link_to rl.url do
-                i.fa-solid.fa-clipboard-question
-                =< t(".online_resource.resolver_link")
-
-    / Call numbers
-    - if record.call_numbers.present?
+    - if record == :deleted
       div
-        = t(".call_number")
-        ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+        = t(".notes.deleted-record", record_id: record_id)
+    - else
+      div.d-flex
+        / Title
+        h5.mb-0.me-auto.flex-fill.text-break
+          = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
+
+        / Note add button
+        - if enable_notes && current_user.present?
+          .ms-2.d-print-none
+            .btn.btn-outline-primary.btn-sm(
+              data-record-id=record_id
+              data-notes-button-add
+              data-action="click->notes#edit"
+            )
+              i.fa-regular.fa-sticky-note.fa-fw(style="pointer-events: none;")
+
+        / Watchlist
+        - if enable_watch_lists_panel
+          ruby:
+            watch_lists_panel_component = WatchListsPanelComponent.new(
+              user: current_user,
+              search_scope: current_search_scope,
+              record_id: record_id
+            )
+          .ms-2.d-print-none = render(watch_lists_panel_component)
+
+        / Citation / Export
+        .ms-2.d-print-none
+          .dropdown
+            button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+              i.fa-solid.fa-quote-left
+
+            ul.dropdown-menu.dropdown-menu-end
+              .px-3.py-1.text-muted.text-sm = t(".citations.header")
+              li ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record_id, format: :bib), class: "dropdown-item"
+
+      / Part of...
+      = optional_value(record.is_part_of) do |is_part_of|
+        ruby:
+          links = is_part_of.map do |p|
+            if p.id.present?
+              sr_to_superorder = SearchEngine::SearchRequest.parse("sr[q,ids]=#{p.id}")
+              sr_to_volumes    = SearchEngine::SearchRequest.parse("sr[q,superorder_id]=#{p.id}&sr[s,asc]=volume")
+
+              link_to_superorder = link_to p.label, new_search_request_path(sr_to_superorder)
+              link_to_volumes    = link_to t(".all_volumes"), new_search_request_path(sr_to_volumes)
+
+              "#{link_to_superorder} (#{link_to_volumes})"
+            else
+              p.label
+            end
+          end
+        span.me-2.fst-italic = links.join(", ").html_safe
+
+      / Creators
+      - if (creators = record.creators).present?
+        .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
+
+      / Year of publication
+      - if (yop = record.year_of_publication).present?
+        .mb-0 = yop
+
+      / Journal stock
+      - if record.journal_stocks.present?
+        ruby:
+          journal_stocks = record.journal_stocks.map do |js|
+            [js.label_prefix, js.label].join(" ")
+          end
+        .mb-0
+          = t(".journal_stock")
+          =< journal_stocks.join("; ")
+
+      / Links
+      - if enable_fulltext_links
+        / Normal fulltext links
+        - if record.fulltext_links.present?
+          - links = record.fulltext_links
+          - additional_links = links[1..-1]
+
+          .d-flex.mt-2.flex-wrap
+            .flex-grow-1(data-controller="expandable-list" data-expandable-list-item-count-value="1")
+              ul.list-group.shadow-sm(data-expandable-list-target="list")
+                li.list-group-item.m-0.py-1.px-2.bg-light-subtle
+                  = t("records.details.fulltext_links")
+
+                - links.each do |link|
+                  li.list-group-item.px-2(data-expandable-list-target="item")
+                    div = link_to link.url do
+                      i.fa-solid.fa-external-link.fa-fw
+                      =< link.label
+
+                    - if link.coverage
+                      div.text-success: em = link.coverage
+
+                    - if link.note
+                      div: em == link.note
+
+                - if additional_links.present?
+                  li.list-group-item.m-0.py-1.px-2.bg-light-subtle
+                    .fw-normal(data-expandable-list-target="expand")
+                        a(href="#expand" data-action="click->expandable-list#expand")
+                          i.fa-solid.fa-angles-down.fa-fw
+                          =< t(".show_more_links", count: additional_links.count)
+
+                    .fw-normal(data-expandable-list-target="collapse")
+                        a(href="#collapse" data-action="click->expandable-list#collapse")
+                          i.fa-solid.fa-angles-up.fa-fw
+                          =< t(".show_less")
+
+        / resolver links for CDI
+        - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
+          .mt-2.input-group.input-group-sm.flex-nowrap
+            .input-group-text
+              div
+                i.fa-solid.fa-globe
+                =< t("records.details.fulltext_links")
+
+            .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
+              turbo-frame#link-resolver-results.w-100
+                = link_to rl.url do
+                  i.fa-solid.fa-clipboard-question
+                  =< t(".online_resource.resolver_link")
+
+      / Call numbers
+      - if record.call_numbers.present?
+        div
+          = t(".call_number")
+          ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
 
 
-    / Availability
-    - if enable_availability
-      .mt-2(data-availabilities-output)
-        i.fas.fa-sm.fa-spinner.fa-pulse
+      / Availability
+      - if enable_availability
+        .mt-2(data-availabilities-output)
+          i.fas.fa-sm.fa-spinner.fa-pulse
+
+    / Notes
+    - if enable_notes
+      / Error
+      .mt-2(data-notes-error)
+        .alert.alert-danger
+          = t(".notes.error")
+
+      / Show
+      .mt-2.border.rounded.shadow-sm(data-notes-output)
+        .d-flex
+
+          / Icon
+          .p-2.text-muted.rounded-start(style="background-color: var(--bs-tertiary-bg)")
+            i.fa-regular.fa-sticky-note.fa-fw(data-notes-btn-icon)
+
+          / Note text
+          .p-2.flex-grow-1.text-muted(data-notes-output-content)
+
+          / Controls
+          .dropdown
+            .p-2.text-muted(data-bs-toggle="dropdown")
+              i.fa-solid.fa-ellipsis-vertical.fa-fw(data-notes-btn-icon)
+            ul.dropdown-menu.dropdown-menu-end
+              li
+                a.dropdown-item(
+                  href=""
+                  data-notes-button-edit
+                  data-action="click->notes#edit"
+                  data-record-id=record_id
+                ) = t(".notes.edit")
+              li
+                a.dropdown-item(
+                  href=""
+                  data-notes-button-delete
+                  data-action="click->notes#delete"
+                  data-record-id=record_id
+                ) = t(".notes.delete")
+
+      / Edit
+      .mt-2(data-notes-form)
+        .d-flex.gap-2.flex-column.flex-md-row
+          .flex-grow-1
+
+            / Input
+            input.form-control(
+              type="text"
+              data-notes-form-input
+              data-action="keydown.esc->notes#cancel keydown.enter->notes#save"
+              data-record-id=record_id
+              placeholder=t(".notes.placeholder")
+            )
+
+          / Edit controls
+          .d-flex.gap-1
+            button.btn.btn-primary(
+              type="button"
+              data-action="click->notes#save"
+              data-record-id=record_id
+            ) = t(".notes.save")
+
+            button.btn.btn-secondary(
+              type="button"
+              data-action="click->notes#cancel"
+              data-record-id=record_id
+            ) = t(".notes.cancel")

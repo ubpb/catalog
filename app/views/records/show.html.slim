@@ -3,9 +3,13 @@
     .card-header.d-print-none
       = render "stepper"
 
-  .card-body
+  .card-body(
+      data-controller="notes"
+      data-notes-enabled-value=current_user.present?
+      data-notes-url-value=account_notes_path
+    )
     / Show compact version of the record
-    = render "searches/record", record: @record, enable_watch_lists_panel: true
+    = render "searches/record", record: @record, enable_watch_lists_panel: true, enable_notes: true
     hr.mb-3
 
     / ----------------------------------------

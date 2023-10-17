@@ -1,7 +1,7 @@
 class Account::NotesController < Account::ApplicationController
 
   before_action { add_breadcrumb t("account.notes.breadcrumb"), account_watch_lists_path }
-  before_action :set_note, only: [:show, :update, :destroy]
+  before_action :set_note, only: [:update, :destroy]
 
   def index
     respond_to do |format|
@@ -60,7 +60,7 @@ class Account::NotesController < Account::ApplicationController
     end
   end
 
-private
+  private
 
   def set_note
     @note = current_user.notes.find(params[:id])

@@ -84,9 +84,10 @@ ruby:
       - if (creators = record.creators).present?
         .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
 
-      / Year of publication
-      - if (yop = record.year_of_publication).present?
-        .mb-0 = yop
+      / Year of publication and edition
+      - yop_and_edition = [record.edition, record.year_of_publication].compact.join(", ")
+      - if yop_and_edition.present?
+        .mb-0 = yop_and_edition
 
       / Journal stock
       - if record.journal_stocks.present?

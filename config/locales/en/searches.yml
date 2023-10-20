@@ -70,7 +70,7 @@ en:
         subject: "Subject heading"
         pub: "Place / Publisher"
         yop: "Year of publication"
-        ids: "Identifiers"
+        ids: "Identifiers (ISBN, ISSN, ...)"
         call_number: "Call number"
         local_notation: "Local notation"
         superorder_id: "Series ID"

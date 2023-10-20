@@ -71,7 +71,7 @@ de:
         subject: "Schlagwort"
         pub: "Ort / Verlag"
         yop: "Erscheinungsjahr"
-        ids: "Identifikatoren"
+        ids: "Identifikatoren (ISBN, ISSN, ...)"
         call_number: "Signatur"
         local_notation: "Systemstelle"
         superorder_id: "ID der Überordnung"

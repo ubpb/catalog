@@ -118,7 +118,7 @@ turbo-frame#items
                 - else
                   / Edge-Case "Seminarapparat"
                   - if item.policy&.label =~ /Seminarapparat/i
-                    = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.id, id: item.id)) do
+                    = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.host_item_id.presence || @record.id, id: item.id)) do
                       i.fa-solid.fa-spinner.fa-spin
                   / Edge-Case "Handapparat"
                   - elsif item.policy&.label =~ /Handapparat/i

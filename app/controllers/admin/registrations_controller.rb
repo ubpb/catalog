@@ -71,8 +71,8 @@ class Admin::RegistrationsController < Admin::ApplicationController
     @registration = Registration.find(Registration.to_id(params[:id]))
 
     names_query_string = "
-      last_name~#{@registration.lastname}* AND
-      first_name~#{@registration.firstname}* AND
+      last_name~#{Addressable::URI.encode_component(@registration.lastname, Addressable::URI::CharacterClasses::UNRESERVED)}* AND
+      first_name~#{Addressable::URI.encode_component(@registration.firstname, Addressable::URI::CharacterClasses::UNRESERVED)}* AND
       birth_date~#{@registration.birthdate.strftime("%Y-%m-%d")}
     "
     @name_duplicates = check_duplicates_in_alma(@registration, names_query_string)

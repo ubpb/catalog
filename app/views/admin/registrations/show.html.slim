@@ -24,6 +24,11 @@
         i.fa-solid.fa-spinner.fa-spin
         =< "Prüfe auf Dubletten..."
 
+    - if @registration.is_too_young?
+      .callout.callout-warning
+        i.fa-solid.fa-triangle-exclamation.fa-fw.fa-lg.me-1
+        = "Das Mindestalter ist nicht erreicht."
+
     .callout.callout-warning
       .mb-1
         i.fa-solid.fa-triangle-exclamation.fa-fw.fa-lg.me-1

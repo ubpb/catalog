@@ -93,4 +93,8 @@ class Registration < ApplicationRecord
     errors.add(:birthdate, :u18_group_but_over_18)
   end
 
+  def is_too_young?
+    birthdate.blank? || birthdate >= 16.years.ago
+  end
+
 end

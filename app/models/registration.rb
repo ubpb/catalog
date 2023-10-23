@@ -68,6 +68,8 @@ class Registration < ApplicationRecord
 
   def self.to_id(hashed_id)
     Hashids.new(HASHIDS_SALT, HASHIDS_MIN_LENGTH).decode(hashed_id).first
+  rescue Hashids::InputError
+    nil
   end
 
   def to_param

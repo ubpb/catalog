@@ -1,10 +1,8 @@
 class Admin::RegistrationsController < Admin::ApplicationController
   layout "registrations"
 
-  before_action :authenticate!
-
-  before_action lambda {
-    add_breadcrumb("Admin", admin_registrations_path)
+  before_action -> {
+    add_breadcrumb("Registrierungen", admin_registrations_path)
   }
 
   def index
@@ -18,10 +16,12 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
   def show
     @registration = Registration.find(Registration.to_id(params[:id]))
+    add_breadcrumb("Details", admin_registration_path(@registration))
   end
 
   def edit
     @registration = Registration.find(Registration.to_id(params[:id]))
+    add_breadcrumb("Bearbeiten", edit_admin_registration_path(@registration))
   end
 
   def update

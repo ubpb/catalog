@@ -425,6 +425,7 @@ DEPENDENCIES
   dry-struct (~> 1.4)
   elasticsearch (~> 8.1)
   exl_api (~> 1.0.0)!
+  faraday (~> 2.7, < 3)
   foreman (>= 0.87)
   hashids (~> 1.0)
   i18n-debug (>= 1.2)

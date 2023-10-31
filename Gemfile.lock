@@ -16,9 +16,10 @@ PATH
   specs:
     exl_api (1.0.0)
       activesupport (> 6)
+      faraday (~> 2.7)
+      hashie (~> 5.0)
       nokogiri (~> 1.11)
       oj (~> 3.11)
-      rest-client (~> 2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -170,9 +171,7 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashids (1.0.6)
-    http-accept (1.7.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
+    hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     i18n-debug (1.2.0)
@@ -219,9 +218,6 @@ GEM
       activesupport (>= 5.1)
       ox (>= 2.11)
     method_source (1.0.0)
-    mime-types (3.5.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1003)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -299,11 +295,6 @@ GEM
     regexp_parser (2.8.2)
     reline (0.4.0)
       io-console (~> 0.5)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.2.6)
     rss (0.3.0)
       rexml

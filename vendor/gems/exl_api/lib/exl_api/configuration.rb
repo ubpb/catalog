@@ -6,28 +6,24 @@ module ExlApi
     end
 
     def api_key
-      @api_key || ENV["EXL_API_KEY"].presence
+      @api_key
     end
 
-    def api_base_url=(value)
+    def base_url=(value)
       base_url = value.presence
-      @api_base_url = base_url.ends_with?("/") ? base_url[0..-2] : base_url
+      @api_base_url = base_url&.ends_with?("/") ? base_url[0..-2] : base_url
     end
 
-    def api_base_url
-      @api_base_url || ENV["EXL_API_BASE_URL"].presence
+    def base_url
+      @api_base_url || "https://api-eu.hosted.exlibrisgroup.com"
     end
 
     def default_format=(value)
-      @default_format = value.presence
-
-      unless @default_format == "application/json" || @default_format == "application/xml"
-        raise ArgumentError, "Unsupported format '#{@default_format}'. Only 'application/json' and 'application/xml' is supported."
-      end
+      @default_format = ExlApi.validate_format!(value)
     end
 
     def default_format
-      @default_format || ENV["EXL_API_DEFAULT_FORMAT"].presence || "application/json"
+      @default_format || "json"
     end
 
     def language=(value)
@@ -35,7 +31,7 @@ module ExlApi
     end
 
     def language
-      @language || ENV["EXL_API_LANGUAGE"].presence || "en"
+      @language || "en"
     end
 
   end

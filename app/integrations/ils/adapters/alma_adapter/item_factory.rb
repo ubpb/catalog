@@ -25,6 +25,7 @@ module Ils::Adapters
           arrival_date: get_arrival_date(alma_item),
           description: get_description(alma_item),
           physical_material_type: get_physical_material_type(alma_item),
+          is_in_temp_location: get_is_in_temp_location(alma_item),
           temp_location: get_temp_location(alma_item),
           temp_policy: get_temp_policy(alma_item),
           temp_due_back_date: get_temp_due_back_date(alma_item)
@@ -39,7 +40,7 @@ module Ils::Adapters
 
       def get_call_number(alma_item)
         alma_item.dig("item_data", "alternative_call_number").presence ||
-        alma_item.dig("holding_data", "call_number").presence
+          alma_item.dig("holding_data", "call_number").presence
       end
 
       def get_barcode(alma_item)
@@ -131,17 +132,12 @@ module Ils::Adapters
         label = alma_item.dig("item_data", "physical_material_type", "desc")
 
         if code && label
-          Ils::CodeLabelType.new(code: code,label: label)
+          Ils::CodeLabelType.new(code: code, label: label)
         end
       end
 
-      def get_temp_policy(alma_item)
-        code  = alma_item.dig("holding_data", "temp_policy", "value")
-        label = alma_item.dig("holding_data", "temp_policy", "desc")
-
-        if code && label
-          Ils::ItemPolicy.new(code: code,label: label)
-        end
+      def get_is_in_temp_location(alma_item)
+        alma_item.dig("holding_data", "in_temp_location") == true
       end
 
       def get_temp_location(alma_item)
@@ -150,7 +146,16 @@ module Ils::Adapters
         label = alma_item.dig("holding_data", "temp_location", "desc")
 
         if in_temp_location && code && label
-          Ils::Location.new(code: code,label: label)
+          Ils::Location.new(code: code, label: label)
+        end
+      end
+
+      def get_temp_policy(alma_item)
+        code  = alma_item.dig("holding_data", "temp_policy", "value")
+        label = alma_item.dig("holding_data", "temp_policy", "desc")
+
+        if code && label
+          Ils::ItemPolicy.new(code: code, label: label)
         end
       end
 

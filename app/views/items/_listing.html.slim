@@ -102,7 +102,7 @@ turbo-frame#items
                   = "–"
               / Policy
               td
-                - if item.temp_policy.present?
+                - if item.is_in_temp_location && item.temp_policy.present?
                   div
                     i.fa-regular.fa-clock.fa-fw
                     =< item.temp_policy.label&.gsub(/\(\d\d\)/, "")&.strip
@@ -111,7 +111,7 @@ turbo-frame#items
                   = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
               / Location
               td
-                - if item.temp_location.present?
+                - if item.is_in_temp_location && item.temp_location.present?
                   div
                     i.fa-regular.fa-clock.fa-fw
                     =< item.temp_location.label
@@ -175,7 +175,7 @@ turbo-frame#items
                     div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
                       = t(".closed_stack_order")
 
-                  - if item.temp_due_back_date
+                  - if item.is_in_temp_location && item.temp_due_back_date
                     div
                       i.fa-regular.fa-clock.fa-fw
                       em = t(".temp_due_back_date", due_date: l(item.temp_due_back_date.to_date))
@@ -189,7 +189,7 @@ turbo-frame#items
     - if has_04_location
       .mt-2: em == t(".04_location_hint")
 
-    - has_item_with_temp_location = @items.any?{|item| item.temp_location.present? || item.temp_policy.present?}
+    - has_item_with_temp_location = @items.any?{|item| item.is_in_temp_location}
     - if has_item_with_temp_location
       .mt-2: em
         i.fa-regular.fa-clock.fa-fw

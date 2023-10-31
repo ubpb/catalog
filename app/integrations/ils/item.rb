@@ -18,6 +18,7 @@ class Ils
     attribute :description, Types::String.optional
     attribute :physical_material_type, CodeLabelType.optional
 
+    attribute :is_in_temp_location, Types::Bool.default(false)
     attribute :temp_location, Ils::Location.optional
     attribute :temp_policy, Ils::ItemPolicy.optional
     attribute :temp_due_back_date, Types::Date.optional
@@ -51,7 +52,7 @@ class Ils
     def closed_stack_orderable?
       if location&.code == "04"
         false
-      elsif temp_location.present?
+      elsif is_in_temp_location
         false
       elsif is_available && location&.label =~ /magazin/i
         true

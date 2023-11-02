@@ -7,10 +7,6 @@ import { application } from "./application"
 import AdvancedSearchController from "./advanced_search_controller.js"
 application.register("advanced-search", AdvancedSearchController)
 
-// app/assets/src/application/js/stimulus/availabilities_controller.js
-import AvailabilitiesController from "./availabilities_controller.js"
-application.register("availabilities", AvailabilitiesController)
-
 // app/assets/src/application/js/stimulus/notes_controller.js
 import NotesController from "./notes_controller.js"
 application.register("notes", NotesController)

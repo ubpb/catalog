@@ -38,11 +38,6 @@ en:
     search_field:
       query_placeholder: "Enter search term(s)..."
 
-    availabilities:
-      error: >
-        An error occurred while loading the availability information. Please
-        try again at a later time.
-
     tools:
       share_search: "Share search"
       rss_search: "Search as RSS-Feed"

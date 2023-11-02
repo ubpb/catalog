@@ -84,9 +84,6 @@ Rails.application.routes.draw do
     resources :recommendations, only: [:index]
   end
 
-  # Availability
-  get "/availabilities(/:mode)", to: "availabilities#index", as: :availabilities
-
   # Open URL Link-Resolver
   get "openurl", to: "link_resolver#show"
 

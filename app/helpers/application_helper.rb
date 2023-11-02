@@ -27,17 +27,6 @@ module ApplicationHelper
     end
   end
 
-  def show_availability?(record, search_scope: current_search_scope)
-    # only on local search scope
-    search_scope == :local &&
-    # not for online resources
-    !record.is_online_resource? &&
-    # not for journals
-    !record.is_journal? &&
-    # not for newspapers
-    !record.is_newspaper?
-  end
-
   def aggregation_label(aggregation)
     t(
       "searches.aggregations.#{current_search_scope}.#{aggregation.name.underscore}.label",

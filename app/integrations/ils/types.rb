@@ -21,15 +21,6 @@ class Ils
         :unknown,          # Unbekannt
       )
 
-    AvailabilityStatus = Strict::Symbol
-      .default(:unknown)
-      .enum(
-        :available,            # Verfügbar
-        :restricted_available, # In der Bibliothek/eingeschränkt verfügbar
-        :not_available,        # Nicht verfügbar
-        :unknown,              # Unbekannt
-      )
-
     HoldRequestStatus = Strict::Symbol
       .default(:unknown)
       .enum(

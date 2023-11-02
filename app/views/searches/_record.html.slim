@@ -1,17 +1,13 @@
 ruby:
   record_id = (record != :deleted) ? record.id : local_assigns.fetch(:deleted_record_id) {}
-  enable_availability = local_assigns.fetch(:enable_availability) { false } &&
-                        show_availability?(record, search_scope: current_search_scope)
   enable_watch_lists_panel = local_assigns.fetch(:enable_watch_lists_panel) { false }
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
   search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
   enable_notes = local_assigns.fetch(:enable_notes) { false }
 
 .d-flex(
-  data-availabilities-target="record"
   data-record-scope=search_scope
   data-record-id=record_id
-  data-availabilities-enabled=enable_availability
   data-notes-target="record"
 )
   div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative")
@@ -155,12 +151,6 @@ ruby:
         div
           = t(".call_number")
           ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
-
-
-      / Availability
-      - if enable_availability
-        .mt-2(data-availabilities-output)
-          i.fas.fa-sm.fa-spinner.fa-pulse
 
     / Notes
     - if enable_notes

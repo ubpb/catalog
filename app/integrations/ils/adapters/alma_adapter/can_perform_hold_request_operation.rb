@@ -5,7 +5,6 @@ module Ils::Adapters
       def call(record_id, user_id)
         response = adapter.api.get(
           "bibs/#{record_id}/request-options",
-          format: "application/json",
           params: {
             user_id: user_id
           }

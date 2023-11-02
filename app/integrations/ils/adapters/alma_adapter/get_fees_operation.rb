@@ -15,7 +15,6 @@ module Ils::Adapters
 
       def get_fees(user_id)
         adapter.api.get("users/#{user_id}/fees",
-          format: "application/json",
           params: {
             status: "ACTIVE"
           }

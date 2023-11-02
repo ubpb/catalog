@@ -48,7 +48,6 @@ module Ils::Adapters
       def get_hold_requests(user_id, offset:, limit:)
         adapter.api.get(
           "users/#{user_id}/requests",
-          format: "application/json",
           params: {
             request_type: "HOLD",
             status:       "active",
@@ -62,8 +61,7 @@ module Ils::Adapters
         barcode = Addressable::URI.encode_component(barcode, Addressable::URI::CharacterClasses::UNRESERVED)
 
         adapter.api.get(
-          "items?item_barcode=#{barcode}",
-          format: "application/json"
+          "items?item_barcode=#{barcode}"
         )
       rescue ExlApi::Error
         nil

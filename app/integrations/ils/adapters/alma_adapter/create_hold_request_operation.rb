@@ -14,7 +14,6 @@ module Ils::Adapters
 
       def create_hold_request(record_id, user_id)
         adapter.api.post("users/#{user_id}/requests",
-          format: "application/json",
           params: {
             mms_id: record_id,
             allow_same_request: false

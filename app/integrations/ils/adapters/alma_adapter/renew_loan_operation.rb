@@ -4,7 +4,6 @@ module Ils::Adapters
 
       def call(user_id, loan_id)
         response = adapter.api.post("users/#{user_id}/loans/#{loan_id}",
-          format: "application/json",
           params: {
             op: "renew"
           }

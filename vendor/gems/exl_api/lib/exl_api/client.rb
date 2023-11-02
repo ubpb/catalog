@@ -79,7 +79,7 @@ module ExlApi
       when *GATEWAY_ERROR_CODES
         raise GatewayError.new(error[:error_message], error[:error_code])
       else
-        case e.response.status
+        case e.response[:status]
         when 400..499
           raise LogicalError.new(error[:error_message], error[:error_code])
         when 500..599
@@ -96,7 +96,9 @@ module ExlApi
     end
 
     def parse_response_body(body)
-      if is_xml_response?(body)
+      if body.blank?
+        nil
+      elsif is_xml_response?(body)
         Nokogiri::XML.parse(body)
       elsif is_json_response?(body)
         Oj.load(body)

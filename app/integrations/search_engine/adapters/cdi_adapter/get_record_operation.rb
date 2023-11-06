@@ -9,10 +9,10 @@ module SearchEngine::Adapters
           on_campus: options[:on_campus]
         )
 
-        cdi_response = RestClient.post(
+        cdi_response = adapter.http_client.post(
           adapter.options["api_base_url"],
-          cdi_search, {
-            "Content-Type" => "application/xml",
+          cdi_search,
+          {
             "SOAPAction" => "searchBrief"
           }
         )

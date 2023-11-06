@@ -31,7 +31,7 @@
   },
   "browserslist": "> 0.35%, not dead",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.10.0",
+    "@parcel/transformer-sass": "^2.10.2",
     "autoprefixer": "^10.4.15",
     "buffer": "^5.5.0||^6.0.0",
     "eslint": "^8.51.0",

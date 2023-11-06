@@ -1,6 +1,7 @@
 en:
   joap:
     show:
+      header: Print edition
       call_number: "Call number:"
       holdings: "Holdings:"
       no_print_available: "No link to a matching print edition could be found"

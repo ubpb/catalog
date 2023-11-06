@@ -1,6 +1,7 @@
 de:
   joap:
     show:
+      header: Druckausgabe
       call_number: "Signatur:"
       holdings: "Bestand:"
       no_print_available: "Es konnte keine Verknüpfung zu einer passenden Print-Ausgabe ermittelt werden"

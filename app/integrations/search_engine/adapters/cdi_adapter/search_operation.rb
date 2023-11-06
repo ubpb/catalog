@@ -23,7 +23,7 @@ module SearchEngine::Adapters
         build_search_result(cdi_result, search_request: search_request)
       end
 
-    private
+      private
 
       def parse_cdi_response(cdi_response)
         Nokogiri::XML(cdi_response.body)
@@ -51,9 +51,9 @@ module SearchEngine::Adapters
           end
 
           aggregations = (cdi_result.xpath("//FACETLIST/FACET") || []).map do |facet|
-            internal_name  = facet.attr("NAME")
+            internal_name = facet.attr("NAME")
 
-            name = adapter.aggregations.find{|s| s["internal_name"] == internal_name}.try(:[], "name").presence || internal_name
+            name = adapter.aggregations.find { |s| s["internal_name"] == internal_name }.try(:[], "name").presence || internal_name
 
             field = adapter.aggregations_field(name)
             type  = adapter.aggregations_type(name)
@@ -86,7 +86,7 @@ module SearchEngine::Adapters
                 # CDI sometimes returns creation dates outside the selected range.
                 # We remove these to not confuse the user if the search request
                 # contains a conresponding range
-                if active_aggregation = search_request.aggregations.find{|a| a.name == name}
+                if active_aggregation = search_request.aggregations.find { |a| a.name == name }
                   lower_bound, upper_bound = active_aggregation.value.scan(/(\d{4})..(\d{4})/).flatten
                   if lower_bound && upper_bound
                     values = values.reject do |v|
@@ -106,7 +106,7 @@ module SearchEngine::Adapters
 
           # Sort aggregations as they are defined in the config file
           aggregations = aggregations.sort_by do |a|
-            adapter.aggregations.find_index{|aa| aa["name"] == a.name} || 0
+            adapter.aggregations.find_index { |aa| aa["name"] == a.name } || 0
           end
 
           SearchEngine::SearchResult.new(
@@ -137,8 +137,8 @@ module SearchEngine::Adapters
           index_field = adapter.searchables_fields(query.name)&.first
           clean_value = clean_value(query.value)
 
-          if query.exclude
-            query_terms << <<-XML.strip_heredoc
+          query_terms << if query.exclude
+            <<-XML.strip_heredoc
               <QueryTerm>
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
@@ -147,7 +147,7 @@ module SearchEngine::Adapters
               </QueryTerm>
             XML
           else
-            query_terms << <<-XML.strip_heredoc
+            <<-XML.strip_heredoc
               <QueryTerm>
                 <IndexField>#{index_field}</IndexField>
                 <PrecisionOperator>contains</PrecisionOperator>
@@ -166,8 +166,8 @@ module SearchEngine::Adapters
 
           case type
           when "term"
-            if aggregation.exclude
-              query_terms << <<-XML.strip_heredoc
+            query_terms << if aggregation.exclude
+              <<-XML.strip_heredoc
                 <QueryTerm>
                   <IndexField>#{index_field}</IndexField>
                   <PrecisionOperator>exact</PrecisionOperator>
@@ -176,7 +176,7 @@ module SearchEngine::Adapters
                 </QueryTerm>
               XML
             else
-              query_terms << <<-XML.strip_heredoc
+              <<-XML.strip_heredoc
                 <QueryTerm>
                   <IndexField>#{index_field}</IndexField>
                   <PrecisionOperator>exact</PrecisionOperator>
@@ -202,7 +202,7 @@ module SearchEngine::Adapters
 
         # Sort
         sort_field = adapter.sortables_field(search_request.sort.name)
-        sort_field = "rank" unless sort_field
+        sort_field ||= "rank"
 
         <<-XML.strip_heredoc
         <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">

@@ -111,8 +111,8 @@ class ClosedStackOrdersController < ApplicationController
     url_params["jcheck"] = "true" if @volume_check
 
     begin
-      response_code = RestClient.get(url, params: url_params)&.body
-    rescue RestClient::ExceptionWithResponse
+      response_code = http_client.get(url, params: url_params)&.body
+    rescue Faraday::Error
       response_code = "undefined"
     end
 
@@ -135,6 +135,17 @@ class ClosedStackOrdersController < ApplicationController
   end
 
   private
+
+  def http_client
+    Faraday.new(
+      headers: {
+        accept: "text/plain",
+        "content-type": "text/plain"
+      }
+    ) do |faraday|
+      faraday.response :raise_error
+    end
+  end
 
   def redirect_on_error
     redirect_to new_closed_stack_order_path(

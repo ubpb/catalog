@@ -67,6 +67,3 @@ class JoapController < ApplicationController
   end
 
 end
-
-
-

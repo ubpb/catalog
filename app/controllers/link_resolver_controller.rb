@@ -195,15 +195,26 @@ class LinkResolverController < ApplicationController
       end
 
       # Call the Alma Link Resolver
-      response = RestClient.get("#{base_url}?#{request_params.join("&")}")
+      response = http_client.get("#{base_url}?#{request_params.join("&")}")
 
       # Check response
-      if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
+      if response.status == 200 && response.headers[:content_type] =~ /text\/xml/
         Nokogiri::XML.parse(response.body).remove_namespaces!
       end
     end
-  rescue RestClient::ExceptionWithResponse
+  rescue Faraday::Error
     nil
+  end
+
+  def http_client
+    Faraday.new(
+      headers: {
+        accept: "text/xml",
+        "content-type": "text/xml"
+      }
+    ) do |faraday|
+      faraday.response :raise_error
+    end
   end
 
   def open_url_params

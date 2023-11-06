@@ -111,7 +111,7 @@ class ClosedStackOrdersController < ApplicationController
     url_params["jcheck"] = "true" if @volume_check
 
     begin
-      response_code = http_client.get(url, params: url_params)&.body
+      response_code = http_client.get(url, url_params)&.body
     rescue Faraday::Error
       response_code = "undefined"
     end

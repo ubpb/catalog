@@ -23,7 +23,7 @@ module SearchEngine::Adapters
         build_record(cdi_result)
       end
 
-    private
+      private
 
       def parse_cdi_response(cdi_response)
         Nokogiri::XML(cdi_response.body)
@@ -40,14 +40,12 @@ module SearchEngine::Adapters
       def build_record(cdi_result)
         if doc = cdi_result.at_css("DOCSET > DOC")
           RecordFactory.build(doc)
-        else
-          nil
         end
       end
 
       def build_cdi_search(record_id, on_campus:)
         institution = adapter.options["institution"] || "49PAD"
-        on_campus = on_campus || false
+        on_campus ||= false
 
         <<-XML.strip_heredoc
         <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:impl="http://primo.kobv.de/PrimoWebServices/services/searcher" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="http://xml.apache.org/xml-soap">

@@ -38,7 +38,7 @@ module SearchEngine::Adapters
       end
 
       def build_record(cdi_result)
-        if doc = cdi_result.at_css("DOCSET > DOC")
+        if (doc = cdi_result.at_css("DOCSET > DOC"))
           RecordFactory.build(doc)
         end
       end

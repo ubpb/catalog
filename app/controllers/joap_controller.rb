@@ -16,7 +16,6 @@ class JoapController < ApplicationController
     end
   end
 
-
   def show
     if (result = resolve_issn(params[:issn]))
       # We have found a result, lets parse it...
@@ -36,7 +35,7 @@ class JoapController < ApplicationController
     end
   end
 
-private
+  private
 
   def resolve_issn(issn)
     response = RestClient.get(BASE_URL,

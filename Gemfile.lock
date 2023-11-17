@@ -11,16 +11,6 @@ GIT
       standard-custom (>= 1.0)
       standard-rails (>= 0.1.0)
 
-PATH
-  remote: vendor/gems/exl_api
-  specs:
-    exl_api (1.0.0)
-      activesupport (> 6)
-      faraday (~> 2.7)
-      hashie (~> 5.0)
-      nokogiri (~> 1.11)
-      oj (~> 3.11)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +83,12 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     airbrussh (1.5.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    alma_api (1.0.1)
+      activesupport (> 6, < 8)
+      faraday (~> 2.7)
+      hashie (~> 5.0)
+      nokogiri (~> 1.11)
+      oj (~> 3.11)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -398,6 +394,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.7)
+  alma_api (~> 1.0)
   bcrypt (~> 3.1)
   bibtex-ruby (~> 6.0.0)
   bootsnap (>= 1.4.2)
@@ -411,7 +408,6 @@ DEPENDENCIES
   debug
   dry-struct (~> 1.4)
   elasticsearch (~> 8.1)
-  exl_api (~> 1.0.0)!
   faraday (~> 2.7, < 3)
   foreman (>= 0.87)
   hashids (~> 1.0)

@@ -5,8 +5,7 @@ module Ils::Adapters
       def call(record_id, user_id)
         create_hold_request(record_id, user_id)
         true
-      rescue ExlApi::Error => e
-        puts e.message
+      rescue AlmaApi::Error
         false
       end
 

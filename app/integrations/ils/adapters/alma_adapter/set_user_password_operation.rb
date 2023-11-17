@@ -10,7 +10,7 @@ module Ils::Adapters
         # Update the user
         adapter.api.put("users/#{user_id}", body: body.to_json)
         true
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         false
       end
 

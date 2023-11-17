@@ -13,7 +13,7 @@ module Ils::Adapters
         (response["request_option"] || [{}]).find do |op|
           op.dig("type", "value") == "HOLD"
         end.present?
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         nil
       end
 

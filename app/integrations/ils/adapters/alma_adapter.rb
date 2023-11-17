@@ -7,7 +7,7 @@ module Ils::Adapters
     def initialize(options = {})
       super
 
-      @api = ExlApi.configure do |config|
+      @api = AlmaApi.configure do |config|
         config.api_key  = options[:api_key]
         config.base_url = options[:api_base_url] || "https://api-eu.hosted.exlibrisgroup.com/almaws/v1"
         config.language = options[:language]     || "de"

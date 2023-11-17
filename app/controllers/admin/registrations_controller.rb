@@ -81,7 +81,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
      email_query_string = "email~#{@registration.email}"
      @email_duplicates = check_duplicates_in_alma(@registration, email_query_string)
     end
-  rescue ExlApi::Error => e
+  rescue AlmaApi::Error => e
     msg = "Error checking duplicate users in Alma [#{e.code}]: #{e.message}"
     Rails.logger.error(msg)
     @error = msg
@@ -166,7 +166,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
     result = Ils.adapter.api.post("/users", body: alma_user.to_json, format: "application/json")
     result["primary_id"].presence
-  rescue ExlApi::Error => e
+  rescue AlmaApi::Error => e
     Rails.logger.error("Error creating user in Alma [#{e.code}]: #{e.message}")
     nil
   end

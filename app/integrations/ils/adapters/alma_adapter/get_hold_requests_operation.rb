@@ -63,7 +63,7 @@ module Ils::Adapters
         adapter.api.get(
           "items?item_barcode=#{barcode}"
         )
-      rescue ExlApi::Error
+      rescue AlmaApi::Error
         nil
       end
 

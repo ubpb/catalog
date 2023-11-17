@@ -26,7 +26,7 @@ module Ils::Adapters
             loan_status: "Active"
           }
         ).try(:[], "item_loan") || []
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         []
       end
 
@@ -36,7 +36,7 @@ module Ils::Adapters
           params: {
             view: "brief"
           })
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         nil
       end
 

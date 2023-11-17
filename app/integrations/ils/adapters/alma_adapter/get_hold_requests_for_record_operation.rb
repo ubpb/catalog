@@ -17,7 +17,7 @@ module Ils::Adapters
             #request_type: "HOLD"
           }
         ).try(:[], "user_request") || []
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         []
       end
 

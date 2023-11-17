@@ -78,8 +78,8 @@ class Admin::RegistrationsController < Admin::ApplicationController
     @name_duplicates = check_duplicates_in_alma(@registration, names_query_string)
 
     if @registration.email.present?
-     email_query_string = "email~#{@registration.email}"
-     @email_duplicates = check_duplicates_in_alma(@registration, email_query_string)
+      email_query_string = "email~#{@registration.email}"
+      @email_duplicates = check_duplicates_in_alma(@registration, email_query_string)
     end
   rescue AlmaApi::Error => e
     msg = "Error checking duplicate users in Alma [#{e.code}]: #{e.message}"
@@ -90,26 +90,13 @@ class Admin::RegistrationsController < Admin::ApplicationController
   private
 
   def check_duplicates_in_alma(registration, query_string)
-    # The query does not work with the Alma API gem implementation, because of bogus url encoding in RestClient.
-    # So we use faraday directly. This can be modified if we migrate from RestClient to Faraday in the gem.
-    conn = Faraday.new(
-      url: "#{Ils.adapter.api.configuration.api_base_url}/users",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        authorization: "apikey #{Ils.adapter.api.configuration.api_key}"
-      },
+    alma_users = Ils.adapter.api.get(
+      "users",
       params: {
         q: query_string,
         expand: "full"
       }
-    ) do |builder|
-      builder.response :json
-      builder.response :raise_error
-    end
-
-    alma_users = conn.get.body["user"]
-    # puts JSON.pretty_generate(alma_users)
+    )["user"]
 
     if alma_users.present?
       alma_users.map do |alma_user|

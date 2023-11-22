@@ -81,7 +81,7 @@ ruby:
         .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
 
       / Year of publication and edition
-      - yop_and_edition = [record.edition, record.year_of_publication].compact.join(", ")
+      - yop_and_edition = [record.edition, record.year_of_publication].map(&:presence).compact.join(", ")
       - if yop_and_edition.present?
         .mb-0 = yop_and_edition
 

@@ -39,8 +39,7 @@ module Ils::Adapters
 
       def load_holdings(record_id)
         adapter.api.get(
-          "bibs/#{record_id}/holdings",
-          format: "application/json"
+          "bibs/#{record_id}/holdings"
         ).try(:[], "holding") || []
       rescue
         []
@@ -52,7 +51,7 @@ module Ils::Adapters
         # Load the bibs information from Alma
         bibs = adapter.api.get(
           "bibs",
-          format: "application/xml",
+          format: "xml",
           params: {
             mms_id: record_id,
             expand: "p_avail", # Important to get the AVA fields

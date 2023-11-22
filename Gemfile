@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby IO.read(".ruby-version").strip
 
 gem "addressable", "~> 2.7"
+gem "alma_api", "~> 1.0"
 gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.0.0", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
@@ -28,8 +29,6 @@ gem "sprockets-rails", "~> 3.4.2"
 gem "strip_attributes", "~> 1.13"
 gem "turbo-rails", "~> 1.1"
 gem "view_component", "~> 3.0"
-
-gem "exl_api", "~> 1.0.0", path: "vendor/gems/exl_api"
 
 group :production do
   gem "newrelic_rpm", ">= 8.9.0"

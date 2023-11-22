@@ -24,9 +24,9 @@ module Ils::Adapters
           }
         end
 
-        adapter.api.put("users/#{user_id}", body: user.to_json, format: "application/json")
+        adapter.api.put("users/#{user_id}", body: user.to_json)
         true
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         false
       end
 

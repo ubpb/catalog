@@ -8,9 +8,9 @@ module Ils::Adapters
         # Set the password
         body["password"] = password
         # Update the user
-        adapter.api.put("users/#{user_id}", body: body.to_json, format: "application/json")
+        adapter.api.put("users/#{user_id}", body: body.to_json)
         true
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         false
       end
 

@@ -3,9 +3,9 @@ module Ils::Adapters
     class GetUserOperation < Operation
 
       def call(user_id)
-        response = adapter.api.get("users/#{user_id}", format: "application/json")
+        response = adapter.api.get("users/#{user_id}")
         UserFactory.build(response)
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         nil
       end
 

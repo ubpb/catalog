@@ -17,10 +17,19 @@ class LinkResolverController < ApplicationController
     def initialize(context_hash)
       @context_hash = context_hash
     end
+
     # # Accessor for values
-    def values(id); @context_hash[id]; end
-    def value(id); values(id)&.last; end
-    def value_first(id); values(id)&.first; end
+    def values(id)
+      @context_hash[id]
+    end
+
+    def value(id)
+      values(id)&.last
+    end
+
+    def value_first(id)
+      values(id)&.first
+    end
     # # Convenient methods for fields we use in the UI
     # def alma_id; value("rft.mms_id"); end
 
@@ -31,13 +40,30 @@ class LinkResolverController < ApplicationController
 
       value_first("rft.btitle").presence || value("rft.title")
     end
-    def authors; values("rft.au")&.join("; "); end
-    def publisher; value("rft.pub"); end
-    def place_of_publication; value("rft.place"); end
-    def date_of_publication; value("rft.pubdate"); end
 
-    def is_book?; value("rft.btitle").present?; end
-    def is_journal?; value("rft.jtitle").present?; end
+    def authors
+      values("rft.au")&.join("; ")
+    end
+
+    def publisher
+      value("rft.pub")
+    end
+
+    def place_of_publication
+      value("rft.place")
+    end
+
+    def date_of_publication
+      value("rft.pubdate")
+    end
+
+    def is_book?
+      value("rft.btitle").present?
+    end
+
+    def is_journal?
+      value("rft.jtitle").present?
+    end
 
   end
 
@@ -49,8 +75,11 @@ class LinkResolverController < ApplicationController
 
     # Convenient methods for fields we use in the UI
     def fulltext_url = @resolution_url
+
     def package_name = @keys["package_display_name"]
+
     def is_free? = @keys["is_free"]
+
     def public_note = @keys["public_note"]
 
     def availability
@@ -76,7 +105,7 @@ class LinkResolverController < ApplicationController
     # Check Open URL against Alma link Resolver if Open URL params present
     # in the request.
     alma_result = resolve_by_alma(open_url_params)
-    return unless alma_result.present?
+    return if alma_result.blank?
 
     # Get context
     @context = get_context(alma_result)
@@ -84,7 +113,7 @@ class LinkResolverController < ApplicationController
     @fulltext_services = get_fulltext_services(alma_result)
   end
 
-private
+  private
 
   SERVICE_PRIORITY = [
     /unpaywall/i
@@ -135,7 +164,7 @@ private
       }.presence
 
       # Fix is_free for unpaywall
-      keys["is_free"] = true if keys["package_display_name"] =~ /unpaywall/i
+      keys["is_free"] = true if /unpaywall/i.match?(keys["package_display_name"])
 
       next unless resolution_url
       next unless keys
@@ -166,15 +195,26 @@ private
       end
 
       # Call the Alma Link Resolver
-      response = RestClient.get("#{base_url}?#{request_params.join('&')}")
+      response = http_client.get("#{base_url}?#{request_params.join("&")}")
 
       # Check response
-      if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
+      if response.status == 200 && response.headers[:content_type] =~ /text\/xml/
         Nokogiri::XML.parse(response.body).remove_namespaces!
       end
     end
-  rescue RestClient::ExceptionWithResponse
+  rescue Faraday::Error
     nil
+  end
+
+  def http_client
+    Faraday.new(
+      headers: {
+        accept: "text/xml",
+        "content-type": "text/xml"
+      }
+    ) do |faraday|
+      faraday.response :raise_error
+    end
   end
 
   def open_url_params
@@ -196,11 +236,11 @@ private
     # Add params that are required by the Alma link resolver
     if open_url_params.present?
       open_url_params = open_url_params.merge(
-        "svc_dat"       => ["CTO"],
+        "svc_dat" => ["CTO"],
         "response_type" => ["xml"],
-        "ctx_enc"       => ["info:ofi/enc:UTF-8"],
-        "ctx_ver"       => ["Z39.88-2004"],
-        "url_ver"       => ["Z39.88-2004"]
+        "ctx_enc" => ["info:ofi/enc:UTF-8"],
+        "ctx_ver" => ["Z39.88-2004"],
+        "url_ver" => ["Z39.88-2004"]
         # "user_ip"       => [request.remote_ip]
       )
     end
@@ -213,18 +253,18 @@ private
   def normalized_key_and_value(key_node)
     # Get clean key
     key = key_node.attr("id")
-                  &.underscore
-                  &.downcase
-                  &.squish
-                  &.tr(" ", "_")
-                  .presence
+      &.underscore
+      &.downcase
+      &.squish
+      &.tr(" ", "_")
+      .presence
 
     # Get clean value
     value = case key_node.text&.downcase
-            when "0", "no", "false" then false
-            when "1", "yes", "true" then true
-            else key_node.text.presence
-            end
+    when "0", "no", "false" then false
+    when "1", "yes", "true" then true
+    else key_node.text.presence
+    end
 
     # Return key and value
     [key, value]

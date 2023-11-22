@@ -49,7 +49,6 @@ module Ils::Adapters
       def load_items(record_id, limit:, offset:)
         adapter.api.get(
           "bibs/#{record_id}/holdings/ALL/items",
-          format: "application/json",
           params: {
             expand: "due_date_policy,due_date",
             limit: limit,

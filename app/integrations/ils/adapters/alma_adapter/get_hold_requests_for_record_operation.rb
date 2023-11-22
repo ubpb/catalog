@@ -13,12 +13,11 @@ module Ils::Adapters
       def get_hold_requests(record_id)
         adapter.api.get(
           "bibs/#{record_id}/requests",
-          format: "application/json",
           params: {
             #request_type: "HOLD"
           }
         ).try(:[], "user_request") || []
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         []
       end
 

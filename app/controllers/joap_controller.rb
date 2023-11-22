@@ -16,7 +16,6 @@ class JoapController < ApplicationController
     end
   end
 
-
   def show
     if (result = resolve_issn(params[:issn]))
       # We have found a result, lets parse it...
@@ -36,26 +35,35 @@ class JoapController < ApplicationController
     end
   end
 
-private
+  private
 
   def resolve_issn(issn)
-    response = RestClient.get(BASE_URL,
-        params: {
-          pid: "bibid=UBPB",
-          sid: "bib:ubpb",
-          genre: "journal",
-          issn: issn
-        }
-      )
+    response = http_client.get(
+      BASE_URL,
+      {
+        pid: "bibid=UBPB",
+        sid: "bib:ubpb",
+        genre: "journal",
+        issn: issn
+      }
+    )
 
-    if response.code == 200 && response.headers[:content_type] =~ /text\/xml/
+    if response.status == 200 && response.headers[:content_type] =~ /text\/xml/
       Nokogiri::XML.parse(response.body).remove_namespaces!
     end
-  rescue RestClient::ExceptionWithResponse
+  rescue Faraday::Error
     nil
   end
 
+  def http_client
+    Faraday.new(
+      headers: {
+        accept: "text/xml",
+        "content-type": "text/xml"
+      }
+    ) do |faraday|
+      faraday.response :raise_error
+    end
+  end
+
 end
-
-
-

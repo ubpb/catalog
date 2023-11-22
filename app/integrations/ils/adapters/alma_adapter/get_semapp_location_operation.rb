@@ -22,23 +22,21 @@ module Ils::Adapters
       def get_loans(record_id)
         loans = adapter.api.get(
           "bibs/#{record_id}/loans",
-          format: "application/json",
           params: {
             loan_status: "Active"
           }
         ).try(:[], "item_loan") || []
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         []
       end
 
       def get_user(user_id)
         adapter.api.get(
           "users/#{user_id}",
-          format: "application/json",
           params: {
             view: "brief"
           })
-      rescue ExlApi::LogicalError
+      rescue AlmaApi::LogicalError
         nil
       end
 

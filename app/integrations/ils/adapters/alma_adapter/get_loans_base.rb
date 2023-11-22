@@ -100,7 +100,6 @@ module Ils::Adapters
         end
 
         adapter.api.get("users/#{user_id}/loans",
-          format: "application/json",
           params: params
         )
       end

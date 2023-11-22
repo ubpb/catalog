@@ -5,8 +5,7 @@ module Ils::Adapters
       def call(record_id, user_id)
         create_hold_request(record_id, user_id)
         true
-      rescue ExlApi::Error => e
-        puts e.message
+      rescue AlmaApi::Error
         false
       end
 
@@ -14,7 +13,6 @@ module Ils::Adapters
 
       def create_hold_request(record_id, user_id)
         adapter.api.post("users/#{user_id}/requests",
-          format: "application/json",
           params: {
             mms_id: record_id,
             allow_same_request: false

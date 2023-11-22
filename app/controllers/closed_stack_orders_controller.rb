@@ -90,9 +90,6 @@ class ClosedStackOrdersController < ApplicationController
 
   UNDEFINED_ERROR_MESSAGE = I18n.t("closed_stack_orders.undefined_error")
 
-  def new
-  end
-
   def create
     if @m1 == "BYH1141" && @k1.blank?
       flash[:error] = t(".microfiche_hint")
@@ -114,8 +111,8 @@ class ClosedStackOrdersController < ApplicationController
     url_params["jcheck"] = "true" if @volume_check
 
     begin
-      response_code = RestClient.get(url, params: url_params)&.body
-    rescue RestClient::ExceptionWithResponse
+      response_code = http_client.get(url, url_params)&.body
+    rescue Faraday::Error
       response_code = "undefined"
     end
 
@@ -124,12 +121,12 @@ class ClosedStackOrdersController < ApplicationController
       redirect_to new_closed_stack_order_path
     else
       @error_message = case response_code
-        when "fehler_nicht_schonwieder" then t(".errors.fehler_nicht_schonwieder")
-        when "fehler_bestellangaben"    then t(".errors.fehler_bestellangaben")
-        when "fehler_jahrgang_band"     then t(".errors.fehler_jahrgang_band")
-        when "fehler_jahr_in_ebene"     then @volume_error = true ; t(".errors.fehler_jahr_in_ebene")
-        when "fehler_jahrgang_falsch"   then t(".errors.fehler_jahrgang_falsch")
-        else UNDEFINED_ERROR_MESSAGE
+      when "fehler_nicht_schonwieder" then t(".errors.fehler_nicht_schonwieder")
+      when "fehler_bestellangaben"    then t(".errors.fehler_bestellangaben")
+      when "fehler_jahrgang_band"     then t(".errors.fehler_jahrgang_band")
+      when "fehler_jahr_in_ebene"     then @volume_error = true ; t(".errors.fehler_jahr_in_ebene")
+      when "fehler_jahrgang_falsch"   then t(".errors.fehler_jahrgang_falsch")
+      else UNDEFINED_ERROR_MESSAGE
       end
 
       flash[:error] = @error_message
@@ -137,7 +134,18 @@ class ClosedStackOrdersController < ApplicationController
     end
   end
 
-private
+  private
+
+  def http_client
+    Faraday.new(
+      headers: {
+        accept: "text/plain",
+        "content-type": "text/plain"
+      }
+    ) do |faraday|
+      faraday.response :raise_error
+    end
+  end
 
   def redirect_on_error
     redirect_to new_closed_stack_order_path(

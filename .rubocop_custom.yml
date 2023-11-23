@@ -1,6 +1,0 @@
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-
-Layout/ExtraSpacing:
-  Enabled: true
-  AllowForAlignment: true

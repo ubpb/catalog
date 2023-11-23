@@ -19,7 +19,7 @@ class Account::NotesController < Account::ApplicationController
         @resolved_entries = arel.map do |note|
           next unless available_search_scopes.include?(note.scope.to_sym)
 
-          if record = SearchEngine[note.scope].get_record(note.record_id, on_campus: on_campus?)
+          if (record = SearchEngine[note.scope].get_record(note.record_id, on_campus: on_campus?))
             {note: note, record: record}
           else
             {note: note, record: :deleted}

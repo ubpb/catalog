@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ubpb/rubocop-config.git
-  revision: 475d321b0352e6d37c4c61d3f49868d4be300c0b
+  revision: 03c95f990b1f85b80e5fd7564af4b99e40de212e
   branch: main
   specs:
     ubpb-rubocop-config (1.0.0)
@@ -247,6 +247,8 @@ GEM
     newrelic_rpm (9.6.0)
       base64
     nio4r (2.6.1)
+    nokogiri (1.15.5-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
@@ -407,6 +409,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-21
   arm64-darwin-22
   x86_64-linux

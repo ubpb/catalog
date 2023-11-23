@@ -24,8 +24,6 @@ inherit_gem:
     - config/custom.yml
 
 inherit_from:
-  - .rubocop_todo.yml
-  - .rubocop_strict.yml
   - .rubocop_custom.yml
 
 AllCops:

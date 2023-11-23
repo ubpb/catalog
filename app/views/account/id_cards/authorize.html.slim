@@ -1,0 +1,19 @@
+= turbo_frame_tag "modal" do
+  .modal-header
+    h5.modal-title = t(".header")
+    button(type="button" class="btn-close" data-bs-dismiss="modal")
+  .modal-body
+    = render "alerts"
+
+    - unless @alma_user.has_pin_set?
+      .callout.callout-warning.mb-0
+        p.mb-3 = t(".info")
+        .text-center = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-warning", target: "_top"
+    - else
+      = form_tag authorize_account_id_card_path, method: :post do
+        .input-group
+          span.input-group-text
+            i.fa-solid.fa-lock
+          =< password_field_tag :pin, params[:pin], placeholder: "PIN", \
+            class: "form-control", autofocus: true
+          = submit_tag t(".submit"), class: "btn btn-primary"

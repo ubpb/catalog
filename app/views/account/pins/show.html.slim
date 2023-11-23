@@ -1,0 +1,18 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0 = t(".header")
+  .card-body
+    .callout.callout-info
+      i.fa-solid.fa-info-circle.fa-lg.me-2
+      = t(".info")
+
+    - if @user.has_pin_set?
+      .callout.callout-success.mb-0
+        .mb-3 = t(".status_pin_set")
+        span = link_to t(".change_pin"), edit_account_pin_path, class: "btn btn-success"
+    - else
+      .callout.callout-warning.mb-0
+        .fw-bold.mb-3 = t(".status_no_pin_set")
+        span = link_to "PIN jetzt festlegen", new_account_pin_path, class: "btn btn-warning"
+
+

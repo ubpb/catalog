@@ -1,0 +1,20 @@
+de:
+  account:
+    id_cards:
+      breadcrumb: "Mein eAusweis"
+
+      show:
+        header: "Mein eAusweis"
+        no_barcode_error: >
+          Ihr eAusweis kann nicht angezeigt werden. Es ist ein Fehler aufgetreten.
+          Bitte wenden Sie sich an die Kolleginnen und Kollegen der Ortsleihe.
+
+      authorize:
+        header: "Mein eAusweis – PIN-Eingabe erforderlich"
+        error_notice: "Die eingegebene PIN ist nicht korrekt. Bitte versuchen Sie es erneut."
+        submit: "PIN prüfen"
+        set_pin: "PIN jetzt festlegen"
+        info: >
+          Sie haben noch keine PIN gesetzt. Um den eAusweis nutzen zu können,
+          müssen Sie zunächst eine persöhnliche PIN für Ihr Konto festlegen.
+          Die PIN wird benötigt, um den eAusweis anzeigen zu können.

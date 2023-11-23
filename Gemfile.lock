@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ubpb/rubocop-config.git
-  revision: 03c95f990b1f85b80e5fd7564af4b99e40de212e
+  revision: c780f7644e96ab683f3c38450721f3b4d2b304fe
   branch: main
   specs:
     ubpb-rubocop-config (1.0.0)

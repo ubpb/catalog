@@ -28,7 +28,7 @@ gem "slim", ">= 5.0"
 gem "sprockets-rails", "~> 3.4.2"
 gem "strip_attributes", "~> 1.13"
 gem "turbo-rails", "~> 1.1"
-gem "view_component", "~> 3.0"
+gem "view_component", "~> 3.8"
 
 group :production do
   gem "newrelic_rpm", ">= 8.9.0"

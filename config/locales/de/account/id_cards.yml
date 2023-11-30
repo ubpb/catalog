@@ -8,6 +8,7 @@ de:
         no_barcode_error: >
           Ihr eAusweis kann nicht angezeigt werden. Es ist ein Fehler aufgetreten.
           Bitte wenden Sie sich an die Kolleginnen und Kollegen der Ortsleihe.
+        expiry_date: "Gültig bis: %{date}"
 
       authorize:
         header: "Mein eAusweis – PIN-Eingabe erforderlich"

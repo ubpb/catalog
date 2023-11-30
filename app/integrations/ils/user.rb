@@ -9,6 +9,7 @@ class Ils
     attribute :force_password_change, Ils::Types::Bool.default(false)
     attribute :barcode, Ils::Types::String.optional
     attribute :pin, Ils::Types::String.optional
+    attribute :expiry_date, Ils::Types::Date.optional
 
     def has_pin_set?
       pin.present?

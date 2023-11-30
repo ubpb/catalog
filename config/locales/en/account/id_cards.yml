@@ -8,6 +8,7 @@ en:
         no_barcode_error: >
           Your eID-Card cannot be displayed. An error has occurred.
           Please contact the staff at the local circulation desk.
+        expiry_date: "Valid until: %{date}"
 
       authorize:
         header: "My eID-Card – PIN entry required"

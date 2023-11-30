@@ -6,10 +6,12 @@
     - if @user.barcode.present?
       .text-center.mb-3.mt-3
         div(data-controller="barcode" data-barcode-text-value="#{@user.barcode}" data-barcode-display-value-value="false")
-      .d-flex
-        div
-          h3 = @user.full_name_reversed
-          h4 = @user.short_barcode
+      div
+        h3 = @user.full_name_reversed
+        h4 = @user.short_barcode
+        - if @user.expiry_date.present?
+          em = t(".expiry_date", date: l(@user.expiry_date))
+
       .d-flex.align-items-end
         #current_date_time
         .ms-auto

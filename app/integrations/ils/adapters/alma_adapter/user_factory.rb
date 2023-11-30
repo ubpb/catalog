@@ -16,7 +16,8 @@ module Ils::Adapters
           notes: get_nodes(alma_user_hash),
           force_password_change: get_force_password_change(alma_user_hash),
           barcode: get_barcode(alma_user_hash),
-          pin: get_pin(alma_user_hash)
+          pin: get_pin(alma_user_hash),
+          expiry_date: get_expiry_date(alma_user_hash)
         )
       end
 
@@ -66,6 +67,11 @@ module Ils::Adapters
 
       def get_pin(alma_user_hash)
         alma_user_hash["pin_number"].presence
+      end
+
+      def get_expiry_date(alma_user_hash)
+        expiry_date = alma_user_hash["expiry_date"].presence
+        Date.parse(expiry_date) if expiry_date
       end
 
     end

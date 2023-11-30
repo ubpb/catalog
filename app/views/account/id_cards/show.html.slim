@@ -10,6 +10,8 @@
         div
           h3 = @user.full_name_reversed
           h4 = @user.short_barcode
+      .d-flex.align-items-end
+        #current_date_time
         .ms-auto
           i.fa-solid.fa-id-card.fa-3x.fa-flip
 
@@ -17,3 +19,17 @@
       .alert.alert-danger.mb-0
         i.fa-solid.fa-exclamation-triangle.fa-lg.me-2
         = t(".no_barcode_error")
+
+  javascript:
+    function update_date_and_time() {
+      var now = new Date();
+      var date = now.toLocaleDateString();
+      var time = now.toLocaleTimeString();
+      document.getElementById("current_date_time").innerHTML = date + ", " + time;
+    }
+
+    update_date_and_time();
+
+    setInterval(function() {
+      update_date_and_time();
+    }, 1000);

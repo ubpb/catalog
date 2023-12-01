@@ -10,7 +10,7 @@ ruby:
   data-record-id=record_id
   data-notes-target="record"
 )
-  div.align-self-start.text-center.text-muted.me-3(style="width: 55px; min-width: 55px; position: relative; color: var(--bs-border-color)")
+  .align-self-start.text-center.me-3.d-none.d-md-block(style="width: 55px; min-width: 55px; position: relative; color: var(--bs-border-color)")
     - if record != :deleted
       / Cover Image
       div.fa-regular.fa-file.fa-3x.w-100.p-2.pt-3.pb-3.rounded
@@ -18,45 +18,48 @@ ruby:
       - if isbn13
         = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
 
-  div.flex-fill
+  .flex-fill
     - if record == :deleted
       div
         = t(".notes.deleted-record", record_id: record_id)
     - else
-      div.d-flex
+      div.clearfix
+        / Tools
+        .float-end
+          .d-flex.mb-2.d-print-none
+            / Note add button
+            - if enable_notes && current_user.present?
+              .btn.btn-outline-primary.btn-sm.ms-2(
+                data-record-id=record_id
+                data-notes-button-add
+                data-action="click->notes#edit"
+              )
+                i.fa-regular.fa-sticky-note.fa-fw(style="pointer-events: none;")
+
+            / Watchlist
+            - if enable_watch_lists_panel
+              ruby:
+                watch_lists_panel_component = WatchListsPanelComponent.new(
+                  user: current_user,
+                  search_scope: current_search_scope,
+                  record_id: record_id
+                )
+              .ms-2 = render(watch_lists_panel_component)
+
+            / Citation / Export
+            .ms-2
+              .dropdown
+                button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+                  i.fa-solid.fa-quote-left
+
+                ul.dropdown-menu.dropdown-menu-end
+                  .px-3.py-1.text-muted.text-sm = t(".citations.header")
+                  li ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record_id, format: :bib), class: "dropdown-item"
+
         / Title
-        h5.mb-0.me-auto.flex-fill.text-break
+        h5.mb-0.text-break
           = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
 
-        / Note add button
-        - if enable_notes && current_user.present?
-          .ms-2.d-print-none
-            .btn.btn-outline-primary.btn-sm(
-              data-record-id=record_id
-              data-notes-button-add
-              data-action="click->notes#edit"
-            )
-              i.fa-regular.fa-sticky-note.fa-fw(style="pointer-events: none;")
-
-        / Watchlist
-        - if enable_watch_lists_panel
-          ruby:
-            watch_lists_panel_component = WatchListsPanelComponent.new(
-              user: current_user,
-              search_scope: current_search_scope,
-              record_id: record_id
-            )
-          .ms-2.d-print-none = render(watch_lists_panel_component)
-
-        / Citation / Export
-        .ms-2.d-print-none
-          .dropdown
-            button.btn.btn-outline-primary.btn-sm.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
-              i.fa-solid.fa-quote-left
-
-            ul.dropdown-menu.dropdown-menu-end
-              .px-3.py-1.text-muted.text-sm = t(".citations.header")
-              li ==< link_to t(".citations.bibtex"), record_path(current_search_scope, record_id, format: :bib), class: "dropdown-item"
 
       / Part of...
       = optional_value(record.is_part_of) do |is_part_of|

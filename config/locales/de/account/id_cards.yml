@@ -1,21 +1,21 @@
 de:
   account:
     id_cards:
-      breadcrumb: "Mein eAusweis"
+      breadcrumb: "Mein E-Bibliotheksausweis"
 
       show:
-        header: "Mein eAusweis"
+        header: "Mein E-Bibliotheksausweis"
         no_barcode_error: >
-          Ihr eAusweis kann nicht angezeigt werden. Es ist ein Fehler aufgetreten.
+          Ihr E-Bibliotheksausweis kann nicht angezeigt werden. Es ist ein Fehler aufgetreten.
           Bitte wenden Sie sich an die Kolleginnen und Kollegen der Ortsleihe.
         expiry_date: "Gültig bis: %{date}"
 
       authorize:
-        header: "Mein eAusweis – PIN-Eingabe erforderlich"
+        header: "Mein E-Bibliotheksausweis – PIN-Eingabe erforderlich"
         error_notice: "Die eingegebene PIN ist nicht korrekt. Bitte versuchen Sie es erneut."
         submit: "PIN prüfen"
         set_pin: "PIN jetzt festlegen"
         info: >
-          Sie haben noch keine PIN gesetzt. Um den eAusweis nutzen zu können,
+          Sie haben noch keine PIN gesetzt. Um den E-Bibliotheksausweis nutzen zu können,
           müssen Sie zunächst eine persöhnliche PIN für Ihr Konto festlegen.
-          Die PIN wird benötigt, um den eAusweis anzeigen zu können.
+          Die PIN wird benötigt, um den E-Bibliotheksausweis anzeigen zu können.

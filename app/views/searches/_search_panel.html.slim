@@ -27,10 +27,12 @@
           - if @search_request.present?
             - @search_request.queries.each.with_index do |q, i|
               = render "searches/search_field", form: f, query: q
-            = f.submit t(".search"), class: "btn btn-primary d-print-none"
+            .d-grid.gap-2.d-md-block
+              = f.submit t(".search"), class: "btn btn-primary d-print-none"
           - else # Default search panel
             = render "searches/search_field", form: f, autofocus: true
-            = f.submit t(".search"), class: "btn btn-primary d-print-none"
+            .d-grid.gap-2.d-md-block
+              = f.submit t(".search"), class: "btn btn-primary d-print-none"
 
       - if @search_request.blank?
         .alert.alert-success.mb-0.mt-3.d-print-none

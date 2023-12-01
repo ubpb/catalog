@@ -9,18 +9,18 @@
       button.btn-close(type="button" data-bs-dismiss="offcanvas" data-bs-target="#offcanvas-main-menu")
 
     .offcanvas-body
-      nav.gap-2.d-grid.mb-4
-        = link_to root_path, class: "btn btn-secondary" do
-          i.fas.fa-home
-          =< t("application.main_menu.home")
+      nav.list-group.mb-4
+        = link_to root_path, class: "list-group-item list-group-item-action" do
+          i.fas.fa-home.me-2
+          = t("application.main_menu.home")
 
-        = link_to "http://blogs.uni-paderborn.de/ub-katalog/hilfe/", class: "btn btn-secondary", target: "_blank" do
-          i.far.fa-lightbulb
-          =< t("application.main_menu.help")
+        = link_to "http://blogs.uni-paderborn.de/ub-katalog/hilfe/", class: "list-group-item list-group-item-action", target: "_blank" do
+          i.far.fa-lightbulb.me-2
+          = t("application.main_menu.help")
 
-        = link_to "http://blogs.uni-paderborn.de/ub-katalog/", class: "btn btn-secondary", target: "_blank" do
-          i.fas.fa-bullhorn
-          =< t("application.main_menu.blog")
+        = link_to "http://blogs.uni-paderborn.de/ub-katalog/", class: "list-group-item list-group-item-action", target: "_blank" do
+          i.fas.fa-bullhorn.me-2
+          = t("application.main_menu.blog")
 
       h5.text-muted = t("application.main_menu.further_services")
       nav.list-group.mb-4

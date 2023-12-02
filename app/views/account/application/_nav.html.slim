@@ -1,35 +1,34 @@
-.d-lg-none.mb-3
+.d-grid.d-md-block.d-lg-none.mb-3
   a.btn.btn-secondary.btn-block(data-bs-toggle="collapse" href="#collapseNav" role="button")
-    i.fas.fa-bars
-    =< t(".nav-toggle")
+    i.fas.fa-bars.me-2
+    = t(".nav-toggle")
 
 #collapseNav.collapse.d-lg-block
-  .card.card-shadowed.mb-3
-    nav.list-group.list-group-flush
-      = link_to account_loans_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-book
-        =< t(".loans")
-      = link_to account_loans_history_index_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-clock-rotate-left
-        =< t(".loans_history")
-      = link_to account_fees_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-euro-sign
-        =< t(".fees")
-      = link_to account_hold_requests_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-bookmark
-        =< t(".hold_requests")
-      = link_to account_watch_lists_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-heart
-        =< t(".watch_lists")
-      = link_to account_notes_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-note-sticky
-        =< t(".notes")
-      = link_to account_inter_library_loans_path, class: "list-group-item" do
-        i.fa-solid.fa-fw.fa-right-left
-        =< t(".ill")
-      = link_to account_calendar_index_path, class: "list-group-item" do
-        i.fa-regular.fa-fw.fa-calendar
-        =< t(".calendar")
-      = link_to account_profile_path, class: "list-group-item" do
-        i.fa-regular.fa-fw.fa-user
-        =< t(".profile")
+  nav.list-group.mb-4.mb-lg-0
+    = link_to account_loans_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-book.me-2
+      = t(".loans")
+    = link_to account_loans_history_index_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-clock-rotate-left.me-2
+      = t(".loans_history")
+    = link_to account_fees_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-euro-sign.me-2
+      = t(".fees")
+    = link_to account_hold_requests_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-bookmark.me-2
+      = t(".hold_requests")
+    = link_to account_watch_lists_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-heart.me-2
+      = t(".watch_lists")
+    = link_to account_notes_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-note-sticky.me-2
+      = t(".notes")
+    = link_to account_inter_library_loans_path, class: "list-group-item list-group-item-action" do
+      i.fa-solid.fa-fw.fa-right-left.me-2
+      = t(".ill")
+    = link_to account_calendar_index_path, class: "list-group-item list-group-item-action" do
+      i.fa-regular.fa-fw.fa-calendar.me-2
+      = t(".calendar")
+    = link_to account_profile_path, class: "list-group-item list-group-item-action" do
+      i.fa-regular.fa-fw.fa-user.me-2
+      = t(".profile")

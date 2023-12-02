@@ -1,22 +1,15 @@
 .card {
   &.card-primary {
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: $primary;
+    // border-bottom-width: 4px;
+    // border-bottom-style: solid;
+    // border-bottom-color: $card-border-color;
   }
 
   &.card-shadowed {
     // Use filter and drop-shadow instead of box-shadow.
     // This allows us to use the shadow on cards with transparent
     // headers (e.g. the search panel)
-    filter: drop-shadow($box-shadow);
-    @media print {
-      filter: none;
-    }
-  }
-
-  @media print {
-    border: 1px solid $gray-300;
+    //ilter: drop-shadow($box-shadow);
   }
 }
 
@@ -28,4 +21,11 @@
       filter: none;
     }
   }
+}
+
+@include color-mode(dark, true) {
+  .card {
+    --#{$prefix}card-border-color: var(--bs-border-color);
+  }
+
 }

@@ -1,50 +1,258 @@
-// Custom colors
-$upb-blue: #003671;
-$upb-cyan: #18b0e2;
+// ###########################################################################################
+// This file is used to override Bootstrap variables and setup our own variables.
+// ###########################################################################################
 
-// Override Bootstrap colors
-$white: #fff;
-$black: #000;
-$blue:  $upb-blue;
-$cyan:  $upb-cyan;
-
-// Override Bootstrap theme colors
-$primary: $upb-cyan;
-
-// Enable negative margin utils
+// -------------------------------------------------------------------------------------------
+// Bootstrap options
+// -------------------------------------------------------------------------------------------
 $enable-negative-margins: true;
+$min-contrast-ratio: 1.8;
 
-// Reduce contrast ratio to force white text on $upb-cyan
-$min-contrast-ratio: 2.5;
+// -------------------------------------------------------------------------------------------
+// UPB brand colors
+// -------------------------------------------------------------------------------------------
 
+// UPB-Ultrablau ist die barrierearme Primärfarbe und standardmäßig für Überschriften und Texthervorhebungen
+// vorgesehen. Diese Farbe darf nicht aufgerastert werden.
+$upb-ultrablau: #0025AA;
+
+// UPB-Himmelblau ist eine barrierearme Sekundärfarbe und darf in 100% Sättigung für Überschriften oder
+// Texthervorhebungen genutzt werden.
+// UPB-Himmelblau darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Ab einem Farbtonwert von 40% wechselt die Schriftfarbe von Weiß auf Schwarz.
+$upb-himmelblau:  #0A75C4;
+$upb-himmelblau-100p: $upb-himmelblau;
+$upb-himmelblau-90p: tint-color($upb-himmelblau, 10%);
+$upb-himmelblau-80p: tint-color($upb-himmelblau, 20%);
+$upb-himmelblau-70p: tint-color($upb-himmelblau, 30%);
+$upb-himmelblau-60p: tint-color($upb-himmelblau, 40%);
+$upb-himmelblau-50p: tint-color($upb-himmelblau, 50%);
+$upb-himmelblau-40p: tint-color($upb-himmelblau, 60%);
+$upb-himmelblau-30p: tint-color($upb-himmelblau, 70%);
+$upb-himmelblau-20p: tint-color($upb-himmelblau, 80%);
+
+$upb-himmelblau-colors: (
+  upb-himmelblau-100p: $upb-himmelblau-100p,
+  upb-himmelblau-90p: $upb-himmelblau-90p,
+  upb-himmelblau-80p: $upb-himmelblau-80p,
+  upb-himmelblau-70p: $upb-himmelblau-70p,
+  upb-himmelblau-60p: $upb-himmelblau-60p,
+  upb-himmelblau-50p: $upb-himmelblau-50p,
+  upb-himmelblau-40p: $upb-himmelblau-40p,
+  upb-himmelblau-30p: $upb-himmelblau-30p,
+  upb-himmelblau-20p: $upb-himmelblau-20p,
+);
+
+// UPB-Saphirblau ist eine barrierearme Sekundärfarbe und darf in 100% Sättigung für Überschriften oder
+// Texthervorhebungen genutzt werden.
+// UPB-Saphierblau darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Bei einem Farbtonwert von 20% wechselt die Schriftfarbe von Weiß auf Schwarz.
+$upb-saphirblau: #181C62;
+
+$upb-saphirblau-100p: $upb-saphirblau;
+$upb-saphirblau-90p: tint-color($upb-saphirblau, 10%);
+$upb-saphirblau-80p: tint-color($upb-saphirblau, 20%);
+$upb-saphirblau-70p: tint-color($upb-saphirblau, 30%);
+$upb-saphirblau-60p: tint-color($upb-saphirblau, 40%);
+$upb-saphirblau-50p: tint-color($upb-saphirblau, 50%);
+$upb-saphirblau-40p: tint-color($upb-saphirblau, 60%);
+$upb-saphirblau-30p: tint-color($upb-saphirblau, 70%);
+$upb-saphirblau-20p: tint-color($upb-saphirblau, 80%);
+
+$upb-saphirblau-colors: (
+  upb-saphirblau-100p: $upb-saphirblau-100p,
+  upb-saphirblau-90p:  $upb-saphirblau-90p,
+  upb-saphirblau-80p:  $upb-saphirblau-80p,
+  upb-saphirblau-70p:  $upb-saphirblau-70p,
+  upb-saphirblau-60p:  $upb-saphirblau-60p,
+  upb-saphirblau-50p:  $upb-saphirblau-50p,
+  upb-saphirblau-40p:  $upb-saphirblau-40p,
+  upb-saphirblau-30p:  $upb-saphirblau-30p,
+  upb-saphirblau-20p:  $upb-saphirblau-20p,
+);
+
+// UPB-Irisviolett ist eine barrierearme Sekundärfarbe und darf in 100% Sättigung für Überschriften oder
+// Texthervorhebungen genutzt werden.
+// UPB-Irisviolett darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Ab einem Farbtonwert von 40% wechselt die Schriftfarbe von Weiß auf Schwarz.
+$upb-irisviolett: #7E3FA8;
+$upb-irisviolett-100p: $upb-irisviolett;
+$upb-irisviolett-90p: tint-color($upb-irisviolett, 10%);
+$upb-irisviolett-80p: tint-color($upb-irisviolett, 20%);
+$upb-irisviolett-70p: tint-color($upb-irisviolett, 30%);
+$upb-irisviolett-60p: tint-color($upb-irisviolett, 40%);
+$upb-irisviolett-50p: tint-color($upb-irisviolett, 50%);
+$upb-irisviolett-40p: tint-color($upb-irisviolett, 60%);
+$upb-irisviolett-30p: tint-color($upb-irisviolett, 70%);
+$upb-irisviolett-20p: tint-color($upb-irisviolett, 80%);
+
+$upb-irisviolett-colors: (
+  upb-irisviolett-100p: $upb-irisviolett-100p,
+  upb-irisviolett-90p:  $upb-irisviolett-90p,
+  upb-irisviolett-80p:  $upb-irisviolett-80p,
+  upb-irisviolett-70p:  $upb-irisviolett-70p,
+  upb-irisviolett-60p:  $upb-irisviolett-60p,
+  upb-irisviolett-50p:  $upb-irisviolett-50p,
+  upb-irisviolett-40p:  $upb-irisviolett-40p,
+  upb-irisviolett-30p:  $upb-irisviolett-30p,
+  upb-irisviolett-20p:  $upb-irisviolett-20p,
+);
+
+// UPB-Fuchsiarot ist eine barrierearme Sekundärfarbe und darf in 100% Sättigung für Überschriften oder
+// Texthervorhebungen genutzt werden.
+// UPB-Fuchsiarot darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Ab einem Farbtonwert von 40% wechselt die Schriftfarbe weiß auf schwarz.
+$upb-fuchsiarot: #C138A0;
+$upb-fuchsiarot-100p: $upb-fuchsiarot;
+$upb-fuchsiarot-90p: tint-color($upb-fuchsiarot, 10%);
+$upb-fuchsiarot-80p: tint-color($upb-fuchsiarot, 20%);
+$upb-fuchsiarot-70p: tint-color($upb-fuchsiarot, 30%);
+$upb-fuchsiarot-60p: tint-color($upb-fuchsiarot, 40%);
+$upb-fuchsiarot-50p: tint-color($upb-fuchsiarot, 50%);
+$upb-fuchsiarot-40p: tint-color($upb-fuchsiarot, 60%);
+$upb-fuchsiarot-30p: tint-color($upb-fuchsiarot, 70%);
+$upb-fuchsiarot-20p: tint-color($upb-fuchsiarot, 80%);
+
+$upb-fuchsiarot-colors: (
+  upb-fuchsiarot-100p: $upb-fuchsiarot-100p,
+  upb-fuchsiarot-90p:  $upb-fuchsiarot-90p,
+  upb-fuchsiarot-80p:  $upb-fuchsiarot-80p,
+  upb-fuchsiarot-70p:  $upb-fuchsiarot-70p,
+  upb-fuchsiarot-60p:  $upb-fuchsiarot-60p,
+  upb-fuchsiarot-50p:  $upb-fuchsiarot-50p,
+  upb-fuchsiarot-40p:  $upb-fuchsiarot-40p,
+  upb-fuchsiarot-30p:  $upb-fuchsiarot-30p,
+  upb-fuchsiarot-20p:  $upb-fuchsiarot-20p,
+);
+
+// UPB-Meerblau ist eine nicht-barrierearme Sekundärfarbe. Deshalb darf sie nicht als Schriftfarbe verwendet werden.
+// UPB-Meerblau darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Ab einem Farbtonwert von 70% wechselt die Schriftfarbe von Weiß auf Schwarz.
+$upb-meerblau: #23A9C9;
+$upb-meerblau-100p: $upb-meerblau;
+$upb-meerblau-90p: tint-color($upb-meerblau, 10%);
+$upb-meerblau-80p: tint-color($upb-meerblau, 20%);
+$upb-meerblau-70p: tint-color($upb-meerblau, 30%);
+$upb-meerblau-60p: tint-color($upb-meerblau, 40%);
+$upb-meerblau-50p: tint-color($upb-meerblau, 50%);
+$upb-meerblau-40p: tint-color($upb-meerblau, 60%);
+$upb-meerblau-30p: tint-color($upb-meerblau, 70%);
+$upb-meerblau-20p: tint-color($upb-meerblau, 80%);
+
+$upb-meerblau-colors: (
+  upb-meerblau-100p: $upb-meerblau-100p,
+  upb-meerblau-90p:  $upb-meerblau-90p,
+  upb-meerblau-80p:  $upb-meerblau-80p,
+  upb-meerblau-70p:  $upb-meerblau-70p,
+  upb-meerblau-60p:  $upb-meerblau-60p,
+  upb-meerblau-50p:  $upb-meerblau-50p,
+  upb-meerblau-40p:  $upb-meerblau-40p,
+  upb-meerblau-30p:  $upb-meerblau-30p,
+  upb-meerblau-20p:  $upb-meerblau-20p,
+);
+
+// UPB-Arktisblau ist eine nicht-barrierearme Sekundärfarbe. Deshalb darf sie nicht Schriftfarbe verwendet werden.
+// UPB-Arktisblau darf als Hintergrundfarbe sowie für Designelemente in 10%-Schritten bis maximal 20% Farbton
+// aufgerastert werden. Ab einem Farbtonwert von 70% wechselt die Schriftfarbe von Weiß auf Schwarz.
+$upb-arktisblau: #50D1D1;
+$upb-arktisblau-100p: $upb-arktisblau;
+$upb-arktisblau-90p: tint-color($upb-arktisblau, 10%);
+$upb-arktisblau-80p: tint-color($upb-arktisblau, 20%);
+$upb-arktisblau-70p: tint-color($upb-arktisblau, 30%);
+$upb-arktisblau-60p: tint-color($upb-arktisblau, 40%);
+$upb-arktisblau-50p: tint-color($upb-arktisblau, 50%);
+$upb-arktisblau-40p: tint-color($upb-arktisblau, 60%);
+$upb-arktisblau-30p: tint-color($upb-arktisblau, 70%);
+$upb-arktisblau-20p: tint-color($upb-arktisblau, 80%);
+
+$upb-arktisblau-colors: (
+  upb-arktisblau-100p: $upb-arktisblau-100p,
+  upb-arktisblau-90p:  $upb-arktisblau-90p,
+  upb-arktisblau-80p:  $upb-arktisblau-80p,
+  upb-arktisblau-70p:  $upb-arktisblau-70p,
+  upb-arktisblau-60p:  $upb-arktisblau-60p,
+  upb-arktisblau-50p:  $upb-arktisblau-50p,
+  upb-arktisblau-40p:  $upb-arktisblau-40p,
+  upb-arktisblau-30p:  $upb-arktisblau-30p,
+  upb-arktisblau-20p:  $upb-arktisblau-20p,
+);
+
+// UPB-Granatpink ist eine nicht-barrierearme Tertiärfarbe und darf ausschließlich für Dreiecke verwendet werden.
+// Eine Aufrasterung der Farbe ist nicht erlaubt.
+$upb-granatpink: #EE288A;
+
+// UPB-Limettengrün ist eine nicht-barrierearme Tertiärfarbe und darf ausschließlich für Dreiecke verwendet werden.
+// Eine Aufrasterung der Farbe ist nicht erlaubt.
+$upb-limettengruen: #A5CE42;
+
+// All UPB colors
+$upb-colors: (
+  upb-ultrablau: $upb-ultrablau,
+  upb-himmelblau: $upb-himmelblau,
+  upb-saphirblau: $upb-saphirblau,
+  upb-irisviolett: $upb-irisviolett,
+  upb-fuchsiarot: $upb-fuchsiarot,
+  upb-meerblau: $upb-meerblau,
+  upb-arktisblau: $upb-arktisblau,
+  upb-granatpink: $upb-granatpink,
+  upb-limettengruen: $upb-limettengruen,
+);
+
+$upb-colors: map-merge-multiple(
+  $upb-colors,
+  $upb-himmelblau-colors,
+  $upb-saphirblau-colors,
+  $upb-irisviolett-colors,
+  $upb-fuchsiarot-colors,
+  $upb-meerblau-colors,
+  $upb-arktisblau-colors
+);
+
+// Make all UPB colors available as CSS variables
+:root {
+  @each $color, $value in $upb-colors {
+    --#{$color}: #{$value};
+  }
+}
+
+// -------------------------------------------------------------------------------------------
+// Tweek Bootstrap colors based on UPB colors
+// -------------------------------------------------------------------------------------------
+// For Light-Mode the primary color should be upb-ultrablau. But for Dark-Mode upb-ultrablau is to
+// dark. As we currently can not change the primary color for each Color-Mode we use upb-himmelblau.
+$primary: $upb-himmelblau;
+$blue: $upb-himmelblau;
+$info: $upb-himmelblau;
+$success: shade-color($upb-arktisblau, 20%);
+//$danger: $upb-fuchsiarot;
+
+$link-color-dark: $upb-himmelblau-80p;
+
+// -------------------------------------------------------------------------------------------
 // Adjust font settings
-$font-family-sans-serif: Signika, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// -------------------------------------------------------------------------------------------
+$font-family-sans-serif: Karla, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                         Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+                         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-size-base: 0.95rem;
 
+// -------------------------------------------------------------------------------------------
+// Tweek globals, text, links, components, ...
+// -------------------------------------------------------------------------------------------
+
+// Disable rounded corners
+// $border-radius: 0;
+// $border-radius-sm: 0;
+// $border-radius-lg: 0;
+// $border-radius-xl: 0;
+// $border-radius-xxl: 0;
+
 // Tweek links
-$link-color: $upb-blue;
+$link-color: $upb-ultrablau;
 $link-decoration: none;
-$link-hover-color: $upb-cyan;
-$link-hover-decoration: none;
+$link-hover-color: $upb-himmelblau;
+$link-hover-decoration: underline;
 
 // Tweek card component
-$card-border-width: 0;
-//$card-border-radius: 0;
-
-// Tweek navbar component
-$navbar-dark-bg-color:              $white;
-$navbar-dark-color:                 $white;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
-$navbar-dark-active-color:          $white !default;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
-
-// Tweek pagination
-$pagination-hover-color: $link-color;
-
-
-:root {
-  --upb-blue: $upb-blue;
-  --upb-cyan: $upb-cyan;
-}
+$card-border-color: $upb-meerblau-40p;
+$card-border-radius: 0;

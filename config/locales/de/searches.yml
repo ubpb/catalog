@@ -98,7 +98,9 @@ de:
         yop: "Erscheinungsjahr"
 
     aggregations:
-      expand: "Mehr anzeigen..."
+      expand:
+        one: "%{count} weiteren anzeigen..."
+        other: "%{count} weitere anzeigen..."
       collapse: "Weniger anzeigen..."
       aggregations_header: Suchergebnisse filtern
       active_aggregations_header: Aktive Filter

@@ -15,6 +15,8 @@ import "./stimulus"
 
 // Load bootstrap
 import "bootstrap"
+// Load bootstrap-icons
+//import "bootstrap-icons/bootstrap-icons.svg"
 
 // Enable tooltips
 // We need a efficient way of enabling/disabling tooltips that work with regular

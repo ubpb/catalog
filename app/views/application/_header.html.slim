@@ -1,12 +1,11 @@
 header
-  .container.pb-3.pt-3
-    .d-flex.flex-row.align-items-center.justify-content-between
-      .ub-logo = link_to "http://www.ub.uni-paderborn.de" do
-        .d-none.d-md-inline = inline_svg_tag("ub-logo.svg", height: "60")
-        .d-md-none = inline_svg_tag("ub-logo.svg", height: "50")
+  .container.d-flex.flex-row.align-items-center.justify-content-between
+    = link_to root_path do
+      = inline_svg_tag("ub-logo.svg", id: "ub-logo")
 
-      .app-logo = link_to "/" do
-        .d-none.d-md-inline = inline_svg_tag("app-logo.svg", height: "18")
-        .d-md-none = inline_svg_tag("app-logo.svg", height: "14")
-
-  .d-print-none = render "navbar"
+    .d-flex.flex-column.align-items-end.gap-2
+      .d-flex.flex-row.align-items-center.gap-2.d-print-none
+        #main-menu
+          = render "main_menu"
+        #account-menu
+          = render "account_menu"

@@ -2,7 +2,7 @@ de:
   account:
     application:
       nav:
-        nav-toggle: Menü
+        nav-toggle: Kontomenü
         loans: Ausgeliehene Medien
         fees: Gebühren
         hold_requests: Vormerkungen

@@ -1,37 +1,40 @@
-#search_panel.card.card-shadowed
-  .card-header.bg-transparent
-    ul.nav.nav-tabs.card-header-tabs
-      - Config[:search_scopes, default: {}].keys.each do |search_scope|
-        - if enabled = Config[:search_scopes, search_scope, :enabled, default: false]
-          - active_class = current_search_scope == search_scope ? "active" : "inactive"
-          li.nav-item
-            = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
-              = t("searches.#{search_scope}.label", default: "n.n.")
+#search_panel
+  .card.card-shadowed
+    .card-header.bg-transparent
+      ul.nav.nav-tabs.card-header-tabs
+        - Config[:search_scopes, default: {}].keys.each do |search_scope|
+          - if enabled = Config[:search_scopes, search_scope, :enabled, default: false]
+            - active_class = current_search_scope == search_scope ? "active" : "inactive"
+            li.nav-item
+              = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
+                = t("searches.#{search_scope}.label", default: "n.n.")
 
-  .card-body
-    - flash[:search_panel]&.each do |key, message|
-      ruby:
-        message_class = case key.to_sym
-          when :info  then "callout-info"
-          when :error then "callout-danger"
-        end
-      .callout(class=message_class)
-        == message
+    .card-body
+      - flash[:search_panel]&.each do |key, message|
+        ruby:
+          message_class = case key.to_sym
+            when :info  then "callout-info"
+            when :error then "callout-danger"
+          end
+        .callout(class=message_class)
+          == message
 
-    = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
-      div(data-controller="advanced-search")
-        template(data-advanced-search-target="template")
-          = render "searches/search_field", form: f
+      = simple_form_for :search_panel, url: searches_path(search_scope: current_search_scope), method: :post do |f|
+        div(data-controller="advanced-search")
+          template(data-advanced-search-target="template")
+            = render "searches/search_field", form: f
 
-        - if @search_request.present?
-          - @search_request.queries.each.with_index do |q, i|
-            = render "searches/search_field", form: f, query: q
-          = f.submit t(".search"), class: "btn btn-primary d-print-none"
-        - else # Default search panel
-          = render "searches/search_field", form: f, autofocus: true
-          = f.submit t(".search"), class: "btn btn-primary d-print-none"
+          - if @search_request.present?
+            - @search_request.queries.each.with_index do |q, i|
+              = render "searches/search_field", form: f, query: q
+            .d-grid.gap-2.d-md-block
+              = f.submit t(".search"), class: "btn btn-primary d-print-none"
+          - else # Default search panel
+            = render "searches/search_field", form: f, autofocus: true
+            .d-grid.gap-2.d-md-block
+              = f.submit t(".search"), class: "btn btn-primary d-print-none"
 
-    - if @search_request.blank?
-      .alert.alert-success.mb-0.mt-3.d-print-none
-        i.fa-solid.fa-info-circle.fa-lg.me-1
-        == t(".ebook_notice")
+      - if @search_request.blank?
+        .alert.alert-success.mb-0.mt-3.d-print-none
+          i.fa-solid.fa-info-circle.fa-lg.me-1
+          == t(".ebook_notice")

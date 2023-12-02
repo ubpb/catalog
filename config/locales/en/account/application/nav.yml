@@ -2,7 +2,7 @@ en:
   account:
     application:
       nav:
-        nav-toggle: Menu
+        nav-toggle: Account-Menu
         loans: Loaned Media
         fees: Fees
         hold_requests: Hold requests

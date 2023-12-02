@@ -10,7 +10,7 @@
       = link_to next_page_path, class: "btn #{btn_class}" do
         i.fas.fa-angle-right
 
-  - spacer_class = has_pages? ? "ms-0 ms-sm-2" : ""
+  - spacer_class = has_pages? ? "ms-0 ms-sm-2 mb-1 mb-sm-0" : ""
   .order-0.order-sm-1(class=spacer_class)
     = link_to first_page_path, class: "text-body" do
       = t(".stats", from: @from, to: @to, total: number_with_precision(@total, precision: 0, delimiter: "."))

@@ -3,8 +3,9 @@ de:
     ub: Universitätsbibliothek
     ub_pb: UB Paderborn
     app_name: Katalog
+    menu: Menü
 
-    navbar:
+    main_menu:
       home: Start
       help: Hilfe
       blog: Blog
@@ -14,18 +15,29 @@ de:
       purchase_requests: Erwerbungsvorschlag
       closed_stack_orders: Bestellung aus dem Magazin
       interlibrary_loan: Fernleihe
+      settings: Einstellungen
+      language: Sprache
+      color_mode: Farbschema
+
+    color_modes:
+      light: Hell
+      dark: Dunkel
+      auto: Automatisch
+
+    account_menu:
       my_account: Mein Bibliothekskonto
       logout: Abmelden
       logout_msg: Wirklich abmelden?
       login: Anmelden
 
     footer:
-      slogan: Die Universität der Informationsgesellschaft
-      copyright_ub_upb: "© %{year} Universitätsbibliothek Paderborn"
+      quicklinks: "Schnellzugriffe"
+      legal_notices: "Rechtliches"
+      address: "Anschrift / Anreise"
+      opening_hours: "Öffnungs- & Servicezeiten"
       impressum: "Impressum"
       privacy_policy: "Datenschutzerklärung"
-      cover_images: "Coverbilder bereitgestellt von %{link}"
-      cover_images_link_text: "buchhandel.de"
+      cover_images: "Coverbilder bereitgestellt von buchhandel.de"
 
   save: Speichern
   cancel: Abbrechen

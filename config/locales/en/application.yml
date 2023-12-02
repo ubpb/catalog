@@ -3,8 +3,9 @@ en:
     ub: University Library
     ub_pb: UB Paderborn
     app_name: Catalog
+    menu: Menu
 
-    navbar:
+    main_menu:
       home: Start
       help: Help
       blog: Blog
@@ -14,18 +15,29 @@ en:
       purchase_requests: Purchase request
       closed_stack_orders: Closed stack order
       interlibrary_loan: Interlibrary loan
+      settings: Settings
+      language: Language
+      color_mode: Color scheme
+
+    color_modes:
+      light: Light
+      dark: Dark
+      auto: Auto
+
+    account_menu:
       my_account: My library account
       logout: Logout
       logout_msg: Really log out?
       login: Login
 
     footer:
-      slogan: The University for the Information Society
-      copyright_ub_upb: "© %{year} Paderborn University Library"
+      quicklinks: "Quicklinks"
+      legal_notices: "Legal notice"
+      address: "Address / How to find us"
+      opening_hours: "Opening & service hours"
       impressum: "Impressum"
       privacy_policy: "Privacy policy"
-      cover_images: "Cover images provided by %{link}"
-      cover_images_link_text: "buchhandel.de"
+      cover_images: "Cover images provided by buchhandel.de"
 
   save: Save
   cancel: Cancel

@@ -1,25 +1,12 @@
-body {
-  background-color: var(--bs-primary);
-  @media print {
-    background-color: $white;
-  }
-}
-
-@include color-mode(dark) {
-  body {
-    background-color: var(--bs-secondary-bg);
-  }
-}
-
 #test-server-warning {
   text-align: center;
   padding: 8px;
-  background: $red;
-  color: $white;
+  background: var(--bs-red);
+  color: var(--bs-white);
   font-weight: bold;
 
   a {
-    color: white;
+    color: var(--bs-white);
     text-decoration: underline;
   }
 }
@@ -62,27 +49,52 @@ body {
 
 .turbo-progress-bar {
   height: 3px;
-  background-color: $cyan;
+  background-color: var(--bs-primary);
 }
 
-header {
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: var(--bs-white);
+#header {
+  padding: 1.5rem 0;
+
+  #ub-logo {
+    height: 54px;
+
+    @include media-breakpoint-up(md) {
+      height: 72px;
+    }
+  }
+
+  #app-name, #app-name a {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--upb-ultrablau);
+    text-align: end;
+  }
+
+  @include media-breakpoint-down(md) {
+    #app-name, #app-name a {
+      font-size: 1rem;
+    }
+  }
 }
 
 @include color-mode(dark) {
-  header {
-    background-color: var(--bs-secondary-bg);
+  .nav {
+    --bs-nav-link-color: var(--bs-light);
+  }
 
-    .ub-logo, .app-logo {
+  #header {
+    #app-name, #app-name a {
+      color: var(--bs-light);
+    }
+
+    #ub-logo {
       * {
-        fill: $light;
+        fill: var(--bs-light);
       }
 
       @media print {
         * {
-          fill: $upb-blue;
+          fill: var(--bs-dark);
         }
       }
     }
@@ -90,62 +102,101 @@ header {
 }
 
 #page {
-  padding: $spacer 0;
-  background-image: radial-gradient(var(--bs-secondary-bg) 0.5px, transparent 0.5px), radial-gradient(var(--bs-primary) 0.5px, var(--bs-secondary-bg) 0.5px);
-  background-size: 20px 20px;
-  background-position: 0 0,10px 10px;
+  padding-top: $spacer;
+  padding-bottom: calc($spacer * 2);
+  background-color: var(--bs-tertiary-bg);
 
   @media print {
-    background-image: none;
-    background-color: $white;
     padding: 0;
   }
 }
 
-footer {
+#footer {
   color: $white;
-  margin: 0;
-  margin-bottom: $spacer;
 
   a {
-    color: $white;
+    color: var(--bs-white);
+  }
+
+  .nav-link {
+    color: var(--bs-white);
+    padding: 0;
+
     &:hover {
-      color: $upb-blue;
+      color: var(--bs-white);
+      text-decoration: underline;
+
+      .icon {
+        translate: 0.4rem;
+      }
+    }
+
+    .icon {
+      padding-left: 0;
+      padding-right: 0.8rem;
+      transition: translate .3s ease;
     }
   }
 
-  .footer-claim {
-    font-size: $font-size-sm;
-    background-color: var(--bs-white);
-    font-style: italic;
-    color: $upb-blue;
-    font-weight: bold;
-    padding: 5px 0;
+  .app-footer {
+    padding: $spacer * 3 0;
+    background-color: var(--upb-himmelblau);
   }
 
-  .footer-content {
-    font-size: $font-size-sm;
-    margin: math.div($spacer, 3) 0;
-  }
+  .upb-footer {
+    padding: $spacer * 3 0;
+    background-color: var(--upb-ultrablau);
 
-  .footer-image {
-    text-align: center;
-    background-image:  url("../../../images/footer-bg-lg.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
+    .nav.social-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .nav-link {
+        color: var(--upb-ultrablau);
+        font-size: 26px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        background-color: var(--bs-white);
+        border-radius: 50%;
+        outline: 2px solid transparent;
+        outline-offset: 3px;
+        transition: outline-color .15s ease-in-out, background-color .15s ease-in-out;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+          outline-color: var(--bs-white);
+          background-color: var(--upb-arktisblau);
+        }
+      }
+    }
   }
 }
 
-@include color-mode(dark) {
-  footer {
-    .footer-claim {
-      background-color: var(--bs-gray-700);
-      color: $light;
+@include color-mode(dark, true) {
+  #footer {
+    .app-footer {
+      background-color: var(--bs-light-bg-subtle);
     }
 
-    .footer-image {
-      background-image:  url("../../../images/footer-bg-lg-dark.jpg");
+    .upb-footer {
+      background-color: var(--bs-body-bg);
+
+      .nav.social-nav {
+        .nav-link {
+          background-color: var(--bs-light-bg-subtle);
+          color: var(--bs-white);
+        }
+      }
     }
   }
+
 }
+
+

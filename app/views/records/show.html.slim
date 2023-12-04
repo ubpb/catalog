@@ -9,8 +9,8 @@
     data-notes-url-value=account_notes_path
   )
     - if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger")).present?
-    .mb-3.bg-danger.bg-opacity-10.px-4.p-2.fst-italic.rounded(style="margin: -1rem -1rem 0 -1rem;")
-      = vpn_info
+      .mb-3.bg-danger.bg-opacity-10.px-4.p-2.fst-italic(style="margin: -1rem -1rem 0 -1rem;")
+        = vpn_info
 
     / Show compact version of the record
     = render "searches/record", record: @record, enable_watch_lists_panel: true, enable_notes: true

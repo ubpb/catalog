@@ -1,20 +1,18 @@
 #account-menu
-  .d-flex.flex-column.justify-content-center.align-items-center.gap-1
-    span.fw-bold.text-muted = t("application.my_account")
-    - if current_user
-      .dropdown
-        a.btn.btn-primary.dropdown-toggle.d-block(data-bs-toggle="dropdown" href="#")
-          i.fas.fa-user
-          span.ms-2.d-none.d-lg-inline = current_user.name
-        .dropdown-menu.dropdown-menu-xl-end
-          = link_to account_root_path, class: "dropdown-item" do
-            i.fas.fa-user.fa-fw
-            span.ms-2 = t("application.account_menu.my_account")
-          .dropdown-divider
-          = link_to logout_path, data: {turbo_confirm: t("application.account_menu.logout_msg")}, class: "dropdown-item" do
-            i.fas.fa-power-off.fa-fw
-            span.ms-2 = t("application.account_menu.logout")
-    - else
-      = link_to new_session_path, class: "btn btn-primary d-block" do
-        i.far.fa-user
-        =< t("application.account_menu.login")
+  - if current_user
+    .dropdown
+      a.btn.btn-primary.dropdown-toggle.d-block(data-bs-toggle="dropdown" href="#")
+        i.fas.fa-user
+        span.ms-2.d-none.d-lg-inline = current_user.name
+      .dropdown-menu.dropdown-menu-end
+        = link_to account_root_path, class: "dropdown-item" do
+          i.fas.fa-user.fa-fw
+          span.ms-2 = t("application.account_menu.my_account")
+        .dropdown-divider
+        = link_to logout_path, data: {turbo_confirm: t("application.account_menu.logout_msg")}, class: "dropdown-item" do
+          i.fas.fa-power-off.fa-fw
+          span.ms-2 = t("application.account_menu.logout")
+  - else
+    = link_to new_session_path, class: "btn btn-primary d-block" do
+      i.far.fa-user
+      =< t("application.account_menu.login")

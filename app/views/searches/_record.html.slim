@@ -48,6 +48,13 @@ ruby:
                 )
               .ms-2 = render(watch_lists_panel_component)
 
+            / Feedback button
+            - if enable_feedback
+              .ms-2.d-print-none
+                div(data-controller="modal" data-modal-modal-dialog-outlet="#modal-dialog")
+                  = link_to new_feedback_path(record_scope: search_scope, record_id: record_id), class: "btn btn-outline-primary btn-sm", "data-action": "click->modal#open" do
+                    i.fa-solid.fa-message.fa-fw.pe-none
+
             / Citation / Export
             .ms-2
               .dropdown

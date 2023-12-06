@@ -1,0 +1,6 @@
+= turbo_frame_tag "modal" do
+  .modal-header
+    h5.modal-title = t("feedback.title")
+    button(type="button" class="btn-close" data-bs-dismiss="modal")
+  .modal-body
+    = render "details"

@@ -1,0 +1,35 @@
+de:
+  feedback:
+    title: "Feedback"
+    form:
+      types:
+        none: "Keine"
+        general: "Allgemein"
+        loan_question: "Frage zur Ausleihbarkeit"
+        broken_link: "Fehlerhafter Link"
+        missing_media: "Fehlendes Medium"
+      contact_information: "Kontaktinformationen"
+      submit: "Abschicken"
+      cancel: "Abbrechen"
+      close: "Schließen"
+      error:
+        one: >
+          Ein Fehler verhindert das Abschicken des Feedbacks. Bitte prüfen Sie das Formular auf
+          rot makierte Felder.
+        other:
+          "%{count} Fehler verhindern das Abschicken des Feedbacks. Bitte prüfen Sie das Formular auf
+          rot makierte Felder."
+
+  feedbacks:
+    create:
+      success: "Ihr Feedback wurde erfolgreich übermittelt."
+
+  activemodel:
+    attributes:
+      feedback:
+        record_title: "Titel"
+        firstname: "Vorname"
+        lastname: "Nachname"
+        email: "Email"
+        type: "Anliegen"
+        message: "Mitteilung"

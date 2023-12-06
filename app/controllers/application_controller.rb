@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :show_record_path
   helper_method :rss_search_request_url
   helper_method :on_campus?
+  helper_method :turbo_frame_request?
 
   def set_locale
     return unless helpers.locale_switching_enabled?

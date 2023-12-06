@@ -84,6 +84,8 @@ Rails.application.routes.draw do
     resources :recommendations, only: [:index]
   end
 
+  resources :feedbacks, only: [:new, :create], path: "feedback"
+
   # Open URL Link-Resolver
   get "openurl", to: "link_resolver#show"
 

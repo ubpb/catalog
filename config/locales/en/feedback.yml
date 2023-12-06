@@ -1,0 +1,35 @@
+en:
+  feedback:
+    title: "Feedback"
+    form:
+      types:
+        none: "None"
+        general: "General"
+        loan_question: "Question regarding loan"
+        broken_link: "Broken link"
+        missing_media: "Missing media"
+      contact_information: "Contact information"
+      submit: "Submit"
+      cancel: "Cancel"
+      close: "Close"
+      error:
+        one: "%{count} error prohibited this %{model} from being saved"
+        other: "%{count} errors prohibited this %{model} from being saved"
+        one: >
+          "An error is preventing the feedback from being sent. Please check the form for errors highlighted in red."
+        other:
+          "%{count} errors are preventing the feedback from being sent. Please check the form for errors highlighted in red."
+
+  feedbacks:
+    create:
+      success: "Your feedback has been successfully submitted."
+
+  activemodel:
+    attributes:
+      feedback:
+        record_title: "Title"
+        firstname: "First name"
+        lastname: "Last name"
+        email: "Email"
+        type: "Request"
+        message: "Message"

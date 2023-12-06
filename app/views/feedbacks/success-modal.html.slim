@@ -1,0 +1,11 @@
+= turbo_frame_tag "modal" do
+  .modal-header
+    h5.modal-title = t("feedback.title")
+    button(type="button" class="btn-close" data-bs-dismiss="modal")
+  .modal-body
+    .d-flex.justify-content-evenly.align-items-center.flex-column(style="height: 16em;")
+      i.fa-regular.fa-paper-plane.fa-5x.opacity-75
+      div
+        = t("feedbacks.create.success")
+    .d-flex
+      = link_to t("feedback.form.close"), root_path, class: "btn btn-primary", data: {"turbo-frame": "_self", "controller": "modal", "modal-modal-dialog-outlet": "#modal-dialog", "action": "click->modal#close"}

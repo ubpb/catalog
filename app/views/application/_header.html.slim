@@ -3,9 +3,6 @@ header
     = link_to root_path do
       = inline_svg_tag("ub-logo.svg", id: "ub-logo")
 
-    .d-flex.flex-column.align-items-end.gap-2
-      .d-flex.flex-row.align-items-center.gap-2.d-print-none
-        #main-menu
-          = render "main_menu"
-        #account-menu
-          = render "account_menu"
+    .d-flex.flex-row.align-items-end.gap-3.d-print-none
+      = render "account_menu"
+      = render "main_menu"

@@ -1,7 +1,8 @@
-.d-flex.justify-content-end
-  button.btn.btn-outline-primary(type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-main-menu")
-    i.fa-solid.fa-bars.fa-lg
-    span.d-none.d-md-inline =< t("application.menu")
+#main-menu
+  .d-flex.flex-column.justify-content-center.align-items-center.gap-1
+    span.fw-bold.text-muted = t("application.menu")
+    button.btn.btn-outline-primary(type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-main-menu")
+      i.fa-solid.fa-bars.fa-lg
 
   .offcanvas.offcanvas-end(tabindex="-1" id="offcanvas-main-menu")
     .offcanvas-header.border-bottom

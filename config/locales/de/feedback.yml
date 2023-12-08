@@ -17,7 +17,7 @@ de:
           Ein Fehler verhindert das Abschicken des Feedbacks. Bitte prüfen Sie das Formular auf
           rot makierte Felder.
         other:
-          "%{count} Fehler verhindert das Abschicken des Feedbacks. Bitte prüfen Sie das Formular auf
+          "%{count} Fehler verhindern das Abschicken des Feedbacks. Bitte prüfen Sie das Formular auf
           rot makierte Felder."
 
   feedbacks:

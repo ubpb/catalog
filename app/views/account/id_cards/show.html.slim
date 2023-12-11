@@ -1,0 +1,37 @@
+= turbo_frame_tag "modal" do
+  .modal-header
+    h5.modal-title = t(".header")
+    button(type="button" class="btn-close" data-bs-dismiss="modal")
+  .modal-body
+    - if @ils_user.barcode.present?
+      .text-center.mb-3.mt-3
+        div(data-controller="barcode" data-barcode-text-value="#{@ils_user.barcode}" data-barcode-display-value-value="false")
+      div
+        h3 = @ils_user.full_name_reversed
+        h4 = @ils_user.short_barcode
+        - if @ils_user.expiry_date.present?
+          em = t(".expiry_date", date: l(@ils_user.expiry_date))
+
+      .d-flex.align-items-end
+        #current_date_time
+        .ms-auto
+          i.fa-solid.fa-id-card.fa-3x.fa-flip
+
+    - else
+      .alert.alert-danger.mb-0
+        i.fa-solid.fa-exclamation-triangle.fa-lg.me-2
+        = t(".no_barcode_error")
+
+  javascript:
+    function update_date_and_time() {
+      var now = new Date();
+      var date = now.toLocaleDateString();
+      var time = now.toLocaleTimeString();
+      document.getElementById("current_date_time").innerHTML = date + ", " + time;
+    }
+
+    update_date_and_time();
+
+    setInterval(function() {
+      update_date_and_time();
+    }, 1000);

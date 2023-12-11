@@ -57,6 +57,10 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resource :password, only: [:edit, :update]
     resource :email, only: [:edit, :update]
+    resource :id_card, only: [:show], path: "id-card" do
+      match "authorize", via: [:get, :post], on: :member
+    end
+    resource :pin, except: [:destroy]
   end
 
   # Closed stack orders

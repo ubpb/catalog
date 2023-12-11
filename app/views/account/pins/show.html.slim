@@ -6,7 +6,7 @@
       i.fa-solid.fa-info-circle.fa-lg.me-2
       = t(".info")
 
-    - if @user.has_pin_set?
+    - if @ils_user.has_pin_set?
       .callout.callout-success.mb-0
         .mb-3 = t(".status_pin_set")
         span = link_to t(".change_pin"), edit_account_pin_path, class: "btn btn-success"

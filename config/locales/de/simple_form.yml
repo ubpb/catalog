@@ -17,6 +17,13 @@ de:
         password: "Neues Passwort"
         password_confirmation: "Neues Passwort wiederholen"
 
+      pin_form:
+        pin: "PIN"
+        pin_confirmation: "PIN wiederholen"
+        current_pin: "Aktuelle PIN"
+        new_pin: "Neue PIN"
+        new_pin_confirmation: "Neue PIN wiederholen"
+
     placeholders:
       defaults:
         user_id: "Ihre Bibliotheksausweisnummer"
@@ -33,6 +40,13 @@ de:
         password: "Ihr neues Passwort"
         password_confirmation: "Bitte geben Sie Ihr neues Passwort erneut ein"
 
+      pin_form:
+        pin: "Bitte geben Sie Ihre gewünschte PIN ein"
+        pin_confirmation: "Bitte geben Sie Ihre PIN erneut ein"
+        new_pin: "Bitte geben Sie Ihre neue PIN ein"
+        new_pin_confirmation: "Bitte geben Sie Ihre neue PIN erneut ein"
+        current_pin: "Bitte geben Sie Ihre aktuelle PIN ein"
+
     hints:
       defaults:
         user_id: "Die Nummer finden Sie auf Ihrem Bibliotheks- oder Studierendenausweis."
@@ -40,5 +54,11 @@ de:
 
       login:
         password: ""
+
+      pin_form:
+        pin: "muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten"
+        current_pin: >
+          Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre
+          aktuelle PIN vergessen haben, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
 
 

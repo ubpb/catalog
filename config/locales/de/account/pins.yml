@@ -1,0 +1,34 @@
+de:
+  account:
+    pins:
+      breadcrumb: "PIN verwalten"
+
+      form:
+        errors:
+          current_pin_incorrect: "ist nicht korrekt"
+
+      show:
+        header: "PIN verwalten"
+        info: >
+          Hier können Sie eine PIN für Ihren Account festlegen. Die PIN wird
+          aktuell für den Zugriff auf Ihren E-Bibliotheksausweis benötigt. Zukünftig können
+          ggf. weitere Funktionen mit der PIN abgesichert werden.
+        status_pin_set: "Status: PIN wurde festgelegt"
+        status_no_pin_set: "Status: PIN nicht festgelegt"
+        change_pin: "PIN ändern"
+        set_pin: "PIN jetzt festlegen"
+
+      new:
+        header: "PIN festlegen"
+        submit: "PIN festlegen"
+
+      create:
+        success_notice: "PIN wurde erfolgreich festgelegt"
+
+      edit:
+        header: "PIN ändern"
+        submit: "PIN ändern"
+
+      update:
+        success_notice: "PIN wurde erfolgreich geändert"
+        error_notice: "PIN konnte nicht geändert werden. Es ist ein Fehler aufgetreten."

@@ -50,6 +50,18 @@ class Ils
     end
 
     #
+    # Set/Update the PIN for a user.
+    #
+    # @param user_id [String] a user ID.
+    # @param pin [String] the new pin for the user.
+    # @return [true, false] `true` if the pin was set successfully,
+    #   `false` otherwise.
+    #
+    def set_user_pin(user_id, pin)
+      try_operation(__method__, user_id, pin)
+    end
+
+    #
     # Get the loans for a user.
     #
     # @param user_id [String] a user ID.

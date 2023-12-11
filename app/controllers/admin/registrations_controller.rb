@@ -151,7 +151,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
   def create_user_in_alma(registration)
     alma_user = alma_user_from_registration(registration)
 
-    result = Ils.adapter.api.post("/users", body: alma_user.to_json, format: "application/json")
+    result = Ils.adapter.api.post("users", body: alma_user.to_json)
     result["primary_id"].presence
   rescue AlmaApi::Error => e
     Rails.logger.error("Error creating user in Alma [#{e.code}]: #{e.message}")

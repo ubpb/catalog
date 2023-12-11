@@ -5,7 +5,7 @@
   .modal-body
     = render "alerts"
 
-    - unless @alma_user.has_pin_set?
+    - unless @ils_user.has_pin_set?
       .callout.callout-warning.mb-0
         p.mb-3 = t(".info")
         .text-center = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-warning", target: "_top"

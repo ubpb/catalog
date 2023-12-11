@@ -2,20 +2,19 @@ class Account::IdCardsController < Account::ApplicationController
 
   before_action { add_breadcrumb t("account.id_cards.breadcrumb"), account_id_card_path }
   before_action :ensure_turbo_frame_request
-  before_action :load_user
+  before_action :load_ils_user
 
   def show
     authorize!
   end
 
   def authorize
-    @alma_user = Ils.get_user(current_user.ils_primary_id)
     add_breadcrumb("PIN erforderlich", account_id_card_path)
 
     if request.post?
       pin = params[:pin]&.to_s&.strip.presence
 
-      if pin && @alma_user.has_pin_set? && (pin == @alma_user.pin)
+      if pin && @ils_user.has_pin_set? && (pin == @ils_user.pin)
         session[:id_card_authorized] = true
         session[:id_card_authorized_at] = Time.zone.now
         redirect_to account_id_card_path
@@ -33,8 +32,8 @@ class Account::IdCardsController < Account::ApplicationController
     redirect_to account_root_path unless turbo_frame_request?
   end
 
-  def load_user
-    @user = Ils.get_user(current_user.ils_primary_id)
+  def load_ils_user
+    @ils_user = Ils.get_user(current_user.ils_primary_id)
   end
 
   def reset_authorization!
@@ -47,7 +46,7 @@ class Account::IdCardsController < Account::ApplicationController
   end
 
   def authorize!
-    unless @user.has_pin_set?
+    unless @ils_user.has_pin_set?
       reset_authorization!
       redirect_to authorize_account_id_card_path
       return false

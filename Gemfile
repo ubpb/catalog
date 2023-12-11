@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby IO.read(".ruby-version").strip
 
-gem "addressable", "~> 2.7"
+gem "addressable", "~> 2.8"
 gem "alma_api", "~> 1.0"
 gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.0.0", require: "bibtex"

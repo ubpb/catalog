@@ -3,6 +3,10 @@ en:
     pins:
       breadcrumb: "Manage PIN"
 
+      form:
+        errors:
+          current_pin_incorrect: "is not correct"
+
       show:
         header: "Manage PIN"
         info: >

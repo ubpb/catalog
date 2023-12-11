@@ -12,7 +12,7 @@ class PinChangeForm
 
   def current_pin_is_correct
     if pin_in_ils != current_pin
-      errors.add(:current_pin, "ist nicht korrekt.")
+      errors.add(:current_pin, I18n.t("account.pins.form.errors.current_pin_incorrect"))
     end
   end
 

@@ -26,6 +26,6 @@ html
         = content_for?(:main) ? yield(:main) : yield
 
     #footer
-      = render "footer"
+      = render "layouts/registrations/footer"
 
-    = render "piwik_tracking"
+      = render "piwik_tracking"

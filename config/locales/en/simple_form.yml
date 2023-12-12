@@ -17,13 +17,6 @@ en:
         password: "New password"
         password_confirmation: "Repeat new password"
 
-      pin_form:
-        pin: "PIN"
-        pin_confirmation: "Repeat PIN"
-        current_pin: "Current PIN"
-        new_pin: "New PIN"
-        new_pin_confirmation: "Repeat new PIN"
-
     placeholders:
       defaults:
         user_id: "Your Library-ID"
@@ -40,13 +33,6 @@ en:
         password: "Your new password"
         password_confirmation: "Please enter your new password again"
 
-      pin_form:
-        pin: "Please enter your desired PIN"
-        pin_confirmation: "Please enter your PIN again"
-        new_pin: "Please enter your new PIN"
-        new_pin_confirmation: "Please enter your new PIN again"
-        current_pin: "Please enter your current PIN"
-
     hints:
       defaults:
         user_id: "You can find the number on your library or student card."
@@ -54,12 +40,5 @@ en:
 
       login:
         password: ""
-
-      pin_form:
-        pin: "must be between 4 and 8 characters long and must only contain numbers (0-9)"
-        current_pin: >
-          Your current PIN is required to change the PIN. If you have forgotten
-          your current PIN, please contact the staff at the local circulation desk.
-
 
 

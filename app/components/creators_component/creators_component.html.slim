@@ -17,7 +17,7 @@ ul.list-inline.mb-0(
       - if (gnd_id = gnd_id_for(creator:)).present?
         span.ms-1(data-controller="modal" data-modal-modal-dialog-outlet="#modal-dialog")
           = link_to gnd_path(gnd_id), "data-action": "click->modal#open" do
-            i.fa-regular.fa-address-card
+            i.fa-regular.fa-id-card
 
   - if @item_count != -1 && @creators.count > @item_count
     li.list-inline-item.mb-1(

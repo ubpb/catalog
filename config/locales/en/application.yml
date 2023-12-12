@@ -26,7 +26,6 @@ en:
 
     account_menu:
       my_account: My library account
-      my_e_id_card: My eID-Card
       logout: Logout
       logout_msg: Really log out?
       login: Login

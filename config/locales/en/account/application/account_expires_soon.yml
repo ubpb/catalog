@@ -1,7 +1,0 @@
-en:
-  account:
-    application:
-      account_expires_soon:
-        message: >
-          Your account expires on %{date}. To renew your account,
-          please contact the staff at the local circulation desk.

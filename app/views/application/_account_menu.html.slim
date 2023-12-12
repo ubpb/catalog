@@ -8,10 +8,6 @@
         = link_to account_root_path, class: "dropdown-item" do
           i.fas.fa-user.fa-fw
           span.ms-2 = t("application.account_menu.my_account")
-        = link_to account_id_card_path, class: "dropdown-item", \
-            data: {"controller": "modal", "modal-modal-dialog-outlet": "#modal-dialog", "action": "click->modal#open" } do
-            i.fas.fa-id-card.fa-fw
-            span.ms-2 = t("application.account_menu.my_e_id_card")
         .dropdown-divider
         = link_to logout_path, data: {turbo_confirm: t("application.account_menu.logout_msg")}, class: "dropdown-item" do
           i.fas.fa-power-off.fa-fw

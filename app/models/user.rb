@@ -14,13 +14,12 @@ class User < ApplicationRecord
       User.transaction do
         user = User.where(ils_primary_id: ils_user.id).first_or_initialize
         user.assign_attributes(
-          ils_primary_id: ils_user.id,
-          expiry_date: ils_user.expiry_date,
-          user_group_code: ils_user.user_group&.code,
+          ils_primary_id:   ils_user.id,
+          user_group_code:  ils_user.user_group&.code,
           user_group_label: ils_user.user_group&.label,
-          first_name: ils_user.first_name,
-          last_name: ils_user.last_name,
-          email: ils_user.email,
+          first_name:       ils_user.first_name,
+          last_name:        ils_user.last_name,
+          email:            ils_user.email,
           force_password_change: ils_user.force_password_change
         )
         user.save!
@@ -38,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def create_password_reset_token!
-    token = "#{SecureRandom.hex(16)}#{id}"
+    token = "#{SecureRandom.hex(16)}#{self.id}"
     update(
       password_reset_token: token,
       password_reset_token_created_at: Time.zone.now
@@ -61,14 +60,6 @@ class User < ApplicationRecord
     key = SecureRandom.hex(16)
     update(api_key: key)
     key
-  end
-
-  def expires_soon?
-    expiry_date.present? && expiry_date <= 40.days.from_now
-  end
-
-  def expired?
-    expiry_date.present? && expiry_date <= Time.zone.now
   end
 
 end

@@ -14,10 +14,7 @@ module Ils::Adapters
           last_name: get_lastname(alma_user_hash),
           email: get_email(alma_user_hash),
           notes: get_nodes(alma_user_hash),
-          force_password_change: get_force_password_change(alma_user_hash),
-          barcode: get_barcode(alma_user_hash),
-          pin: get_pin(alma_user_hash),
-          expiry_date: get_expiry_date(alma_user_hash)
+          force_password_change: get_force_password_change(alma_user_hash)
         )
       end
 
@@ -57,21 +54,6 @@ module Ils::Adapters
 
       def get_force_password_change(alma_user_hash)
         alma_user_hash["force_password_change"].presence&.casecmp?("true") ? true : false
-      end
-
-      def get_barcode(alma_user_hash)
-        alma_user_hash["user_identifier"].find do |id|
-          id.dig("id_type", "value") == "05"
-        end&.dig("value")&.upcase
-      end
-
-      def get_pin(alma_user_hash)
-        alma_user_hash["pin_number"].presence
-      end
-
-      def get_expiry_date(alma_user_hash)
-        expiry_date = alma_user_hash["expiry_date"].presence
-        Date.parse(expiry_date) if expiry_date
       end
 
     end

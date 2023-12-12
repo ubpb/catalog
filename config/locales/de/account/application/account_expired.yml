@@ -1,7 +1,0 @@
-de:
-  account:
-    application:
-      account_expired:
-        message: >
-          Ihr Account ist am %{date} abgelaufen. Um Ihren Account zu verlängern,
-          wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.

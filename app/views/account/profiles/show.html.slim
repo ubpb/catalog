@@ -5,17 +5,14 @@
   .card-body
     dl.mb-0
       dt = t(".data.ils_id")
-      dd = @ils_user.short_barcode
-      - if @ils_user.expiry_date.present?
-        dt = t(".data.expiry_date")
-        dd = l(@ils_user.expiry_date)
+      dd = current_user.ils_primary_id
       dt = t(".data.first_name")
-      dd = @ils_user.first_name.presence || "–"
+      dd = current_user.first_name.presence || "–"
       dt = t(".data.last_name")
-      dd = @ils_user.last_name.presence || "–"
+      dd = current_user.last_name.presence || "–"
       dt = t(".data.email")
       dd
-        - email = @ils_user.email.presence
+        - email = current_user.email.presence
         - if email
           = email
           - if can?(:change_email, current_user)

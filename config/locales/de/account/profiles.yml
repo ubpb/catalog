@@ -11,8 +11,7 @@ de:
         add_email: "E-Mail Adresse eintragen"
 
         data:
-          ils_id: "Bibliotheksausweisnummer"
-          expiry_date: "Gültig bis"
+          ils_id: "Konto-ID"
           first_name: "Vorname"
           last_name: "Nachname"
           email: "E-Mail"

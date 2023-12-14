@@ -2,8 +2,7 @@
   .col
     = render "form", header: t("registrations.new.header")
   .col-lg-4.col-xl-3
-    .callout.callout-info
-      .mb-1
-        i.fas.fa-info-circle.fa-lg.fa-fw.me-1
-        == t("registrations.required_documents.header")
+    .callout.callout-info.mt-3.mt-lg-0
+      i.fas.fa-info-circle.fa-lg.me-2
+      == t("registrations.required_documents.header")
       = render "required_documents", user_group: @registration.user_group

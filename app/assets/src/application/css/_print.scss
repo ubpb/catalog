@@ -1,4 +1,16 @@
 @media print {
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: none;
+  }
+
+  #page > .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   .footer-claim,
   .footer-image {
     display: none;

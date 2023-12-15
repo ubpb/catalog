@@ -10,6 +10,7 @@ class Ils
     attribute :barcode, Ils::Types::String.optional
     attribute :pin, Ils::Types::String.optional
     attribute :expiry_date, Ils::Types::Date.optional
+    attribute :blocks, Types::Array.of(Ils::UserBlock).default([].freeze)
 
     def has_pin_set?
       pin.present?
@@ -33,6 +34,14 @@ class Ils
 
     def expired?
       expiry_date.present? && expiry_date <= Time.zone.now
+    end
+
+    def blocked?
+      blocks.any?
+    end
+
+    def needs_activation?
+      blocked? && blocks.any? { |block| block.code == "50-GLOBAL" }
     end
 
   end

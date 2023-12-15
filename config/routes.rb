@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Error pages
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
@@ -61,6 +60,7 @@ Rails.application.routes.draw do
       match "authorize", via: [:get, :post], on: :member
     end
     resource :pin, except: [:destroy]
+    resource :activation, only: [:show, :create]
   end
 
   # Closed stack orders

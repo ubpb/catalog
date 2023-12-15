@@ -17,7 +17,8 @@ module Ils::Adapters
           force_password_change: get_force_password_change(alma_user_hash),
           barcode: get_barcode(alma_user_hash),
           pin: get_pin(alma_user_hash),
-          expiry_date: get_expiry_date(alma_user_hash)
+          expiry_date: get_expiry_date(alma_user_hash),
+          blocks: get_blocks(alma_user_hash)
         )
       end
 
@@ -50,7 +51,11 @@ module Ils::Adapters
       end
 
       def get_nodes(alma_user_hash)
-        alma_user_hash["user_note"].find_all{|note| note["user_viewable"] == true}.map{|note| note["note_text"]}
+        alma_user_hash["user_note"].find_all do |note|
+          note["user_viewable"] == true
+        end.map do |note|
+          note["note_text"]
+        end
       end
 
       def get_force_password_change(alma_user_hash)
@@ -70,6 +75,16 @@ module Ils::Adapters
       def get_expiry_date(alma_user_hash)
         expiry_date = alma_user_hash["expiry_date"].presence
         Date.parse(expiry_date) if expiry_date
+      end
+
+      def get_blocks(alma_user_hash)
+        alma_user_hash["user_block"].map do |block|
+          Ils::UserBlock.new(
+            code: block["block_description"]["value"].presence,
+            label: block["block_description"]["desc"].presence,
+            created_at: Time.zone.parse(block["created_date"])
+          )
+        end
       end
 
     end

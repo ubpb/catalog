@@ -179,7 +179,6 @@ class Ils
       try_operation(__method__, record_id)
     end
 
-
     #
     # Get the items for a record.
     #
@@ -198,5 +197,16 @@ class Ils
       try_operation(__method__, record_id, item_id)
     end
 
+    #
+    # Delete a block for a user
+    #
+    # @param user_id [String] a user ID.
+    # @param block_code [String] a block code.
+    # @return [true, false] `true` if the block has been removed successfully,
+    #   `false` otherwise
+    #
+    def delete_user_block(user_id, block_code)
+      try_operation(__method__, user_id, block_code)
+    end
   end
 end

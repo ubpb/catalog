@@ -1,0 +1,11 @@
+.card
+  .card-header
+    h5.m-0 = "Bibliothekskonto aktivieren"
+  .card-body
+    .callout.callout-info.mb-3
+      i.fas.fa-info-circle.me-2
+      ' Ihr Bibliothekskonto muss aktiviert werden, bevor Sie Medien ausleihen können.
+
+    = simple_form_for @form, url: account_activation_path, as: :account_activation, method: :post do |f|
+      = f.input :terms_of_use, label: "TEXT TODO", required: true, as: :boolean
+      = f.button :submit, "Aktivieren", class: "btn btn-primary"

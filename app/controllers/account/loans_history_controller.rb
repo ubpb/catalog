@@ -5,8 +5,8 @@ class Account::LoansHistoryController < Account::ApplicationController
   def index
     if turbo_frame_request?
       sortable_fields    = Ils.adapter.former_loans_sortable_fields || []
-      sortable_field     = sortable_fields.find{|f| f == params[:s]} || Ils.adapter.former_loans_sortable_default_field
-      sortable_direction = ["asc", "desc"].find{|d| d == params[:d]} || Ils.adapter.former_loans_sortable_default_direction
+      sortable_field     = sortable_fields.find { |f| f == params[:s] } || Ils.adapter.former_loans_sortable_default_field
+      sortable_direction = ["asc", "desc"].find { |d| d == params[:d] } || Ils.adapter.former_loans_sortable_default_direction
 
       loans_result = Ils.get_former_loans(
         current_user.ils_primary_id,

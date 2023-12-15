@@ -22,7 +22,7 @@ class Account::HoldRequestsController < Account::ApplicationController
     redirect_to(account_hold_requests_path, status: :see_other)
   end
 
-private
+  private
 
   def load_hold_requests
     Ils.get_hold_requests(

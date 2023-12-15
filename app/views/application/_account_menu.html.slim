@@ -3,7 +3,7 @@
     .dropdown
       a.btn.btn-primary.dropdown-toggle.d-block(data-bs-toggle="dropdown" href="#")
         i.fas.fa-user
-        span.ms-2.d-none.d-lg-inline = current_user.name
+        span.ms-2.d-none.d-lg-inline = current_user.ils_user.full_name
       .dropdown-menu.dropdown-menu-end
         = link_to account_root_path, class: "dropdown-item" do
           i.fas.fa-user.fa-fw

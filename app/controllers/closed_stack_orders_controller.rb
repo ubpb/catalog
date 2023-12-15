@@ -99,7 +99,7 @@ class ClosedStackOrdersController < ApplicationController
     url = Config[:closed_stack_orders, :url, default: "http://localhost:81/cgi-mag/magbest_via_katalog"]
 
     url_params = {
-      name: current_user.name_reversed,
+      name: current_user.ils_user.full_name_reversed,
       ausweis: current_user.ils_primary_id,
       m1: @m1,
       k1: @k1,

@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= begin
-      if user_id = session[:current_user_id]
+      if (user_id = session[:current_user_id])
         User.find_by(id: user_id)
       end
     end

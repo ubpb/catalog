@@ -7,8 +7,8 @@ class Ability
     if current_user
       can :change_email, User do |user|
         user == current_user &&
-        user.user_group_code != "01" && # No PS
-        user.user_group_code != "02"    # No PA
+          user.ils_user.user_group.code != "01" && # No PS
+          user.ils_user.user_group.code != "02"    # No PA
       end
     end
   end

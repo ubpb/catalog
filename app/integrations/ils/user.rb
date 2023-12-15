@@ -27,5 +27,13 @@ class Ils
       barcode&.at(0..-3)
     end
 
+    def expires_soon?
+      expiry_date.present? && expiry_date <= 40.days.from_now
+    end
+
+    def expired?
+      expiry_date.present? && expiry_date <= Time.zone.now
+    end
+
   end
 end

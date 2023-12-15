@@ -10,7 +10,7 @@ class Account::InterLibraryLoansController < Account::ApplicationController
     end
   end
 
-private
+  private
 
   def load_resource_sharing_requests
     Ils.get_hold_requests(

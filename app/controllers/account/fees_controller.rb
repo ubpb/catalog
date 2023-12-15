@@ -21,7 +21,7 @@ class Account::FeesController < Account::ApplicationController
     end
   end
 
-private
+  private
 
   def load_fees
     Ils.get_fees(

@@ -22,10 +22,6 @@ class PasswordResetsController < ApplicationController
         flash[:error] = t(".no_email_flash", user_id: @form.user_id)
         redirect_to(password_reset_request_path)
       else
-        # FIXME: Make masked emails work with Alma implementation system
-        # Should be removed later.
-        ils_user.attributes[:email] = ils_user.email.gsub("SCRUBBED_", "")
-
         db_user = User.create_or_update_from_ils_user!(ils_user)
         db_user.create_password_reset_token!
 
@@ -61,7 +57,7 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-private
+  private
 
   def verify_password_reset_token_and_load_user
     if (@token = params[:token]).blank?
@@ -80,7 +76,7 @@ private
       redirect_to(new_session_path) and return
     end
 
-    return true
+    true
   end
 
 end

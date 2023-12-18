@@ -1,11 +1,11 @@
 .card
   .card-header
-    h5.m-0 = "Bibliothekskonto aktivieren"
+    h5.m-0 = t(".header")
   .card-body
     .callout.callout-info.mb-3
       i.fas.fa-info-circle.me-2
-      ' Ihr Bibliothekskonto muss aktiviert werden, bevor Sie Medien ausleihen können.
+      = t(".info_html")
 
     = simple_form_for @form, url: account_activation_path, as: :account_activation, method: :post do |f|
-      = f.input :terms_of_use, label: "TEXT TODO", required: true, as: :boolean
-      = f.button :submit, "Aktivieren", class: "btn btn-primary"
+      = f.input :terms_of_use, label: t(".form.terms_of_use_html"), required: true, as: :boolean
+      = f.button :submit, t(".form.submit"), class: "btn btn-primary"

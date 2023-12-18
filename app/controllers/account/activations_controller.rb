@@ -14,9 +14,9 @@ class Account::ActivationsController < Account::ApplicationController
 
     if @form.valid?
       if activate_account
-        flash[:success] = "Account activated!"
+        flash[:success] = t(".flash.success")
       else
-        flash[:error] = "Account activation failed!"
+        flash[:error] = t(".flash.error")
       end
 
       redirect_to account_root_path

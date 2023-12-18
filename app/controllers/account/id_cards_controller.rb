@@ -1,5 +1,6 @@
 class Account::IdCardsController < Account::ApplicationController
 
+  skip_before_action :check_activation
   before_action { add_breadcrumb t("account.id_cards.breadcrumb"), account_id_card_path }
   before_action :ensure_turbo_frame_request
   before_action :load_ils_user

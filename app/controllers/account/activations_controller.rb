@@ -1,6 +1,5 @@
 class Account::ActivationsController < Account::ApplicationController
 
-  skip_before_action :check_activation
   layout "application"
 
   def show
@@ -13,7 +12,7 @@ class Account::ActivationsController < Account::ApplicationController
     )
 
     if @form.valid?
-      if activate_account
+      if current_user.ils_user.activate_account
         flash[:success] = t(".flash.success")
       else
         flash[:error] = t(".flash.error")
@@ -27,8 +26,9 @@ class Account::ActivationsController < Account::ApplicationController
 
   private
 
-  def activate_account
-    Ils.delete_user_block(current_user.ils_primary_id, "50-GLOBAL")
+  # @override Account::ApplicationController#check_activation
+  def check_activation
+    redirect_to account_root_path unless current_user.ils_user.needs_activation?
   end
 
 end

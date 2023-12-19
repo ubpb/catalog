@@ -79,12 +79,14 @@ module Ils::Adapters
 
       def get_blocks(alma_user_hash)
         alma_user_hash["user_block"].map do |block|
+          next if block["block_status"] != "ACTIVE"
+
           Ils::UserBlock.new(
             code: block["block_description"]["value"].presence,
             label: block["block_description"]["desc"].presence,
             created_at: Time.zone.parse(block["created_date"])
           )
-        end
+        end.compact
       end
 
     end

@@ -43,13 +43,5 @@ class Ils
     def blocked_by?(code)
       blocks.any? { |block| block.code == code }
     end
-
-    def needs_activation?
-      blocked_by?("50-GLOBAL")
-    end
-
-    def activate_account
-      Ils.delete_user_block(id, "50-GLOBAL")
-    end
   end
 end

@@ -12,7 +12,7 @@ class Account::ActivationsController < Account::ApplicationController
     )
 
     if @form.valid?
-      if current_user.ils_user.activate_account
+      if current_user.activate_account
         flash[:success] = t(".flash.success")
       else
         flash[:error] = t(".flash.error")
@@ -28,7 +28,7 @@ class Account::ActivationsController < Account::ApplicationController
 
   # @override Account::ApplicationController#check_activation
   def check_activation
-    redirect_to account_root_path unless current_user.ils_user.needs_activation?
+    redirect_to account_root_path unless current_user.needs_activation?
   end
 
 end

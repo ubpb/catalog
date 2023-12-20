@@ -9,7 +9,7 @@ class Account::ApplicationController < ApplicationController
   private
 
   def check_activation
-    if current_user.ils_user.needs_activation?
+    if current_user.needs_activation?
       redirect_to account_activation_path
       false
     end

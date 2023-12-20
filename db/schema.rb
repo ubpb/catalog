@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_091246) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_20_105426) do
   create_table "notes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "scope", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_091246) do
     t.timestamp "password_reset_token_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.timestamp "activated_at"
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["ils_primary_id"], name: "index_users_on_ils_primary_id", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true

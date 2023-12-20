@@ -55,7 +55,10 @@ class User < ApplicationRecord
   end
 
   def activate_account
-    Ils.delete_user_block(ils_primary_id, "50-GLOBAL")
+    User.transaction do
+      Ils.delete_user_block(ils_primary_id, "50-GLOBAL")
+      update!(activated_at: Time.zone.now)
+    end
   end
 
 end

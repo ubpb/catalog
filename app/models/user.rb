@@ -50,4 +50,12 @@ class User < ApplicationRecord
     key
   end
 
+  def needs_activation?
+    ils_user.blocked_by?("50-GLOBAL")
+  end
+
+  def activate_account
+    Ils.delete_user_block(ils_primary_id, "50-GLOBAL")
+  end
+
 end

@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_082200) do
     t.index ["scope"], name: "index_permalinks_on_scope"
   end
 
+  create_table "proxy_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ils_primary_id", null: false
+    t.string "label", null: false
+    t.date "expiry_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_proxy_users_on_user_id"
+  end
+
   create_table "registration_requests", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "token"
     t.string "email"
@@ -105,6 +115,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_082200) do
   end
 
   add_foreign_key "notes", "users"
+  add_foreign_key "proxy_users", "users"
   add_foreign_key "watch_list_entries", "watch_lists"
   add_foreign_key "watch_lists", "users"
 end

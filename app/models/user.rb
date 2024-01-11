@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # Relations
   has_many :watch_lists, dependent: :destroy
   has_many :notes, dependent: :destroy
+  has_many :proxy_users, dependent: :destroy
 
   # Validations
   validates :first_name, presence: true

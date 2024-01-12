@@ -26,8 +26,10 @@ de:
         id: Personalausweis oder Reisepass mit einer Anmeldebestätigung des Einwohnermeldeamtes (Meldebescheinigung), die nicht älter als 1 Jahr sein darf, oder ein anderes gültiges amtliches Personaldokument mit Lichtbild und Adressen-Angabe
         certificate_of_former_employment: Nachweis über das ehemalige Beschäftigungsverhältnis an der Universität Paderborn
         guest_certificate: >
-          Bescheinigung der Universität Paderborn oder Bescheinigung der Theologischen Fakultät bzw.
-          Fachhochschule der Wirtschaft (FHdW) über den Status als "Gast"
+          Eine Bescheinigung der Universität oder eine ihrer Einrichtungen über die Dauer der Promotion, die
+          Aufenthaltsdauer an der Universität oder den Zeitraum Ihres Lehrauftrags bzw. ein Dokument, dass
+          eine Professur an der Theologischen Fakultät Paderborn oder der Fachhochschule der Wirtschaft (FHdW)
+          in Paderborn belegt
         guest_student_certificate: >
           Aktuelle Studienbescheinigung (Gasthörerausweis)
         u18: >

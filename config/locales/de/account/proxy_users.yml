@@ -1,0 +1,44 @@
+de:
+  account:
+    proxy_users:
+      already_exists_error: "Es existiert bereits ein Proxy-User mit der Bibliotheksausweisnummer '%{barcode}'."
+      cannot_proxy_self_error: "Sie können sich nicht selbst als Proxy-User einrichten."
+
+      proxy_user:
+        expired_at: "Gültig bis %{date}"
+        confirm_delete: "Möchten Sie diesen Proxy-User wirklich löschen?"
+
+      breadcrumb:
+        index: "Proxy-Users"
+        new: "Neuer Proxy-User"
+        edit: "Proxy-User bearbeiten"
+
+      index:
+        header: "Proxy-Users"
+        new_proxy_user: "Neuer Proxy-User"
+        info: >
+          Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen.
+        no_proxy_users: "Sie haben noch keine Proxy-User eingerichtet."
+
+      new:
+        header: "Neuer Proxy-User"
+        lookup:
+          header: "Nutzer suchen"
+          form:
+            submit: "Suchen"
+            barcode_placeholder: "Bibliotheksausweisnummer"
+          no_user_found_error: "Kein Nutzer mit der Bibliotheksausweisnummer '%{barcode}' gefunden."
+
+      create:
+        error: "Proxy-User konnte nicht eingerichtet werden. Es ist ein Fehler aufgetreten."
+        success: "Proxy-User wurde erfolgreich eingerichtet."
+
+      edit:
+        header: "Proxy-User bearbeiten"
+
+      update:
+        success: "Proxy-User wurde erfolgreich aktualisiert."
+
+      destroy:
+        error: "Proxy-User konnte nicht gelöscht werden. Es ist ein Fehler aufgetreten."
+        success: "Proxy-User wurde erfolgreich gelöscht."

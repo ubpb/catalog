@@ -1,0 +1,18 @@
+.card.card-shadowed
+  .card-header.d-flex.align-items-center
+    h5.m-0
+      => t(".header")
+    .ms-auto = link_to new_account_proxy_user_path, class: "btn btn-primary" do
+      i.fa-solid.fa-plus.fa-fw.me-1
+      = t(".new_proxy_user")
+  .card-body
+    .callout.callout-info
+      i.fa-solid.fa-info-circle.fa-fw.fa-lg.me-1
+      = t(".info")
+
+    - if @proxy_users.present?
+      ol.list-group
+        = render partial: "proxy_user", collection: @proxy_users
+    - else
+      .alert.alert-info.mb-0.text-center
+        = t(".no_proxy_users")

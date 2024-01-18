@@ -4,7 +4,7 @@ ruby:
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
   search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
   enable_notes = local_assigns.fetch(:enable_notes) { false }
-  enable_feedback = local_assigns.fetch(:enable_feedback) { false }
+  enable_feedback = local_assigns.fetch(:enable_feedback) { false } && Config[:feedback, :enabled]
 
 .d-flex(
   data-record-scope=search_scope

@@ -10,7 +10,7 @@ gem "bibtex-ruby", "~> 6.0.0", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "cancancan", "~> 3.2"
 gem "dry-struct", "~> 1.4"
-gem "elasticsearch", "~> 8.1"
+gem "elasticsearch", "~> 8.12"
 gem "faraday", "~> 2.7", "< 3"
 gem "hashids", "~> 1.0"
 gem "inline_svg", "~> 1.9"

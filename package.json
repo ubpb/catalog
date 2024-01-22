@@ -32,7 +32,7 @@
   "browserslist": "> 0.35%, not dead",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.10.0",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.17",
     "buffer": "^5.5.0||^6.0.0",
     "eslint": "^8.51.0",
     "parcel": "^2.10.0",

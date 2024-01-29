@@ -162,13 +162,14 @@ GEM
       dry-inflector (~> 1.0)
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
-    elastic-transport (8.3.0)
+    elastic-transport (8.3.1)
       faraday (< 3)
       multi_json
-    elasticsearch (8.11.0)
+    elasticsearch (8.12.1)
+      base64
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 8.11.0)
-    elasticsearch-api (8.11.0)
+      elasticsearch-api (= 8.12.1)
+    elasticsearch-api (8.12.1)
       multi_json
     erubi (1.12.0)
     faraday (2.9.0)
@@ -437,7 +438,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   debug
   dry-struct (~> 1.4)
-  elasticsearch (~> 8.1)
+  elasticsearch (~> 8.12)
   faraday (~> 2.7, < 3)
   foreman (>= 0.87)
   hashids (~> 1.0)

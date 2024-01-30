@@ -1,0 +1,30 @@
+de:
+  todos:
+    activation:
+      title: "Bibliothekskonto aktivieren"
+      description: >
+        Ihr Bibliothekskonto wurde neu erstellt und muss durch Sie aktiviert werden.
+      action_title: "Jetzt aktivieren"
+
+    password_change:
+      title: "Passwort ändern"
+      description: >
+        Im Bibliothekssystem ist vermerkt, dass Sie Ihr Passwort ändern müssen. Dies ist z.B. nach der ersten
+        Anmeldung erforderlich, oder wenn Ihr Passwort durch die Bibliothek zurückgesetzt
+        wurde. Bitte ändern Sie Ihr Passwort.
+      action_title: "Passwort ändern"
+
+    expires_soon:
+      title: "Bibliothekskonto läuft demnächst ab"
+      description: >
+        Ihr Bibliothekskonto läuft am %{date} ab. Um Ihr Bibliothekskonto zu verlängern,
+        wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
+
+    expired:
+      title: "Bibliothekskonto abgelaufen"
+      description: >
+        Ihr Bibliothekskonto ist abgelaufen. Um Ihr Bibliothekskonto zu verlängern,
+        wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
+
+
+

@@ -1,0 +1,17 @@
+de:
+  account:
+    todos:
+      breadcrumb: Aktionen
+
+      index:
+        back: "Zurück"
+
+        blocking:
+          header: "Erforderliche Aktionen"
+          no_todos_html: >
+            Alles erledigt
+
+        optional:
+          header: "Optionale Aktionen"
+          no_todos_html: >
+            Alles erledigt

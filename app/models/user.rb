@@ -50,15 +50,99 @@ class User < ApplicationRecord
     key
   end
 
-  def needs_activation?
-    ils_user.blocked_by?("50-GLOBAL")
+  def todos
+    return @todos if @todos.present?
+
+    @todos = []
+
+    # Expired / exires soon
+    if ils_user.expired?
+      @todos << Todo.new(
+        key: :expired,
+        blocking: true,
+        title: I18n.t("todos.expired.title"),
+        description: I18n.t("todos.expired.description"),
+        action_title: nil,
+        action_url: nil
+      )
+    elsif ils_user.expires_soon?
+      @todos << Todo.new(
+        key: :expires_soon,
+        blocking: false,
+        title: I18n.t("todos.expires_soon.title"),
+        description: I18n.t("todos.expires_soon.description", date: I18n.l(ils_user.expiry_date)),
+        action_title: nil,
+        action_url: nil
+      )
+    end
+
+    # Needs activation
+    if ils_user.needs_activation?
+      @todos << Todo.new(
+        key: :activation,
+        blocking: true,
+        title: I18n.t("todos.activation.title"),
+        description: I18n.t("todos.activation.description"),
+        action_title: I18n.t("todos.activation.action_title"),
+        action_url: Rails.application.routes.url_helpers.account_activation_path
+      )
+    end
+
+    # Needs password change
+    if ils_user.needs_password_change?
+      @todos << Todo.new(
+        key: :password_change,
+        blocking: true,
+        title: I18n.t("todos.password_change.title"),
+        description: I18n.t("todos.password_change.description"),
+        action_title: I18n.t("todos.password_change.action_title"),
+        action_url: Rails.application.routes.url_helpers.edit_account_password_path
+      )
+    end
+
+    @todos
   end
 
-  def activate_account
-    User.transaction do
-      Ils.delete_user_block(ils_primary_id, "50-GLOBAL")
-      update!(activated_at: Time.zone.now)
-    end
+  def blocking_todos
+    todos.select(&:blocking?)
+  end
+
+  def has_blocking_todos?
+    blocking_todos.any?
+  end
+
+  def optional_todos
+    todos.select(&:optional?)
+  end
+
+  def has_optional_todos?
+    optional_todos.any?
+  end
+
+  def can_change_email?
+    !has_blocking_todos? &&
+      ils_user.user_group.code != "01" && # No PS
+      ils_user.user_group.code != "02"    # No PA
+  end
+
+  def can_manage_hold_requests?
+    !has_blocking_todos?
+  end
+
+  def can_manage_notes?
+    !has_blocking_todos?
+  end
+
+  def can_manage_watch_lists?
+    !has_blocking_todos?
+  end
+
+  def can_create_closed_stack_orders?
+    !has_blocking_todos?
+  end
+
+  def can_show_id_card?
+    !has_blocking_todos?
   end
 
 end

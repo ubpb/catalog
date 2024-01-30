@@ -1,17 +1,21 @@
 class Account::ApplicationController < ApplicationController
 
   before_action :authenticate!
-  before_action :check_activation
+  before_action :enforce_todos!
+
   before_action { add_breadcrumb t("account.application.breadcrumb"), account_root_path }
 
   layout "account/application"
 
   private
 
-  def check_activation
-    if current_user.needs_activation?
-      redirect_to account_activation_path
-      false
+  def enforce_todos!
+    if current_user.has_blocking_todos?
+      if turbo_frame_request?
+        render template: "application/turbo_frame_breakout" and return
+      else
+        redirect_to account_todos_path and return
+      end
     end
 
     true

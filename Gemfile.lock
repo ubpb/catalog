@@ -115,7 +115,6 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
-    cancancan (3.5.0)
     capistrano (3.18.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -452,7 +451,6 @@ DEPENDENCIES
   bcrypt (~> 3.1)
   bibtex-ruby (~> 6.0.0)
   bootsnap (>= 1.4.2)
-  cancancan (~> 3.2)
   capistrano (~> 3.11)
   capistrano-bundler (~> 2.0)
   capistrano-passenger (~> 0.2)

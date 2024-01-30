@@ -85,6 +85,7 @@
 
 class ClosedStackOrdersController < ApplicationController
   before_action :authenticate!
+  before_action :authorize!
   before_action :setup
   before_action { add_breadcrumb(t("closed_stack_orders.breadcrumb"), new_closed_stack_order_path) }
 
@@ -171,6 +172,15 @@ class ClosedStackOrdersController < ApplicationController
         :m1, :k1, :z1, :j1, :b1, :s1, :volume_check
       ).to_h
     )
+  end
+
+  def authorize!
+    unless current_user.can_create_closed_stack_orders?
+      flash[:error] = t("closed_stack_orders.disabled")
+      redirect_to account_root_path and return false
+    end
+
+    true
   end
 
   def setup

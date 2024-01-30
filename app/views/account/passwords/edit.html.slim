@@ -5,6 +5,7 @@
         => t(".header")
     .card-body
       = render "alerts"
+
       = f.input :current_password, autofocus: true, input_html: { value: @form.current_password }
       - if @form.errors.include?(:current_password)
         = link_to password_reset_request_path do

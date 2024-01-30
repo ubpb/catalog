@@ -1,0 +1,23 @@
+.card
+  .card-body
+    h5 = t(".blocking.header")
+    - if @blocking_todos.any?
+      ul.list-group.mb-3
+        - @blocking_todos.each.with_index do |todo, index|
+          = render "todo", todo: todo, index: index
+    - else
+      .callout.callout-success.mb-3
+        i.fas.fa-check.fa-fw.me-1
+        = t(".blocking.no_todos_html")
+
+    h5 = t(".optional.header")
+    - if @optional_todos.any?
+      ul.list-group.mb-0
+        - @optional_todos.each.with_index do |todo, index|
+          = render "todo", todo: todo, index: index
+    - else
+      .callout.callout-success.mb-0
+        i.fas.fa-check.fa-fw.me-1
+        = t(".optional.no_todos_html")
+  .card-footer
+    = link_to t(".back"), root_path, class: "btn btn-outline-primary"

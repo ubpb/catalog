@@ -2,6 +2,7 @@
 de:
   closed_stack_orders:
     breadcrumb: Magazinbestellung
+    disabled: Die Magazinbestellung ist derzeit nicht möglich
     create:
       errors:
         fehler_bestellangaben: 'Fehler: Bitte geben Sie die Signatur des gewünschten Exemplares an.'

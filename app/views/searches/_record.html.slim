@@ -28,7 +28,7 @@ ruby:
         .float-end
           .d-flex.mb-2.d-print-none
             / Note add button
-            - if enable_notes && current_user.present?
+            - if enable_notes
               .btn.btn-outline-primary.btn-sm.ms-2(
                 data-record-id=record_id
                 data-notes-button-add

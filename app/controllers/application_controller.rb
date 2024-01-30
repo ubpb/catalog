@@ -174,11 +174,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from CanCan::AccessDenied do |e|
-    flash[:error] = t("access_denied")
-    redirect_to(root_url)
-  end
-
   def sanitize_return_uri(return_uri)
     if return_uri.present?
       uri = URI(return_uri)

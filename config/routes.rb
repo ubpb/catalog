@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
     resource :pin, except: [:destroy]
     resource :activation, only: [:show, :create]
+    resources :todos, only: [:index]
   end
 
   # Closed stack orders

@@ -1,3 +1,6 @@
+- enable_notes = current_user&.can_manage_notes?
+- enable_watch_list_panel = current_user&.can_manage_watch_lists?
+
 .card.card-shadowed
   - if @search_request
     .card-header.d-print-none
@@ -5,7 +8,7 @@
 
   .card-body(
     data-controller="notes"
-    data-notes-enabled-value=current_user.present?
+    data-notes-enabled-value=enable_notes
     data-notes-url-value=account_notes_path
   )
     - if (vpn_info = render VpnInfoComponent.new(text_class: "text-danger", link_class: "link-danger")).present?
@@ -13,7 +16,10 @@
         = vpn_info
 
     / Show compact version of the record
-    = render "searches/record", record: @record, enable_watch_lists_panel: true, enable_notes: true
+    = render "searches/record", \
+      record: @record, \
+      enable_watch_lists_panel: enable_watch_list_panel, \
+      enable_notes: enable_notes
     hr.mb-3
 
     / ----------------------------------------

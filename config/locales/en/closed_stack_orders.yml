@@ -2,6 +2,7 @@
 en:
   closed_stack_orders:
     breadcrumb: Closed stack order
+    disabled: Closed stack orders are currently not available
     create:
       errors:
         fehler_bestellangaben: 'Error: please specify the call number of the copy you want.'

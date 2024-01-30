@@ -37,6 +37,11 @@ de:
     menu: Menü
     ub: Universitätsbibliothek
     ub_pb: UB Paderborn
+    user_has_blocking_todos_alert:
+      info: |
+        Kontofunktionen wie Vormerkungen, Magazinbestellungen, Merklisten usw. stehen aktuell nicht zur Verfügung.
+        Bitte öffnen Sie Ihr Konto und folgen Sie den Hinweisen.
+      open_account: Bibliothekskonto anzeigen
   cancel: Abbrechen
   confirm-delete: Wirklich löschen?
   english: Englisch

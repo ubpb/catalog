@@ -1,6 +1,8 @@
 en:
   account:
     activations:
+      breadcrumb: Activate library account
+
       show:
         header: "Activate library account"
         info_html: >

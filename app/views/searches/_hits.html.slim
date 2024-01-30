@@ -50,15 +50,22 @@ ruby:
       = vpn_info
 
   .card-body
+    - enable_notes = current_user&.can_manage_notes?
+    - enable_watch_list_panel = current_user&.can_manage_watch_lists?
+
     #hits(
       data-controller="notes"
-      data-notes-enabled-value=current_user.present?
+      data-notes-enabled-value=enable_notes
       data-notes-url-value=account_notes_path
     )
       - search_result.hits.each.with_index do |hit, index|
         - if index > 0
           hr
         .hit
-          = render "record", record: hit.record, enable_watch_lists_panel: true, enable_fulltext_links: true, enable_notes: true
+          = render "record", \
+            record: hit.record, \
+            enable_watch_lists_panel: enable_watch_list_panel, \
+            enable_fulltext_links: true, \
+            enable_notes: enable_notes
   .card-footer
     = paginator

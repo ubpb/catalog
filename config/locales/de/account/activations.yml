@@ -1,6 +1,8 @@
 de:
   account:
     activations:
+      breadcrumb: Bibliothekskonto aktivieren
+
       show:
         header: "Bibliothekskonto aktivieren"
         info_html: >

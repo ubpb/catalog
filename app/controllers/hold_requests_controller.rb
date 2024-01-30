@@ -1,6 +1,7 @@
 class HoldRequestsController < RecordsController
 
   before_action :authenticate!
+  before_action :authorize!
 
   def create
     if Ils.create_hold_request(@record.id, current_user.ils_primary_id)
@@ -26,6 +27,17 @@ class HoldRequestsController < RecordsController
       record_id: @record.id,
       search_scope: current_search_scope
     ), status: :see_other
+  end
+
+  private
+
+  def authorize!
+    unless current_user.can_manage_hold_requests?
+      flash[:error] = t("hold_requests.disabled_error")
+      redirect_to account_root_path and return false
+    end
+
+    true
   end
 
 end

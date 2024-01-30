@@ -1,0 +1,9 @@
+/ This empty template can be rendered to break out of a Turbo Frame.
+/ See https://turbo.hotwired.dev/handbook/frames#%E2%80%9Cbreaking-out%E2%80%9D-from-a-frame
+/ This is usefull for example when you want to redirect the user to a new page
+/ triggered by a before_action in a controller (e.g. session timeout).
+/ What will happen is that first this template gets rendered, which tells Turbo
+/ to call the same URL again, but this time without the turbo-frame header. Then
+/ redirect rules in controller before_actions can be used to redirect the user as
+/ needed.
+= turbo_page_requires_reload

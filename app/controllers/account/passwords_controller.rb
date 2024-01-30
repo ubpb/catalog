@@ -1,6 +1,14 @@
 class Account::PasswordsController < Account::ApplicationController
 
+  # Do not enforce todos for this controller if the user
+  # needs to change the password.
+  skip_before_action :enforce_todos!, if: -> do
+    current_user.ils_user.needs_password_change?
+  end
+
   before_action { add_breadcrumb t("account.passwords.breadcrumb"), edit_account_password_path }
+
+  layout "application"
 
   def edit
     @form = PasswordChangeForm.new
@@ -17,11 +25,11 @@ class Account::PasswordsController < Account::ApplicationController
         # Try to change the password.
         if Ils.set_user_password(current_user.ils_primary_id, @form.password)
           flash[:success] = t(".success")
-          redirect_to account_profile_path
         else
           flash[:error] = t(".error")
-          redirect_to account_profile_path
         end
+
+        redirect_to account_profile_path
       else
         @form.errors.add(:current_password, t(".current_password_is_wrong"))
         render :edit, status: :unprocessable_entity

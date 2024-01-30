@@ -259,7 +259,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
     when "guest" then "13" # PG - Gast der Universität
     when "guest_student" then "03" # PZ - Gast der Bibliothek
     when "external" then "04" # PE - Externe Benutzer
-    when "external_u18 then" then "04" # PE - Externe Benutzer
+    when "external_u18" then "04" # PE - Externe Benutzer
     else "04"
     end
   end
@@ -270,7 +270,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
     when "guest" then Time.zone.today + 5.years # PG - Gast der Universität
     when "guest_student" then Time.zone.today + 2.years # PZ - Gast der Bibliothek
     when "external" then Time.zone.today + 5.years # PE - Externe Benutzer
-    when "external_u18 then" then Time.zone.today + 5.years # PE - Externe Benutzer
+    when "external_u18" then Time.zone.today + 5.years # PE - Externe Benutzer
     end
 
     date.strftime("%Y-%m-%d") if date.present?
@@ -282,7 +282,8 @@ class Admin::RegistrationsController < Admin::ApplicationController
     when "guest" then "13" # PG - Gast der Universität
     when "guest_student" then "03" # PZ - Gast der Bibliothek
     when "external" then "04" # PE - Externe Benutzer
-    when "external_u18 then" then "04" # PE - Externe Benutzer
+    when "external_u18" then "04" # PE - Externe Benutzer
+    else "04"
     end
   end
 end

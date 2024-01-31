@@ -1,0 +1,16 @@
+li.list-group-item.d-flex.justify-content-between.align-items-center
+  .fw-bold
+    = proxy_user.name
+    = " (#{proxy_user.ils_primary_id})"
+
+    - if proxy_user.expired_at.present?
+      span.badge.bg-info.ms-2 = t(".expired_at", date: l(proxy_user.expired_at))
+
+    - if proxy_user.note.present?
+      em: .text_muted = proxy_user.note
+  div
+    = link_to edit_account_proxy_user_path(proxy_user), class: "btn btn-primary btn-sm me-2" do
+      i.fa-solid.fa-edit.fa-fw
+    = link_to account_proxy_user_path(proxy_user), class: "btn btn-danger btn-sm", \
+      data: { turbo_method: :delete, turbo_confirm: t(".confirm_delete") } do
+      i.fa-solid.fa-trash.fa-fw

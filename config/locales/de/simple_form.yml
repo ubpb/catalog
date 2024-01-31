@@ -3,6 +3,7 @@ de:
     required:
       text: 'Erforderliche Angabe'
       mark: '*'
+
     labels:
       defaults:
         user_id: "Ausweisnummer"
@@ -23,6 +24,11 @@ de:
         current_pin: "Aktuelle PIN"
         new_pin: "Neue PIN"
         new_pin_confirmation: "Neue PIN wiederholen"
+
+      proxy_user:
+        name: "Name"
+        note: "Notiz"
+        expired_at: "Gültig bis"
 
     placeholders:
       defaults:
@@ -60,5 +66,10 @@ de:
         current_pin: >
           Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre
           aktuelle PIN vergessen haben, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
+
+      proxy_user:
+        note: "Sie können hier eine Notiz hinterlegen, warum Sie diesen Proxy-User eingerichtet haben."
+        expired_at: >
+          Wenn Sie hier ein Datum angeben (z.B. Semesterende), wird der Proxy-User automatisch nach diesem Tag gelöscht.
 
 

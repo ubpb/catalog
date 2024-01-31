@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       match "authorize", via: [:get, :post], on: :member
     end
     resource :pin, except: [:destroy]
+    resources :proxy_users, path: "proxy-users", except: [:show]
   end
 
   # Closed stack orders

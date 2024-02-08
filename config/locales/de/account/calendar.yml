@@ -1,45 +1,27 @@
+---
 de:
   account:
     calendar:
       breadcrumb: Kalender
-
       index:
-        main_description: >
-          Mit der Kalender-Funktion des Katalogs bieten wir Ihnen die Möglichkeit, relevante Termine,
-          die Ihr Bibliothekskonto betreffen, direkt in Ihr gewohntes Kalenderprogramm zu integrieren.
-          Aktuell stellen wir Ihnen die folgenden Termine zur Verfügung:
         due_date:
+          description: Der Kalender zeigt Ihnen das Ende von Leihfristen an. Enden die Leihfristen von mehreren Medien am gleichen Tag, fassen wir die Informationen zu einem übersichtlichen Termin zusammen. So vergessen Sie keine Rückgabe mehr und ersparen sich lästige Gebühren.
           title: Ende von Leihfristen
-          description: >
-            Der Kalender zeigt Ihnen das Ende von Leihfristen an. Enden die Leihfristen von mehreren
-            Medien am gleichen Tag, fassen wir die Informationen zu einem übersichtlichen Termin zusammen.
-            So vergessen Sie keine Rückgabe mehr und ersparen sich lästige Gebühren.
         hold_requests:
+          description: Der Kalender zeigt Ihnen an, dass für Sie Vormerkungen bereitgestellt wurden und auf Abholung warten. Die Einträge sind so gestaltet, dass Sie direkt sehen können, wie lange die Medien max. zur Abholung bereit liegen.
           title: Bereitgestellte Vormerkungen
-          description: >
-            Der Kalender zeigt Ihnen an, dass für Sie Vormerkungen bereitgestellt wurden und auf Abholung warten.
-            Die Einträge sind so gestaltet, dass Sie direkt sehen können, wie lange die Medien max.
-            zur Abholung bereit liegen.
-        technical_description: >
-          Die Termine werden durch Ihr Kalenderprogramm abonniert und automatisch aktuell gehalten. Das
-          bedeutet, dass sich die Einträge selbstständig aktualisieren, wenn Sie z.B. Verlängerungen
-          durchführen. Sie sollten daher darauf achten, Ihr Programm entsprechend zu konfigurieren.
-        subscribe_btn: >
-          Termine jetzt abonnieren
-        subscribe_description: >
-          Mit einem Klick auf den Knopf sollte sich Ihr Standard-Kalenderprogramm öffnen. Sollte dies
-          nicht funktionieren, wählen Sie bitte in dem Kalenderprogramm Ihrer Wahl die Funktion,
-          mit der Sie einen neuen Kalender über eine Webadresse anlegen können und geben Sie bitte die
-          folgende Adresse ein
         howto:
           description: In den gängigen Kalenderprogrammen finden Sie die Funktion folgendermaßen
-          outlook:
-            title: Outlook
-            description: Kalender öffnen → Aus dem Internet...
-          ical:
-            title: Apple Kalender
-            description: Ablage → Neues Kalenderabonnement
           google:
-            title: Google Calendar
             description: Weitere Kalender → Über URL hinzufügen
-
+            title: Google Calendar
+          ical:
+            description: Ablage → Neues Kalenderabonnement
+            title: Apple Kalender
+          outlook:
+            description: Kalender öffnen → Aus dem Internet...
+            title: Outlook
+        main_description: 'Mit der Kalender-Funktion des Katalogs bieten wir Ihnen die Möglichkeit, relevante Termine, die Ihr Bibliothekskonto betreffen, direkt in Ihr gewohntes Kalenderprogramm zu integrieren. Aktuell stellen wir Ihnen die folgenden Termine zur Verfügung:'
+        subscribe_btn: Termine jetzt abonnieren
+        subscribe_description: Mit einem Klick auf den Knopf sollte sich Ihr Standard-Kalenderprogramm öffnen. Sollte dies nicht funktionieren, wählen Sie bitte in dem Kalenderprogramm Ihrer Wahl die Funktion, mit der Sie einen neuen Kalender über eine Webadresse anlegen können und geben Sie bitte die folgende Adresse ein
+        technical_description: Die Termine werden durch Ihr Kalenderprogramm abonniert und automatisch aktuell gehalten. Das bedeutet, dass sich die Einträge selbstständig aktualisieren, wenn Sie z.B. Verlängerungen durchführen. Sie sollten daher darauf achten, Ihr Programm entsprechend zu konfigurieren.

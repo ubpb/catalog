@@ -1,8 +1,8 @@
+---
 de:
   account:
     notes:
-      breadcrumb: "Notizen"
-
+      breadcrumb: Notizen
       index:
-        header: "Notizen"
-        no-notes: "Keine Notizen vorhanden"
+        header: Notizen
+        no-notes: Keine Notizen vorhanden

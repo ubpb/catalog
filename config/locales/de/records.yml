@@ -1,56 +1,52 @@
+---
 de:
   records:
-    breadcrumb: "Details"
-
-    stepper:
-      back_to_search: "Zur Ergebnisliste"
-      info: "Ergebnis %{position} von %{total_hits}"
-
+    breadcrumb: Details
+    details:
+      creators: Autor(en) / Beteiligte
+      edition: Auflage
+      fulltext_links: Link zum Volltext
+      header: Details
+      identifiers:
+        doi: DOI
+        eissn: eISSN
+        header: Identifikatoren
+        id: Titel-ID
+        isbn: ISBN
+        issn: ISSN
+        oclc: OCLC-Nummer
+        zdb: ZDB-ID
+      is_part_of: Ist Teil von
+      languages: Sprache
+      local_notations: Systemstelle
+      notes: Beschreibungen/Notizen
+      physical_description: Format
+      print_version: Druckausgabe
+      publication_notices: Ort / Verlag
+      related_resource_links: Link zu anderen Inhalten
+      relations: Verknüpfte Titel
+      resolver_link: Link-Resolver
+      show_volumes: Zeige Bände
+      source: Quelle
+      subjects: Schlagworte
+      title: Titel
+      volumes: Bände
+      year_of_publication: Erscheinungsjahr
+    recommendations:
+      header: Weiterführende Literatur
+      info: Empfehlungen zum selben Thema automatisch vorgeschlagen von %{link}
     show:
-      loading_more: Lade weitere Informationen...
       closed_stack_order: Magazinbestellung aufgeben
-
       journal_stocks:
-        header: "Zeitschriftenbestand"
-        hint: Aktuelle Zeitschriftenjahrgänge finden Sie am angegebenen Standort. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
-        p00_hint: Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel"). In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
         details:
           call_number: Signatur
-          location: Standort
+          gap: 'Nicht verfügbar: %{gap}'
           holdings: Bestand
-          gap: "Nicht verfügbar: %{gap}"
-
-    details:
-      header: "Details"
-      creators: "Autor(en) / Beteiligte"
-      title: "Titel"
-      year_of_publication: "Erscheinungsjahr"
-      publication_notices: "Ort / Verlag"
-      edition: "Auflage"
-      physical_description: "Format"
-      is_part_of: "Ist Teil von"
-      source: "Quelle"
-      relations: "Verknüpfte Titel"
-      languages: "Sprache"
-      local_notations: "Systemstelle"
-      subjects: "Schlagworte"
-      related_resource_links: "Link zu anderen Inhalten"
-      fulltext_links: "Link zum Volltext"
-      resolver_link: "Link-Resolver"
-      notes: "Beschreibungen/Notizen"
-      volumes: "Bände"
-      show_volumes: "Zeige Bände"
-      print_version: "Druckausgabe"
-      identifiers:
-        header: "Identifikatoren"
-        id: "Titel-ID"
-        isbn: "ISBN"
-        issn: "ISSN"
-        eissn: "eISSN"
-        doi: "DOI"
-        zdb: "ZDB-ID"
-        oclc: "OCLC-Nummer"
-
-    recommendations:
-      header: "Weiterführende Literatur"
-      info: "Empfehlungen zum selben Thema automatisch vorgeschlagen von %{link}"
+          location: Standort
+        header: Zeitschriftenbestand
+        hint: Aktuelle Zeitschriftenjahrgänge finden Sie am angegebenen Standort. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
+        p00_hint: Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel"). In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+      loading_more: Lade weitere Informationen...
+    stepper:
+      back_to_search: Zur Ergebnisliste
+      info: Ergebnis %{position} von %{total_hits}

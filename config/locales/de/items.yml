@@ -1,95 +1,63 @@
+---
 de:
   items:
     index:
-      header: "Exemplare für %{title}"
-      breadcrumb: "Exemplare"
-
+      breadcrumb: Exemplare
+      header: Exemplare für %{title}
     journal_listing:
-      header: "Aktuelle und erwartete Hefte"
-      no_items_message: "Keine Informationen über aktuelle oder erwartete Hefte verfügbar."
+      header: Aktuelle und erwartete Hefte
       items:
+        expected_date_message: 'Erwartet zum: %{date}'
         header:
-          call_number: "Signatur"
-          location: "Standort"
-          description: "Beschreibung"
-        expected_date_message: "Erwartet zum: %{date}"
-        public_note_message: "Hinweis: %{note}"
-
+          call_number: Signatur
+          description: Beschreibung
+          location: Standort
+        public_note_message: 'Hinweis: %{note}'
+      no_items_message: Keine Informationen über aktuelle oder erwartete Hefte verfügbar.
     listing:
-      header: "Exemplare"
-
-      stats:
-        no_of_items: "%{count} gefunden."
-        no_of_available_items:
-          zero: "Keine verfügbar."
-          one: "1 verfügbar."
-          other: "%{count} verfügbar."
-        no_of_hold_requests:
-          zero: "Keine Vormerkungen."
-          one: "1 Vormerkung."
-          other: "%{count} Vormerkungen."
-
-      hold_requests_available_info:
-        one: "Sie haben eine Vormerkung für diesen Titel"
-        other: "Sie haben %{count} Vormerkungen für diesen Titel"
-
-      no_items_message: "Keine Exemplare verfügbar"
-      due_date_info: "Fällig am %{due_date}"
-
-      create_hold_request: "Ein Exemplar vormerken"
-      delete_hold_request: "Vormerkung löschen"
-
-      confirm_delete_hold_request: "Vormerkung wirklich löschen?"
-      confirm_create_hold_request: "Jetzt ein Exemplar vormerken?"
-
-      reshelving_info: Wiedereinstellen am Standort bis %{time}
-
-      04_location_hint: >
-        Das im Magazin J befindliche Archivexemplar der Paderborner Dissertation ist nicht ausleihbar.
-        Bitte nutzen Sie - sofern vorhanden - die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel") oder
-        ein anderes Printexemplar. In besonderen Einzelfällen wenden Sie sich bitte an
-        <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
-
-      hold_request_info: >
-        Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und
-        sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein
-        Exemplar für Sie verfügbar wird.
-
-      temp_location_info: >
-        Diese Medien stehen temporär an einem anderen Standort und/oder unterliegen temporär anderen
-        Ausleihkonditionen. Möglicherweise können diese Medien nicht entliehen werden. Wurde ein Datum hinterlegt,
-        wann das Medium zu seinem ursprünglichen Standort und/oder seinen ursprünglichen Ausleihkonditionen zurückkehrt,
-        wird dies unter Status angegeben.
-      temp_due_back_date: "Von temporärer Aufstellung zurück am %{due_date}"
-
-      login_required: "Für Kontofunktionen bitte anmelden"
-
+      04_location_hint: Das im Magazin J befindliche Archivexemplar der Paderborner Dissertation ist nicht ausleihbar. Bitte nutzen Sie - sofern vorhanden - die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel") oder ein anderes Printexemplar. In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+      closed_stack_order: Magazinbestellung aufgeben
+      closed_stack_order_info: Verfügbare Medien mit Standort <strong>Magazin</strong> sind nicht frei zugänglich. Bitte geben Sie eine Magazinbestellung auf.
+      confirm_create_hold_request: Jetzt ein Exemplar vormerken?
+      confirm_delete_hold_request: Vormerkung wirklich löschen?
+      create_hold_request: Ein Exemplar vormerken
+      delete_hold_request: Vormerkung löschen
+      due_date_info: Fällig am %{due_date}
+      header: Exemplare
+      hold_request_info: Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein Exemplar für Sie verfügbar wird.
       hold_requests:
         header:
-          requested_at: "Vormerkung vom"
-          status: "Status"
-          queue_position: "Position in der Warteschlange"
-
+          queue_position: Position in der Warteschlange
+          requested_at: Vormerkung vom
+          status: Status
+        ready_for_pickup: Sie können das Medium im Selbstabholbereich abholen
         status:
-          in_queue: "Vorgemerkt"
-          on_hold_shelf: "Bereitgestellt"
-
-        ready_for_pickup: "Sie können das Medium im Selbstabholbereich abholen"
-
-      closed_stack_order_info: "Verfügbare Medien mit Standort <strong>Magazin</strong> sind nicht frei zugänglich. Bitte geben Sie eine Magazinbestellung auf."
-      closed_stack_order: Magazinbestellung aufgeben
-
+          in_queue: Vorgemerkt
+          on_hold_shelf: Bereitgestellt
+      hold_requests_available_info:
+        one: Sie haben eine Vormerkung für diesen Titel
+        other: Sie haben %{count} Vormerkungen für diesen Titel
       items:
-        not_on_location: "Nicht am Standort"
-        handapparat_info: >
-          Dieses Medium steht in einem Handapparat. Besitzt die Universitätsbibliothek kein weiteres Exemplar dieses Titels,
-          können Sie sich im Bedarfsfall an das Informationszentrum wenden.
-
+        handapparat_info: Dieses Medium steht in einem Handapparat. Besitzt die Universitätsbibliothek kein weiteres Exemplar dieses Titels, können Sie sich im Bedarfsfall an das Informationszentrum wenden.
         header:
-          call_number: "Signatur"
-          location: "Standort"
-          policy: "Leihart"
-          status: "Status"
-          public_note: "Notiz"
-          #process_type: "Prozess-Status"
-          #due_date_policy: "Due-Date-Policy"
+          call_number: Signatur
+          location: Standort
+          policy: Leihart
+          public_note: Notiz
+          status: Status
+        not_on_location: Nicht am Standort
+      login_required: Für Kontofunktionen bitte anmelden
+      no_items_message: Keine Exemplare verfügbar
+      reshelving_info: Wiedereinstellen am Standort bis %{time}
+      stats:
+        no_of_available_items:
+          one: 1 verfügbar.
+          other: "%{count} verfügbar."
+          zero: Keine verfügbar.
+        no_of_hold_requests:
+          one: 1 Vormerkung.
+          other: "%{count} Vormerkungen."
+          zero: Keine Vormerkungen.
+        no_of_items: "%{count} gefunden."
+      temp_due_back_date: Von temporärer Aufstellung zurück am %{due_date}
+      temp_location_info: Diese Medien stehen temporär an einem anderen Standort und/oder unterliegen temporär anderen Ausleihkonditionen. Möglicherweise können diese Medien nicht entliehen werden. Wurde ein Datum hinterlegt, wann das Medium zu seinem ursprünglichen Standort und/oder seinen ursprünglichen Ausleihkonditionen zurückkehrt, wird dies unter Status angegeben.

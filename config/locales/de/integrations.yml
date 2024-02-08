@@ -1,8 +1,4 @@
+---
 de:
   integrations:
-    common_error_message: >
-      <i class="fas fa-exclamation-triangle fa-lg"></i>
-      Es ist ein Fehler in der Kommunikation mit einem externen System aufgetreten. Bitte
-      versuchen Sie Ihre letzte Aktion erneut. Sollte der Fehler bestehen bleiben,
-      setzen Sie sich bitte mit dem Informationszentrum der Bibliothek in Verbindung oder versuchen Sie
-      es später erneut.
+    common_error_message: <i class="fas fa-exclamation-triangle fa-lg"></i> Es ist ein Fehler in der Kommunikation mit einem externen System aufgetreten. Bitte versuchen Sie Ihre letzte Aktion erneut. Sollte der Fehler bestehen bleiben, setzen Sie sich bitte mit dem Informationszentrum der Bibliothek in Verbindung oder versuchen Sie es später erneut.

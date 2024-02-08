@@ -1,6 +1,7 @@
+---
 en:
   relations:
     index:
       breadcrumb: Linked titles
-      header: "Linked titles for %{title}"
-      no-relations: "No linked titles available."
+      header: Linked titles for %{title}
+      no-relations: No linked titles available.

@@ -1,37 +1,30 @@
+---
 en:
   account:
     watch_lists:
-      breadcrumb: "Watchlists"
-
-      index:
-        header: "Watchlists"
-        no-watch-lists: "You do not have watchlists"
-        actions:
-          create: "Create new watchlist"
-
-      show:
-        no-entries: "No entries in this list"
-
-      new:
-        breadcrumb: "New"
-        header: "Create new watchlist"
-
+      breadcrumb: Watchlists
       create:
-        success: "Watchlist saved"
-
-      edit:
-        breadcrumb: "Edit"
-        header: "Edit watchlist"
-
-      update:
-        success: "Watch listsaved"
-
+        success: Watchlist saved
       destroy:
-        success: "Watchlist deleted"
-        error: "Watchlist could not be deleted."
-
+        error: Watchlist could not be deleted.
+        success: Watchlist deleted
+      edit:
+        breadcrumb: Edit
+        header: Edit watchlist
+      index:
+        actions:
+          create: Create new watchlist
+        header: Watchlists
+        no-watch-lists: You do not have watchlists
+      new:
+        breadcrumb: New
+        header: Create new watchlist
+      show:
+        no-entries: No entries in this list
+      update:
+        success: Watch listsaved
       watch_list:
         actions:
-          show: "Show"
-          edit: "Edit"
-          delete: "Delete"
+          delete: Delete
+          edit: Edit
+          show: Show

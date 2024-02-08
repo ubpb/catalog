@@ -1,63 +1,36 @@
+---
 en:
   closed_stack_orders:
-    breadcrumb: "Closed stack order"
-    undefined_error: >
-      An error has occurred while ordering from the closed stack. Please try again, or contact the staff at the library information desk.
-
+    breadcrumb: Closed stack order
     create:
-      microfiche_hint: >
-        ATTENTION!!! You are ordering a microfiche. In this case, please be sure to enter the desired title of the work.
-      success: >
-        Your order has been successfully placed. Please note the above information regarding the provision of ordered media.
       errors:
-        fehler_nicht_schonwieder: >
-          Error: This order has already been placed! Please check with the local circulation desk to see when the literature you requested is
-          you have requested will be ready for pickup.
-        fehler_bestellangaben: >
-          Error: please specify the call number of the copy you want.
-        fehler_jahrgang_band: >
-          Error: please specify the year and number of the volume.
-        fehler_jahr_in_ebene: >
-          Error: You have entered a volume from 1996 onwards! You can usually find these journal volumes in the subject libraries.
-          If you are sure that the volume you need is in the stacks,
-          please switch off the year check in the input form.
-        fehler_jahrgang_falsch: >
-          Error: You have not entered the journal year correctly! Please enter the year with four digits.
-          Please note: The closed stack only contains volumes up to 1995. More recent journal volumes can be found in the subject libraries.
-
+        fehler_bestellangaben: 'Error: please specify the call number of the copy you want.'
+        fehler_jahr_in_ebene: 'Error: You have entered a volume from 1996 onwards! You can usually find these journal volumes in the subject libraries. If you are sure that the volume you need is in the stacks, please switch off the year check in the input form.'
+        fehler_jahrgang_band: 'Error: please specify the year and number of the volume.'
+        fehler_jahrgang_falsch: 'Error: You have not entered the journal year correctly! Please enter the year with four digits. Please note: The closed stack only contains volumes up to 1995. More recent journal volumes can be found in the subject libraries.'
+        fehler_nicht_schonwieder: 'Error: This order has already been placed! Please check with the local circulation desk to see when the literature you requested is you have requested will be ready for pickup.'
+      microfiche_hint: ATTENTION!!! You are ordering a microfiche. In this case, please be sure to enter the desired title of the work.
+      success: Your order has been successfully placed. Please note the above information regarding the provision of ordered media.
     new:
-      title: "Place a closed stack order"
-      info: >
-        You can only use this order screen to order media that are placed in the library's stacks. Media from the
-        the open access holdings cannot be ordered via this order form.
-      hints: "Please note"
-      hint1_html: >
-        Orders for media placed in the library's stacks are processed Monday through Friday between
-        7:30 a.m. to 6:30 p.m. and Saturdays between 9:00 a.m. and 4:30 p.m., and are usually ready within one
-        hour for you in the self pickup area or at the
-        the <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">local circulation desk</a>.
-        If you do not find your order in the self pickup area, please contact
-        the staff at the local circulation desk.
+      book:
+        caption: 1. A book
+        signature: Call number
+        submit_btn: Order book now
+        title: Title
+      hint1_html: Orders for media placed in the library's stacks are processed Monday through Friday between 7:30 a.m. to 6:30 p.m. and Saturdays between 9:00 a.m. and 4:30 p.m., and are usually ready within one hour for you in the self pickup area or at the the <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">local circulation desk</a>. If you do not find your order in the self pickup area, please contact the staff at the local circulation desk.
       hint2: Orders placed outside of these hours will be processed the next business day.
       hint3: You will receive a separate pickup message via e-mail for each media ordered.
-      hint4_html: >
-        Picking up media provided in the self pickup area is possible during the entire
-        <a href="https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten" target="_blank">opening hours of the library</a>.
-        The issue of provided media at the
-        <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">local circulation desk</a>
-        however, is only Monday through Friday from 7:30 a.m. to 7:00 p.m. and Saturday from 9:00 a.m. to 5:00 p.m.
-      order_form_header: What would you like to order from the closed stack?
-      book:
-        caption: "1. A book"
-        title: "Title"
-        signature: "Call number"
-        submit_btn: Order book now
+      hint4_html: Picking up media provided in the self pickup area is possible during the entire <a href="https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten" target="_blank">opening hours of the library</a>. The issue of provided media at the <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">local circulation desk</a> however, is only Monday through Friday from 7:30 a.m. to 7:00 p.m. and Saturday from 9:00 a.m. to 5:00 p.m.
+      hints: Please note
+      info: You can only use this order screen to order media that are placed in the library's stacks. Media from the the open access holdings cannot be ordered via this order form.
       magazine:
-        caption: "2. A journal volume"
-        signature: "Call number"
-        year: Year
-        volumn: Volume
+        caption: 2. A journal volume
         page: Page
-        volume_check: "Check year"
+        signature: Call number
         submit_btn: Order journal volume now
-
+        volume_check: Check year
+        volumn: Volume
+        year: Year
+      order_form_header: What would you like to order from the closed stack?
+      title: Place a closed stack order
+    undefined_error: An error has occurred while ordering from the closed stack. Please try again, or contact the staff at the library information desk.

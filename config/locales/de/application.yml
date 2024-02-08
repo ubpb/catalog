@@ -1,51 +1,44 @@
+---
 de:
+  access_denied: Zugriff verweigert
   application:
-    ub: Universitätsbibliothek
-    ub_pb: UB Paderborn
-    app_name: Katalog
-    menu: Menü
-
-    main_menu:
-      home: Start
-      help: Hilfe
-      blog: Blog
-      further_services: Weitere Dienste
-      new_acquisition: Neuerwerbungslisten
-      systematic: Fachsystematik Bücher
-      purchase_requests: Erwerbungsvorschlag
-      closed_stack_orders: Bestellung aus dem Magazin
-      interlibrary_loan: Fernleihe
-      settings: Einstellungen
-      language: Sprache
-      color_mode: Farbschema
-
-    color_modes:
-      light: Hell
-      dark: Dunkel
-      auto: Automatisch
-
     account_menu:
-      my_account: Mein Bibliothekskonto
-      my_e_id_card: Mein E-Bibliotheksausweis
+      login: Anmelden
       logout: Abmelden
       logout_msg: Wirklich abmelden?
-      login: Anmelden
-
+      my_account: Mein Bibliothekskonto
+      my_e_id_card: Mein E-Bibliotheksausweis
+    app_name: Katalog
+    color_modes:
+      auto: Automatisch
+      dark: Dunkel
+      light: Hell
     footer:
-      quicklinks: "Schnellzugriffe"
-      legal_notices: "Rechtliches"
-      address: "Anschrift / Anreise"
-      opening_hours: "Öffnungs- & Servicezeiten"
-      impressum: "Impressum"
-      privacy_policy: "Datenschutzerklärung"
-      cover_images: "Coverbilder bereitgestellt von buchhandel.de"
-
-  save: Speichern
+      address: Anschrift / Anreise
+      cover_images: Coverbilder bereitgestellt von buchhandel.de
+      impressum: Impressum
+      legal_notices: Rechtliches
+      opening_hours: Öffnungs- & Servicezeiten
+      privacy_policy: Datenschutzerklärung
+      quicklinks: Schnellzugriffe
+    main_menu:
+      blog: Blog
+      closed_stack_orders: Bestellung aus dem Magazin
+      color_mode: Farbschema
+      further_services: Weitere Dienste
+      help: Hilfe
+      home: Start
+      interlibrary_loan: Fernleihe
+      language: Sprache
+      new_acquisition: Neuerwerbungslisten
+      purchase_requests: Erwerbungsvorschlag
+      settings: Einstellungen
+      systematic: Fachsystematik Bücher
+    menu: Menü
+    ub: Universitätsbibliothek
+    ub_pb: UB Paderborn
   cancel: Abbrechen
-
-  confirm-delete: "Wirklich löschen?"
-
-  access_denied: "Zugriff verweigert"
-
-  german: Deutsch
+  confirm-delete: Wirklich löschen?
   english: Englisch
+  german: Deutsch
+  save: Speichern

@@ -1,102 +1,91 @@
+---
 en:
   searches:
-    breadcrumb: "Search"
-    sorted_by: "Sorted by"
-
-    record:
-      call_number: "Call number:"
-      journal_stock: "Journal holdings:"
-      all_volumes: All volumes
-      show_less: "Show less"
-      show_more_links:
-        one: "Show one additional link"
-        other: "Show %{count} more links"
-      online_resource:
-        direct_link: "Go directly to the online resource"
-        resolver_link: "Check availability"
-      citations:
-        header: "Export record as..."
-        bibtex: "BibTeX"
-      notes:
-        dropdown: "Note"
-        add: "Add"
-        edit: "Edit"
-        delete: "Delete"
-        save: "Save"
-        cancel: "Cancel"
-        placeholder: "Note"
-        error: "An error occurred while saving the changes to the note."
-        no_user: "Please login to create and edit notes"
-        deleted-record: "The title with the ID \"%{record_id}\" no longer exists"
-
-    search_panel:
-      search: "Search"
-      ebook_notice: >
-        Please also note the <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i>
-        available range of e-books, which are currently not yet listed in our catalog</a>, but have already been activated via the publisher portals.
-
-    search_field:
-      query_placeholder: "Enter search term(s)..."
-
-    tools:
-      share_search: "Share search"
-      rss_search: "Search as RSS-Feed"
-
-    local:
-      label: "Catalog"
-      breadcrumb: "in Catalog"
-
-    cdi:
-      label: "Central Discovery Index"
-      breadcrumb: "in CDI"
-
-    no_hits:
-      info: "No matches found. Please change your search term(s)."
-
-    request_hints:
-      invalid_after_validation: "The search query was incorrect and could not be executed. Please try again."
-      query_syntax_error: "Your search query contained invalid characters or invalid character combinations."
-
-    searchables:
-      local:
-        any: "All fields"
-        creator: "Author(s) / Participant(s)"
-        title: "Title"
-        subject: "Subject heading"
-        pub: "Place / Publisher"
-        yop: "Year of publication"
-        ids: "Identifiers (ISBN, ISSN, ...)"
-        call_number: "Call number"
-        local_notation: "Local notation"
-        superorder_id: "Series ID"
-        toc: "Table of contents"
-      cdi:
-        any: "All fields"
-        creator: "Author(s) / Participant(s)"
-        title: "Title"
-        yop: "Year of publication"
-        subject: "Subject heading"
-
-    sortables:
-      local:
-        _default_: "Relevance"
-        title: "Titel"
-        creator: "Author(s) / Participant(s)"
-        yop: "Year of publication"
-        local_notation: "Local notation"
-        volume: "Volume count"
-        newrecords: "New acquisition"
-      cdi:
-        _default_: "Relevance"
-        title: "Title"
-        yop: "Year of publication"
-
     aggregations:
-      expand: "Show more..."
-      collapse: "Show less..."
-      aggregations_header: Filter search results
       active_aggregations_header: Active filters
-
+      aggregations_header: Filter search results
+      collapse: Show less...
+      expand: Show more...
       histogram_aggregation:
-        set_aggregation: "Filter results"
-        reset: "Reset filter"
+        reset: Reset filter
+        set_aggregation: Filter results
+    availabilities:
+      error: Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+    breadcrumb: Search
+    cdi:
+      breadcrumb: in CDI
+      label: Central Discovery Index
+    local:
+      breadcrumb: in Catalog
+      label: Catalog
+    no_hits:
+      info: No matches found. Please change your search term(s).
+    record:
+      all_volumes: All volumes
+      call_number: 'Call number:'
+      citations:
+        bibtex: BibTeX
+        header: Export record as...
+      journal_stock: 'Journal holdings:'
+      notes:
+        add: Add
+        cancel: Cancel
+        delete: Delete
+        deleted-record: The title with the ID "%{record_id}" no longer exists
+        dropdown: Note
+        edit: Edit
+        error: An error occurred while saving the changes to the note.
+        no_user: Please login to create and edit notes
+        placeholder: Note
+        save: Save
+      online_resource:
+        direct_link: Go directly to the online resource
+        resolver_link: Check availability
+      show_less: Show less
+      show_more_links:
+        one: Show one additional link
+        other: Show %{count} more links
+    request_hints:
+      invalid_after_validation: The search query was incorrect and could not be executed. Please try again.
+      query_syntax_error: Your search query contained invalid characters or invalid character combinations.
+    search_field:
+      query_placeholder: Enter search term(s)...
+    search_panel:
+      ebook_notice: Please also note the <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i> available range of e-books, which are currently not yet listed in our catalog</a>, but have already been activated via the publisher portals.
+      search: Search
+    searchables:
+      cdi:
+        any: All fields
+        creator: Author(s) / Participant(s)
+        subject: Subject heading
+        title: Title
+        yop: Year of publication
+      local:
+        any: All fields
+        call_number: Call number
+        creator: Author(s) / Participant(s)
+        ids: Identifiers (ISBN, ISSN, ...)
+        local_notation: Local notation
+        pub: Place / Publisher
+        subject: Subject heading
+        superorder_id: Series ID
+        title: Title
+        toc: Table of contents
+        yop: Year of publication
+    sortables:
+      cdi:
+        _default_: Relevance
+        title: Title
+        yop: Year of publication
+      local:
+        _default_: Relevance
+        creator: Author(s) / Participant(s)
+        local_notation: Local notation
+        newrecords: New acquisition
+        title: Titel
+        volume: Volume count
+        yop: Year of publication
+    sorted_by: Sorted by
+    tools:
+      rss_search: Search as RSS-Feed
+      share_search: Share search

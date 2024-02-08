@@ -1,12 +1,13 @@
+---
 de:
   sessions:
-    new:
-      header: "Anmelden"
-      submit: "Anmelden"
-      cancel: "Abbrechen"
-      forgot_password: "Ich habe mein Passwort vergessen"
     create:
-      error: "Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist falsch."
-      success: "Sie wurden erfolgreich angemeldet."
+      error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist falsch.
+      success: Sie wurden erfolgreich angemeldet.
     destroy:
-      success: "Sie wurden erfolgreich abgemeldet."
+      success: Sie wurden erfolgreich abgemeldet.
+    new:
+      cancel: Abbrechen
+      forgot_password: Ich habe mein Passwort vergessen
+      header: Anmelden
+      submit: Anmelden

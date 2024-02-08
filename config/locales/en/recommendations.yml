@@ -1,5 +1,6 @@
+---
 en:
   recommendations:
     index:
-      header: "Further reading for: %{title}"
-      not_found: "No recommendations available"
+      header: 'Further reading for: %{title}'
+      not_found: No recommendations available

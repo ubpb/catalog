@@ -1,27 +1,23 @@
+---
 de:
   account:
     loans_history:
-      breadcrumb: "Ausleihhistorie"
-
-      index:
-        header: "Ausleihhistorie"
-        info: >
-          Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten
-          180 Tage angezeigt werden. Ältere Vorgänge werden automatisch gelöscht.
-
+      breadcrumb: Ausleihhistorie
       fixed:
-        header: "Ausleihhistorie vor dem 3.2.2023"
-
+        header: Ausleihhistorie vor dem 3.2.2023
+      index:
+        header: Ausleihhistorie
+        info: Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten 180 Tage angezeigt werden. Ältere Vorgänge werden automatisch gelöscht.
       listing:
-        no-loans: "Keine abgeschlossenen Ausleihvorgänge"
-        sorted_by: "Sortiert nach"
-        table:
-          barcode: "Strichcode"
-          title: "Titel"
-          loan_date: "Entliehen am"
-          return_date: "Zurückgegeben am"
+        no-loans: Keine abgeschlossenen Ausleihvorgänge
         sortable_fields:
-          loan_date: "Entliehen am"
-          return_date: "Zurückgegeben am"
-          barcode: "Strichcode"
-          title: "Titel"
+          barcode: Strichcode
+          loan_date: Entliehen am
+          return_date: Zurückgegeben am
+          title: Titel
+        sorted_by: Sortiert nach
+        table:
+          barcode: Strichcode
+          loan_date: Entliehen am
+          return_date: Zurückgegeben am
+          title: Titel

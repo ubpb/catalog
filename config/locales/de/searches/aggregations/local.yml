@@ -1,71 +1,61 @@
+---
 de:
   searches:
     aggregations:
       local:
+        content_type:
+          label: Art des Inhalts
+          values:
+            bibliography: Bibliographie
+            biography: Biografie
+            catalog: Katalog
+            congress: Kongressbericht
+            dictionary: Wörterbuch
+            dissertation: Hochschulschrift
+            encyclopedia: Enzyklopädie
+            festschrift: Festschrift
+            music: Musik
+            other: Sonstiges
+            standard: Standard / Norm
+            textbook: Textbuch
+            thesis: Hochschulschrift (Sonstige)
+            university_text: Universitätstext
+            unspecified: Nicht angegeben
+        creator:
+          label: Autor / Autorin
+        language: Language
+        local_notation:
+          label: Systemstelle
+        material_type:
+          label: Art des Mediums
+          values:
+            audio: Audio
+            data_storage: Datenspeicher
+            image: Bild
+            map: Karte
+            microform: Mikrofiche
+            online_resource: Online-Ressource
+            other: Sonstiges
+            print: Gedruckt
+            unspecified: Nicht angegeben
+            video: Video
         newrecords:
-          label: "Neu hinzugefügt"
+          label: Neu hinzugefügt
           values:
             last_month: "... im letzten Monat"
             last_three_months: "... in den letzten 3 Monaten"
             last_twelve_months: "... in den letzten 12 Monaten"
-
-        creator:
-          label: "Autor / Autorin"
-
-        subject:
-          label: "Schlagwort"
-
-        language:
-          # See default
-
-        yop:
-          label: "Erscheinungsjahr"
-
-        local_notation:
-          label: "Systemstelle"
-
         resource_type:
-          label: "Erscheinungsform"
+          label: Erscheinungsform
           values:
-            article: "Artikel"
-            monograph: "Monographie"
-            journal: "Zeitschrift"
-            series: "Serie"
-            newspaper: "Zeitung"
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-
-        material_type:
-          label: "Art des Mediums"
-          values:
-            print: "Gedruckt"
-            online_resource: "Online-Ressource"
-            data_storage: "Datenspeicher"
-            microform: "Mikrofiche"
-            audio: "Audio"
-            video: "Video"
-            map: "Karte"
-            image: "Bild"
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-
-        content_type:
-          label: "Art des Inhalts"
-          values:
-            dissertation: Hochschulschrift
-            bibliography: Bibliographie
-            catalog: Katalog
-            dictionary: Wörterbuch
-            encyclopedia: Enzyklopädie
-            festschrift: Festschrift
-            biography: Biografie
-            congress: Kongressbericht
-            music: Musik
-            standard: Standard / Norm
-            university_text: Universitätstext
-            textbook: Textbuch
-            thesis: Hochschulschrift (Sonstige)
-            other: "Sonstiges"
-            unspecified: "Nicht angegeben"
-
-
+            article: Artikel
+            journal: Zeitschrift
+            monograph: Monographie
+            newspaper: Zeitung
+            other: Sonstiges
+            series: Serie
+            unspecified: Nicht angegeben
+        subject:
+          label: Schlagwort
+        yop:
+          label: Erscheinungsjahr

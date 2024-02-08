@@ -1,15 +1,11 @@
+---
 en:
   account:
     emails:
-      breadcrumb: "Change e-mail address"
-
+      breadcrumb: Change e-mail address
       edit:
-        header: "Change e-mail address"
-
+        header: Change e-mail address
       update:
-        current_password_is_wrong: >
-          The password entered is not correct.
+        current_password_is_wrong: The password entered is not correct.
+        error: Your email address could not be changed. An error has occurred. Please try again. If the error persists, please contact staff at the local circulation desk.
         success: Your e-mail address has been successfully changed.
-        error: >
-          Your email address could not be changed. An error has occurred. Please try again.
-          If the error persists, please contact staff at the local circulation desk.

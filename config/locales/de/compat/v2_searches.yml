@@ -1,6 +1,5 @@
+---
 de:
   compat:
     v2_searches:
-      broken_search_request_warning: >
-        Der Link, der Sie auf diese Seite gebracht hat, verwendet eine
-        fehlerhafte Suchsyntax. Bitte starten Sie hier mit einer neuen Suche.
+      broken_search_request_warning: Der Link, der Sie auf diese Seite gebracht hat, verwendet eine fehlerhafte Suchsyntax. Bitte starten Sie hier mit einer neuen Suche.

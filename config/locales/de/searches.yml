@@ -1,110 +1,93 @@
+---
 de:
   searches:
-    breadcrumb: "Suche"
-    sorted_by: "Sortiert nach"
-
-    record:
-      call_number: "Signatur:"
-      journal_stock: "Zeitschriftenbestand:"
-      all_volumes: Alle Bände
-      show_less: "Weniger anzeigen"
-      show_more_links:
-        one: "Einen weiteren Link anzeigen"
-        other: "%{count} weitere Links anzeigen"
-      online_resource:
-        direct_link: "Direkt zur Online-Ressource"
-        resolver_link: "Verfügbarkeit prüfen"
-      citations:
-        header: "Datensatz exportieren als..."
-        bibtex: "BibTeX"
-      notes:
-        dropdown: "Notiz"
-        add: "Hinzufügen"
-        edit: "Bearbeiten"
-        delete: "Löschen"
-        save: "Speichern"
-        cancel: "Abbrechen"
-        placeholder: "Notiz"
-        error: "Beim Speichern der Änderungen an der Notiz ist ein Fehler aufgetreten."
-        no_user: "Bitte anmelden um Notizen zu nutzen"
-        deleted-record: "Der Titel mit der ID \"%{record_id}\" existiert nicht mehr"
-
-    search_panel:
-      search: "Suchen"
-      ebook_notice: >
-        Bitte beachten Sie auch das <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i>
-        verfügbare Angebot an E-Books, die zurzeit noch nicht in unserem Katalog nachgewiesen sind</a>,
-        aber über die Verlagsportale bereits freigeschaltet sind.
-
-    search_field:
-      query_placeholder: "Suchbegriff(e) eingeben..."
-
-    availabilities:
-      error: >
-        Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte
-        versuchen Sie es zu einem späteren Zeitpunkt erneut.
-
-    tools:
-      share_search: "Suche teilen"
-      rss_search: "Suche als RSS-Feed"
-
-    local:
-      label: "Katalog"
-      breadcrumb: "im Katalog"
-
-    cdi:
-      label: "Central Discovery Index"
-      breadcrumb: "in CDI"
-
-    no_hits:
-      info: "Keine Treffer gefunden. Bitte verändern Sie Ihre Suche."
-
-    request_hints:
-      invalid_after_validation: "Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es erneut."
-      query_syntax_error: "Ihre Suchanfrage enthielt ungültige Zeichen bzw. ungültige Zeichenkombinationen."
-
-    searchables:
-      local:
-        any: "Alle Felder"
-        creator: "Autor(en) / Beteiligte"
-        title: "Titel"
-        subject: "Schlagwort"
-        pub: "Ort / Verlag"
-        yop: "Erscheinungsjahr"
-        ids: "Identifikatoren (ISBN, ISSN, ...)"
-        call_number: "Signatur"
-        local_notation: "Systemstelle"
-        superorder_id: "ID der Überordnung"
-        toc: "Inhaltsverzeichnis"
-      cdi:
-        any: "Alle Felder"
-        creator: "Autor(en) / Beteiligte"
-        title: "Titel"
-        yop: "Erscheinungsjahr"
-        subject: "Schlagwort"
-
-    sortables:
-      local:
-        _default_: "Relevanz"
-        title: "Titel"
-        creator: "Autor(en) / Beteiligte"
-        yop: "Erscheinungsjahr"
-        local_notation: "Systemstelle"
-        volume: "Bandzählung"
-        newrecords: "Neuerwerbung"
-      cdi:
-        _default_: "Relevanz"
-        title: "Titel"
-        yop: "Erscheinungsjahr"
-
     aggregations:
+      active_aggregations_header: Aktive Filter
+      aggregations_header: Suchergebnisse filtern
+      collapse: Weniger anzeigen...
       expand:
         one: "%{count} weiteren anzeigen..."
         other: "%{count} weitere anzeigen..."
-      collapse: "Weniger anzeigen..."
-      aggregations_header: Suchergebnisse filtern
-      active_aggregations_header: Aktive Filter
-
       histogram_aggregation:
-        set_aggregation: "Ergebnisse filtern"
-        reset: "Filter zurücksetzen"
+        reset: Filter zurücksetzen
+        set_aggregation: Ergebnisse filtern
+    availabilities:
+      error: Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+    breadcrumb: Suche
+    cdi:
+      breadcrumb: in CDI
+      label: Central Discovery Index
+    local:
+      breadcrumb: im Katalog
+      label: Katalog
+    no_hits:
+      info: Keine Treffer gefunden. Bitte verändern Sie Ihre Suche.
+    record:
+      all_volumes: Alle Bände
+      call_number: 'Signatur:'
+      citations:
+        bibtex: BibTeX
+        header: Datensatz exportieren als...
+      journal_stock: 'Zeitschriftenbestand:'
+      notes:
+        add: Hinzufügen
+        cancel: Abbrechen
+        delete: Löschen
+        deleted-record: Der Titel mit der ID "%{record_id}" existiert nicht mehr
+        dropdown: Notiz
+        edit: Bearbeiten
+        error: Beim Speichern der Änderungen an der Notiz ist ein Fehler aufgetreten.
+        no_user: Bitte anmelden um Notizen zu nutzen
+        placeholder: Notiz
+        save: Speichern
+      online_resource:
+        direct_link: Direkt zur Online-Ressource
+        resolver_link: Verfügbarkeit prüfen
+      show_less: Weniger anzeigen
+      show_more_links:
+        one: Einen weiteren Link anzeigen
+        other: "%{count} weitere Links anzeigen"
+    request_hints:
+      invalid_after_validation: Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es erneut.
+      query_syntax_error: Ihre Suchanfrage enthielt ungültige Zeichen bzw. ungültige Zeichenkombinationen.
+    search_field:
+      query_placeholder: Suchbegriff(e) eingeben...
+    search_panel:
+      ebook_notice: Bitte beachten Sie auch das <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i> verfügbare Angebot an E-Books, die zurzeit noch nicht in unserem Katalog nachgewiesen sind</a>, aber über die Verlagsportale bereits freigeschaltet sind.
+      search: Suchen
+    searchables:
+      cdi:
+        any: Alle Felder
+        creator: Autor(en) / Beteiligte
+        subject: Schlagwort
+        title: Titel
+        yop: Erscheinungsjahr
+      local:
+        any: Alle Felder
+        call_number: Signatur
+        creator: Autor(en) / Beteiligte
+        ids: Identifikatoren (ISBN, ISSN, ...)
+        local_notation: Systemstelle
+        pub: Ort / Verlag
+        subject: Schlagwort
+        superorder_id: ID der Überordnung
+        title: Titel
+        toc: Inhaltsverzeichnis
+        yop: Erscheinungsjahr
+    sortables:
+      cdi:
+        _default_: Relevanz
+        title: Titel
+        yop: Erscheinungsjahr
+      local:
+        _default_: Relevanz
+        creator: Autor(en) / Beteiligte
+        local_notation: Systemstelle
+        newrecords: Neuerwerbung
+        title: Titel
+        volume: Bandzählung
+        yop: Erscheinungsjahr
+    sorted_by: Sortiert nach
+    tools:
+      rss_search: Suche als RSS-Feed
+      share_search: Suche teilen

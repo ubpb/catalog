@@ -1,34 +1,26 @@
+---
 en:
   account:
     pins:
-      breadcrumb: "Manage PIN"
-
+      breadcrumb: Manage PIN
+      create:
+        success_notice: PIN has been set successfully
+      edit:
+        header: Change PIN
+        submit: Change PIN
       form:
         errors:
-          current_pin_incorrect: "is not correct"
-
-      show:
-        header: "Manage PIN"
-        info: >
-          Here you can set a PIN for your account. The PIN is
-          currently required to access your eID-Card. In the future
-          other functions can be secured with the PIN.
-        status_pin_set: "Status: PIN has been set"
-        status_no_pin_set: "Status: PIN not set"
-        change_pin: "Change PIN"
-        set_pin: "Set PIN now"
-
+          current_pin_incorrect: is not correct
       new:
-        header: "Set PIN"
-        submit: "Set PIN"
-
-      create:
-        success_notice: "PIN has been set successfully"
-
-      edit:
-        header: "Change PIN"
-        submit: "Change PIN"
-
+        header: Set PIN
+        submit: Set PIN
+      show:
+        change_pin: Change PIN
+        header: Manage PIN
+        info: Here you can set a PIN for your account. The PIN is currently required to access your eID-Card. In the future other functions can be secured with the PIN.
+        set_pin: Set PIN now
+        status_no_pin_set: 'Status: PIN not set'
+        status_pin_set: 'Status: PIN has been set'
       update:
-        success_notice: "PIN has been successfully changed"
-        error_notice: "PIN could not be changed. An error has occurred."
+        error_notice: PIN could not be changed. An error has occurred.
+        success_notice: PIN has been successfully changed

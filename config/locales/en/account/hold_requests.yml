@@ -1,22 +1,19 @@
+---
 en:
   account:
     hold_requests:
-      breadcrumb: "Hold requests"
-
-      hold_requests:
-        header: "Hold requests"
-        no-hold-requests: "You do not have any media requested at the moment"
-        delete_hold_request: "Delete hold request"
-        requested_at: "Requested at"
-        status: "Status"
-        queue_position: "Position in the queue"
-        expiry_date: "Pickup until"
-        on_hold_shelf_info:
-          The title will be available for you to pickup in the self-service area of the Library until %{date}.
-
-        barcode: "Barcode: %{barcode}"
-        call_number: "Call number: %{call_number}"
-
+      breadcrumb: Hold requests
       destroy:
-        error: "The hold request could not be deleted"
-        success: "The hold request has been successfully deleted"
+        error: The hold request could not be deleted
+        success: The hold request has been successfully deleted
+      hold_requests:
+        barcode: 'Barcode: %{barcode}'
+        call_number: 'Call number: %{call_number}'
+        delete_hold_request: Delete hold request
+        expiry_date: Pickup until
+        header: Hold requests
+        no-hold-requests: You do not have any media requested at the moment
+        on_hold_shelf_info: The title will be available for you to pickup in the self-service area of the Library until %{date}.
+        queue_position: Position in the queue
+        requested_at: Requested at
+        status: Status

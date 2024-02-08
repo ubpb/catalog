@@ -1,95 +1,63 @@
+---
 en:
   items:
     index:
-      header: "Items for %{title}"
-      breadcrumb: "Items"
-
+      breadcrumb: Items
+      header: Items for %{title}
     journal_listing:
-      header: "Current and expected issues"
-      no_items_message: "No information about current or expected issues available."
+      header: Current and expected issues
       items:
+        expected_date_message: 'Expected on: %{date}'
         header:
-          call_number: "Call number"
-          location: "Location"
-          description: "Description"
-        expected_date_message: "Expected on: %{date}"
-        public_note_message: "Note: %{note}"
-
+          call_number: Call number
+          description: Description
+          location: Location
+        public_note_message: 'Note: %{note}'
+      no_items_message: No information about current or expected issues available.
     listing:
-      header: "Items"
-
-      stats:
-        no_of_items: "%{count} found."
-        no_of_available_items:
-          zero: "None available."
-          one: "1 available."
-          other: "%{count} available."
-        no_of_hold_requests:
-          zero: "No hold requests."
-          one: "1 hold request."
-          other: "%{count} hold requests."
-
-      hold_requests_available_info:
-        one: "You have a hold request for this title"
-        other: "You have %{count} hold requests for this title"
-
-      no_items_message: "No items available"
-      due_date_info: "Due on %{due_date}"
-
-      create_hold_request: "Create hold request"
-      delete_hold_request: "Delete hold request"
-
-      confirm_delete_hold_request: "Really delete hold request?"
-      confirm_create_hold_request: "Create hold request now?"
-
-      reshelving_info: Reshelving by %{time}
-
-      04_location_hint: >
-        The archive copy of the dissertation located in closed stack location J is not available for loan.
-        Please use - if available - the online edition (see above category "Linked Title") or
-        another print copy. In special individual cases, please contact.
-        <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
-
-      hold_request_info: >
-        No item is currently available. However, you can make a hold request and
-        reserve a item for yourself. You will receive a notification as soon as a
-        item becomes available for you.
-
-      temp_location_info: >
-        These media are temporarily located at a different location and/or are temporarily subject to different
-        lending conditions. It is possible that these media cannot be loaned. If a date has been stored,
-        when the medium will return to its original location and/or its original lending conditions,
-        this is indicated under Status.
-      temp_due_back_date: "Returned from temporary location on %{due_date}"
-
-      login_required: "For account functions please login first"
-
+      04_location_hint: The archive copy of the dissertation located in closed stack location J is not available for loan. Please use - if available - the online edition (see above category "Linked Title") or another print copy. In special individual cases, please contact. <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+      closed_stack_order: Create closed stack order
+      closed_stack_order_info: Available media with location <strong>Magazin</strong> is not freely accessable. Please place a closed stack order.
+      confirm_create_hold_request: Create hold request now?
+      confirm_delete_hold_request: Really delete hold request?
+      create_hold_request: Create hold request
+      delete_hold_request: Delete hold request
+      due_date_info: Due on %{due_date}
+      header: Items
+      hold_request_info: No item is currently available. However, you can make a hold request and reserve a item for yourself. You will receive a notification as soon as a item becomes available for you.
       hold_requests:
         header:
-          requested_at: "Hold request from"
-          status: "Status"
-          queue_position: "Position in the queue"
-
+          queue_position: Position in the queue
+          requested_at: Hold request from
+          status: Status
+        ready_for_pickup: You can pickup the medium in the self pickup area.
         status:
-          in_queue: "Requested"
-          on_hold_shelf: "Ready for pickup"
-
-        ready_for_pickup: "You can pickup the medium in the self pickup area."
-
-      closed_stack_order_info: "Available media with location <strong>Magazin</strong> is not freely accessable. Please place a closed stack order."
-      closed_stack_order: Create closed stack order
-
+          in_queue: Requested
+          on_hold_shelf: Ready for pickup
+      hold_requests_available_info:
+        one: You have a hold request for this title
+        other: You have %{count} hold requests for this title
       items:
-        not_on_location: "Not at the location"
-        handapparat_info: >
-          This medium is in a reference collection. If the library does not have another copy of this title,
-          you can contact the staff at the circulation desk to gain access.
-
+        handapparat_info: This medium is in a reference collection. If the library does not have another copy of this title, you can contact the staff at the circulation desk to gain access.
         header:
-          call_number: "Call number"
-          location: "Location"
-          policy: "Loan policy"
-          status: "Status"
-          public_note: "Note"
-          #process_type: "Prozess-Status"
-          #due_date_policy: "Due-Date-Policy"
+          call_number: Call number
+          location: Location
+          policy: Loan policy
+          public_note: Note
+          status: Status
+        not_on_location: Not at the location
+      login_required: For account functions please login first
+      no_items_message: No items available
+      reshelving_info: Reshelving by %{time}
+      stats:
+        no_of_available_items:
+          one: 1 available.
+          other: "%{count} available."
+          zero: None available.
+        no_of_hold_requests:
+          one: 1 hold request.
+          other: "%{count} hold requests."
+          zero: No hold requests.
+        no_of_items: "%{count} found."
+      temp_due_back_date: Returned from temporary location on %{due_date}
+      temp_location_info: These media are temporarily located at a different location and/or are temporarily subject to different lending conditions. It is possible that these media cannot be loaned. If a date has been stored, when the medium will return to its original location and/or its original lending conditions, this is indicated under Status.

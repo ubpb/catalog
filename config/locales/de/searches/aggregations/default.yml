@@ -1,3 +1,4 @@
+---
 de:
   searches:
     aggregations:
@@ -10,25 +11,31 @@ de:
             ace: Aceh-Sprache
             ach: Acholi-Sprache
             ada: Adangme-Sprache
+            ady: Adyghe; Adygei
             afa: Hamitosemitische Sprachen (Andere)
             afh: Afrihili
             afr: Afrikaans
+            ain: Ainu
             aka: Volta-Comoe-Sprachen
             akk: Akkadisch
             alb: Albanisch
             ale: Aleutisch
             alg: Algonkin-Sprachen
+            alt: Southern Altai
             amh: Amharisch
             ang: Altenglisch (ca. 450-1100)
+            anp: Angika
             apa: Apachen-Sprache
             ara: Arabisch
             arc: Aramäisch
+            arg: Aragonese
             arm: Armenisch
             arn: Arauka-Sprachen
             arp: Arapaho-Sprache
             art: Welthilfssprache (Andere)
             arw: Arawak-Sprachen
             asm: Assamesisch
+            ast: Asturian; Bable; Leonese; Asturleonese
             ath: Athapaskische Sprachen
             aus: Australische Sprachen
             ava: Awarisch
@@ -57,6 +64,7 @@ de:
             bis: Beach-la-mar
             bla: Blackfoot-Sprache
             bnt: Bantusprachen (Andere)
+            bos: Bosnian
             bra: Braj-Bhakha
             bre: Bretonisch
             btk: Batak-Sprache
@@ -64,6 +72,7 @@ de:
             bug: Bugi-Sprache
             bul: Bulgarisch
             bur: Birmanisch
+            byn: Blin; Bilin
             cad: Caddo-Sprachen
             cai: Indianersprachen / Zentralamerika (Andere)
             car: Karibische Sprachen
@@ -86,6 +95,7 @@ de:
             chv: Tschuwaschisch
             chy: Cheyenne-Sprache
             cmc: Cham-Sprachen
+            cnr: Montenegrin
             cop: Koptisch
             cor: Kornisch
             cos: Korsisch
@@ -93,11 +103,14 @@ de:
             cpf: Kreolisch-Französisch (Andere)
             cpp: Kreolisch-Portugiesisch (Andere)
             cre: Cree-Sprache
+            crh: Crimean Tatar; Crimean Turkish
             crp: Kreolische Sprachen (Andere)
+            csb: Kashubian
             cus: Kuschitische Sprachen (Andere)
             cze: Tschechisch
             dak: Dakota-Sprache
             dan: Dänisch
+            dar: Dargwa
             day: Dajakisch
             del: Delaware-Sprache
             den: Slave (Athapaskische Sprachen)
@@ -106,6 +119,7 @@ de:
             div: Maledivisch
             doi: Dogri
             dra: Drawidische Sprachen (Andere)
+            dsb: Lower Sorbian
             dua: Duala-Sprachen
             dum: Mittelniederländisch (ca. 1050-1350)
             dut: Niederländisch
@@ -127,12 +141,15 @@ de:
             fao: Färöisch
             fat: Fanti-Sprache
             fij: Fidschi-Sprache
+            fil: Filipino; Pilipino
             fin: Finnisch
             fiu: Finnougrische Sprachen (Andere)
             fon: Fon-Sprache
             fre: Französisch
             frm: Mittelfranzösisch (ca. 1400-1600)
             fro: Altfranzösisch (842-ca. 1400)
+            frr: Northern Frisian
+            frs: Eastern Frisian
             fry: Friesisch
             ful: Ful
             fur: Friulisch
@@ -157,9 +174,12 @@ de:
             grc: Griechisch (bis 1453)
             gre: Neugriechisch (nach 1453)
             grn: Guaraní-Sprache
+            gsw: Swiss German; Alemannic; Alsatian
             gui: Gujarati-Sprache
+            guj: Gujarati
             gwi: Kutchin
             hai: Haida-Sprache
+            hat: Haitian; Haitian Creole
             hau: Haussa-Sprache
             haw: Hawaiisch
             heb: Hebräisch
@@ -170,11 +190,15 @@ de:
             hit: Hethitisch
             hmn: Miao-Sprachen
             hmo: Hiri-Motu
+            hrv: Croatian
+            hsb: Upper Sorbian
             hun: Ungarisch
             hup: Hupa
             iba: Iban
             ibo: Ibo-Sprache
             ice: Isländisch
+            ido: Ido
+            iii: Sichuan Yi; Nuosu
             ijo: Ijo-Sprache
             iku: Inuktitut
             ile: Interlingue
@@ -183,11 +207,13 @@ de:
             inc: Indoarische Sprachen (Andere)
             ind: Bahasa Indonesia
             ine: Indogermanische Sprachen (Andere)
+            inh: Ingush
             ipk: Inupiaq
             ira: Iranische Sprachen (Andere)
             iro: Irokesische Sprachen
             ita: Italienisch
             jav: Javanisch
+            jbo: Lojban
             jpn: Japanisch
             jpr: Jüdisch-Persisch
             jrb: Jüdisch-Arabisch
@@ -202,6 +228,7 @@ de:
             kau: Kanuri-Sprache
             kaw: Kawi
             kaz: Kasachisch
+            kbd: Kabardian
             kha: Khasi-Sprache
             khi: Khoisan-Sprachen (Andere)
             khm: Kambodschanisch
@@ -216,6 +243,8 @@ de:
             kor: Koreanisch
             kos: Kosraeanisch
             kpe: Kpelle-Sprache
+            krc: Karachay-Balkar
+            krl: Karelian
             kro: Kru-Sprachen
             kru: Oraon-Sprache
             kua: Kwanyama
@@ -229,9 +258,11 @@ de:
             lat: Latein
             lav: Lettisch
             lez: Lesgisch
+            lim: Limburgan; Limburger; Limburgish
             lin: LiNgala
             lit: Litauisch
             loi: Mongo-Sprache
+            lol: Mongo
             loz: Rotse-Sprache
             ltz: Luxemburgisch
             lua: Lulua-Sprache
@@ -254,6 +285,7 @@ de:
             mar: Marathi
             mas: Massai-Sprache
             may: Malaiisch
+            mdf: Moksha
             mdr: Mandaresisch
             men: Mende-Sprache
             mga: Mittelirisch (900-1200)
@@ -263,6 +295,9 @@ de:
             mis: Verschiedene Sprachen
             mit: Maltesisch
             mkh: Mon-Khmer-Sprachen (Andere)
+            mlg: Malagasy
+            mlt: Maltese
+            mnc: Manchu
             mni: Meithei-Sprache
             mno: Manobo-Sprache
             moh: Mohawk-Sprache
@@ -272,24 +307,33 @@ de:
             mul: Polyglott
             mun: Mundasprachen
             mus: Muskogee-Sprachen
+            mwl: Mirandese
             mwr: Marwari
             myn: Maya-Sprachen
+            myv: Erzya
             nah: Nahuatl
             nai: Indianersprachen / Nordamerika (Andere)
+            nap: Neapolitan
             nau: Nauruanisch
             nav: Navajo-Sprache
             nbl: Ndebele-Sprache (Süd)
             nde: Ndebele-Sprache (Nord)
             ndo: Ndonga
+            nds: Low German; Low Saxon; German, Low; Saxon, Low
             nep: Nepali
             new: Newari
             nia: Nias-Sprache
             nic: Nigerkordofanische Sprachen (Andere)
             niu: Niue-Sprache
+            nno: Norwegian Nynorsk; Nynorsk, Norwegian
+            nob: Bokmål, Norwegian; Norwegian Bokmål
+            nog: Nogai
             non: Altnorwegisch
             nor: Norwegisch
+            nqo: N'Ko
             nso: Sotho-Sprache (Nord)
             nub: Nubische Sprachen
+            nwc: Classical Newari; Old Newari; Classical Nepal Bhasa
             nya: Nyanja-Sprache
             nym: Nyamwezi-Sprache
             nyn: Nyankole
@@ -330,6 +374,7 @@ de:
             rom: Zigeunersprache
             rum: Rumänisch
             run: Rundi-Sprache
+            rup: Aromanian; Arumanian; Macedo-Romanian
             rus: Russisch
             sad: Sandawe-Sprache
             sag: Sango-Sprache
@@ -341,11 +386,13 @@ de:
             sas: Sasak
             sat: Santali
             scc: Serbisch
+            scn: Sicilian
             sco: Schottisch
             scr: Kroatisch
             sel: Selkupisch
             sem: Semitische Sprachen (Andere)
             sga: Altirisch (bis 900)
+            sgn: Sign Languages
             shn: Schan-Sprache
             sid: Sidamo
             sin: Singhalesisch
@@ -354,8 +401,13 @@ de:
             sla: Slawische Sprachen (Andere)
             slo: Slowakisch
             slv: Slowenisch
+            sma: Southern Sami
+            sme: Northern Sami
             smi: Saamisch
+            smj: Lule Sami
+            smn: Inari Sami
             smo: Samoanisch
+            sms: Skolt Sami
             sna: Schona-Sprache
             snd: Sindhi-Sprache
             snk: Soninke-Sprache
@@ -365,6 +417,8 @@ de:
             sot: Sotho-Sprache (Süd)
             spa: Spanisch
             srd: Sardisch
+            srn: Sranan Tongo
+            srp: Serbian
             srr: Serer-Sprache
             ssa: Nilosaharanische Sprachen (Andere)
             ssw: Swazi
@@ -374,6 +428,7 @@ de:
             sux: Sumerisch
             swa: Swahili
             swe: Schwedisch
+            syc: Classical Syriac
             syr: Syrisch
             tah: Tahitisch
             tai: Thaisprachen (Andere)
@@ -391,6 +446,7 @@ de:
             tir: Tigrinja-Sprache
             tiv: Tiv-Sprache
             tkl: Tokelauanisch
+            tlh: Klingon; tlhIngan-Hol
             tli: Tlingit-Sprache
             tmh: Tamašeq
             tog: Tonga (Bantusprache, Malawi)
@@ -401,16 +457,17 @@ de:
             tso: Tsonga-Sprache
             tuk: Turkmenisch
             tum: Tumbuka
+            tup: Tupi languages
             tur: Türkisch
             tut: Altaische Sprachen (Andere)
             tvl: Elliceanisch
             twi: Akan-Sprache
             tyv: Tuwinisch
+            udm: Udmurt
             uga: Ugaritisch
             uig: Uigurisch
             ukr: Ukrainisch
             umb: Mbundu-Sprache
-            und: Nicht definiert
             und: Unbestimmt
             urd: Urdu
             uzb: Usbekisch
@@ -423,9 +480,12 @@ de:
             wal: Walamo-Sprache
             war: Waray
             was: Washo-Sprache
+            wel: Welsh
             wen: Sorbisch
             wie: Kymrisch
+            wln: Walloon
             wol: Wolof-Sprache
+            xal: Kalmyk; Oirat
             xho: Xhosa-Sprache
             yao: Yao-Sprache
             yap: Yapesisch
@@ -433,7 +493,13 @@ de:
             yor: Yoruba-Sprache
             ypk: Yupik-Sprache
             zap: Zapotekisch
+            zbl: Blissymbols; Blissymbolics; Bliss
             zen: Zenaga
+            zgh: Standard Moroccan Tamazight
             zha: Zhuang
             znd: Zande-Sprachen
             zuf: Zulu-Sprache
+            zul: Zulu
+            zun: Zuni
+            zxx: No linguistic content; Not applicable
+            zza: Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki

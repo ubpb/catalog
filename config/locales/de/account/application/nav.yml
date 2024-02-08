@@ -1,15 +1,16 @@
+---
 de:
   account:
     application:
       nav:
-        nav-toggle: Kontomenü
-        loans: Ausgeliehene Medien
+        calendar: Kalender
         fees: Gebühren
         hold_requests: Vormerkungen
-        watch_lists: Merklisten
-        notes: Notizen
-        calendar: Kalender
         ill: Fernleihbestellungen
-        profile: Meine Daten
+        loans: Ausgeliehene Medien
         loans_history: Ausleihhistorie
-        pin: "PIN verwalten"
+        nav-toggle: Kontomenü
+        notes: Notizen
+        pin: PIN verwalten
+        profile: Meine Daten
+        watch_lists: Merklisten

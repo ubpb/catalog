@@ -1,6 +1,7 @@
+---
 de:
   relations:
     index:
       breadcrumb: Verknüfte Titel
-      header: "Verknüpfte Titel für %{title}"
-      no-relations: "Keine verknüpften Titel verfügbar."
+      header: Verknüpfte Titel für %{title}
+      no-relations: Keine verknüpften Titel verfügbar.

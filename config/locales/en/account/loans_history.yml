@@ -1,27 +1,23 @@
+---
 en:
   account:
     loans_history:
-      breadcrumb: "Lending History"
-
-      index:
-        header: "Lending History"
-        info: >
-          For data protection reasons, only the completed lending transactions of the last
-          180 days can be displayed. Older transactions are automatically deleted.
-
+      breadcrumb: Lending History
       fixed:
-        header: "Ausleihhistorie vor dem 3.2.2023"
-
+        header: Ausleihhistorie vor dem 3.2.2023
+      index:
+        header: Lending History
+        info: For data protection reasons, only the completed lending transactions of the last 180 days can be displayed. Older transactions are automatically deleted.
       listing:
-        no-loans: "No completed lending transactions"
-        sorted_by: "Sorted by"
-        table:
-          barcode: "Barcode"
-          title: "Title"
-          loan_date: "Loaned on"
-          return_date: "Returned on"
+        no-loans: No completed lending transactions
         sortable_fields:
-          loan_date: "Loaned on"
-          return_date: "Returned on"
-          barcode: "Barcode"
-          title: "Title"
+          barcode: Barcode
+          loan_date: Loaned on
+          return_date: Returned on
+          title: Title
+        sorted_by: Sorted by
+        table:
+          barcode: Barcode
+          loan_date: Loaned on
+          return_date: Returned on
+          title: Title

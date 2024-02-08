@@ -1,71 +1,61 @@
+---
 en:
   searches:
     aggregations:
       local:
+        content_type:
+          label: Content type
+          values:
+            bibliography: Bibliography
+            biography: Biography
+            catalog: Catalog
+            congress: Congress Report
+            dictionary: Dictionary
+            dissertation: Dissertation
+            encyclopedia: Encyclopedia
+            festschrift: Festschrift
+            music: Music
+            other: Other
+            standard: Standard / Norm
+            textbook: Textbook
+            thesis: Thesis (Other)
+            university_text: University text
+            unspecified: Not specified
+        creator:
+          label: Author / Participant(s)
+        language: Language
+        local_notation:
+          label: Local notation
+        material_type:
+          label: Material type
+          values:
+            audio: Audio
+            data_storage: Data storage
+            image: Image
+            map: Map
+            microform: Microfiche
+            online_resource: Online-Resource
+            other: Other
+            print: Print
+            unspecified: Not specified
+            video: Video
         newrecords:
-          label: "Newly added"
+          label: Newly added
           values:
             last_month: "... last month"
             last_three_months: "... last 3 months"
             last_twelve_months: "... last 12 months"
-
-        creator:
-          label: "Author / Participant(s)"
-
-        subject:
-          label: "Subject heading"
-
-        language:
-          # See default
-
-        yop:
-          label: "Year of publication"
-
-        local_notation:
-          label: "Local notation"
-
         resource_type:
-          label: "Resource type"
+          label: Resource type
           values:
-            article: "Article"
-            monograph: "Monograph"
-            journal: "Journal"
-            series: "Series"
-            newspaper: "Newspaper"
-            other: "Other"
-            unspecified: "Not specified"
-
-        material_type:
-          label: "Material type"
-          values:
-            print: "Print"
-            online_resource: "Online-Resource"
-            data_storage: "Data storage"
-            microform: "Microfiche"
-            audio: "Audio"
-            video: "Video"
-            map: "Map"
-            image: "Image"
-            other: "Other"
-            unspecified: "Not specified"
-
-        content_type:
-          label: "Content type"
-          values:
-            dissertation: Dissertation
-            bibliography: Bibliography
-            catalog: Catalog
-            dictionary: Dictionary
-            encyclopedia: Encyclopedia
-            festschrift: Festschrift
-            biography: Biography
-            congress: Congress Report
-            music: Music
-            standard: Standard / Norm
-            university_text: University text
-            textbook: Textbook
-            thesis: Thesis (Other)
-            other: "Other"
-            unspecified: "Not specified"
-
-
+            article: Article
+            journal: Journal
+            monograph: Monograph
+            newspaper: Newspaper
+            other: Other
+            series: Series
+            unspecified: Not specified
+        subject:
+          label: Subject heading
+        yop:
+          label: Year of publication

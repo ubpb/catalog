@@ -1,25 +1,16 @@
+---
 de:
   account:
     fees:
-      breadcrumb: "Gebühren"
-
-      fees:
-        header: "Gebühren"
-        no-fees: "Aktuell keine Gebühren"
-        fee-info: >
-          Hier werden Ihre aktuellen Gebühren angezeigt. Bitte beachten Sie, dass weitere Gebühren entstehen,
-          wenn Sie <a href="%{account_url}" class="alert-link">überfällige Medien auf Ihrem Bibliothekskonto</a>
-          haben und Sie diese nicht zurückgeben.
-          Bitte beachten Sie, dass Ihr Bibliothekskonto ab einer Gebührenschuld von 25,00 € automatisch
-          gesperrt wird. Bei gesperrtem Bibliothekskonto sind keine Ausleihen, Leihfristverlängerungen
-          (auch keine automatischen), Fernleihbestellungen und Vormerkungen möglich!
-        payment-info: >
-          Bitte zahlen Sie ihre offenen Gebühren von <strong>%{amount}</strong> an unserem Kassenautomaten im Eingangsbereich der Bibliothek.
-        credit-info: >
-          Sie haben ein Guthaben von %{amount}. Bitte wenden Sie sich an die Ortsleihe, damit wir Ihnen den Betrag auszahlen können.
-
+      breadcrumb: Gebühren
       fee:
-        date: "Datum"
-        fine: "Gebühr"
-        credit: "Gutschrift"
-        barcode: "Strichcode: %{barcode}"
+        barcode: 'Strichcode: %{barcode}'
+        credit: Gutschrift
+        date: Datum
+        fine: Gebühr
+      fees:
+        credit-info: Sie haben ein Guthaben von %{amount}. Bitte wenden Sie sich an die Ortsleihe, damit wir Ihnen den Betrag auszahlen können.
+        fee-info: Hier werden Ihre aktuellen Gebühren angezeigt. Bitte beachten Sie, dass weitere Gebühren entstehen, wenn Sie <a href="%{account_url}" class="alert-link">überfällige Medien auf Ihrem Bibliothekskonto</a> haben und Sie diese nicht zurückgeben. Bitte beachten Sie, dass Ihr Bibliothekskonto ab einer Gebührenschuld von 25,00 € automatisch gesperrt wird. Bei gesperrtem Bibliothekskonto sind keine Ausleihen, Leihfristverlängerungen (auch keine automatischen), Fernleihbestellungen und Vormerkungen möglich!
+        header: Gebühren
+        no-fees: Aktuell keine Gebühren
+        payment-info: Bitte zahlen Sie ihre offenen Gebühren von <strong>%{amount}</strong> an unserem Kassenautomaten im Eingangsbereich der Bibliothek.

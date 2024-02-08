@@ -1,37 +1,33 @@
+---
 en:
   account:
     loans:
-      breadcrumb: "Loaned Media"
-
+      breadcrumb: Loaned Media
       index:
         renew_all_modal:
-          header: "Renew media"
-          loading_message: "All renewable media are beeing renewed..."
-          close_button_text: "Ok"
-
+          close_button_text: Ok
+          header: Renew media
+          loading_message: All renewable media are beeing renewed...
+      loan:
+        barcode: 'Barcode: %{barcode}'
+        due_date: 'Due on:'
+        fines: 'Fees: %{fines}'
+        loan_date: 'Loaned on:'
+        not_renewable: Not renewable
+        resource_sharing_loan: Interlibrary loan request
       loans:
         header: Loaned Media
-        no-loans: "You do not currently have any media on loan."
-        renewAll: "Renew all"
-        sorted_by: "Sorted by"
+        no-loans: You do not currently have any media on loan.
+        renewAll: Renew all
         sortable_fields:
-          due_date: "Due on"
-          loan_date: "Loaned on"
-          barcode: "Barcode"
-          title: "Title"
-
-      loan:
-        loan_date: "Loaned on:"
-        due_date: "Due on:"
-        fines: "Fees: %{fines}"
-        not_renewable: "Not renewable"
-        resource_sharing_loan: "Interlibrary loan request"
-        barcode: "Barcode: %{barcode}"
-
+          barcode: Barcode
+          due_date: Due on
+          loan_date: Loaned on
+          title: Title
+        sorted_by: Sorted by
       renew:
-        success: "%{system_message}"
         error: "%{system_message}"
-
+        success: "%{system_message}"
       renewals:
         header: Please check the new loan periods.
         no_renewals: No media could be renewed.

@@ -1,27 +1,24 @@
+---
 en:
   link_resolver:
-    breadcrumb: "Link-Resolver"
-    show:
-      header: "Link-Resolver"
-      header_found: "The following electronic full texts were found"
-
-      error: "Error: No result could be found. The called URL is not correct."
-      no_results: "Sorry, no full text available."
-
-      authors: "Author(s)"
-      atitle: "Article"
-      title: "Title"
-      publisher: "Publisher"
-      place_of_publication: "Place"
-      date_of_publication: "Year of publication"
-
-      further_research: "Other search options"
-      search_link:
-        catalog:    "Search the library collection"
-        cdi:        "Search the Central Discovery Index (CDI)"
-        interlibrary_loan:
-          book:     "Book search via interlibrary loan"
-          journal:  "Search for journals via interlibrary loan"
-
+    breadcrumb: Link-Resolver
     fulltext_service:
-      free_resource: "Free resource"
+      free_resource: Free resource
+    show:
+      atitle: Article
+      authors: Author(s)
+      date_of_publication: Year of publication
+      error: 'Error: No result could be found. The called URL is not correct.'
+      further_research: Other search options
+      header: Link-Resolver
+      header_found: The following electronic full texts were found
+      no_results: Sorry, no full text available.
+      place_of_publication: Place
+      publisher: Publisher
+      search_link:
+        catalog: Search the library collection
+        cdi: Search the Central Discovery Index (CDI)
+        interlibrary_loan:
+          book: Book search via interlibrary loan
+          journal: Search for journals via interlibrary loan
+      title: Title

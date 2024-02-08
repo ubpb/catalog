@@ -1,15 +1,16 @@
+---
 en:
   account:
     application:
       nav:
-        nav-toggle: Account-Menu
-        loans: Loaned Media
+        calendar: Calendar
         fees: Fees
         hold_requests: Hold requests
-        watch_lists: Watchlists
-        notes: Notes
-        calendar: Calendar
         ill: Interlibrary loan
-        profile: My Account
+        loans: Loaned Media
         loans_history: Lending History
+        nav-toggle: Account-Menu
+        notes: Notes
         pin: Manage PIN
+        profile: My Account
+        watch_lists: Watchlists

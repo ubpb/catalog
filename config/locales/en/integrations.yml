@@ -1,7 +1,4 @@
+---
 en:
   integrations:
-    common_error_message: >
-      <i class="fas fa-exclamation-triangle fa-lg"></i>
-      An error has occurred in the communication with an external system. Please
-      try your last action again. If the error persists,
-      please contact the staff at the library information desk or try again later.
+    common_error_message: <i class="fas fa-exclamation-triangle fa-lg"></i> An error has occurred in the communication with an external system. Please try your last action again. If the error persists, please contact the staff at the library information desk or try again later.

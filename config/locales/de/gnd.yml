@@ -1,87 +1,79 @@
+---
 de:
   gnd:
-    error: Fehler
-    error_message: >
-      Es konnten keine Daten ermittelt werden. Möglicherweise liegt eine
-      technische Störung beim Dienstanbieter vor. Alternativ können Sie versuchen die Daten über die
-      <a href="%{dnb_url}" target="_blank" class="alert-link">
-        <i class="fa-solid fa-external-link fa-fw"></i>
-        Deutsche Nationalbibliothek
-      </a> abzurufen.
-
     details:
-      entity_types: Art des Eintrags
-      preferred_name: Bevorzugter Name
-      variant_names: Variante Namen
-      gender: Geschlecht
-      geographic_areas: Geographische Zuordnung
+      affiliations: Zugehörigkeit
+      data_provided_by: Daten bereitgestellt von <a href="%{lobid_url}" target="_blank">lobid-gnd</a>, ein Dienst des <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>
       date_of_birth: Geburtsdatum
       date_of_death: Sterbedatum
       date_of_establishment: Gründungsdatum
       date_of_termination: Auflösungsdatum
-      affiliations: Zugehörigkeit
-      professions_or_occupations: Beruf/Tätigkeit
+      entity_types: Art des Eintrags
+      gender: Geschlecht
+      geographic_areas: Geographische Zuordnung
       gnd_id: GND-ID
       gnd_subject_categories: GND-Sachgruppen
-      succeeding_corporate_body: Nachfolgende Körperschaft
-      preceding_corporate_body: Vorherige Körperschaft
-      place_of_business: Sitz
       more_information: Mehr Informationen
-      data_provided_by: >
-        Daten bereitgestellt von
-        <a href="%{lobid_url}" target="_blank">lobid-gnd</a>,
-        ein Dienst des
-        <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>
-
+      place_of_business: Sitz
+      preceding_corporate_body: Vorherige Körperschaft
+      preferred_name: Bevorzugter Name
+      professions_or_occupations: Beruf/Tätigkeit
+      succeeding_corporate_body: Nachfolgende Körperschaft
+      variant_names: Variante Namen
     entity_types:
-      authority_resource: Normdatensatz
-      person: Person
-      differentiated_person: Individualisierte Person
-      corporate_body: Körperschaft
-      conference_or_event: Konferenz oder Veranstaltung
-      work: Werk
-      place_or_geographic_name: Geografikum
-      musical_work: Werk der Musik
-      subject_heading: Schlagwort
-      territorial_corporate_body_or_administrative_unit: Gebietskörperschaft oder Verwaltungseinheit
-      subject_heading_senso_stricto: Schlagwort sensu stricto
-      organ_of_corporate_body: Organ einer Körperschaft
-      series_of_conference_or_event: Kongressfolge oder Veranstaltungsfolge
-      building_or_memorial: Bauwerk oder Denkmal
-      musical_corporate_body: Musikalische Körperschaft
-      company: Firma
-      nomenclature_in_biology_or_chemistry: Nomenklatur Biologie - Chemie
-      natural_geographic_unit: Natürlich geografische Einheit
-      family: Familie
       administrative_unit: Verwaltungseinheit
-      religious_corporate_body: Religiöse Körperschaft
-      software_product: Softwareprodukt
-      product_name_or_brand_name: Produktname oder Markenname
-      provenance_characteristic: Provenienzmerkmal
-      manuscript: Schriftdenkmal
-      language: Sprache
-      expression: Expression
-      way_border_or_line: Weg, Grenze oder Linie
-      historic_single_event_or_era: Historisches Einzelereignis oder Epoche
-      religious_administrative_unit: Religiöse Verwaltungseinheit
-      ethnographic_name: Ethnografikum
-      royal_or_member_of_a_royal_house: Regierender Fürst oder Mitglied eines regierenden Fürstenhauses
-      project_or_program: Projekt oder Programm
+      authority_resource: Normdatensatz
+      building_or_memorial: Bauwerk oder Denkmal
       characters_or_morphemes: Buchstaben oder Morpheme
-      version_of_a_musical_work: Fassung eines Werks der Musik
-      religious_territory: Religiöses Territorium
-      name_of_small_geographic_unit_lying_within_another_geographic_unit: Kleinräumiges Geografikum innerhalb eines Ortes
       collection: Sammlung
-      literary_or_legendary_character: Literarische oder Sagengestalt
-      means_of_transport_with_individual_name:  Verkehrsmittel mit Individualnamen
-      group_of_persons: Personengruppe
       collective_pseudonym: Sammelpseudonym
-      gods: Götter
-      member_state: Gliedstaat
-      extraterrestrial_territory: Extraterrestrikum
+      company: Firma
+      conference_or_event: Konferenz oder Veranstaltung
+      corporate_body: Körperschaft
       country: Land oder Staat
-      spirits: Geister
-      fictive_place: Fiktiver Ort
+      differentiated_person: Individualisierte Person
+      ethnographic_name: Ethnografikum
+      expression: Expression
+      extraterrestrial_territory: Extraterrestrikum
+      family: Familie
       fictive_corporate_body: Fiktive Körperschaft
+      fictive_place: Fiktiver Ort
+      gods: Götter
+      group_of_persons: Personengruppe
+      historic_single_event_or_era: Historisches Einzelereignis oder Epoche
+      language: Sprache
+      literary_or_legendary_character: Literarische oder Sagengestalt
+      manuscript: Schriftdenkmal
+      means_of_transport_with_individual_name: Verkehrsmittel mit Individualnamen
+      member_state: Gliedstaat
+      musical_corporate_body: Musikalische Körperschaft
+      musical_work: Werk der Musik
+      name_of_small_geographic_unit_lying_within_another_geographic_unit: Kleinräumiges Geografikum innerhalb eines Ortes
+      natural_geographic_unit: Natürlich geografische Einheit
+      nomenclature_in_biology_or_chemistry: Nomenklatur Biologie - Chemie
+      organ_of_corporate_body: Organ einer Körperschaft
+      person: Person
+      place_or_geographic_name: Geografikum
+      product_name_or_brand_name: Produktname oder Markenname
+      project_or_program: Projekt oder Programm
+      provenance_characteristic: Provenienzmerkmal
+      religious_administrative_unit: Religiöse Verwaltungseinheit
+      religious_corporate_body: Religiöse Körperschaft
+      religious_territory: Religiöses Territorium
+      royal_or_member_of_a_royal_house: Regierender Fürst oder Mitglied eines regierenden Fürstenhauses
+      series_of_conference_or_event: Kongressfolge oder Veranstaltungsfolge
+      software_product: Softwareprodukt
+      spirits: Geister
+      subject_heading: Schlagwort
+      subject_heading_senso_stricto: Schlagwort sensu stricto
+      territorial_corporate_body_or_administrative_unit: Gebietskörperschaft oder Verwaltungseinheit
       undifferentiated_person: Nicht-individualisierte Person
-
+      version_of_a_musical_work: Fassung eines Werks der Musik
+      way_border_or_line: Weg, Grenze oder Linie
+      work: Werk
+    error: Fehler
+    error_message: |
+      Es konnten keine Daten ermittelt werden. Möglicherweise liegt eine technische Störung beim Dienstanbieter vor. Alternativ können Sie versuchen die Daten über die <a href="%{dnb_url}" target="_blank" class="alert-link">
+        <i class="fa-solid fa-external-link fa-fw"></i>
+        Deutsche Nationalbibliothek
+      </a> abzurufen.

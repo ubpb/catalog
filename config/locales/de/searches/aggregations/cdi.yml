@@ -1,10 +1,23 @@
+---
 de:
   searches:
     aggregations:
       cdi:
+        domain:
+          label: Kollektion
+        jtitle:
+          label: Zeitschrift / Serie
+        language: Language
+        newrecords:
+          label: Neu hinzugefügt
+          values:
+            07 days back: "... seit 7 Tagen"
+            30 days back: "... seit 30 Tagen"
+            90 days back: "... seit 90 Tagen"
         rtype:
           label: Publikationsform
           values:
+            Dissertations: Dissertationen
             articles: Artikel
             book_chapters: Buchkapitel
             books: Bücher
@@ -12,7 +25,6 @@ de:
             databases: Datenbanken
             datasets: Datensätze
             dissertations: Dissertationen
-            Dissertations: Dissertationen # this is intentionally upcase
             images: Bilder
             journals: Zeitschriften
             legal_documents: Gesetzestexte
@@ -25,36 +37,17 @@ de:
             reports: Berichte
             research_datasets: Forschungsdaten
             reviews: Reviews
+            standards: Normen
             technical_reports: Technischer Report
             text_resources: Texte
             web_resources: Webseiten
             websites: Webseiten
-            standards: Normen
-
-        language:
-          # See default
-
-        yop:
-          label: Erscheinungsjahr
-
-        topic:
-          label: Thema
-
-        domain:
-          label: Kollektion
-
-        jtitle:
-          label: Zeitschrift / Serie
-
-        newrecords:
-          label: Neu hinzugefügt
-          values:
-            "07 days back": "... seit 7 Tagen"
-            "30 days back": "... seit 30 Tagen"
-            "90 days back": "... seit 90 Tagen"
-
         tlevel:
           label: Nur zeigen
           values:
             online_resources: Mit Volltextzugriff
             peer_reviewed: Geprüft (Peer-Review)
+        topic:
+          label: Thema
+        yop:
+          label: Erscheinungsjahr

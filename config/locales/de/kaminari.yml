@@ -1,17 +1,18 @@
+---
 de:
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> von <b>%{total}</b>"
+      one_page:
+        display_entries:
+          one: "<b>1&nbsp;-&nbsp;1</b> von <b>1</b>"
+          other: "<b>1&nbsp;-&nbsp;%{count}</b> von <b>%{count}</b>"
+          zero: "<b>0&nbsp;-&nbsp;0</b> von <b>0</b>"
   views:
     pagination:
       first: "&laquo;"
       last: "&raquo;"
+      next: Weiter &rsaquo;
       previous: "&lsaquo; Zurück"
-      next: "Weiter &rsaquo;"
       truncate: "&hellip;"
-  helpers:
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "<b>0&nbsp;-&nbsp;0</b> von <b>0</b>"
-          one: "<b>1&nbsp;-&nbsp;1</b> von <b>1</b>"
-          other: "<b>1&nbsp;-&nbsp;%{count}</b> von <b>%{count}</b>"
-      more_pages:
-        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> von <b>%{total}</b>"

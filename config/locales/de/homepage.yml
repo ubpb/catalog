@@ -1,16 +1,17 @@
+---
 de:
   homepage:
-    breadcrumb: "Startseite"
+    breadcrumb: Startseite
     show:
-      search_entries:
-        title: "Sucheinstiege"
-        catalog:
-          title: Katalog
-          text: ca. 2,5 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
-        cdi:
-          title: Central Discovery Index
-          text: Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.
       news:
-        title: "Neuigkeiten zum Katalog"
-        none_message: Aktuell keine Neuigkeiten
         all_link_text: "&raquo; Alle Neuigkeiten"
+        none_message: Aktuell keine Neuigkeiten
+        title: Neuigkeiten zum Katalog
+      search_entries:
+        catalog:
+          text: ca. 2,5 Millionen Titel im Angebot der UB, z.B. Bücher, Zeitschriften, E-Books, E-Journals, CDs und DVDs
+          title: Katalog
+        cdi:
+          text: Millionen Datensätze aus lizenzierten bibliographischen Daten- und Volltextdatenbanken wie Zeitschriftenartikel, E-Book-Kapitel, Einträge aus Nachschlagewerken, Audio- und Video-Dateien und andere Materialien.
+          title: Central Discovery Index
+        title: Sucheinstiege

@@ -1,37 +1,33 @@
+---
 de:
   account:
     loans:
-      breadcrumb: "Ausgeliehene Medien"
-
+      breadcrumb: Ausgeliehene Medien
       index:
         renew_all_modal:
-          header: "Medien verlängern"
-          loading_message: "Alle verlängerbaren Medien werden verlängert..."
-          close_button_text: "Ok"
-
+          close_button_text: Ok
+          header: Medien verlängern
+          loading_message: Alle verlängerbaren Medien werden verlängert...
+      loan:
+        barcode: 'Strichcode: %{barcode}'
+        due_date: 'Fällig am:'
+        fines: 'Gebühren: %{fines}'
+        loan_date: 'Entliehen am:'
+        not_renewable: Nicht verlängerbar
+        resource_sharing_loan: Fernleihbestellung
       loans:
         header: Ausgeliehene Medien
-        no-loans: "Sie haben aktuell keine Medien ausgeliehen."
-        renewAll: "Alle Medien verlängern"
-        sorted_by: "Sortiert nach"
+        no-loans: Sie haben aktuell keine Medien ausgeliehen.
+        renewAll: Alle Medien verlängern
         sortable_fields:
-          due_date: "Fällig am"
-          loan_date: "Entliehen am"
-          barcode: "Strichcode"
-          title: "Titel"
-
-      loan:
-        loan_date: "Entliehen am:"
-        due_date: "Fällig am:"
-        fines: "Gebühren: %{fines}"
-        not_renewable: "Nicht verlängerbar"
-        resource_sharing_loan: "Fernleihbestellung"
-        barcode: "Strichcode: %{barcode}"
-
+          barcode: Strichcode
+          due_date: Fällig am
+          loan_date: Entliehen am
+          title: Titel
+        sorted_by: Sortiert nach
       renew:
-        success: "%{system_message}"
         error: "%{system_message}"
-
+        success: "%{system_message}"
       renewals:
         header: Bitte überprüfen Sie die neuen Rückgabefristen.
         no_renewals: Keine Medien verlängert.

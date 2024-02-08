@@ -1,21 +1,19 @@
+---
 de:
   account:
     hold_requests:
-      breadcrumb: "Vormerkungen"
-
-      hold_requests:
-        header: "Vormerkungen"
-        no-hold-requests: "Sie haben aktuell keine Medien vorgemerkt"
-        delete_hold_request: "Vormerkung löschen"
-        requested_at: "Vorgemerkt am"
-        status: "Status"
-        queue_position: "Position in der Warteschlange"
-        expiry_date: "Abzuholen bis"
-        on_hold_shelf_info:
-          Der Titel steht bis zum %{date} für Sie im Selbstabholbereich der UB bereit.
-        barcode: "Strichcode: %{barcode}"
-        call_number: "Signatur: %{call_number}"
-
+      breadcrumb: Vormerkungen
       destroy:
-        error: "Die Vormerkung konnte nicht gelöscht werden"
-        success: "Die Vormerkung wurde erfolgreich gelöscht"
+        error: Die Vormerkung konnte nicht gelöscht werden
+        success: Die Vormerkung wurde erfolgreich gelöscht
+      hold_requests:
+        barcode: 'Strichcode: %{barcode}'
+        call_number: 'Signatur: %{call_number}'
+        delete_hold_request: Vormerkung löschen
+        expiry_date: Abzuholen bis
+        header: Vormerkungen
+        no-hold-requests: Sie haben aktuell keine Medien vorgemerkt
+        on_hold_shelf_info: Der Titel steht bis zum %{date} für Sie im Selbstabholbereich der UB bereit.
+        queue_position: Position in der Warteschlange
+        requested_at: Vorgemerkt am
+        status: Status

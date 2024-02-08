@@ -1,27 +1,24 @@
+---
 de:
   link_resolver:
-    breadcrumb: "Link-Resolver"
-    show:
-      header: "Link-Resolver"
-      header_found: "Es wurden folgende elektronische Volltexte gefunden"
-
-      error: "Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt."
-      no_results: "Leider kein Volltext verfügbar."
-
-      authors: "Autor(en)"
-      atitle: "Artikel"
-      title: "Titel"
-      publisher: "Verlag"
-      place_of_publication: "Ort"
-      date_of_publication: "Erscheinungsjahr"
-
-      further_research: "Weitere Recherchemöglichkeiten"
-      search_link:
-        catalog:    "Suche im Bibliotheksbestand"
-        cdi:        "Suche im Central Discovery Index (CDI)"
-        interlibrary_loan:
-          book:     "Buchsuche über die Fernleihe"
-          journal:  "Zeitschriftensuche über die Fernleihe"
-
+    breadcrumb: Link-Resolver
     fulltext_service:
-      free_resource: "Freie Ressource"
+      free_resource: Freie Ressource
+    show:
+      atitle: Artikel
+      authors: Autor(en)
+      date_of_publication: Erscheinungsjahr
+      error: 'Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
+      further_research: Weitere Recherchemöglichkeiten
+      header: Link-Resolver
+      header_found: Es wurden folgende elektronische Volltexte gefunden
+      no_results: Leider kein Volltext verfügbar.
+      place_of_publication: Ort
+      publisher: Verlag
+      search_link:
+        catalog: Suche im Bibliotheksbestand
+        cdi: Suche im Central Discovery Index (CDI)
+        interlibrary_loan:
+          book: Buchsuche über die Fernleihe
+          journal: Zeitschriftensuche über die Fernleihe
+      title: Titel

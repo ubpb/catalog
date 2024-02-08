@@ -1,15 +1,11 @@
+---
 de:
   account:
     emails:
-      breadcrumb: "E-Mail Adresse ändern"
-
+      breadcrumb: E-Mail Adresse ändern
       edit:
-        header: "E-Mail Adresse ändern"
-
+        header: E-Mail Adresse ändern
       update:
-        current_password_is_wrong: >
-          Das eingegebene Passwort ist nicht korrekt.
+        current_password_is_wrong: Das eingegebene Passwort ist nicht korrekt.
+        error: Ihre E-Mail Adresse konnte nicht geändert werden. Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut. Besteht der Fehler weiterhin, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         success: Ihre E-Mail Adresse wurde erfolgreich geändert.
-        error: >
-          Ihre E-Mail Adresse konnte nicht geändert werden. Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
-          Besteht der Fehler weiterhin, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.

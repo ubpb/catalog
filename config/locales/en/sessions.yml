@@ -1,12 +1,13 @@
+---
 en:
   sessions:
-    new:
-      header: "Login"
-      submit: "Login"
-      cancel: "Cancel"
-      forgot_password: "I forgot my password"
     create:
-      error: "Authentication failed. Please check your entries. The Library-ID or password is incorrect."
-      success: "You have been successfully logged in."
+      error: Authentication failed. Please check your entries. The Library-ID or password is incorrect.
+      success: You have been successfully logged in.
     destroy:
-      success: "You have been successfully logged out."
+      success: You have been successfully logged out.
+    new:
+      cancel: Cancel
+      forgot_password: I forgot my password
+      header: Login
+      submit: Login

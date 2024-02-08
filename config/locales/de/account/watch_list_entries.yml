@@ -1,6 +1,7 @@
+---
 de:
   account:
     watch_list_entries:
       destroy:
-        success: "Eintrag gelöscht"
-        error: "Eintrag konnte nicht gelöscht werden."
+        error: Eintrag konnte nicht gelöscht werden.
+        success: Eintrag gelöscht

@@ -1,19 +1,17 @@
+---
 de:
   account:
     profiles:
       breadcrumb: Meine Daten
-
       show:
-        header: "Meine Daten"
-
-        change: "ändern"
-        change_password: "Passwort ändern"
-        add_email: "E-Mail Adresse eintragen"
-
+        add_email: E-Mail Adresse eintragen
+        change: ändern
+        change_password: Passwort ändern
         data:
-          ils_id: "Bibliotheksausweisnummer"
-          expiry_date: "Gültig bis"
-          first_name: "Vorname"
-          last_name: "Nachname"
-          email: "E-Mail"
-          password: "Passwort"
+          email: E-Mail
+          expiry_date: Gültig bis
+          first_name: Vorname
+          ils_id: Bibliotheksausweisnummer
+          last_name: Nachname
+          password: Passwort
+        header: Meine Daten

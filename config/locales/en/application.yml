@@ -1,51 +1,44 @@
+---
 en:
+  access_denied: Access denied
   application:
-    ub: University Library
-    ub_pb: UB Paderborn
-    app_name: Catalog
-    menu: Menu
-
-    main_menu:
-      home: Start
-      help: Help
-      blog: Blog
-      further_services: Other services
-      new_acquisition: New acquisitions
-      systematic: Subject classification books
-      purchase_requests: Purchase request
-      closed_stack_orders: Closed stack order
-      interlibrary_loan: Interlibrary loan
-      settings: Settings
-      language: Language
-      color_mode: Color scheme
-
-    color_modes:
-      light: Light
-      dark: Dark
-      auto: Auto
-
     account_menu:
-      my_account: My library account
-      my_e_id_card: My eID-Card
+      login: Login
       logout: Logout
       logout_msg: Really log out?
-      login: Login
-
+      my_account: My library account
+      my_e_id_card: My eID-Card
+    app_name: Catalog
+    color_modes:
+      auto: Auto
+      dark: Dark
+      light: Light
     footer:
-      quicklinks: "Quicklinks"
-      legal_notices: "Legal notice"
-      address: "Address / How to find us"
-      opening_hours: "Opening & service hours"
-      impressum: "Impressum"
-      privacy_policy: "Privacy policy"
-      cover_images: "Cover images provided by buchhandel.de"
-
-  save: Save
+      address: Address / How to find us
+      cover_images: Cover images provided by buchhandel.de
+      impressum: Impressum
+      legal_notices: Legal notice
+      opening_hours: Opening & service hours
+      privacy_policy: Privacy policy
+      quicklinks: Quicklinks
+    main_menu:
+      blog: Blog
+      closed_stack_orders: Closed stack order
+      color_mode: Color scheme
+      further_services: Other services
+      help: Help
+      home: Start
+      interlibrary_loan: Interlibrary loan
+      language: Language
+      new_acquisition: New acquisitions
+      purchase_requests: Purchase request
+      settings: Settings
+      systematic: Subject classification books
+    menu: Menu
+    ub: University Library
+    ub_pb: UB Paderborn
   cancel: Cancel
-
-  confirm-delete: "Really delete?"
-
-  access_denied: "Access denied"
-
-  german: German
+  confirm-delete: Really delete?
   english: English
+  german: German
+  save: Save

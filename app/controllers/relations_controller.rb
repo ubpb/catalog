@@ -9,7 +9,7 @@ class RelationsController < RecordsController
     @relations = @record.relations.select do |relation|
       if relation.id.present?
         SearchEngine[current_search_scope]
-          .get_record(relation.id, by_additional_ids: true)
+          .get_record(relation.id, by_all_other_ids: true)
           .present?
       end
     end.compact

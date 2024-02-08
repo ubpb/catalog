@@ -7,8 +7,8 @@ module SearchEngine::Adapters
       def call(record_id, options = {})
         if (other_id = options[:by_other_id]).present?
           get_record_by_other_id(field: other_id, id: record_id)
-        elsif (options[:by_additional_ids] == true)
-          get_record_by_additional_ids(record_id)
+        elsif options[:by_all_other_ids] == true
+          get_record_by_all_other_ids(record_id)
         else
           get_record_by_mms_id(record_id)
         end
@@ -47,15 +47,15 @@ module SearchEngine::Adapters
 
       # FIXME: This couples the implemenation to the config file, which is
       # very wrong and MUST be adressed.
-      def get_record_by_additional_ids(record_id)
+      def get_record_by_all_other_ids(record_id)
         request = {
           index: adapter.options[:index],
           body: {
             query: {
-              match: {
-                additional_identifiers: {
-                  query: record_id
-                }
+              multi_match: {
+                fields: ["alma_id", "aleph_id", "hbz_id", "zdb_id", "isbns", "issns", "additional_identifiers"],
+                type: "cross_fields",
+                query: record_id
               }
             }
           }

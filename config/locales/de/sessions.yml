@@ -2,7 +2,8 @@
 de:
   sessions:
     create:
-      error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist falsch.
+      error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist
+        falsch.
       success: Sie wurden erfolgreich angemeldet.
     destroy:
       success: Sie wurden erfolgreich abgemeldet.

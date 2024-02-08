@@ -2,28 +2,50 @@
 de:
   closed_stack_orders:
     breadcrumb: Magazinbestellung
-    disabled: Die Magazinbestellung ist derzeit nicht möglich
     create:
       errors:
         fehler_bestellangaben: 'Fehler: Bitte geben Sie die Signatur des gewünschten Exemplares an.'
-        fehler_jahr_in_ebene: 'Fehler: Sie haben einen Jahrgang ab 1996 eingegeben! Diese Zeitschriftenbände finden Sie in der Regel in den Fachbibliotheken. Wenn Sie sicher sind, dass sich der von Ihnen benötigte Band im Magazin befindet, schalten Sie bitte im Eingabeformular die Jahrgangsprüfung aus.'
+        fehler_jahr_in_ebene: >-
+          Fehler: Sie haben einen Jahrgang ab 1996 eingegeben! Diese Zeitschriftenbände finden Sie in der Regel in den Fachbibliotheken.
+          Wenn Sie sicher sind, dass sich der von Ihnen benötigte Band im Magazin befindet, schalten Sie bitte im Eingabeformular
+          die Jahrgangsprüfung aus.
         fehler_jahrgang_band: 'Fehler: Bitte geben Sie den Jahrgang und Nummer des Bandes an.'
-        fehler_jahrgang_falsch: 'Fehler: Sie haben den Zeitschriftenjahrgang nicht richtig eingegeben! Bitte geben Sie das Jahr vierstellig ein. Bitte beachten Sie dabei: Im Magazin sind nur Jahrgänge bis 1995. Neuere Zeitschriftenbände finden Sie in den Fachbibliotheken.'
-        fehler_nicht_schonwieder: 'Fehler: Diese Bestellung wurde bereits aufgegeben! Bitte erkundigen Sie sich ggf. an der Ortsleihtheke, wann die von Ihnen gewünschte Literatur abholbereit ist.'
-      microfiche_hint: ACHTUNG!!! Sie bestellen gerade einen Mikrofiche. In diesem Fall tragen Sie bitte unbedingt den gewünschten Titel des Werkes ein.
-      success: Ihre Bestellung wurde erfolgreich aufgegeben. Bitte beachten Sie die o.g. Informationen bzgl. der Bereitstellung bestellter Medien.
+        fehler_jahrgang_falsch: >-
+          Fehler: Sie haben den Zeitschriftenjahrgang nicht richtig eingegeben! Bitte geben Sie das Jahr vierstellig ein.
+          Bitte beachten Sie dabei: Im Magazin sind nur Jahrgänge bis 1995. Neuere Zeitschriftenbände finden Sie in den Fachbibliotheken.
+        fehler_nicht_schonwieder: >-
+          Fehler: Diese Bestellung wurde bereits aufgegeben! Bitte erkundigen Sie sich ggf. an der Ortsleihtheke, wann die
+          von Ihnen gewünschte Literatur abholbereit ist.
+      microfiche_hint: >-
+        ACHTUNG!!! Sie bestellen gerade einen Mikrofiche. In diesem Fall tragen Sie bitte unbedingt den gewünschten Titel
+        des Werkes ein.
+      success: >-
+        Ihre Bestellung wurde erfolgreich aufgegeben. Bitte beachten Sie die o.g. Informationen bzgl. der Bereitstellung bestellter
+        Medien.
+    disabled: Die Magazinbestellung ist derzeit nicht möglich
     new:
       book:
         caption: 1. Ein Buch
         signature: Signatur
         submit_btn: Buch jetzt bestellen
         title: Titel
-      hint1_html: Bestellungen von Medien, die im Magazin der Bibliothek aufgestellt sind, werden montags bis freitags zwischen 7:30 und 18:30 Uhr sowie samstags zwischen 9:00 und 16:30 Uhr bearbeitet und in der Regel innerhalb einer Stunde für Sie im Selbstabholbereich oder an der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">Theke des Sachgebiets Ortsleihe</a> bereitgestellt. Sollten Sie Ihre Bestellung im Selbstabholbereich nicht finden, wenden Sie sich bitte an die Mitarbeitenden des Sachgebiets Ortsleihe.
+      hint1_html: >-
+        Bestellungen von Medien, die im Magazin der Bibliothek aufgestellt sind, werden montags bis freitags zwischen 7:30
+        und 18:30 Uhr sowie samstags zwischen 9:00 und 16:30 Uhr bearbeitet und in der Regel innerhalb einer Stunde für Sie
+        im Selbstabholbereich oder an der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe"
+        target="_blank">Theke des Sachgebiets Ortsleihe</a> bereitgestellt. Sollten Sie Ihre Bestellung im Selbstabholbereich
+        nicht finden, wenden Sie sich bitte an die Mitarbeitenden des Sachgebiets Ortsleihe.
       hint2: Außerhalb dieser Zeiten aufgegebene Bestellungen werden am nächsten Werktag bearbeitet.
       hint3: Sie erhalten eine separate Bereitstellungsnachricht per E-Mail für jedes bestellte Medium.
-      hint4_html: Das Abholen bereitgestellter Medien im Selbstabholbereich ist während der gesamten <a href="https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten" target="_blank">Öffnungszeiten der Bibliothek</a> möglich. Die Ausgabe bereitgestellter Medien an der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" target="_blank">Theke des Sachgebiets Ortsleihe</a> erfolgt jedoch nur montags bis freitags von 7:30 bis 19:00 Uhr und samstags von 9:00 bis 17:00 Uhr.
+      hint4_html: >-
+        Das Abholen bereitgestellter Medien im Selbstabholbereich ist während der gesamten <a href="https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten"
+        target="_blank">Öffnungszeiten der Bibliothek</a> möglich. Die Ausgabe bereitgestellter Medien an der <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe"
+        target="_blank">Theke des Sachgebiets Ortsleihe</a> erfolgt jedoch nur montags bis freitags von 7:30 bis 19:00 Uhr
+        und samstags von 9:00 bis 17:00 Uhr.
       hints: Bitte beachten Sie
-      info: Über diese Bestellmaske können Sie nur Medien bestellen, die im Magazin der Bibliothek aufgestellt sind. Medien aus dem Freihandbestand sind über diese Bestellmaske nicht bestellbar.
+      info: >-
+        Über diese Bestellmaske können Sie nur Medien bestellen, die im Magazin der Bibliothek aufgestellt sind. Medien aus
+        dem Freihandbestand sind über diese Bestellmaske nicht bestellbar.
       magazine:
         caption: 2. Eine Zeitschrift
         page: Seite
@@ -34,4 +56,6 @@ de:
         year: Jahr
       order_form_header: Was möchten Sie aus dem Magazin bestellen?
       title: Eine Magazinbestellung aufgeben
-    undefined_error: Es ist ein Fehler bei der Magazinbestellung aufgetreten. Bitte versuchen Sie es erneut, oder wenden Sie sich an das Informationszentrum der Bibliothek.
+    undefined_error: >-
+      Es ist ein Fehler bei der Magazinbestellung aufgetreten. Bitte versuchen Sie es erneut, oder wenden Sie sich an das
+      Informationszentrum der Bibliothek.

@@ -1,12 +1,10 @@
 ---
 de:
   hold_requests:
-    disabled: >
-      Vormerkungen stehen aktuell nicht zur Verfügung
-
     create:
       error: Vormerkung konnte nicht erstellt werden. Bitte wenden Sie sich an die Ortsleihe.
       success: Vormerkung erfolgreich erstellt.
     destroy:
       error: Vormerkung konnte nicht gelöscht werden. Bitte wenden Sie sich an die Ortsleihe.
       success: Vormerkung erfolgreich gelöscht.
+    disabled: Vormerkungen stehen aktuell nicht zur Verfügung

@@ -10,7 +10,9 @@ en:
         reset: Reset filter
         set_aggregation: Filter results
     availabilities:
-      error: Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+      error: >-
+        Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt
+        erneut.
     breadcrumb: Search
     cdi:
       breadcrumb: in CDI
@@ -51,7 +53,10 @@ en:
     search_field:
       query_placeholder: Enter search term(s)...
     search_panel:
-      ebook_notice: Please also note the <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i> available range of e-books, which are currently not yet listed in our catalog</a>, but have already been activated via the publisher portals.
+      ebook_notice: >-
+        Please also note the <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i
+        class="fa-solid fa-external-link"></i> available range of e-books, which are currently not yet listed in our catalog</a>,
+        but have already been activated via the publisher portals.
       search: Search
     searchables:
       cdi:

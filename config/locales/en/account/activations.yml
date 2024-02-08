@@ -1,27 +1,20 @@
+---
 en:
   account:
     activations:
       breadcrumb: Activate library account
-
-      show:
-        header: "Activate library account"
-        info_html: >
-          Your library account must be activated before you can borrow media
-
-        form:
-          submit: "Activate my library account"
-          terms_of_use_html: >
-            I have read the <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank">
-            <i class="fa-solid fa-external-link"></i> Terms of use</a>,
-            the <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
-            <i class="fa-solid fa-external-link"></i> Fee Regulations</a>
-            and the <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf" target="_blank">
-            <i class="fa-solid fa-external-link"></i> Privacy Policy</a>
-            and accept them.
-
       create:
         flash:
-          success: "Your library account has been successfully activated and can now be used."
-          failure: >
-            The activation of your library account has failed. Please try again or
-            contact the staff at the local circulation desk.
+          failure: The activation of your library account has failed. Please try again or contact the staff at the local circulation
+            desk.
+          success: Your library account has been successfully activated and can now be used.
+      show:
+        form:
+          submit: Activate my library account
+          terms_of_use_html: >-
+            I have read the <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid
+            fa-external-link"></i> Terms of use</a>, the <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
+            <i class="fa-solid fa-external-link"></i> Fee Regulations</a> and the <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
+            target="_blank"> <i class="fa-solid fa-external-link"></i> Privacy Policy</a> and accept them.
+        header: Activate library account
+        info_html: Your library account must be activated before you can borrow media

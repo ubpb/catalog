@@ -1,12 +1,10 @@
 ---
 en:
   hold_requests:
-    disabled: >
-      Hold requests are currently not available
-
     create:
       error: Hold request could not be created. Please contact the staff at the local circulation desk.
       success: Hold request successfully created.
     destroy:
       error: Hold request could not be deleted. Please contact the staff at the local circulation desk.
       success: Hold request successfully deleted.
+    disabled: Hold requests are currently not available

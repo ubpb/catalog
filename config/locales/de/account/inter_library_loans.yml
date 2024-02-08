@@ -4,9 +4,17 @@ de:
     inter_library_loans:
       index:
         header: Fernleihbestellungen
-        info1_html: Systembedingt können wir Ihnen hier nur den Status Ihrer <strong>monografischen</strong> Fernleihbestellungen anzeigen. Den Status Ihrer <strong>Aufsatzbestellungen</strong> prüfen Sie bitte direkt im <a href="%{ill_url}" class="alert-link" target="_blank"><i class="fa fa-external-link"></i> Fernleihkonto</a>. Dort können Sie auch neue Fernleihbestellungen aufgeben.
-        info2_html: Die <strong>Rückgabefristen</strong> Ihrer z.Zt. entliehenen Fernleihmedien finden Sie unter <a href="%{loans_url}" class="alert-link"><i class="fa fa-external-link"></i> Ausgeliehene Medien</a>.
-        info3_html: Weitere Informationen zum Thema finden Sie <a href="%{ill_info_url}" class="alert-link" target="_blank"> <i class="fa fa-external-link"></i> auf unseren Webseiten</a>.
+        info1_html: >-
+          Systembedingt können wir Ihnen hier nur den Status Ihrer <strong>monografischen</strong> Fernleihbestellungen anzeigen.
+          Den Status Ihrer <strong>Aufsatzbestellungen</strong> prüfen Sie bitte direkt im <a href="%{ill_url}" class="alert-link"
+          target="_blank"><i class="fa fa-external-link"></i> Fernleihkonto</a>. Dort können Sie auch neue Fernleihbestellungen
+          aufgeben.
+        info2_html: >-
+          Die <strong>Rückgabefristen</strong> Ihrer z.Zt. entliehenen Fernleihmedien finden Sie unter <a href="%{loans_url}"
+          class="alert-link"><i class="fa fa-external-link"></i> Ausgeliehene Medien</a>.
+        info3_html: >-
+          Weitere Informationen zum Thema finden Sie <a href="%{ill_info_url}" class="alert-link" target="_blank"> <i class="fa
+          fa-external-link"></i> auf unseren Webseiten</a>.
         mono_list_header: Status Ihrer monografischen Fernleihbestellungen
         open_ill: Fernleihkonto öffnen
       listing:

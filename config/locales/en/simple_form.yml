@@ -3,12 +3,15 @@ en:
   simple_form:
     hints:
       defaults:
-        password: Must contain min. one number and one special character (e.g. $, %, @, etc.). Min. 8 characters. Max. 30 characters.
+        password: Must contain min. one number and one special character (e.g. $, %, @, etc.). Min. 8 characters. Max. 30
+          characters.
         user_id: You can find the number on your library or student card.
       login:
         password: ''
       pin_form:
-        current_pin: Your current PIN is required to change the PIN. If you have forgotten your current PIN, please contact the staff at the local circulation desk.
+        current_pin: >-
+          Your current PIN is required to change the PIN. If you have forgotten your current PIN, please contact the staff
+          at the local circulation desk.
         pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
     labels:
       defaults:

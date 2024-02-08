@@ -9,8 +9,17 @@ en:
         date: Date
         fine: Fee
       fees:
-        credit-info: You have a credit balance of %{amount}. Please contact the staff at the local circulation desk so that we can pay you the amount.
-        fee-info: Your current fees are displayed here. Please note that additional charges will apply, if you <a href="%{account_url}" class="alert-link">have overdue items on your library account</a> and you do not return them. Please note that if you owe more than €25.00 in fees, your library account will be automatically blocked. If your library account is blocked, you will not be able to loan items, extend loan periods (also not automatic), perform interlibrary loan orders or create hold requests!
+        credit-info: >-
+          You have a credit balance of %{amount}. Please contact the staff at the local circulation desk so that we can pay
+          you the amount.
+        fee-info: >-
+          Your current fees are displayed here. Please note that additional charges will apply, if you <a href="%{account_url}"
+          class="alert-link">have overdue items on your library account</a> and you do not return them. Please note that if
+          you owe more than €25.00 in fees, your library account will be automatically blocked. If your library account is
+          blocked, you will not be able to loan items, extend loan periods (also not automatic), perform interlibrary loan
+          orders or create hold requests!
         header: Fees
         no-fees: Currently no fees
-        payment-info: Please pay your outstanding fees of <strong>%{amount}</strong> at our cashier machines located in the library entrance area.
+        payment-info: >-
+          Please pay your outstanding fees of <strong>%{amount}</strong> at our cashier machines located in the library entrance
+          area.

@@ -2,4 +2,5 @@
 en:
   compat:
     v2_searches:
-      broken_search_request_warning: The link that brought you to this page uses incorrect search syntax. Please start a new search here.
+      broken_search_request_warning: The link that brought you to this page uses incorrect search syntax. Please start a new
+        search here.

@@ -37,6 +37,11 @@ en:
     menu: Menu
     ub: University Library
     ub_pb: UB Paderborn
+    user_has_blocking_todos_alert:
+      info: >-
+        Account functions such as hold requests, closed stack orders, watch lists etc. are currently not available. Please
+        open your account and follow the instructions.
+      open_account: Show library account
   cancel: Cancel
   confirm-delete: Really delete?
   english: English

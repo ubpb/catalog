@@ -8,7 +8,9 @@ de:
       login:
         password: ''
       pin_form:
-        current_pin: Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre aktuelle PIN vergessen haben, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
+        current_pin: >-
+          Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre aktuelle PIN vergessen haben, wenden
+          Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         pin: muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten
     labels:
       defaults:

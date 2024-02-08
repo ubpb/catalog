@@ -3,7 +3,9 @@ en:
   gnd:
     details:
       affiliations: Affiliations
-      data_provided_by: Data provided by <a href="%{lobid_url}" target="_blank">lobid-gnd</a>, a service of the <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum des Landes NRW (hbz)</a>
+      data_provided_by: >-
+        Data provided by <a href="%{lobid_url}" target="_blank">lobid-gnd</a>, a service of the <a href="%{hbz_url}" target="_blank">Hochschulbibliothekszentrum
+        des Landes NRW (hbz)</a>
       date_of_birth: Date of birth
       date_of_death: Date of death
       date_of_establishment: Date of establishment
@@ -48,7 +50,8 @@ en:
       member_state: Member state
       musical_corporate_body: Musical corporate body
       musical_work: Musical work
-      name_of_small_geographic_unit_lying_within_another_geographic_unit: Name of small geographic unit lying within another geographic unit
+      name_of_small_geographic_unit_lying_within_another_geographic_unit: Name of small geographic unit lying within another
+        geographic unit
       natural_geographic_unit: Natural geographic unit
       nomenclature_in_biology_or_chemistry: Nomencalture in biology or chemistry
       organ_of_corporate_body: Body of a corporate body
@@ -72,7 +75,7 @@ en:
       way_border_or_line: Way, border or line
       work: Work
     error: Error
-    error_message: |
+    error_message: |-
       No data could be loaded. There may be a technical problem at the service provider. Alternatively, you can try to retrieve the data via the <a href="%{dnb_url}" target="_blank" class="alert-link">
         <i class="fa-solid fa-external-link fa-fw"></i>
         German National Library

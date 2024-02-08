@@ -1,0 +1,13 @@
+---
+en:
+  account:
+    todos:
+      breadcrumb: Actions
+      index:
+        back: Back
+        blocking:
+          header: Required actions
+          no_todos_html: All done
+        optional:
+          header: Optional actions
+          no_todos_html: All done

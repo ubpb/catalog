@@ -15,16 +15,23 @@ de:
         public_note_message: 'Hinweis: %{note}'
       no_items_message: Keine Informationen über aktuelle oder erwartete Hefte verfügbar.
     listing:
-      04_location_hint: Das im Magazin J befindliche Archivexemplar der Paderborner Dissertation ist nicht ausleihbar. Bitte nutzen Sie - sofern vorhanden - die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel") oder ein anderes Printexemplar. In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+      04_location_hint: >-
+        Das im Magazin J befindliche Archivexemplar der Paderborner Dissertation ist nicht ausleihbar. Bitte nutzen Sie -
+        sofern vorhanden - die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel") oder ein anderes Printexemplar. In besonderen
+        Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
       closed_stack_order: Magazinbestellung aufgeben
-      closed_stack_order_info: Verfügbare Medien mit Standort <strong>Magazin</strong> sind nicht frei zugänglich. Bitte geben Sie eine Magazinbestellung auf.
+      closed_stack_order_info: >-
+        Verfügbare Medien mit Standort <strong>Magazin</strong> sind nicht frei zugänglich. Bitte geben Sie eine Magazinbestellung
+        auf.
       confirm_create_hold_request: Jetzt ein Exemplar vormerken?
       confirm_delete_hold_request: Vormerkung wirklich löschen?
       create_hold_request: Ein Exemplar vormerken
       delete_hold_request: Vormerkung löschen
       due_date_info: Fällig am %{due_date}
       header: Exemplare
-      hold_request_info: Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und sich damit ein Exemplar reservieren. Sie erhalten eine Benachrichtigung, sobald ein Exemplar für Sie verfügbar wird.
+      hold_request_info: >-
+        Aktuell ist kein Exemplar verfügbar. Sie können jedoch eine Vormerkung machen und sich damit ein Exemplar reservieren.
+        Sie erhalten eine Benachrichtigung, sobald ein Exemplar für Sie verfügbar wird.
       hold_requests:
         header:
           queue_position: Position in der Warteschlange
@@ -38,7 +45,9 @@ de:
         one: Sie haben eine Vormerkung für diesen Titel
         other: Sie haben %{count} Vormerkungen für diesen Titel
       items:
-        handapparat_info: Dieses Medium steht in einem Handapparat. Besitzt die Universitätsbibliothek kein weiteres Exemplar dieses Titels, können Sie sich im Bedarfsfall an das Informationszentrum wenden.
+        handapparat_info: >-
+          Dieses Medium steht in einem Handapparat. Besitzt die Universitätsbibliothek kein weiteres Exemplar dieses Titels,
+          können Sie sich im Bedarfsfall an das Informationszentrum wenden.
         header:
           call_number: Signatur
           location: Standort
@@ -60,4 +69,7 @@ de:
           zero: Keine Vormerkungen.
         no_of_items: "%{count} gefunden."
       temp_due_back_date: Von temporärer Aufstellung zurück am %{due_date}
-      temp_location_info: Diese Medien stehen temporär an einem anderen Standort und/oder unterliegen temporär anderen Ausleihkonditionen. Möglicherweise können diese Medien nicht entliehen werden. Wurde ein Datum hinterlegt, wann das Medium zu seinem ursprünglichen Standort und/oder seinen ursprünglichen Ausleihkonditionen zurückkehrt, wird dies unter Status angegeben.
+      temp_location_info: >-
+        Diese Medien stehen temporär an einem anderen Standort und/oder unterliegen temporär anderen Ausleihkonditionen. Möglicherweise
+        können diese Medien nicht entliehen werden. Wurde ein Datum hinterlegt, wann das Medium zu seinem ursprünglichen Standort
+        und/oder seinen ursprünglichen Ausleihkonditionen zurückkehrt, wird dies unter Status angegeben.

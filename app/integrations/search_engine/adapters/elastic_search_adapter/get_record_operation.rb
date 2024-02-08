@@ -14,18 +14,14 @@ module SearchEngine::Adapters
         end
       end
 
-    private
+      private
 
       def get_record_by_mms_id(record_id)
         result = adapter.client.get(index: adapter.options[:index], id: record_id)
 
         marked_as_deleted = result["_source"].dig("meta", "is_deleted") == true
 
-        unless marked_as_deleted
-          RecordFactory.build(result)
-        else
-          nil
-        end
+        RecordFactory.build(result) unless marked_as_deleted
       rescue Elastic::Transport::Transport::Errors::NotFound
         nil
       end
@@ -41,15 +37,12 @@ module SearchEngine::Adapters
         }
 
         result = adapter.client.search(request)
-        if first_hit = result["hits"]["hits"][0]
-          unless first_hit["_source"].dig("meta", "is_deleted") == true
-            RecordFactory.build(first_hit)
-          else
-            nil
-          end
-        else
-          nil
+
+        record = result["hits"]["hits"].find do |r|
+          r["_source"].dig("meta", "is_deleted") == false
         end
+
+        RecordFactory.build(record) if record
       end
 
       # FIXME: This couples the implemenation to the config file, which is
@@ -69,15 +62,12 @@ module SearchEngine::Adapters
         }
 
         result = adapter.client.search(request)
-        if first_hit = result["hits"]["hits"][0]
-          unless first_hit["_source"].dig("meta", "is_deleted") == true
-            RecordFactory.build(first_hit)
-          else
-            nil
-          end
-        else
-          nil
+
+        record = result["hits"]["hits"].find do |r|
+          r["_source"].dig("meta", "is_deleted") == false
         end
+
+        RecordFactory.build(record) if record
       end
 
     end

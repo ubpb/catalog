@@ -33,8 +33,7 @@ class HoldRequestsController < RecordsController
 
   def authorize!
     unless current_user.can_manage_hold_requests?
-      flash[:error] = t("hold_requests.disabled_error")
-      redirect_to account_root_path and return false
+      redirect_to account_root_path and return
     end
 
     true

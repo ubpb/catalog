@@ -411,7 +411,7 @@ GEM
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.1)
-    turbo-rails (1.5.0)
+    turbo-rails (2.0.2)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -487,7 +487,7 @@ DEPENDENCIES
   slim (>= 5.0)
   sprockets-rails (~> 3.4.2)
   strip_attributes (~> 1.13)
-  turbo-rails (~> 1.1)
+  turbo-rails (~> 2.0)
   ubpb-rubocop-config!
   view_component (~> 3.0)
   web-console (>= 3.3)

@@ -20,7 +20,11 @@ class SessionsController < ApplicationController
     if user_id.present? && password.present?
       if Ils.authenticate_user(user_id, password)
         ils_user = Ils.get_user(user_id)
+
         db_user  = User.create_or_update_from_ils_user!(ils_user)
+        # Make sure we have the latest data from the ILS inside the user object.
+        # because the ils user data is cached and we want the new login to reset that cache.
+        db_user.reload_ils_user!
 
         reset_session
 
@@ -32,7 +36,6 @@ class SessionsController < ApplicationController
         else
           redirect_to account_root_path
         end
-
       else
         flash[:error] = t(".error")
         render :new, status: :unprocessable_entity

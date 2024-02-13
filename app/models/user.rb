@@ -19,9 +19,13 @@ class User < ApplicationRecord
   end
 
   def ils_user(force_reload: false)
-    @ils_user ||= Rails.cache.fetch("#{cache_key_with_version}/ils_user", expires_in: 5.minutes, force: force_reload) do
+    Rails.cache.fetch("#{cache_key_with_version}/ils_user", expires_in: 5.minutes, force: force_reload) do
       Ils.get_user(ils_primary_id)
     end
+  end
+
+  def reload_ils_user!
+    ils_user(force_reload: true)
   end
 
   def create_password_reset_token!

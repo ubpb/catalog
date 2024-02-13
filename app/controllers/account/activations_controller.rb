@@ -27,6 +27,7 @@ class Account::ActivationsController < Account::ApplicationController
         flash[:error] = t(".flash.failure")
       end
 
+      current_user.reload_ils_user!
       redirect_to account_root_path
     else
       render :show, status: :unprocessable_entity

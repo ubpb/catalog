@@ -29,6 +29,7 @@ class Account::PasswordsController < Account::ApplicationController
           flash[:error] = t(".error")
         end
 
+        current_user.reload_ils_user!
         redirect_to account_profile_path
       else
         @form.errors.add(:current_password, t(".current_password_is_wrong"))

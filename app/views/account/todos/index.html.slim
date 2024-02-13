@@ -20,4 +20,5 @@
         i.fas.fa-check.fa-fw.me-1
         = t(".optional.no_todos_html")
   .card-footer
-    = link_to t(".back"), root_path, class: "btn btn-outline-primary"
+    - cancel_path = @blocking_todos.any? ? root_path : account_root_path
+    = link_to t(".back"), cancel_path, class: "btn btn-outline-primary"

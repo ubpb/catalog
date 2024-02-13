@@ -7,7 +7,7 @@ en:
         flash:
           failure: The activation of your library account has failed. Please try again or contact the staff at the local circulation
             desk.
-          success: Your library account has been successfully activated and can now be used.
+          success: Your library account has been successfully activated
       show:
         form:
           submit: Activate my library account
@@ -17,4 +17,4 @@ en:
             <i class="fa-solid fa-external-link"></i> Fee Regulations</a> and the <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
             target="_blank"> <i class="fa-solid fa-external-link"></i> Privacy Policy</a> and accept them.
         header: Activate library account
-        info_html: Your library account must be activated before you can borrow media
+        info_html: Your library account must be activated before you can use it (e.g. borrow media)

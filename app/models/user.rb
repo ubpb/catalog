@@ -103,6 +103,10 @@ class User < ApplicationRecord
     @todos
   end
 
+  def has_todos?
+    todos.any?
+  end
+
   def blocking_todos
     todos.select(&:blocking?)
   end

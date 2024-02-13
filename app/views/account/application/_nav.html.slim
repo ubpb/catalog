@@ -4,6 +4,14 @@
     = t(".nav-toggle")
 
 #collapseNav.collapse.d-lg-block
+  - if current_user.has_todos?
+    nav.list-group.mb-3
+      = link_to account_todos_path, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do
+        div
+          i.fa-solid.fa-fw.fa-check.me-2
+          = t(".todos")
+        span.badge.bg-danger.rounded-pill = current_user.todos.count
+
   nav.list-group.mb-4.mb-lg-0
     = link_to account_loans_path, class: "list-group-item list-group-item-action" do
       i.fa-solid.fa-fw.fa-book.me-2

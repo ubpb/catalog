@@ -1,0 +1,5 @@
+de:
+  account:
+    activations_mailer:
+      onboarding_info:
+        subject: "Willkommen in der Universitätsbibliothek Paderborn"

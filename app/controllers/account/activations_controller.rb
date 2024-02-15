@@ -48,6 +48,8 @@ class Account::ActivationsController < Account::ApplicationController
         raise ActiveRecord::Rollback
       end
 
+      Account::ActivationsMailer.onboarding_info(current_user).deliver_later
+
       true
     end
   end

@@ -170,7 +170,19 @@ class Admin::RegistrationsController < Admin::ApplicationController
       expiry_date: alma_expiry_date_from_registration(registration),
       user_group: {value: alma_user_group_from_registration(registration)},
       password: registration.birthdate.strftime("%d%m%Y"),
-      force_password_change: true
+      force_password_change: true,
+      # 50-GLOBAL is the default block for all users to mark them as "newly created in Alma".
+      # The user needs to go through the "first login/activation" process to remove this block.
+      user_block: [{
+        block_type: {
+          value: "GENERAL"
+        },
+        block_description: {
+          value: "50-GLOBAL"
+        },
+        block_status: "ACTIVE",
+        segment_type: "Internal"
+      }]
     }
 
     if (user_title = alma_user_title_from_registration(registration))

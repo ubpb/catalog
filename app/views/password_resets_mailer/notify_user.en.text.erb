@@ -1,0 +1,21 @@
+Dear <%= @user.ils_user.full_name %>,
+
+You would like to reset your password for your library account. Please click on the following link.
+
+<%= password_reset_url(token: @user.password_reset_token) %>
+
+Please note that this link is only valid for 6 hours. After 6 hours you must request a new link using the 'I forgot my password' function.
+
+Please do not hesitate to contact us if you have any questions.
+
+Your University Library
+
+---
+Universitätsbibliothek Paderborn
+Dezernat Benutzung & Service
+Sachgebiet Ortsleihe
+Warburger Str. 100
+33098 Paderborn
+Tel. 05251 / 60-2012
+E-Mail: ortsleihe@ub.uni-paderborn.de
+WWW: http://www.ub.uni-paderborn.de

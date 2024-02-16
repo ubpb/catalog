@@ -21,7 +21,7 @@ module Ils::Adapters
 
       def get_loans(record_id)
         loans = adapter.api.get(
-          "bibs/#{record_id}/loans",
+          "bibs/#{CGI.escape(record_id)}/loans",
           params: {
             loan_status: "Active"
           }
@@ -32,7 +32,7 @@ module Ils::Adapters
 
       def get_user(user_id)
         adapter.api.get(
-          "users/#{user_id}",
+          "users/#{CGI.escape(user_id)}",
           params: {
             view: "brief"
           })

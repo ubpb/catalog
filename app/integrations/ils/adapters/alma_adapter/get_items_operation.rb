@@ -48,7 +48,7 @@ module Ils::Adapters
 
       def load_items(record_id, limit:, offset:)
         adapter.api.get(
-          "bibs/#{record_id}/holdings/ALL/items",
+          "bibs/#{CGI.escape(record_id)}/holdings/ALL/items",
           params: {
             expand: "due_date_policy,due_date",
             limit: limit,

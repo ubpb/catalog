@@ -4,7 +4,7 @@ module Ils::Adapters
 
       def call(record_id, user_id)
         response = adapter.api.get(
-          "bibs/#{record_id}/request-options",
+          "bibs/#{CGI.escape(record_id)}/request-options",
           params: {
             user_id: user_id
           }

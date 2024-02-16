@@ -99,7 +99,7 @@ module Ils::Adapters
           params[:direction] = direction.upcase
         end
 
-        adapter.api.get("users/#{user_id}/loans",
+        adapter.api.get("users/#{CGI.escape(user_id)}/loans",
           params: params
         )
       end

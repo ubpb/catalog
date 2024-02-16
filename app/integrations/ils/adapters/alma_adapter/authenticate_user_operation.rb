@@ -3,7 +3,7 @@ module Ils::Adapters
     class AuthenticateUserOperation < Operation
 
       def call(user_id, password)
-        adapter.api.post("users/#{user_id}", params: {password: password})
+        adapter.api.post("users/#{CGI.escape(user_id)}", params: {password: password})
         true
       rescue AlmaApi::LogicalError
         false

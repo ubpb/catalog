@@ -12,7 +12,7 @@ module Ils::Adapters
 
       def get_hold_requests(record_id)
         adapter.api.get(
-          "bibs/#{record_id}/requests",
+          "bibs/#{CGI.escape(record_id)}/requests",
           params: {
             #request_type: "HOLD"
           }

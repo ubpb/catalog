@@ -47,7 +47,7 @@ module Ils::Adapters
 
       def get_hold_requests(user_id, offset:, limit:)
         adapter.api.get(
-          "users/#{user_id}/requests",
+          "users/#{CGI.escape(user_id)}/requests",
           params: {
             request_type: "HOLD",
             status:       "active",

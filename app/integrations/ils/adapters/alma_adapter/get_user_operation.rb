@@ -3,7 +3,7 @@ module Ils::Adapters
     class GetUserOperation < Operation
 
       def call(user_id)
-        response = adapter.api.get("users/#{user_id}")
+        response = adapter.api.get("users/#{CGI.escape(user_id)}")
         UserFactory.build(response)
       rescue AlmaApi::LogicalError
         nil

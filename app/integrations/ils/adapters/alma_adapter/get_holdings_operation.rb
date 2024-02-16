@@ -39,7 +39,7 @@ module Ils::Adapters
 
       def load_holdings(record_id)
         adapter.api.get(
-          "bibs/#{record_id}/holdings"
+          "bibs/#{CGI.escape(record_id)}/holdings"
         ).try(:[], "holding") || []
       rescue
         []

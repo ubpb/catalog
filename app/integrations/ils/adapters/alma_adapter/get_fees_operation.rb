@@ -14,7 +14,7 @@ module Ils::Adapters
     private
 
       def get_fees(user_id)
-        adapter.api.get("users/#{user_id}/fees",
+        adapter.api.get("users/#{CGI.escape(user_id)}/fees",
           params: {
             status: "ACTIVE"
           }

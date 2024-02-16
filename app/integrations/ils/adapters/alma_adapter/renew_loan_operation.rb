@@ -3,7 +3,7 @@ module Ils::Adapters
     class RenewLoanOperation < Operation
 
       def call(user_id, loan_id)
-        response = adapter.api.post("users/#{user_id}/loans/#{loan_id}",
+        response = adapter.api.post("users/#{CGI.escape(user_id)}/loans/#{CGI.escape(loan_id)}",
           params: {
             op: "renew"
           }

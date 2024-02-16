@@ -4,7 +4,7 @@ module Ils::Adapters
 
       def call(user_id, new_email)
         # Get the details for the user
-        user = adapter.api.get("users/#{user_id}")
+        user = adapter.api.get("users/#{CGI.escape(user_id)}")
         emails = user.dig("contact_info", "email")
 
         # Find preferred E-Mail
@@ -24,7 +24,7 @@ module Ils::Adapters
           }
         end
 
-        adapter.api.put("users/#{user_id}", body: user.to_json)
+        adapter.api.put("users/#{CGI.escape(user_id)}", body: user.to_json)
         true
       rescue AlmaApi::LogicalError
         false

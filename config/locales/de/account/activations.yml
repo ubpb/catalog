@@ -10,6 +10,8 @@ de:
             an die Mitarbeiterinnen und Mitarbeiter der Ortsleihe.
           success: Ihr Bibliothekskonto wurde erfolgreich aktiviert
       show:
+        already_activated_info_html: Ihr Bibliothekskonto ist bereits aktiviert.
+        back: Zurück
         form:
           submit: Mein Bibliothekskonto aktivieren
           terms_of_use_html: >-

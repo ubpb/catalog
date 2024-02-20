@@ -6,7 +6,6 @@ class Account::ActivationsController < Account::ApplicationController
     current_user.ils_user.needs_activation?
   end
 
-  before_action :check_activation
   before_action { add_breadcrumb t("account.activations.breadcrumb"), account_activation_path }
 
   layout "application"
@@ -16,6 +15,10 @@ class Account::ActivationsController < Account::ApplicationController
   end
 
   def create
+    unless current_user.ils_user.needs_activation?
+      redirect_to account_root_path and return
+    end
+
     @form = AccountActivationForm.new(
       params.require(:account_activation).permit(:terms_of_use)
     )
@@ -37,7 +40,7 @@ class Account::ActivationsController < Account::ApplicationController
   private
 
   def check_activation
-    redirect_to account_root_path unless current_user.ils_user.needs_activation?
+
   end
 
   def activate_account

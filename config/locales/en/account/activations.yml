@@ -9,6 +9,8 @@ en:
             desk.
           success: Your library account has been successfully activated
       show:
+        already_activated_info_html: Your library account is already activated.
+        back: Back
         form:
           submit: Activate my library account
           terms_of_use_html: >-

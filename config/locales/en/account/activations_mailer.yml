@@ -1,5 +1,6 @@
+---
 en:
   account:
     activations_mailer:
       onboarding_info:
-        subject: "Welcome to the Paderborn University Library"
+        subject: Welcome to the Paderborn University Library

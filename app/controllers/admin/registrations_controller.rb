@@ -35,6 +35,16 @@ class Admin::RegistrationsController < Admin::ApplicationController
     end
   end
 
+  def print
+    @registration = Registration.find(Registration.to_id(params[:id]))
+
+    ils_user = Ils.get_user(@registration.alma_primary_id)
+    raise ActiveRecord::RecordNotFound if ils_user.nil?
+
+    @user = User.create_or_update_from_ils_user!(ils_user)
+    @user.create_activation_code!
+  end
+
   def destroy
     registration = Registration.find(Registration.to_id(params[:id]))
     registration.destroy
@@ -109,23 +119,6 @@ class Admin::RegistrationsController < Admin::ApplicationController
       end
     else
       []
-    end
-  end
-
-  def authenticate!
-    config_username = Rails.application.credentials.registrations&.dig(:admin_username)
-    config_password = Rails.application.credentials.registrations&.dig(:admin_password)
-
-    if config_username.present? && config_password.present?
-      authenticate_or_request_with_http_basic do |username, password|
-        secure_password = BCrypt::Password.new(
-          BCrypt::Password.create(password)
-        )
-
-        username == config_username && secure_password == config_password
-      end
-    else
-      false
     end
   end
 

@@ -15,9 +15,11 @@ en:
         pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
     labels:
       defaults:
+        activation_code: Activation code
         current_password: Current password
         description: Description
         email: E-mail
+        ils_id: Library-ID
         name: Name
         password: Password
         password_confirmation: Repeat password
@@ -32,6 +34,9 @@ en:
         pin: PIN
         pin_confirmation: Repeat PIN
     placeholders:
+      activation:
+        activation_code: Your activation code (optional)
+        ils_id: Your Library-ID
       defaults:
         current_password: Please enter your current password
         email: Your e-mail address

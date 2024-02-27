@@ -21,11 +21,14 @@ class PasswordResetsController < ApplicationController
       elsif ils_user.email.blank?
         flash[:error] = t(".no_email_flash", user_id: @form.user_id)
         redirect_to(password_reset_request_path)
+      elsif ils_user.needs_activation?
+        flash[:error] = t(".user_needs_activation_flash", activation_link: activation_root_path)
+        redirect_to(password_reset_request_path)
       else
         db_user = User.create_or_update_from_ils_user!(ils_user)
         db_user.create_password_reset_token!
 
-        PasswordResetsMailer.notify_user(db_user).deliver_later
+        UsersMailer.password_reset_request(db_user).deliver_later
 
         flash[:success] = t(".success_flash", email: helpers.mask_email(ils_user.email))
         redirect_to(new_session_path)

@@ -11,7 +11,8 @@
     "bootstrap": "^5.3.1",
     "chart.js": "^4.3.3",
     "jsbarcode": "^3.11.5",
-    "nouislider": "^15.7.0"
+    "nouislider": "^15.7.0",
+    "qrcode": "^1.5.3"
   },
   "scripts": {
     "parcel:clobber": "rm -fr ./app/assets/builds/*",

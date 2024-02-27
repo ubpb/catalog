@@ -24,7 +24,7 @@ html
 
     #page
       .container
-        = render "layouts/registrations/breadcrumb"
+        .d-print-none = render "layouts/registrations/breadcrumb"
         = render "alerts", global: true
         = content_for?(:main) ? yield(:main) : yield
 

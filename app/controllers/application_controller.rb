@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :set_robots_tag
+  before_action :logout_non_activated_user
 
   helper_method :current_user
   helper_method :available_search_scopes
@@ -40,6 +41,16 @@ class ApplicationController < ActionController::Base
       if (user_id = session[:current_user_id])
         User.find_by(id: user_id)
       end
+    end
+  end
+
+  def logout_non_activated_user
+    if current_user&.ils_user&.needs_activation?
+      session[:current_user_id] = nil
+      @current_user = nil
+
+      flash[:error] = t("application.account_needs_activation_error")
+      redirect_to request_activation_path and return
     end
   end
 

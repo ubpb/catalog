@@ -1,0 +1,19 @@
+= turbo_page_requires_reload
+
+/ Visible only on screen
+.d-print-none
+  .card.card-primary.card-cutoff-corner.mb-3
+    .card-header.d-flex.align-items-center
+      h5.mb-0 = "Aktivierungsinfos drucken"
+    .card-body
+      .text-center
+        button.btn.btn-lg.btn-primary(type="button" onclick="window.print()")
+          = "Drucken"
+        =< link_to "Zurück", admin_activations_path, class: "btn btn-lg btn-secondary"
+
+/ Visible only on print
+.d-none.d-print-block
+  = render "print", user: @user
+
+javascript:
+  window.print()

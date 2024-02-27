@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   get  "/password/reset/:token", to: "password_resets#edit",   as: :password_reset
   put  "/password/reset/:token", to: "password_resets#update", as: nil
 
+  # Account activation (public route to start the process without login)
+  get   "/activation",         to: "activations#show",   as: :activation_root
+  get   "/activation/request", to: "activations#new",    as: :request_activation
+  post  "/activation/request", to: "activations#create", as: nil
+  get   "/activation/:token",  to: "activations#edit",   as: :activation
+  match "/activation/:token",  to: "activations#update", via: [:put, :patch]
+
   # Locale switching
   get "/locale/:locale", to: "locales#switch", as: :locale
 
@@ -34,6 +41,11 @@ Rails.application.routes.draw do
     resources :registrations, only: [:index, :show, :edit, :update, :destroy] do
       get :confirm, on: :member
       get :check_duplicates, on: :member, path: "check-duplicates"
+      get :print, on: :member
+    end
+
+    resources :activations, only: [:index, :new, :create] do
+      get "print/user/:user_id", on: :collection, as: :print, action: :print
     end
   end
 
@@ -60,7 +72,6 @@ Rails.application.routes.draw do
       match "authorize", via: [:get, :post], on: :member
     end
     resource :pin, except: [:destroy]
-    resource :activation, only: [:show, :create]
     resources :todos, only: [:index]
   end
 

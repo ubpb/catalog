@@ -5,7 +5,7 @@
       div: em = @error
   - else
     - if @name_duplicates.present? || @email_duplicates.present?
-      .callout.callout-warning
+      .callout.callout-danger
         .mb-1
           i.fa-solid.fa-triangle-exclamation.fa-fw.fa-lg.me-1
           = "Es wurden Dubletten gefunden! Bitte zuerst in Alma prüfen!"

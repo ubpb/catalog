@@ -44,6 +44,32 @@ class User < ApplicationRecord
     )
   end
 
+  def create_activation_token!
+    token = "#{SecureRandom.hex(16)}#{id}"
+    update(
+      activation_token: token,
+      activation_token_created_at: Time.zone.now
+    )
+    token
+  end
+
+  def clear_activation_token!
+    update(
+      activation_token: nil,
+      activation_token_created_at: nil
+    )
+  end
+
+  def create_activation_code!
+    code = SecureRandom.hex(4).downcase
+    update(activation_code: code)
+    code
+  end
+
+  def clear_activation_code!
+    update(activation_code: nil)
+  end
+
   def api_key
     read_attribute(:api_key) || recreate_api_key!
   end
@@ -77,18 +103,6 @@ class User < ApplicationRecord
         description: I18n.t("todos.expires_soon.description", date: I18n.l(ils_user.expiry_date)),
         action_title: nil,
         action_url: nil
-      )
-    end
-
-    # Needs activation
-    if ils_user.needs_activation?
-      @todos << Todo.new(
-        key: :activation,
-        blocking: true,
-        title: I18n.t("todos.activation.title"),
-        description: I18n.t("todos.activation.description"),
-        action_title: I18n.t("todos.activation.action_title"),
-        action_url: Rails.application.routes.url_helpers.account_activation_path
       )
     end
 

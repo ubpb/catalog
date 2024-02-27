@@ -12,13 +12,17 @@
         .text-center
           - print_url = Config[:registrations, :print_url]
           - if print_url.present?
-            = form_tag print_url, \
+            .mt-0 = form_tag print_url, \
               method: :post, data: { turbo: false }, target: "_blank" do
               = hidden_field_tag :benum, @registration.alma_primary_id
-              = submit_tag "Ausweis drucken", class: "btn btn-success"
+              = submit_tag "1. Ausweis drucken", class: "btn btn-success"
+
+            .mt-2 = link_to print_admin_registration_path(@registration), \
+              class: "btn btn-success", data: { turbo: false, target: "_blank" } do
+              =< "2. Aktivierungsinfos drucken"
           - else
             em
-              =< "Druck-URL nicht konfiguriert. Bitte kontaktieren Sie die Bibliotehks-IT."
+              =< "Druck nicht konfiguriert. Bitte kontaktieren Sie die Bibliotehks-IT."
     - else
       .mb-3 = turbo_frame_tag(@registration, src: check_duplicates_admin_registration_path(@registration)) do
         i.fa-solid.fa-spinner.fa-spin

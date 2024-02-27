@@ -5,9 +5,21 @@ de:
       error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist
         falsch.
       success: Sie wurden erfolgreich angemeldet.
+      user_needs_activation_flash: >-
+        Sie können sich mit diesem Konto nicht anmelden, da es noch nicht aktiviert wurde.<br/> <a href="%{activation_link}"
+        class="alert-link"><i class="fa-solid fa-external-link"></i> Konto hier aktivieren</a>.
     destroy:
       success: Sie wurden erfolgreich abgemeldet.
     new:
+      account:
+        header: Noch kein Konto?
+        info_html: >-
+          Auf <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis" target="_blank"> <i class="fa-solid
+          fa-external-link"></i> unseren Webseiten</a> erfahren Sie, wie Sie einen Bibliotheksausweis erhalten können.
+      activation:
+        action: Jetzt Konto aktivieren
+        header: Konto aktiviert?
+        info_html: Bevor Sie sich anmelden können, müssen Sie Ihr Konto einamlig aktivieren.
       cancel: Abbrechen
       forgot_password: Ich habe mein Passwort vergessen
       header: Anmelden

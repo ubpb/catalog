@@ -8,6 +8,7 @@ de:
       logout_msg: Wirklich abmelden?
       my_account: Mein Bibliothekskonto
       my_e_id_card: Mein E-Bibliotheksausweis
+    account_needs_activation_error: Ihr Account, mit dem Sie angemeldet waren, muss aktiviert werden.
     app_name: Katalog
     color_modes:
       auto: Automatisch

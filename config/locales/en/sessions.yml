@@ -4,9 +4,21 @@ en:
     create:
       error: Authentication failed. Please check your entries. The Library-ID or password is incorrect.
       success: You have been successfully logged in.
+      user_needs_activation_flash: >-
+        You cannot log in with this account because it has not yet been activated.<br/> <a href="%{activation_link}" class="alert-link"><i
+        class="fa-solid fa-external-link"></i> Activate account here</a>.
     destroy:
       success: You have been successfully logged out.
     new:
+      account:
+        header: No account yet?
+        info_html: >-
+          On <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis" target="_blank"> <i class="fa-solid
+          fa-external-link"></i> on our website</a> to find out how you can obtain a library card.
+      activation:
+        action: Activate account now
+        header: Account activated?
+        info_html: Before you can log in, you must activate your account.
       cancel: Cancel
       forgot_password: I forgot my password
       header: Login

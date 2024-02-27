@@ -8,6 +8,7 @@ en:
       logout_msg: Really log out?
       my_account: My library account
       my_e_id_card: My eID-Card
+    account_needs_activation_error: The account you were logged in with must be activated.
     app_name: Catalog
     color_modes:
       auto: Auto

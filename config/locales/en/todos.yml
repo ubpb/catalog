@@ -1,10 +1,6 @@
 ---
 en:
   todos:
-    activation:
-      action_title: Activate now
-      description: Your library account has been newly created and must be activated.
-      title: Activate library account
     expired:
       description: >-
         Your library account has expired. To renew your library account, please contact your local colleagues at the local

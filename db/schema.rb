@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_20_105426) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_22_130759) do
   create_table "notes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "scope", null: false
@@ -64,6 +64,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_20_105426) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.timestamp "activated_at"
+    t.string "activation_token"
+    t.timestamp "activation_token_created_at"
+    t.string "activation_code"
+    t.index ["activation_code"], name: "index_users_on_activation_code", unique: true
+    t.index ["activation_token"], name: "index_users_on_activation_token", unique: true
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["ils_primary_id"], name: "index_users_on_ils_primary_id", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true

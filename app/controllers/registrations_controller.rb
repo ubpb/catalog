@@ -20,7 +20,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
 
     if @registration.save
-      RegistrationsMailer.notify_user(@registration).deliver_later if @registration.email.present?
+      UsersMailer.registration_created(@registration).deliver_later if @registration.email.present?
 
       session[:registration_id] = @registration.hashed_id
       flash[:success] = t("registrations.create.success")

@@ -1,10 +1,6 @@
 ---
 de:
   todos:
-    activation:
-      action_title: Jetzt aktivieren
-      description: Ihr Bibliothekskonto wurde neu erstellt und muss durch Sie aktiviert werden.
-      title: Bibliothekskonto aktivieren
     expired:
       description: >-
         Ihr Bibliothekskonto ist abgelaufen. Um Ihr Bibliothekskonto zu verlängern, wenden Sie sich bitte an die Kolleginnen

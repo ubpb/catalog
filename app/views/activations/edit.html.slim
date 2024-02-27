@@ -1,0 +1,17 @@
+= simple_form_for @form, url: activation_path, as: :activation, method: :put do |f|
+  .card
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      = render "alerts"
+
+      h5.border-bottom = t(".section_1_header")
+      = f.input :terms_of_use, label: t(".terms_of_use_html").html_safe, required: true, as: :boolean
+
+      h5.border-bottom = t(".section_2_header")
+      = f.input :password
+      = f.input :password_confirmation
+    .card-footer
+      .text-center
+        = f.button :submit, t(".submit"), class: "btn btn-primary"
+        = link_to t("cancel"), root_path, class: "btn btn-link ms-2"

@@ -118,6 +118,13 @@
     color: var(--bs-white);
   }
 
+  @media print {
+    color: var(--bs-dark);
+    a {
+      color: var(--bs-dark);
+    }
+  }
+
   .nav-link {
     color: var(--bs-white);
     padding: 0;

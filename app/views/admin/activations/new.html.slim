@@ -1,0 +1,10 @@
+= simple_form_for @form, url: admin_activations_path, as: :activation, method: :post do |f|
+  .card
+    .card-header
+      h5.m-0 = "Biblioteksaccount aktivieren"
+    .card-body
+      = render "alerts"
+      = f.input :ils_id
+    .card-footer
+      .text-center
+        = f.button :submit, "Aktivierungsinfo drucken", class: "btn btn-primary"

@@ -24,7 +24,8 @@ html
 
     #page
       .container
-        = render "breadcrumb"
+        .d-print-none
+          = render "breadcrumb"
 
         - if current_user&.has_blocking_todos? && !controller.controller_path.include?("account")
           = render "user_has_blocking_todos_alert"

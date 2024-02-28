@@ -36,6 +36,7 @@ class ActivationRequestForm < ApplicationForm
 
   def validate_ils_user_needs_email
     return if skip_email_validation
+    return if activation_code.present?
 
     if ils_id.present? && ils_user && ils_user.email.blank?
       errors.add(:ils_id, I18n.t("activations.errors.no_email"))

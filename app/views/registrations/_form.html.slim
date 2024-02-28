@@ -13,4 +13,4 @@
       - abort_path   = @registration.new_record? ? registrations_path : registration_path(@registration)
       - submit_label = @registration.new_record? ? t("registrations.form.register") : t("registrations.form.save")
       = f.submit submit_label, class: "btn btn-primary"
-      = link_to t("registrations.form.cancel"), abort_path, class: "btn btn-link"
+      = link_to t("registrations.form.cancel"), abort_path, class: "btn btn-default ms-2"

@@ -52,6 +52,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
+    session[:current_user_id] = nil
     flash[:success] = t(".success")
     redirect_to(root_path, status: :see_other)
   end

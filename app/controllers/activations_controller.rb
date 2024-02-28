@@ -50,6 +50,7 @@ class ActivationsController < ApplicationController
       if activate_account(user: @user, password: @form.password)
         # Login user
         reset_session
+        @user.reload_ils_user! # Make sure we have the latest data from ILS in the cache
         session[:current_user_id] = @user.id
 
         # Send info to user

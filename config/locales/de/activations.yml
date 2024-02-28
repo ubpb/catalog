@@ -1,7 +1,7 @@
 ---
 de:
   activations:
-    breadcrumb: Bibliotheksaccount aktivieren
+    breadcrumb: Bibliothekskonto aktivieren
     common_messages:
       expired_token_error: >-
         Der Aktivierungslink der sie hierher geführt hat, ist abgelaufen. Der Link ist nur 6 Stunden lang gültig. Bitte starten
@@ -16,7 +16,7 @@ de:
         Eine E-Mail mit einem Aktivierungslink wurde an %{email} versendet. Bitte prüfen Sie Ihr E-Mail-Postfach und folgen
         Sie den Anweisungen in der E-Mail um Ihren Account zu aktivieren.
     edit:
-      header: Bibliotheksaccount aktivieren
+      header: Bibliothekskonto aktivieren
       section_1_header: 1. Zustimmung erforderlich
       section_2_header: 2. Für den Zugriff auf Ihr Bibliothekskonto legen Sie bitte ein Passwort fest
       submit: Jetzt aktivieren
@@ -33,9 +33,9 @@ de:
         Für das Konto wurde keine E-Mail-Adresse hinterlegt. Es kann damit nicht online aktiviert werden. Bitte wenden Sie
         sich an die Kolleginnen und Kollegen der Ortsleihe.
     new:
-      header: Bibliotheksaccount aktivieren
+      header: Bibliothekskonto aktivieren
       info_html: >-
-        Um Ihren Bibliotheksaccount zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. Haben Sie zusätzlich
+        Um Ihr Bibliothekskonto zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. Haben Sie zusätzlich
         einen Aktivierungscode erhalten, geben Sie diesen bitte ebenfalls ein.
       submit: Weiter
     update:

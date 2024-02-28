@@ -5,7 +5,7 @@ class ActivationsController < ApplicationController
   before_action :verify_activation_token_and_load_user, only: [:edit, :update]
 
   def show
-    redirect_to request_activation_path
+    redirect_to request_activation_path(activation_params)
   end
 
   def new
@@ -76,10 +76,17 @@ class ActivationsController < ApplicationController
       session[:current_user_id] = nil
 
       flash[:info] = t("activations.common_messages.logout_info")
-      redirect_to activation_root_path and return
+      redirect_to activation_root_path(activation_params) and return
     end
 
     true
+  end
+
+  def activation_params
+    aparams = {}
+    aparams[:id] = params[:id] if params[:id].present?
+    aparams[:code] = params[:code] if params[:code].present?
+    aparams
   end
 
   def verify_activation_token_and_load_user

@@ -12,14 +12,14 @@ de:
       success: Sie wurden erfolgreich abgemeldet.
     new:
       account:
-        header: Noch kein Konto?
+        header: Noch kein Bibliothekskonto?
         info_html: >-
           Auf <a href="https://www.ub.uni-paderborn.de/nutzen-und-leihen/bibliotheksausweis" target="_blank"> <i class="fa-solid
           fa-external-link"></i> unseren Webseiten</a> erfahren Sie, wie Sie einen Bibliotheksausweis erhalten können.
       activation:
-        action: Jetzt Konto aktivieren
-        header: Konto aktiviert?
-        info_html: Bevor Sie sich anmelden können, müssen Sie Ihr Konto einamlig aktivieren.
+        action: Jetzt aktivieren
+        header: Bibliothekskonto aktiviert?
+        info_html: Bevor Sie sich anmelden können, müssen Sie Ihr Bibliothekskonto einmalig aktivieren.
       cancel: Abbrechen
       forgot_password: Ich habe mein Passwort vergessen
       header: Anmelden

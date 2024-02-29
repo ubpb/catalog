@@ -1,6 +1,7 @@
 ---
 en:
   sessions:
+    breadcrumb: Login
     create:
       error: Authentication failed. Please check your entries. The Library-ID or password is incorrect.
       success: You have been successfully logged in.

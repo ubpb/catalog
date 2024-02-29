@@ -1,6 +1,7 @@
 ---
 de:
   sessions:
+    breadcrumb: Anmelden
     create:
       error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist
         falsch.

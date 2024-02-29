@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_action { add_breadcrumb t("sessions.breadcrumb"), new_session_path }
+
   def new
     @return_uri = sanitize_return_uri(params[:return_uri])
 

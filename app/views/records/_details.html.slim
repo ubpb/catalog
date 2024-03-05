@@ -79,6 +79,14 @@ dl.key-value-list
         turbo-frame#link-resolver-results(src=@record.resolver_link.url target="_top")
           i.fa-solid.fa-spinner.fa-spin-pulse
 
+  / LibKey
+  - if LibKeyController.enabled? && (doi = @record.first_doi).present?
+    dt = "LibKey"
+    dd
+      div
+        turbo-frame#lib-key-pdf.w-100(src=lib_key_pdf_path(doi) loading="lazy" target="_top")
+          = "Lade LibKey..."
+
   / Link to print version via JOAP service
   - if @record.is_online_resource? && @record.is_journal? && (issn = @record.additional_identifiers.find{|i| i.type == :issn}&.value).present?
     dt = t(".print_version")

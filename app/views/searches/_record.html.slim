@@ -15,8 +15,11 @@ ruby:
       / Cover Image
       div.fa-regular.fa-file.fa-3x.w-100.p-2.pt-3.pb-3.rounded
       - isbn13 = record.first_isbn13
+      - doi = record.first_doi
       - if isbn13
         = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
+      - elsif doi && LibKeyController.enabled?
+        = image_tag(lib_key_cover_image_url(doi), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
 
   .flex-fill
     - if record == :deleted
@@ -147,10 +150,20 @@ ruby:
                 =< t("records.details.fulltext_links")
 
             .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-              turbo-frame#link-resolver-results.w-100
-                = link_to rl.url do
-                  i.fa-solid.fa-clipboard-question
-                  =< t(".online_resource.resolver_link")
+              turbo-frame#link-resolver-results.w-100(src=rl.url loading="lazy" target="_top")
+                = "Prüfe Zugriffsoptionen..."
+
+        / LibKey links
+        - if LibKeyController.enabled? && (doi = record.first_doi).present?
+          .mt-2.input-group.input-group-sm.flex-nowrap
+            .input-group-text
+              div
+                i.fa-solid.fa-globe
+                =< "LibKey"
+
+            .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
+              turbo-frame#lib-key-pdf.w-100(src=lib_key_pdf_path(doi) loading="lazy" target="_top")
+                = "Lade LibKey..."
 
       / Call numbers
       - if record.call_numbers.present?

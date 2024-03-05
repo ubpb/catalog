@@ -113,5 +113,10 @@ class SearchEngine
       #get and strip the value
       isbn13&.value&.presence&.gsub("-", "")&.delete(" ").presence
     end
+
+    def first_doi
+      doi = additional_identifiers.find{ |i| i.type == :doi }
+      doi&.value&.presence&.strip&.delete(" ").presence
+    end
   end
 end

@@ -96,6 +96,24 @@ class ClosedStackOrdersController < ApplicationController
       redirect_on_error and return
     end
 
+    if @m1.present?
+      # Try to load the record from Elastiocsearch by the call number @m1.
+      # We use this to get the year of publication to create an internal note
+      # in @k1 for the closed stack order.
+      if (record = get_record_by_call_number(@m1))
+        year_of_publication = record
+          .year_of_publication
+          &.gsub(/\D/, "")
+          &.to_i
+
+        if year_of_publication.present? &&
+            year_of_publication >= 1800 &&
+            year_of_publication <= 1900
+          @k1 = [@k1.presence, "!!! BESTANDSSCHUTZ !!!"].compact.join(" ")
+        end
+      end
+    end
+
     url = Config[:closed_stack_orders, :url, default: "http://localhost:81/cgi-mag/magbest_via_katalog"]
 
     url_params = {
@@ -163,6 +181,14 @@ class ClosedStackOrdersController < ApplicationController
     @b1 = params[:b1]
     @s1 = params[:s1]
     @volume_check = params[:volume_check].present?
+  end
+
+  def get_record_by_call_number(call_number)
+    SearchEngine[:local]
+      .search(SearchEngine::SearchRequest.parse("sr[q,call_number]=#{call_number}"))
+      .hits
+      .first
+      &.record
   end
 
 end

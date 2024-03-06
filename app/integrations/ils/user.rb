@@ -29,11 +29,11 @@ class Ils
     end
 
     def expires_soon?
-      expiry_date.present? && expiry_date <= 40.days.from_now
+      expiry_date.present? && (expiry_date + 1.day) <= 40.days.from_now
     end
 
     def expired?
-      expiry_date.present? && expiry_date <= Time.zone.now
+      expiry_date.present? && (expiry_date + 1.day) <= Time.zone.now
     end
 
     def blocked?

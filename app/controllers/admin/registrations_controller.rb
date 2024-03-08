@@ -136,8 +136,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
       :city,
       :street_address2,
       :zip_code2,
-      :city2,
-      :ignore_missing_email
+      :city2
     )
   end
 

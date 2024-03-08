@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_22_130759) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_07_082200) do
   create_table "notes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "scope", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_130759) do
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_permalinks_on_key", unique: true
     t.index ["scope"], name: "index_permalinks_on_scope"
+  end
+
+  create_table "registration_requests", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "token"
+    t.string "email"
+    t.string "user_group"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_registration_requests_on_token", unique: true
   end
 
   create_table "registrations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|

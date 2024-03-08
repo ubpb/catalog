@@ -46,8 +46,6 @@ en:
     edit:
       breadcrumb: Meine Registrierung bearbeiten
       header: Meine Registrierung bearbeiten
-    ensure_valid_user_group!:
-      error: Die gewählte Nutzergruppe kann sich nicht online registrieren.
     form:
       academic_titles:
         dr: Dr.
@@ -70,16 +68,6 @@ en:
         male: Männlich
         none: Keine Angabe
         other: Divers
-      missing_email:
-        confirmation: >-
-          Ich möchte keine E-Mail-Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail-Benachrichtigungen über
-          mein Bibliothekskonto erhalten werde.
-        info: |-
-          <p>
-            Sie haben keine E-Mail-Adresse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail-Adresse
-            für Ihr Bibliothekskonto, damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben,
-            Gebühren und bereitgestellte Vormerkungen per E-Mail benachrichtigen können.
-          </p>
       register: Registrierung abschließen
       save: Änderungen speichern
       terms_of_use:
@@ -101,6 +89,10 @@ en:
         </p>
       header: Bibliotheksausweis beantragen
       register: Bibliotheksausweis jetzt beantragen
+    load_registration_request:
+      invalid_token: >-
+        Der verwendete Registrierungslink ist ungültig. Er wurde bereits verwendet oder ist abgelaufen. Bitte beachten Sie,
+        dass der Link nur einmal verwendet werden kann und nur eine begrenzte Zeit gültig ist. gültig ist.
     new:
       breadcrumb: Einen neuen Bibliotheksausweis beantragen
       header: Einen neuen Bibliotheksausweis beantragen

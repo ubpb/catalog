@@ -8,4 +8,6 @@ en:
     password_reset_request:
       subject: "[UB Paderborn] Reset password"
     registration_created:
+      subject: "[UB Paderborn] Your registration for a library card has been successfully completed"
+    registration_request:
       subject: "[UB Paderborn] Your registration for a library card"

@@ -1,0 +1,16 @@
+= simple_form_for @registration_request, \
+    url: registration_requests_path, \
+    method: :post, \
+    as: :registration_request do |f|
+  .card.card-shadowed
+    .card-header.cutoff-corner-tr
+      h5.mb-0 = t(".header")
+    .card-body
+      .callout.callout-info
+        = t(".info")
+      = f.input :user_group, as: :hidden, value: @registration_request.user_group
+      = f.input :email, required: true, autofocus: true
+
+    .card-footer
+      = f.submit t(".submit"), class: "btn btn-primary"
+      = link_to t("cancel"), registrations_path, class: "btn btn-default ms-2"

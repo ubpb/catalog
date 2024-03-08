@@ -8,4 +8,6 @@ de:
     password_reset_request:
       subject: "[UB Paderborn] Passwort zurücksetzen"
     registration_created:
+      subject: "[UB Paderborn] Ihre Registrierung für einen Bibliotheksausweis wurde erfolgreich abgeschlossen"
+    registration_request:
       subject: "[UB Paderborn] Ihre Registrierung für einen Bibliotheksausweis"

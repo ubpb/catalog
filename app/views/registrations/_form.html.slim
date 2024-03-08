@@ -1,6 +1,6 @@
 - header = local_assigns.fetch(:header) { nil }
 
-= simple_form_for @registration do |f|
+= simple_form_for @registration, url: registrations_path(token: params[:token]) do |f|
   .card.card-shadowed
     - if header
       .card-header.cutoff-corner-tr

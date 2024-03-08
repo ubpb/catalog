@@ -1,0 +1,15 @@
+---
+de:
+  registration_requests:
+    create:
+      success: >-
+        Eine E-Mail mit einem Registrierungslink wurde an %{email} gesendet. Bitte überprüfen Sie Ihren Posteingang und folgen
+        Sie den Anweisungen in der E-Mail, um die Registrierung abzuschließen.
+    ensure_valid_user_group:
+      error: Die gewählte Nutzergruppe kann sich nicht online registrieren.
+    request_form:
+      header: Einen neuen Bibliotheksausweis beantragen
+      info: >-
+        Um einen Bibliotheksausweis zu beantragen, geben Sie bitte zunächst Ihre E-Mail-Adresse an. Wir senden Ihnen im Anschluss
+        an die angegebene E-Mail-Adresse einen Link, über den Sie die Registrierung durchführen können.
+      submit: Registrierungslink senden

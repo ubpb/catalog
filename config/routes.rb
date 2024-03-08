@@ -28,13 +28,18 @@ Rails.application.routes.draw do
   get "/locale/:locale", to: "locales#switch", as: :locale
 
   # User registration for external users
+  resources :registration_requests,
+    only: [:new, :create],
+    path: "registration",
+    path_names: {new: "new/:user_group"}
+
   resources :registrations,
-            path_names: {new: "new/:type"},
-            only:       [:index, :new, :create, :show, :edit, :update] do
+    except: [:destroy],
+    path_names: {new: "new/:token"} do
     match "authorize", via: [:get, :post], on: :member
   end
 
-  # Admin routes (for now, just for registrations)
+  # Admin routes (for now, just for registrations and activations)
   namespace :admin do
     root to: redirect("/") # Change me!
 

@@ -10,6 +10,11 @@ class UsersMailer < ApplicationMailer
     mail(to: @user.ils_user.email)
   end
 
+  def registration_request(registration_request)
+    @registration_request = registration_request
+    mail(to: @registration_request.email)
+  end
+
   def registration_created(registrations)
     @registration = registrations
     mail(to: @registration.email)

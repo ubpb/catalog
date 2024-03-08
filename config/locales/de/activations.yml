@@ -13,8 +13,8 @@ de:
       no_token_error: Kein Aktivierungstoken gefunden
     create:
       success: >-
-        Eine E-Mail mit einem Aktivierungslink wurde an %{email} versendet. Bitte prüfen Sie Ihr E-Mail-Postfach und folgen
-        Sie den Anweisungen in der E-Mail um Ihren Account zu aktivieren.
+        Eine E-Mail mit einem Aktivierungslink wurde an %{email} gesendet. Bitte überprüfen Sie Ihren Posteingang und folgen
+        Sie den Anweisungen in der E-Mail, um Ihr Konto zu aktivieren.
     edit:
       header: Bibliothekskonto aktivieren
       section_1_header: 1. Zustimmung erforderlich
@@ -35,8 +35,8 @@ de:
     new:
       header: Bibliothekskonto aktivieren
       info_html: >-
-        Um Ihr Bibliothekskonto zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. Haben Sie zusätzlich
-        einen Aktivierungscode erhalten, geben Sie diesen bitte ebenfalls ein.
+        Um Ihr Bibliothekskonto zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. Haben Sie zusätzlich einen
+        Aktivierungscode erhalten, geben Sie diesen bitte ebenfalls ein.
       submit: Weiter
     update:
       error: Bei der Aktivierung ist ein Fehler aufgetreten. Bitte wenden Sie sich an die Kolleginnen und Kollegen der Ortsleihe.

@@ -23,7 +23,7 @@ de:
       terms_of_use_html: >-
         Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid fa-external-link"></i>
         Benutzungsordnung</a>, die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank"> <i class="fa-solid
-        fa-external-link"></i> Gebührenodnung</a> und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
+        fa-external-link"></i> Gebührenordnung</a> und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
         target="_blank"> <i class="fa-solid fa-external-link"></i> Datenschutzerklärung</a> gelesen und akzeptiere diese.
     errors:
       already_activated: Account bereits aktiviert

@@ -1,7 +1,7 @@
 = simple_form_for @form, url: admin_activations_path, as: :activation, method: :post do |f|
   .card
     .card-header
-      h5.m-0 = "Biblioteksaccount aktivieren"
+      h5.m-0 = "Bibliotheksaccount aktivieren"
     .card-body
       = render "alerts"
       = f.input :ils_id, placeholder: "", autofocus: true

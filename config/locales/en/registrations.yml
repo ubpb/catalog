@@ -29,7 +29,7 @@ en:
       already_created: >-
         Ihre Registrierung wurde bereits bestätigt und kann von Ihnen nicht mehr aufgerufen werden. Bitte melden Sie sich
         in Ihrem <a href="https://katalog.ub.uni-paderborn.de/login" class="alert-link"> <i class="fa-solid fa-external-link"></i>
-        Bibliotheskonto</a> an, um Ihre Daten einzusehen.
+        Bibliothekskonto</a> an, um Ihre Daten einzusehen.
       breadcrumb: Autorisierung
       error: Die Autorisierung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe.
       header: Autorisierung erforderlich
@@ -61,8 +61,8 @@ en:
       address: Adresse
       cancel: Abbrechen
       error:
-        one: Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot makierte Felder.
-        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot makierte Felder."
+        one: Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder.
+        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder."
       genders:
         female: Weiblich
         male: Männlich

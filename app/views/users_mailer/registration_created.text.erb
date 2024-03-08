@@ -2,7 +2,7 @@ Sehr geehrte(r) <%= @registration.firstname -%> <%= @registration.lastname -%>,
 
 Sie haben sich am <%= @registration.created_at.strftime("%d.%m.%Y um %H:%M Uhr") %> mit der E-Mail Adresse "<%= @registration.email -%>" online für einen Bibliotheksausweis der Universitätsbibliothek Paderborn registriert.
 
- sowie weitere Informationen zur Abholung Ihres Bibliotheksausweises unter folgendem Link abrufen:
+Sie können die Details zur Registrierung sowie weitere Informationen zur Abholung Ihres Bibliotheksausweises unter folgendem Link abrufen:
 
 <%= registration_url(@registration) %>
 

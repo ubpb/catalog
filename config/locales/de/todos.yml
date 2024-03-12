@@ -3,14 +3,14 @@ de:
   todos:
     expired:
       description: >-
-        Ihr Bibliothekskonto ist abgelaufen. Um Ihr Bibliothekskonto zu verlängern, wenden Sie sich bitte an die Kolleginnen
+        Ihr Bibliotheksausweis ist abgelaufen. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die Kolleginnen
         und Kollegen der Ortsleihe.
-      title: Bibliothekskonto abgelaufen
+      title: Bibliotheksausweis abgelaufen
     expires_soon:
       description: >-
-        Ihr Bibliothekskonto läuft am %{date} ab. Um Ihr Bibliothekskonto zu verlängern, wenden Sie sich bitte an die Kolleginnen
+        Ihr Bibliotheksausweis läuft am %{date} ab. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die Kolleginnen
         und Kollegen der Ortsleihe.
-      title: Bibliothekskonto läuft demnächst ab
+      title: Bibliotheksausweis läuft demnächst ab
     password_change:
       action_title: Passwort ändern
       description: >-

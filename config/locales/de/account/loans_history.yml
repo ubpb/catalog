@@ -7,7 +7,9 @@ de:
         header: Ausleihhistorie vor dem 3.2.2023
       index:
         header: Ausleihhistorie
-        info: Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten 180 Tage angezeigt werden. Ältere Vorgänge werden automatisch gelöscht.
+        info: >-
+          Aus Datenschutzgründen können nur die abgeschlossenen Ausleihvorgänge der letzten 180 Tage angezeigt werden. Ältere
+          Vorgänge werden automatisch gelöscht.
       listing:
         no-loans: Keine abgeschlossenen Ausleihvorgänge
         sortable_fields:

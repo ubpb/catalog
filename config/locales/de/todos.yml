@@ -1,0 +1,19 @@
+---
+de:
+  todos:
+    expired:
+      description: >-
+        Ihr Bibliotheksausweis ist abgelaufen. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die Kolleginnen
+        und Kollegen der Ortsleihe.
+      title: Bibliotheksausweis abgelaufen
+    expires_soon:
+      description: >-
+        Ihr Bibliotheksausweis läuft am %{date} ab. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die Kolleginnen
+        und Kollegen der Ortsleihe.
+      title: Bibliotheksausweis läuft demnächst ab
+    password_change:
+      action_title: Passwort ändern
+      description: >-
+        Im Bibliothekssystem ist vermerkt, dass Sie Ihr Passwort ändern müssen. Dies ist z.B. nach der ersten Anmeldung erforderlich,
+        oder wenn Ihr Passwort durch die Bibliothek zurückgesetzt wurde. Bitte ändern Sie Ihr Passwort.
+      title: Passwort ändern

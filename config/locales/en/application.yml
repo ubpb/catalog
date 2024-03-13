@@ -8,6 +8,7 @@ en:
       logout_msg: Really log out?
       my_account: My library account
       my_e_id_card: My eID-Card
+    account_needs_activation_error: The account you were logged in with must be activated.
     app_name: Catalog
     color_modes:
       auto: Auto
@@ -18,7 +19,7 @@ en:
       cover_images: Cover images provided by buchhandel.de
       impressum: Impressum
       legal_notices: Legal notice
-      opening_hours: Opening & service hours
+      opening_hours: Opening and service hours
       privacy_policy: Privacy policy
       quicklinks: Quicklinks
     main_menu:
@@ -37,6 +38,11 @@ en:
     menu: Menu
     ub: University Library
     ub_pb: UB Paderborn
+    user_has_blocking_todos_alert:
+      info: >-
+        Account functions such as hold requests, closed stack orders, watch lists etc. are currently not available. Please
+        open your account and follow the instructions.
+      open_account: Show library account
   cancel: Cancel
   confirm-delete: Really delete?
   english: English

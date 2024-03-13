@@ -44,8 +44,12 @@ de:
           holdings: Bestand
           location: Standort
         header: Zeitschriftenbestand
-        hint: Aktuelle Zeitschriftenjahrgänge finden Sie am angegebenen Standort. Für ältere Jahrgänge bis 1995 geben Sie bitte eine Magazinbestellung auf.
-        p00_hint: Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte Titel"). In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+        hint: >-
+          Aktuelle Zeitschriftenjahrgänge finden Sie am angegebenen Standort. Für ältere Jahrgänge bis 1995 geben Sie bitte
+          eine Magazinbestellung auf.
+        p00_hint: >-
+          Die Jahrgänge dieser Zeitschrift sind nicht ausleihbar. Bitte nutzen Sie die Online-Ausgabe (s.o. Rubrik "Verknüpfte
+          Titel"). In besonderen Einzelfällen wenden Sie sich bitte an <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
       loading_more: Lade weitere Informationen...
     stepper:
       back_to_search: Zur Ergebnisliste

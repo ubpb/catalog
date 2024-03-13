@@ -35,6 +35,16 @@ class Admin::RegistrationsController < Admin::ApplicationController
     end
   end
 
+  def print
+    @registration = Registration.find(Registration.to_id(params[:id]))
+
+    ils_user = Ils.get_user(@registration.alma_primary_id)
+    raise ActiveRecord::RecordNotFound if ils_user.nil?
+
+    @user = User.create_or_update_from_ils_user!(ils_user)
+    @user.create_activation_code!
+  end
+
   def destroy
     registration = Registration.find(Registration.to_id(params[:id]))
     registration.destroy
@@ -112,23 +122,6 @@ class Admin::RegistrationsController < Admin::ApplicationController
     end
   end
 
-  def authenticate!
-    config_username = Rails.application.credentials.registrations&.dig(:admin_username)
-    config_password = Rails.application.credentials.registrations&.dig(:admin_password)
-
-    if config_username.present? && config_password.present?
-      authenticate_or_request_with_http_basic do |username, password|
-        secure_password = BCrypt::Password.new(
-          BCrypt::Password.create(password)
-        )
-
-        username == config_username && secure_password == config_password
-      end
-    else
-      false
-    end
-  end
-
   def registration_params
     params.require(:registration).permit(
       :user_group,
@@ -143,8 +136,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
       :city,
       :street_address2,
       :zip_code2,
-      :city2,
-      :ignore_missing_email
+      :city2
     )
   end
 
@@ -170,7 +162,19 @@ class Admin::RegistrationsController < Admin::ApplicationController
       expiry_date: alma_expiry_date_from_registration(registration),
       user_group: {value: alma_user_group_from_registration(registration)},
       password: registration.birthdate.strftime("%d%m%Y"),
-      force_password_change: true
+      force_password_change: true,
+      # 50-GLOBAL is the default block for all users to mark them as "newly created in Alma".
+      # The user needs to go through the "first login/activation" process to remove this block.
+      user_block: [{
+        block_type: {
+          value: "GENERAL"
+        },
+        block_description: {
+          value: "50-GLOBAL"
+        },
+        block_status: "ACTIVE",
+        segment_type: "Internal"
+      }]
     }
 
     if (user_title = alma_user_title_from_registration(registration))

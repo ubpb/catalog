@@ -1,3 +1,3 @@
-class PasswordResetForm < PasswordBaseForm
-
+class PasswordResetForm < ApplicationForm
+  include PasswordFormBase
 end

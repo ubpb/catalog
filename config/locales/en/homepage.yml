@@ -9,9 +9,13 @@ en:
         title: Catalog news (in German)
       search_entries:
         catalog:
-          text: approx. 2.5 million titles on offer at the Paderborn University Library, e.g. books, journals, e-books, e-journals, CDs and DVDs
+          text: >-
+            approx. 2.5 million titles on offer at the Paderborn University Library, e.g. books, journals, e-books, e-journals,
+            CDs and DVDs
           title: Catalog
         cdi:
-          text: Millions of records from licensed bibliographic data and full-text databases, such as journal articles, e-book chapters, entries from reference works, audio and video files, and other materials.
+          text: >-
+            Millions of records from licensed bibliographic data and full-text databases, such as journal articles, e-book
+            chapters, entries from reference works, audio and video files, and other materials.
           title: Central Discovery Index
         title: Search entries

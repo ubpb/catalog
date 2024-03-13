@@ -7,7 +7,7 @@ class WatchListsPanelComponent < ViewComponent::Base
     @record_id    = record_id
 
     if user
-      @watch_lists  = @user.watch_lists.includes(:entries)
+      @watch_lists = @user.watch_lists.includes(:entries)
     end
   end
 

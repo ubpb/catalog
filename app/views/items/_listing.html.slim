@@ -35,35 +35,39 @@ turbo-frame#items
       =< t(".stats.no_of_hold_requests", count: @hold_requests.count)
 
     - content_for :hold_request_panel do
-      - if current_user
-        - if @user_hold_requests.present?
-          .mb-0: strong = t(".hold_requests_available_info", count: @user_hold_requests.count)
+      - if current_user.present?
+        - if current_user.can_manage_hold_requests?
+          - if @user_hold_requests.present?
+            .mb-0: strong = t(".hold_requests_available_info", count: @user_hold_requests.count)
 
-          .table-responsive
-            table.table.align-middle.mb-3
-              thead: tr
-                th(scope="col") = t(".hold_requests.header.requested_at")
-                th(scope="col") = t(".hold_requests.header.status")
-                th(scope="col") = t(".hold_requests.header.queue_position")
-                th(scope="col") = ""
-              tbody
-                - @user_hold_requests.each do |hr|
-                  tr
-                    td = l(hr.requested_at.to_date)
-                    td = t(".hold_requests.status.#{hr.status}", default: "–")
-                    td
-                      - if hr.status != :on_hold_shelf
-                        = hr.queue_position
-                      - else
-                        = t(".hold_requests.ready_for_pickup")
-                    td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
-                      = t(".delete_hold_request")
-        - elsif @can_perform_hold_request
-          .mb-2 = t(".hold_request_info")
-          .text-start = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
-              = t(".create_hold_request")
+            .table-responsive
+              table.table.align-middle.mb-3
+                thead: tr
+                  th(scope="col") = t(".hold_requests.header.requested_at")
+                  th(scope="col") = t(".hold_requests.header.status")
+                  th(scope="col") = t(".hold_requests.header.queue_position")
+                  th(scope="col") = ""
+                tbody
+                  - @user_hold_requests.each do |hr|
+                    tr
+                      td = l(hr.requested_at.to_date)
+                      td = t(".hold_requests.status.#{hr.status}", default: "–")
+                      td
+                        - if hr.status != :on_hold_shelf
+                          = hr.queue_position
+                        - else
+                          = t(".hold_requests.ready_for_pickup")
+                      td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
+                        = t(".delete_hold_request")
+          - elsif @can_perform_hold_request
+            .mb-2 = t(".hold_request_info")
+            .text-start = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
+                = t(".create_hold_request")
+          - else
+            / hold request not possible. Show nothing for now.
         - else
-          / hold request not possible. Show nothing for now.
+          .text-end
+            em = t("hold_requests.disabled")
       - else
         .text-end
           = link_to new_session_path(return_uri: @return_uri), class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do

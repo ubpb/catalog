@@ -1,6 +1,0 @@
----
-de:
-  account:
-    application:
-      account_expires_soon:
-        message: Ihr Account läuft am %{date} ab. Um Ihren Account zu verlängern, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.

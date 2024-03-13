@@ -7,7 +7,9 @@ en:
         header: Ausleihhistorie vor dem 3.2.2023
       index:
         header: Lending History
-        info: For data protection reasons, only the completed lending transactions of the last 180 days can be displayed. Older transactions are automatically deleted.
+        info: >-
+          For data protection reasons, only the completed lending transactions of the last 180 days can be displayed. Older
+          transactions are automatically deleted.
       listing:
         no-loans: No completed lending transactions
         sortable_fields:

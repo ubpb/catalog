@@ -4,9 +4,17 @@ en:
     inter_library_loans:
       index:
         header: Interlibrary loan requests
-        info1_html: Technically, we can only show you the status of your <strong>monographic</strong> interlibrary loan orders here. Please check the status of your <strong>article orders</strong> directly in the <a href="%{ill_url}" class="alert-link" target="_blank"><i class="fa fa-external-link"></i> interlibrary loan account</a>. You can also place new interlibrary loan requests there.
-        info2_html: The <strong>loan periods</strong> of your currently loaned interlibrary loan media can be found at <a href="%{loans_url}" class="alert-link"><i class="fa fa-external-link"></i> Loaned Media</a>.
-        info3_html: You can find more information on the topic <a href="%{ill_info_url}" class="alert-link" target="_blank"> <i class="fa fa-external-link"></i> on our website</a>.
+        info1_html: >-
+          Technically, we can only show you the status of your <strong>monographic</strong> interlibrary loan orders here.
+          Please check the status of your <strong>article orders</strong> directly in the <a href="%{ill_url}" class="alert-link"
+          target="_blank"><i class="fa fa-external-link"></i> interlibrary loan account</a>. You can also place new interlibrary
+          loan requests there.
+        info2_html: >-
+          The <strong>loan periods</strong> of your currently loaned interlibrary loan media can be found at <a href="%{loans_url}"
+          class="alert-link"><i class="fa fa-external-link"></i> Loaned Media</a>.
+        info3_html: >-
+          You can find more information on the topic <a href="%{ill_info_url}" class="alert-link" target="_blank"> <i class="fa
+          fa-external-link"></i> on our website</a>.
         mono_list_header: Status of your monographic interlibrary loan requests
         open_ill: Open interlibrary loan account
       listing:

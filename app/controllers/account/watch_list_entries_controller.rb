@@ -14,7 +14,7 @@ class Account::WatchListEntriesController < Account::ApplicationController
     redirect_to account_watch_list_path(@watch_list), status: :see_other
   end
 
-private
+  private
 
   def load_watch_list
     @watch_list = current_user.watch_lists.find(params[:watch_list_id])

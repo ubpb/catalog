@@ -5,10 +5,14 @@ en:
       breadcrumb: Calendar
       index:
         due_date:
-          description: The calendar shows you the end of loan periods. If the loan periods of several media end on the same day, we combine the information into one entry. This way, you will never forget a return and save yourself annoying fees.
+          description: >-
+            The calendar shows you the end of loan periods. If the loan periods of several media end on the same day, we combine
+            the information into one entry. This way, you will never forget a return and save yourself annoying fees.
           title: End of loan periods
         hold_requests:
-          description: The calendar shows you that hold requests have been provided for you and are waiting to be picked up. The entries are designed so that you can see directly how long the media are available for pickup.
+          description: >-
+            The calendar shows you that hold requests have been provided for you and are waiting to be picked up. The entries
+            are designed so that you can see directly how long the media are available for pickup.
           title: Hold requests ready for pickup
         howto:
           description: In the popular calendar programs you can find the function as follows
@@ -21,7 +25,15 @@ en:
           outlook:
             description: Open Calendar → From the Internet...
             title: Outlook
-        main_description: 'With the calendar function of the catalog we offer you the possibility to integrate relevant dates, that affect your library account directly into your usual calendar program. Currently we provide you with the following dates:'
+        main_description: >-
+          With the calendar function of the catalog we offer you the possibility to integrate relevant dates, that affect
+          your library account directly into your usual calendar program. Currently we provide you with the following dates:
         subscribe_btn: Subscribe now
-        subscribe_description: Clicking the button should open your default calendar program. If this does not work, please select the function in the calendar program of your choice, which allows you to create a new calendar via a web address and please enter the following address
-        technical_description: The dates are subscribed by your calendar program and automatically kept up to date. The means that the entries are updated automatically, e.g. when you make renewals. You should therefore make sure to configure your program accordingly.
+        subscribe_description: >-
+          Clicking the button should open your default calendar program. If this does not work, please select the function
+          in the calendar program of your choice, which allows you to create a new calendar via a web address and please enter
+          the following address
+        technical_description: >-
+          The dates are subscribed by your calendar program and automatically kept up to date. The means that the entries
+          are updated automatically, e.g. when you make renewals. You should therefore make sure to configure your program
+          accordingly.

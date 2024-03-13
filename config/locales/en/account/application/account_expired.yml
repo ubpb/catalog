@@ -1,6 +1,0 @@
----
-en:
-  account:
-    application:
-      account_expired:
-        message: Your account expired on %{date}. To renew your account, please contact the staff at the local circulation desk.

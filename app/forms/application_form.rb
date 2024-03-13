@@ -1,5 +1,6 @@
 class ApplicationForm
-  include ActiveModel::Model
+  include ActiveModel::API
+  include ActiveModel::Attributes
 
   def persisted?
     false

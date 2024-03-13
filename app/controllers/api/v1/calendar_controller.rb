@@ -22,7 +22,7 @@ class Api::V1::CalendarController < Api::V1::ApplicationController
     end
   end
 
-private
+  private
 
   def load_all_loans
     Ils.get_current_loans(
@@ -59,7 +59,7 @@ private
     fees_url          = "https://goo.gl/o5mhzt"  # http://www.ub.uni-paderborn.de/nutzen-und-leihen/gebuehren/
     opening_hours_url = "https://goo.gl/dWFbGo"  # http://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten/
 
-    loans_group      = group_loans_by_due_date(loans)
+    loans_group = group_loans_by_due_date(loans)
 
     Calendar.build do
       item "VERSION", "2.0"

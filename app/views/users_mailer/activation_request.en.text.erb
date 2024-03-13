@@ -1,0 +1,24 @@
+Dear <%= @user.ils_user.full_name %>.
+
+You would like to activate your user account for Paderborn University Library.
+Please click on the following link and follow the instructions:
+
+<%= activation_url(token: @user.activation_token) %>
+
+Please note that this link is only valid for 6 hours. After that, you must request the link again using the activation function in the catalog.
+
+Please do not hesitate to contact us if you have any questions.
+
+Your University Library
+
+**P.S.: If you have not requested account activation, someone else may have entered your e-mail address or used your library card number. In this case, please contact us by simply replying to this e-mail.**
+
+---
+Universitätsbibliothek Paderborn
+Dezernat Benutzung und Service
+Sachgebiet Ortsleihe
+Warburger Str. 100
+33098 Paderborn
+Tel. 05251 / 60-2012
+E-Mail: ortsleihe@ub.uni-paderborn.de
+WWW: http://www.ub.uni-paderborn.de

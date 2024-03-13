@@ -1,0 +1,16 @@
+= simple_form_for @form, url: request_activation_path, as: :activation, method: :post do |f|
+  .card
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      = render "alerts"
+
+      .callout.callout-info.mb-4
+        i.fas.fa-info-circle.fa-fw.me-1
+        = t(".info_html")
+
+      = f.input :ils_id
+      = f.input :activation_code
+    .card-footer
+      = f.button :submit, t(".submit"), class: "btn btn-primary"
+      = link_to t("cancel"), root_path, class: "btn btn-default ms-2"

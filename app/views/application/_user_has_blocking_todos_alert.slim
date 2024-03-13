@@ -1,0 +1,7 @@
+.alert.alert-warning
+  .d-flex.flex-column.flex-lg-row.align-items-center
+    div
+      i.fa-solid.fa-exclamation-triangle.fa-fw.fa-lg.me-1
+      = t(".info")
+    .ms-0.ms-lg-2.mt-2.mt-lg-0
+      = link_to t(".open_account"), account_root_path, class: "btn btn-warning text-nowrap"

@@ -5,6 +5,7 @@ html
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no")
     meta(name="msapplication-config" content="none")
+    = yield(:head)
 
     meta(name="turbo-prefetch" content="false")
 
@@ -23,8 +24,14 @@ html
 
     #page
       .container
-        = render "breadcrumb"
+        .d-print-none
+          = render "breadcrumb"
+
+        - if current_user&.has_blocking_todos? && !controller.controller_path.include?("account")
+          = render "user_has_blocking_todos_alert"
+
         = render "alerts", global: true
+
         = content_for?(:main) ? yield(:main) : yield
 
     #footer

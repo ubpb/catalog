@@ -1,6 +1,6 @@
 - header = local_assigns.fetch(:header) { nil }
 
-= simple_form_for @registration do |f|
+= simple_form_for @registration, url: registrations_path(token: params[:token]) do |f|
   .card.card-shadowed
     - if header
       .card-header.cutoff-corner-tr
@@ -13,4 +13,4 @@
       - abort_path   = @registration.new_record? ? registrations_path : registration_path(@registration)
       - submit_label = @registration.new_record? ? t("registrations.form.register") : t("registrations.form.save")
       = f.submit submit_label, class: "btn btn-primary"
-      = link_to t("registrations.form.cancel"), abort_path, class: "btn btn-link"
+      = link_to t("registrations.form.cancel"), abort_path, class: "btn btn-default ms-2"

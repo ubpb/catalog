@@ -5,6 +5,7 @@ html
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no")
     meta(name="msapplication-config" content="none")
+    = yield(:head)
 
     meta(name="turbo-prefetch" content="false")
 
@@ -23,7 +24,7 @@ html
 
     #page
       .container
-        = render "layouts/registrations/breadcrumb"
+        .d-print-none = render "layouts/registrations/breadcrumb"
         = render "alerts", global: true
         = content_for?(:main) ? yield(:main) : yield
 

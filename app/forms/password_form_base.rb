@@ -1,4 +1,5 @@
-class PasswordBaseForm < ApplicationForm
+module PasswordFormBase
+  extend ActiveSupport::Concern
 
   # PASSWORD_FORMAT = /\A
   #   (?=.*\d)           # Must contain a digit
@@ -12,14 +13,15 @@ class PasswordBaseForm < ApplicationForm
     (?=.*[[:^alnum:]]) # Must contain a symbol
   /x
 
-  attr_accessor :password, :password_confirmation
+  included do
+    attr_accessor :password, :password_confirmation
 
-  validates :password,
-    presence: true,
-    confirmation: true,
-    length: {minimum: 8, maximum: 30},
-    format: {with: PASSWORD_FORMAT}
+    validates :password,
+      presence: true,
+      confirmation: true,
+      length: {minimum: 8, maximum: 30},
+      format: {with: PASSWORD_FORMAT}
 
-  validates :password_confirmation, presence: true
-
+    validates :password_confirmation, presence: true
+  end
 end

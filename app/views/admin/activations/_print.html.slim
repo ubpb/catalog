@@ -1,0 +1,39 @@
+h3 = "Aktivierungs-Infos"
+
+.callout.callout-info
+  p
+    ' Sehr geehrte(r) #{user.ils_user.full_name},
+  p
+    ' bevor Sie Ihren Bibliotheksausweis nutzen können, müssen Sie ihn einmalig aktivieren.
+    ' Dazu benötigen Sie die unten aufgeführte Bibliotheksausweisnummer und den Aktivierungscode.
+  p.mb-0
+    ' Rufen Sie die folgende Aktivierungsseite auf Ihrem Smartphone oder an einem Computer auf. Öffentlich
+    ' zugängliche Computer finden Sie u.a. im Eingangsbereich der Bibliothek.
+
+ruby:
+  barcode = user.ils_user.short_barcode.presence || user.ils_user.id
+  activation_code = user.activation_code.presence || "–"
+
+table.table.table-striped
+  tbody
+    tr
+      th = "Aktivierungsseite"
+      td
+        div = activation_root_url
+        div
+          em = "Manueller Weg: Katalog > Anmelden > Jetzt aktivieren"
+    tr
+      th = "Smartphone-Link"
+      td
+        div(
+          data-controller="qrcode"
+          data-qrcode-margin-value="0"
+          data-qrcode-text-value="#{request_activation_url(id: barcode, code: activation_code)}"
+        )
+    tr
+      th = "Bibliotheksausweisnummer"
+      td.font-monospace = barcode
+    tr
+      th = "Aktivierungscode"
+      td.font-monospace = activation_code
+

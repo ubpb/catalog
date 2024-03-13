@@ -44,8 +44,12 @@ en:
           holdings: Holdings
           location: Location
         header: Journal holdings
-        hint: Current journal volumes can be found at the indicated location. For older volumes up to 1995, please place a closed stack order.
-        p00_hint: The volumes of this journal are not available for loan. Please use the online edition (see "Linked Title" section above). In special individual cases, please contact <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+        hint: >-
+          Current journal volumes can be found at the indicated location. For older volumes up to 1995, please place a closed
+          stack order.
+        p00_hint: >-
+          The volumes of this journal are not available for loan. Please use the online edition (see "Linked Title" section
+          above). In special individual cases, please contact <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
       loading_more: Loading more information...
     stepper:
       back_to_search: Back to search results

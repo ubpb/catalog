@@ -15,16 +15,22 @@ en:
         public_note_message: 'Note: %{note}'
       no_items_message: No information about current or expected issues available.
     listing:
-      04_location_hint: The archive copy of the dissertation located in closed stack location J is not available for loan. Please use - if available - the online edition (see above category "Linked Title") or another print copy. In special individual cases, please contact. <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
+      04_location_hint: >-
+        The archive copy of the dissertation located in closed stack location J is not available for loan. Please use - if
+        available - the online edition (see above category "Linked Title") or another print copy. In special individual cases,
+        please contact. <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
       closed_stack_order: Create closed stack order
-      closed_stack_order_info: Available media with location <strong>Magazin</strong> is not freely accessable. Please place a closed stack order.
+      closed_stack_order_info: Available media with location <strong>Magazin</strong> is not freely accessable. Please place
+        a closed stack order.
       confirm_create_hold_request: Create hold request now?
       confirm_delete_hold_request: Really delete hold request?
       create_hold_request: Create hold request
       delete_hold_request: Delete hold request
       due_date_info: Due on %{due_date}
       header: Items
-      hold_request_info: No item is currently available. However, you can make a hold request and reserve a item for yourself. You will receive a notification as soon as a item becomes available for you.
+      hold_request_info: >-
+        No item is currently available. However, you can make a hold request and reserve a item for yourself. You will receive
+        a notification as soon as a item becomes available for you.
       hold_requests:
         header:
           queue_position: Position in the queue
@@ -38,7 +44,9 @@ en:
         one: You have a hold request for this title
         other: You have %{count} hold requests for this title
       items:
-        handapparat_info: This medium is in a reference collection. If the library does not have another copy of this title, you can contact the staff at the circulation desk to gain access.
+        handapparat_info: >-
+          This medium is in a reference collection. If the library does not have another copy of this title, you can contact
+          the staff at the circulation desk to gain access.
         header:
           call_number: Call number
           location: Location
@@ -60,4 +68,7 @@ en:
           zero: No hold requests.
         no_of_items: "%{count} found."
       temp_due_back_date: Returned from temporary location on %{due_date}
-      temp_location_info: These media are temporarily located at a different location and/or are temporarily subject to different lending conditions. It is possible that these media cannot be loaned. If a date has been stored, when the medium will return to its original location and/or its original lending conditions, this is indicated under Status.
+      temp_location_info: >-
+        These media are temporarily located at a different location and/or are temporarily subject to different lending conditions.
+        It is possible that these media cannot be loaned. If a date has been stored, when the medium will return to its original
+        location and/or its original lending conditions, this is indicated under Status.

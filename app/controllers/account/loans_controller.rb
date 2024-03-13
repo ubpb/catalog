@@ -5,8 +5,8 @@ class Account::LoansController < Account::ApplicationController
   def index
     if request.xhr?
       sortable_fields    = Ils.adapter.current_loans_sortable_fields || []
-      sortable_field     = sortable_fields.find{|f| f == params[:s]} || Ils.adapter.current_loans_sortable_default_field
-      sortable_direction = ["asc", "desc"].find{|d| d == params[:d]} || Ils.adapter.current_loans_sortable_default_direction
+      sortable_field     = sortable_fields.find { |f| f == params[:s] } || Ils.adapter.current_loans_sortable_default_field
+      sortable_direction = ["asc", "desc"].find { |d| d == params[:d] } || Ils.adapter.current_loans_sortable_default_direction
 
       result = load_loans(order_by: sortable_field, direction: sortable_direction)
 
@@ -43,7 +43,7 @@ class Account::LoansController < Account::ApplicationController
     }
   end
 
-private
+  private
 
   def load_loans(order_by: nil, direction: nil)
     Ils.get_current_loans(

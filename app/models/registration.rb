@@ -6,17 +6,16 @@ class Registration < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
 
   USER_GROUPS = {
-    "guest":         {can_register: true},
-    "guest_student": {can_register: true},
-    "external":      {can_register: true},
-    "external_u18":  {can_register: true},
-    "emeritus":      {can_register: true},
-    "student":       {can_register: false},
-    "employee":      {can_register: false}
+    guest: {can_register: true},
+    guest_student: {can_register: true},
+    external: {can_register: true},
+    external_u18: {can_register: true},
+    emeritus: {can_register: true},
+    student: {can_register: false},
+    employee: {can_register: false}
   }.with_indifferent_access.freeze
 
   REGISTRABLE_USER_GROUPS = USER_GROUPS.select { |_, data| data[:can_register] }.freeze
-
   NON_REGISTRABLE_USER_GROUPS = USER_GROUPS.reject { |_, data| data[:can_register] }.freeze
 
   ACADEMIC_TITLES = [
@@ -37,8 +36,6 @@ class Registration < ApplicationRecord
 
   before_validation :cleanup_attributes
 
-  attribute :ignore_missing_email, :boolean, default: false
-
   validates :user_group, inclusion: {in: REGISTRABLE_USER_GROUPS.keys}
   validates :gender, inclusion: {in: GENDERS}, allow_blank: true
   validates :academic_title, inclusion: {in: ACADEMIC_TITLES}, allow_blank: true
@@ -49,8 +46,8 @@ class Registration < ApplicationRecord
   validates :zip_code, presence: true
   validates :city, presence: true
   validates :terms_of_use, acceptance: true
+  validates :email, presence: true, format: {with: EMAIL_REGEX}
 
-  validate :validate_email
   validate :validate_second_address
   validate :validate_u18_in_context_of_birthdate
 
@@ -74,11 +71,6 @@ class Registration < ApplicationRecord
 
   def to_param
     hashed_id
-  end
-
-  def validate_email
-    errors.add(:email, :invalid) if email.present? && email !~ EMAIL_REGEX
-    errors.add(:email, :blank)   if email.blank?   && !ignore_missing_email
   end
 
   def validate_second_address

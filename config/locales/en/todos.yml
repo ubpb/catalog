@@ -1,0 +1,19 @@
+---
+en:
+  todos:
+    expired:
+      description: >-
+        Your library account has expired. To renew your library account, please contact your local colleagues at the local
+        circulation desk.
+      title: Library account expired
+    expires_soon:
+      description: >-
+        Your library account expires on %{date}. To renew your library account, please contact the staff at the local circulation
+        desk.
+      title: Library account expires soon
+    password_change:
+      action_title: Change password
+      description: >-
+        It is noted in the library system that you must change your password. This is necessary, for example, after the first
+        login or if your password has been reset by the library. Please change your password.
+      title: Change password

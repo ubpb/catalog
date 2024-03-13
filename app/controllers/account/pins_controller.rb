@@ -48,7 +48,7 @@ class Account::PinsController < Account::ApplicationController
   private
 
   def load_ils_user
-    @ils_user = Ils.get_user(current_user.ils_primary_id)
+    @ils_user = current_user.ils_user(force_reload: true)
   end
 
   def check_pin_set

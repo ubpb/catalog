@@ -33,7 +33,7 @@ class Account::IdCardsController < Account::ApplicationController
   end
 
   def load_ils_user
-    @ils_user = Ils.get_user(current_user.ils_primary_id)
+    @ils_user = current_user.ils_user(force_reload: true)
   end
 
   def reset_authorization!

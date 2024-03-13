@@ -12,7 +12,9 @@ de:
         reset: Filter zurücksetzen
         set_aggregation: Ergebnisse filtern
     availabilities:
-      error: Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt erneut.
+      error: >-
+        Beim Laden der Verfügbarkeitsinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es zu einem späteren Zeitpunkt
+        erneut.
     breadcrumb: Suche
     cdi:
       breadcrumb: in CDI
@@ -48,12 +50,16 @@ de:
         one: Einen weiteren Link anzeigen
         other: "%{count} weitere Links anzeigen"
     request_hints:
-      invalid_after_validation: Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es erneut.
+      invalid_after_validation: Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es
+        erneut.
       query_syntax_error: Ihre Suchanfrage enthielt ungültige Zeichen bzw. ungültige Zeichenkombinationen.
     search_field:
       query_placeholder: Suchbegriff(e) eingeben...
     search_panel:
-      ebook_notice: Bitte beachten Sie auch das <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i class="fa-solid fa-external-link"></i> verfügbare Angebot an E-Books, die zurzeit noch nicht in unserem Katalog nachgewiesen sind</a>, aber über die Verlagsportale bereits freigeschaltet sind.
+      ebook_notice: >-
+        Bitte beachten Sie auch das <a href="https://www.ub.uni-paderborn.de/recherche/e-books" target="_blank" class="alert-link"><i
+        class="fa-solid fa-external-link"></i> verfügbare Angebot an E-Books, die zurzeit noch nicht in unserem Katalog nachgewiesen
+        sind</a>, aber über die Verlagsportale bereits freigeschaltet sind.
       search: Suchen
     searchables:
       cdi:

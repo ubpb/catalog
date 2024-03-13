@@ -8,13 +8,17 @@ de:
       login:
         password: ''
       pin_form:
-        current_pin: Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre aktuelle PIN vergessen haben, wenden Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
+        current_pin: >-
+          Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre aktuelle PIN vergessen haben, wenden
+          Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         pin: muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten
     labels:
       defaults:
+        activation_code: Aktivierungscode
         current_password: Aktuelles Passwort
         description: Beschreibung
         email: E-Mail
+        ils_id: Ausweisnummer
         name: Name
         password: Passwort
         password_confirmation: Passwort wiederholen
@@ -29,6 +33,9 @@ de:
         pin: PIN
         pin_confirmation: PIN wiederholen
     placeholders:
+      activation:
+        activation_code: Ihr Aktivierungscode (optional)
+        ils_id: Ihre Bibliotheksausweisnummer
       defaults:
         current_password: Bitte geben Sie Ihr aktuelles Passwort ein
         email: Ihre E-Mail Adresse

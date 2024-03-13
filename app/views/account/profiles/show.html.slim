@@ -18,10 +18,10 @@
         - email = @ils_user.email.presence
         - if email
           = email
-          - if can?(:change_email, current_user)
+          - if current_user.can_change_email?
             ==< "(#{link_to(t(".change"), edit_account_email_path)})"
         - else
-          - if can?(:change_email, current_user)
+          - if current_user.can_change_email?
             = link_to edit_account_email_path, class: "btn btn-primary btn-sm" do
               = t(".add_email")
           - else

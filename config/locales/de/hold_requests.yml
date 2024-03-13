@@ -7,3 +7,4 @@ de:
     destroy:
       error: Vormerkung konnte nicht gelöscht werden. Bitte wenden Sie sich an die Ortsleihe.
       success: Vormerkung erfolgreich gelöscht.
+    disabled: Vormerkungen stehen aktuell nicht zur Verfügung

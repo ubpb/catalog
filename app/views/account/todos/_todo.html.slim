@@ -1,0 +1,9 @@
+li.list-group-item.d-block.d-md-flex.justify-content-between.align-items-center
+  .mb-2.mb-md-0
+    h5
+      = "#{index + 1}."
+      =< todo.title
+    = todo.description
+
+  - if todo.action_url.present? && todo.action_title.present?
+    .ms-0.ms-md-3 = link_to todo.action_title, todo.action_url, class: "btn btn-primary text-nowrap"

@@ -7,3 +7,4 @@ en:
     destroy:
       error: Hold request could not be deleted. Please contact the staff at the local circulation desk.
       success: Hold request successfully deleted.
+    disabled: Hold requests are currently not available

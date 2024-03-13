@@ -1,0 +1,43 @@
+---
+en:
+  activations:
+    breadcrumb: Activate library account
+    common_messages:
+      expired_token_error: >-
+        The activation link that led you here has expired. The link is only valid for 6 hours. Please start the activation
+        process again.
+      invalid_token_error: >-
+        The activation link that led you here is invalid. It may have already been used. Please start the activation process
+        again.
+      logout_info: To perform an activation, the current user was logged out.
+      no_token_error: No activation token found
+    create:
+      success: >-
+        An e-mail with an activation link has been sent to %{email}. Please check your e-mail inbox and follow the instructions
+        in the e-mail to activate your account.
+    edit:
+      header: Activate library account
+      section_1_header: 1. Confirmation required
+      section_2_header: 2. Please set a password to access your library account
+      submit: Activate now
+      terms_of_use_html: >-
+        I have read the <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid
+        fa-external-link"></i> Terms of Use</a>, the <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank">
+        <i class="fa-solid fa-external-link"></i> Fee Regulations</a> and the <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
+        target="_blank"> <i class="fa-solid fa-external-link"></i> Privacy Policy</a> and accept them.
+    errors:
+      already_activated: Account already activated
+      ils_user_not_found: User not found
+      invalid_activation_code: Invalid activation code
+      no_email: >-
+        No e-mail address has been entered for the account. It can therefore not be activated online. Please contact the staff
+        at the local circulation desk.
+    new:
+      header: Activate library account
+      info_html: >-
+        To activate your library account, please enter your library card number. If you have also received an activation code,
+        please enter this as well.
+      submit: Next
+    update:
+      error: An error has occurred during activation. Please contact the staff at the local circulation desk.
+      success: Your account has been successfully activated.

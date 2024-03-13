@@ -85,6 +85,7 @@
 
 class ClosedStackOrdersController < ApplicationController
   before_action :authenticate!
+  before_action :authorize!
   before_action :setup
   before_action { add_breadcrumb(t("closed_stack_orders.breadcrumb"), new_closed_stack_order_path) }
 
@@ -117,7 +118,7 @@ class ClosedStackOrdersController < ApplicationController
     url = Config[:closed_stack_orders, :url, default: "http://localhost:81/cgi-mag/magbest_via_katalog"]
 
     url_params = {
-      name: current_user.name_reversed,
+      name: current_user.ils_user.full_name_reversed,
       ausweis: current_user.ils_primary_id,
       m1: @m1,
       k1: @k1,
@@ -171,6 +172,15 @@ class ClosedStackOrdersController < ApplicationController
         :m1, :k1, :z1, :j1, :b1, :s1, :volume_check
       ).to_h
     )
+  end
+
+  def authorize!
+    unless current_user.can_create_closed_stack_orders?
+      flash[:error] = t("closed_stack_orders.disabled")
+      redirect_to account_root_path and return false
+    end
+
+    true
   end
 
   def setup

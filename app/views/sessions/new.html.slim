@@ -1,17 +1,33 @@
-= simple_form_for :login, url: session_path, method: :post do |f|
-  .card.card-shadowed
-    h5.card-header
-      = t(".header")
-    .card-body
-      = render "alerts"
+.row
+  .col-lg-8.col-xl-9
+    = simple_form_for :login, url: session_path, method: :post do |f|
+      .card.card-shadowed
+        h5.card-header
+          = t(".header")
+        .card-body
+          = render "alerts"
 
-      = f.input :user_id, autofocus: true
-      = f.input :password
-      = f.input :return_uri, as: :hidden, input_html: { value: @return_uri }
-      = link_to t(".forgot_password"), password_reset_request_path
-    .card-footer
-      => f.submit t(".submit"), class: "btn btn-lg btn-primary"
-      - if @return_uri.presence
-        => link_to t(".cancel"), @return_uri, class: "btn btn-lg btn-default"
-      - else
-        => link_to t(".cancel"), root_path, class: "btn btn-lg btn-default"
+          = f.input :user_id, autofocus: true
+          = f.input :password
+          = f.input :return_uri, as: :hidden, input_html: { value: @return_uri }
+          = link_to t(".forgot_password"), password_reset_request_path
+        .card-footer
+          => f.submit t(".submit"), class: "btn btn-primary"
+          - if @return_uri.presence
+            => link_to t(".cancel"), @return_uri, class: "btn btn-default"
+          - else
+            => link_to t(".cancel"), root_path, class: "btn btn-default"
+  .col-lg-4.col-xl-3
+    .card.mt-3.mt-lg-0
+      h6.card-header
+        = t(".activation.header")
+      .card-body
+        = t(".activation.info_html")
+        .d-grid.gap-2.mt-2
+          = link_to t(".activation.action"), activation_root_path, class: "btn btn-outline-primary"
+
+    .card.mt-3.mt-3
+      h6.card-header
+        = t(".account.header")
+      .card-body
+        = t(".account.info_html")

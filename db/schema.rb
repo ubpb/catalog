@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_06_150306) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_07_082200) do
   create_table "notes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "scope", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_150306) do
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_permalinks_on_key", unique: true
     t.index ["scope"], name: "index_permalinks_on_scope"
+  end
+
+  create_table "registration_requests", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "token"
+    t.string "email"
+    t.string "user_group"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_registration_requests_on_token", unique: true
   end
 
   create_table "registrations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -59,17 +68,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_06_150306) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "ils_primary_id", null: false
     t.string "api_key"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "email"
     t.string "password_reset_token"
     t.timestamp "password_reset_token_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_group_code"
-    t.string "user_group_label"
-    t.boolean "force_password_change", default: false, null: false
-    t.date "expiry_date"
+    t.timestamp "activated_at"
+    t.string "activation_token"
+    t.timestamp "activation_token_created_at"
+    t.string "activation_code"
+    t.index ["activation_code"], name: "index_users_on_activation_code", unique: true
+    t.index ["activation_token"], name: "index_users_on_activation_token", unique: true
     t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["ils_primary_id"], name: "index_users_on_ils_primary_id", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true

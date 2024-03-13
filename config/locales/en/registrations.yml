@@ -11,8 +11,8 @@ en:
         firstname: Vorname
         gender: Geschlecht
         lastname: Nachname
-        street_address: Straße & Hausnummer
-        street_address2: Straße & Hausnummer
+        street_address: Straße und Hausnummer
+        street_address2: Straße und Hausnummer
         user_group: Nutzergruppe
         zip_code: PLZ
         zip_code2: PLZ
@@ -21,14 +21,19 @@ en:
         registration:
           attributes:
             birthdate:
-              u18_group_but_over_18: Sie haben eine Nutzergruppe für Personen unter 18 Jahren gewählt, aber Ihr Geburtsdatum zeigt, dass Sie über 18 Jahre alt sind.
+              u18_group_but_over_18: >-
+                Sie haben eine Nutzergruppe für Personen unter 18 Jahren gewählt, aber Ihr Geburtsdatum zeigt, dass Sie über
+                18 Jahre alt sind.
   registrations:
     authorize:
-      already_created: Ihre Registrierung wurde bereits bestätigt und kann von Ihnen nicht mehr aufgerufen werden. Bitte melden Sie sich in Ihrem <a href="https://katalog.ub.uni-paderborn.de/login" class="alert-link"> <i class="fa-solid fa-external-link"></i> Bibliotheskonto</a> an, um Ihre Daten einzusehen.
+      already_created: >-
+        Ihre Registrierung wurde bereits bestätigt und kann von Ihnen nicht mehr aufgerufen werden. Bitte melden Sie sich
+        in Ihrem <a href="https://katalog.ub.uni-paderborn.de/login" class="alert-link"> <i class="fa-solid fa-external-link"></i>
+        Bibliothekskonto</a> an, um Ihre Daten einzusehen.
       breadcrumb: Autorisierung
       error: Die Autorisierung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Eingabe.
       header: Autorisierung erforderlich
-      info: |
+      info: |-
         <p>Um Ihre Registrierung erneut aufzurufen bzw. zu bearbeiten, müssen Sie sich erneut autorisieren. Bitte geben Sie dazu im folgenden Feld Ihr bei der Registrierung angegebenes Geburtsdatum ein.</p> <p class="text-success">
           <i class="fa-solid fa-info-circle"></i>
           Bitte geben Sie Ihr Geburtsdatum in der folgenden Form ein TT.MM.JJJJ.
@@ -41,8 +46,6 @@ en:
     edit:
       breadcrumb: Meine Registrierung bearbeiten
       header: Meine Registrierung bearbeiten
-    ensure_valid_user_group!:
-      error: Die gewählte Nutzergruppe kann sich nicht online registrieren.
     form:
       academic_titles:
         dr: Dr.
@@ -58,29 +61,25 @@ en:
       address: Adresse
       cancel: Abbrechen
       error:
-        one: Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot makierte Felder.
-        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot makierte Felder."
+        one: Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder.
+        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder."
       genders:
         female: Weiblich
         male: Männlich
         none: Keine Angabe
         other: Divers
-      missing_email:
-        confirmation: Ich möchte keine E-Mail-Adresse angeben und bin mir bewusst, dass ich dann keine E-Mail-Benachrichtigungen über mein Bibliothekskonto erhalten werde.
-        info: |
-          <p>
-            Sie haben keine E-Mail-Adresse angegeben. Wir empfehlen Ihnen dringend die Angabe einer E-Mail-Adresse
-            für Ihr Bibliothekskonto, damit wir Sie über Fälligkeiten von Leihfristen, Ausleihen, Rückgaben,
-            Gebühren und bereitgestellte Vormerkungen per E-Mail benachrichtigen können.
-          </p>
       register: Registrierung abschließen
       save: Änderungen speichern
       terms_of_use:
         accepted: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung akzeptiert
         declined: Benutzungs- und Gebührenordnung sowie Datenschutzerklärung NICHT akzeptiert
-      terms_of_use_label: Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid fa-external-link"></i> Benutzungsordnung</a>, die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank"> <i class="fa-solid fa-external-link"></i> Gebührenodnung</a> und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf" target="_blank"> <i class="fa-solid fa-external-link"></i> Datenschutzerklärung</a> gelesen und akzeptiere diese.
+      terms_of_use_label: >-
+        Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid fa-external-link"></i>
+        Benutzungsordnung</a>, die <a href="https://nbn-resolving.org/urn:nbn:de:hbz:466:1-18988" target="_blank"> <i class="fa-solid
+        fa-external-link"></i> Gebührenordnung</a> und die <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_016_Alma.pdf"
+        target="_blank"> <i class="fa-solid fa-external-link"></i> Datenschutzerklärung</a> gelesen und akzeptiere diese.
     index:
-      description: |
+      description: |-
         <p>
           Die Universitätsbibliothek Paderborn ist eine öffentlich zugängliche wissenschaftliche Bibliothek.
         </p> <p class="mb-0">
@@ -90,21 +89,32 @@ en:
         </p>
       header: Bibliotheksausweis beantragen
       register: Bibliotheksausweis jetzt beantragen
+    load_registration_request:
+      invalid_token: >-
+        Der verwendete Registrierungslink ist ungültig. Er wurde bereits verwendet oder ist abgelaufen. Bitte beachten Sie,
+        dass der Link nur einmal verwendet werden kann und nur eine begrenzte Zeit gültig ist. gültig ist.
     new:
       breadcrumb: Einen neuen Bibliotheksausweis beantragen
       header: Einen neuen Bibliotheksausweis beantragen
     required_documents:
       documents:
         certificate_of_former_employment: Nachweis über das ehemalige Beschäftigungsverhältnis an der Universität Paderborn
-        guest_certificate: Eine Bescheinigung der Universität oder eine ihrer Einrichtungen über die Dauer der Promotion, die Aufenthaltsdauer an der Universität oder den Zeitraum Ihres Lehrauftrags bzw. ein Dokument, dass eine Professur an der Theologischen Fakultät Paderborn oder der Fachhochschule der Wirtschaft (FHdW) in Paderborn belegt
+        guest_certificate: >-
+          Eine Bescheinigung der Universität oder eine ihrer Einrichtungen über die Dauer der Promotion, die Aufenthaltsdauer
+          an der Universität oder den Zeitraum Ihres Lehrauftrags bzw. ein Dokument, dass eine Professur an der Theologischen
+          Fakultät Paderborn oder der Fachhochschule der Wirtschaft (FHdW) in Paderborn belegt
         guest_student_certificate: Aktuelle Studienbescheinigung (Gasthörerausweis)
-        id: Personalausweis oder Reisepass mit einer Anmeldebestätigung des Einwohnermeldeamtes (Meldebescheinigung), die nicht älter als 1 Jahr sein darf, oder ein anderes gültiges amtliches Personaldokument mit Lichtbild und Adressen-Angabe
-        u18: <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf" target="_blank"><i class="fa-solid fa-external-link"></i> Schriftliche Einwilligung (PDF Download)</a> eines/r gesetzlichen Vertreters/in
+        id: >-
+          Personalausweis oder Reisepass mit einer Anmeldebestätigung des Einwohnermeldeamtes (Meldebescheinigung), die nicht
+          älter als 1 Jahr sein darf, oder ein anderes gültiges amtliches Personaldokument mit Lichtbild und Adressen-Angabe
+        u18: >-
+          <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf" target="_blank"><i
+          class="fa-solid fa-external-link"></i> Schriftliche Einwilligung (PDF Download)</a> eines/r gesetzlichen Vertreters/in
       header: 'Sie benötigen vor Ort bei Abholung noch folgende Unterlagen:'
     show:
       breadcrumb: Meine Registrierung
       callout:
-        pickup_info: |
+        pickup_info: |-
           <p>
             Ihren Bibliotheksausweis können Sie in der Bibliothek an der Theke des Sachgebiets Ortsleihe abholen.
             Sie können die o.g. Registrierungsnummer (Ausdruck oder elektronisch bspw. auf einem Smartphone) vorzeigen,

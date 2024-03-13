@@ -43,7 +43,7 @@ group :development do
   gem "capistrano-passenger", "~> 0.2"
   gem "capistrano-rails", "~> 1.6"
   gem "capistrano-rvm", "~> 0.1"
-  gem "capistrano", "~> 3.11"
+  gem "capistrano", "~> 3.18"
   gem "foreman", ">= 0.87"
   gem "i18n-debug", ">= 1.2"
   gem "i18n-tasks", ">= 1.0"

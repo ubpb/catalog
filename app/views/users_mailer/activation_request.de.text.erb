@@ -1,6 +1,6 @@
 Sehr geehrte(r) <%= @user.ils_user.full_name %>,
 
-Sie möchten Ihr Benutzerkonto für die Universitätsbibliothek Paderborn aktivieren.
+Sie möchten Ihren Bibliotheksausweis für die Universitätsbibliothek Paderborn aktivieren.
 Dazu klicken Sie bitte auf den folgenden Link und folgen den Anweisungen:
 
 <%= activation_url(token: @user.activation_token) %>
@@ -13,7 +13,7 @@ Mit freundlichen Grüßen
 
 Ihre Universitätsbibliothek
 
-**P.S.: Sollten Sie die Kontoaktivierung nicht beantragt haben, hat jemand anderes möglicherweise Ihre E-Mail-Adresse angegeben oder Ihre Bibliotheksausweisnummer verwendet. In diesem Fall kontaktieren Sie uns bitte, in dem Sie einfach auf diese E-Mail antworten.**
+**P.S.: Sollten Sie die Aktivierung nicht beantragt haben, hat jemand anderes möglicherweise Ihre E-Mail-Adresse angegeben oder Ihre Bibliotheksausweisnummer verwendet. In diesem Fall kontaktieren Sie uns bitte, in dem Sie einfach auf diese E-Mail antworten.**
 
 ---
 Universitätsbibliothek Paderborn

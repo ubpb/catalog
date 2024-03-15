@@ -62,7 +62,8 @@ de:
       cancel: Abbrechen
       error:
         one: Ein Fehler verhindert die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder.
-        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte Felder."
+        other: "%{count} Fehler verhindern die Beantragung des Ausweises. Bitte prüfen Sie das Formular auf rot markierte
+          Felder."
       genders:
         female: Weiblich
         male: Männlich

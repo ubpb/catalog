@@ -7,8 +7,8 @@ de:
         Der Aktivierungslink, der Sie hierher geführt hat, ist abgelaufen. Der Link ist nur 6 Stunden lang gültig. Bitte starten
         Sie den Aktivierungsprozess erneut.
       invalid_token_error: >-
-        Der Aktivierungslink, der Sie hierher geführt hat, ist ungültig. Möglicherweise wurde er bereits verwendet. Bitte starten
-        Sie den Aktivierungsprozess erneut.
+        Der Aktivierungslink, der Sie hierher geführt hat, ist ungültig. Möglicherweise wurde er bereits verwendet. Bitte
+        starten Sie den Aktivierungsprozess erneut.
       logout_info: Um eine Aktivierung durchzuführen, wurde der aktuelle Benutzer abgemeldet.
       no_token_error: Kein Aktivierungstoken gefunden
     create:
@@ -35,9 +35,8 @@ de:
     new:
       header: Bibliotheksausweis aktivieren
       info_html: >-
-        Um Ihren Bibliotheksausweis zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein.
-        <strong>Haben Sie in der Bibliothek einen Aktivierungscode in Form eines Ausdrucks erhalten,
-        geben Sie diesen bitte ebenfalls ein.</strong>
+        Um Ihren Bibliotheksausweis zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. <strong>Haben Sie in
+        der Bibliothek einen Aktivierungscode in Form eines Ausdrucks erhalten, geben Sie diesen bitte ebenfalls ein.</strong>
       submit: Weiter
     update:
       error: Bei der Aktivierung ist ein Fehler aufgetreten. Bitte wenden Sie sich an die Kolleginnen und Kollegen der Ortsleihe.

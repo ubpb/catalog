@@ -7,7 +7,52 @@
       i.fa-solid.fa-fw.fa-share
       =< t(".share_search")
 
-  .mb-0 = link_to rss_search_request_url(search_request: @search_request, format: :atom) do
-      i.fa-solid.fa-fw.fa-rss
-      =< t(".rss_search")
+  .mb-0 = link_to "#", data: {"bs-toggle": "modal", "bs-target": "#rss-modal"} do
+    i.fa-solid.fa-fw.fa-rss
+    =< t(".rss_search")
 
+
+#rss-modal.modal.fade(tabindex="-1" aria-labelledby="RSS Feed Modal" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title
+          i.fa-solid.fa-fw.fa-rss.me-1
+          = "RSS-Feed"
+        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+      .modal-body
+        p = t(".rss_info_html")
+        .d-flex.align-items-center
+          input#rss-url.form-control(
+            type="text"
+            value=rss_search_request_url(search_request: @search_request, format: :atom)
+            readonly="readonly")
+          button#rss-copy-button.btn.btn-primary.ms-2(type="button")
+            i.fa-regular.fa-fw.fa-copy
+          #rss-copy-check.text-success.ms-2(style="display: none")
+            i.fa-solid.fa-fw.fa-lg.fa-check
+
+javascript:
+  document.addEventListener("turbo:load", function() {
+    const rssModal   = document.getElementById("rss-modal")
+    const copyButton = document.getElementById("rss-copy-button")
+    const copyCheck  = document.getElementById("rss-copy-check")
+
+    rssModal.addEventListener("show.bs.modal", event => {
+      copyButton.style.display = "block"
+      copyCheck.style.display = "none"
+    })
+
+    rssModal.addEventListener("shown.bs.modal", event => {
+      const rssUrl = document.getElementById("rss-url")
+      rssUrl.select()
+    })
+
+    copyButton.addEventListener("click", event => {
+      const rssUrl = document.getElementById("rss-url")
+      rssUrl.select()
+      navigator.clipboard.writeText(rssUrl.value)
+      copyButton.style.display = "none"
+      copyCheck.style.display = "block"
+    })
+  })

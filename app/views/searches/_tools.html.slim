@@ -50,7 +50,6 @@ javascript:
 
     copyButton.addEventListener("click", event => {
       const rssUrl = document.getElementById("rss-url")
-      rssUrl.select()
       navigator.clipboard.writeText(rssUrl.value)
       copyButton.style.display = "none"
       copyCheck.style.display = "block"

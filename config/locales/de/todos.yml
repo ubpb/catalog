@@ -8,8 +8,8 @@ de:
       title: Bibliotheksausweis abgelaufen
     expires_soon:
       description: >-
-        Ihr Bibliotheksausweis läuft am %{date} ab. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die Kolleginnen
-        und Kollegen der Ortsleihe.
+        Ihr Bibliotheksausweis läuft am %{date} ab. Um Ihren Bibliotheksausweis zu verlängern, wenden Sie sich bitte an die
+        Kolleginnen und Kollegen der Ortsleihe.
       title: Bibliotheksausweis läuft demnächst ab
     password_change:
       action_title: Passwort ändern

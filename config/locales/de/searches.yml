@@ -95,5 +95,8 @@ de:
         yop: Erscheinungsjahr
     sorted_by: Sortiert nach
     tools:
+      rss_info_html: >-
+        Kopieren Sie den folgenden Link in einen RSS-Reader Ihrer Wahl (z.B. Outlook, Thunderbird, Feedly, etc.) um die Suchergebnisse
+        als RSS-Feed zu abonnieren.
       rss_search: Suche als RSS-Feed
       share_search: Suche teilen

@@ -92,5 +92,8 @@ en:
         yop: Year of publication
     sorted_by: Sorted by
     tools:
+      rss_info_html: >-
+        Copy the following link into an RSS reader of your choice (e.g. Outlook, Thunderbird, Feedly, etc.) to subscribe to
+        the search results as an RSS feed.
       rss_search: Search as RSS-Feed
       share_search: Share search

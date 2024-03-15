@@ -1,27 +1,29 @@
 .mb-4 = render "searches/search_panel"
 
 .row
-  .col-lg-8.col-md-6.mb-4
+  .col-lg-8.mb-4
     .card
       .card-header
         h5.mb-0 = t(".search_entries.title")
       .card-body
         .row
-          .col-lg-6
+          .col-xl-6
             .scope-info
               .image = image_tag "x-catalog.png", class: "img-fluid"
               .heading = t(".search_entries.catalog.title")
               .info
                 p = t(".search_entries.catalog.text")
 
-          .col-lg-6
-            .scope-info
+          .col-xl-6
+            .scope-info.mt-3.mt-xl-0
               .image = image_tag "x-primo-central.png", class: "img-fluid"
               .heading = t(".search_entries.cdi.title")
               .info
                 p = t(".search_entries.cdi.text")
 
-  .col-lg-4.col-md-6
+        .mt-3 = render "new_records_links"
+
+  .col-lg-4
     .card
       .card-header
         h5.mb-0 = t(".news.title")

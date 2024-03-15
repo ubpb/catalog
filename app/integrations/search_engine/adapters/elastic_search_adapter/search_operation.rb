@@ -65,7 +65,7 @@ module SearchEngine::Adapters
                   default_operator: "AND",
                   fields: fields,
                   type: "cross_fields",
-                  query: normalize_query_string(q.value)
+                  query: normalize_query_string(q.value, query: q)
                   # quote_analyzer: "default_with_stop_words_search"
                 }
               }
@@ -130,7 +130,7 @@ module SearchEngine::Adapters
         es_query
       end
 
-      def normalize_query_string(query_string)
+      def normalize_query_string(query_string, query: nil)
         # As we use a "Query string" query, we need to escape some
         # reserved characters, because we don't want to support
         # the full features "Query string" allows.
@@ -142,7 +142,7 @@ module SearchEngine::Adapters
         # See: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_grouping
 
         # Escape characters function
-        escape = ->(string) do
+        escape = ->(string, allow_ranges: false) do
           # \ has to be escaped by itself AND has to be the first, to
           # avoid double escaping of other escape sequences
           #
@@ -152,10 +152,16 @@ module SearchEngine::Adapters
           #   "    => to support phase search
           #   *, ? => to support wildcards
           #   ~    => to support fuzziness and proximity searches
+          #   [, ] => to support ranges when allow_ranges is true
           #
           %w(\\ + - = && || ! { } [ ] ^ : /).inject(string) do |s, c|
-            # adapted from http://stackoverflow.com/questions/7074337/why-does-stringgsub-double-content
-            s.gsub(c) { |match| "\\#{match}" } # avoid regular expression replacement string issues
+            s.gsub(c) do |match|
+              if allow_ranges && (match == "[" || match == "]")
+                "#{match}"
+              else
+                "\\#{match}"
+              end
+            end
           end
         end
 
@@ -164,7 +170,9 @@ module SearchEngine::Adapters
         normalize_query_string = query_string.gsub(/<|>/, "")
 
         # Escape some special characters
-        normalized_query_string = escape.call(normalize_query_string).presence || ""
+        # ... allow ranges when searching local notations
+        allow_ranges = query && query.name == "local_notation"
+        normalized_query_string = escape.call(normalize_query_string, allow_ranges: allow_ranges).presence || ""
 
         # Allow german bool operators (for compatability reasons)
         normalized_query_string = normalized_query_string

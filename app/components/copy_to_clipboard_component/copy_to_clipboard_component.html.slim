@@ -1,0 +1,14 @@
+.d-flex.align-items-center(data-controller="copy-to-clipboard-component")
+  input.form-control(
+    type="text"
+    value=@value
+    readonly="readonly"
+    disabled="disabled"
+    data-copy-to-clipboard-component-target="source")
+  button.btn.btn-primary.ms-2(
+    data-copy-to-clipboard-component-target="copyButton"
+    data-action="click->copy-to-clipboard-component#copy"
+    type="button")
+    i.fa-regular.fa-fw.fa-copy
+  .text-success.ms-2(data-copy-to-clipboard-component-target="copiedMessage")
+    i.fa-solid.fa-fw.fa-lg.fa-check

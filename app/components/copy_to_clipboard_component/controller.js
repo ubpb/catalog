@@ -14,8 +14,6 @@ export default class extends Controller {
     event.preventDefault()
     if (!this.hasSourceTarget) { return }
 
-    this.sourceTarget.select()
-    this.sourceTarget.setSelectionRange(0, 99999) // For mobile devices
     navigator.clipboard.writeText(this.sourceTarget.value)
 
     this.hideCopyButton()

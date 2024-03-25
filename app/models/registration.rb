@@ -60,7 +60,7 @@ class Registration < ApplicationRecord
   end
 
   def hashed_id
-    Hashids.new(HASHIDS_SALT, HASHIDS_MIN_LENGTH).encode(id)
+    Hashids.new(HASHIDS_SALT, HASHIDS_MIN_LENGTH).encode(id) if id.present?
   end
 
   def self.to_id(hashed_id)

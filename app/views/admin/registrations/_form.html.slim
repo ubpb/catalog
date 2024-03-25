@@ -7,7 +7,11 @@
         h5.mb-0 = header
     .card-body
       = render "registrations/form_fields", f: f
+      = f.input :terms_of_use, as: :boolean, label: t("registrations.form.terms_of_use_label").html_safe
 
     .card-footer
-      = f.submit "Änderungen speichern", class: "btn btn-primary"
-      = link_to "Abbrechen", admin_registration_path(@registration), class: "btn btn-default ms-2"
+      = f.submit "Speichern", class: "btn btn-primary"
+      - if @registration.persisted?
+        = link_to "Abbrechen", admin_registration_path(@registration), class: "btn btn-default ms-2"
+      - else
+        = link_to "Abbrechen", admin_registrations_path, class: "btn btn-default ms-2"

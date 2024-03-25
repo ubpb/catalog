@@ -14,6 +14,23 @@ class Admin::RegistrationsController < Admin::ApplicationController
     )
   end
 
+  def new
+    @registration = Registration.new
+    add_breadcrumb("Neu erstellen")
+  end
+
+  def create
+    @registration = Registration.new(registration_params)
+    add_breadcrumb("Neu erstellen")
+
+    if @registration.save
+      flash[:success] = "Registrierung erfolgreich angelegt."
+      redirect_to admin_registration_path(@registration)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show
     @registration = Registration.find(Registration.to_id(params[:id]))
     add_breadcrumb("Details", admin_registration_path(@registration))
@@ -124,6 +141,7 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
   def registration_params
     params.require(:registration).permit(
+      :terms_of_use,
       :user_group,
       :academic_title,
       :gender,

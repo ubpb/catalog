@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: redirect("/") # Change me!
 
-    resources :registrations, only: [:index, :show, :edit, :update, :destroy] do
+    resources :registrations do
       get :confirm, on: :member
       get :check_duplicates, on: :member, path: "check-duplicates"
       get :print, on: :member

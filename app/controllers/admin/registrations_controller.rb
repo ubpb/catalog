@@ -16,12 +16,12 @@ class Admin::RegistrationsController < Admin::ApplicationController
 
   def new
     @registration = Registration.new
-    add_breadcrumb("Neu erstellen")
+    add_breadcrumb("Sonderfall erfassen")
   end
 
   def create
     @registration = Registration.new(registration_params)
-    add_breadcrumb("Neu erstellen")
+    add_breadcrumb("Sonderfall erfassen")
 
     if @registration.save
       flash[:success] = "Registrierung erfolgreich angelegt."

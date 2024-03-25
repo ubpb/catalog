@@ -6,7 +6,7 @@ ruby IO.read(".ruby-version").strip
 gem "addressable", "~> 2.7"
 gem "alma_api", "~> 2.0"
 gem "bcrypt", "~> 3.1"
-gem "bibtex-ruby", "~> 6.0.0", require: "bibtex"
+gem "bibtex-ruby", "~> 6.1", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "dry-struct", "~> 1.4"
 gem "elasticsearch", "~> 8.1"

@@ -117,6 +117,9 @@ Rails.application.routes.draw do
   # Lobid Gnd API
   get "gnd/:id", to: "gnd#show", as: "gnd"
 
+  # Unified fulltext resolver
+  get "fulltext", to: "fulltext#show"
+
   # LibKey
   get "libkey/*id/pdf", to: "lib_key#pdf", as: "lib_key_pdf", format: false
   get "libkey/*id/cover", to: "lib_key#cover", as: "lib_key_cover_image", format: false

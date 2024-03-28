@@ -1,68 +1,106 @@
 class AlmaLinkResolverService
+  #
   # Utility class to store and access the context object
   # returned from Alma as part of the Open URL resolving.
   #
-  # If Alma founds a matching record it adds additional keys to the
-  # context object. The context object still contains the keys as they
-  # were passed to Alma as part of the Open URL params. This may result
-  # in multiple keys with different values (the original from the URL and the enhanced
-  # from Alma). We assume that the last one of such multiple occurrences is the enhanced
-  # one from Alma.
+  # Alma uses the ANSI/NISO Z39.88-2004 standard for OpenURLs as
+  # described here:
   #
-  # We also assume that the value of the context hash is always an array to account for
-  # multiple values for a given key.
+  # https://groups.niso.org/higherlogic/ws/public/download/14833/z39_88_2004_r2010.pdf
+  #
+  # However, we use the context object only for displaying the metadata in the UI.
+  # We don't use it for further processing of the OpenURL.
+  #
+  # Some keys may occur multiple times in the context object, so our internal
+  # representation is a hash with arrays as values.
+  #
+  # We assume that the first value of that array is the most relevant one in cases
+  # where we expect a single value.
+  #
   class Context
+
+    class << self
+      include Utils
+
+      #
+      # Extracts the context object from the Alma Link Resolver result.
+      # We normalize the keys and values to be more consistent. We also remove
+      # keys with nil values.
+      #
+      def parse(alma_result)
+        context_hash = alma_result.xpath("//context_object/keys/key").each_with_object({}) do |key_node, memo|
+          key, value = normalize_key_and_value(key_node.attr("id"), key_node.text)
+
+          if key && !value.nil? # value is either nil, a string or a boolean
+            memo[key] ||= []
+            memo[key] << value
+          end
+
+          memo
+        end
+
+        Context.new(context_hash)
+      end
+    end
+
     def initialize(context_hash)
       @context_hash = context_hash
     end
 
-    # # Accessor for values
-    def values(id)
+    def to_h
+      @context_hash
+    end
+
+    def to_s
+      @context_hash.to_s
+    end
+
+    def [](id)
       @context_hash[id]
     end
 
-    def value(id)
-      values(id)&.last
+    def first_value(id)
+      self[id]&.first
     end
 
-    def value_first(id)
-      values(id)&.first
+    def mms_id
+      first_value("rft.mms_id")
     end
-    # # Convenient methods for fields we use in the UI
-    # def alma_id; value("rft.mms_id"); end
+
+    def fulltext_available?
+      first_value("full_text_indicator") == true
+    end
+
+    def journal_or_series_title
+      first_value("rft.jtitle") || first_value("rft.stitle")
+    end
 
     def title
-      if is_journal?
-        return value("rft.jtitle") || value("rft.title")
-      end
-
-      value_first("rft.btitle").presence || value("rft.title")
+      first_value("rft.atitle") || first_value("rft.btitle") || first_value("rft.title")
     end
 
     def authors
-      values("rft.au")&.join("; ")
+      self["rft.au"]&.join("; ")
     end
 
     def publisher
-      value("rft.pub")
+      first_value("rft.pub")
     end
 
     def place_of_publication
-      value("rft.place")
+      first_value("rft.place")
     end
 
-    def date_of_publication
-      value("rft.pubdate")
+    def year_of_publication
+      first_value("rft.year")
     end
 
-    private
-
-    def is_book?
-      value("rft.btitle").present?
+    def volume
+      first_value("rft.volume")
     end
 
-    def is_journal?
-      value("rft.jtitle").present?
+    def pages
+      first_value("rft.pages")
     end
   end
 end

@@ -12,12 +12,14 @@ class LibKeyService < ApplicationService
 
   class DisabledError < Error; end
 
-  def initialize
-    raise DisabledError unless LibKeyService.enabled?
+  class << self
+    def enabled?
+      ENABLED && API_KEY.present? && LIBRARY_ID.present?
+    end
   end
 
-  def self.enabled?
-    ENABLED && API_KEY.present? && LIBRARY_ID.present?
+  def initialize
+    raise DisabledError unless self.class.enabled?
   end
 
   def resolve(doi_or_pmid)

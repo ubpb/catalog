@@ -1,8 +1,9 @@
 class AlmaLinkResolverService < ApplicationService
   include Utils
 
-  ENABLED  = Config[:alma_link_resolver, :enabled, default: false]
-  BASE_URL = Config[:alma_link_resolver, :base_url]
+  ENABLED          = Config[:alma_link_resolver, :enabled, default: false]
+  BASE_URL         = Config[:alma_link_resolver, :base_url]
+  CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 24.hours]
 
   class Error < StandardError; end
 
@@ -18,23 +19,29 @@ class AlmaLinkResolverService < ApplicationService
     raise DisabledError unless self.class.enabled?
   end
 
-  def resolve(open_url_string, user_ip: nil)
+  def resolve(record, user_ip: nil)
+    # Try to get the Open URL string from the record
+    open_url_string = record&.resolver_link&.url if record.respond_to?(:resolver_link)
+    return nil if open_url_string.blank?
+
     # Parse Open URL params
     open_url_params = parse_open_url(open_url_string, user_ip: user_ip)
     return nil if open_url_params.blank?
 
-    # Call Alma Link Resolver
-    alma_result = resolve_by_alma(open_url_params)
-    return nil if alma_result.blank?
+    Rails.cache.fetch("alma-link-resolver-#{record.id}", expires_in: CACHE_EXPIRES_IN) do
+      # Call Alma Link Resolver
+      alma_result = resolve_by_alma(open_url_params)
+      return nil if alma_result.blank?
 
-    # Create context
-    context = Context.parse(alma_result)
+      # Create context
+      context = Context.parse(alma_result)
 
-    # Get fulltext services
-    fulltext_services = FulltextService.parse(alma_result)
+      # Get fulltext services
+      fulltext_services = FulltextService.parse(alma_result)
 
-    # Return result
-    Result.new(context: context, fulltext_services: fulltext_services)
+      # Return result
+      Result.new(context: context, fulltext_services: fulltext_services)
+    end
   end
 
   private

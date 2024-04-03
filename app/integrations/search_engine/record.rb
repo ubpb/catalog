@@ -120,8 +120,13 @@ class SearchEngine
     end
 
     def first_doi
-      doi = additional_identifiers.find{ |i| i.type == :doi }
+      doi = additional_identifiers.find { |i| i.type == :doi }
       doi&.value&.presence&.strip&.delete(" ").presence
+    end
+
+    def first_pmid
+      pmid = additional_identifiers.find { |i| i.type == :pmid }
+      pmid&.value&.presence&.strip&.delete(" ").presence
     end
   end
 end

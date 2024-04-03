@@ -22,16 +22,18 @@ class LibKeyService < ApplicationService
     raise DisabledError unless self.class.enabled?
   end
 
-  def resolve(doi_or_pmid)
-    id = doi_or_pmid
-    raise ArgumentError, "DOI or PMID is required" if id.blank?
+  def resolve(record)
+    # Try to get the DOI or PMID from the record
+    id = record.first_doi || record.first_pmid
+    return nil if id.blank?
 
-    Rails.cache.fetch("lib-key-#{id.parameterize}", expires_in: CACHE_EXPIRES_IN) do
+    # Resolve the fulltext link via LibKey
+    Rails.cache.fetch("lib-key-#{record.id}", expires_in: CACHE_EXPIRES_IN) do
       path = is_doi?(id) ? "articles/doi/#{id}" : "articles/pmid/#{id}"
       api_client.get(path)&.body
     end
   rescue Faraday::Error
-    {}
+    nil
   rescue => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error

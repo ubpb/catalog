@@ -3,7 +3,7 @@ module SearchEngine::Adapters
     class RecordFactory
 
       def self.build(xml)
-        self.new.build(xml)
+        new.build(xml)
       end
 
       #
@@ -18,6 +18,7 @@ module SearchEngine::Adapters
       def build(xml)
         SearchEngine::Record.new(
           id: get_id(xml),
+          is_online_resource: true,
           title: get_title(xml),
           creators: get_creators(xml),
           year_of_publication: get_year_of_publication(xml),

@@ -25,6 +25,9 @@ class FulltextService < ApplicationService
           coverage: link.coverage,
           note: link.note
         )
+
+        # Filter these results by priority and blacklist
+        results = ResultFilter.filter(results)
       end
     end
 

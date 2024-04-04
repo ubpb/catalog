@@ -3,6 +3,7 @@ class AlmaLinkResolverService < ApplicationService
 
   ENABLED          = Config[:alma_link_resolver, :enabled, default: false]
   BASE_URL         = Config[:alma_link_resolver, :base_url]
+  API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 2.0]
   CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 24.hours]
 
   class Error < StandardError; end
@@ -50,6 +51,9 @@ class AlmaLinkResolverService < ApplicationService
 
   def api_client
     @api_client ||= Faraday.new(
+      request: {
+        timeout: API_TIMEOUT
+      },
       headers: {
         accept: "text/xml",
         "content-type": "text/xml"

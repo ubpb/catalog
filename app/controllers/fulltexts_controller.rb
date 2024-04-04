@@ -4,6 +4,9 @@ class FulltextsController < RecordsController
 
   def index
     @fulltexts = FulltextService.resolve(@record)
+  rescue => e
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+    render "fulltexts/error"
   end
 
 end

@@ -18,6 +18,7 @@ module SearchEngine::Adapters
       def build(xml)
         SearchEngine::Record.new(
           id: get_id(xml),
+          resource_type: get_resource_type(xml),
           is_online_resource: true,
           title: get_title(xml),
           creators: get_creators(xml),
@@ -40,6 +41,11 @@ module SearchEngine::Adapters
 
       def get_id(xml)
         xml.at_xpath("//control/recordid")&.text&.gsub(/\ATN_/, "")
+      end
+
+      # @see https://knowledge.exlibrisgroup.com/Primo/Content_Corner/Central_Discovery_Index/Documentation_and_Training/Documentation_and_Training_(English)/CDI_-_The_Central_Discovery_Index/070Resource_Types_in_CDI
+      def get_resource_type(xml)
+        xml.at_xpath("//display/type")&.text
       end
 
       def get_title(xml)

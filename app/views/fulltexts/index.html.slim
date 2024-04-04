@@ -12,11 +12,11 @@
           .alert.alert-warning.mb-2.p-2 = t(".no_fulltexts")
 
           h5.fs-6 = t(".search_link.header")
-          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@record.title}")), target: "_blank" do
+          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}")), target: "_blank" do
             i.fa-solid.fa-external-link.fa-fw.me-1
             = t(".search_link.catalog")
 
-          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@record.title}"), search_scope: "cdi"), target: "_blank" do
+          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}"), search_scope: "cdi"), target: "_blank" do
             i.fa-solid.fa-external-link.fa-fw.me-1
             = t(".search_link.cdi")
 

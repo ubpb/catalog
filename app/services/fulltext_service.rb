@@ -42,7 +42,7 @@ class FulltextService < ApplicationService
     # This is the case for CDI records that are not "direct link" records.
     # We use the open URL record information (that is part of the CDI record data)
     # to resolve the fulltext links with the Alma Link Resolver.
-    alma_link_resolver_service.resolve(record)&.fulltext_services&.tap do |services|
+    alma_link_resolver_service&.resolve(record)&.fulltext_services&.tap do |services|
       services.each do |service|
         results << Result.new(
           source: "alma_link_resolver",

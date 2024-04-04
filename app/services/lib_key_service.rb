@@ -13,6 +13,8 @@ class LibKeyService < ApplicationService
   class DisabledError < Error; end
 
   class << self
+    delegate :resolve, to: :new
+
     def enabled?
       ENABLED && API_KEY.present? && LIBRARY_ID.present?
     end

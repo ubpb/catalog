@@ -103,6 +103,7 @@ Rails.application.routes.draw do
     resources :relations, only: [:index]
     resources :volumes, only: [:index]
     resources :recommendations, only: [:index]
+    resources :fulltexts, only: [:index]
   end
 
   # Open URL Link-Resolver
@@ -116,9 +117,6 @@ Rails.application.routes.draw do
 
   # Lobid Gnd API
   get "gnd/:id", to: "gnd#show", as: "gnd"
-
-  # Unified fulltext resolver
-  get "fulltext", to: "fulltext#show"
 
   # LibKey
   get "libkey/*id/pdf", to: "lib_key#pdf", as: "lib_key_pdf", format: false

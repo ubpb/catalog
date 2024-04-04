@@ -100,6 +100,11 @@ class SearchEngine
       secondary_form.present?
     end
 
+    # TODO: books comes from CDI. We need to align Alma resource types with CDI resource types.
+    def is_monograph?
+      resource_type == "monograph" || resource_type == "book"
+    end
+
     def is_journal?
       resource_type == "journal"
     end

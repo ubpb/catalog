@@ -3,6 +3,7 @@ de:
   fulltexts:
     breadcrumb: Volltexte
     index:
+      browse_by_browzine: Ganze Zeitschrift via BrowZine durchsuchen
       fulltext_by_libkey: Volltext-Zugriff via LibKey
       header: 'Volltexte für Titel: %{title}'
       no_fulltexts: Es konnten kein Volltext-Zugriff für den Titel ermittelt werden.

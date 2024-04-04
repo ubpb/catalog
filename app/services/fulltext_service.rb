@@ -33,10 +33,16 @@ class FulltextService < ApplicationService
 
     # Try to resolve the fulltext links via LibKey
     lib_key_service&.resolve(record)&.tap do |lib_key_result|
-      lib_key_result.dig("data", "fullTextFile")&.tap do |url|
+      url = lib_key_result.dig("data", "fullTextFile")
+      browzine_link = lib_key_result.dig("data", "browzineWebLink")
+
+      if url.present?
         results << Result.new(
           source: "libkey",
-          url: url
+          url: url,
+          options: {
+            browzine_link: browzine_link
+          }
         )
       end
     end

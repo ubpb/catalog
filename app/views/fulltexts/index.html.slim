@@ -42,6 +42,11 @@
                 - else
                   = link.url
 
+              - if link.source == "libkey" && (browzine_link = link.options[:browzine_link]).present?
+                  div = link_to browzine_link, target: "_blank" do
+                    i.fa-solid.fa-external-link.fa-fw.me-2
+                    = t(".browse_by_browzine")
+
               - if link.coverage
                 div.text-success: em = link.coverage
 

@@ -36,7 +36,7 @@ module SearchEngine::Adapters
         )
       end
 
-    private
+      private
 
       def get_id(xml)
         xml.at_xpath("//control/recordid")&.text&.gsub(/\ATN_/, "")

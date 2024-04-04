@@ -1,0 +1,19 @@
+---
+en:
+  fulltexts:
+    breadcrumb: Fulltexts
+    index:
+      fulltext_by_libkey: Full text access via LibKey
+      header: 'Full texts for title: %{title}'
+      no_fulltexts: No full text access could be determined for the title.
+      search_link:
+        catalog: Suche the library catalog
+        cdi: Search in the Central Discovery Index (CDI)
+        header: Further search options
+        interlibrary_loan:
+          book: Book search via interlibrary loan
+          journal: Search for journals via interlibrary loan
+      show_less: less ...
+      show_more:
+        one: 1 more ...
+        other: "%{count} more ..."

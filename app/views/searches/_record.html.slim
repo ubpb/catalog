@@ -104,66 +104,14 @@ ruby:
           = t(".journal_stock")
           =< journal_stocks.join("; ")
 
-      / Links
-      - if enable_fulltext_links
-        / Normal fulltext links
-        - if record.fulltext_links.present?
-          - links = record.fulltext_links
-          - additional_links = links[1..-1]
-
-          .d-flex.mt-2.flex-wrap
-            .flex-grow-1(data-controller="expandable-list" data-expandable-list-item-count-value="1")
-              ul.list-group.shadow-sm(data-expandable-list-target="list")
-                li.list-group-item.m-0.py-1.px-2.bg-light-subtle
-                  = t("records.details.fulltext_links")
-
-                - links.each do |link|
-                  li.list-group-item.px-2(data-expandable-list-target="item")
-                    div = link_to link.url do
-                      i.fa-solid.fa-external-link.fa-fw
-                      =< link.label
-
-                    - if link.coverage
-                      div.text-success: em = link.coverage
-
-                    - if link.note
-                      div: em == link.note
-
-                - if additional_links.present?
-                  li.list-group-item.m-0.py-1.px-2.bg-light-subtle
-                    .fw-normal(data-expandable-list-target="expand")
-                        a(href="#expand" data-action="click->expandable-list#expand")
-                          i.fa-solid.fa-angles-down.fa-fw
-                          =< t(".show_more_links", count: additional_links.count)
-
-                    .fw-normal(data-expandable-list-target="collapse")
-                        a(href="#collapse" data-action="click->expandable-list#collapse")
-                          i.fa-solid.fa-angles-up.fa-fw
-                          =< t(".show_less")
-
-        / resolver links for CDI
-        - elsif (rl = record.resolver_link).present? && current_search_scope == :cdi
-          .mt-2.input-group.input-group-sm.flex-nowrap
-            .input-group-text
-              div
-                i.fa-solid.fa-globe
-                =< t("records.details.fulltext_links")
-
-            .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-              turbo-frame#link-resolver-results.w-100(src=rl.url loading="lazy" target="_top")
-                = "Prüfe Zugriffsoptionen..."
-
-        / LibKey links
-        - if LibKeyController.enabled? && (doi = record.first_doi).present?
-          .mt-2.input-group.input-group-sm.flex-nowrap
-            .input-group-text
-              div
-                i.fa-solid.fa-globe
-                =< "LibKey"
-
-            .input-group-text.bg-transparent.text-wrap.flex-fill(style="text-align: left")
-              turbo-frame#lib-key-pdf.w-100(src=lib_key_pdf_path(doi) loading="lazy" target="_top")
-                = "Lade LibKey..."
+      / Fulltext links
+      - if enable_fulltext_links && record.is_online_resource?
+        .card.mt-1.shadow-sm.rounded
+          .card-header.px-2.py-1
+            i.fa-solid.fa-cloud-arrow-down.fa-fw.me-2
+            span.fw-bold = t(".fulltext_links")
+          turbo-frame#fulltexts.w-100(src=record_fulltexts_path(current_search_scope, record.id) loading="lazy" target="_top")
+            .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
       / Call numbers
       - if record.call_numbers.present?

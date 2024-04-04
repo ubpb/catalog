@@ -10,6 +10,8 @@ class AlmaLinkResolverService < ApplicationService
   class DisabledError < Error; end
 
   class << self
+    delegate :resolve, to: :new
+
     def enabled?
       ENABLED && BASE_URL.present?
     end

@@ -49,43 +49,7 @@ dl.key-value-list
     dt = t(".volumes")
     dd
       turbo-frame#volumes(src=record_volumes_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
-        i.fa-solid.fa-spinner.fa-spin
-
-  / Fulltext Links
-  = optional_value(FulltextLinksFilter.filter(@record.fulltext_links)) do |links|
-    dt = t(".fulltext_links")
-    dd
-      ul.list-group
-        - links.each do |link|
-          li.list-group-item
-            .d-flex.align-items-center
-              .ms-0
-                div = link_to link.url do
-                  i.fa-solid.fa-external-link.fa-fw
-                  = link.label
-
-                - if link.coverage
-                  div.text-success: em = link.coverage
-
-                - if link.note
-                  div: em == link.note
-
-  / Fulltext Links by resolver URL (used by CDI)
-  / Only show for CDI scope and only if direct links via fulltext_links are not available.
-  - if current_search_scope == :cdi && @record.resolver_link.present? && @record.fulltext_links.empty?
-    dt = t(".fulltext_links")
-    dd
-      div
-        turbo-frame#link-resolver-results(src=@record.resolver_link.url target="_top")
-          i.fa-solid.fa-spinner.fa-spin-pulse
-
-  / LibKey
-  - if LibKeyController.enabled? && (doi = @record.first_doi).present?
-    dt = "LibKey"
-    dd
-      div
-        turbo-frame#lib-key-pdf.w-100(src=lib_key_pdf_path(doi) loading="lazy" target="_top")
-          = "Lade LibKey..."
+        i.fa-solid.fa-spinner.fa-spin-pulse
 
   / Link to print version via JOAP service
   - if @record.is_online_resource? && @record.is_journal? && (issn = @record.additional_identifiers.find{|i| i.type == :issn}&.value).present?
@@ -109,7 +73,7 @@ dl.key-value-list
     dt = t(".relations")
     dd
       turbo-frame#relations(src=record_relations_path(search_scope: current_search_scope, record_id: @record.id) target="_top")
-        i.fa-solid.fa-spinner.fa-spin
+        i.fa-solid.fa-spinner.fa-spin-pulse
 
   / Source
   = optional_value(@record.source) do |source|

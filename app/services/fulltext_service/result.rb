@@ -1,10 +1,13 @@
 class FulltextService::Result
 
-  attr_reader :url, :source
+  attr_reader :source, :url, :label, :coverage, :note
 
-  def initialize(url:, source:)
-    @url = url
+  def initialize(source:, url:, label: nil, coverage: nil, note: nil)
     @source = source
+    @url = url
+    @label = label
+    @coverage = coverage
+    @note = note
   end
 
 end

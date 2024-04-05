@@ -3,7 +3,7 @@ class AlmaLinkResolverService < ApplicationService
 
   ENABLED          = Config[:alma_link_resolver, :enabled, default: false]
   BASE_URL         = Config[:alma_link_resolver, :base_url]
-  API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 3.0]
+  API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 5.0]
   CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 24.hours]
 
   class Error < StandardError; end

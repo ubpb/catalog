@@ -3,7 +3,7 @@ class LibKeyService < ApplicationService
   ENABLED          = Config[:lib_key, :enabled, default: false]
   API_KEY          = Config[:lib_key, :api_key, default: ""]
   LIBRARY_ID       = Config[:lib_key, :library_id, default: ""]
-  API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 3.0]
+  API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 5.0]
   CACHE_EXPIRES_IN = Config[:lib_key, :cache_expires_in, default: 24.hours]
 
   BASE_URL = "https://api.thirdiron.com/public/v1/libraries/#{LIBRARY_ID}/".freeze

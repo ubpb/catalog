@@ -54,8 +54,8 @@
                     = "(#{t(".retraction_notice.more_info")})"
 
               - if result.source == "libkey"
-                - if (browzine_link = result.options[:browzine_link]).present?
-                  div = link_to browzine_link, target: "_blank" do
+                - if (browzine_url = result.options[:browzine_url]).present?
+                  div = link_to browzine_url, target: "_blank" do
                     i.fa-solid.fa-external-link.fa-fw.me-2
                     = t(".browse_by_browzine")
 

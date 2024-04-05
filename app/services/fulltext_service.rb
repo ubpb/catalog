@@ -13,6 +13,21 @@ class FulltextService < ApplicationService
     results = []
     return results unless record.is_online_resource?
 
+    # Try to resolve the fulltext links via LibKey
+    begin
+      lib_key_service&.resolve(record)&.tap do |result|
+        results << Result.new(
+          source: "libkey",
+          url: result.url,
+          options: {
+            browzine_link: result.browzine_link
+          }
+        )
+      end
+    rescue LibKeyService::TimeoutError
+      service_had_timeout = true
+    end
+
     # If the record has fulltext links available, use them.
     # This is the case for local records that have been published by Alma General Publishing
     # and processed through our pub pipeline.
@@ -30,21 +45,6 @@ class FulltextService < ApplicationService
         # Filter these results by priority and blacklist
         results = ResultFilter.filter(results)
       end
-    end
-
-    # Try to resolve the fulltext links via LibKey
-    begin
-      lib_key_service&.resolve(record)&.tap do |result|
-        results << Result.new(
-          source: "libkey",
-          url: result.url,
-          options: {
-            browzine_link: result.browzine_link
-          }
-        )
-      end
-    rescue LibKeyService::TimeoutError
-      service_had_timeout = true
     end
 
     # Try to resolve the fulltext links via Alma Link Resolver.

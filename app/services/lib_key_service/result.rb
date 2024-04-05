@@ -1,10 +1,11 @@
 class LibKeyService::Result
 
-  attr_reader :url, :browzine_link
+  attr_reader :url, :browzine_url, :retraction_notice_url
 
-  def initialize(url:, browzine_link:)
+  def initialize(url:, browzine_url:, retraction_notice_url:)
     @url = url
-    @browzine_link = browzine_link
+    @browzine_url = browzine_url
+    @retraction_notice_url = retraction_notice_url
   end
 
 end

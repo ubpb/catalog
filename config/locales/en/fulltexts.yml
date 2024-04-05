@@ -7,6 +7,9 @@ en:
       fulltext_by_libkey: Full text access via LibKey
       header: 'Full texts for title: %{title}'
       no_fulltexts: No full text access could be determined for the title.
+      retraction_notice:
+        label: The title has been retracted
+        more_info: more information...
       search_link:
         catalog: Suche the library catalog
         cdi: Search in the Central Discovery Index (CDI)

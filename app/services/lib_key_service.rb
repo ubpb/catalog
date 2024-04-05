@@ -40,11 +40,13 @@ class LibKeyService < ApplicationService
 
       # Parse LibKey result
       url = libkey_result.dig("data", "fullTextFile")
-      browzine_link = libkey_result.dig("data", "browzineWebLink")
       return nil if url.blank?
+      # .. some optional values
+      browzine_url = libkey_result.dig("data", "browzineWebLink")
+      retraction_notice_url = libkey_result.dig("data", "retractionNoticeUrl")
 
       # Return result
-      Result.new(url: url, browzine_link: browzine_link)
+      Result.new(url: url, browzine_url: browzine_url, retraction_notice_url: retraction_notice_url)
     end
   rescue Faraday::TimeoutError
     raise TimeoutError

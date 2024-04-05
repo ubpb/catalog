@@ -38,16 +38,23 @@
           - additional_results = @fulltext_service_results[1..-1]
           - @fulltext_service_results.each do |result|
             li.list-group-item.p-2(data-expandable-list-target="item")
-              div = link_to result.url do
-                i.fa-solid.fa-external-link.fa-fw.me-2
-                - if result.source == "libkey"
-                  = t(".fulltext_by_libkey")
-                - elsif result.label.present?
-                  = result.label
-                - else
-                  = result.url
+              div
+                = link_to result.url do
+                  i.fa-solid.fa-external-link.fa-fw.me-2
+                  - if result.source == "libkey"
+                    = t(".fulltext_by_libkey")
+                  - elsif result.label.present?
+                    = result.label
+                  - else
+                    = result.url
 
-              - if result.source == "libkey" && (browzine_link = result.options[:browzine_link]).present?
+                - if (retraction_notice_url = result.retraction_notice_url).present?
+                  span.ms-3.text-danger = t(".retraction_notice.label")
+                  span.ms-1 = link_to retraction_notice_url, target: "_blank", class: "link-danger" do
+                    = "(#{t(".retraction_notice.more_info")})"
+
+              - if result.source == "libkey"
+                - if (browzine_link = result.options[:browzine_link]).present?
                   div = link_to browzine_link, target: "_blank" do
                     i.fa-solid.fa-external-link.fa-fw.me-2
                     = t(".browse_by_browzine")

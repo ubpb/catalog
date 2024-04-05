@@ -18,8 +18,6 @@ ruby:
       - doi = record.first_doi
       - if isbn13
         = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
-      - elsif doi && LibKeyController.enabled?
-        = image_tag(lib_key_cover_image_url(doi), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
 
   .flex-fill
     - if record == :deleted

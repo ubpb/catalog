@@ -118,11 +118,6 @@ Rails.application.routes.draw do
   # Lobid Gnd API
   get "gnd/:id", to: "gnd#show", as: "gnd"
 
-  # LibKey
-  get "libkey/*id/pdf", to: "lib_key#pdf", as: "lib_key_pdf", format: false
-  get "libkey/*id/cover", to: "lib_key#cover", as: "lib_key_cover_image", format: false
-  get "libkey/*id/json", to: "lib_key#json", as: "lib_key_json", format: false
-
   # Kickers and static redirectd
   get "/go/impressum", to: redirect("http://www.ub.uni-paderborn.de/ueber-uns/impressum/"), as: :go_legal
   get "/go/datenschutz", to: redirect("https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/DSE_UB_007_Katalog.pdf"), as: :go_privacy

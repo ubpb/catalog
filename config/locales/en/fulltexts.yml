@@ -14,6 +14,9 @@ en:
         interlibrary_loan:
           book: Book search via interlibrary loan
           journal: Search for journals via interlibrary loan
+      service_timeout_error: >-
+        At least one service has timed out while trying to determine full text access. There may be other links that are not
+        displayed. Please try again again later.
       show_less: less ...
       show_more:
         one: 1 more ...

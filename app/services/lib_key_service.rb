@@ -3,12 +3,14 @@ class LibKeyService < ApplicationService
   ENABLED          = Config[:lib_key, :enabled, default: false]
   API_KEY          = Config[:lib_key, :api_key, default: ""]
   LIBRARY_ID       = Config[:lib_key, :library_id, default: ""]
-  API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 2.0]
+  API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 3.0]
   CACHE_EXPIRES_IN = Config[:lib_key, :cache_expires_in, default: 24.hours]
 
   BASE_URL = "https://api.thirdiron.com/public/v1/libraries/#{LIBRARY_ID}/".freeze
 
   class Error < StandardError; end
+
+  class TimeoutError < Error; end
 
   class DisabledError < Error; end
 
@@ -31,9 +33,21 @@ class LibKeyService < ApplicationService
 
     # Resolve the fulltext link via LibKey
     Rails.cache.fetch("lib-key-#{record.id}", expires_in: CACHE_EXPIRES_IN) do
+      # Call LibKey
       path = is_doi?(id) ? "articles/doi/#{id}" : "articles/pmid/#{id}"
-      api_client.get(path)&.body
+      libkey_result = api_client.get(path)&.body
+      return nil if libkey_result.blank?
+
+      # Parse LibKey result
+      url = libkey_result.dig("data", "fullTextFile")
+      browzine_link = libkey_result.dig("data", "browzineWebLink")
+      return nil if url.blank?
+
+      # Return result
+      Result.new(url: url, browzine_link: browzine_link)
     end
+  rescue Faraday::TimeoutError
+    raise TimeoutError
   rescue Faraday::Error
     nil
   rescue => e

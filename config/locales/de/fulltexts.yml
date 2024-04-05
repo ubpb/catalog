@@ -14,6 +14,9 @@ de:
         interlibrary_loan:
           book: Buchsuche über die Fernleihe
           journal: Zeitschriftensuche über die Fernleihe
+      service_timeout_error: >-
+        Beim Versuch, den Volltextzugriff zu ermitteln, hat mindestens ein Dienst eine Zeitüberschreitung erreicht. Möglicherweise
+        gibt es weitere Links, die nicht angezeigt werden. Bitte versuchen es später erneut.
       show_less: weniger ...
       show_more:
         one: 1 mehr ...

@@ -10,14 +10,9 @@ ruby:
   data-record-id=record_id
   data-notes-target="record"
 )
+  / Cover image
   .align-self-start.text-center.me-3.d-none.d-md-block(style="width: 55px; min-width: 55px; position: relative; color: var(--bs-border-color)")
-    - if record != :deleted
-      / Cover Image
-      div.fa-regular.fa-file.fa-3x.w-100.p-2.pt-3.pb-3.rounded
-      - isbn13 = record.first_isbn13
-      - doi = record.first_doi
-      - if isbn13
-        = image_tag(cover_image_url(isbn13, size: "s"), style: "position: absolute; left:0; top:0", class: "img-fluid rounded")
+    = image_tag(record_cover_images_path(search_scope: current_search_scope, record_id: record_id), class: "img-fluid")
 
   .flex-fill
     - if record == :deleted

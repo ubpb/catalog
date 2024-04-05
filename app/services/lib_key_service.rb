@@ -16,6 +16,7 @@ class LibKeyService < ApplicationService
 
   class << self
     delegate :resolve, to: :new
+    delegate :resolve_cover_image, to: :new
 
     def enabled?
       ENABLED && API_KEY.present? && LIBRARY_ID.present?
@@ -44,9 +45,15 @@ class LibKeyService < ApplicationService
       # .. some optional values
       browzine_url = libkey_result.dig("data", "browzineWebLink")
       retraction_notice_url = libkey_result.dig("data", "retractionNoticeUrl")
+      cover_image_url = libkey_result["included"]&.pluck("coverImageUrl")&.compact&.first
 
       # Return result
-      Result.new(url: url, browzine_url: browzine_url, retraction_notice_url: retraction_notice_url)
+      Result.new(
+        url: url,
+        browzine_url: browzine_url,
+        retraction_notice_url: retraction_notice_url,
+        cover_image_url: cover_image_url
+      )
     end
   rescue Faraday::TimeoutError
     raise TimeoutError
@@ -55,6 +62,12 @@ class LibKeyService < ApplicationService
   rescue => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error
+  end
+
+  def resolve_cover_image(record)
+    resolve(record)&.cover_image_url
+  rescue
+    nil
   end
 
   private

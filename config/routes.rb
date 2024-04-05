@@ -104,13 +104,11 @@ Rails.application.routes.draw do
     resources :volumes, only: [:index]
     resources :recommendations, only: [:index]
     resources :fulltexts, only: [:index]
+    resources :cover_images, only: [:index], path: "cover"
   end
 
   # Open URL Link-Resolver
   get "openurl", to: "link_resolver#show"
-
-  # Cover images
-  get "cover-images/:id", to: "cover_images#show", as: "cover_image"
 
   # ZDB Journal, Online & Print Service
   get "joap", to: "joap#show", as: "joap"

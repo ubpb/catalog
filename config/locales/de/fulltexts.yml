@@ -7,6 +7,9 @@ de:
       fulltext_by_libkey: Volltext-Zugriff via LibKey
       header: 'Volltexte für Titel: %{title}'
       no_fulltexts: Es konnten kein Volltext-Zugriff für den Titel ermittelt werden.
+      retraction_notice:
+        label: Der Titel wurde zurückgezogen
+        more_info: weitere Informationen...
       search_link:
         catalog: Suche im Bibliotheksbestand
         cdi: Suche im Central Discovery Index (CDI)

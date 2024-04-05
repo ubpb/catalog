@@ -19,8 +19,9 @@ class FulltextService < ApplicationService
         results << Result.new(
           source: "libkey",
           url: result.url,
+          retraction_notice_url: result.retraction_notice_url,
           options: {
-            browzine_link: result.browzine_link
+            browzine_url: result.browzine_url
           }
         )
       end

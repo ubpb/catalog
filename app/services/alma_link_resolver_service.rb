@@ -3,10 +3,12 @@ class AlmaLinkResolverService < ApplicationService
 
   ENABLED          = Config[:alma_link_resolver, :enabled, default: false]
   BASE_URL         = Config[:alma_link_resolver, :base_url]
-  API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 2.0]
+  API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 3.0]
   CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 24.hours]
 
   class Error < StandardError; end
+
+  class TimeoutError < Error; end
 
   class DisabledError < Error; end
 
@@ -45,6 +47,13 @@ class AlmaLinkResolverService < ApplicationService
       # Return result
       Result.new(context: context, fulltext_services: fulltext_services)
     end
+  rescue Faraday::TimeoutError
+    raise TimeoutError
+  rescue Faraday::Error
+    nil
+  rescue => e
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+    raise Error
   end
 
   private
@@ -126,11 +135,6 @@ class AlmaLinkResolverService < ApplicationService
     if response.status == 200 && response.headers[:content_type] =~ /text\/xml/
       Nokogiri::XML.parse(response.body).remove_namespaces!
     end
-  rescue Faraday::Error
-    nil
-  rescue => e
-    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
-    raise Error
   end
 
 end

@@ -9,6 +9,7 @@ class FulltextService < ApplicationService
   #   If no links are available, an empty array is returned.
   #
   def resolve(record)
+    service_had_timeout = false
     results = []
     return results unless record.is_online_resource?
 
@@ -32,39 +33,42 @@ class FulltextService < ApplicationService
     end
 
     # Try to resolve the fulltext links via LibKey
-    lib_key_service&.resolve(record)&.tap do |lib_key_result|
-      url = lib_key_result.dig("data", "fullTextFile")
-      browzine_link = lib_key_result.dig("data", "browzineWebLink")
-
-      if url.present?
+    begin
+      lib_key_service&.resolve(record)&.tap do |result|
         results << Result.new(
           source: "libkey",
-          url: url,
+          url: result.url,
           options: {
-            browzine_link: browzine_link
+            browzine_link: result.browzine_link
           }
         )
       end
+    rescue LibKeyService::TimeoutError
+      service_had_timeout = true
     end
 
     # Try to resolve the fulltext links via Alma Link Resolver.
     # This is the case for CDI records that are not "direct link" records.
     # We use the open URL record information (that is part of the CDI record data)
     # to resolve the fulltext links with the Alma Link Resolver.
-    alma_link_resolver_service&.resolve(record)&.fulltext_services&.tap do |services|
-      services.each do |service|
-        results << Result.new(
-          source: "alma_link_resolver",
-          url: service.fulltext_url,
-          label: service.package_name,
-          coverage: service.availability,
-          note: service.public_note
-        )
+    begin
+      alma_link_resolver_service&.resolve(record)&.fulltext_services&.tap do |services|
+        services.each do |service|
+          results << Result.new(
+            source: "alma_link_resolver",
+            url: service.fulltext_url,
+            label: service.package_name,
+            coverage: service.availability,
+            note: service.public_note
+          )
+        end
       end
+    rescue AlmaLinkResolverService::TimeoutError
+      service_had_timeout = true
     end
 
     # Return results
-    results
+    Results.new(results: results, service_had_timeout: service_had_timeout)
   end
 
   private

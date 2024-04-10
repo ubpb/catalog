@@ -19,6 +19,9 @@ html
   body
     = render "application/test_server_warning"
 
+    - if (vpn_info = render VpnInfoComponent.new(text_class: "", link_class: "alert-link")).present?
+      .alert.alert-warning.mb-0.border-0.rounded-0.text-center.p-2 = vpn_info
+
     #header
       = render "header"
 

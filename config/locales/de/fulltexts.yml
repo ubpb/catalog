@@ -12,6 +12,7 @@ de:
         more_info: weitere Informationen...
       search_link:
         catalog: Suche im Bibliotheksbestand
+        cdi: Suche im Central Discovery Index (CDI)
         header: Weitere Recherchemöglichkeiten
         interlibrary_loan:
           book: Buchsuche über die Fernleihe

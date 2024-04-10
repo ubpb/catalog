@@ -3,7 +3,7 @@ de:
   fulltexts:
     breadcrumb: Volltexte
     index:
-      browse_by_browzine: Ganze Zeitschrift via BrowZine durchsuchen
+      browse_by_browzine: Ganze Zeitschrift durchsuchen
       fulltext_by_libkey: Volltext-Zugriff via LibKey
       header: 'Volltexte für Titel: %{title}'
       no_fulltexts: Es konnten kein Volltext-Zugriff für den Titel ermittelt werden.
@@ -20,7 +20,7 @@ de:
       service_timeout_error: >-
         Beim Versuch, den Volltextzugriff zu ermitteln, hat mindestens ein Dienst eine Zeitüberschreitung erreicht. Möglicherweise
         gibt es weitere Links, die nicht angezeigt werden. Bitte versuchen es später erneut.
-      show_less: weniger ...
+      show_less: nur den ersten Treffer anzeigen
       show_more:
-        one: 1 mehr ...
-        other: "%{count} mehr ..."
+        one: "Gleicher Volltext in einer weiteren Quelle ..."
+        other: "Gleicher Volltext in %{count} weiteren Quellen ..."

@@ -21,9 +21,10 @@
             i.fa-solid.fa-external-link.fa-fw.me-1
             = t(".search_link.catalog")
 
-          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}"), search_scope: "cdi"), target: "_blank" do
-            i.fa-solid.fa-external-link.fa-fw.me-1
-            = t(".search_link.cdi")
+          - if current_search_scope != :cdi
+            div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}"), search_scope: "cdi"), target: "_blank" do
+              i.fa-solid.fa-external-link.fa-fw.me-1
+              = t(".search_link.cdi")
 
           - if @record.is_monograph?
             div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@record.title}", target: "_blank" do

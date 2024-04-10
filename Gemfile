@@ -9,7 +9,7 @@ gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.1", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "dry-struct", "~> 1.4"
-gem "elasticsearch", "= 8.12.2"
+gem "elasticsearch", "= 8.12.2" # Stick to 8.12.2 until elastic/elasticsearch-ruby#2341 is fixed
 gem "faraday", "~> 2.7", "< 3"
 gem "hashids", "~> 1.0"
 gem "inline_svg", "~> 1.9"

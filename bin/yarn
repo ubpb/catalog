@@ -1,9 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "XXXXXXXXXXX"
-puts "DIR: #{__dir__}"
-puts "PATH: #{ENV["PATH"]}"
-
 APP_ROOT = File.expand_path("..", __dir__)
 Dir.chdir(APP_ROOT) do
   yarn = ENV["PATH"].split(File::PATH_SEPARATOR).

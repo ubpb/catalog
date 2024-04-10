@@ -41,7 +41,7 @@
           - @fulltext_service_results.each do |result|
             li.list-group-item.p-2(data-expandable-list-target="item")
               div
-                = link_to result.url do
+                = link_to result.url, target: "_blank" do
                   i.fa-solid.fa-external-link.fa-fw.me-2
                   - if result.source == "libkey"
                     = t(".fulltext_by_libkey")

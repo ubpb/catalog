@@ -20,7 +20,7 @@ en:
         available - the online edition (see above category "Linked Title") or another print copy. In special individual cases,
         please contact. <a href="mailto:bibliothek@ub.uni-paderborn.de">bibliothek@ub.uni-paderborn.de</a>.
       closed_stack_order: Create closed stack order
-      closed_stack_order_info: Available media with location <strong>Magazin</strong> is not freely accessable. Please place
+      closed_stack_order_info: Available media with location <strong>Magazin</strong> are not freely accessible. Please place
         a closed stack order.
       confirm_create_hold_request: Create hold request now?
       confirm_delete_hold_request: Really delete hold request?

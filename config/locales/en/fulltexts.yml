@@ -22,5 +22,5 @@ en:
         displayed. Please try again again later.
       show_less: show only the first result
       show_more:
-        one: "Same full text in another source ..."
-        other: "Same full text in %{count} different sources ..."
+        one: Same full text in another source ...
+        other: Same full text in %{count} different sources ...

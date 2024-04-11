@@ -11,10 +11,11 @@ class AlmaLinkResolverService
   # However, we use the context object only for displaying the metadata in the UI.
   # We don't use it for further processing of the OpenURL.
   #
-  # Some keys may occur multiple times in the context object, so our internal
-  # representation is a hash with arrays as values.
+  # Some keys may occur multiple times in the context object (incomming values get merged
+  # with resolved values from Alma), so our internal representation is a hash with arrays
+  # as values.
   #
-  # We assume that the first value of that array is the most relevant one in cases
+  # We assume that the last value of that array is the most relevant one in cases
   # where we expect a single value.
   #
   class Context
@@ -59,24 +60,28 @@ class AlmaLinkResolverService
       @context_hash[id]
     end
 
-    def first_value(id)
-      self[id]&.first
+    def value(id)
+      self[id]&.last
     end
 
-    def mms_id
-      first_value("rft.mms_id")
+    def is_book?
+      value("rft.btitle").present?
+    end
+
+    def is_journal?
+      value("rft.jtitle").present?
     end
 
     def fulltext_available?
-      first_value("full_text_indicator") == true
+      value("full_text_indicator") == true
     end
 
-    def journal_or_series_title
-      first_value("rft.jtitle") || first_value("rft.stitle")
+    def article_title
+      value("rft.atitle")
     end
 
-    def title
-      first_value("rft.atitle") || first_value("rft.btitle") || first_value("rft.title")
+    def journal_or_book_title
+      value("rft.jtitle") || value("rft.btitle") || value("rft.stitle") || value("rft.title")
     end
 
     def authors
@@ -84,23 +89,51 @@ class AlmaLinkResolverService
     end
 
     def publisher
-      first_value("rft.pub")
+      value("rft.pub")
     end
 
     def place_of_publication
-      first_value("rft.place")
+      value("rft.place")
     end
 
     def year_of_publication
-      first_value("rft.year")
+      value("rft.year")
+    end
+
+    def edition
+      value("rft.edition")
     end
 
     def volume
-      first_value("rft.volume")
+      value("rft.volume")
+    end
+
+    def issue
+      value("rft.issue")
     end
 
     def pages
-      first_value("rft.pages")
+      value("rft.pages")
+    end
+
+    def issn
+      value("rft.issn")
+    end
+
+    def isbn
+      value("rft.isbn")
+    end
+
+    def eisbn
+      value("rft.eisbn")
+    end
+
+    def identifiers
+      ids = []
+      ids << "ISSN: #{issn}" if issn
+      ids << "ISBN: #{isbn}" if isbn
+      ids << "eISBN: #{eisbn}" if eisbn
+      ids
     end
   end
 end

@@ -22,5 +22,5 @@ de:
         gibt es weitere Links, die nicht angezeigt werden. Bitte versuchen es später erneut.
       show_less: nur den ersten Treffer anzeigen
       show_more:
-        one: "Gleicher Volltext in einer weiteren Quelle ..."
-        other: "Gleicher Volltext in %{count} weiteren Quellen ..."
+        one: Gleicher Volltext in einer weiteren Quelle ...
+        other: Gleicher Volltext in %{count} weiteren Quellen ...

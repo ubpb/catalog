@@ -20,7 +20,7 @@ class AlmaLinkResolverService
       # Clean value
       value = value
         &.squish
-        &.gsub(/[:;,.]$/, "") # Clean trailing characters like ":", ",", "." etc.
+        &.gsub(/[:;,.\/]$/, "") # Clean trailing characters like ":", ",", "." etc.
         &.strip
         .presence
 

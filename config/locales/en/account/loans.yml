@@ -10,7 +10,7 @@ en:
           loading_message: All renewable media are beeing renewed...
       loan:
         barcode: 'Barcode: %{barcode}'
-        due_date: 'Due on:'
+        due_date: 'Due back:'
         fines: 'Fees: %{fines}'
         loan_date: 'Loaned on:'
         not_renewable: Not renewable
@@ -21,7 +21,7 @@ en:
         renewAll: Renew all
         sortable_fields:
           barcode: Barcode
-          due_date: Due on
+          due_date: Due back
           loan_date: Loaned on
           title: Title
         sorted_by: Sorted by

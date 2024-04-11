@@ -281,6 +281,6 @@ en:
       on_hold_shelf: Ready for pickup
       unknown: Unknown
     process_types:
-      default: Not loaned
+      default: On Shelf
       holdshelf: Ready for pickup
-      loan: Loaned
+      loan: On loan

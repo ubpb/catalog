@@ -26,7 +26,7 @@ en:
       confirm_delete_hold_request: Really delete hold request?
       create_hold_request: Create hold request
       delete_hold_request: Delete hold request
-      due_date_info: Due on %{due_date}
+      due_date_info: 'Due back: %{due_date}'
       header: Items
       hold_request_info: >-
         No item is currently available. However, you can make a hold request and reserve a item for yourself. You will receive

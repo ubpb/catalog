@@ -2,23 +2,30 @@
 de:
   link_resolver:
     breadcrumb: Link-Resolver
-    fulltext_service:
-      free_resource: Freie Ressource
-    show:
-      atitle: Artikel
+    context:
+      article_title: Artikel
       authors: Autor(en)
-      date_of_publication: Erscheinungsjahr
-      error: 'Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
-      further_research: Weitere Recherchemöglichkeiten
-      header: Link-Resolver
-      header_found: Es wurden folgende elektronische Volltexte gefunden
-      no_results: Leider kein Volltext verfügbar.
+      edition: Auflage
+      ids: Identifikatoren
+      issue: Heft
+      journal_or_book_title: Titel
+      pages: Seiten
       place_of_publication: Ort
       publisher: Verlag
+      volume: Band
+      year_of_publication: Erscheinungsjahr
+    fulltext_services:
+      free_resource: Freie Ressource
+      header: Es wurden folgende elektronische Volltexte gefunden
+    no_fulltexts:
+      further_research: Weitere Recherchemöglichkeiten
+      no_results: Leider kein Volltext verfügbar.
       search_link:
         catalog: Suche im Bibliotheksbestand
         cdi: Suche im Central Discovery Index (CDI)
         interlibrary_loan:
           book: Buchsuche über die Fernleihe
           journal: Zeitschriftensuche über die Fernleihe
-      title: Titel
+    show:
+      error: 'Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
+      header: Link-Resolver

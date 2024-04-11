@@ -2,23 +2,30 @@
 en:
   link_resolver:
     breadcrumb: Link-Resolver
-    fulltext_service:
-      free_resource: Free resource
-    show:
-      atitle: Article
+    context:
+      article_title: Article
       authors: Author(s)
-      date_of_publication: Year of publication
-      error: 'Error: No result could be found. The called URL is not correct.'
-      further_research: Other search options
-      header: Link-Resolver
-      header_found: The following electronic full texts were found
-      no_results: Sorry, no full text available.
+      edition: Edition
+      ids: Identifiers
+      issue: Issue
+      journal_or_book_title: Title
+      pages: Pages
       place_of_publication: Place
       publisher: Publisher
+      volume: Volume
+      year_of_publication: Year of publication
+    fulltext_services:
+      free_resource: Free resource
+      header_found: The following electronic full texts were found
+    no_fulltexts:
+      further_research: Other search options
+      no_results: Sorry, no full text available.
       search_link:
         catalog: Search the library collection
         cdi: Search the Central Discovery Index (CDI)
         interlibrary_loan:
           book: Book search via interlibrary loan
           journal: Search for journals via interlibrary loan
-      title: Title
+    show:
+      error: 'Error: No result could be found. The called URL is not correct.'
+      header: Link-Resolver

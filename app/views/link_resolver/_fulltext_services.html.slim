@@ -1,0 +1,19 @@
+h5.fs-6 = t(".header")
+
+ul.list-group
+  - fulltext_services.each do |service|
+    li.list-group-item
+      .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
+        .ms-0
+          - if service.is_free?
+            .mb-1.badge.bg-success = t(".free_resource")
+
+          div = link_to service.fulltext_url, target: "_blank" do
+            i.fa-solid.fa-external-link.fa-fw.me-1
+            = service.package_name
+
+          - if (availability = service.availability).present?
+            div.text-success: em = availability
+
+          - if service.public_note.present?
+            div: em = strip_tags(service.public_note)

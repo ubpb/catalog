@@ -1,0 +1,43 @@
+dl.key-value-list
+  - if (authors = context.authors).present?
+    dt = t(".authors")
+    dd = authors
+
+  - if (title = context.article_title).present?
+    dt = t(".article_title")
+    dd = title
+
+  dt = t(".journal_or_book_title")
+  dd = context.journal_or_book_title.presence || "—"
+
+  - if (pages = context.pages).present?
+    dt = t(".pages")
+    dd = pages
+
+  - (edition = context.edition).present?
+    dt = t(".edition")
+    dd = edition
+
+  - if (volume = context.volume).present?
+    dt = t(".volume")
+    dd = volume
+
+  - if (issue = context.issue).present?
+    dt = t(".issue")
+    dd = issue
+
+  - if (publisher = context.publisher).present?
+    dt = t(".publisher")
+    dd = publisher
+
+  - if (place_of_publication = context.place_of_publication).present?
+    dt = t(".place_of_publication")
+    dd = place_of_publication
+
+  - if (year_of_publication = context.year_of_publication).present?
+    dt = t(".year_of_publication")
+    dd = year_of_publication
+
+  - if (ids = context.identifiers).present?
+    dt = t(".ids")
+    dd = ids.join("; ")

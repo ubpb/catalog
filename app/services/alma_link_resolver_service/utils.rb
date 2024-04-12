@@ -26,8 +26,8 @@ class AlmaLinkResolverService
 
       # Normalize boolean values
       value = case value
-      when /\A(0|no|false)\z/i then false
-      when /\A(1|yes|true)\z/i then true
+      when /\A(no|false)\z/i then false
+      when /\A(yes|true)\z/i then true
       else value; end
 
       # Return key and value

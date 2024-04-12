@@ -60,8 +60,16 @@ class AlmaLinkResolverService
       @context_hash[id]
     end
 
+    def values(id)
+      self[id]&.map(&:presence)&.compact
+    end
+
     def value(id)
-      self[id]&.last
+      values(id)&.last&.presence
+    end
+
+    def mms_id
+      value("rft.mms_id")
     end
 
     def is_book?
@@ -81,7 +89,7 @@ class AlmaLinkResolverService
     end
 
     def journal_or_book_title
-      value("rft.jtitle") || value("rft.btitle") || value("rft.stitle") || value("rft.title")
+      value("rft.jtitle") || value("rft.btitle") || value("rft.title")
     end
 
     def authors
@@ -117,20 +125,25 @@ class AlmaLinkResolverService
     end
 
     def issn
-      value("rft.issn")
+      values("rft.issn")&.join(", ")
+    end
+
+    def eissn
+      values("rft.eissn")&.join(", ")
     end
 
     def isbn
-      value("rft.isbn")
+      values("rft.isbn")&.join(", ")
     end
 
     def eisbn
-      value("rft.eisbn")
+      values("rft.eisbn")&.join(", ")
     end
 
     def identifiers
       ids = []
       ids << "ISSN: #{issn}" if issn
+      ids << "eISSN: #{eissn}" if eissn
       ids << "ISBN: #{isbn}" if isbn
       ids << "eISBN: #{eisbn}" if eisbn
       ids

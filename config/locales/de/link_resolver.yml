@@ -16,16 +16,30 @@ de:
       year_of_publication: Erscheinungsjahr
     fulltext_services:
       free_resource: Freie Ressource
-      header: Es wurden folgende elektronische Volltexte gefunden
-    no_fulltexts:
-      further_research: Weitere Recherchemöglichkeiten
-      no_results: Leider kein Volltext verfügbar.
+    further_research:
       search_link:
         catalog: Suche im Bibliotheksbestand
+        catalog_description: >-
+          Suche nach weiteren Exemplaren des Werkes, z.B. Ausgaben in Print, alternative elektronische Ausgaben, andere Auflagen
+          etc.
         cdi: Suche im Central Discovery Index (CDI)
+        cdi_description: >-
+          Neue Suche in unserem großen Datenpool an lizenzierten E-Journals, E-Books u.a. Online-Publikationen. Verwenden
+          Sie ggf. auch verwandte Suchbegriffe.
         interlibrary_loan:
           book: Buchsuche über die Fernleihe
+          book_description: Geben Sie bei Bedarf direkt eine Fernleihbestellung auf.
           journal: Zeitschriftensuche über die Fernleihe
+          journal_description: Geben Sie bei Bedarf direkt eine Fernleihbestellung auf.
+    no_fulltexts:
+      no_results: Leider kein Volltext verfügbar.
+    record:
+      info: Wir konnten für den Titel einen passenden Eintrag in unserem Katalog finden.
+      open-record: Titel im Katalog öffnen
     show:
-      error: 'Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
+      context-header: Folgender Titel konnte gefunden werden
+      error: 'Fehler: Es konnte kein Titel ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
+      fulltext-header: Volltext-Zugriff (PDF)
+      further-research-header: Weitere Recherchemöglichkeiten
       header: Link-Resolver
+      record-header: Verwandter Titel im Katalog

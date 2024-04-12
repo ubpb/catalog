@@ -1,0 +1,8 @@
+.callout.callout-info.mb-0
+  .d-block.d-md-flex.justify-content-between.align-items-center
+    div
+      i.fa-solid.fa-info-circle.fa-lg.me-2
+      = t(".info")
+    .mt-2.mt-md-0
+      = link_to t(".open-record"), record_path(record.id, search_scope: :local), target: "_blank", class: "btn btn-primary"
+

@@ -16,16 +16,29 @@ en:
       year_of_publication: Year of publication
     fulltext_services:
       free_resource: Free resource
-      header_found: The following electronic full texts were found
-    no_fulltexts:
-      further_research: Other search options
-      no_results: Sorry, no full text available.
+    further_research:
       search_link:
         catalog: Search the library collection
+        catalog_description: Search for further copies of the work, e.g. print editions, alternative electronic editions,
+          other editions etc.
         cdi: Search the Central Discovery Index (CDI)
+        cdi_description: >-
+          New search in our large data pool of licensed e-journals, e-books and other online publications. Use related search
+          terms if necessary.
         interlibrary_loan:
           book: Book search via interlibrary loan
+          book_description: Place an interlibrary loan order directly if necessary.
           journal: Search for journals via interlibrary loan
+          journal_description: Place an interlibrary loan order directly if necessary.
+    no_fulltexts:
+      no_results: Sorry, no full text available.
+    record:
+      info: We could find a matching entry in our catalog for the title.
+      open-record: Open title in catalog
     show:
+      context-header: The following title could be found
       error: 'Error: No result could be found. The called URL is not correct.'
+      fulltext-header: Full text access (PDF)
+      further-research-header: Further research options
       header: Link-Resolver
+      record-header: Related title in catalog

@@ -1,13 +1,28 @@
-.card.card-shadowed
+.card
   .card-header
     = t(".header")
   .card-body
     - if @result.blank? || @result.context.blank?
       .callout.callout-danger.mb-0 = t(".error")
     - else
-      = render "context", context: @result.context
+      .mt-0
+        h5.mt-0 = t(".context-header")
+        = render "context", context: @result.context
 
-      - if @result.fulltext_services.present?
-        = render "fulltext_services", fulltext_services: @result.fulltext_services
-      - else
-        = render "no_fulltexts", context: @result.context
+      .mt-3
+        h5.mt-0 = t(".fulltext-header")
+        - if @result.fulltext_services.present?
+          = render "fulltext_services", fulltext_services: @result.fulltext_services
+        - else
+          = render "no_fulltexts"
+
+      - if @record.present?
+        .mt-3
+          h5.mt-0 = t(".record-header")
+          = render "record", record: @record
+
+      - if @result.fulltext_services.blank?
+        .mt-3
+          h5.mt-0 = t(".further-research-header")
+          = render "further_research", context: @result.context
+

@@ -1,33 +1,3 @@
-.callout.callout-warning.mb-0
+.callout.callout-warning.mb-3
   i.fa-solid.fa-ban.fa-lg
   =< t(".no_results")
-
-- if (title = context.journal_or_book_title).present?
-  h5.fs-6.mt-3 = t(".further_research")
-  ul.list-group
-    li.list-group-item
-      .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-        .ms-0
-          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{title}")), target: "_blank" do
-            i.fa-solid.fa-external-link.fa-fw.me-1
-            = t(".search_link.catalog")
-    li.list-group-item
-      .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-        .ms-0
-          div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{title}"), search_scope: "cdi"), target: "_blank" do
-            i.fa-solid.fa-external-link.fa-fw.me-1
-            = t(".search_link.cdi")
-    - if context.is_book?
-      li.list-group-item
-        .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-          .ms-0
-            div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{title}", target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.interlibrary_loan.book")
-    - if context.is_journal?
-      li.list-group-item
-        .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-          .ms-0
-            div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{title}", target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.interlibrary_loan.journal")

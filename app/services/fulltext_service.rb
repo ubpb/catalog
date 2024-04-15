@@ -5,8 +5,7 @@ class FulltextService < ApplicationService
   end
 
   #
-  # @return [Array<FulltextService::Result>] A list of fulltext results for the given record.
-  #   If no links are available, an empty array is returned.
+  # @return [FulltextService::Results] Fulltext results for the given record.
   #
   def resolve(record)
     service_had_timeout = false

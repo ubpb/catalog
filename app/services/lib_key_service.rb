@@ -27,15 +27,16 @@ class LibKeyService < ApplicationService
     raise DisabledError unless self.class.enabled?
   end
 
-  def resolve(record)
-    # Try to get the DOI or PMID from the record
-    id = record.first_doi || record.first_pmid
-    return nil if id.blank?
+  def resolve(doi_or_pmid)
+    return nil if doi_or_pmid.blank?
+
+    # Compute cache key
+    cache_key = Digest::MD5.hexdigest(doi_or_pmid)
 
     # Resolve the fulltext link via LibKey
-    Rails.cache.fetch("lib-key-#{record.id}", expires_in: CACHE_EXPIRES_IN) do
+    Rails.cache.fetch("lib-key-#{cache_key}", expires_in: CACHE_EXPIRES_IN) do
       # Call LibKey
-      path = is_doi?(id) ? "articles/doi/#{id}" : "articles/pmid/#{id}"
+      path = is_doi?(doi_or_pmid) ? "articles/doi/#{doi_or_pmid}" : "articles/pmid/#{doi_or_pmid}"
       libkey_result = api_client.get(path)&.body
       return nil if libkey_result.blank?
 

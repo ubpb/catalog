@@ -33,13 +33,9 @@ de:
           journal_description: Geben Sie bei Bedarf direkt eine Fernleihbestellung auf.
     no_fulltexts:
       no_results: Leider kein Volltext verfügbar.
-    record:
-      info: Wir konnten für den Titel einen passenden Eintrag in unserem Katalog finden.
-      open-record: Titel im Katalog öffnen
     show:
       context-header: Folgender Titel konnte gefunden werden
       error: 'Fehler: Es konnte kein Titel ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
       fulltext-header: Volltext-Zugriff (PDF)
       further-research-header: Weitere Recherchemöglichkeiten
       header: Link-Resolver
-      record-header: Verwandter Titel im Katalog

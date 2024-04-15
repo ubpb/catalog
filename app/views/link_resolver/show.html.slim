@@ -16,11 +16,6 @@
         - else
           = render "no_fulltexts"
 
-      - if @record.present?
-        .mt-3
-          h5.mt-0 = t(".record-header")
-          = render "record", record: @record
-
       - if @result.fulltext_services.blank?
         .mt-3
           h5.mt-0 = t(".further-research-header")

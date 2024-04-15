@@ -32,13 +32,9 @@ en:
           journal_description: Place an interlibrary loan order directly if necessary.
     no_fulltexts:
       no_results: Sorry, no full text available.
-    record:
-      info: We could find a matching entry in our catalog for the title.
-      open-record: Open title in catalog
     show:
       context-header: The following title could be found
       error: 'Error: No result could be found. The called URL is not correct.'
       fulltext-header: Full text access (PDF)
       further-research-header: Further research options
       header: Link-Resolver
-      record-header: Related title in catalog

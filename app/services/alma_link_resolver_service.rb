@@ -24,25 +24,16 @@ class AlmaLinkResolverService < ApplicationService
     raise DisabledError unless self.class.enabled?
   end
 
-  def resolve(record_or_openurl, user_ip: nil)
-    # Get Open URL string from passed record or OpenURL
-    open_url_string = if record_or_openurl.is_a?(String)
-      record_or_openurl
-    elsif record_or_openurl.is_a?(SearchEngine::Record) &&
-        record_or_openurl.respond_to?(:id) &&
-        record_or_openurl.respond_to?(:resolver_link)
-      record = record_or_openurl
-      record_id = record.id
-      record.resolver_link&.url
-    end
-    return nil if open_url_string.blank?
+  def resolve(openurl, user_ip: nil)
+    # Return nil if the openurl is blank.
+    return nil if openurl.blank?
 
     # Parse Open URL params
-    open_url_params = parse_open_url(open_url_string, user_ip: user_ip)
+    open_url_params = parse_open_url(openurl, user_ip: user_ip)
     return nil if open_url_params.blank?
 
     # Compute cache key
-    cache_key = Digest::MD5.hexdigest(record_id || open_url_string)
+    cache_key = Digest::MD5.hexdigest(openurl)
 
     # Fetch from cache or Alma in case of cache miss
     Rails.cache.fetch("alma-link-resolver-#{cache_key}", expires_in: CACHE_EXPIRES_IN) do

@@ -38,3 +38,4 @@ en:
       fulltext-header: Full text access (PDF)
       further-research-header: Further research options
       header: Link-Resolver
+      timeout_error: An external service has timed out while trying to determine full text access. Please try again.

@@ -6,6 +6,8 @@ class LinkResolverController < ApplicationController
     # Check Open URL against Alma link Resolver if Open URL params present
     # in the request.
     @result = AlmaLinkResolverService.resolve(request.fullpath) # TODO: user_ip ?
+  rescue AlmaLinkResolverService::TimeoutError
+    @timeout = true
   end
 
 end

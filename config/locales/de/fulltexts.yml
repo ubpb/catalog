@@ -6,7 +6,7 @@ de:
       browse_by_browzine: Ganze Zeitschrift durchsuchen
       fulltext_by_libkey: Volltext-Zugriff via LibKey
       header: 'Volltexte für Titel: %{title}'
-      no_fulltexts: Es konnten kein Volltext-Zugriff für den Titel ermittelt werden.
+      no_fulltexts: Es konnte kein Volltext-Zugriff für den Titel ermittelt werden.
       retraction_notice:
         label: Der Titel wurde zurückgezogen
         more_info: weitere Informationen...

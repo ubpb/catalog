@@ -25,7 +25,6 @@ class RegistrationsController < ApplicationController
       UsersMailer.registration_created(@registration).deliver_later
 
       session[:registration_id] = @registration.hashed_id
-      flash[:success] = t("registrations.create.success")
       redirect_to registration_path(@registration)
     else
       render :new, status: :unprocessable_entity

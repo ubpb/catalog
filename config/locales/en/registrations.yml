@@ -41,8 +41,6 @@ en:
         </p>
       placeholder: Ihr Geburtsdatum
       submit: Autorisieren
-    create:
-      success: Die Benutzerregistrierung wurde erfolgreich abgeschlossen. Bitte beachten Sie die Hinweise unten.
     edit:
       breadcrumb: Meine Registrierung bearbeiten
       header: Meine Registrierung bearbeiten
@@ -111,25 +109,25 @@ en:
         u18: >-
           <a href="https://www.ub.uni-paderborn.de/fileadmin/ub/Dokumente_Formulare/Buergschaftserklaerung.pdf" target="_blank"><i
           class="fa-solid fa-external-link"></i> Schriftliche Einwilligung (PDF Download)</a> eines/r gesetzlichen Vertreters/in
-      header: 'Sie benötigen vor Ort bei Abholung noch folgende Unterlagen:'
+      header: 'Sie benötigen für die Abholung noch folgende Unterlagen:'
     show:
       breadcrumb: Meine Registrierung
       callout:
         pickup_info: |-
           <p>
-            Ihren Bibliotheksausweis können Sie in der Bibliothek an der Theke des Sachgebiets Ortsleihe abholen.
-            Sie können die o.g. Registrierungsnummer (Ausdruck oder elektronisch bspw. auf einem Smartphone) vorzeigen,
-            um eine schnelle Bearbeitung zu ermöglichen. Bitte beachten Sie hierbei die
-            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe">
+            Um die Registrierung abzuschließen, holen Sie bitte Ihren Bibliotheksausweis persönlich in der Bibliothek ab.
+            Bitte beachten Sie hierbei die
+            <a href="https://www.ub.uni-paderborn.de/ueber-uns/organisation/dezernat-benutzung-service/ortsleihe" class="alert-link">
             <i class="fa-solid fa-external-link"></i> Servicezeiten für Ausweise</a>.
+            Sollten Sie den Bibliotheksausweis nicht innerhalb von 30 Tagen abholen, wird Ihre Registrierung automatisch gelöscht.
           </p>
-        success: "<p>Sie haben sich erfolgreich registriert. Ihre Registrierungsnummer lautet <code>%{code}</code>.</p>\n"
+        success: "<p>Sie haben Schritt 1 der Registrierung abgeschlossen. Ihre Registrierungsnummer lautet <code>%{code}</code>.</p>"
       details:
         edit: Bearbeiten
         header: Sie haben folgende Daten eingegeben
       header: Meine Registrierung
     update:
-      success: Ihre Daten wurde erfolgreich aktualisiert.
+      success: Ihre Daten wurde aktualisiert.
     user_groups:
       emeritus:
         title: Emeritierte und im Ruhestand befindliche Professorinnen und Professoren der Universität Paderborn

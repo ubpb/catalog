@@ -5,6 +5,8 @@ de:
     index:
       browse_by_browzine: Ganze Zeitschrift durchsuchen
       fulltext_by_libkey: Volltext-Zugriff via LibKey
+      further_research:
+        header: Weitere Recherchemöglichkeiten
       header: 'Volltexte für Titel: %{title}'
       no_fulltexts: Es konnte kein Volltext-Zugriff für den Titel ermittelt werden.
       retraction_notice:

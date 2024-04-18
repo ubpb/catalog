@@ -5,6 +5,8 @@ en:
     index:
       browse_by_browzine: Browse entire journal
       fulltext_by_libkey: Full text access via LibKey
+      further_research:
+        header: Further research options
       header: 'Full texts for title: %{title}'
       no_fulltexts: No full text access could be determined for the title.
       retraction_notice:

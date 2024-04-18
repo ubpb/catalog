@@ -61,19 +61,24 @@ class FulltextService < ApplicationService
     # This is the case for CDI records that are not "direct link" records.
     # We use the open URL record information (that is part of the CDI record data)
     # to resolve the fulltext links with the Alma Link Resolver.
+    alma_link_resolver_context = nil
     if AlmaLinkResolverService.enabled? &&
         (openurl = record.resolver_link&.url).present? &&
         only?(only, "alma")
       begin
-        AlmaLinkResolverService.resolve(openurl)&.fulltext_services&.tap do |services|
-          services.each do |service|
-            results << Result.new(
-              source: "alma",
-              url: service.fulltext_url,
-              label: service.package_name,
-              coverage: service.availability,
-              note: service.public_note
-            )
+        AlmaLinkResolverService.resolve(openurl)&.tap do |result|
+          alma_link_resolver_context = result&.context
+
+          result&.fulltext_services&.tap do |services|
+            services.each do |service|
+              results << Result.new(
+                source: "alma",
+                url: service.fulltext_url,
+                label: service.package_name,
+                coverage: service.availability,
+                note: service.public_note
+              )
+            end
           end
         end
       rescue AlmaLinkResolverService::TimeoutError
@@ -82,7 +87,7 @@ class FulltextService < ApplicationService
     end
 
     # Return results
-    Results.new(results: results, service_had_timeout: service_had_timeout)
+    Results.new(results: results, service_had_timeout: service_had_timeout, alma_link_resolver_context: alma_link_resolver_context)
   end
 
   private

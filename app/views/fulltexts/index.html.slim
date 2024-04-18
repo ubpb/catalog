@@ -16,26 +16,8 @@
         li.list-group-item.p-2
           .alert.alert-warning.mb-2.p-2 = t(".no_fulltexts")
 
-          h5.fs-6 = t(".search_link.header")
-          - if current_search_scope != :local
-            div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}")), target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.catalog")
-
-          - if current_search_scope != :cdi
-            div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("?sr[q,title]=#{@record.title}"), search_scope: "cdi"), target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.cdi")
-
-          - if @record.is_monograph?
-            div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@record.title}", target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.interlibrary_loan.book")
-
-          - if @record.is_journal?
-            div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{@record.title}", target: "_blank" do
-              i.fa-solid.fa-external-link.fa-fw.me-1
-              = t(".search_link.interlibrary_loan.journal")
+          - if current_search_scope == :cdi && (context = @fulltext_service_results.alma_link_resolver_context).present?
+            = render "link_resolver/further_research", context: context
       - else
           - additional_results = @fulltext_service_results[1..-1]
           - @fulltext_service_results.each do |result|

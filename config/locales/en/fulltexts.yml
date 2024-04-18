@@ -10,13 +10,6 @@ en:
       retraction_notice:
         label: The title has been retracted
         more_info: more information...
-      search_link:
-        catalog: Suche the library catalog
-        cdi: Search in the Central Discovery Index (CDI)
-        header: Further search options
-        interlibrary_loan:
-          book: Book search via interlibrary loan
-          journal: Search for journals via interlibrary loan
       service_timeout_error: >-
         At least one service has timed out while trying to determine full text access. There may be other links that are not
         displayed. Please try again again later.

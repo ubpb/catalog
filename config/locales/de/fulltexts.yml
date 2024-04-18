@@ -10,13 +10,6 @@ de:
       retraction_notice:
         label: Der Titel wurde zurückgezogen
         more_info: weitere Informationen...
-      search_link:
-        catalog: Suche im Bibliotheksbestand
-        cdi: Suche im Central Discovery Index (CDI)
-        header: Weitere Recherchemöglichkeiten
-        interlibrary_loan:
-          book: Buchsuche über die Fernleihe
-          journal: Zeitschriftensuche über die Fernleihe
       service_timeout_error: >-
         Beim Versuch, den Volltextzugriff zu ermitteln, hat mindestens ein Dienst eine Zeitüberschreitung erreicht. Möglicherweise
         gibt es weitere Links, die nicht angezeigt werden. Bitte versuchen es später erneut.

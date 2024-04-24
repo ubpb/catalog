@@ -17,6 +17,7 @@ class BibtexExporter
 
       # more complex mappings
       parse_author      record, bibtex_representation
+      parse_editor      record, bibtex_representation
       parse_identifiers record, bibtex_representation
       parse_series      record, bibtex_representation
       parse_type        record, bibtex_representation
@@ -39,6 +40,19 @@ class BibtexExporter
     bibtex_representation["author"] =
       record.creators
       .presence
+      &.filter { |creator| creator.relationships != ["edt"] }
+      &.map(&:name)
+      &.join(" and ")
+
+
+  end
+
+  def self.parse_editor(record, bibtex_representation)
+
+    bibtex_representation["editor"] =
+      record.creators
+      .presence
+      &.filter { |creator| creator.relationships.include?("edt") }
       &.map(&:name)
       &.join(" and ")
   end

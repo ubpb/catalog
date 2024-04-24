@@ -43,8 +43,6 @@ class BibtexExporter
       &.filter { |creator| creator.relationships != ["edt"] }
       &.map(&:name)
       &.join(" and ")
-
-
   end
 
   def self.parse_editor(record, bibtex_representation)

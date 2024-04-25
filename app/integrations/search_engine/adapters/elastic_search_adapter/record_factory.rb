@@ -112,6 +112,14 @@ module SearchEngine::Adapters
         normalize_array(source_value(data, "issns")).each do |value|
           identifiers << SearchEngine::Identifier.new(type: :issn, value: value)
         end
+        # DOIs
+        normalize_array(source_value(data, "dois")).each do |value|
+          identifiers << SearchEngine::Identifier.new(type: :doi, value: value)
+        end
+        # URNs
+        normalize_array(source_value(data, "urns")).each do |value|
+          identifiers << SearchEngine::Identifier.new(type: :urn, value: value)
+        end
         # other
         normalize_array(source_value(data, "additional_identifiers")).each do |composed_identifier|
           # Additional identifiers are expected in composed form (TYPE)VALUE.

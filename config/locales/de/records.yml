@@ -15,6 +15,7 @@ de:
         isbn: ISBN
         issn: ISSN
         oclc: OCLC-Nummer
+        urn: URN
         zdb: ZDB-ID
       is_part_of: Ist Teil von
       languages: Sprache

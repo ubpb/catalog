@@ -144,6 +144,9 @@ dl.key-value-list
         / DOI
         = optional_value(@record.additional_identifiers.select{|i| i.type == :doi}.map(&:value)) do |ids|
           div = "#{t(".identifiers.doi")}: #{ids.join(", ")}"
+        / URN
+        = optional_value(@record.additional_identifiers.select{|i| i.type == :urn}.map(&:value)) do |ids|
+          div = "#{t(".identifiers.urn")}: #{ids.join(", ")}"
         / ZDB ID
         = optional_value(@record.zdb_id) do |id|
           div = "#{t(".identifiers.zdb")}: #{id}"

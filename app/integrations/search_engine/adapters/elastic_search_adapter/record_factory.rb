@@ -295,7 +295,7 @@ module SearchEngine::Adapters
         end
       end
 
-    private # Helper
+      private # Helper
 
       def source_value(data, key, *identifiers)
         data["_source"].dig(key, *identifiers).presence

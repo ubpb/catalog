@@ -78,7 +78,6 @@ class SearchEngine
     # Secondary form data
     attribute :secondary_form, SecondaryForm.optional
 
-
     def is_superorder?
       self.is_superorder
     end

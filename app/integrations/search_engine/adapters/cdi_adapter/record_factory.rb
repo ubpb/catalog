@@ -30,7 +30,8 @@ module SearchEngine::Adapters
           is_part_of: get_is_part_of(xml),
           source: get_source(xml),
           resolver_link: get_resolver_link(xml),
-          fulltext_links: get_fulltext_links(xml)
+          fulltext_links: get_fulltext_links(xml),
+          is_open_access: get_is_open_access(xml)
         )
       end
 
@@ -174,6 +175,10 @@ module SearchEngine::Adapters
           &.map(&:presence)
           &.compact
           &.inject({}){|memo, s| memo[s[0]] = s[1..-1]; memo}
+      end
+
+      def get_is_open_access(xml)
+        xml.at_xpath("//display/oa")&.text&.present?
       end
 
     end

@@ -27,6 +27,10 @@ ruby:
         / Tools
         .float-end
           .d-flex.mb-2.d-print-none
+            / Open Access
+            - if record.is_open_access?
+              = image_tag "oa-logo.svg", alt: "Open Access", style: "height: 1.8em;"
+
             / Note add button
             - if enable_notes
               .btn.btn-outline-primary.btn-sm.ms-2(
@@ -59,7 +63,6 @@ ruby:
         / Title
         h5.mb-0.text-break
           = link_to record.title, show_record_path(record, search_request: @search_request, search_scope: search_scope)
-
 
       / Part of...
       = optional_value(record.is_part_of) do |is_part_of|

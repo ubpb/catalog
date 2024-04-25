@@ -9,6 +9,8 @@ class SearchEngine
     attribute :is_online_resource, Types::Bool.default(false)
     # Is the record a superorder
     attribute :is_superorder, Types::Bool.default(false)
+    # Is Open Access
+    attribute :is_open_access, Types::Bool.default(false)
 
     # Resource type
     attribute :resource_type, Types::String.default("unspecified".freeze)
@@ -79,38 +81,42 @@ class SearchEngine
     attribute :secondary_form, SecondaryForm.optional
 
     def is_superorder?
-      self.is_superorder
+      is_superorder
+    end
+
+    def is_open_access?
+      is_open_access
     end
 
     def is_online_resource?
-      self.is_online_resource
+      is_online_resource
     end
 
     def is_deleted?
-      self.is_deleted
+      is_deleted
     end
 
     def is_secondary_form?
-      self.secondary_form.present?
+      secondary_form.present?
     end
 
     def is_journal?
-      self.resource_type == "journal"
+      resource_type == "journal"
     end
 
     def is_journal_stücktitel?
-      self.resource_type == "monograph" && self.call_numbers.any?{|c| c.start_with?(/\d/)}
+      resource_type == "monograph" && call_numbers.any? { |c| c.start_with?(/\d/) }
     end
 
     def is_newspaper?
-      self.resource_type == "newspaper"
+      resource_type == "newspaper"
     end
 
     def first_isbn13
-      isbn13 = self.additional_identifiers.select{|i| i.type == :isbn && i.value&.length >= 13}.first
+      isbn13 = additional_identifiers.find { |i| i.type == :isbn && (i.value&.length&.>= 13) }
 
-      #get and strip the value
-      isbn13&.value&.presence&.gsub("-", "")&.delete(" ").presence
+      # get and strip the value
+      isbn13&.value&.presence&.delete("-")&.delete(" ").presence
     end
   end
 end

@@ -12,6 +12,7 @@ module SearchEngine::Adapters
           is_deleted: get_is_deleted(data),
           is_online_resource: get_is_online_resource(data),
           is_superorder: get_is_superorder(data),
+          is_open_access: get_is_open_access(data),
 
           resource_type: get_resource_type(data),
           material_type: get_material_type(data),
@@ -72,6 +73,10 @@ module SearchEngine::Adapters
 
       def get_is_superorder(data)
         source_value(data, "meta", "is_superorder")
+      end
+
+      def get_is_open_access(data)
+        source_value(data, "meta", "is_open_access")
       end
 
       def get_resource_type(data)

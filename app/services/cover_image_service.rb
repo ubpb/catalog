@@ -1,7 +1,7 @@
 class CoverImageService < ApplicationService
 
   ENABLED          = Config[:cover, :enabled, default: false]
-  TIMEOUT          = Config[:cover, :timeout, default: 2.0]
+  TIMEOUT          = Config[:cover, :timeout, default: 5.0]
   CACHE_EXPIRES_IN = Config[:cover, :cache_expires_in, default: 7.days]
 
   class << self

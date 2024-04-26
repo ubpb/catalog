@@ -77,6 +77,7 @@ class LibKeyService < ApplicationService
     @api_client ||= Faraday.new(
       BASE_URL,
       request: {
+        open_timeout: API_TIMEOUT,
         timeout: API_TIMEOUT
       },
       params: {

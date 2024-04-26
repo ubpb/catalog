@@ -64,6 +64,7 @@ class AlmaLinkResolverService < ApplicationService
   def api_client
     @api_client ||= Faraday.new(
       request: {
+        open_timeout: API_TIMEOUT,
         timeout: API_TIMEOUT
       },
       headers: {

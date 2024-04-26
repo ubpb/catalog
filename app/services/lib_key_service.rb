@@ -66,7 +66,9 @@ class LibKeyService < ApplicationService
   end
 
   def resolve_cover_image(record)
-    resolve(record)&.cover_image_url
+    if (doi = record.first_doi).present?
+      resolve(doi)&.cover_image_url
+    end
   rescue
     nil
   end

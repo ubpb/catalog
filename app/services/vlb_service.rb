@@ -1,8 +1,8 @@
 class VlbService < ApplicationService
 
-  ENABLED = Config[:cover_images, :enabled, default: false]
-  BASE_URL = Config[:cover_images, :base_url, default: "https://api.vlb.de/api/v1/cover"]
-  ACCESS_TOKEN = Config[:cover_images, :access_token, default: ""]
+  ENABLED = Config[:vlb, :enabled, default: false]
+  BASE_URL = Config[:vlb, :base_url, default: "https://api.vlb.de/api/v1/cover"]
+  ACCESS_TOKEN = Config[:vlb, :access_token, default: ""]
 
   class << self
     delegate :resolve_cover_image, to: :new

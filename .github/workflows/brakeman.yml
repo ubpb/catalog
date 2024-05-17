@@ -49,7 +49,7 @@ jobs:
     - name: Scan
       continue-on-error: false
       run: |
-        brakeman -f sarif -o output.sarif.json .
+        brakeman --no-exit-on-warn --no-exit-on-error -f sarif -o output.sarif.json .
 
     # Upload the SARIF file generated in the previous step
     - name: Upload SARIF

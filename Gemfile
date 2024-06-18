@@ -35,19 +35,19 @@ group :production do
 end
 
 group :development, :test do
-  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "debug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
+  gem "capistrano", "~> 3.11"
   gem "capistrano-bundler", "~> 2.0"
   gem "capistrano-passenger", "~> 0.2"
   gem "capistrano-rails", "~> 1.6"
   gem "capistrano-rvm", "~> 0.1"
-  gem "capistrano", "~> 3.11"
   gem "i18n-debug", ">= 1.2"
   gem "i18n-tasks", ">= 1.0"
   gem "letter_opener_web", ">= 2.0"
-  gem "ubpb-rubocop-config", github: "ubpb/rubocop-config", branch: "main", require: "ubpb/rubocop-config"
+  gem "rubocop-ubpb", github: "ubpb/rubocop-ubpb"
   gem "web-console", ">= 3.3"
 end
 

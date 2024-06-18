@@ -8,6 +8,7 @@ gem "alma_api", "~> 2.0"
 gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.1", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
+gem "csv", "~> 3.0"
 gem "dry-struct", "~> 1.4"
 gem "elasticsearch", "~> 8.12"
 gem "faraday", "~> 2.7", "< 3"

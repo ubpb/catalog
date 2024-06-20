@@ -13,6 +13,10 @@ en:
           Your current PIN is required to change the PIN. If you have forgotten your current PIN, please contact the staff
           at the local circulation desk.
         pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
+      proxy_user:
+        note: "Sie können hier eine Notiz hinterlegen, warum Sie diesen Proxy-User eingerichtet haben."
+        expired_at: >-
+          Wenn Sie hier ein Datum angeben (z.B. Semesterende), wird der Proxy-User automatisch nach diesem Tag gelöscht.
     labels:
       defaults:
         activation_code: Activation code

@@ -3,7 +3,6 @@
     = t(".header")
   .card-body
     - if @context
-
       dl.key-value-list
         - if @context.authors.present?
           dt = t(".authors")
@@ -71,4 +70,5 @@
                         i.fa-solid.fa-external-link.fa-fw.me-1
                         = t(".search_link.interlibrary_loan.journal")
     - else
-      .callout.callout-danger.mb-0 = t(".error")
+      turbo-frame#link-resolver-results
+        .callout.callout-danger.mb-0 = t(".error")

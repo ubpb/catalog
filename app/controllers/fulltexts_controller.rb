@@ -4,7 +4,7 @@ class FulltextsController < RecordsController
 
   def index
     @fulltext_service_results = FulltextService.resolve(@record)
-  rescue => e
+  rescue StandardError => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
 
     if (cause = e.cause)

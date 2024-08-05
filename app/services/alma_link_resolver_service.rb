@@ -23,7 +23,7 @@ class AlmaLinkResolverService < ApplicationService
 
   end
 
-  def initialize
+  def initialize # rubocop:disable Lint/MissingSuper
     raise DisabledError unless self.class.enabled?
   end
 

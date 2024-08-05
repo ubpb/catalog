@@ -5,11 +5,13 @@ class CoverImageService < ApplicationService
   CACHE_EXPIRES_IN = Config[:cover, :cache_expires_in, default: 7.days]
 
   class << self
+
     delegate :resolve, to: :new
 
     def enabled?
       ENABLED
     end
+
   end
 
   #
@@ -23,13 +25,13 @@ class CoverImageService < ApplicationService
 
     Rails.cache.fetch("cover-image-#{cache_key}", expires_in: CACHE_EXPIRES_IN, force: force) do
       # Try LibKey
-      if ENABLED && LibKeyService.enabled?
+      if self.class.enabled? && LibKeyService.enabled?
         url = LibKeyService.resolve_cover_image(record)
         return cover_image(url) if url.present?
       end
 
       # Try VLB
-      if ENABLED && VlbService.enabled?
+      if self.class.enabled? && VlbService.enabled?
         url = VlbService.resolve_cover_image(record)
         return cover_image(url) if url.present?
       end
@@ -50,7 +52,7 @@ class CoverImageService < ApplicationService
     ) do |faraday|
       faraday.response :raise_error
     end.get(url)&.body
-  rescue
+  rescue # rubocop:disable Style/RescueStandardError
     placeholder_image
   end
 

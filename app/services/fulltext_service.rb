@@ -1,7 +1,9 @@
 class FulltextService < ApplicationService
 
   class << self
+
     delegate :resolve, to: :new
+
   end
 
   #
@@ -20,8 +22,8 @@ class FulltextService < ApplicationService
     # Try to resolve the fulltext links via LibKey if LibKey is enabled
     # and if the record has a DOI or PMID.
     if LibKeyService.enabled? &&
-        (doi_or_pmid = record.first_doi || record.first_pmid).present? &&
-        only?(only, "libkey")
+       (doi_or_pmid = record.first_doi || record.first_pmid).present? &&
+       only?(only, "libkey")
       begin
         LibKeyService.resolve(doi_or_pmid)&.tap do |result|
           results << Result.new(
@@ -42,7 +44,7 @@ class FulltextService < ApplicationService
     # This is the case for local records that have been published by Alma General Publishing
     # and processed through our pub pipeline. This is also the case for CDI "direct link" records.
     if record.fulltext_links.present? &&
-        only?(only, "record")
+       only?(only, "record")
       record.fulltext_links.each do |link|
         results << Result.new(
           source: "record",
@@ -63,8 +65,8 @@ class FulltextService < ApplicationService
     # to resolve the fulltext links with the Alma Link Resolver.
     alma_link_resolver_context = nil
     if AlmaLinkResolverService.enabled? &&
-        (openurl = record.resolver_link&.url).present? &&
-        only?(only, "alma")
+       (openurl = record.resolver_link&.url).present? &&
+       only?(only, "alma")
       begin
         AlmaLinkResolverService.resolve(openurl)&.tap do |result|
           alma_link_resolver_context = result&.context

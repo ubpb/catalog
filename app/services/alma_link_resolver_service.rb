@@ -55,9 +55,8 @@ class AlmaLinkResolverService < ApplicationService
     end
   rescue Faraday::TimeoutError
     raise TimeoutError
-  rescue Faraday::Error => e
-    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
-    raise Error
+  rescue Faraday::Error
+    nil # Resource not found
   rescue StandardError => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error

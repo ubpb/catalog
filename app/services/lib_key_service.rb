@@ -4,7 +4,7 @@ class LibKeyService < ApplicationService
   API_KEY          = Config[:lib_key, :api_key, default: ""]
   LIBRARY_ID       = Config[:lib_key, :library_id, default: ""]
   API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 5.0]
-  CACHE_EXPIRES_IN = Config[:lib_key, :cache_expires_in, default: 24.hours]
+  CACHE_EXPIRES_IN = Config[:lib_key, :cache_expires_in, default: 12.hours]
 
   BASE_URL = "https://api.thirdiron.com/public/v1/libraries/#{LIBRARY_ID}/".freeze
 
@@ -15,12 +15,14 @@ class LibKeyService < ApplicationService
   class DisabledError < Error; end
 
   class << self
+
     delegate :resolve, to: :new
     delegate :resolve_cover_image, to: :new
 
     def enabled?
       ENABLED && API_KEY.present? && LIBRARY_ID.present?
     end
+
   end
 
   def initialize
@@ -43,6 +45,7 @@ class LibKeyService < ApplicationService
       # Parse LibKey result
       url = libkey_result.dig("data", "fullTextFile")
       return nil if url.blank?
+
       # .. some optional values
       browzine_url = libkey_result.dig("data", "browzineWebLink")
       retraction_notice_url = libkey_result.dig("data", "retractionNoticeUrl")
@@ -58,9 +61,10 @@ class LibKeyService < ApplicationService
     end
   rescue Faraday::TimeoutError
     raise TimeoutError
-  rescue Faraday::Error
-    nil
-  rescue => e
+  rescue Faraday::Error => e
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+    raise Error
+  rescue StandardError => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error
   end
@@ -69,7 +73,7 @@ class LibKeyService < ApplicationService
     if (doi = record.first_doi).present?
       resolve(doi)&.cover_image_url
     end
-  rescue
+  rescue StandardError
     nil
   end
 

@@ -1,10 +1,11 @@
 class AlmaLinkResolverService < ApplicationService
+
   include Utils
 
   ENABLED          = Config[:alma_link_resolver, :enabled, default: false]
   BASE_URL         = Config[:alma_link_resolver, :base_url]
   API_TIMEOUT      = Config[:alma_link_resolver, :api_timeout, default: 5.0]
-  CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 24.hours]
+  CACHE_EXPIRES_IN = Config[:alma_link_resolver, :cache_expires_in, default: 12.hours]
 
   class Error < StandardError; end
 
@@ -13,11 +14,13 @@ class AlmaLinkResolverService < ApplicationService
   class DisabledError < Error; end
 
   class << self
+
     delegate :resolve, to: :new
 
     def enabled?
       ENABLED && BASE_URL.present?
     end
+
   end
 
   def initialize
@@ -52,9 +55,10 @@ class AlmaLinkResolverService < ApplicationService
     end
   rescue Faraday::TimeoutError
     raise TimeoutError
-  rescue Faraday::Error
-    nil
-  rescue => e
+  rescue Faraday::Error => e
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+    raise Error
+  rescue StandardError => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error
   end

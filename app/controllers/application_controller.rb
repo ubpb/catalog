@@ -81,7 +81,7 @@ class ApplicationController < ActionController::Base
 
     campus_networks.any? do |network|
       IPAddr.new(network) === ip_address
-    end
+    end || Rails.env.development?
   end
 
   def breadcrumb

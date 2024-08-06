@@ -2,23 +2,43 @@
 de:
   link_resolver:
     breadcrumb: Link-Resolver
-    fulltext_service:
-      free_resource: Freie Ressource
-    show:
-      atitle: Artikel
+    context:
+      article_title: Artikel
       authors: Autor(en)
-      date_of_publication: Erscheinungsjahr
-      error: 'Fehler: Es konnte kein Ergebnis ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
-      further_research: Weitere Recherchemöglichkeiten
-      header: Link-Resolver
-      header_found: Es wurden folgende elektronische Volltexte gefunden
-      no_results: Leider kein Volltext verfügbar.
+      edition: Auflage
+      ids: Identifikatoren
+      issue: Heft
+      journal_or_book_title: Titel
+      pages: Seiten
       place_of_publication: Ort
       publisher: Verlag
+      volume: Band
+      year_of_publication: Erscheinungsjahr
+    fulltext_services:
+      free_resource: Freie Ressource
+    further_research:
       search_link:
         catalog: Suche im Bibliotheksbestand
+        catalog_description: >-
+          Suche nach weiteren Exemplaren des Werkes, z.B. Ausgaben in Print, alternative elektronische Ausgaben, andere Auflagen
+          etc.
         cdi: Suche im Central Discovery Index (CDI)
+        cdi_description: >-
+          Neue Suche in unserem großen Datenpool an lizenzierten E-Journals, E-Books u.a. Online-Publikationen. Verwenden
+          Sie ggf. auch verwandte Suchbegriffe.
         interlibrary_loan:
           book: Buchsuche über die Fernleihe
+          book_description: Geben Sie bei Bedarf direkt eine Fernleihbestellung auf.
           journal: Zeitschriftensuche über die Fernleihe
-      title: Titel
+          journal_description: Geben Sie bei Bedarf direkt eine Fernleihbestellung auf.
+    no_fulltexts:
+      no_results: Leider kein Volltext verfügbar.
+    show:
+      context-header: Folgender Titel konnte gefunden werden
+      error: 'Fehler: Es konnte kein Titel ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
+      fulltext-header: Volltextzugriff (PDF)
+      further-research-header: Weitere Recherchemöglichkeiten
+      header: Link-Resolver
+      timeout_error: >-
+        Beim Versuch, den Volltextzugriff zu ermitteln, hat ein externer Dienst eine Zeitüberschreitung erreicht. Bitte versuchen
+        es erneut.

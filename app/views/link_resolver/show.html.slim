@@ -1,74 +1,29 @@
-.card.card-shadowed
+.card
   .card-header
     = t(".header")
   .card-body
-    - if @context
-
-      dl.key-value-list
-        - if @context.authors.present?
-          dt = t(".authors")
-          dd = @context.authors
-
-        - if @context.value("rft.atitle").present?
-          dt = t(".atitle")
-          dd = @context.value("rft.atitle")
-
-        - if @context.title.present?
-          dt = t(".title")
-          dd = @context.title
-
-        - if @context.publisher.present?
-          dt = t(".publisher")
-          dd = @context.publisher
-
-        - if @context.place_of_publication.present?
-          dt = t(".place_of_publication")
-          dd = @context.place_of_publication
-
-        - if @context.date_of_publication.present?
-          dt = t(".date_of_publication")
-          dd = @context.date_of_publication
-
-      turbo-frame#link-resolver-results
-        - if @fulltext_services.present?
-          h5.fs-6 = t(".header_found")
-
-          ul.list-group
-            - @fulltext_services.each do |fulltext_service|
-              li.list-group-item = render "fulltext_service", service: fulltext_service
-        - else
-          .callout.callout-warning.mb-0
-            i.fa-solid.fa-ban.fa-lg
-            =< t(".no_results")
-
-          - if @context.title.present?
-            h5.fs-6.mt-3 = t(".further_research")
-            ul.list-group
-              li.list-group-item
-                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                  .ms-0
-                    div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}")), target: "_blank" do
-                      i.fa-solid.fa-external-link.fa-fw.me-1
-                      = t(".search_link.catalog")
-              li.list-group-item
-                .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                  .ms-0
-                    div = link_to new_search_request_path(SearchEngine::SearchRequest.parse("sr[q,title]=#{@context.title}"), search_scope: "cdi"), target: "_blank" do
-                      i.fa-solid.fa-external-link.fa-fw.me-1
-                      = t(".search_link.cdi")
-              - if @context.is_book?
-                li.list-group-item
-                  .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                    .ms-0
-                      div = link_to "https://ub-paderborn.digibib.net/ill/books/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
-                        i.fa-solid.fa-external-link.fa-fw.me-1
-                        = t(".search_link.interlibrary_loan.book")
-              - if @context.is_journal?
-                li.list-group-item
-                  .d-flex.align-items-center.align-items-md-center.flex-column.flex-md-row
-                    .ms-0
-                      div = link_to "https://ub-paderborn.digibib.net/ill/articles/list?start=1&count=20&q-ti=#{@context.title}", target: "_blank" do
-                        i.fa-solid.fa-external-link.fa-fw.me-1
-                        = t(".search_link.interlibrary_loan.journal")
+    - if @timeout
+      .alert.alert-danger.mb-0
+        i.fa-solid.fa-hourglass.fa-fw.me-2
+        = t(".timeout_error")
     - else
-      .callout.callout-danger.mb-0 = t(".error")
+      - if @result.blank? || @result.context.blank?
+        .callout.callout-danger.mb-0 = t(".error")
+      - else
+        .mt-0
+          h5.mt-0 = t(".context-header")
+          = render "context", context: @result.context
+
+        .mt-3
+          h5.mt-0
+            i.fa-solid.fa-cloud-arrow-down.fa-fw.me-2
+            = t(".fulltext-header")
+          - if @result.fulltext_services.present?
+            = render "fulltext_services", fulltext_services: @result.fulltext_services
+          - else
+            = render "no_fulltexts"
+
+        - if @result.fulltext_services.blank?
+          .mt-3
+            h5.mt-0 = t(".further-research-header")
+            = render "further_research", context: @result.context

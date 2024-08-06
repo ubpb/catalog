@@ -30,6 +30,7 @@ de:
       citations:
         bibtex: BibTeX
         header: Datensatz exportieren als...
+      fulltext_links: Volltextzugriff (PDF)
       journal_stock: 'Zeitschriftenbestand:'
       notes:
         add: Hinzufügen
@@ -42,13 +43,6 @@ de:
         no_user: Bitte anmelden um Notizen zu nutzen
         placeholder: Notiz
         save: Speichern
-      online_resource:
-        direct_link: Direkt zur Online-Ressource
-        resolver_link: Verfügbarkeit prüfen
-      show_less: Weniger anzeigen
-      show_more_links:
-        one: Einen weiteren Link anzeigen
-        other: "%{count} weitere Links anzeigen"
     request_hints:
       invalid_after_validation: Die Suchanfrage war fehlerhaft und konnte nicht ausgeführt werden. Bitte versuchen Sie es
         erneut.

@@ -100,6 +100,11 @@ class SearchEngine
       secondary_form.present?
     end
 
+    # TODO: books comes from CDI. We need to align Alma resource types with CDI resource types.
+    def is_monograph?
+      resource_type == "monograph" || resource_type == "book"
+    end
+
     def is_journal?
       resource_type == "journal"
     end
@@ -117,6 +122,16 @@ class SearchEngine
 
       # get and strip the value
       isbn13&.value&.presence&.delete("-")&.delete(" ").presence
+    end
+
+    def first_doi
+      doi = additional_identifiers.find { |i| i.type == :doi }
+      doi&.value&.presence&.strip&.delete(" ").presence
+    end
+
+    def first_pmid
+      pmid = additional_identifiers.find { |i| i.type == :pmid }
+      pmid&.value&.presence&.strip&.delete(" ").presence
     end
   end
 end

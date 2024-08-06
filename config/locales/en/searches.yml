@@ -28,6 +28,7 @@ en:
       citations:
         bibtex: BibTeX
         header: Export record as...
+      fulltext_links: Full text access (PDF)
       journal_stock: 'Journal holdings:'
       notes:
         add: Add
@@ -40,13 +41,6 @@ en:
         no_user: Please login to create and edit notes
         placeholder: Note
         save: Save
-      online_resource:
-        direct_link: Go directly to the online resource
-        resolver_link: Check availability
-      show_less: Show less
-      show_more_links:
-        one: Show one additional link
-        other: Show %{count} more links
     request_hints:
       invalid_after_validation: The search query was incorrect and could not be executed. Please try again.
       query_syntax_error: Your search query contained invalid characters or invalid character combinations.

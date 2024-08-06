@@ -1,0 +1,67 @@
+.card
+  .card-header
+    h5.mb-0
+      span.me-2 = link_to record_path(id: @record.id, search_scope: current_search_scope) do
+        i.fa-solid.fa-angle-left
+      = t(".header", title: @record.title)
+
+  turbo-frame#fulltexts
+    ul.list-group.list-group-flush(data-controller="expandable-list" data-expandable-list-target="list" data-expandable-list-item-count-value="1")
+      - if @fulltext_service_results.service_had_timeout?
+        .alert.alert-danger.mb-1.p-2.rounded-0
+          i.fa-solid.fa-hourglass-end.fa-fw.me-1
+          = t(".service_timeout_error")
+
+      - if @fulltext_service_results.blank?
+        li.list-group-item.p-2
+          .alert.alert-warning.mb-0.p-2 = t(".no_fulltexts")
+
+          - if current_search_scope == :cdi && (context = @fulltext_service_results.alma_link_resolver_context).present?
+            .mt-2
+              = link_to "#further-research", data: { "bs-toggle": "collapse" } do
+                i.fa-solid.fa-angle-down.fa-fw.me-1
+                = t(".further_research.header")
+              #further-research.collapse
+                = render "link_resolver/further_research", context: context
+      - else
+          - additional_results = @fulltext_service_results[1..-1]
+          - @fulltext_service_results.each do |result|
+            li.list-group-item.p-2(data-expandable-list-target="item")
+              div
+                = link_to result.url, target: "_blank" do
+                  i.fa-solid.fa-external-link.fa-fw.me-2
+                  - if result.source == "libkey"
+                    = t(".fulltext_by_libkey")
+                  - elsif result.label.present?
+                    = result.label
+                  - else
+                    = result.url
+
+                - if (retraction_notice_url = result.retraction_notice_url).present?
+                  span.ms-3.text-danger = t(".retraction_notice.label")
+                  span.ms-1 = link_to retraction_notice_url, target: "_blank", class: "link-danger" do
+                    = "(#{t(".retraction_notice.more_info")})"
+
+              - if result.source == "libkey"
+                - if (browzine_url = result.options[:browzine_url]).present?
+                  div = link_to browzine_url, target: "_blank" do
+                    i.fa-solid.fa-external-link.fa-fw.me-2
+                    = t(".browse_by_browzine")
+
+              - if result.coverage
+                div.text-success: em = result.coverage
+
+              - if result.note
+                div: em == result.note
+
+          - if additional_results.present?
+            li.list-group-item.p-2
+              .fw-normal(data-expandable-list-target="expand")
+                  a(href="#expand" data-action="click->expandable-list#expand")
+                    i.fa-solid.fa-angles-down.fa-fw
+                    =< t(".show_more", count: additional_results.count)
+
+              .fw-normal(data-expandable-list-target="collapse")
+                  a(href="#collapse" data-action="click->expandable-list#collapse")
+                    i.fa-solid.fa-angles-up.fa-fw
+                    =< t(".show_less")

@@ -16,7 +16,7 @@ class RecordsController < ApplicationController
     end
   end
 
-private
+  private
 
   def augment_journal_stock_locations(record)
     record.journal_stocks.each do |js|
@@ -90,7 +90,7 @@ private
       end
     end
 
-    return true
+    true
   end
 
   def find_previous_and_next_record(search_request)

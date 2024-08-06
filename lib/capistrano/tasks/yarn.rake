@@ -5,7 +5,7 @@ namespace :app do
     task :install do
       on roles(:app, :web), in: :parallel do |host|
         within release_path do
-          execute("cd #{release_path} && ./bin/yarn install")
+          execute("cd #{release_path} && bundle exec ./bin/yarn install")
         end
       end
     end

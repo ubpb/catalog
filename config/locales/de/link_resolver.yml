@@ -36,7 +36,7 @@ de:
     show:
       context-header: Folgender Titel konnte gefunden werden
       error: 'Fehler: Es konnte kein Titel ermittelt werden. Die aufgerufene URL ist nicht korrekt.'
-      fulltext-header: Volltext-Zugriff (PDF)
+      fulltext-header: Volltextzugriff (PDF)
       further-research-header: Weitere Recherchemöglichkeiten
       header: Link-Resolver
       timeout_error: >-

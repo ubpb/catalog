@@ -17,6 +17,7 @@ class FulltextService < ApplicationService
 
     # Initialize variables
     service_had_timeout = false
+    service_had_error = false
     results = []
 
     # Try to resolve the fulltext links via LibKey if LibKey is enabled
@@ -37,6 +38,8 @@ class FulltextService < ApplicationService
         end
       rescue LibKeyService::TimeoutError
         service_had_timeout = true
+      rescue LibKeyService::Error
+        service_had_error = true
       end
     end
 
@@ -85,11 +88,18 @@ class FulltextService < ApplicationService
         end
       rescue AlmaLinkResolverService::TimeoutError
         service_had_timeout = true
+      rescue AlmaLinkResolverService::Error
+        service_had_error = true
       end
     end
 
     # Return results
-    Results.new(results: results, service_had_timeout: service_had_timeout, alma_link_resolver_context: alma_link_resolver_context)
+    Results.new(
+      results: results,
+      service_had_timeout: service_had_timeout,
+      service_had_error: service_had_error,
+      alma_link_resolver_context: alma_link_resolver_context
+    )
   end
 
   private

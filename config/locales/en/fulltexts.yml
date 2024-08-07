@@ -12,8 +12,8 @@ en:
       retraction_notice:
         label: The title has been retracted
         more_info: more information...
-      service_timeout_error: >-
-        At least one service has timed out while trying to determine full text access. There may be other links that are not
+      service_error: >-
+        At least one service had an error while trying to determine full text access. There may be other links that are not
         displayed. Please try again again later.
       show_less: show only the first result
       show_more:

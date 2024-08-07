@@ -7,10 +7,10 @@
 
   turbo-frame#fulltexts
     ul.list-group.list-group-flush(data-controller="expandable-list" data-expandable-list-target="list" data-expandable-list-item-count-value="1")
-      - if @fulltext_service_results.service_had_timeout?
-        .alert.alert-danger.mb-1.p-2.rounded-0
-          i.fa-solid.fa-hourglass-end.fa-fw.me-1
-          = t(".service_timeout_error")
+      - if @fulltext_service_results.service_had_timeout? || @fulltext_service_results.service_had_error?
+        .alert.alert-warning.mb-1.p-2.rounded-0.border-0.border-bottom
+          i.fa-solid.fa-exclamation-triangle.fa-fw.me-1
+          = t(".service_error")
 
       - if @fulltext_service_results.blank?
         li.list-group-item.p-2

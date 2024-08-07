@@ -12,9 +12,9 @@ de:
       retraction_notice:
         label: Der Titel wurde zurückgezogen
         more_info: weitere Informationen...
-      service_timeout_error: >-
-        Beim Versuch, den Volltextzugriff zu ermitteln, hat mindestens ein Dienst eine Zeitüberschreitung erreicht. Möglicherweise
-        gibt es weitere Links, die nicht angezeigt werden. Bitte versuchen es später erneut.
+      service_error: >-
+        Beim Versuch, den Volltextzugriff zu ermitteln, ist bei mindestens einem Dienst ein Fehler aufgetreten. Möglicherweise gibt es weitere Links, die nicht
+        angezeigt werden. Bitte versuchen es später erneut.
       show_less: nur den ersten Treffer anzeigen
       show_more:
         one: Gleicher Volltext in einer weiteren Quelle ...

@@ -5,8 +5,9 @@
         - Config[:search_scopes, default: {}].keys.each do |search_scope|
           - if enabled = Config[:search_scopes, search_scope, :enabled, default: false]
             - active_class = current_search_scope == search_scope ? "active" : "inactive"
+            - search_path = current_search_scope == search_scope ? searches_path(search_scope: search_scope) : new_search_request_path(@search_request, search_scope: search_scope)
             li.nav-item
-              = link_to searches_path(search_scope: search_scope), class: "nav-link #{active_class}" do
+              = link_to search_path, class: "nav-link #{active_class}" do
                 = t("searches.#{search_scope}.label", default: "n.n.")
 
     .card-body

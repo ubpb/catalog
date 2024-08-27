@@ -6,20 +6,16 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Enable debuggging via rdbg in "attach" mode.
-if defined?(Rails::Server) && Rails.env.development? && ENV["DEBUG_MODE"] == "attach"
-  require "debug/open_nonstop"
-end
-
 module Catalog
   class Application < Rails::Application
+
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 7.2
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -39,5 +35,6 @@ module Catalog
     # Bypass internal error logic.
     # Errors are matched via routes to the corrosponing errors#type in the ErrorsController.
     config.exceptions_app = self.routes
+
   end
 end

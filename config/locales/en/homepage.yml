@@ -2,7 +2,7 @@
 en:
   homepage:
     breadcrumb: Homepage
-    show:
+    info_cards:
       news:
         all_link_text: "&raquo; All news"
         none_message: No news at the moment

@@ -39,20 +39,22 @@ ruby:
     {from: "ZZV", to: "ZZV",  label: "Sammlungen"}
   ]
 
-h5 = "Neuerwerbungen"
+.card
+  .card-header
+    h6.mb-0 = "Neuerwerbungen"
+  .card-body
+    - if links.present?
+      p: em
+        ' Fachspezifische Sucheinstiege zu Neuerwerbungen von <strong>Printbeständen</strong>. Für weitere Informationen zum Thema
+        ' haben wir ein <a href="https://blogs.uni-paderborn.de/ub-katalog/2024/03/15/neuerwerbungslisten" target="_blank"><i class="fa-solid fa-external-link"></i> Blogbeitrag für Sie erstellt</a>.
 
-- if links.present?
-  p: em
-    ' Fachspezifische Sucheinstiege zu Neuerwerbungen von Printbeständen. Für weitere Informationen zum Thema
-    ' haben wir ein <a href="https://blogs.uni-paderborn.de/ub-katalog/2024/03/15/neuerwerbungslisten" target="_blank"><i class="fa-solid fa-external-link"></i> Blogbeitrag für Sie erstellt</a>.
-
-  .row
-    - links.each_slice(links.count/2 + 1) do |sliced_links|
-      .col
-        - sliced_links.each do |link|
-          - sr = SearchEngine::SearchRequest.parse("sr[q,local_notation]=[#{link[:from]} TO #{link[:to]}]&sr[s,desc]=newrecords")
-          div = link_to new_search_request_path(sr) do
-            = link[:label]
-- else
-  .alert.alert-warning.mb-0 = "Keine Links verfügbar"
+      .row
+        - links.each_slice(links.count/2 + 1) do |sliced_links|
+          .col
+            - sliced_links.each do |link|
+              - sr = SearchEngine::SearchRequest.parse("sr[q,local_notation]=[#{link[:from]} TO #{link[:to]}]&sr[s,desc]=newrecords")
+              div = link_to new_search_request_path(sr) do
+                = link[:label]
+    - else
+      .alert.alert-warning.mb-0 = "Keine Links verfügbar"
 

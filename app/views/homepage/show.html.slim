@@ -1,44 +1,4 @@
 .mb-4 = render "searches/search_panel"
 
-.row
-  .col-lg-8.mb-4
-    .card
-      .card-header
-        h5.mb-0 = t(".search_entries.title")
-      .card-body
-        .row
-          .col-xl-6
-            .scope-info
-              .image = image_tag "x-catalog.png", class: "img-fluid"
-              .heading = t(".search_entries.catalog.title")
-              .info
-                p = t(".search_entries.catalog.text")
-
-          .col-xl-6
-            .scope-info.mt-3.mt-xl-0
-              .image = image_tag "x-primo-central.png", class: "img-fluid"
-              .heading = t(".search_entries.cdi.title")
-              .info
-                p = t(".search_entries.cdi.text")
-
-        .mt-3 = render "new_records_links"
-
-  .col-lg-4
-    .card
-      .card-header
-        h5.mb-0 = t(".news.title")
-      .card-body
-        - if @news.present?
-          - @news.each do |item|
-            div.feed-item
-              div.feed-item-date
-                = l(item[:date].to_date)
-              div.feed-item-title
-                a(href=item[:link] title=item[:description].html_safe)
-                  = "#{item[:title].html_safe}"
-        - else
-          = t(".news.none_message")
-
-      .card-footer
-        = link_to t(".news.all_link_text").html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
+= render "info_cards"
 

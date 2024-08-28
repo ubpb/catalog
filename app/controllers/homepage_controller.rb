@@ -10,8 +10,6 @@ class HomepageController < ApplicationController
         new_search_request_path(sr)
       )
     end
-
-    @news = FeedParser.parse_rss_feed("https://blogs.uni-paderborn.de/ub-katalog?feed=rss")
   end
 
 end

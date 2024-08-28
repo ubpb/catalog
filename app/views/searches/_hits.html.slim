@@ -45,6 +45,9 @@ ruby:
                   = link_to new_search_request_path(nsr.(search_request.sort.name, "asc")), class: "btn btn-secondary" do
                     i.fas.fa-arrow-down-wide-short.fa-lg
 
+  .alert.alert-success.p-2.border-0.rounded-0
+    = render "homepage/libkey_nomad_info"
+
   .card-body
     - enable_notes = current_user&.can_manage_notes?
     - enable_watch_list_panel = current_user&.can_manage_watch_lists?

@@ -1,6 +1,6 @@
 .d-flex.gap-2
   div = image_tag "libkey-nomad-icon.svg", class: "mr-2", width: "30"
   div
-    .fw-bold = "Beginnen Sie Ihre Recherchen im offenen Internet?"
-    = "Laden Sie die LibKey Nomad-Browsererweiterung herunter, um einen einfachen Zugang zu Artikeln zu erhalten."
-    =< link_to "Jetzt mehr erfahren...", "", target: "_blank", class: "alert-link"
+    .fw-bold = t("libkey_nomad.info_box.header")
+    = t("libkey_nomad.info_box.text")
+    =< link_to t("libkey_nomad.info_box.link"), "#", target: "_blank", class: "alert-link"

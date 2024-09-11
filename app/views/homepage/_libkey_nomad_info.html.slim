@@ -1,0 +1,6 @@
+.d-flex.gap-2
+  div = image_tag "libkey-nomad-icon.svg", class: "mr-2", width: "30"
+  div
+    .fw-bold = t("libkey_nomad.info_box.header")
+    = t("libkey_nomad.info_box.text")
+    =< link_to t("libkey_nomad.info_box.link"), "https://blogs.uni-paderborn.de/ub-katalog/2024/09/11/libkey-nomad/", target: "_blank", class: "alert-link"

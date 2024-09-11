@@ -34,8 +34,3 @@
             = render "searches/search_field", form: f, autofocus: true
             .d-grid.gap-2.d-md-block
               = f.submit t(".search"), class: "btn btn-primary d-print-none"
-
-      - if @search_request.blank?
-        .alert.alert-success.mb-0.mt-3.d-print-none
-          i.fa-solid.fa-info-circle.fa-lg.me-1
-          == t(".ebook_notice")

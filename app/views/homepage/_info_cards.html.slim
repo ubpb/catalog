@@ -1,0 +1,47 @@
+.row
+  .col-lg-8.mb-4
+    .card
+      .card-header
+        h6.mb-0 = t(".search_entries.title")
+      .card-body
+        .row
+          .col-xl-6
+            .scope-info
+              .image = image_tag "x-catalog.png", class: "img-fluid"
+              .heading = t(".search_entries.catalog.title")
+              .info
+                p = t(".search_entries.catalog.text")
+
+          .col-xl-6
+            .scope-info.mt-3.mt-xl-0
+              .image = image_tag "x-primo-central.png", class: "img-fluid"
+              .heading = t(".search_entries.cdi.title")
+              .info
+                p = t(".search_entries.cdi.text")
+
+    .mt-4 = render "homepage/new_records_card"
+
+  .col-lg-4
+    .mb-4
+      .alert.alert-success.p-2
+        = render "homepage/libkey_nomad_info"
+
+    .card
+      .card-header
+        h6.mb-0 = t(".news.title")
+      .card-body
+        - news = FeedParser.parse_rss_feed("https://blogs.uni-paderborn.de/ub-katalog?feed=rss")
+        - if news.present?
+          - news.each do |item|
+            div.feed-item
+              div.feed-item-date
+                = l(item[:date].to_date)
+              div.feed-item-title
+                a(href=item[:link] title=item[:description].html_safe)
+                  = "#{item[:title].html_safe}"
+        - else
+          = t(".news.none_message")
+
+      .card-footer
+        = link_to t(".news.all_link_text").html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
+

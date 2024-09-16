@@ -104,13 +104,15 @@ class RecordsController < ApplicationController
 
     # Search the extended request, find the given record and determine the next
     # and previous records (if available)
-    if (extended_search_result = SearchEngine[current_search_scope].search(
+    extended_search_result = SearchEngine[current_search_scope].search(
       extended_search_request,
       {
         session_id: request&.session&.id,
         on_campus: on_campus?
       }
-    )).hits.present?
+    )
+
+    if extended_search_result&.hits.present?
       # Extract hits
       hits = extended_search_result.hits
       # Remove edge case "first page" by prepending empty hit

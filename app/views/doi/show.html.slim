@@ -1,0 +1,17 @@
+.card.card-shadowed
+  .card-header
+    h5.mb-0
+      = t(".header")
+  .card-body
+    = turbo_frame_tag "doi" do
+      - if @doi_result
+        .d-lg-flex.align-items-center
+          div
+            p == t(".doi_info", doi: @doi)
+            p.mb-lg-0 == t(".fulltext")
+          .ms-auto.ps-lg-2 = link_to @doi_result.libkey_io_url, class: "btn btn-primary flex-grow-1", target: "_blank" do
+            i.fas.fa-external-link-alt
+            =< t(".fulltext_link")
+      - else
+        == t(".doi_info", doi: @doi)
+        == t(".no_fulltext")

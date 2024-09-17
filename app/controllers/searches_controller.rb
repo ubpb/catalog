@@ -42,13 +42,20 @@ class SearchesController < ApplicationController
         NewRelic::Agent.add_custom_attributes(search_request: @search_request.as_json)
       end
 
+      # Check for direct DOI lookup
+      @direct_doi_lookup = @search_request.queries.map do |q|
+        q.value[%r{\b10\.\d{4,9}/[-._;()/:A-Z0-9]+\b}i]
+      end.compact.first
+
       # For custom Piwik analytics
       # @see views/application/_piwik_tracking.html.slim
       @piwik_tracking_vars = {
         "search-scope" => current_search_scope,
-        "facet-search" => @search_request.aggregations.present?
+        "facet-search" => @search_request.aggregations.present?,
+        "direct-doi-lookup" => @direct_doi_lookup.present? ? "yes" : "no"
       }
 
+      # Perform the search request
       begin
         @search_result = SearchEngine[current_search_scope].search(
           validated_search_request,
@@ -57,7 +64,7 @@ class SearchesController < ApplicationController
             on_campus: on_campus?
           }
         )
-      rescue SearchEngine::QuerySyntaxError => e
+      rescue SearchEngine::QuerySyntaxError
         # Handle a possible syntax error in the query
         flash[:search_panel] = {error: t("searches.request_hints.query_syntax_error")}
         redirect_to(new_search_request_path)

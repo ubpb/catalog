@@ -6,7 +6,8 @@ class LibKeyService < ApplicationService
   API_TIMEOUT      = Config[:lib_key, :api_timeout, default: 5.0]
   CACHE_EXPIRES_IN = Config[:lib_key, :cache_expires_in, default: 12.hours]
 
-  BASE_URL = "https://api.thirdiron.com/public/v1/libraries/#{LIBRARY_ID}/".freeze
+  BASE_URL = "https://api.thirdiron.com/public/v1/libraries/#{LIBRARY_ID}".freeze
+  LIBKEY_IO_BASE_URL = "https://libkey.io/libraries/#{LIBRARY_ID}".freeze
 
   class Error < StandardError; end
 
@@ -50,19 +51,23 @@ class LibKeyService < ApplicationService
       browzine_url = libkey_result.dig("data", "browzineWebLink")
       retraction_notice_url = libkey_result.dig("data", "retractionNoticeUrl")
       cover_image_url = libkey_result["included"]&.pluck("coverImageUrl")&.compact&.first
+      libkey_io_url = "#{LIBKEY_IO_BASE_URL}/#{doi_or_pmid}"
 
       # Return result
       Result.new(
         url: url,
         browzine_url: browzine_url,
         retraction_notice_url: retraction_notice_url,
-        cover_image_url: cover_image_url
+        cover_image_url: cover_image_url,
+        libkey_io_url: libkey_io_url
       )
     end
   rescue Faraday::TimeoutError
     raise TimeoutError
   rescue Faraday::ClientError
     nil # Resource not found
+  rescue URI::InvalidURIError
+    nil # Invalid DOI
   rescue StandardError => e
     Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
     raise Error

@@ -1,9 +1,11 @@
+/ <%# locals: (container_class: "container") -%>
+
 footer
   .d-none.d-print-block
     .mt-4 = "© #{Date.today.year} Universitätsbibliothek Paderborn"
 
   .app-footer.d-print-none
-    .container
+    div(class=container_class)
       .row
         h2.mb-3.fw-lighter = "Universitätsbibliothek (UB)"
 
@@ -51,7 +53,7 @@ footer
                 = t("application.footer.cover_images")
 
   .upb-footer.d-print-none
-    .container
+    div(class=container_class)
       .d-flex.flex-column.flex-md-row.justify-content-center.justify-content-md-between.align-items-center.align-items-md-end
         = link_to "https://www.uni-paderborn.de/", target: "_blank", title: "Universität Paderborn" do
           = image_tag "upb-logo-negativ-de.svg", alt: "Universität Paderborn", class: "img-fluid", width: 230

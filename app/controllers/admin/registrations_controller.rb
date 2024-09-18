@@ -1,5 +1,4 @@
 class Admin::RegistrationsController < Admin::ApplicationController
-  layout "registrations"
 
   before_action -> { add_breadcrumb("Registrierungen", admin_registrations_path) }
 

@@ -1,0 +1,5 @@
+ul.nav.nav-pills.flex-column
+  li.nav-item
+    = link_to "Registrierungen", admin_registrations_path, class: "nav-link #{active_when(/registrations/)}"
+  li.nav-item
+    = link_to "Aktivierungen", admin_activations_path, class: "nav-link #{active_when(/activations/)}"

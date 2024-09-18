@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no")
+    meta(name="msapplication-config" content="none")
+    = yield(:head)
+
+    meta(name="turbo-prefetch" content="false")
+
+    title = page_title
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all"
+    = javascript_include_tag "application", "data-turbo-track": "reload"
+
+  body
+    = render "application/test_server_warning"
+
+    #header
+      = render "layouts/admin/header"
+
+    #page
+      .container-fluid
+        .d-print-none = render "breadcrumb"
+
+        .row
+          .col-lg-3.col-xl-2
+            = render "layouts/admin/sidebar"
+          .col-lg-9.col-xl-10
+            = render "alerts", global: true
+            = content_for?(:main) ? yield(:main) : yield
+
+    #footer
+      = render "footer", container_class: "container-fluid"
+
+    = render "piwik_tracking"

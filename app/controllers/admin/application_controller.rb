@@ -3,6 +3,7 @@ class Admin::ApplicationController < ApplicationController
   before_action :authenticate!
   before_action -> { add_breadcrumb("Admin", admin_root_path) }
 
+  layout "admin"
 
   def authenticate!
     config_username = Rails.application.credentials.registrations&.dig(:admin_username)

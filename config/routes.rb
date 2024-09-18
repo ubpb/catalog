@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   # Admin routes (for now, just for registrations and activations)
   namespace :admin do
-    root to: redirect("/") # Change me!
+    root to: redirect("/admin/registrations")
 
     resources :registrations do
       get :confirm, on: :member

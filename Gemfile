@@ -26,7 +26,7 @@ gem "rails-i18n", "~> 7.0"
 gem "rss", "~> 0.2"
 gem "simple_form", "~> 5.1"
 gem "slim", ">= 5.0"
-gem "sprockets-rails", "~> 3.4.2"
+gem "sprockets-rails", "~> 3.5"
 gem "strip_attributes", "~> 1.13"
 gem "turbo-rails", "~> 2.0"
 gem "view_component", "~> 3.0"
@@ -54,6 +54,6 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
-  gem "selenium-webdriver", ">= 3.1"
+  gem "selenium-webdriver", ">= 4.1"
   gem "webdrivers", ">= 4.3"
 end

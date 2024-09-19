@@ -1,0 +1,77 @@
+{
+  "short_name": "<%= t("application.app_name") %>",
+  "name": "<%= t("application.app_name") %> <%= t("application.ub_pb") %>",
+  "id": "/",
+  "icons": [
+    {
+      "src": "<%= image_path("pwa/ub-icon-192.png") %>",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "<%= image_path("pwa/ub-icon-512.png") %>",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "<%= image_path("pwa/ub-icon.svg") %>",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "<%= image_path("pwa/ub-icon-mask-192.png") %>",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "<%= image_path("pwa/ub-icon-mask-512.png") %>",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "<%= image_path("pwa/ub-icon-mask.svg") %>",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/?pwa",
+  "display_override": ["minimal-ui"],
+  "display": "standalone",
+  "shortcuts": [
+    {
+      "name": "Suche im Katalog",
+      "short_name": "Katalog",
+      "description": "Suche nach Medien im Katalog",
+      "url": "/local/s"
+    },
+    {
+      "name": "Suche im CDI",
+      "short_name": "CDI",
+      "description": "Suche nach Medien im Central Discovery Index",
+      "url": "/cdi/s"
+    },
+    {
+      "name": "Bibliothekskonto",
+      "short_name": "Bibliothekskonto",
+      "description": "Bibliothekskonto - Ausgeliehene Medien, Gebühren, Merklisten, ...",
+      "url": "/account"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "<%= image_path("pwa/screenshot-1.png") %>",
+      "type": "image/png",
+      "sizes": "1280x800",
+      "form_factor": "wide"
+    },
+    {
+      "src": "<%= image_path("pwa/screenshot-2.png") %>",
+      "type": "image/jpg",
+      "sizes": "800x1280",
+      "form_factor": "narrow"
+    }
+  ]
+}

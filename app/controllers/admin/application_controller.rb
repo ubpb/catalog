@@ -1,25 +1,47 @@
 class Admin::ApplicationController < ApplicationController
 
-  before_action :authenticate!
   before_action -> { add_breadcrumb("Admin", admin_root_path) }
 
-  layout "admin"
+  before_action :authenticate!
+  before_action :authorize!
+
+  layout "admin/main"
+
+  class NotAuthorizedError < StandardError; end
+
+  protected
 
   def authenticate!
-    config_username = Rails.application.credentials.registrations&.dig(:admin_username)
-    config_password = Rails.application.credentials.registrations&.dig(:admin_password)
-
-    if config_username.present? && config_password.present?
-      authenticate_or_request_with_http_basic do |username, password|
-        secure_password = BCrypt::Password.new(
-          BCrypt::Password.create(password)
-        )
-
-        username == config_username && secure_password == config_password
-      end
+    if current_admin_user
+      true
     else
+      redirect_to(new_admin_session_path)
       false
     end
+  end
+
+  def authorize!
+    ils_user = current_admin_user&.ils_user
+    raise NotAuthorizedError if ils_user.nil?
+
+    # Allow for user with role "General Administrator"
+    return true if ils_user.roles.any? { |role| role.code == "26" }
+
+    # TODO: Add more roles here
+
+    # Raise NotAuthorizedError by default
+    raise NotAuthorizedError
+  end
+
+  def current_admin_user
+    @current_admin_user ||= if (user_id = session[:current_admin_user_id])
+      User.find_by(id: user_id)
+    end
+  end
+  helper_method :current_admin_user
+
+  rescue_from NotAuthorizedError do
+    render "admin/unauthorized", status: :unauthorized, layout: "admin/base"
   end
 
 end

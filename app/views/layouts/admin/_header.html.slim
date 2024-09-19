@@ -7,3 +7,9 @@ header
       #app-name
         = link_to "/admin" do
           == "Katalog Administration"
+
+      - if current_admin_user.present?
+        .d-flex.gap-2.align-items-center
+          span = current_admin_user.ils_user.full_name
+          = link_to "Abmelden", admin_session_path, class: "btn btn-primary", data: { turbo_method: :delete, turbo_confirm: "Wirklich abmelden?" }
+

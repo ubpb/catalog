@@ -18,7 +18,8 @@ module Ils::Adapters
           barcode: get_barcode(alma_user_hash),
           pin: get_pin(alma_user_hash),
           expiry_date: get_expiry_date(alma_user_hash),
-          blocks: get_blocks(alma_user_hash)
+          blocks: get_blocks(alma_user_hash),
+          roles: get_roles(alma_user_hash)
         )
       end
 
@@ -85,6 +86,17 @@ module Ils::Adapters
             code: block["block_description"]["value"].presence,
             label: block["block_description"]["desc"].presence,
             created_at: Time.zone.parse(block["created_date"])
+          )
+        end.compact
+      end
+
+      def get_roles(alma_user_hash)
+        alma_user_hash["user_role"].map do |role|
+          next if role["status"]["value"] != "ACTIVE"
+
+          Ils::UserRole.new(
+            code: role["role_type"]["value"].presence,
+            label: role["role_type"]["desc"].presence
           )
         end.compact
       end

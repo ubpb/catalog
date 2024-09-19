@@ -25,13 +25,8 @@ html
     #page
       .container-fluid
         .d-print-none = render "breadcrumb"
-
-        .row
-          .col-lg-3.col-xl-2
-            = render "layouts/admin/sidebar"
-          .col-lg-9.col-xl-10
-            = render "alerts", global: true
-            = content_for?(:main) ? yield(:main) : yield
+        = render "alerts", global: true
+        = content_for?(:main) ? yield(:main) : yield
 
     #footer
       = render "footer", container_class: "container-fluid"

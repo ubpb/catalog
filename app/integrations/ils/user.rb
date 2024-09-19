@@ -11,6 +11,7 @@ class Ils
     attribute :pin, Ils::Types::String.optional
     attribute :expiry_date, Ils::Types::Date.optional
     attribute :blocks, Types::Array.of(Ils::UserBlock).default([].freeze)
+    attribute :roles, Types::Array.of(Ils::UserRole).default([].freeze)
 
     def has_pin_set?
       pin.present?

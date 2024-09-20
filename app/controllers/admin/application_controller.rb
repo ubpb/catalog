@@ -21,16 +21,7 @@ class Admin::ApplicationController < ApplicationController
   end
 
   def authorize!
-    ils_user = current_admin_user&.ils_user
-    raise NotAuthorizedError if ils_user.nil?
-
-    # Allow for user with role "General Administrator"
-    return true if ils_user.roles.any? { |role| role.code == "26" }
-
-    # TODO: Add more roles here
-
-    # Raise NotAuthorizedError by default
-    raise NotAuthorizedError
+    raise NotAuthorizedError unless current_admin_user.can_access_admin?
   end
 
   def current_admin_user

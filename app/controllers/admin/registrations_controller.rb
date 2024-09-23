@@ -1,9 +1,12 @@
 class Admin::RegistrationsController < Admin::ApplicationController
-  layout "registrations"
 
-  before_action -> {
-    add_breadcrumb("Registrierungen", admin_registrations_path)
-  }
+  before_action -> { add_breadcrumb("Registrierungen", admin_registrations_path) }
+  before_action :authorize!
+
+  def authorize!
+    super
+    raise NotAuthorizedError unless current_admin_user.can_access_admin_registrations?
+  end
 
   def index
     @registrations = Registration.order(created_in_alma: :asc, created_at: :desc)

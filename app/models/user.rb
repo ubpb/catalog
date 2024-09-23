@@ -182,4 +182,32 @@ class User < ApplicationRecord
     !has_blocking_todos?
   end
 
+  # Controls who has genral access to the admin interface.
+  # See below for more specific permissions on admin interface features.
+  #
+  # Codes are listed here:
+  # https://developers.exlibrisgroup.com/alma/apis/docs/xsd/rest_user.xsd/?tags=GET#user_role
+  def can_access_admin?
+    # General System Administrator
+    ils_user.roles.any? { |role| role.code == "26" } ||
+      # Circulation Desk Operator
+      ils_user.roles.any? { |role| role.code == "32" } ||
+      # Circulation Desk Operator - Limited
+      ils_user.roles.any? { |role| role.code == "299" }
+  end
+
+  def can_access_admin_registrations?
+    can_access_admin?
+  end
+
+  def can_access_admin_activations?
+    can_access_admin?
+  end
+
+  def can_access_admin_global_message?
+    can_access_admin? &&
+      # General System Administrator
+      ils_user.roles.any? { |role| role.code == "26" }
+  end
+
 end

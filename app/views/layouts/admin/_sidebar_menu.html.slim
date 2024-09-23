@@ -1,0 +1,10 @@
+ul.nav.nav-pills.flex-column
+  - if current_admin_user.can_access_admin_registrations?
+    li.nav-item
+      = link_to "Registrierungen", admin_registrations_path, class: "nav-link #{active_when(/registrations/)}"
+  - if current_admin_user.can_access_admin_activations?
+    li.nav-item
+      = link_to "Aktivierungen", admin_activations_path, class: "nav-link #{active_when(/activations/)}"
+  - if current_admin_user.can_access_admin_global_message?
+    li.nav-item
+      = link_to "Nachricht", admin_global_message_path, class: "nav-link #{active_when(/global\-message/)}"

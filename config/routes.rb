@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
     resource :session, only: [:new, :create, :destroy]
 
+    resource :global_message, path: "global-message"
+
     resources :registrations do
       get :confirm, on: :member
       get :check_duplicates, on: :member, path: "check-duplicates"

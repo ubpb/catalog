@@ -1,0 +1,14 @@
+= simple_form_for @global_message, url: admin_global_message_path, method: :patch do |f|
+  .card
+    h5.card-header
+      = "Globale Nachricht"
+
+    .card-body
+      = render "alerts"
+      = f.input :active, label: "Aktiv", as: :boolean
+      = f.input :style, label: "Stil", collection: Admin::GlobalMessage::STYLES.map { |style| [style.humanize, style] }, prompt: false
+      = f.input :message, label: "Nachricht", input_html: { rows: 5 }
+
+    .card-footer
+      => f.submit "Speichern", class: "btn btn-primary"
+      => link_to "Abbrechen", admin_global_message_path, class: "btn btn-default"

@@ -189,4 +189,10 @@ class User < ApplicationRecord
     can_access_admin?
   end
 
+  def can_access_admin_global_message?
+    can_access_admin? &&
+      # General System Administrator
+      ils_user.roles.any? { |role| role.code == "26" }
+  end
+
 end

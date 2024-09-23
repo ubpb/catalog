@@ -20,15 +20,15 @@ html
     = render "application/test_server_warning"
 
     #header
-      = render "layouts/registrations/header"
+      = render "layouts/admin/header"
 
     #page
-      .container
-        .d-print-none = render "layouts/registrations/breadcrumb"
+      .container-fluid
+        .d-print-none = render "breadcrumb"
         = render "alerts", global: true
         = content_for?(:main) ? yield(:main) : yield
 
     #footer
-      = render "footer"
+      = render "footer", container_class: "container-fluid"
 
     = render "piwik_tracking"

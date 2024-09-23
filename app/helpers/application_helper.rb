@@ -59,4 +59,14 @@ module ApplicationHelper
     Config[:locale_switching, :enabled, default: false]
   end
 
+  def page_title
+    parts = [t("application.ub_pb"), t("application.app_name")]
+
+    breadcrumb.each do |b|
+      parts << b[:label]
+    end
+
+    parts.compact.join(" / ")
+  end
+
 end

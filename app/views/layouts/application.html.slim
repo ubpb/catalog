@@ -9,7 +9,7 @@ html
 
     meta(name="turbo-prefetch" content="false")
 
-    title = render "title"
+    title = page_title
 
     = csrf_meta_tags
     = csp_meta_tag
@@ -19,8 +19,7 @@ html
   body
     = render "application/test_server_warning"
 
-    /.alert.alert-warning.m-0.p-2.border-0.rounded-0.text-center.d-print-none
-      ' TEXT HERE...
+    = render "application/global_message", global_message: @global_message
 
     #header
       = render "header"

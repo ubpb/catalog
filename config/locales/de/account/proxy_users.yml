@@ -1,0 +1,50 @@
+---
+de:
+  account:
+    proxy_users:
+      already_exists_error: Es existiert bereits ein Proxy-Nutzer mit der Bibliotheksausweisnummer '%{barcode}'.
+      breadcrumb:
+        edit: Proxy-Nutzer bearbeiten
+        index: Proxy-Nutzer
+        new: Neuer Proxy-Nutzer
+      cannot_proxy_self_error: Sie können sich nicht selbst als Proxy-Nutzer einrichten.
+      create:
+        error: Proxy-Nutzer konnte nicht eingerichtet werden. Es ist ein Fehler aufgetreten.
+        success: Proxy-Nutzer wurde erfolgreich eingerichtet.
+      destroy:
+        error: Proxy-Nutzer konnte nicht gelöscht werden. Es ist ein Fehler aufgetreten.
+        success: Proxy-Nutzer wurde erfolgreich gelöscht.
+      edit:
+        header: Proxy-Nutzer bearbeiten
+      index:
+        detailed_info: |
+          <p>Diese Funktion ist insbesondere für Lehrende gedacht, die ihre studentischen Hilfskräfte mit der Ausleihe von Medien beauftragen möchten. Einmal eingerichtet, kann der Proxy-Nutzer Medien in Ihrem Namen ausleihen. Der Proxy-Nutzer hat keinen Zugriff auf Ihre persönlichen Daten oder Ihre Ausleihhistorie. <strong>Die Ausleihe erfolgt auf Ihr Konto und Sie sind für die Rückgabe und eventuelle Gebühren verantwortlich.</strong></p> <p>Bitte beachten Sie die folgenden Hinweise und Einschränkungen:</p> <ul>
+            <li>Die Proxy-Nutzer müssen hier zunächst durch Sie eingerichtet werden.</li>
+            <li>Sie sind verantwortlich die Proxy-Nutzer hier wieder zu löschen, sollten Sie die Berechtigung wieder zurücknehmen wollen.</li>
+            <li>Der Proxy-Nutzer benötigt eine eigene Bibliotheksausweisnummer.</li>
+            <li>Der Proxy-Nutzer kann nur Medien ausleihen, nicht verlängern oder vormerken.</li>
+            <li>Die Ausleihe durch Proxy-Nutzer kann <strong>nur an der Ortsleihtheke, nicht an den Selbstverbuchungsgeräten</strong> erfolgen.</li>
+            <li>
+              An der Ortsleihtheke legt der Proxy-Nutzer seinen Bibliotheksausweis und die Medien vor und teilt dem
+              Bibliothekspersonal direkt mit, dass er als Proxy-Nutzer Medien für jemand anderen ausleihen möchte.
+              Das Bibliothekspersonal prüft die Berechtigung und bucht die Medien anschließend auf Ihr Konto.
+            </li>
+          </ul>
+        header: Proxy-Nutzer
+        info: Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen.
+        more_info: Mehr Informationen...
+        new_proxy_user: Neuer Proxy-Nutzer
+        no_proxy_users: Sie haben noch keine Proxy-Nutzer eingerichtet.
+      new:
+        header: Neuer Proxy-Nutzer
+        lookup:
+          form:
+            barcode_placeholder: Bibliotheksausweisnummer
+            submit: Suchen
+          header: Nutzer suchen
+          no_user_found_error: Kein Nutzer mit der Bibliotheksausweisnummer '%{barcode}' gefunden.
+      proxy_user:
+        confirm_delete: Möchten Sie diesen Proxy-Nutzer wirklich löschen?
+        expired_at: Gültig bis %{date}
+      update:
+        success: Proxy-Nutzer wurde erfolgreich aktualisiert.

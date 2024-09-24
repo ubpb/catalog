@@ -2,6 +2,6 @@
   = f.hidden_field :ils_primary_id
   = f.input :name, input_html: { readonly: true }
   = f.input :note
-  = f.input :expired_at, as: :date, html5: true, start_year: Date.today.year, prompt: true
+  /= f.input :expired_at, as: :date, html5: true, start_year: Date.today.year, prompt: true
   = f.button :submit, t("save"), class: "btn btn-primary"
   = link_to t("cancel"), account_proxy_users_path, class: "btn btn-link"

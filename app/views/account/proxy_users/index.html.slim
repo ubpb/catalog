@@ -9,6 +9,10 @@
     .callout.callout-info
       i.fa-solid.fa-info-circle.fa-fw.fa-lg.me-1
       = t(".info")
+      div = link_to t(".more_info"), "#detailed-info", class: "text-decoration-none", data: { "bs-toggle": "collapse" }
+
+      #detailed-info.collapse.mt-2
+        == t(".detailed_info")
 
     - if @proxy_users.present?
       ol.list-group

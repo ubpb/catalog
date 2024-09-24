@@ -13,9 +13,9 @@ de:
           Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         pin: muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten
       proxy_user:
-        note: "Sie können hier eine private Notiz hinterlegen, warum Sie diesen Proxy-Nutzer eingerichtet haben."
-        expired_at: >-
-          Wenn Sie hier ein Datum angeben (z.B. Semesterende), wird der Proxy-Nutzer automatisch nach diesem Tag gelöscht.
+        expired_at: Wenn Sie hier ein Datum angeben (z.B. Semesterende), wird der Proxy-Nutzer automatisch nach diesem Tag
+          gelöscht.
+        note: Sie können hier eine private Notiz hinterlegen, warum Sie diesen Proxy-Nutzer eingerichtet haben.
     labels:
       defaults:
         activation_code: Aktivierungscode
@@ -37,9 +37,9 @@ de:
         pin: PIN
         pin_confirmation: PIN wiederholen
       proxy_user:
-        name: "Name"
-        note: "Notiz"
-        expired_at: "Gültig bis"
+        expired_at: Gültig bis
+        name: Name
+        note: Notiz
     placeholders:
       activation:
         activation_code: Ihr Aktivierungscode (optional)

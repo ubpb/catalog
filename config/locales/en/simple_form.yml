@@ -14,9 +14,8 @@ en:
           at the local circulation desk.
         pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
       proxy_user:
-        note: "You can enter a private note here why you have set up this proxy user."
-        expired_at: >-
-          If you enter a date here (e.g. end of semester), the proxy user is automatically deleted after this date.
+        expired_at: If you enter a date here (e.g. end of semester), the proxy user is automatically deleted after this date.
+        note: You can enter a private note here why you have set up this proxy user.
     labels:
       defaults:
         activation_code: Activation code
@@ -37,6 +36,10 @@ en:
         new_pin_confirmation: Repeat new PIN
         pin: PIN
         pin_confirmation: Repeat PIN
+      proxy_user:
+        expired_at: Gültig bis
+        name: Name
+        note: Notiz
     placeholders:
       activation:
         activation_code: Your activation code (optional)

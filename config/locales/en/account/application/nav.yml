@@ -13,6 +13,6 @@ en:
         notes: Notes
         pin: Manage PIN
         profile: My Account
-        proxy_users: "Proxy-User"
+        proxy_users: Proxy-User
         todos: Check ToDos
         watch_lists: Watchlists

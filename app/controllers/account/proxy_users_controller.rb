@@ -98,7 +98,7 @@ class Account::ProxyUsersController < Account::ApplicationController
 
   def ensure_proxy_is_not_self(user_id)
     if user_id&.downcase == current_user.ils_primary_id.downcase
-      flash[:error] = t(".cannot_proxy_self_error")
+      flash[:error] = t("account.proxy_users.cannot_proxy_self_error")
       redirect_to new_account_proxy_user_path and return
     end
 
@@ -107,7 +107,7 @@ class Account::ProxyUsersController < Account::ApplicationController
 
   def ensure_proxy_is_unique(user_id)
     if current_user.proxy_users.exists?(ils_primary_id: user_id)
-      flash[:error] = t(".already_exists_error", barcode: user_id)
+      flash[:error] = t("account.proxy_users.already_exists_error", barcode: user_id)
       redirect_to new_account_proxy_user_path and return
     end
 

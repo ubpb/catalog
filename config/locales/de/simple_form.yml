@@ -12,6 +12,10 @@ de:
           Ihre aktuelle PIN ist erforderlich, um die PIN ändern zu können. Wenn Sie Ihre aktuelle PIN vergessen haben, wenden
           Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         pin: muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten
+      proxy_user:
+        expired_at: Wenn Sie hier ein Datum angeben (z.B. Semesterende), wird der Proxy-Nutzer automatisch nach diesem Tag
+          gelöscht.
+        note: Sie können hier eine private Notiz hinterlegen, warum Sie diesen Proxy-Nutzer eingerichtet haben.
     labels:
       activation:
         ils_id: Bibliotheksausweisnummer oder Matrikelnummer
@@ -34,6 +38,10 @@ de:
         new_pin_confirmation: Neue PIN wiederholen
         pin: PIN
         pin_confirmation: PIN wiederholen
+      proxy_user:
+        expired_at: Gültig bis
+        name: Name
+        note: Notiz
     placeholders:
       activation:
         activation_code: Ihr Aktivierungscode (optional)

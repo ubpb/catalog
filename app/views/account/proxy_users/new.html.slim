@@ -1,0 +1,24 @@
+- if @proxy_user.ils_primary_id.blank?
+  / Lookup Form
+  .card.card-shadowed
+    .card-header
+      h5.m-0 = t(".lookup.header")
+    .card-body
+      = render "alerts"
+
+      = form_tag new_account_proxy_user_path, method: :get do
+        .input-group
+          span.input-group-text
+            i.fa-solid.fa-id-card
+          =< text_field_tag :barcode, params[:barcode], placeholder: t(".lookup.form.barcode_placeholder"), \
+            class: "form-control", autofocus: true, autocomplete: "off"
+          = submit_tag t(".lookup.form.submit"), class: "btn btn-primary"
+          = link_to t("cancel"), account_proxy_users_path, class: "btn btn-outline-primary"
+- else
+  / New Form
+  .card.card-shadowed
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      = render "alerts"
+      = render "form"

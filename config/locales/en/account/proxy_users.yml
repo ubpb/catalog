@@ -1,0 +1,51 @@
+---
+en:
+  account:
+    proxy_users:
+      already_exists_error: A proxy user with the library ID '%{barcode}' already exists.
+      breadcrumb:
+        edit: Edit proxy user
+        index: Proxy users
+        new: New proxy user
+      cannot_proxy_self_error: You cannot set yourself up as a proxy user.
+      create:
+        error: Proxy user could not be set up. An error has occurred.
+        success: Proxy user has been set up successfully.
+      destroy:
+        error: Proxy user could not be deleted. An error has occurred.
+        success: Proxy user was successfully deleted.
+      edit:
+        header: Edit proxy user
+      index:
+        detailed_info: |
+          <p>This function is intended in particular for lecturers who wish to authorise their student assistants to borrow media. Once set up, the proxy user can borrow media in your name. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is made to your account and you are responsible for the return and any fees.</strong></p>
+          <p>Please note the following information and restrictions:</p>
+          <ul>
+            <li>The proxy users must first be set up by you.</li>
+            <li>You are responsible for deleting the proxy users here if you wish to revoke the authorisation.</li>
+            <li>The proxy user requires their own library card number.</li>
+            <li>The proxy user can only borrow media, not renew or reserve them.</li>
+            <li>Proxy users can <strong>only borrow items from the local circulation desk, not from the self-checkout machines</strong>.</li>
+            <li>
+              At the local circulation desk, the proxy user presents their library card and the media and informs the library staff directly that they would like to borrow media for someone else as a proxy user.
+              The library staff will check the authorisation and then book the media to your account.
+            </li>
+          </ul>
+        header: Proxy users
+        info: Here you can authorise other users to borrow media in your name or to your account.
+        more_info: More information...
+        new_proxy_user: New proxy user
+        no_proxy_users: You have not yet set up any proxy users.
+      new:
+        header: New proxy user
+        lookup:
+          form:
+            barcode_placeholder: Library card number
+            submit: Search
+          header: Search user
+          no_user_found_error: No user with the library card number '%{barcode}' found.
+      proxy_user:
+        confirm_delete: Do you really want to delete this proxy user?
+        expired_at: Valid until %{date}
+      update:
+        success: Proxy user has been successfully updated.

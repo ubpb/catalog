@@ -22,6 +22,8 @@
     .mt-4 = render "homepage/new_records_card"
 
   .col-lg-4
+    = render "homepage/pwa_info"
+
     .mb-4
       .alert.alert-success.p-2
         = render "homepage/libkey_nomad_info"
@@ -37,11 +39,11 @@
               div.feed-item-date
                 = l(item[:date].to_date)
               div.feed-item-title
-                a(href=item[:link] title=item[:description].html_safe)
+                a(href=item[:link] title=item[:description].html_safe target="_blank")
                   = "#{item[:title].html_safe}"
         - else
           = t(".news.none_message")
 
       .card-footer
-        = link_to t(".news.all_link_text").html_safe, "http://blogs.uni-paderborn.de/ub-katalog"
+        = link_to t(".news.all_link_text").html_safe, "http://blogs.uni-paderborn.de/ub-katalog", target: "_blank"
 

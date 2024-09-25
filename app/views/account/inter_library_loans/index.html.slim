@@ -13,7 +13,7 @@
         =< t(".info3_html", ill_info_url: go_ill_info_path)
 
     p.text-center
-      = link_to t(".open_ill"), go_ill_path, class: "btn btn-primary"
+      = link_to t(".open_ill"), go_ill_path, class: "btn btn-primary", target: "_blank"
 
     h5 = t(".mono_list_header")
     turbo-frame#resource-sharing-requests(src=account_inter_library_loans_path loading="lazy")

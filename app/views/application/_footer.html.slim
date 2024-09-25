@@ -24,11 +24,11 @@ footer
 
           ul.nav.flex-column
             li.nav-item
-              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/anschrift", class: "nav-link" do
+              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/anschrift", target: "_blank", class: "nav-link" do
                 i.icon.fa-solid.fa-arrow-right
                 = t("application.footer.address")
             li.nav-item
-              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten", class: "nav-link" do
+              = link_to "https://www.ub.uni-paderborn.de/ueber-uns/oeffnungszeiten", target: "_blank", class: "nav-link" do
                 i.icon.fa-solid.fa-arrow-right
                 = t("application.footer.opening_hours")
 
@@ -37,12 +37,12 @@ footer
 
           ul.nav.flex-column
             li.nav-item
-              = link_to go_legal_path, class: "nav-link" do
+              = link_to go_legal_path, target: "_blank", class: "nav-link" do
                 i.icon.fa-solid.fa-arrow-right
                 = t("application.footer.impressum")
 
             li.nav-item
-              = link_to go_privacy_path, class: "nav-link" do
+              = link_to go_privacy_path, target: "_blank" , class: "nav-link"do
                 i.icon.fa-solid.fa-arrow-right
                 = t("application.footer.privacy_policy")
             li.nav-item

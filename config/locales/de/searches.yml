@@ -23,7 +23,7 @@ de:
       breadcrumb: im Katalog
       label: Katalog
     no_hits:
-      info: Keine Treffer gefunden. Bitte verändern Sie Ihre Suche.
+      info: Keine Treffer im %{search_scope} gefunden. Bitte verändern Sie Ihre Suche.
     record:
       all_volumes: Alle Bände
       call_number: 'Signatur:'
@@ -48,7 +48,7 @@ de:
         erneut.
       query_syntax_error: Ihre Suchanfrage enthielt ungültige Zeichen bzw. ungültige Zeichenkombinationen.
     search_field:
-      query_placeholder: Suchbegriff(e) eingeben...
+      query_placeholder: Suchbegriff(e) oder DOI eingeben...
     search_panel:
       search: Suchen
     searchables:

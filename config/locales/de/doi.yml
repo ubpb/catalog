@@ -1,0 +1,14 @@
+de:
+  doi:
+    breadcrumb: DOI Lookup
+    loading: "Prüfe Volltextzugriff für DOI..."
+    show:
+      header: DOI Lookup
+      doi_info: >
+        Ihre Suchanfrage beinhaltet min. eine DOI. Wir haben für die erste DOI
+        <strong>%{doi}</strong> einen direkten Volltextzugriff geprüft.
+      no_fulltext: >
+        <strong>Leider konnten wir keinen direkten Volltextzugriff ermitteln</strong>. Bitte prüfen Sie die weiteren Suchergebnisse unten.
+      fulltext: >
+        <strong>Wir konnten einen Volltextzugriff ermitteln</strong>. Ergänzende Suchergebnisse finden Sie ggf. unten.
+      fulltext_link: Volltextzugriff via LibKey.io

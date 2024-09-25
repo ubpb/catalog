@@ -1,6 +1,14 @@
 .mb-4 = render "searches/search_panel"
 
 - if @search_request && @search_result
+  / Direct DOI lookup
+  - if @direct_doi_lookup
+    .callout.callout-info.mb-3
+      = turbo_frame_tag("doi", src: doi_path(@direct_doi_lookup)) do
+        i.fa-solid.fa-spinner.fa-spin
+        =< t("doi.loading")
+
+  / Search results
   - content_for :hits do
     - if @search_result.hits.blank?
       = render "no_hits"

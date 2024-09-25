@@ -21,7 +21,7 @@ en:
       breadcrumb: in Catalog
       label: Catalog
     no_hits:
-      info: No matches found. Please change your search term(s).
+      info: No matches found in %{search_scope}. Please change your search term(s).
     record:
       all_volumes: All volumes
       call_number: 'Call number:'
@@ -45,7 +45,7 @@ en:
       invalid_after_validation: The search query was incorrect and could not be executed. Please try again.
       query_syntax_error: Your search query contained invalid characters or invalid character combinations.
     search_field:
-      query_placeholder: Enter search term(s)...
+      query_placeholder: Enter search term(s) or DOI...
     search_panel:
       search: Search
     searchables:

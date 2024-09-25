@@ -2,4 +2,4 @@
   .card-body
     .callout.callout-info.mb-0
       i.fas.fa-info-circle.fa-lg
-      span.ms-2 = t(".info")
+      span.ms-2 = t(".info", search_scope: t("searches.#{current_search_scope}.label", default: "n.n."))

@@ -1,7 +1,6 @@
 ---
 en:
   pwa_info:
-    header: Quicker search...
-    text: >-
-      Install the catalog as a Progressive Web App or add it your desktop or homescreen to access our search even faster.
-    btn: Install
+    btn: Install now
+    header: Install the catalog as an app
+    text: Install the catalog as a stand-alone app to access our search even more intuitively.

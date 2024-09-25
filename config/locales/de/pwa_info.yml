@@ -1,7 +1,6 @@
 ---
 de:
   pwa_info:
-    header: Schnellere Suche...
-    text: >-
-      Installieren Sie den Katalog als Progressive Web App bzw. fügen Sie diesen zum Desktop / HomeScreen hinzu, um noch schneller auf unsere Suche zugreifen zu können.
-    btn: Installieren
+    btn: Jetzt installieren
+    header: Katalog als App installieren
+    text: Installieren Sie den Katalog als eigenständige App, um noch bequemer auf unsere Suche zugreifen zu können.

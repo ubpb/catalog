@@ -1,13 +1,14 @@
+---
 en:
   doi:
     breadcrumb: DOI Lookup
-    loading: "Check full-text access for DOI..."
+    loading: Check full-text access for DOI...
     show:
-      header: DOI Lookup
       doi_info: >
         Your search query contains at least one DOI. We have checked direct full text access for the first DOI <strong>%{doi}</strong>.
-      no_fulltext: >
-        <strong>Unfortunately, we were unable to find direct access to the full text</strong>. Please check the other search results below.
-      fulltext: >
-        <strong>We were able to determine full text access</strong>. You may find additional search results below.
+      fulltext: "<strong>We were able to determine full text access</strong>. You may find additional search results below.\n"
       fulltext_link: Full text access via LibKey.io
+      header: DOI Lookup
+      no_fulltext: >
+        <strong>Unfortunately, we were unable to find direct access to the full text</strong>. Please check the other search
+        results below.

@@ -1,0 +1,41 @@
+#pwa_info_box(hidden)
+  .mb-4
+    .alert.alert-success.p-2
+      .d-flex.gap-2
+        div = image_tag "pwa/ub-icon.svg", class: "mr-2", width: "30"
+        div
+          .fw-bold = t("pwa_info.header")
+          p = t("pwa_info.text")
+          #pwa_install_btn.btn.btn-primary(data-turbo="false")
+            i.fa-solid.fa-download.fa-lg
+            span.ms-2.d-none.d-sm-inline = t("pwa_info.btn")
+
+        javascript:
+          pwa_info_box = document.querySelector("#pwa_info_box");
+          pwa_install_btn = document.querySelector("#pwa_install_btn");
+
+          if (pwa_install_prompt) {
+            pwa_info_box.removeAttribute("hidden");
+          }
+          else {
+            var pwa_install_prompt = null;
+          }
+
+          window.addEventListener('beforeinstallprompt', (e) => {
+              e.preventDefault();
+              pwa_install_prompt = e;
+              pwa_info_box.removeAttribute("hidden");
+            });
+
+          pwa_install_btn.addEventListener("click", async () => {
+              if (!pwa_install_prompt) {
+                return;
+              }
+              pwa_install_prompt.prompt();
+              const { outcome } = await pwa_install_prompt.userChoice;
+
+              pwa_install_prompt = null;
+              if (outcome === 'accepted') {
+                pwa_info_box.setAttribute("hidden", "");
+              }
+            });

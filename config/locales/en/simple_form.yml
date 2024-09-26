@@ -17,6 +17,8 @@ en:
         expired_at: If you enter a date here (e.g. end of semester), the proxy user is automatically deleted after this date.
         note: You can enter a private note here why you have set up this proxy user.
     labels:
+      activation:
+        ils_id: Library-ID or student matriculation number
       defaults:
         activation_code: Activation code
         current_password: Current password
@@ -43,7 +45,7 @@ en:
     placeholders:
       activation:
         activation_code: Your activation code (optional)
-        ils_id: Your Library-ID
+        ils_id: Your Library-ID or student matriculation number
       defaults:
         current_password: Please enter your current password
         email: Your e-mail address

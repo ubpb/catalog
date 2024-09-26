@@ -14,6 +14,8 @@ en:
           at the local circulation desk.
         pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
     labels:
+      activation:
+        ils_id: Library-ID or student matriculation number
       defaults:
         activation_code: Activation code
         current_password: Current password
@@ -36,7 +38,7 @@ en:
     placeholders:
       activation:
         activation_code: Your activation code (optional)
-        ils_id: Your Library-ID
+        ils_id: Your Library-ID or student matriculation number
       defaults:
         current_password: Please enter your current password
         email: Your e-mail address

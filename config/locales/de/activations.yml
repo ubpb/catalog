@@ -35,7 +35,7 @@ de:
     new:
       header: Bibliotheksausweis aktivieren
       info_html: >-
-        Um Ihren Bibliotheksausweis zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer ein. <strong>Haben Sie in
+        Um Ihren Bibliotheksausweis zu aktivieren, geben Sie bitte Ihre Bibliotheksausweisnummer oder Matrikelnummer ein. <strong>Haben Sie in
         der Bibliothek einen Aktivierungscode in Form eines Ausdrucks erhalten, geben Sie diesen bitte ebenfalls ein.</strong>
       submit: Weiter
     update:

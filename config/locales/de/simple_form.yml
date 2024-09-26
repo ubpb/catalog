@@ -13,6 +13,8 @@ de:
           Sie sich bitte an die Kolleginnen und Kollegen der Ortsleihe.
         pin: muss zwischen 4 und 8 Zeichen lang sein und darf nur Zahlen (0-9) enthalten
     labels:
+      activation:
+        ils_id: Bibliotheksausweisnummer oder Matrikelnummer
       defaults:
         activation_code: Aktivierungscode
         current_password: Aktuelles Passwort
@@ -35,7 +37,7 @@ de:
     placeholders:
       activation:
         activation_code: Ihr Aktivierungscode (optional)
-        ils_id: Ihre Bibliotheksausweisnummer
+        ils_id: Ihre Bibliotheksausweisnummer oder Matrikelnummer
       defaults:
         current_password: Bitte geben Sie Ihr aktuelles Passwort ein
         email: Ihre E-Mail Adresse

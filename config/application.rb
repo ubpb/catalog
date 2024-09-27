@@ -10,7 +10,7 @@ module Catalog
   class Application < Rails::Application
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -34,7 +34,7 @@ module Catalog
 
     # Bypass internal error logic.
     # Errors are matched via routes to the corrosponing errors#type in the ErrorsController.
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
 
   end
 end

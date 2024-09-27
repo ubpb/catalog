@@ -1,7 +1,7 @@
 header
   .container.d-flex.flex-row.align-items-center.justify-content-between
     = link_to root_path do
-      = inline_svg_tag("ub-logo.svg", id: "ub-logo")
+      = render "ub_logo"
 
     .d-flex.flex-row.align-items-end.gap-3.d-print-none
       = render "account_menu"

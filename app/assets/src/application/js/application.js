@@ -8,7 +8,7 @@
 // Load / init turbo
 import { Turbo } from "@hotwired/turbo-rails"
 window.Turbo = Turbo
-Turbo.setProgressBarDelay(200)
+Turbo.config.drive.progressBarDelay = 200
 
 // Load / init stimulus controllers from ./stimulus/index.js
 import "./stimulus"

@@ -1,7 +1,7 @@
 .row
-  .col-lg-8.col-xl-9
+  .col-lg-8
     = simple_form_for :login, url: session_path, method: :post do |f|
-      .card.card-shadowed
+      .card.card-shadowed.mb-3.mb-lg-0
         h5.card-header
           = t(".header")
         .card-body
@@ -17,8 +17,10 @@
             => link_to t(".cancel"), @return_uri, class: "btn btn-default"
           - else
             => link_to t(".cancel"), root_path, class: "btn btn-default"
-  .col-lg-4.col-xl-3
-    .card.mt-3.mt-lg-0
+  .col-lg-4
+    = render "homepage/ecard_info"
+
+    .card.mb-3
       h6.card-header
         = t(".activation.header")
       .card-body
@@ -26,7 +28,7 @@
         .d-grid.gap-2.mt-2
           = link_to t(".activation.action"), activation_root_path, class: "btn btn-outline-primary"
 
-    .card.mt-3.mt-3
+    .card
       h6.card-header
         = t(".account.header")
       .card-body

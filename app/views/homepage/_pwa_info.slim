@@ -7,7 +7,7 @@
         .fw-bold.text-success-emphasis = t("pwa_info.header")
         p.mb-1
           = t("pwa_info.text")
-          =< link_to "Mehr erfahren...", "https://blogs.uni-paderborn.de/ub-katalog/2024/10/01/katalog-als-web-app-installieren/", target: "_blank", class: "alert-link"
+          =< link_to t("pwa_info.link"), "https://blogs.uni-paderborn.de/ub-katalog/2024/10/01/katalog-als-web-app-installieren/", target: "_blank", class: "alert-link"
         #pwa-install-box.d-grid.gap-2.d-none
           #pwa-install-btn.btn.btn-success.btn-sm(data-turbo="false")
             span = t("pwa_info.btn")

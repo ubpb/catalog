@@ -1,0 +1,10 @@
+#ecard-info-box
+  .alert.alert-success.p-2
+    .d-flex.gap-2
+      .mr-2
+        i.fa-solid.fa-id-card.fa-2x.text-success-emphasis
+      div
+        .fw-bold.text-success-emphasis = t("ecard_info.header")
+        p.mb-1
+          = t("ecard_info.text")
+          =< link_to t("ecard_info.link"), "https://blogs.uni-paderborn.de/ub-katalog/2023/12/11/e-ausweis/", target: "_blank", class: "alert-link"

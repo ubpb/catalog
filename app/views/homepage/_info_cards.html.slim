@@ -1,6 +1,6 @@
 .row
-  .col-lg-8.mb-4
-    .card
+  .col-lg-8
+    .card.mb-4
       .card-header
         h6.mb-0 = t(".search_entries.title")
       .card-body
@@ -19,14 +19,11 @@
               .info
                 p = t(".search_entries.cdi.text")
 
-    .mt-4 = render "homepage/new_records_card"
+    .mb-4.mb-lg-0 = render "homepage/new_records_card"
 
   .col-lg-4
+    = render "homepage/ecard_info"
     = render "homepage/pwa_info"
-
-    .mb-4
-      .alert.alert-success.p-2
-        = render "homepage/libkey_nomad_info"
 
     .card
       .card-header

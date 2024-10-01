@@ -1,4 +1,4 @@
-#pwa-info-box(hidden)
+#pwa-info-box
   .alert.alert-success.p-2
     .d-flex.gap-2
       .mr-2
@@ -7,17 +7,17 @@
         .fw-bold.text-success-emphasis = t("pwa_info.header")
         p.mb-1
           = t("pwa_info.text")
-          /=< link_to "Mehr erfahren...", "", target: "_blank", class: "alert-link"
-        .d-grid.gap-2
+          =< link_to "Mehr erfahren...", "https://blogs.uni-paderborn.de/ub-katalog/2024/10/01/katalog-als-web-app-installieren/", target: "_blank", class: "alert-link"
+        #pwa-install-box.d-grid.gap-2.d-none
           #pwa-install-btn.btn.btn-success.btn-sm(data-turbo="false")
             span = t("pwa_info.btn")
 
 javascript:
-  pwa_info_box = document.querySelector("#pwa-info-box");
+  pwa_install_box = document.querySelector("#pwa-install-box");
   pwa_install_btn = document.querySelector("#pwa-install-btn");
 
   if (pwa_install_prompt) {
-    pwa_info_box.removeAttribute("hidden");
+    pwa_install_box.classList.remove("d-none");
   } else {
     var pwa_install_prompt = null;
   }
@@ -25,7 +25,7 @@ javascript:
   window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       pwa_install_prompt = e;
-      pwa_info_box.removeAttribute("hidden");
+      pwa_install_box.classList.remove("d-none");
     });
 
   pwa_install_btn.addEventListener("click", async () => {
@@ -38,6 +38,6 @@ javascript:
 
       pwa_install_prompt = null;
       if (outcome === "accepted") {
-        pwa_info_box.setAttribute("hidden", "");
+        pwa_install_box.classList.add("d-none");
       }
     });

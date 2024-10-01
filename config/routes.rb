@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # PWA
   get "/manifest.json" => "pwa#manifest"
-  
+
   # Homepage
   root to: "homepage#show"
 

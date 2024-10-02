@@ -24,11 +24,11 @@ en:
         current_password: Current password
         description: Description
         email: E-mail
-        ils_id: Library-ID
+        ils_id: Library-ID or student matriculation number
         name: Name
         password: Password
         password_confirmation: Repeat password
-        user_id: Library-ID
+        user_id: Library-ID or student matriculation number
       password_change_form:
         password: New password
         password_confirmation: Repeat new password
@@ -51,7 +51,7 @@ en:
         email: Your e-mail address
         password: Your library password
         password_confirmation: Please enter your password again
-        user_id: Your Library-ID
+        user_id: Your Library-ID or student matriculation number
       password_change_form:
         password: Your new password
         password_confirmation: Please enter your new password again

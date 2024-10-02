@@ -24,11 +24,11 @@ de:
         current_password: Aktuelles Passwort
         description: Beschreibung
         email: E-Mail
-        ils_id: Ausweisnummer
+        ils_id: Bibliotheksausweisnummer oder Matrikelnummer
         name: Name
         password: Passwort
         password_confirmation: Passwort wiederholen
-        user_id: Ausweisnummer
+        user_id: Bibliotheksausweisnummer oder Matrikelnummer
       password_change_form:
         password: Neues Passwort
         password_confirmation: Neues Passwort wiederholen
@@ -51,7 +51,7 @@ de:
         email: Ihre E-Mail Adresse
         password: Ihr Bibliothekspasswort
         password_confirmation: Bitte geben Sie Ihr Passwort erneut ein
-        user_id: Ihre Bibliotheksausweisnummer
+        user_id: Ihre Bibliotheksausweisnummer oder Matrikelnummer
       password_change_form:
         password: Ihr neues Passwort
         password_confirmation: Bitte geben Sie Ihr neues Passwort erneut ein

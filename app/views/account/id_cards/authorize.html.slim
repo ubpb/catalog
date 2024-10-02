@@ -6,9 +6,12 @@
     = render "alerts"
 
     - unless @ils_user.has_pin_set?
-      .callout.callout-warning.mb-0
-        p.mb-3 = t(".info")
-        .text-center = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-warning", target: "_top"
+      .callout.callout-warning.mb-3
+        p.mb-0 = t(".info")
+      = simple_form_for @set_pin_form, as: :pin_form, url: set_pin_account_id_card_path do |f|
+        = f.input :pin, as: :password, autofocus: true, required: true
+        = f.input :pin_confirmation, as: :password, required: true
+        = f.submit t(".set_pin"), class: "btn btn-primary"
     - else
       = form_tag authorize_account_id_card_path, method: :post do
         .input-group

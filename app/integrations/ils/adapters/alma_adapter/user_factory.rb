@@ -64,7 +64,8 @@ module Ils::Adapters
 
       def get_barcode(alma_user_hash)
         alma_user_hash["user_identifier"].find do |id|
-          id.dig("id_type", "value") == "05"
+          id.dig("id_type", "value") == "05" || # Langer Barcode
+            id.dig("id_type", "value") == "06"  # Langer Barcode 2
         end&.dig("value")&.upcase
       end
 

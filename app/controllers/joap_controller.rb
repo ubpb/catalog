@@ -1,11 +1,12 @@
+# https://zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Dokumentation_XML-Dienst.pdf
+# https://services.dnb.de/fize-service/gvr/full.xml?genre=journal&issn=2194-4210&pid=bibid%3DUBPB
 class JoapController < ApplicationController
-  # https://zeitschriftendatenbank.de/fileadmin/user_upload/ZDB/pdf/services/JOP_Dokumentation_XML-Dienst.pdf
-
-  # https://services.dnb.de/fize-service/gvr/full.xml?genre=journal&issn=2194-4210&pid=bibid%3DUBPB
 
   BASE_URL = "https://services.dnb.de/fize-service/gvr/full.xml"
+  DEFAULT_API_TIMEOUT = 5.0
 
   class PrintResult
+
     attr_reader :title, :call_number, :period, :comment
 
     def initialize(title:, call_number:, period:, comment:)
@@ -14,6 +15,7 @@ class JoapController < ApplicationController
       @period = period
       @comment = comment
     end
+
   end
 
   def show
@@ -48,15 +50,20 @@ class JoapController < ApplicationController
       }
     )
 
-    if response.status == 200 && response.headers[:content_type] =~ /text\/xml/
+    if response.status == 200 && response.headers[:content_type] =~ %r{text/xml}
       Nokogiri::XML.parse(response.body).remove_namespaces!
     end
-  rescue Faraday::Error
+  rescue Faraday::Error => e
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($INPUT_RECORD_SEPARATOR)
     nil
   end
 
   def http_client
     Faraday.new(
+      request: {
+        open_timeout: DEFAULT_API_TIMEOUT,
+        timeout: DEFAULT_API_TIMEOUT
+      },
       headers: {
         accept: "text/xml",
         "content-type": "text/xml"

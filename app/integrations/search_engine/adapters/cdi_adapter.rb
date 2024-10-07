@@ -1,19 +1,21 @@
 module SearchEngine::Adapters
   class CdiAdapter < SearchEngine::Adapter
 
-    API_TIMEOUT  = Config[:cdi, :api_timeout, default: 5.0]
+    DEFAULT_API_TIMEOUT = 5.0
 
     include SearchEngine::Contract
 
     def initialize(options = {})
       super
+
+      @api_timeout = options[:api_timeout].presence || DEFAULT_API_TIMEOUT
     end
 
     def http_client
       Faraday.new(
         request: {
-          open_timeout: API_TIMEOUT,
-          timeout: API_TIMEOUT
+          open_timeout: @api_timeout,
+          timeout: @api_timeout
         },
         headers: {
           accept: "application/xml",

@@ -1,7 +1,15 @@
 class GndController < ApplicationController
 
+  DEFAULT_API_TIMEOUT = 5.0
+
   def show
-    conn = Faraday.new("https://lobid.org") do |f|
+    conn = Faraday.new(
+      "https://lobid.org",
+      request: {
+        open_timeout: DEFAULT_API_TIMEOUT,
+        timeout: DEFAULT_API_TIMEOUT
+      }
+    ) do |f|
       f.response :raise_error
       f.response :json
     end
@@ -10,7 +18,8 @@ class GndController < ApplicationController
       @gnd_id = Addressable::URI.encode_component(params[:id], Addressable::URI::CharacterClasses::UNRESERVED)
       gnd_raw_result = conn.get("/gnd/#{@gnd_id}.json").body
       @gnd_result = build_gnd_result(gnd_raw_result)
-    rescue Faraday::Error
+    rescue Faraday::Error => e
+      Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($INPUT_RECORD_SEPARATOR)
       @gnd_result = nil
     end
 

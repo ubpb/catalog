@@ -84,12 +84,14 @@
 # http://ubtesa.uni-paderborn.de/cgi-bin/zeigemagbest
 
 class ClosedStackOrdersController < ApplicationController
+
   before_action :authenticate!
   before_action :authorize!
   before_action :setup
   before_action { add_breadcrumb(t("closed_stack_orders.breadcrumb"), new_closed_stack_order_path) }
 
   UNDEFINED_ERROR_MESSAGE = I18n.t("closed_stack_orders.undefined_error")
+  DEFAULT_API_TIMEOUT = 5.0
 
   def create
     if @m1 == "BYH1141" && @k1.blank?
@@ -131,7 +133,8 @@ class ClosedStackOrdersController < ApplicationController
 
     begin
       response_code = http_client.get(url, url_params)&.body
-    rescue Faraday::Error
+    rescue Faraday::Error => e
+      Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($INPUT_RECORD_SEPARATOR)
       response_code = "undefined"
     end
 
@@ -143,7 +146,7 @@ class ClosedStackOrdersController < ApplicationController
       when "fehler_nicht_schonwieder" then t(".errors.fehler_nicht_schonwieder")
       when "fehler_bestellangaben"    then t(".errors.fehler_bestellangaben")
       when "fehler_jahrgang_band"     then t(".errors.fehler_jahrgang_band")
-      when "fehler_jahr_in_ebene"     then @volume_error = true ; t(".errors.fehler_jahr_in_ebene")
+      when "fehler_jahr_in_ebene"     then @volume_error = true; t(".errors.fehler_jahr_in_ebene")
       when "fehler_jahrgang_falsch"   then t(".errors.fehler_jahrgang_falsch")
       else UNDEFINED_ERROR_MESSAGE
       end
@@ -157,6 +160,10 @@ class ClosedStackOrdersController < ApplicationController
 
   def http_client
     Faraday.new(
+      request: {
+        open_timeout: DEFAULT_API_TIMEOUT,
+        timeout: DEFAULT_API_TIMEOUT
+      },
       headers: {
         accept: "text/plain",
         "content-type": "text/plain"

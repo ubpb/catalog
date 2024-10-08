@@ -5,7 +5,8 @@
         i.fa-solid.fa-angle-left
       = t(".header", title: @record.title)
   .card-body
-    - if @show_journal_listing
-      = render "journal_listing"
-    - else
-      = render "listing"
+    turbo-frame(id="items-#{@record.id}")
+      - if @show_journal_listing
+        = render "journal_listing"
+      - else
+        = render "listing"

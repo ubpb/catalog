@@ -126,9 +126,9 @@ ruby:
           .card-header.px-2.py-1
             i.fa-solid.fa-book.fa-fw.me-2
             span.fw-bold = "Exemplare"
-          .card-body
+          .card-body.py-1.px-2
             turbo-frame(id="items-#{record.id}" src=path loading="lazy")
-              = render "table_placeholder"
+              .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
     / Notes
     - if enable_notes

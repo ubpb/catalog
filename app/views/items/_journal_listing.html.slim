@@ -1,42 +1,42 @@
-turbo-frame#items
+- unless turbo_frame_request?
   h4 = t(".header")
 
-  - if @items.present?
-    table.table.align-middle.mb-0
-        thead: tr
-          th(scope="col") = t(".items.header.call_number")
-          th(scope="col") = t(".items.header.location")
-          th(scope="col") = t(".items.header.description")
-        tbody
-          - @items.each do |item|
-            tr
-              td
-                - if item.call_number
-                  - if journal_call_number?(item.call_number)
-                    = link_to item.call_number, go_journal_call_number_info_path, target: "_blank"
-                  - else
-                    = link_to item.call_number, go_item_call_number_info_path, target: "_blank"
+- if @items.present?
+  table.table.align-middle.mb-0
+      thead: tr
+        th(scope="col") = t(".items.header.call_number")
+        th(scope="col") = t(".items.header.location")
+        th(scope="col") = t(".items.header.description")
+      tbody
+        - @items.each do |item|
+          tr
+            td
+              - if item.call_number
+                - if journal_call_number?(item.call_number)
+                  = link_to item.call_number, go_journal_call_number_info_path, target: "_blank"
                 - else
-                  = "–"
-              td
-                - location = item.location&.label || "–"
+                  = link_to item.call_number, go_item_call_number_info_path, target: "_blank"
+              - else
+                = "–"
+            td
+              - location = item.location&.label || "–"
 
-                / Shelf finder (only for monos currently)
-                - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
-                  div(
-                    data-controller="shelf-finder"
-                    data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
-                    data-shelf-finder-target="output"
-                  )
-                    = location
-                - else
+              / Shelf finder (only for monos currently)
+              - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
+                div(
+                  data-controller="shelf-finder"
+                  data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
+                  data-shelf-finder-target="output"
+                )
                   = location
-              td
-                - if item.description.present?
-                  div = item.description
-                - if item.expected_issue? && item.expected_arrival_date.present?
-                  div = t(".items.expected_date_message", date: l(item.expected_arrival_date))
-                - if item.public_note.present?
-                  div = t(".items.public_note_message", note: item.public_note)
-  - else
-    .alert.alert-info.mb-0 = t(".no_items_message")
+              - else
+                = location
+            td
+              - if item.description.present?
+                div = item.description
+              - if item.expected_issue? && item.expected_arrival_date.present?
+                div = t(".items.expected_date_message", date: l(item.expected_arrival_date))
+              - if item.public_note.present?
+                div = t(".items.public_note_message", note: item.public_note)
+- else
+  .alert.alert-info.mb-0 = t(".no_items_message")

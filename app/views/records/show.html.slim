@@ -106,6 +106,6 @@
           return_uri: @return_uri
         )
       .mt-4
-        turbo-frame#items(src=path loading="lazy")
+        turbo-frame(id="items-#{@record.id}" src=path loading="lazy")
           h4 = t(".loading_more")
           = render "table_placeholder"

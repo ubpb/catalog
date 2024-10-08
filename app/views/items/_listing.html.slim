@@ -1,204 +1,205 @@
-turbo-frame#items
+- unless turbo_frame_request?
   h4 = t(".header")
-  = render "alerts"
 
-  - if @record.is_journal_stücktitel?
-    .callout.callout-info(class=(@items.present? ? "mb-3" : "mb-0"))
-      i.fa-solid.fa-info-circle.fa-lg.me-1
-      ' Zu Zeitschriften-Stücktiteln existieren in der Regel keine gesonderten Exemplare für die Ausleihe. Stattdessen finden Sie diesen Titel
-      ' als Teil der Zeitschrift <strong>#{@journal_for_stücktitel || 'n.n.'}</strong> in Band <strong>#{@volume_for_stücktitel || 'n.n.'}</strong> am Standort
+= render "alerts"
 
-      - location = @holding_for_journal_stücktitel&.location&.label || 'n.n.'
-      - if shelf_finder_enabled? && (cnumber = @holding_for_journal_stücktitel&.call_number).present? && (lcode = @holding_for_journal_stücktitel&.location&.code).present?
-        strong(
-          data-controller="shelf-finder"
-          data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{cnumber}|#{lcode}"
-          data-shelf-finder-target="output"
-        )
-          = location
-      - else
-        strong = location
+- if @record.is_journal_stücktitel?
+  .callout.callout-info(class=(@items.present? ? "mb-3" : "mb-0"))
+    i.fa-solid.fa-info-circle.fa-lg.me-1
+    ' Zu Zeitschriften-Stücktiteln existieren in der Regel keine gesonderten Exemplare für die Ausleihe. Stattdessen finden Sie diesen Titel
+    ' als Teil der Zeitschrift <strong>#{@journal_for_stücktitel || 'n.n.'}</strong> in Band <strong>#{@volume_for_stücktitel || 'n.n.'}</strong> am Standort
 
-      '
-      ' unter der Signatur <strong>#{@holding_for_journal_stücktitel&.call_number || 'n.n.'}</strong>.
+    - location = @holding_for_journal_stücktitel&.location&.label || 'n.n.'
+    - if shelf_finder_enabled? && (cnumber = @holding_for_journal_stücktitel&.call_number).present? && (lcode = @holding_for_journal_stücktitel&.location&.code).present?
+      strong(
+        data-controller="shelf-finder"
+        data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{cnumber}|#{lcode}"
+        data-shelf-finder-target="output"
+      )
+        = location
+    - else
+      strong = location
 
-      - if @items.present?
-        p.mb-0.mt-2
-          ' In diesem Fall existieren jedoch <strong>zusätzliche Exemplare</strong> wie unten angegeben.
+    '
+    ' unter der Signatur <strong>#{@holding_for_journal_stücktitel&.call_number || 'n.n.'}</strong>.
 
-  - if @items.present?
-    - any_public_note = @items.any?{|i| i.public_note.present?}
+    - if @items.present?
+      p.mb-0.mt-2
+        ' In diesem Fall existieren jedoch <strong>zusätzliche Exemplare</strong> wie unten angegeben.
 
-    .mb-2: strong
-      =  t(".stats.no_of_items", count: @no_of_items)
-      =< t(".stats.no_of_available_items", count: @no_of_available_items)
-      =< t(".stats.no_of_hold_requests", count: @hold_requests.count)
+- if @items.present?
+  - any_public_note = @items.any?{|i| i.public_note.present?}
 
-    - content_for :hold_request_panel do
-      - if current_user.present?
-        - if current_user.can_manage_hold_requests?
-          - if @user_hold_requests.present?
-            .mb-0: strong = t(".hold_requests_available_info", count: @user_hold_requests.count)
+  .mb-2: strong
+    =  t(".stats.no_of_items", count: @no_of_items)
+    =< t(".stats.no_of_available_items", count: @no_of_available_items)
+    =< t(".stats.no_of_hold_requests", count: @hold_requests.count)
 
-            .table-responsive
-              table.table.align-middle.mb-3
-                thead: tr
-                  th(scope="col") = t(".hold_requests.header.requested_at")
-                  th(scope="col") = t(".hold_requests.header.status")
-                  th(scope="col") = t(".hold_requests.header.queue_position")
-                  th(scope="col") = ""
-                tbody
-                  - @user_hold_requests.each do |hr|
-                    tr
-                      td = l(hr.requested_at.to_date)
-                      td = t(".hold_requests.status.#{hr.status}", default: "–")
-                      td
-                        - if hr.status != :on_hold_shelf
-                          = hr.queue_position
-                        - else
-                          = t(".hold_requests.ready_for_pickup")
-                      td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
-                        = t(".delete_hold_request")
-          - elsif @can_perform_hold_request
-            .mb-2 = t(".hold_request_info")
-            .text-start = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
-                = t(".create_hold_request")
-          - else
-            / hold request not possible. Show nothing for now.
+  - content_for :hold_request_panel do
+    - if current_user.present?
+      - if current_user.can_manage_hold_requests?
+        - if @user_hold_requests.present?
+          .mb-0: strong = t(".hold_requests_available_info", count: @user_hold_requests.count)
+
+          .table-responsive
+            table.table.align-middle.mb-3
+              thead: tr
+                th(scope="col") = t(".hold_requests.header.requested_at")
+                th(scope="col") = t(".hold_requests.header.status")
+                th(scope="col") = t(".hold_requests.header.queue_position")
+                th(scope="col") = ""
+              tbody
+                - @user_hold_requests.each do |hr|
+                  tr
+                    td = l(hr.requested_at.to_date)
+                    td = t(".hold_requests.status.#{hr.status}", default: "–")
+                    td
+                      - if hr.status != :on_hold_shelf
+                        = hr.queue_position
+                      - else
+                        = t(".hold_requests.ready_for_pickup")
+                    td.text-end = link_to record_hold_request_path(record_id: @record.id, id: hr.id, search_scope: current_search_scope), class: "btn btn-sm btn-danger", data: { turbo_method: "delete", turbo_confirm: t(".confirm_delete_hold_request") } do
+                      = t(".delete_hold_request")
+        - elsif @can_perform_hold_request
+          .mb-2 = t(".hold_request_info")
+          .text-start = link_to record_hold_requests_path(record_id: @record.id, search_scope: current_search_scope), class: "btn btn-primary", data: {turbo_method: :post, turbo_confirm: t(".confirm_create_hold_request")} do
+              = t(".create_hold_request")
         - else
-          .text-end
-            em = t("hold_requests.disabled")
+          / hold request not possible. Show nothing for now.
       - else
         .text-end
-          = link_to new_session_path(return_uri: @return_uri, cancel_uri: @return_uri), class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do
-            i.fa-solid.fa-user.me-1
-            =< t(".login_required")
+          em = t("hold_requests.disabled")
+    - else
+      .text-end
+        = link_to new_session_path(return_uri: @return_uri), cancel_uri: @return_uri, class: "btn btn-primary btn-sm", data: {"turbo-frame": "_top"} do
+          i.fa-solid.fa-user.me-1
+          =< t(".login_required")
 
-    - if content_for? :hold_request_panel
-      .mb-3.p-2.rounded(style="background-color: var(--bs-tertiary-bg)")
-        = content_for :hold_request_panel
+  - if content_for? :hold_request_panel
+    .mb-3.p-2.rounded(style="background-color: var(--bs-tertiary-bg)")
+      = content_for :hold_request_panel
 
-    - if @items.any?(&:closed_stack_orderable?)
-      div
-        i.fa-solid.fa-info-circle.fa-lg.text-warning
-        em ==< t(".closed_stack_order_info")
+  - if @items.any?(&:closed_stack_orderable?)
+    div
+      i.fa-solid.fa-info-circle.fa-lg.text-warning
+      em ==< t(".closed_stack_order_info")
 
-    .table-responsive
-      table.table.align-middle.mb-0
-        thead: tr
-          th(scope="col") = t(".items.header.call_number")
-          th(scope="col") = t(".items.header.policy")
-          th(scope="col") = t(".items.header.location")
-          th(scope="col") = t(".items.header.status")
-          - if any_public_note
-            th(scope="col") = t(".items.header.public_note")
-        tbody
-          - @items.each do |item|
-            tr
-              / Item Call number
-              td
-                - if item.call_number
-                  - if journal_call_number?(item.call_number)
-                    = link_to item.call_number, go_journal_call_number_info_path, target: "_blank"
-                  - else
-                    = link_to item.call_number, go_item_call_number_info_path, target: "_blank"
+  .table-responsive
+    table.table.align-middle.mb-0
+      thead: tr
+        th(scope="col") = t(".items.header.call_number")
+        th(scope="col") = t(".items.header.policy")
+        th(scope="col") = t(".items.header.location")
+        th(scope="col") = t(".items.header.status")
+        - if any_public_note
+          th(scope="col") = t(".items.header.public_note")
+      tbody
+        - @items.each do |item|
+          tr
+            / Item Call number
+            td
+              - if item.call_number
+                - if journal_call_number?(item.call_number)
+                  = link_to item.call_number, go_journal_call_number_info_path, target: "_blank"
                 - else
-                  = "–"
-              / Policy
-              td
-                - if item.is_in_temp_location && item.temp_policy.present?
-                  div
-                    i.fa-regular.fa-clock.fa-fw
-                    =< item.temp_policy.label&.gsub(/\(\d\d\)/, "")&.strip
+                  = link_to item.call_number, go_item_call_number_info_path, target: "_blank"
+              - else
+                = "–"
+            / Policy
+            td
+              - if item.is_in_temp_location && item.temp_policy.present?
+                div
+                  i.fa-regular.fa-clock.fa-fw
+                  =< item.temp_policy.label&.gsub(/\(\d\d\)/, "")&.strip
+              - else
+                / TODO: Remove cleanup hack
+                = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
+            / Location
+            td
+              - if item.is_in_temp_location && item.temp_location.present?
+                div
+                  i.fa-regular.fa-clock.fa-fw
+                  =< item.temp_location.label
+              - else
+                / Edge-Case "Seminarapparat"
+                - if item.policy&.label =~ /Seminarapparat/i
+                  = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.host_item_id.presence || @record.id, id: item.id)) do
+                    i.fa-solid.fa-spinner.fa-spin
+                / Edge-Case "Handapparat"
+                - elsif item.policy&.label =~ /Handapparat/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  em =< t(".items.handapparat_info")
+                / Edge-Case "IEMAN"
+                - elsif item.location&.label =~ /IEMAN/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "IEMAN", "https://kw.uni-paderborn.de/ieman/", target: "_blank"
+                / Edge-Case "ZfS"
+                - elsif item.location&.label =~ /zentrum.+sprachlehre|zfs/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "Zentrum für Sprachlehre (ZfS)", "https://www.uni-paderborn.de/zfs/wir-ueber-uns/mediathek-sprechraum/", target: "_blank"
+                / Edge-Case "IMT-Medien"
+                - elsif item.location&.label =~ /imt.+medien/i
+                  i.fa-solid.fa-info-circle.text-primary
+                  =< link_to "IMT-Medien", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
+                / Default-Case
                 - else
-                  / TODO: Remove cleanup hack
-                  = item.policy&.label&.gsub(/\(\d\d\)/, "")&.strip || "–"
-              / Location
-              td
-                - if item.is_in_temp_location && item.temp_location.present?
-                  div
-                    i.fa-regular.fa-clock.fa-fw
-                    =< item.temp_location.label
-                - else
-                  / Edge-Case "Seminarapparat"
-                  - if item.policy&.label =~ /Seminarapparat/i
-                    = turbo_frame_tag(item.id, src: semapp_location_record_item_path(record_id: @record.host_item_id.presence || @record.id, id: item.id)) do
-                      i.fa-solid.fa-spinner.fa-spin
-                  / Edge-Case "Handapparat"
-                  - elsif item.policy&.label =~ /Handapparat/i
-                    i.fa-solid.fa-info-circle.text-primary
-                    em =< t(".items.handapparat_info")
-                  / Edge-Case "IEMAN"
-                  - elsif item.location&.label =~ /IEMAN/i
-                    i.fa-solid.fa-info-circle.text-primary
-                    =< link_to "IEMAN", "https://kw.uni-paderborn.de/ieman/", target: "_blank"
-                  / Edge-Case "ZfS"
-                  - elsif item.location&.label =~ /zentrum.+sprachlehre|zfs/i
-                    i.fa-solid.fa-info-circle.text-primary
-                    =< link_to "Zentrum für Sprachlehre (ZfS)", "https://www.uni-paderborn.de/zfs/wir-ueber-uns/mediathek-sprechraum/", target: "_blank"
-                  / Edge-Case "IMT-Medien"
-                  - elsif item.location&.label =~ /imt.+medien/i
-                    i.fa-solid.fa-info-circle.text-primary
-                    =< link_to "IMT-Medien", "https://imt.uni-paderborn.de/servicecenter-medien/", target: "_blank"
-                  / Default-Case
-                  - else
-                    - location = item.location&.label || "–"
+                  - location = item.location&.label || "–"
 
-                    / Shelf finder (only for monos currently)
-                    - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
-                      div(
-                        data-controller="shelf-finder"
-                        data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
-                        data-shelf-finder-target="output"
-                      )
-                        = location
-                    - else
-                      = location
-
-                    - if item.process_type.present? && item.process_type.code != "unknown"
-                      .text-danger.fst-italic = t(".items.not_on_location")
-              / Process Status
-              td
-                - if code = item.process_type&.code&.downcase
-                  ruby:
-                    status = t(
-                      "code_tables.process_types.#{code}",
-                      default: (item.process_type.label || "–")
+                  / Shelf finder (only for monos currently)
+                  - if shelf_finder_enabled? && (call_number = item.call_number).present? && (lcode = item.location&.code).present?
+                    div(
+                      data-controller="shelf-finder"
+                      data-shelf-finder-url-value="#{Config[:shelf_finder, :base_url]}/api/locate/#{call_number}|#{lcode}"
+                      data-shelf-finder-target="output"
                     )
-                  = status
+                      = location
+                  - else
+                    = location
 
-                  - if item.due_date
-                    div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
-                - else
-                  = t("code_tables.process_types.default")
+                  - if item.process_type.present? && item.process_type.code != "unknown"
+                    .text-danger.fst-italic = t(".items.not_on_location")
+            / Process Status
+            td
+              - if code = item.process_type&.code&.downcase
+                ruby:
+                  status = t(
+                    "code_tables.process_types.#{code}",
+                    default: (item.process_type.label || "–")
+                  )
+                = status
 
-                  - if item.reshelving_time
-                    div: em = t(".reshelving_info", time: l(item.reshelving_time.to_time, format: :only_time))
+                - if item.due_date
+                  div: em = t(".due_date_info", due_date: l(item.due_date.to_date))
+              - else
+                = t("code_tables.process_types.default")
 
-                  - if item.closed_stack_orderable?
-                    div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
-                      = t(".closed_stack_order")
+                - if item.reshelving_time
+                  div: em = t(".reshelving_info", time: l(item.reshelving_time.to_time, format: :only_time))
 
-                  - if item.is_in_temp_location && item.temp_due_back_date
-                    div
-                      i.fa-regular.fa-clock.fa-fw
-                      em = t(".temp_due_back_date", due_date: l(item.temp_due_back_date.to_date))
+                - if item.closed_stack_orderable?
+                  div = link_to new_closed_stack_order_path(m1: item.call_number), target: "_blank", class: "btn btn-primary btn-sm" do
+                    = t(".closed_stack_order")
 
-              / Public note
-              - if any_public_note
-                td
-                  = item.public_note.presence || "–"
+                - if item.is_in_temp_location && item.temp_due_back_date
+                  div
+                    i.fa-regular.fa-clock.fa-fw
+                    em = t(".temp_due_back_date", due_date: l(item.temp_due_back_date.to_date))
 
-    - has_04_location = @items.any?{|item| item.location&.code == "04"}
-    - if has_04_location
-      .mt-2: em == t(".04_location_hint")
+            / Public note
+            - if any_public_note
+              td
+                = item.public_note.presence || "–"
 
-    - has_item_with_temp_location = @items.any?{|item| item.is_in_temp_location}
-    - if has_item_with_temp_location
-      .mt-2: em
-        i.fa-regular.fa-clock.fa-fw
-        =< t(".temp_location_info")
+  - has_04_location = @items.any?{|item| item.location&.code == "04"}
+  - if has_04_location
+    .mt-2: em == t(".04_location_hint")
 
-  - else
-    - if !@record.is_journal_stücktitel?
-      .alert.alert-info.mb-0 = t(".no_items_message")
+  - has_item_with_temp_location = @items.any?{|item| item.is_in_temp_location}
+  - if has_item_with_temp_location
+    .mt-2: em
+      i.fa-regular.fa-clock.fa-fw
+      =< t(".temp_location_info")
+
+- else
+  - if !@record.is_journal_stücktitel?
+    .alert.alert-info.mb-0 = t(".no_items_message")

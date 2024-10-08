@@ -82,7 +82,7 @@ ruby:
 
       / Creators
       - if (creators = record.creators).present?
-        .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
+        .mb-0.mt-1 = render(CreatorsComponent.new(creators: creators))
 
       / Year of publication and edition
       - yop_and_edition = [record.edition, record.year_of_publication].map(&:presence).compact.join(", ")
@@ -99,20 +99,36 @@ ruby:
           = t(".journal_stock")
           =< journal_stocks.join("; ")
 
+      / Call numbers
+      - if record.call_numbers.present?
+        div
+          = t(".call_number")
+          ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+
       / Fulltext links
       - if enable_fulltext_links && record.is_online_resource?
-        .card.mt-1.shadow-sm.rounded
+        .card.mt-2.shadow-sm.rounded
           .card-header.px-2.py-1
             i.fa-solid.fa-cloud-arrow-down.fa-fw.me-2
             span.fw-bold = t(".fulltext_links")
           turbo-frame#fulltexts.w-100(src=record_fulltexts_path(current_search_scope, record.id) loading="lazy" target="_top")
             .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
-      / Call numbers
-      - if record.call_numbers.present?
-        div
-          = t(".call_number")
-          ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+      / Items
+      - if enable_items && current_search_scope == :local && !record.is_online_resource
+        ruby:
+          path = record_items_path(
+            search_scope: current_search_scope,
+            record_id: record.id,
+            host_item_id: record.host_item_id
+          )
+        .card.mt-2.shadow-sm.rounded
+          .card-header.px-2.py-1
+            i.fa-solid.fa-book.fa-fw.me-2
+            span.fw-bold = "Exemplare"
+          .card-body
+            turbo-frame(id="items-#{record.id}" src=path loading="lazy")
+              = render "table_placeholder"
 
     / Notes
     - if enable_notes

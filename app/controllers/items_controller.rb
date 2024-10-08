@@ -1,4 +1,5 @@
 class ItemsController < RecordsController
+
   def index
     @return_uri = sanitize_return_uri(params[:return_uri])
 
@@ -117,4 +118,5 @@ class ItemsController < RecordsController
 
     items_or_holdings
   end
+
 end

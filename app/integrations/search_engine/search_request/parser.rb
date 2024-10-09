@@ -17,7 +17,7 @@ class SearchEngine
 
         # Parse the url or query string.
         Addressable::URI
-          .parse(url_or_query_string.include?("?") ? url_or_query_string : "?#{url_or_query_string}")
+          .parse(url_or_query_string.starts_with?("?") ? url_or_query_string : "?#{url_or_query_string}")
           .query_values(Array)
           .each do |key, value|
             case key

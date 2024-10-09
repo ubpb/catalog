@@ -1,4 +1,5 @@
 class Feedback
+
   include ActiveModel::Model
   include ActiveModel::Serializers::JSON
 

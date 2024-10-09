@@ -3,7 +3,7 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
 
-    if params[:record_id]  && params[:record_scope]
+    if params[:record_id].present? && params[:record_scope].present?
       record = SearchEngine[params[:record_scope]].get_record(params[:record_id])
 
       @feedback.record_scope = params[:record_scope]

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :set_locale
+  before_action :load_global_message
   before_action :set_robots_tag
   before_action :logout_non_activated_user
 
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
 
     cookies[:_catalog_locale] = {value: locale, expires: 1.year.from_now}
     I18n.locale = locale
+  end
+
+  def load_global_message
+    @global_message = Admin::GlobalMessage.where(active: true).first
   end
 
   def extract_locale_from_accept_language_header

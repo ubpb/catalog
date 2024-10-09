@@ -44,7 +44,11 @@ Rails.application.routes.draw do
 
   # Admin routes (for now, just for registrations and activations)
   namespace :admin do
-    root to: redirect("/") # Change me!
+    root to: redirect("/admin/registrations")
+
+    resource :session, only: [:new, :create, :destroy]
+
+    resource :global_message, path: "global-message"
 
     resources :registrations do
       get :confirm, on: :member

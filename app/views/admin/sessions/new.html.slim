@@ -1,0 +1,13 @@
+.row
+  .col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
+    = simple_form_for :login, url: admin_session_path, method: :post do |f|
+      .card
+        h5.card-header
+          = "Admin Login"
+        .card-body
+          = render "alerts"
+          = f.input :user_id, autofocus: true, label: "Alma Benutzername", hint: false, placeholder: false
+          = f.input :password, label: "Alma Passwort", hint: false, placeholder: false, input_html: { autocomplete: "off" }
+        .card-footer
+          => f.submit "Anmelden", class: "btn btn-primary"
+          => link_to "Abbrechen", root_path, class: "btn btn-default"

@@ -12,9 +12,9 @@ class FeedbacksController < ApplicationController
     end
 
     if current_user.present?
-      @feedback.firstname = current_user.first_name.presence || ""
-      @feedback.lastname = current_user.last_name.presence || ""
-      @feedback.email = current_user.email.presence
+      @feedback.firstname = current_user.ils_user.first_name.presence || ""
+      @feedback.lastname = current_user.ils_user.last_name.presence || ""
+      @feedback.email = current_user.ils_user.email.presence
     end
 
     if turbo_frame_request?

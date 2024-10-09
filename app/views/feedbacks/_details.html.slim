@@ -1,0 +1,30 @@
+= simple_form_for @feedback do |f|
+  - if @feedback.errors.any?
+    .callout.callout-danger
+      = t("feedback.form.error", count: @feedback.errors.count)
+
+  - if @feedback.record_title.present?
+    = f.input :record_scope, readonly: true, as: :hidden
+    = f.input :record_id, readonly: true, as: :hidden
+    = f.input :record_title, readonly: true
+
+  = f.input :type, as: :select, collection: Feedback::TYPES, include_blank: true, \
+    label_method: ->(code){ t("feedback.form.types.#{code}", default: code) }
+  = f.input :message, as: :text, :input_html => { :rows => 5 }
+
+  fieldset.border.p-3.mb-3
+    legend: h5.mb-0 = t("feedback.form.contact_information")
+    .row
+      .col-lg
+        = f.input :firstname, readonly: current_user.present? ? true : false
+      .col-lg
+        = f.input :lastname, readonly: current_user.present? ? true : false
+
+    = f.input :email, required: true
+
+  .d-flex
+    = f.submit t("feedback.form.submit"), class: "btn btn-primary", data: {"turbo-frame": "_self"}
+    - if turbo_frame_request?
+          = link_to t("feedback.form.cancel"), root_path, class: "btn btn-link", data: {"turbo-frame": "_self", "controller": "modal", "modal-modal-dialog-outlet": "#modal-dialog", "action": "click->modal#close"}
+    - else
+      = link_to t("feedback.form.cancel"), root_path, class: "btn btn-link"

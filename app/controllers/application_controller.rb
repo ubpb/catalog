@@ -42,14 +42,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def logout_non_activated_user
-    if current_user&.ils_user&.needs_activation?
-      session[:current_user_id] = nil
-      @current_user = nil
+  def setup_current_user_session(user_id:)
+    session[:current_user_id] = user_id
+    true
+  end
 
-      flash[:error] = t("application.account_needs_activation_error")
-      redirect_to request_activation_path and return
-    end
+  def reset_current_user_session
+    session[:current_user_id] = nil
+    @current_user = nil
+    true
+  end
+
+  def logout_non_activated_user
+    return unless current_user&.ils_user&.needs_activation?
+
+    reset_current_user_session
+    flash[:error] = t("application.account_needs_activation_error")
+    redirect_to request_activation_path and return
   end
 
   def available_search_scopes
@@ -180,8 +189,22 @@ class ApplicationController < ActionController::Base
     else
       flash[:error] = t("integrations.common_error_message")
       redirect_to root_path
+    end
+  end
+
+  rescue_from User::IlsUserMissingError do |e|
+    # Make sure we logoutn the user if the corresponding ILS user is missing.
+    reset_current_user_session
+
+    # Log the error
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($INPUT_RECORD_SEPARATOR)
+
+    # Handle the error
+    if request.xhr?
+      render "xhr_error", locals: {message: t("integrations.ils_user_missing_error_message")}, layout: false
     else
-      render "xhr_error", locals: {message: t("integrations.common_error_message")}, layout: false
+      flash[:error] = t("integrations.ils_user_missing_error_message")
+      redirect_to root_path
     end
   end
 

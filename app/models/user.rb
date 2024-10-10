@@ -8,7 +8,11 @@ class User < ApplicationRecord
   # Validations
   validates :ils_primary_id, presence: true
 
+  # Custom error classes
+  class IlsUserMissingError < StandardError; end
+
   class << self
+
     def create_or_update_from_ils_user!(ils_user)
       User.transaction do
         user = User.where(ils_primary_id: ils_user.id).first_or_initialize
@@ -17,12 +21,22 @@ class User < ApplicationRecord
         user
       end
     end
+
   end
 
   def ils_user(force_reload: false)
-    Rails.cache.fetch("#{cache_key_with_version}/ils_user", expires_in: 5.minutes, force: force_reload) do
+    # Load the ILS user from the cache of fetch it from the ILS in case of a cache miss or if we want to force a reload.
+    ils_user = Rails.cache.fetch("#{cache_key_with_version}/ils_user", expires_in: 5.minutes, force: force_reload) do
       Ils.get_user(ils_primary_id)
     end
+
+    # For any user instance there must always be an ILS user.
+    # If there is none, we raise a specific error. This error should be caught and handled
+    # in the application_controller.
+    raise IlsUserMissingError if ils_user.nil?
+
+    # Return the ILS user
+    ils_user
   end
 
   def reload_ils_user!

@@ -1,7 +1,8 @@
 class PasswordResetsController < ApplicationController
 
+  before_action { add_breadcrumb t(".breadcrumb"), activation_root_path }
+  before_action :logout_current_user
   before_action :verify_password_reset_token_and_load_user, only: [:edit, :update]
-  before_action :reset_session, only: [:edit, :update]
 
   def new
     @form = PasswordResetRequestForm.new
@@ -61,6 +62,14 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
+  def logout_current_user
+    return true unless current_user
+
+    reset_current_user_session
+
+    true
+  end
 
   def verify_password_reset_token_and_load_user
     if (@token = params[:token]).blank?

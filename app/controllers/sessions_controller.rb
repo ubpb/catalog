@@ -33,9 +33,9 @@ class SessionsController < ApplicationController
         # because the ils user data is cached and we want the new login to reset that cache.
         db_user.reload_ils_user!
 
-        reset_session
+        # Login user
+        setup_current_user_session(user_id: db_user.id)
 
-        session[:current_user_id] = db_user.id
         flash[:success] = t(".success")
 
         if @return_uri.present?
@@ -53,8 +53,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
-    session[:current_user_id] = nil
+    reset_current_user_session
     flash[:success] = t(".success")
     redirect_to(root_path, status: :see_other)
   end

@@ -5,3 +5,7 @@ en:
       <i class="fa-solid fa-exclamation-triangle fa-lg"></i> An error has occurred in the communication with an external system.
       Please try your last action again. If the error persists, please contact the staff at the library information desk or
       try again later.
+    ils_user_missing_error_message: >-
+      <i class="fa-solid fa-exclamation-triangle fa-lg"></i> An error has occurred while loading your user account from the
+      library system and you have been logged out. Please try to login again. If the error persists, please contact
+      the staff at the library information desk or try again later.

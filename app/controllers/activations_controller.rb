@@ -49,9 +49,8 @@ class ActivationsController < ApplicationController
     if @form.valid?
       if activate_account(user: @user, password: @form.password)
         # Login user
-        reset_session
         @user.reload_ils_user! # Make sure we have the latest data from ILS in the cache
-        session[:current_user_id] = @user.id
+        setup_current_user_session(user_id: @user.id)
 
         # Send info to user
         UsersMailer.account_activated(@user).deliver_later
@@ -71,13 +70,10 @@ class ActivationsController < ApplicationController
   private
 
   def logout_current_user
-    if current_user
-      reset_session
-      session[:current_user_id] = nil
+    return true unless current_user
 
-      flash[:info] = t("activations.common_messages.logout_info")
-      redirect_to activation_root_path(activation_params) and return
-    end
+    reset_current_user_session
+    flash[:info] = t("activations.common_messages.logout_info")
 
     true
   end

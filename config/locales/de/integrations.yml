@@ -5,3 +5,8 @@ de:
       <i class="fa-solid fa-exclamation-triangle fa-lg"></i> Es ist ein Fehler in der Kommunikation mit einem externen System
       aufgetreten. Bitte versuchen Sie Ihre letzte Aktion erneut. Sollte der Fehler bestehen bleiben, setzen Sie sich bitte
       mit dem Informationszentrum der Bibliothek in Verbindung oder versuchen Sie es später erneut.
+    ils_user_missing_error_message: >-
+      <i class="fa-solid fa-exclamation-triangle fa-lg"></i> Beim Laden Ihres Benutzerkontos aus dem Bibliothekssystem ist
+      ein Fehler aufgetreten und Sie wurden abgemeldet. Bitte versuchen Sie sich erneut anzumelden. Sollte der Fehler bestehen
+      bleiben, setzen Sie sich bitte mit dem Informationszentrum der Bibliothek in Verbindung oder versuchen Sie es später
+      erneut.

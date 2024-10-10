@@ -4,6 +4,7 @@ ruby:
   enable_fulltext_links = local_assigns.fetch(:enable_fulltext_links) { false }
   search_scope = local_assigns.fetch(:search_scope) { current_search_scope }
   enable_notes = local_assigns.fetch(:enable_notes) { false }
+  enable_image = local_assigns.fetch(:enable_image) { true }
 
 .d-flex(
   data-record-scope=search_scope
@@ -11,8 +12,9 @@ ruby:
   data-notes-target="record"
 )
   / Cover image
-  .align-self-start.text-center.me-3.d-none.d-md-block(style="width: 55px; min-width: 55px; position: relative; color: var(--bs-border-color)")
-    = image_tag(record_cover_images_path(search_scope: current_search_scope, record_id: record_id), class: "img-fluid")
+  - if enable_image
+    .align-self-start.text-center.me-3.d-none.d-md-block(style="width: 55px; min-width: 55px; position: relative; color: var(--bs-border-color)")
+      = image_tag(record_cover_images_path(search_scope: current_search_scope, record_id: record_id), class: "img-fluid")
 
   .flex-fill
     - if record == :deleted

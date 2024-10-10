@@ -118,13 +118,8 @@ class ActivationsController < ApplicationController
         activation_code: nil
       )
 
-      unless user.ils_user.activate_account
-        raise ActiveRecord::Rollback
-      end
-
-      unless Ils.set_user_password(user.ils_primary_id, password)
-        raise ActiveRecord::Rollback
-      end
+      raise ActiveRecord::Rollback unless user.ils_user.activate_account
+      raise ActiveRecord::Rollback unless Ils.set_user_password(user.ils_primary_id, password)
 
       true
     end

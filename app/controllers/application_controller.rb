@@ -37,10 +37,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= begin
-      if (user_id = session[:current_user_id])
-        User.find_by(id: user_id)
-      end
+    @current_user ||= if (user_id = session[:current_user_id])
+      User.find_by(id: user_id)
     end
   end
 
@@ -170,14 +168,16 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from IntegrationError do |e|
-    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($/)
+    Rails.logger.error [e.message, *Rails.backtrace_cleaner.clean(e.backtrace)].join($INPUT_RECORD_SEPARATOR)
 
-    if cause = e.cause
-      Rails.logger.error "#{$/}CAUSED BY:"
-      Rails.logger.error [cause.message, *Rails.backtrace_cleaner.clean(cause.backtrace)].join($/)
+    if (cause = e.cause)
+      Rails.logger.error "#{$INPUT_RECORD_SEPARATOR}CAUSED BY:"
+      Rails.logger.error [cause.message, *Rails.backtrace_cleaner.clean(cause.backtrace)].join($INPUT_RECORD_SEPARATOR)
     end
 
-    unless request.xhr?
+    if request.xhr?
+      render "xhr_error", locals: {message: t("integrations.common_error_message")}, layout: false
+    else
       flash[:error] = t("integrations.common_error_message")
       redirect_to root_path
     else
@@ -189,15 +189,13 @@ class ApplicationController < ActionController::Base
     if return_uri.present?
       uri = URI(return_uri)
 
-      path = uri.path.present? ? "#{uri.path}" : ""
+      path = uri.path.present? ? uri.path.to_s : ""
       fragment = uri.fragment.present? ? "##{uri.fragment}" : ""
       query = uri.query.present? ? "?#{uri.query}" : ""
 
       (path + query + fragment).presence
-    else
-      nil
     end
-  rescue
+  rescue StandardError
     nil
   end
 

@@ -25,15 +25,21 @@ class Account::WatchListsController < Account::ApplicationController
   def show
     @watch_list = current_user.watch_lists.includes(:entries).find(params[:id])
 
+    # Setup Pagination
+    @page = params[:page].to_i
+    @page = 1 if @page < 1
+    @per_page = 10
+    @total_number_of_entries = @watch_list.entries.count
+
     # For each entry on the watch list try to resolve a record for display.
     # This might fail, because records may be removed from the index
     # after it has been placed on the watch list. For this cases we mark
     # the record as :deleted
-    @resolved_entries = @watch_list.entries.map do |entry|
+    @resolved_entries = @watch_list.entries.page(@page).per(@per_page).map do |entry|
       scope = entry.scope.to_sym
       next unless available_search_scopes.include?(scope)
 
-      if record = SearchEngine[scope].get_record(entry.record_id)
+      if (record = SearchEngine[scope].get_record(entry.record_id))
         {entry: entry, record: record}
       else
         {entry: entry, record: :deleted}

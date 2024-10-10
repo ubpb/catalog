@@ -23,7 +23,16 @@
     )
       - if @watch_list.description.present?
         = simple_format(@watch_list.description, wrapper_tag: "div")
+
       - if @resolved_entries.present?
+        ruby:
+          paginator = render(PaginatorComponent.new(
+            page: @page,
+            per_page: @per_page,
+            total: @total_number_of_entries
+          ))
+        .mb-3 = paginator
+
         ol.list-group
           - @resolved_entries.each do |resolved_entry|
             - record = resolved_entry[:record]
@@ -32,7 +41,12 @@
             li.list-group-item
               .d-flex
                 .flex-fill
-                  = render "searches/record", record: record, deleted_record_id: entry.record_id, search_scope: entry.scope, enable_notes: true
+                  = render "searches/record", \
+                    record: record, \
+                    deleted_record_id: entry.record_id, \
+                    search_scope: entry.scope, \
+                    enable_notes: true, \
+                    enable_image: false
                 .ms-auto.d-print-none
                   .ms-2 = link_to account_watch_list_entry_path(@watch_list, entry), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: t("confirm-delete")}
                     i.fa-solid.fa-fw.fa-trash-can

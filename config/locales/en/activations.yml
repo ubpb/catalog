@@ -35,8 +35,8 @@ en:
     new:
       header: Activate library account
       info_html: >-
-        To activate your library account, please enter your library card number or student matriculation number. If you have also received an activation code,
-        please enter this as well.
+        To activate your library account, please enter your library card number or student matriculation number. If you have
+        also received an activation code, please enter this as well.
       submit: Next
     update:
       error: An error has occurred during activation. Please contact the staff at the local circulation desk.

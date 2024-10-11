@@ -5,14 +5,17 @@ ruby IO.read(".ruby-version").strip
 
 gem "addressable", "~> 2.7"
 gem "alma_api", "~> 2.0"
+gem "barby", "~> 0.6"
 gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.1", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
+gem "chunky_png", "~> 1.4"
 gem "csv", "~> 3.0"
 gem "dry-struct", "~> 1.4"
 gem "elasticsearch", "~> 8.12"
 gem "faraday", "~> 2.7", "< 3"
 gem "hashids", "~> 1.0"
+gem "hexapdf", "~> 0.47"
 gem "inline_svg", "~> 1.9"
 gem "jbuilder", "~> 2.7"
 gem "kaminari-activerecord", "~> 1.2"

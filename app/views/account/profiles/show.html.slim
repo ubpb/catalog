@@ -29,3 +29,8 @@
       dt = t(".data.password")
       dd = link_to edit_account_password_path do
         = t(".change_password")
+      / dt = t(".data.id_card")
+      / dd
+      /   .mb-1 = t(".id_card_info")
+      /   .mb-0 = link_to print_account_id_card_path, data: { turbo: "false" } do
+      /     = t(".id_card_download")

@@ -11,7 +11,12 @@ en:
           email: E-mail
           expiry_date: Valid until
           first_name: First name
+          id_card: ID-Card
           ils_id: Library-ID
           last_name: Last name
           password: Password
         header: My Account
+        id_card_download: Download ID-Card for printing (PDF)
+        id_card_info: >-
+          Please use our electronic eID-Card on your smartphone in the library. If you do not have or do not want to use a
+          smartphone, you can download a paper copy of your library card to print out here.

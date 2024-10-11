@@ -8,3 +8,6 @@ ul.nav.nav-pills.flex-column
   - if current_admin_user.can_access_admin_global_message?
     li.nav-item
       = link_to "Nachricht", admin_global_message_path, class: "nav-link #{active_when(/global\-message/)}"
+  - if current_admin_user.can_access_admin_id_card_printouts?
+    li.nav-item
+      = link_to "Ausweisdruck", admin_id_card_printouts_path, class: "nav-link #{active_when(/id\-card\-printouts/)}"

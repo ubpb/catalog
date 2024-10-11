@@ -210,4 +210,8 @@ class User < ApplicationRecord
       ils_user.roles.any? { |role| role.code == "26" }
   end
 
+  def can_access_admin_id_card_printouts?
+    can_access_admin?
+  end
+
 end

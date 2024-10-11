@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     match "authorize", via: [:get, :post], on: :member
   end
 
-  # Admin routes (for now, just for registrations and activations)
+  # Admin routes
   namespace :admin do
     root to: redirect("/admin/registrations")
 
@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     resources :activations, only: [:index, :new, :create] do
       get "print/user/:user_id", on: :collection, as: :print, action: :print
     end
+
+    resources :id_card_printouts, only: [:index, :new, :create], path: "id-card-printouts"
   end
 
   # Library account
@@ -83,6 +85,7 @@ Rails.application.routes.draw do
     resource :id_card, only: [:show], path: "id-card" do
       match "authorize", via: [:get, :post], on: :member
       post "set-pin", on: :member
+      # get "print", on: :member, action: :download_printout
     end
     resource :pin, except: [:destroy]
     resources :proxy_users, path: "proxy-users", except: [:show]

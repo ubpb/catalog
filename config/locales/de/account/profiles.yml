@@ -11,7 +11,13 @@ de:
           email: E-Mail
           expiry_date: Gültig bis
           first_name: Vorname
+          id_card: Bibliotheksausweis
           ils_id: Bibliotheksausweisnummer
           last_name: Nachname
           password: Passwort
         header: Meine Daten
+        id_card_download: Bibliotheksausweis zum Ausdrucken herunterladen (PDF)
+        id_card_info: >-
+          Nutzen Sie in der Bibliothek bitte unseren elektronischen E-Bibliotheksausweis auf Ihrem Smartphone. Sollten Sie
+          kein Smartphone haben oder verwenden wollen, können Sie hier eine Papierkopie Ihres Bibliotheksausweises zum Ausdrucken
+          herunterladen.

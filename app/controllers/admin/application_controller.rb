@@ -1,25 +1,38 @@
 class Admin::ApplicationController < ApplicationController
-  before_action :authenticate!
 
-  before_action -> {
-    add_breadcrumb("Admin", admin_root_path)
-  }
+  before_action -> { add_breadcrumb(t("admin.application.breadcrumb"), admin_root_path) }
+
+  before_action :authenticate!
+  before_action :authorize!
+
+  layout "admin/main"
+
+  class NotAuthorizedError < StandardError; end
+
+  private
 
   def authenticate!
-    config_username = Rails.application.credentials.registrations&.dig(:admin_username)
-    config_password = Rails.application.credentials.registrations&.dig(:admin_password)
-
-    if config_username.present? && config_password.present?
-      authenticate_or_request_with_http_basic do |username, password|
-        secure_password = BCrypt::Password.new(
-          BCrypt::Password.create(password)
-        )
-
-        username == config_username && secure_password == config_password
-      end
+    if current_admin_user
+      true
     else
+      redirect_to(new_admin_session_path)
       false
     end
+  end
+
+  def authorize!
+    raise NotAuthorizedError unless current_admin_user.can_access_admin?
+  end
+
+  def current_admin_user
+    @current_admin_user ||= if (user_id = session[:current_admin_user_id])
+      User.find_by(id: user_id)
+    end
+  end
+  helper_method :current_admin_user
+
+  rescue_from NotAuthorizedError do
+    render "admin/unauthorized", status: :unauthorized, layout: "admin/base"
   end
 
 end

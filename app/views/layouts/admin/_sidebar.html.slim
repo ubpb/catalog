@@ -1,0 +1,14 @@
+.d-lg-none.mb-3
+  button.btn.btn-primary(type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu")
+    i.fa-solid.fa-bars.me-1
+    = "Menü"
+
+#offcanvasMenu.offcanvas.offcanvas-start
+  .offcanvas-header
+    h5.offcanvas-title = "Menü"
+    button.btn-close(type="button" data-bs-dismiss="offcanvas")
+  .offcanvas-body
+    = render "layouts/admin/sidebar_menu"
+
+.d-none.d-lg-block
+  = render "layouts/admin/sidebar_menu"

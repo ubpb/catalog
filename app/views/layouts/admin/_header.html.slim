@@ -1,0 +1,15 @@
+header
+  .container-fluid.d-flex.flex-row.align-items-center.justify-content-between
+    = link_to "http://www.ub.uni-paderborn.de" do
+      = inline_svg_tag("ub-logo.svg", id: "ub-logo")
+
+    .d-flex.flex-column.align-items-end.gap-2
+      #app-name
+        = link_to "/admin" do
+          == "Katalog Administration"
+
+      - if current_admin_user.present?
+        .d-flex.gap-2.align-items-center
+          span = current_admin_user.ils_user.full_name
+          = link_to "Abmelden", admin_session_path, class: "btn btn-primary", data: { turbo_method: :delete, turbo_confirm: "Wirklich abmelden?" }
+

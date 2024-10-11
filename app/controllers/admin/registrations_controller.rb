@@ -1,9 +1,6 @@
 class Admin::RegistrationsController < Admin::ApplicationController
-  layout "registrations"
 
-  before_action -> {
-    add_breadcrumb("Registrierungen", admin_registrations_path)
-  }
+  before_action -> { add_breadcrumb("Registrierungen", admin_registrations_path) }
 
   def index
     @registrations = Registration.order(created_in_alma: :asc, created_at: :desc)
@@ -115,6 +112,11 @@ class Admin::RegistrationsController < Admin::ApplicationController
   end
 
   private
+
+  def authorize!
+    super
+    raise NotAuthorizedError unless current_admin_user.can_access_admin_registrations?
+  end
 
   def check_duplicates_in_alma(registration, query_string)
     alma_users = Ils.adapter.api.get(

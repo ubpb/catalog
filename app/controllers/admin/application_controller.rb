@@ -1,6 +1,6 @@
 class Admin::ApplicationController < ApplicationController
 
-  before_action -> { add_breadcrumb("Admin", admin_root_path) }
+  before_action -> { add_breadcrumb(t("admin.application.breadcrumb"), admin_root_path) }
 
   before_action :authenticate!
   before_action :authorize!

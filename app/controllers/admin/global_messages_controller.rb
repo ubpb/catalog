@@ -1,6 +1,6 @@
 class Admin::GlobalMessagesController < Admin::ApplicationController
 
-  before_action -> { add_breadcrumb("Aktivierungen", admin_activations_path) }
+  before_action -> { add_breadcrumb("Globale Nachricht", admin_global_message_path) }
   before_action :authorize!
 
   def authorize!

@@ -22,7 +22,6 @@ class Admin::SessionsController < Admin::ApplicationController
         db_user  = User.create_or_update_from_ils_user!(ils_user)
         db_user.reload_ils_user!
 
-        reset_session
         session[:current_admin_user_id] = db_user.id
 
         redirect_to admin_root_path
@@ -36,7 +35,6 @@ class Admin::SessionsController < Admin::ApplicationController
   end
 
   def destroy
-    reset_session
     session[:current_admin_user_id] = nil
     redirect_to(root_path, status: :see_other)
   end

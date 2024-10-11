@@ -1,12 +1,6 @@
 class Admin::ActivationsController < Admin::ApplicationController
 
   before_action -> { add_breadcrumb("Aktivierungen", admin_activations_path) }
-  before_action :authorize!
-
-  def authorize!
-    super
-    raise NotAuthorizedError unless current_admin_user.can_access_admin_activations?
-  end
 
   def index
     redirect_to new_admin_activation_path
@@ -35,6 +29,13 @@ class Admin::ActivationsController < Admin::ApplicationController
 
   def print
     @user = User.find(params[:user_id])
+  end
+
+  private
+
+  def authorize!
+    super
+    raise NotAuthorizedError unless current_admin_user.can_access_admin_activations?
   end
 
 end

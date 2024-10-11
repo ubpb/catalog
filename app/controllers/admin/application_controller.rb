@@ -9,7 +9,7 @@ class Admin::ApplicationController < ApplicationController
 
   class NotAuthorizedError < StandardError; end
 
-  protected
+  private
 
   def authenticate!
     if current_admin_user

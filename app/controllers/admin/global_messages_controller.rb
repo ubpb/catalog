@@ -1,12 +1,6 @@
 class Admin::GlobalMessagesController < Admin::ApplicationController
 
   before_action -> { add_breadcrumb("Globale Nachricht", admin_global_message_path) }
-  before_action :authorize!
-
-  def authorize!
-    super
-    raise NotAuthorizedError unless current_admin_user.can_access_admin_global_message?
-  end
 
   def show
     redirect_to edit_admin_global_message_path
@@ -30,6 +24,11 @@ class Admin::GlobalMessagesController < Admin::ApplicationController
   end
 
   private
+
+  def authorize!
+    super
+    raise NotAuthorizedError unless current_admin_user.can_access_admin_global_message?
+  end
 
   def global_message_params
     params.require(:admin_global_message).permit(:active, :message, :style)

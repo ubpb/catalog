@@ -1,6 +1,3 @@
-require "barby/barcode/code_128"
-require "barby/outputter/png_outputter"
-
 class Account::IdCardsController < Account::ApplicationController
 
   before_action { add_breadcrumb t("account.id_cards.breadcrumb"), account_id_card_path }

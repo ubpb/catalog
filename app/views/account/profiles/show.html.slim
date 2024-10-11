@@ -32,5 +32,5 @@
       / dt = t(".data.id_card")
       / dd
       /   .mb-1 = t(".id_card_info")
-      /   .mb-0 = link_to print_account_id_card_path do
+      /   .mb-0 = link_to print_account_id_card_path, data: { turbo: "false" } do
       /     = t(".id_card_download")

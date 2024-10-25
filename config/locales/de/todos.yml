@@ -17,3 +17,9 @@ de:
         Im Bibliothekssystem ist vermerkt, dass Sie Ihr Passwort ändern müssen. Dies ist z.B. nach der ersten Anmeldung erforderlich,
         oder wenn Ihr Passwort durch die Bibliothek zurückgesetzt wurde. Bitte ändern Sie Ihr Passwort.
       title: Passwort ändern
+    set_pin:
+      action_title: PIN festlegen
+      description: >-
+        Sie müssen eine PIN für Ihr Konto festlegen. Diese PIN benötigen Sie zukünftig für die Ausleihe an den Selbstverbuchungsgeräten
+        in der Bibliothek.
+      title: PIN festlegen

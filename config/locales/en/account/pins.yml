@@ -18,8 +18,8 @@ en:
         change_pin: Change PIN
         header: Manage PIN
         info: >-
-          Here you can set a PIN for your account. The PIN is currently required to access your eID-Card. In the future other
-          functions can be secured with the PIN.
+          Here you can set a PIN for your account. You will need this PIN to borrow items from the self-checkout machines
+          in the library.
         set_pin: Set PIN now
         status_no_pin_set: 'Status: PIN not set'
         status_pin_set: 'Status: PIN has been set'

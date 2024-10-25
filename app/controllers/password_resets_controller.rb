@@ -1,6 +1,6 @@
 class PasswordResetsController < ApplicationController
 
-  before_action { add_breadcrumb t(".breadcrumb"), activation_root_path }
+  before_action { add_breadcrumb t(".breadcrumb"), password_reset_request_path }
   before_action :logout_current_user
   before_action :verify_password_reset_token_and_load_user, only: [:edit, :update]
 

@@ -3,9 +3,7 @@
     h5.m-0 = t(".header")
   .card-body
     = simple_form_for @form, as: :pin_form, url: account_pin_path, method: :put do |f|
-      = f.input :current_pin, autofocus: true, required: true, as: :password
-      hr
-      = f.input :new_pin, required: true, as: :password
-      = f.input :new_pin_confirmation, required: true, as: :password
+      = f.input :pin, required: true, as: :password
+      = f.input :pin_confirmation, required: true, as: :password
       = f.submit t(".submit"), class: "btn btn-primary"
-      =< link_to t("cancel"), account_pin_path, class: "btn btn-secondary"
+      =< link_to t("cancel"), account_pin_path, class: "btn btn-link"

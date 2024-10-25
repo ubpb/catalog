@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   # Homepage
   root to: "homepage#show"
 
-  # Authentication
-  post "/login",  to: "sessions#create", as: :session
-  get  "/login",  to: "sessions#new", as: :new_session
-  get  "/logout", to: "sessions#destroy", as: :logout
+  # Authentication / re-authentication
+  get   "/login",  to: "sessions#new", as: :new_session
+  post  "/login",  to: "sessions#create", as: :session
+  get   "/logout", to: "sessions#destroy", as: :logout
+  match "/reauth", to: "sessions#reauth", as: :reauthentication, via: [:get, :post]
 
   # Password reset
   get  "/password/reset",        to: "password_resets#new",    as: :password_reset_request

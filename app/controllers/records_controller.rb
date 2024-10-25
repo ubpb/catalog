@@ -6,8 +6,11 @@ class RecordsController < ApplicationController
     # augment journal stock locations label with data from the static location
     # lookup table.
     @record = augment_journal_stock_locations(@record)
-    # Remember return path
-    @return_uri = request.original_fullpath
+
+    # Remember return path. Used in view setup authentication links
+    # that can be used to bring the user back to the current record
+    # after authentication.
+    @return_uri = sanitize_uri(request.fullpath)
 
     respond_to do |format|
       format.html

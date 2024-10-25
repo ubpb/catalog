@@ -16,6 +16,8 @@ en:
       proxy_user:
         expired_at: If you enter a date here, the proxy user is automatically deleted after this date.
         note: You can enter a private note here why you have set up this proxy user.
+      reauth:
+        password: ''
     labels:
       activation:
         ils_id: Library-ID or student matriculation number
@@ -34,8 +36,6 @@ en:
         password_confirmation: Repeat new password
       pin_form:
         current_pin: Current PIN
-        new_pin: New PIN
-        new_pin_confirmation: Repeat new PIN
         pin: PIN
         pin_confirmation: Repeat PIN
       proxy_user:
@@ -60,8 +60,6 @@ en:
         password_confirmation: Please enter your new password again
       pin_form:
         current_pin: Please enter your current PIN
-        new_pin: Please enter your new PIN
-        new_pin_confirmation: Please enter your new PIN again
         pin: Please enter your desired PIN
         pin_confirmation: Please enter your PIN again
     required:

@@ -18,8 +18,8 @@ de:
         change_pin: PIN ändern
         header: PIN verwalten
         info: >-
-          Hier können Sie eine PIN für Ihren Account festlegen. Die PIN wird aktuell für den Zugriff auf Ihren E-Bibliotheksausweis
-          benötigt. Zukünftig können ggf. weitere Funktionen mit der PIN abgesichert werden.
+          Hier können Sie eine PIN für Ihr Konto festlegen. Diese PIN benötigen Sie für die Ausleihe an den Selbstverbuchungsgeräten
+          in der Bibliothek.
         set_pin: PIN jetzt festlegen
         status_no_pin_set: 'Status: PIN nicht festgelegt'
         status_pin_set: 'Status: PIN wurde festgelegt'

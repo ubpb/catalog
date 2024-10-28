@@ -84,8 +84,6 @@ Rails.application.routes.draw do
     resource :password, only: [:edit, :update]
     resource :email, only: [:edit, :update]
     resource :id_card, only: [:show], path: "id-card" do
-      match "authorize", via: [:get, :post], on: :member
-      post "set-pin", on: :member
       get "print", on: :member, action: :download_printout
     end
     resource :pin, except: [:destroy]

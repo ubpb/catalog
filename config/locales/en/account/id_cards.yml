@@ -2,14 +2,6 @@
 en:
   account:
     id_cards:
-      authorize:
-        error_notice: The PIN you entered is not correct. Please try again.
-        header: My eID-Card – PIN entry required
-        info: >-
-          You have not yet set a PIN. To be able to use the eID-Card, you must first set a personal PIN for your account.
-          The PIN is required to display the eID-Card.
-        set_pin: Set PIN now
-        submit: Check PIN
       breadcrumb: My eID-Card
       show:
         expiry_date: 'Valid until: %{date}'

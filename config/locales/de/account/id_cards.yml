@@ -9,3 +9,6 @@ de:
         no_barcode_error: >-
           Ihr E-Bibliotheksausweis kann nicht angezeigt werden. Es ist ein Fehler aufgetreten. Bitte wenden Sie sich an die
           Kolleginnen und Kollegen der Ortsleihe.
+        no_pin_set_warning: Sie haben noch keine PIN festgelegt. Bitte legen Sie eine PIN fest, um den E-Bibliotheksausweis
+          nutzen zu können.
+        set_pin: PIN festlegen

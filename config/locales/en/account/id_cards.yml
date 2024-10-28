@@ -8,3 +8,5 @@ en:
         header: My eID-Card
         no_barcode_error: Your eID-Card cannot be displayed. An error has occurred. Please contact the staff at the local
           circulation desk.
+        no_pin_set_warning: You have not yet set a PIN. Please set a PIN to be able to use the eID-Card.
+        set_pin: Set PIN

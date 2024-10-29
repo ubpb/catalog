@@ -48,7 +48,16 @@ namespace :application do
 
   desc "Cleanup expired proxy users"
   task :cleanup_proxy_users => :environment do
-    ProxyUser.where("expired_at < ?", Time.zone.today).destroy_all
+    ProxyUser.includes(:user).where("expired_at < ?", Time.zone.today).each do |proxy_user|
+      ProxyUser.transaction do
+        ProxyUserService.delete_proxy_user_in_alma(
+          proxy_user: proxy_user,
+          current_user: proxy_user.user
+        )
+
+        proxy_user.destroy!
+      end
+    end
   end
 
   # namespace :stimulus do

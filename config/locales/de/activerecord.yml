@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    errors:
+      models:
+        proxy_user:
+          in_the_past: darf nicht in der Vergangenheit liegen

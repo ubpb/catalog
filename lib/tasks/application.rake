@@ -46,6 +46,11 @@ namespace :application do
     RegistrationRequest.where("created_at < ?", 7.days.ago).destroy_all
   end
 
+  desc "Cleanup expired proxy users"
+  task :cleanup_proxy_users => :environment do
+    ProxyUser.where("expired_at < ?", Time.zone.today).destroy_all
+  end
+
   # namespace :stimulus do
   #   namespace :manifest do
   #     STIMULUS_ROOT             = Rails.root.join("app/assets/src/application/js/stimulus")

@@ -85,7 +85,7 @@ Rails.application.routes.draw do
     resource :id_card, only: [:show], path: "id-card" do
       match "authorize", via: [:get, :post], on: :member
       post "set-pin", on: :member
-      # get "print", on: :member, action: :download_printout
+      get "print", on: :member, action: :download_printout
     end
     resource :pin, except: [:destroy]
     resources :proxy_users, path: "proxy-users", except: [:show]

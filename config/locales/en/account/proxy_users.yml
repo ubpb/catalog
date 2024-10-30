@@ -39,11 +39,11 @@ en:
       new:
         header: New proxy user
         lookup:
-          info: Enter the library card number of the user you wish to set up as a proxy user here.
           form:
             barcode_placeholder: Library card number
             submit: Search
           header: Search user
+          info: Enter the library card number of the user you wish to set up as a proxy user here.
           no_user_found_error: No user with the library card number '%{barcode}' found.
       proxy_user:
         confirm_delete: Do you really want to delete this proxy user?

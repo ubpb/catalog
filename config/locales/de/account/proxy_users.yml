@@ -40,6 +40,7 @@ de:
       new:
         header: Neuer Proxy-Nutzer
         lookup:
+          info: Geben Sie hier die Bibliotheksausweisnummer des Nutzers ein, den Sie als Proxy-Nutzer einrichten möchten.
           form:
             barcode_placeholder: Bibliotheksausweisnummer
             submit: Suchen

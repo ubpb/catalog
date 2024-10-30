@@ -32,13 +32,14 @@ en:
             </li>
           </ul>
         header: Proxy users
-        info: Here you can authorise other users to borrow media in your name or to your account.
+        info: Here you can authorize other users to borrow media in your name or to your account.
         more_info: More information...
         new_proxy_user: New proxy user
         no_proxy_users: You have not yet set up any proxy users.
       new:
         header: New proxy user
         lookup:
+          info: Enter the library card number of the user you wish to set up as a proxy user here.
           form:
             barcode_placeholder: Library card number
             submit: Search

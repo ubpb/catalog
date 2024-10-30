@@ -6,6 +6,10 @@
     .card-body
       = render "alerts"
 
+      .callout.callout-info
+        i.fa-solid.fa-info-circle.fa-fw.fa-lg.me-1
+        = t(".lookup.info")
+
       = form_tag new_account_proxy_user_path, method: :get do
         .input-group
           span.input-group-text

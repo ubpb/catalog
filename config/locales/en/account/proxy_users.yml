@@ -18,11 +18,11 @@ en:
         header: Edit proxy user
       index:
         detailed_info: |
-          <p>This function is intended in particular for lecturers who wish to authorize their student assistants to borrow media. Once set up, the proxy user can borrow media in your name. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is made to your account and you are responsible for the return and any fees.</strong></p>
+          <p>This function is intended in particular for lecturers who wish to authorize their student assistants to borrow media. Once set up, the proxy user can borrow media with his own library card in your name. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is made to your account and you are responsible for the timely return and any fees incurred.</strong></p>
           <p>Please note the following information and restrictions:</p>
           <ul>
             <li>The proxy users must first be set up by you.</li>
-            <li>You are responsible for deleting the proxy users here if you wish to revoke the authorization.</li>
+            <li>You are responsible for deleting the proxy users here if you wish to withdraw the authorization. You can set an expiration date to automate the deletion.</li>
             <li>The proxy user requires their own library card number.</li>
             <li>The proxy user can only borrow media, not renew or reserve them.</li>
             <li>Proxy users can <strong>only borrow items from the local circulation desk, not from the self-checkout machines</strong>.</li>

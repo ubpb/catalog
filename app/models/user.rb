@@ -158,8 +158,8 @@ class User < ApplicationRecord
 
   def can_change_email?
     !has_blocking_todos? &&
-      ils_user.user_group.code != "01" && # No PS
-      ils_user.user_group.code != "02"    # No PA
+      ils_user.user_group&.code != "01" && # No PS
+      ils_user.user_group&.code != "02"    # No PA
   end
 
   def can_manage_hold_requests?

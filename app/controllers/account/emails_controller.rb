@@ -35,7 +35,7 @@ class Account::EmailsController < Account::ApplicationController
 private
 
   def authorize
-    authorize! :change_email, current_user
+    current_user.can_change_email?
   end
 
 end

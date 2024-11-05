@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def ils_user(force_reload: false)
-    # Load the ILS user from the cache of fetch it from the ILS in case of a cache miss or if we want to force a reload.
+    # Load the ILS user from the cache or fetch it from the ILS in case of a cache miss or if we want to force a reload.
     ils_user = Rails.cache.fetch("#{cache_key_with_version}/ils_user", expires_in: 5.minutes, force: force_reload) do
       Ils.get_user(ils_primary_id)
     end

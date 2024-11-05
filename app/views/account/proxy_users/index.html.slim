@@ -17,9 +17,24 @@
       #detailed-info.mt-2(class=collapse_class)
         == t(".detailed_info")
 
-    - if @proxy_users.present?
-      ol.list-group
-        = render partial: "proxy_user", collection: @proxy_users
-    - else
-      .alert.alert-info.mb-0.text-center
-        = t(".no_proxy_users")
+    .mb-3
+      h5
+        = t(".proxy_users.header")
+        small.text-body-secondary.ms-1 = t(".proxy_users.header_addition")
+      - if @proxy_users.present?
+        ol.list-group
+          = render partial: "proxy_user", collection: @proxy_users
+      - else
+        .alert.alert-info.mb-0.text-center
+          = t(".proxy_users.no_users")
+
+    .mb-0
+      h5
+        = t(".proxy_for_users.header")
+        small.text-body-secondary.ms-1 = t(".proxy_for_users.header_addition")
+      - if @proxy_for_users.present?
+        ol.list-group
+          = render partial: "proxy_for_user", collection: @proxy_for_users
+      - else
+        .alert.alert-info.mb-0.text-center
+          = t(".proxy_for_users.no_users")

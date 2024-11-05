@@ -36,7 +36,14 @@ de:
         info: Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen.
         more_info: Mehr Informationen...
         new_proxy_user: Neuer Proxy-Nutzer
-        no_proxy_users: Sie haben noch keine Proxy-Nutzer eingerichtet.
+        proxy_for_users:
+          header: Ich bin Proxy-User für
+          header_addition: "... und kann Medien auf deren Konto ausleihen"
+          no_users: Sie wurden nicht als Proxy-Nutzer eingerichtet
+        proxy_users:
+          header: Meine Proxy-User
+          header_addition: "... können Medien auf mein Konto ausleihen"
+          no_users: Sie haben noch keine Proxy-Nutzer eingerichtet
       new:
         header: Neuer Proxy-Nutzer
         lookup:

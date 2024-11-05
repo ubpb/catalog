@@ -7,7 +7,20 @@ class Account::ProxyUsersController < Account::ApplicationController
   before_action :ensure_enabled
 
   def index
+    # Load the list of users the current has setup as proxies
+    # and sync them with Alma.
     @proxy_users = current_user.proxy_users
+    ProxyUserService.sync_proxy_users_with_alma(@proxy_users)
+
+    # Load the list of users where the current user is a proxy for
+    # and sync them with Alma.
+    @proxy_for_users = ProxyUser.includes(:user).where(ils_primary_id: current_user.ils_primary_id)
+    ProxyUserService.sync_proxy_users_with_alma(@proxy_for_users)
+
+    # Make sure to reload the users to reflect the possible changes in the sync process above
+    # as the sync might delete proxy users that do not exists in Alma anymore.
+    @proxy_users.reload
+    @proxy_for_users.reload
   end
 
   def new
@@ -24,7 +37,7 @@ class Account::ProxyUsersController < Account::ApplicationController
 
       @proxy_user = current_user.proxy_users.build(
         ils_primary_id: ils_user.id,
-        name: ils_user.full_name
+        name: ils_user.full_name_reversed
       )
     else
       @proxy_user = current_user.proxy_users.build
@@ -39,7 +52,10 @@ class Account::ProxyUsersController < Account::ApplicationController
       ensure_proxy_is_unique(@proxy_user.ils_primary_id) or return
 
       if @proxy_user.save
-        if ProxyUserService.create_proxy_user_in_alma(proxy_user: @proxy_user, current_user: current_user)
+        if ProxyUserService.create_proxy_user_in_alma(
+          proxy_user_id: @proxy_user.ils_primary_id,
+          proxy_for_user_id: current_user.ils_primary_id
+        )
           flash[:success] = t(".success")
           redirect_to account_proxy_users_path
         else
@@ -73,7 +89,10 @@ class Account::ProxyUsersController < Account::ApplicationController
       @proxy_user = current_user.proxy_users.find(params[:id])
 
       if @proxy_user.destroy
-        if ProxyUserService.delete_proxy_user_in_alma(proxy_user: @proxy_user, current_user: current_user)
+        if ProxyUserService.delete_proxy_user_in_alma(
+          proxy_user_id: @proxy_user.ils_primary_id,
+          proxy_for_user_id: current_user.ils_primary_id
+        )
           flash[:success] = t(".success")
           redirect_to account_proxy_users_path
         else

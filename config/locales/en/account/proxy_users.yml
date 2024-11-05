@@ -35,7 +35,14 @@ en:
         info: Here you can authorize other users to borrow media in your name or to your account.
         more_info: More information...
         new_proxy_user: New proxy user
-        no_proxy_users: You have not yet set up any proxy users.
+        proxy_for_users:
+          header: I am a proxy user for
+          header_addition: "... and can borrow media on their account"
+          no_users: You have not been set up as a proxy user
+        proxy_users:
+          header: My proxy users
+          header_addition: "... can borrow media to my account"
+          no_users: You have not yet set up any proxy users
       new:
         header: New proxy user
         lookup:

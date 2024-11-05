@@ -50,12 +50,17 @@ namespace :application do
   task :cleanup_proxy_users => :environment do
     ProxyUser.includes(:user).where("expired_at < ?", Time.zone.today).each do |proxy_user|
       if ProxyUserService.delete_proxy_user_in_alma(
-        proxy_user: proxy_user,
-        current_user: proxy_user.user
+        proxy_user_id: proxy_user.ils_primary_id,
+        proxy_for_user_id: proxy_user.user.ils_primary_id
       )
         proxy_user.destroy!
       end
     end
+  end
+
+  desc "Sync proxy users"
+  task :sync_proxy_users => :environment do
+    ProxyUserService.sync_proxy_users_with_alma(ProxyUser.all)
   end
 
   # namespace :stimulus do

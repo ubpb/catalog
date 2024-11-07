@@ -48,12 +48,24 @@ namespace :application do
 
   desc "Cleanup expired proxy users"
   task cleanup_expired_proxy_users: :environment do
-    ProxyUser.includes(:user).where("expired_at < ?", Time.zone.today).each do |proxy_user|
-      if ProxyUserService.delete_proxy_user_in_alma( # rubocop:disable Style/Next
+    ProxyUser.includes(:user).where("expired_at < ?", Time.zone.today).find_each do |proxy_user|
+      if ProxyUserService.delete_proxy_user_in_alma(
         proxy_user_ils_primary_id: proxy_user.proxy_user.ils_primary_id,
         proxy_for_user_ils_primary_id: proxy_user.user.ils_primary_id
-      )
-        proxy_user.destroy!
+      ) && proxy_user.destroy
+        # Send email notification to the proxy user
+        ProxyUsersMailer.proxy_user_expired_to_proxy_user(
+          proxy_user_email: proxy_user.proxy_user.ils_user.email,
+          proxy_user_name: proxy_user.proxy_user.ils_user.full_name,
+          proxy_for_user_name: proxy_user.user.ils_user.full_name
+        ).deliver
+
+        # Send email notification to the user who created the proxy user
+        ProxyUsersMailer.proxy_user_expired_to_proxy_for_user(
+          proxy_user_name: proxy_user.proxy_user.ils_user.full_name,
+          proxy_for_user_email: proxy_user.user.ils_user.email,
+          proxy_for_user_name: proxy_user.user.ils_user.full_name
+        ).deliver
       end
     end
   end

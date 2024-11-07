@@ -73,14 +73,20 @@ class Account::ProxyUsersController < Account::ApplicationController
           proxy_user_ils_primary_id: @proxy_user.proxy_user.ils_primary_id,
           proxy_for_user_ils_primary_id: @proxy_user.user.ils_primary_id
         )
+          # Sent notification to the proxy user
+          ProxyUsersMailer.proxy_user_created(proxy_user: @proxy_user).deliver_later
+
+          # Done
           flash[:success] = t(".success")
           redirect_to account_proxy_users_path
         else
+          # Error
           flash[:error] = t(".error")
           redirect_to account_proxy_users_path
           raise ActiveRecord::Rollback
         end
       else
+        # Validation error(s)
         render :new, status: :unprocessable_entity
       end
     end
@@ -106,18 +112,25 @@ class Account::ProxyUsersController < Account::ApplicationController
     ProxyUser.transaction do
       @proxy_user = current_user.proxy_users.find(params[:id])
 
-      if @proxy_user.destroy
-        if ProxyUserService.delete_proxy_user_in_alma(
-          proxy_user_ils_primary_id: @proxy_user.proxy_user.ils_primary_id,
-          proxy_for_user_ils_primary_id: @proxy_user.user.ils_primary_id
-        )
-          flash[:success] = t(".success")
-          redirect_to account_proxy_users_path
-        else
-          flash[:error] = t(".error")
-          redirect_to account_proxy_users_path
-          raise ActiveRecord::Rollback
-        end
+      if ProxyUserService.delete_proxy_user_in_alma(
+        proxy_user_ils_primary_id: @proxy_user.proxy_user.ils_primary_id,
+        proxy_for_user_ils_primary_id: @proxy_user.user.ils_primary_id
+      ) && @proxy_user.destroy
+        # Sent notification to the proxy user
+        ProxyUsersMailer.proxy_user_deleted(
+          proxy_user_email: @proxy_user.proxy_user.ils_user.email,
+          proxy_user_name: @proxy_user.proxy_user.ils_user.full_name,
+          proxy_for_user_name: @proxy_user.user.ils_user.full_name
+        ).deliver_later
+
+        # Done
+        flash[:success] = t(".success")
+        redirect_to account_proxy_users_path
+      else
+        # Error
+        flash[:error] = t(".error")
+        redirect_to account_proxy_users_path
+        raise ActiveRecord::Rollback
       end
     end
   end

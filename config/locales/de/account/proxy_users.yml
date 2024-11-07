@@ -33,7 +33,9 @@ de:
             </li>
           </ul>
         header: Proxy-Nutzer
-        info: Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen.
+        info: >-
+          Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen, bzw. können einsehen,
+          ob Sie durch jemand anderen berechtigt wurden.
         more_info: Mehr Informationen...
         new_proxy_user: Neuer Proxy-Nutzer
         proxy_for_users:

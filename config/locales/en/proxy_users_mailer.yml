@@ -1,0 +1,11 @@
+---
+en:
+  proxy_users_mailer:
+    proxy_user_created:
+      subject: "[UB Paderborn] Proxy-User wurde eingerichtet"
+    proxy_user_deleted:
+      subject: "[UB Paderborn] Proxy-User wurde gelöscht"
+    proxy_user_expired_to_proxy_for_user:
+      subject: "[UB Paderborn] Berechtigung als Proxy-User abgelaufen"
+    proxy_user_expired_to_proxy_user:
+      subject: "[UB Paderborn] Berechtigung als Proxy-User abgelaufen"

@@ -32,7 +32,9 @@ en:
             </li>
           </ul>
         header: Proxy users
-        info: Here you can authorize other users to borrow media in your name or to your account.
+        info: >-
+          Here you can authorize other users to borrow media in your name or to your account, or you can see whether you have
+          been authorized by someone else.
         more_info: More information...
         new_proxy_user: New proxy user
         proxy_for_users:

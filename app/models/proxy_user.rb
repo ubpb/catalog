@@ -7,7 +7,7 @@ class ProxyUser < ApplicationRecord
   # Validations
   validates :user_id, presence: true
   validates :proxy_user_id, presence: true, uniqueness: {scope: :user_id}
-  #validate  :expired_at_must_be_in_the_future
+  validate  :expired_at_must_be_in_the_future
 
   # Form attributes: not stored in the database, but used as part of the UI form.
   attribute :ils_primary_id, :string

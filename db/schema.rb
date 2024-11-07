@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_23_160545) do
-  create_table "admin_global_messages", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.2].define(version: 2024_11_05_075148) do
+  create_table "admin_global_messages", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
     t.boolean "active", default: false, null: false
     t.string "style", default: "info", null: false
     t.text "message"
@@ -43,15 +43,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_23_160545) do
     t.index ["scope"], name: "index_permalinks_on_scope"
   end
 
-  create_table "proxy_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+  create_table "proxy_users", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "ils_primary_id", null: false
-    t.string "name", null: false
+    t.bigint "proxy_user_id", null: false
     t.string "note"
     t.date "expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "ils_primary_id"], name: "index_proxy_users_on_user_id_and_ils_primary_id", unique: true
+    t.index ["proxy_user_id"], name: "index_proxy_users_on_proxy_user_id"
+    t.index ["user_id", "proxy_user_id"], name: "index_proxy_users_on_user_id_and_proxy_user_id", unique: true
     t.index ["user_id"], name: "index_proxy_users_on_user_id"
   end
 
@@ -126,6 +126,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_23_160545) do
 
   add_foreign_key "notes", "users"
   add_foreign_key "proxy_users", "users"
+  add_foreign_key "proxy_users", "users", column: "proxy_user_id"
   add_foreign_key "watch_list_entries", "watch_lists"
   add_foreign_key "watch_lists", "users"
 end

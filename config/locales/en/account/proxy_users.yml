@@ -2,7 +2,7 @@
 en:
   account:
     proxy_users:
-      already_exists_error: A proxy user with the library ID '%{barcode}' already exists.
+      already_exists_error: The proxy user could not be created again as it has already been set up.
       breadcrumb:
         edit: Edit proxy user
         index: Proxy users
@@ -19,8 +19,8 @@ en:
       index:
         detailed_info: |
           <p>This function is intended in particular for lecturers who wish to authorize their student assistants to borrow media. Once set up, the proxy user can borrow media with his own library card in your name. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is made to your account and you are responsible for the timely return and any fees incurred.</strong></p>
-          <p>Please note the following information and restrictions:</p>
-          <ul>
+          <p><strong>Please note the following information and restrictions:</strong></p>
+          <ul class="mb-0">
             <li>The proxy users must first be set up by you.</li>
             <li>You are responsible for deleting the proxy users here if you wish to withdraw the authorization. You can set an expiration date to automate the deletion.</li>
             <li>The proxy user requires their own library card number.</li>

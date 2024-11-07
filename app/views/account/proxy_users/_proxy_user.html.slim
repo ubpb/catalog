@@ -1,6 +1,6 @@
 li.list-group-item.d-flex.justify-content-between.align-items-center
   .fw-bold
-    = proxy_user.name
+    = proxy_user.proxy_user.ils_user.full_name_reversed
 
     - if proxy_user.expired_at.present?
       span.badge.bg-info.ms-2 = t(".expired_at", date: l(proxy_user.expired_at))

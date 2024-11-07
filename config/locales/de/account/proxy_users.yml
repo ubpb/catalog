@@ -2,7 +2,7 @@
 de:
   account:
     proxy_users:
-      already_exists_error: Es existiert bereits ein Proxy-Nutzer mit der Bibliotheksausweisnummer '%{barcode}'.
+      already_exists_error: Der Proxy-Nutzer konnte nicht erneut erstellt werden, da er bereits eingerichtet wurde.
       breadcrumb:
         edit: Proxy-Nutzer bearbeiten
         index: Proxy-Nutzer
@@ -19,8 +19,8 @@ de:
       index:
         detailed_info: |
           <p>Diese Funktion ist insbesondere für Lehrende gedacht, die ihre studentischen Hilfskräfte mit der Ausleihe von Medien beauftragen möchten. Einmal eingerichtet, kann der Proxy-Nutzer über den eigenen Bibliotheksausweis Medien in Ihrem Namen ausleihen. Der Proxy-Nutzer hat keinen Zugriff auf Ihre persönlichen Daten oder Ihre Ausleihhistorie. <strong>Die Ausleihe erfolgt auf Ihr Konto und Sie sind für die rechtzeitige Rückgabe und eventuell anfallende Gebühren verantwortlich.</strong></p>
-          <p>Bitte beachten Sie die folgenden Hinweise und Einschränkungen:</p>
-          <ul>
+          <p><strong>Bitte beachten Sie die folgenden Hinweise und Einschränkungen:</strong></p>
+          <ul class="mb-0">
             <li>Die Proxy-Nutzer müssen hier zunächst durch Sie eingerichtet werden.</li>
             <li>Sie sind dafür verantwortlich, die Proxy-Benutzer hier zu löschen, wenn Sie die Berechtigung zurückziehen möchten. Sie können ein Ablaufdatum setzen, um das Löschen zu automatisieren.</li>
             <li>Der Proxy-Nutzer benötigt eine eigene Bibliotheksausweisnummer.</li>

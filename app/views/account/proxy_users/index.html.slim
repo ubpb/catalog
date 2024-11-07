@@ -1,3 +1,5 @@
+- expand_info_details = @proxy_users.present? || @proxy_for_users.present?
+
 .card.card-shadowed
   .card-header.d-flex.align-items-center
     h5.m-0
@@ -6,18 +8,18 @@
       i.fa-solid.fa-plus.fa-fw.me-1
       = t(".new_proxy_user")
   .card-body
-    .callout.callout-info
+    .callout.callout-info.mb-4
       i.fa-solid.fa-info-circle.fa-fw.fa-lg.me-1
       = t(".info")
 
-      - if @proxy_users.present?
-        div = link_to t(".more_info"), "#detailed-info", class: "text-decoration-none", data: { "bs-toggle": "collapse" }
+      - if expand_info_details
+        =< link_to t(".more_info"), "#detailed-info", class: "text-decoration-none", data: { "bs-toggle": "collapse" }
 
-      - collapse_class = @proxy_users.present? ? "collapse" : "collapse.show"
-      #detailed-info.mt-2(class=collapse_class)
-        == t(".detailed_info")
+      - collapse_class = expand_info_details ? "collapse" : "collapse.show"
+      #detailed-info(class=collapse_class)
+        .mt-2 == t(".detailed_info")
 
-    .mb-3
+    .mb-4
       h5
         = t(".proxy_users.header")
         small.text-body-secondary.ms-1 = t(".proxy_users.header_addition")

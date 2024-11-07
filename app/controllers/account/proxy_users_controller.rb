@@ -14,7 +14,7 @@ class Account::ProxyUsersController < Account::ApplicationController
 
     # Load the list of users where the current user is a proxy for
     # and sync them with Alma.
-    @proxy_for_users = ProxyUser.includes(:user).where(ils_primary_id: current_user.ils_primary_id)
+    @proxy_for_users = ProxyUser.includes(:user, :proxy_user).where(proxy_user: current_user)
     ProxyUserService.sync_proxy_users_with_alma(@proxy_for_users)
 
     # Make sure to reload the users to reflect the possible changes in the sync process above
@@ -24,37 +24,54 @@ class Account::ProxyUsersController < Account::ApplicationController
   end
 
   def new
-    if params[:barcode].present?
-      ils_user = Ils.get_user(params[:barcode])
+    return if params[:barcode].blank?
 
-      unless ils_user
-        flash[:error] = t(".lookup.no_user_found_error", barcode: params[:barcode])
-        redirect_to new_account_proxy_user_path and return
-      end
+    # User has filled out the lookup form. Lets check against Alma
+    # if we can find a user with the given user ID / barcode.
+    barcode = params[:barcode].strip
+    ils_user = Ils.get_user(barcode)
 
-      ensure_proxy_is_not_self(ils_user.id) or return
-      ensure_proxy_is_unique(ils_user.id) or return
-
-      @proxy_user = current_user.proxy_users.build(
-        ils_primary_id: ils_user.id,
-        name: ils_user.full_name_reversed
-      )
-    else
-      @proxy_user = current_user.proxy_users.build
+    # If we cannot find a user in Alma, we show an error message
+    # and return
+    unless ils_user
+      flash[:error] = t(".lookup.no_user_found_error", barcode: barcode)
+      redirect_to new_account_proxy_user_path and return
     end
+
+    # Finally we can build the proxy user object
+    @proxy_user = current_user.proxy_users.build(
+      # Attributes used by the form
+      ils_primary_id: ils_user.id,
+      name: ils_user.full_name_reversed
+    )
   end
 
   def create
     ProxyUser.transaction do
+      # Build the proxy user object based on the submitted form data
       @proxy_user = current_user.proxy_users.build(proxy_user_params)
 
-      ensure_proxy_is_not_self(@proxy_user.ils_primary_id) or return
-      ensure_proxy_is_unique(@proxy_user.ils_primary_id) or return
+      # Fetch the proxy user from Alma to make sure it exists.
+      proxy_ils_user = Ils.get_user(@proxy_user.ils_primary_id)
+      unless proxy_ils_user
+        flash[:error] = t(".error")
+        redirect_to account_proxy_users_path and return
+      end
 
+      # Make sure the proxy user has a local user record.
+      proxy_db_user = User.create_or_update_from_ils_user!(proxy_ils_user)
+      # Assign the local user that represents the proxy user to the proxy user object.
+      @proxy_user.proxy_user = proxy_db_user
+
+      # Run some checks.
+      ensure_proxy_is_not_self(proxy_db_user) or return
+      ensure_proxy_is_unique(proxy_db_user) or return
+
+      # Save the proxy user and create the proxy relationship in Alma.
       if @proxy_user.save
         if ProxyUserService.create_proxy_user_in_alma(
-          proxy_user_id: @proxy_user.ils_primary_id,
-          proxy_for_user_id: current_user.ils_primary_id
+          proxy_user_ils_primary_id: @proxy_user.proxy_user.ils_primary_id,
+          proxy_for_user_ils_primary_id: @proxy_user.user.ils_primary_id
         )
           flash[:success] = t(".success")
           redirect_to account_proxy_users_path
@@ -71,6 +88,7 @@ class Account::ProxyUsersController < Account::ApplicationController
 
   def edit
     @proxy_user = current_user.proxy_users.find(params[:id])
+    @proxy_user.name = @proxy_user.proxy_user.ils_user.full_name_reversed
   end
 
   def update
@@ -90,8 +108,8 @@ class Account::ProxyUsersController < Account::ApplicationController
 
       if @proxy_user.destroy
         if ProxyUserService.delete_proxy_user_in_alma(
-          proxy_user_id: @proxy_user.ils_primary_id,
-          proxy_for_user_id: current_user.ils_primary_id
+          proxy_user_ils_primary_id: @proxy_user.proxy_user.ils_primary_id,
+          proxy_for_user_ils_primary_id: @proxy_user.user.ils_primary_id
         )
           flash[:success] = t(".success")
           redirect_to account_proxy_users_path
@@ -112,11 +130,13 @@ class Account::ProxyUsersController < Account::ApplicationController
   end
 
   def proxy_user_params
-    params.require(:proxy_user).permit(:ils_primary_id, :name, :note, :expired_at)
+    params.require(:proxy_user).permit(
+      :ils_primary_id, :name, :note, :expired_at
+    )
   end
 
-  def ensure_proxy_is_not_self(user_id)
-    if user_id&.downcase == current_user.ils_primary_id.downcase
+  def ensure_proxy_is_not_self(proxy_db_user)
+    if proxy_db_user == current_user
       flash[:error] = t("account.proxy_users.cannot_proxy_self_error")
       redirect_to new_account_proxy_user_path and return
     end
@@ -124,9 +144,9 @@ class Account::ProxyUsersController < Account::ApplicationController
     true
   end
 
-  def ensure_proxy_is_unique(user_id)
-    if current_user.proxy_users.exists?(ils_primary_id: user_id)
-      flash[:error] = t("account.proxy_users.already_exists_error", barcode: user_id)
+  def ensure_proxy_is_unique(proxy_db_user)
+    if current_user.proxy_users.all.any? { |pu| pu.proxy_user.ils_primary_id == proxy_db_user.ils_primary_id }
+      flash[:error] = t("account.proxy_users.already_exists_error")
       redirect_to new_account_proxy_user_path and return
     end
 

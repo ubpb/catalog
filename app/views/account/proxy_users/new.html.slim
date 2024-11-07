@@ -1,4 +1,12 @@
-- if @proxy_user.ils_primary_id.blank?
+- if @proxy_user.present?
+  / New Form
+  .card.card-shadowed
+    .card-header
+      h5.m-0 = t(".header")
+    .card-body
+      = render "alerts"
+      = render "form"
+- else
   / Lookup Form
   .card.card-shadowed
     .card-header
@@ -18,11 +26,3 @@
             class: "form-control", autofocus: true, autocomplete: "off"
           = submit_tag t(".lookup.form.submit"), class: "btn btn-primary"
           = link_to t("cancel"), account_proxy_users_path, class: "btn btn-outline-primary"
-- else
-  / New Form
-  .card.card-shadowed
-    .card-header
-      h5.m-0 = t(".header")
-    .card-body
-      = render "alerts"
-      = render "form"

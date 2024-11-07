@@ -1,21 +1,24 @@
 class ProxyUser < ApplicationRecord
 
+  # Relations
   belongs_to :user
+  belongs_to :proxy_user, class_name: "User"
 
-  validates :ils_primary_id, presence: true, uniqueness: {scope: :user_id} # rubocop:disable Rails/UniqueValidationWithoutIndex
-  validates :name, presence: true
+  # Validations
+  validates :user_id, presence: true
+  validates :proxy_user_id, presence: true, uniqueness: {scope: :user_id}
+  validate  :expired_at_must_be_in_the_future
 
-  validate :expired_at_must_be_in_the_future
+  # Form attributes: not stored in the database, but used as part of the UI form.
+  attribute :ils_primary_id, :string
+  attribute :name, :string
 
-  # Not stored in the database, but used to lookup the proxy user in the ILS
-  attribute :barcode, :string
-
+  # Custom validation, to make sure the expiration date is in the future.
   def expired_at_must_be_in_the_future
-    return unless expired_at.present?
+    return if expired_at.blank?
+    return unless expired_at < Time.zone.today
 
-    if expired_at < Time.zone.today
-      errors.add(:expired_at, :in_the_past)
-    end
+    errors.add(:expired_at, :in_the_past)
   end
 
 end

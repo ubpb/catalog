@@ -3,7 +3,7 @@ class Account::PinsController < Account::ApplicationController
   before_action { add_breadcrumb t("account.pins.breadcrumb"), account_pin_path }
   before_action :load_ils_user
   before_action :check_pin_set, only: [:edit, :update]
-  before_action :reauthenticate!, only: [:edit, :update]
+  before_action :reauthenticate!
 
   def show
   end

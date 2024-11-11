@@ -39,11 +39,11 @@ de:
         more_info: Mehr Informationen...
         new_proxy_user: Neuer Proxy-Nutzer
         proxy_for_users:
-          header: Ich bin Proxy-User für
+          header: Ich bin Proxy-Nutzer für
           header_addition: "... und kann Medien auf deren Konto ausleihen"
           no_users: Sie wurden nicht als Proxy-Nutzer eingerichtet
         proxy_users:
-          header: Meine Proxy-User
+          header: Meine Proxy-Nutzer
           header_addition: "... können Medien auf mein Konto ausleihen"
           no_users: Sie haben noch keine Proxy-Nutzer eingerichtet
       new:

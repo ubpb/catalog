@@ -19,6 +19,7 @@ de:
       header: Bibliotheksausweis aktivieren
       section_1_header: 1. Zustimmung erforderlich
       section_2_header: 2. Für den Zugriff auf Ihr Bibliothekskonto legen Sie bitte ein Passwort fest
+      section_3_header: 3. Für die Ausleihe an den Selbstverbuchungsgeräten legen Sie bitte eine PIN fest
       submit: Jetzt aktivieren
       terms_of_use_html: >-
         Ich habe die <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid fa-external-link"></i>

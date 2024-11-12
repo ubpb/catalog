@@ -4,16 +4,16 @@ Sehr geehrte(r) <%= @proxy_user.proxy_user.ils_user.full_name %>,
 
 Sie wurden soeben als Proxy-Nutzer für <%= proxy_for_name %> freigeschaltet. <% if @proxy_user.expired_at.present? -%>Die Berechtigung gilt bis zum <%= l(@proxy_user.expired_at) -%>.<% end -%>
 
-Als Proxy-Nutzer können Sie nun Medien im Auftrag für <%= proxy_for_name %> ausleihen.
+Als Proxy-Nutzer können Sie nun Medien im Auftrag für <%= proxy_for_name %> ausleihen oder vormerken.
 Weitere Informationen finden Sie in Ihrem Bibliothekskonto unter
 
 <%= account_proxy_users_url %>
 
 Bitte beachten Sie die folgenden Hinweise:
 
-* Sie können als Proxy-Nutzer nur Medien ausleihen, nicht verlängern oder vormerken.
-* Die Ausleihe durch Proxy-Nutzer kann nur an der Ortsleihtheke, nicht an den Selbstverbuchungsgeräten erfolgen.
-* Um Medien als Proxy-Nutzer auszuleihen legen Sie Ihren Bibliotheksausweis und die Medien an der Ortsleihtheke vor und teilen dem Bibliothekspersonal direkt mit, dass Sie als Proxy-Nutzer Medien für <%= proxy_for_name %> ausleihen möchten.
+* Sie können als Proxy-Nutzer nur Medien ausleihen oder vormerken, aber nicht verlängern.
+* Die Ausleihe durch Proxy-Nutzer kann nur an der Theke des Sachgebietes Ortsleihe, nicht an den Selbstverbuchungsgeräten erfolgen.
+* An der Theke des Sachgebietes Ortsleihe legen Sie Ihren Bibliotheksausweis vor und teilen dem Bibliothekspersonal mit, dass Sie als Proxy-Nutzer Medien für <%= proxy_for_name %> ausleihen oder vormerken möchten.
 
 Mit freundlichen Grüßen
 

@@ -23,19 +23,20 @@ de:
           <ul class="mb-0">
             <li>Die Proxy-Nutzer müssen hier zunächst durch Sie eingerichtet werden.</li>
             <li>Sie sind dafür verantwortlich, die Proxy-Benutzer hier zu löschen, wenn Sie die Berechtigung zurückziehen möchten. Sie können ein Ablaufdatum setzen, um das Löschen zu automatisieren.</li>
-            <li>Der Proxy-Nutzer benötigt eine eigene Bibliotheksausweisnummer.</li>
-            <li>Der Proxy-Nutzer kann nur Medien ausleihen, nicht verlängern oder vormerken.</li>
-            <li>Die Ausleihe durch Proxy-Nutzer kann <strong>nur an der Ortsleihtheke, nicht an den Selbstverbuchungsgeräten</strong> erfolgen.</li>
+            <li>Der Proxy-Nutzer benötigt eine eigene Bibliotheksausweisnummer, die Ihnen für die Einrichtung bekannt sein muss.</li>
+            <li>Der Proxy-Nutzer kann nur Medien ausleihen oder vormerken, aber nicht verlängern.</li>
+            <li>Bei der Einrichtung und Löschung von Proxy-Nutzern erhält der Proxy-Nutzer entsprechende Hinweise per E-Mail und kann anschließend den Status in seinem Bibliothekskonto unter dem Punkt "Proxy-Nutzer" einsehen.</li>
+            <li>Die Ausleihe durch Proxy-Nutzer kann <strong>nur an der Theke des Sachgebietes Ortsleihe, nicht an den Selbstverbuchungsgeräten</strong> erfolgen.</li>
             <li>
-              An der Ortsleihtheke legt der Proxy-Nutzer seinen Bibliotheksausweis und die Medien vor und teilt dem
-              Bibliothekspersonal direkt mit, dass er als Proxy-Nutzer Medien für jemand anderen ausleihen möchte.
-              Das Bibliothekspersonal prüft die Berechtigung und bucht die Medien anschließend auf Ihr Konto.
+              An der Theke des Sachgebietes Ortsleihe legt der Proxy-Nutzer seinen Bibliotheksausweis vor und teilt dem
+              Bibliothekspersonal mit, dass er als Proxy-Nutzer Medien für jemand anderen ausleihen oder vormerken möchte.
+              Das Bibliothekspersonal prüft die Berechtigung und bucht die Medien anschließend auf Ihr Konto oder erstellt eine Vormerkung.
             </li>
           </ul>
         header: Proxy-Nutzer
         info: >-
-          Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen, bzw. können einsehen,
-          ob Sie durch jemand anderen berechtigt wurden.
+          Sie können hier andere Nutzer berechtigen, in Ihrem Namen bzw. auf Ihr Konto Medien auszuleihen. Außerdem können
+          einsehen, ob Sie durch jemand anderen berechtigt wurden.
         more_info: Mehr Informationen...
         new_proxy_user: Neuer Proxy-Nutzer
         proxy_for_users:

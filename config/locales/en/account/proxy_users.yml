@@ -18,17 +18,17 @@ en:
         header: Edit proxy user
       index:
         detailed_info: |
-          <p>This function is intended in particular for lecturers who wish to authorize their student assistants to borrow media. Once set up, the proxy user can borrow media with his own library card in your name. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is made to your account and you are responsible for the timely return and any fees incurred.</strong></p>
+          <p>This function is intended in particular for professors who wish to authorize their student assistants to borrow media. Once set up, the proxy user can borrow media in your name using their own library card. The proxy user has no access to your personal data or your borrowing history. <strong>The loan is charged to your account and you are responsible for returning the items on time and for any fees incurred.</strong></p>
           <p><strong>Please note the following information and restrictions:</strong></p>
           <ul class="mb-0">
             <li>The proxy users must first be set up by you.</li>
             <li>You are responsible for deleting the proxy users here if you wish to withdraw the authorization. You can set an expiration date to automate the deletion.</li>
-            <li>The proxy user requires their own library card number.</li>
-            <li>The proxy user can only borrow media, not renew or reserve them.</li>
+            <li>The proxy user requires their own library card number, which you must know in order to set it up.</li>
+            <li>The proxy user can only borrow or reserve media, but not renew them.</li>
+            <li>When setting up and deleting proxy users, the proxy user receives corresponding information by e-mail and can then view the status in their library account under "Proxy users".</li>
             <li>Proxy users can <strong>only borrow items from the local circulation desk, not from the self-checkout machines</strong>.</li>
             <li>
-              At the local circulation desk, the proxy user presents their library card and the media and informs the library staff directly that they would like to borrow media for someone else as a proxy user.
-              The library staff will check the authorization and then checkout the media to your account.
+              The proxy user presents their library card at the local circulation desk and informs the library staff that they would like to borrow or reserve media for someone else as a proxy user. The library staff will check the authorization and then book the media to your account or create a reservation.
             </li>
           </ul>
         header: Proxy users

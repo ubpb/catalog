@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     return unless current_user
 
     if @return_uri.present?
-      redirect_to return_uri
+      redirect_to @return_uri
     else
       redirect_to account_root_path
     end

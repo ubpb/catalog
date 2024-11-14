@@ -25,13 +25,10 @@ en:
         ils_id: Library-ID or student matriculation number
         name: Name
         password: Password
-        password_confirmation: Repeat password
         pin: PIN
-        pin_confirmation: Repeat PIN
         user_id: Library-ID or student matriculation number
       password_change_form:
         password: New password
-        password_confirmation: Repeat new password
       proxy_user:
         expired_at: Gültig bis
         name: Name
@@ -44,16 +41,12 @@ en:
         current_password: Please enter your current password
         email: Your e-mail address
         password: Your library password
-        password_confirmation: Please enter your password again
         pin: Please enter your desired PIN
-        pin_confirmation: Please enter your PIN again
         user_id: Your Library-ID or student matriculation number
       password_change_form:
         password: Your new password
-        password_confirmation: Please enter your new password again
       password_reset_form:
         password: Your new password
-        password_confirmation: Please enter your new password again
     required:
       mark: "*"
       text: Required

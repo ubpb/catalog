@@ -11,8 +11,7 @@
         = link_to password_reset_request_path do
           = t(".forgot_password")
       hr
-      = f.input :password, input_html: { value: @form.password }
-      = f.input :password_confirmation, input_html: { value: @form.password_confirmation }
+      = f.input :password, as: :viewable_password
     .card-footer
       => f.submit t("save"), class: "btn btn-primary"
       => link_to t("cancel"), account_profile_path, class: "btn btn-default"

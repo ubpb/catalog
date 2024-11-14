@@ -14,7 +14,7 @@ class Account::PinsController < Account::ApplicationController
 
   def create
     @form = PinForm.new(
-      params.require(:pin_form).permit(:pin, :pin_confirmation)
+      params.require(:pin_form).permit(:pin)
     )
 
     if @form.valid? && Ils.set_user_pin(current_user.ils_primary_id, @form.pin)
@@ -30,7 +30,7 @@ class Account::PinsController < Account::ApplicationController
 
   def update
     @form = PinForm.new(
-      params.require(:pin_form).permit(:current_pin, :pin, :pin_confirmation)
+      params.require(:pin_form).permit(:current_pin, :pin)
     )
 
     if @form.valid?

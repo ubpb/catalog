@@ -43,7 +43,7 @@ class ActivationsController < ApplicationController
 
   def update
     @form = ActivationForm.new(
-      params.require(:activation).permit(:password, :password_confirmation, :terms_of_use, :pin, :pin_confirmation)
+      params.require(:activation).permit(:password, :terms_of_use, :pin)
     )
 
     if @form.valid?

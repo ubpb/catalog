@@ -3,7 +3,6 @@
     h5.m-0 = t(".header")
   .card-body
     = simple_form_for @form, as: :pin_form, url: account_pin_path, method: :put do |f|
-      = f.input :pin, required: true, as: :password
-      = f.input :pin_confirmation, required: true, as: :password
+      = f.input :pin, required: true, as: :viewable_password
       = f.submit t(".submit"), class: "btn btn-primary"
       =< link_to t("cancel"), account_pin_path, class: "btn btn-link"

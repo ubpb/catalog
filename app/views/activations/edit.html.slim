@@ -9,12 +9,11 @@
       = f.input :terms_of_use, label: t(".terms_of_use_html").html_safe, required: true, as: :boolean
 
       h5.border-bottom = t(".section_2_header")
-      = f.input :password, required: true
-      = f.input :password_confirmation, required: true
+      = f.input :password, as: :viewable_password
 
       h5.border-bottom = t(".section_3_header")
-      = f.input :pin, required: true, as: :password
-      = f.input :pin_confirmation, required: true, as: :password
+      = f.input :pin, as: :viewable_password
+
     .card-footer
       = f.button :submit, t(".submit"), class: "btn btn-primary"
       = link_to t("cancel"), root_path, class: "btn btn-default ms-2"

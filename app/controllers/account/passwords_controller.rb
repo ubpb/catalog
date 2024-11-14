@@ -16,7 +16,7 @@ class Account::PasswordsController < Account::ApplicationController
 
   def update
     @form = PasswordChangeForm.new(
-      params.require(:password_change_form).permit(:current_password, :password, :password_confirmation)
+      params.require(:password_change_form).permit(:current_password, :password)
     )
 
     if @form.valid?

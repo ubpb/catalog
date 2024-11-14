@@ -25,13 +25,10 @@ de:
         ils_id: Bibliotheksausweisnummer oder Matrikelnummer
         name: Name
         password: Passwort
-        password_confirmation: Passwort wiederholen
         pin: PIN
-        pin_confirmation: PIN wiederholen
         user_id: Bibliotheksausweisnummer oder Matrikelnummer
       password_change_form:
         password: Neues Passwort
-        password_confirmation: Neues Passwort wiederholen
       proxy_user:
         expired_at: Gültig bis
         name: Name
@@ -44,16 +41,12 @@ de:
         current_password: Bitte geben Sie Ihr aktuelles Passwort ein
         email: Ihre E-Mail Adresse
         password: Ihr Bibliothekspasswort
-        password_confirmation: Bitte geben Sie Ihr Passwort erneut ein
         pin: Bitte geben Sie Ihre gewünschte PIN ein
-        pin_confirmation: Bitte geben Sie Ihre PIN erneut ein
         user_id: Ihre Bibliotheksausweisnummer oder Matrikelnummer
       password_change_form:
         password: Ihr neues Passwort
-        password_confirmation: Bitte geben Sie Ihr neues Passwort erneut ein
       password_reset_form:
         password: Ihr neues Passwort
-        password_confirmation: Bitte geben Sie Ihr neues Passwort erneut ein
     required:
       mark: "*"
       text: Erforderliche Angabe

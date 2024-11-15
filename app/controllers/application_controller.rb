@@ -99,6 +99,7 @@ class ApplicationController < ActionController::Base
 
   def reauthenticate!
     if authenticated? && reauthenicated?
+      setup_reauthentication_session
       true
     else
       return_uri = @return_uri || sanitize_uri(request.fullpath)

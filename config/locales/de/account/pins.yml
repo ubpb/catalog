@@ -23,6 +23,7 @@ de:
         set_pin: PIN jetzt festlegen
         status_no_pin_set: 'Status: PIN nicht festgelegt'
         status_pin_set: 'Status: PIN wurde festgelegt'
+        your_pin: Ihre PIN
       update:
         error_notice: PIN konnte nicht geändert werden. Es ist ein Fehler aufgetreten.
         success_notice: PIN wurde erfolgreich geändert

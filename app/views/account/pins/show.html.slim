@@ -7,13 +7,12 @@
       = t(".info")
 
     - if @ils_user.has_pin_set?
-      .callout.callout-success.mb-0
-        .mb-3 = t(".status_pin_set")
+      .mb-2 = t(".status_pin_set")
+      .mb-4 = render SecretTextComponent.new(value: @ils_user.pin, label: t(".your_pin"))
 
-        div = link_to t(".change_pin"), edit_account_pin_path(cancel_uri: request.fullpath), class: "btn btn-success"
+      = link_to t(".change_pin"), edit_account_pin_path(cancel_uri: request.fullpath), class: "btn btn-primary"
     - else
-      .callout.callout-warning.mb-0
-        .fw-bold.mb-3 = t(".status_no_pin_set")
-        span = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-warning"
+      .fw-bold.mb-4 = t(".status_no_pin_set")
+      span = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-primary"
 
 

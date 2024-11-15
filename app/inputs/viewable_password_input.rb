@@ -18,7 +18,11 @@ class ViewablePasswordInput < SimpleForm::Inputs::PasswordInput
     current_value = @builder.object.send(attribute_name)
 
     template.content_tag :div, class: "input-group" do
-      template.concat @builder.password_field(attribute_name, input_options.merge(value: current_value))
+      template.concat @builder.password_field(attribute_name, input_options.merge({
+        value: current_value,
+        spellcheck: false,
+        autocomplete: "off"
+      }))
       template.concat render_show_password_button(toggle_button_id)
     end
   end

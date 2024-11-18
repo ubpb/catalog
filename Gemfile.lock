@@ -166,10 +166,10 @@ GEM
     elastic-transport (8.3.5)
       faraday (< 3)
       multi_json
-    elasticsearch (8.15.0)
+    elasticsearch (8.16.0)
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 8.15.0)
-    elasticsearch-api (8.15.0)
+      elasticsearch-api (= 8.16.0)
+    elasticsearch-api (8.16.0)
       multi_json
     erubi (1.13.0)
     faraday (2.12.0)
@@ -214,7 +214,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.8.1)
+    json (2.8.2)
     kaminari-activerecord (1.2.2)
       activerecord
       kaminari-core (= 1.2.2)
@@ -412,7 +412,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
-    uri (1.0.1)
+    uri (1.0.2)
     useragent (0.16.10)
     view_component (3.20.0)
       activesupport (>= 5.2.0, < 8.1)
@@ -460,7 +460,7 @@ DEPENDENCIES
   csv (~> 3.0)
   debug
   dry-struct (~> 1.4)
-  elasticsearch (~> 8.12)
+  elasticsearch (~> 8.16)
   faraday (~> 2.7, < 3)
   hashids (~> 1.0)
   hexapdf (~> 0.47)

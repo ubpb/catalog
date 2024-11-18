@@ -172,12 +172,12 @@ GEM
     elasticsearch-api (8.15.0)
       multi_json
     erubi (1.13.0)
-    faraday (2.12.0)
-      faraday-net_http (>= 2.0, < 3.4)
+    faraday (2.12.1)
+      faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.3.0)
-      net-http
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     geom2d (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -214,7 +214,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.8.1)
+    json (2.8.2)
     kaminari-activerecord (1.2.2)
       activerecord
       kaminari-core (= 1.2.2)
@@ -412,7 +412,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
-    uri (1.0.1)
+    uri (1.0.2)
     useragent (0.16.10)
     view_component (3.20.0)
       activesupport (>= 5.2.0, < 8.1)
@@ -461,7 +461,7 @@ DEPENDENCIES
   debug
   dry-struct (~> 1.4)
   elasticsearch (~> 8.12)
-  faraday (~> 2.7, < 3)
+  faraday (~> 2.12)
   hashids (~> 1.0)
   hexapdf (~> 0.47)
   i18n-debug (>= 1.2)

@@ -20,6 +20,6 @@ en:
     set_pin:
       action_title: Set PIN
       description: >-
-        You must set a PIN for your account. You will need this PIN in future to borrow items from the self-checkout machines
-        in the library.
+        You must set a PIN for your account. You will need this PIN from 02.12.2024 to borrow items from the self-checkout
+        machines in the library.
       title: Set PIN

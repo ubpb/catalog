@@ -18,8 +18,8 @@ en:
         change_pin: Change PIN
         header: Manage PIN
         info: >-
-          Here you can set a PIN for your account. You will need this PIN to borrow items from the self-checkout machines
-          in the library.
+          Here you can set a PIN for your account. You will need this PIN from 02.12.2024 for borrowing from the self-checkout
+          machines in the library.
         set_pin: Set PIN now
         status_no_pin_set: 'Status: PIN not set'
         status_pin_set: 'Status: PIN has been set'

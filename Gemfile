@@ -37,7 +37,7 @@ gem "view_component", "~> 3.0"
 # Pin to 3.1.1 until
 # https://github.com/rubygems/rubygems/issues/7996 is resolved
 # FIXME: Remove this once the issue is resolved
-gem "stringio", "= 3.1.1"
+gem "stringio", "3.1.2"
 
 group :production do
   gem "newrelic_rpm", ">= 8.9.0"

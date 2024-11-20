@@ -1,7 +1,9 @@
 ---
 en:
   sessions:
-    breadcrumb: Login
+    breadcrumb:
+      login: Login
+      reauth: Re-authentication
     create:
       error: Authentication failed. Please check your entries. The Library-ID or password is incorrect.
       success: You have been successfully logged in.
@@ -23,4 +25,10 @@ en:
       cancel: Cancel
       forgot_password: I forgot my password
       header: Login
+      submit: Login
+    reauth:
+      cancel: Cancel
+      error: Authentication failed. The entered password was incorrect.
+      header: Re-authentication required
+      info: For security reasons, you must re-authenticate to access the desired function. Please enter your library password.
       submit: Login

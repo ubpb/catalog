@@ -19,6 +19,7 @@ en:
       header: Activate library account
       section_1_header: 1. Confirmation required
       section_2_header: 2. Please set a password to access your library account
+      section_3_header: 2. Please set a PIN
       submit: Activate now
       terms_of_use_html: >-
         I have read the <a href="https://nbn-resolving.de/urn:nbn:de:hbz:466:1-21353" target="_blank"> <i class="fa-solid

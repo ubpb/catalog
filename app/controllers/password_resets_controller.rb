@@ -1,6 +1,6 @@
 class PasswordResetsController < ApplicationController
 
-  before_action { add_breadcrumb t(".breadcrumb"), activation_root_path }
+  before_action { add_breadcrumb t(".breadcrumb"), password_reset_request_path }
   before_action :logout_current_user
   before_action :verify_password_reset_token_and_load_user, only: [:edit, :update]
 
@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     @form = PasswordResetForm.new(
-      params.require(:password_reset_form).permit(:password, :password_confirmation)
+      params.require(:password_reset_form).permit(:password)
     )
 
     if @form.valid?

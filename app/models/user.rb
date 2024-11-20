@@ -133,6 +133,18 @@ class User < ApplicationRecord
       )
     end
 
+    # Needs PIN setup
+    unless ils_user.has_pin_set?
+      @todos << Todo.new(
+        key: :set_pin,
+        blocking: false,
+        title: I18n.t("todos.set_pin.title"),
+        description: I18n.t("todos.set_pin.description"),
+        action_title: I18n.t("todos.set_pin.action_title"),
+        action_url: Rails.application.routes.url_helpers.new_account_pin_path
+      )
+    end
+
     @todos
   end
 

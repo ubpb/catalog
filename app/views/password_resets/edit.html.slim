@@ -4,8 +4,7 @@
       = t(".header")
     .card-body
       = render "alerts"
-      = f.input :password, autofocus: true
-      = f.input :password_confirmation
+      = f.input :password, autofocus: true, as: :viewable_password
     .card-footer
       => f.submit t(".submit"), class: "btn btn-primary"
       => link_to t(".cancel"), new_session_path, class: "btn btn-default"

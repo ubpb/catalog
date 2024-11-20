@@ -1,6 +1,6 @@
 class Admin::SessionsController < Admin::ApplicationController
 
-  before_action { add_breadcrumb t("sessions.breadcrumb"), new_admin_session_path }
+  before_action { add_breadcrumb t("sessions.breadcrumb.login"), new_admin_session_path }
 
   skip_before_action :authenticate!, only: [:new, :create]
   skip_before_action :authorize!

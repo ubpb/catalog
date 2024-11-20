@@ -5,17 +5,15 @@ en:
       defaults:
         password: Must contain min. one number and one special character (e.g. $, %, @, etc.). Min. 8 characters. Max. 30
           characters.
+        pin: Must be between 4 and 8 characters long and must only contain numbers (0-9).
         user_id: You can find the number on your library or student card.
       login:
         password: ''
-      pin_form:
-        current_pin: >-
-          Your current PIN is required to change the PIN. If you have forgotten your current PIN, please contact the staff
-          at the local circulation desk.
-        pin: must be between 4 and 8 characters long and must only contain numbers (0-9)
       proxy_user:
         expired_at: If you enter a date here, the proxy user is automatically deleted after this date.
         note: You can enter a private note here why you have set up this proxy user.
+      reauth:
+        password: ''
     labels:
       activation:
         ils_id: Library-ID or student matriculation number
@@ -27,17 +25,10 @@ en:
         ils_id: Library-ID or student matriculation number
         name: Name
         password: Password
-        password_confirmation: Repeat password
+        pin: PIN
         user_id: Library-ID or student matriculation number
       password_change_form:
         password: New password
-        password_confirmation: Repeat new password
-      pin_form:
-        current_pin: Current PIN
-        new_pin: New PIN
-        new_pin_confirmation: Repeat new PIN
-        pin: PIN
-        pin_confirmation: Repeat PIN
       proxy_user:
         expired_at: Gültig bis
         name: Name
@@ -50,20 +41,12 @@ en:
         current_password: Please enter your current password
         email: Your e-mail address
         password: Your library password
-        password_confirmation: Please enter your password again
+        pin: Please enter your desired PIN
         user_id: Your Library-ID or student matriculation number
       password_change_form:
         password: Your new password
-        password_confirmation: Please enter your new password again
       password_reset_form:
         password: Your new password
-        password_confirmation: Please enter your new password again
-      pin_form:
-        current_pin: Please enter your current PIN
-        new_pin: Please enter your new PIN
-        new_pin_confirmation: Please enter your new PIN again
-        pin: Please enter your desired PIN
-        pin_confirmation: Please enter your PIN again
     required:
       mark: "*"
       text: Required

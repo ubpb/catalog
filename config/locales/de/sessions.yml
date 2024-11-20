@@ -1,7 +1,9 @@
 ---
 de:
   sessions:
-    breadcrumb: Anmelden
+    breadcrumb:
+      login: Anmelden
+      reauth: Erneut authentifizieren
     create:
       error: Authentifizierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben. Die Ausweisnummer oder das Passwort ist
         falsch.
@@ -24,4 +26,12 @@ de:
       cancel: Abbrechen
       forgot_password: Ich habe mein Passwort vergessen
       header: Anmelden
+      submit: Anmelden
+    reauth:
+      cancel: Abbrechen
+      error: Authentifizierung fehlgeschlagen. Das eingegebene Passwort war nicht korrekt.
+      header: Authentifizierung erforderlich
+      info: >-
+        Sie müssen sich aus Sicherheitsgründen erneut authentifizieren, um auf die gewünschte Funktion zugreifen zu können.
+        Bitte geben Sie Ihr Bibliothekspasswort ein.
       submit: Anmelden

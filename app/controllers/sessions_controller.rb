@@ -1,22 +1,21 @@
 class SessionsController < ApplicationController
 
-  before_action { add_breadcrumb t("sessions.breadcrumb"), new_session_path }
+  before_action :setup_return_uri
+  before_action :setup_cancel_uri
 
   def new
-    @return_uri = sanitize_return_uri(params[:return_uri])
-    return unless current_user
+    add_breadcrumb t("sessions.breadcrumb.login"), new_session_path
 
-    if @return_uri.present?
-      redirect_to @return_uri
-    else
-      redirect_to account_root_path
-    end
+    redirect_to @return_uri if authenticated?
   end
 
   def create
-    user_id     = params.dig("login", "user_id")
-    password    = params.dig("login", "password")
-    @return_uri = sanitize_return_uri(params.dig("login", "return_uri"))
+    add_breadcrumb t("sessions.breadcrumb.login"), new_session_path
+
+    redirect_to @return_uri and return if authenticated?
+
+    user_id  = params.dig("login", "user_id")
+    password = params.dig("login", "password")
 
     if user_id.present? && password.present?
       if Ils.authenticate_user(user_id, password)
@@ -37,15 +36,11 @@ class SessionsController < ApplicationController
         # Login user
         setup_current_user_session(user_id: db_user.id)
 
-        # Finally, redirect the user.
+        # Redirect the user after login
         flash[:success] = t(".success")
-        if @return_uri.present?
-          redirect_to @return_uri
-        else
-          redirect_to account_root_path
-        end
+        redirect_to @return_uri
       else
-        # User failed to authenticate.
+        # Login failed. Infom the user.
         flash[:error] = t(".error")
         render :new, status: :unprocessable_entity
       end
@@ -58,6 +53,36 @@ class SessionsController < ApplicationController
     reset_current_user_session
     flash[:success] = t(".success")
     redirect_to(root_path, status: :see_other)
+  end
+
+  def reauth
+    add_breadcrumb t("sessions.breadcrumb.reauth"), reauthentication_path
+
+    # Reauthentication is only possible if the user is logged in.
+    authenticate! or return
+
+    # The reauth form was submitted.
+    if request.post?
+      password = params.dig("reauth", "password")
+
+      if password.present? && Ils.authenticate_user(current_user.ils_primary_id, password)
+        setup_reauthentication_session
+        redirect_to @return_uri
+      else
+        flash[:error] = t(".error")
+        render :reauth, status: :unprocessable_entity
+      end
+    end
+  end
+
+  private
+
+  def setup_return_uri
+    @return_uri = sanitize_uri(params[:return_uri]) || account_root_path
+  end
+
+  def setup_cancel_uri
+    @cancel_uri = sanitize_uri(params[:cancel_uri]) || root_path
   end
 
 end

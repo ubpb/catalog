@@ -43,11 +43,11 @@ class ActivationsController < ApplicationController
 
   def update
     @form = ActivationForm.new(
-      params.require(:activation).permit(:password, :password_confirmation, :terms_of_use)
+      params.require(:activation).permit(:password, :terms_of_use, :pin)
     )
 
     if @form.valid?
-      if activate_account(user: @user, password: @form.password)
+      if activate_account(user: @user, password: @form.password, pin: @form.pin)
         # Login user
         @user.reload_ils_user! # Make sure we have the latest data from ILS in the cache
         setup_current_user_session(user_id: @user.id)
@@ -105,7 +105,7 @@ class ActivationsController < ApplicationController
     true
   end
 
-  def activate_account(user:, password:)
+  def activate_account(user:, password:, pin:)
     User.transaction do
       user.update!(
         activated_at: Time.zone.now,
@@ -116,6 +116,7 @@ class ActivationsController < ApplicationController
 
       raise ActiveRecord::Rollback unless user.ils_user.activate_account
       raise ActiveRecord::Rollback unless Ils.set_user_password(user.ils_primary_id, password)
+      raise ActiveRecord::Rollback unless Ils.set_user_pin(user.ils_primary_id, pin)
 
       true
     end

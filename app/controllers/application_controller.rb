@@ -49,12 +49,27 @@ class ApplicationController < ActionController::Base
 
   def setup_current_user_session(user_id:)
     session[:current_user_id] = user_id
+    # When a user logs in, we also setup the reauth session so the user
+    # does not need to reauthenticate within the first 5 minutes of the session.
+    setup_reauthentication_session
     true
   end
 
   def reset_current_user_session
     session[:current_user_id] = nil
     @current_user = nil
+    true
+  end
+
+  def setup_reauthentication_session
+    session[:reauthenticated] = true
+    session[:reauthenticated_at] = Time.zone.now
+    true
+  end
+
+  def reset_reauthentication_session
+    session[:reauthenticated] = nil
+    session[:reauthenticated_at] = nil
     true
   end
 
@@ -66,26 +81,50 @@ class ApplicationController < ActionController::Base
     redirect_to request_activation_path and return
   end
 
+  def authenticate!
+    if authenticated?
+      true
+    else
+      return_uri = @return_uri || sanitize_uri(request.fullpath)
+      cancel_uri = sanitize_uri(request.referer) || root_path
+
+      redirect_to(new_session_path(return_uri: return_uri, cancel_uri: cancel_uri))
+      false
+    end
+  end
+
+  def authenticated?
+    current_user.present?
+  end
+
+  def reauthenticate!
+    if authenticated? && reauthenicated?
+      setup_reauthentication_session
+      true
+    else
+      return_uri = @return_uri || sanitize_uri(request.fullpath)
+      cancel_uri = sanitize_uri(request.referer) || root_path
+
+      redirect_to(reauthentication_path(return_uri: return_uri, cancel_uri: cancel_uri))
+      false
+    end
+  end
+
+  def reauthenicated?
+    session[:reauthenticated] == true && session[:reauthenticated_at] >= 5.minutes.ago
+  end
+
+  def ensure_xhr!
+    raise ArgumentError, "This controller action expects an ajax request." unless request.xhr?
+  end
+
   def available_search_scopes
     Config[:search_scopes]&.keys.presence || raise("No search scope configured! Please configure at least one search scope in config/search_engine.yml.")
   end
 
   def current_search_scope
-    search_scope  = available_search_scopes.find{|_| _ == params[:search_scope]&.to_sym}
+    search_scope = available_search_scopes.find { |s| s == params[:search_scope]&.to_sym }
     search_scope || available_search_scopes.first
-  end
-
-  def authenticate!
-    if current_user
-      true
-    else
-      redirect_to(new_session_path)
-      false
-    end
-  end
-
-  def ensure_xhr!
-    raise ArgumentError, "This controller action expects an ajax request." unless request.xhr?
   end
 
   def on_campus?(ip_address = request.remote_ip)
@@ -213,13 +252,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def sanitize_return_uri(return_uri)
-    if return_uri.present?
-      uri = URI(return_uri)
+  helper_method :sanitize_uri
+  def sanitize_uri(uri, query: true, fragment: true)
+    if uri.present?
+      uri = URI(uri)
 
       path = uri.path.present? ? uri.path.to_s : ""
-      fragment = uri.fragment.present? ? "##{uri.fragment}" : ""
-      query = uri.query.present? ? "?#{uri.query}" : ""
+      query = query && uri.query.present? ? "?#{uri.query}" : ""
+      fragment = fragment && uri.fragment.present? ? "##{uri.fragment}" : ""
 
       (path + query + fragment).presence
     end

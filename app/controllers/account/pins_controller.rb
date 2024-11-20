@@ -3,6 +3,7 @@ class Account::PinsController < Account::ApplicationController
   before_action { add_breadcrumb t("account.pins.breadcrumb"), account_pin_path }
   before_action :load_ils_user
   before_action :check_pin_set, only: [:edit, :update]
+  before_action :reauthenticate!
 
   def show
   end
@@ -13,7 +14,7 @@ class Account::PinsController < Account::ApplicationController
 
   def create
     @form = PinForm.new(
-      params.require(:pin_form).permit(:pin, :pin_confirmation)
+      params.require(:pin_form).permit(:pin)
     )
 
     if @form.valid? && Ils.set_user_pin(current_user.ils_primary_id, @form.pin)
@@ -24,18 +25,16 @@ class Account::PinsController < Account::ApplicationController
   end
 
   def edit
-    @form = PinChangeForm.new
+    @form = PinForm.new
   end
 
   def update
-    @form = PinChangeForm.new(
-      params.require(:pin_form).permit(:current_pin, :new_pin, :new_pin_confirmation)
+    @form = PinForm.new(
+      params.require(:pin_form).permit(:current_pin, :pin)
     )
 
-    @form.pin_in_ils = @ils_user.pin
-
     if @form.valid?
-      if Ils.set_user_pin(current_user.ils_primary_id, @form.new_pin)
+      if Ils.set_user_pin(current_user.ils_primary_id, @form.pin)
         redirect_to account_pin_path, notice: t(".success_notice")
       else
         redirect_to account_pin_path, error: t(".error_notice")

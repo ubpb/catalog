@@ -1,6 +1,6 @@
 .row
   .col-lg-8
-    = simple_form_for :login, url: session_path, method: :post do |f|
+    = simple_form_for :login, url: session_path(return_uri: @return_uri, cancel_uri: @cancel_uri), method: :post do |f|
       .card.card-shadowed.mb-3.mb-lg-0
         h5.card-header
           = t(".header")
@@ -9,14 +9,10 @@
 
           = f.input :user_id, autofocus: true
           = f.input :password
-          = f.input :return_uri, as: :hidden, input_html: { value: @return_uri }
           = link_to t(".forgot_password"), password_reset_request_path
         .card-footer
           => f.submit t(".submit"), class: "btn btn-primary"
-          - if @return_uri.presence
-            => link_to t(".cancel"), @return_uri, class: "btn btn-default"
-          - else
-            => link_to t(".cancel"), root_path, class: "btn btn-default"
+          => link_to t(".cancel"), @cancel_uri, class: "btn btn-link"
   .col-lg-4
     = render "homepage/ecard_info"
 

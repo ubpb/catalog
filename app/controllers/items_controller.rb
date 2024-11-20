@@ -1,12 +1,17 @@
 class ItemsController < RecordsController
-  def index
-    @return_uri = sanitize_return_uri(params[:return_uri])
 
+  def index
     add_breadcrumb(t(".breadcrumb"), record_items_path(
       search_scope: current_search_scope,
       record_id: @record.id
     ))
 
+    # Remember return path. Used in view setup authentication links
+    # that can be used to bring the user back to the current record
+    # after authentication.
+    @return_uri = sanitize_uri(params[:return_uri]) || sanitize_uri(request.fullpath)
+
+    # Load items
     @items = []
     @items += Ils.get_items(@record.id)
     @items += Ils.get_items(params[:host_item_id]) if params[:host_item_id].present?
@@ -117,4 +122,5 @@ class ItemsController < RecordsController
 
     items_or_holdings
   end
+
 end

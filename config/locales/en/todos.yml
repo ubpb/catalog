@@ -17,3 +17,9 @@ en:
         It is noted in the library system that you must change your password. This is necessary, for example, after the first
         login or if your password has been reset by the library. Please change your password.
       title: Change password
+    set_pin:
+      action_title: Set PIN
+      description: >-
+        You must set a PIN for your account. You will need this PIN from 02.12.2024 to borrow items from the self-checkout
+        machines in the library.
+      title: Set PIN

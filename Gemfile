@@ -24,8 +24,8 @@ gem "parallel", "~> 1.19"
 gem "propshaft", "~> 1.0"
 gem "puma", ">= 5.2"
 gem "rack-attack", "~> 6.6"
-gem "rails", "~> 8.0.0.beta1"
-gem "rails-i18n", "~> 7.0"
+gem "rails", "~> 8.0.0"
+gem "rails-i18n", "~> 8.0"
 gem "rss", "~> 0.2"
 gem "simple_form", "~> 5.1"
 gem "slim", ">= 5.0"
@@ -38,7 +38,8 @@ group :production do
 end
 
 group :development, :test do
-  gem "debug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "rubocop-ubpb", github: "ubpb/rubocop-ubpb"
 end
 
 group :development do
@@ -50,12 +51,10 @@ group :development do
   gem "i18n-debug", ">= 1.2"
   gem "i18n-tasks", ">= 1.0"
   gem "letter_opener_web", ">= 2.0"
-  gem "rubocop-ubpb", github: "ubpb/rubocop-ubpb"
   gem "web-console", ">= 3.3"
 end
 
 group :test do
-  gem "capybara", ">= 2.15"
-  gem "selenium-webdriver", ">= 4.1"
-  gem "webdrivers", ">= 4.3"
+  gem "capybara"
+  gem "selenium-webdriver"
 end

@@ -118,6 +118,8 @@ Rails.application.routes.draw do
     resources :cover_images, only: [:index], path: "cover"
   end
 
+  resources :feedbacks, only: [:new, :create], path: "feedback"
+
   # Open URL Link-Resolver
   get "openurl", to: "link_resolver#show"
 

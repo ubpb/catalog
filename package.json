@@ -23,7 +23,7 @@
   "targets": {
     "global": {
       "source": [
-        "./app/assets/src/application.js"
+        "./app/assets-src/application.js"
       ],
       "distDir": "./app/assets/builds",
       "context": "browser",

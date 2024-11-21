@@ -40,7 +40,7 @@ import HistogramAggregationController from "./histogram_aggregation_controller.j
 application.register("histogram-aggregation", HistogramAggregationController)
 
 // app/components/watch_lists_panel_component/component_controller.js
-import WatchListsPanelComponent__ComponentController from "../../../../../components/watch_lists_panel_component/component_controller.js"
+import WatchListsPanelComponent__ComponentController from "../../../../components/watch_lists_panel_component/component_controller.js"
 application.register("watch-lists-panel-component--component", WatchListsPanelComponent__ComponentController)
 
 // app/assets/src/application/js/stimulus/shelf_finder_controller.js
@@ -68,5 +68,5 @@ import ColorModeSwitcherController from "./color_mode_switcher_controller.js"
 application.register("color-mode-switcher", ColorModeSwitcherController)
 
 // app/assets/src/application/js/stimulus/copy_to_clipboard.js
-import CopyToClipboardComponent__Controller from "../../../../../components/copy_to_clipboard_component/controller.js"
+import CopyToClipboardComponent__Controller from "../../../../components/copy_to_clipboard_component/controller.js"
 application.register("copy-to-clipboard-component", CopyToClipboardComponent__Controller)

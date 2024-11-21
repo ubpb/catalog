@@ -484,7 +484,6 @@ DEPENDENCIES
   simple_form (~> 5.1)
   slim (>= 5.0)
   sprockets-rails (~> 3.5)
-  stringio (= 3.1.1)
   strip_attributes (~> 1.13)
   turbo-rails (~> 2.0)
   view_component (~> 3.0)

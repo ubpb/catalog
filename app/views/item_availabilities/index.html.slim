@@ -1,0 +1,10 @@
+.card.card-shadowed
+  .card-header
+    h5.mb-0
+      span.me-2 = link_to record_path(id: @record.id, search_scope: current_search_scope) do
+        i.fa-solid.fa-angle-left
+      = "Exemplarverfügbarkeit"
+  .card-body
+    turbo-frame(id="item-availability-#{@record.id}")
+      span.me-2 = item_availability_icon(@general_item_availablity)
+      = t("item_availabilities.general_item_availability.#{@general_item_availablity}", default: @general_item_availablity.to_s)

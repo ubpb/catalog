@@ -1,0 +1,7 @@
+de:
+  item_availabilities:
+    general_item_availability:
+      available: Min. ein Exemplar ausleihbar
+      restricted_available: Min. ein Exemplar zur Ansicht in der Bibliothek verfügbar (nicht ausleihbar)
+      unavailable: Kein Exemplar ausleihbar bzw. zur Ansicht verfügbar
+      unknown: Verfügbarkeit unbekannt

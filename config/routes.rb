@@ -116,6 +116,7 @@ Rails.application.routes.draw do
     resources :recommendations, only: [:index]
     resources :fulltexts, only: [:index]
     resources :cover_images, only: [:index], path: "cover"
+    resources :item_availabilities, only: [:index], path: "item-availabilities"
   end
 
   # Open URL Link-Resolver

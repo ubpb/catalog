@@ -1,9 +1,11 @@
 class Ils
   class Item < BaseStruct
+    AVAILABILITIES = [:available, :restricted_available, :unavailable, :unknown].freeze
+
     attribute :id, Types::String
     attribute :call_number, Types::String.optional
     attribute :barcode, Types::String.optional
-    attribute :is_available, Types::Bool.default(false)
+    attribute :is_available, Types::Bool.default(false) # TODO: should be named is_loanable
     attribute :reshelving_time, Types::Time.optional
     attribute :policy, Ils::ItemPolicy.optional
     attribute :library, Ils::Library.optional
@@ -59,6 +61,52 @@ class Ils
       else
         false
       end
+    end
+
+    def availability
+      if is_available == true
+        :available
+      elsif is_restricted_available?
+        :restricted_available
+      elsif is_available == false
+        :unavailable
+      else
+        :unknown
+      end
+    end
+
+    private
+
+    def is_restricted_available?
+      restricted_available_codes = [
+        "23", # Tischapparat
+        "30", # Kurzausleihe
+        "31", # Magazin-Kurzausleihe
+        "32", # Nicht ausleihbar
+        "33", # Seminarapparat
+        "34", # Kurzausleihe
+        "35", # Kurzausleihe
+        "36", # Kurzausleihe
+        "37", # Nicht ausleihbar
+        "38", # Nicht ausleihbar
+        "40", # Kurzausleihe
+        "41", # Nicht ausleihbar
+        "42", # Nicht ausleihbar
+        "43", # Handapparat
+        "44", # Nicht ausleihbar
+        "47", # Magazin-Kurzausleihe
+        "48", # Nicht ausleihbar
+        "49", # Nicht ausleihbar
+        "50", # Nicht ausleihbar
+        "53", # 4-Wochen-Ausleihe
+        "55", # Nicht ausleihbar
+        "58", # Nicht ausleihbar
+        "60", # Nicht ausleihbar
+        "61", # Magazin-5-Tage-Ausleihe
+        "68", # Magazin-Präsenzausleihe
+      ]
+
+      restricted_available_codes.include?(policy&.code)
     end
 
   end

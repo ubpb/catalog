@@ -114,10 +114,10 @@ ruby:
           turbo-frame#fulltexts.w-100(src=record_fulltexts_path(current_search_scope, record.id) loading="lazy" target="_top")
             .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
-      / Items
-      - if enable_items && current_search_scope == :local && !record.is_online_resource
+      / Item availability
+      - if current_search_scope == :local && !record.is_online_resource
         ruby:
-          path = record_items_path(
+          path = record_item_availabilities_path(
             search_scope: current_search_scope,
             record_id: record.id,
             host_item_id: record.host_item_id
@@ -125,9 +125,9 @@ ruby:
         .card.mt-2.shadow-sm.rounded
           .card-header.px-2.py-1
             i.fa-solid.fa-book.fa-fw.me-2
-            span.fw-bold = "Exemplare"
+            span.fw-bold = "Exemplar Verfügbarkeit"
           .card-body.py-1.px-2
-            turbo-frame(id="items-#{record.id}" src=path loading="lazy")
+            turbo-frame(id="availability-#{record.id}" src=path loading="lazy")
               .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
     / Notes

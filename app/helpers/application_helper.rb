@@ -69,4 +69,16 @@ module ApplicationHelper
     parts.compact.join(" / ")
   end
 
+  def item_availability_icon(availablity_state)
+    if availablity_state == :available
+      content_tag :i, nil, class: "fa-solid fa-check-circle text-success"
+    elsif availablity_state == :unavailable
+      content_tag :i, nil, class: "fa-solid fa-times-circle text-danger"
+    elsif availablity_state == :restricted_available
+      content_tag :i, nil, class: "fa-solid fa-lock text-warning"
+    else
+      content_tag :i, nil, class: "fa-solid fa-question-circle text-muted"
+    end
+  end
+
 end

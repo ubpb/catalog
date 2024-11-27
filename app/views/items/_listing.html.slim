@@ -87,6 +87,7 @@
   .table-responsive
     table.table.align-middle.mb-0
       thead: tr
+        th(scope="col" width="10")
         th(scope="col") = t(".items.header.call_number")
         th(scope="col") = t(".items.header.policy")
         th(scope="col") = t(".items.header.location")
@@ -96,6 +97,10 @@
       tbody
         - @items.each do |item|
           tr
+            / Availability
+            td
+              = item_availability_icon(item.availability)
+
             / Item Call number
             td
               - if item.call_number

@@ -69,6 +69,10 @@ module ApplicationHelper
     parts.compact.join(" / ")
   end
 
+  def item_availability_enabled?
+    Config[:item_availability, :enabled, default: false]
+  end
+
   def item_availability_icon(availablity_state)
     title = t("item_availabilities.general_item_availability.#{availablity_state}", default: availablity_state.to_s)
 

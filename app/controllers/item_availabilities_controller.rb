@@ -1,14 +1,13 @@
 class ItemAvailabilitiesController < RecordsController
 
   def index
-    Rails.cache.fetch("#{@record.id}/item-availability", expires_in: 5.minutes) do
+    @general_item_availability = Rails.cache.fetch("#{@record.id}/item-availability", expires_in: 5.minutes) do
       # Load items
       items = []
       items += Ils.get_items(@record.id)
       items += Ils.get_items(params[:host_item_id]) if params[:host_item_id].present?
 
-      # Calculate item availability
-      @general_item_availablity = calculate_general_item_availability(items)
+      calculate_general_item_availability(items)
     end
   end
 

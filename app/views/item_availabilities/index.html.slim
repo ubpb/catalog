@@ -6,5 +6,5 @@
       = "Exemplarverfügbarkeit"
   .card-body
     turbo-frame(id="item-availability-#{@record.id}")
-      span.me-2 = item_availability_icon(@general_item_availablity)
-      = t("item_availabilities.general_item_availability.#{@general_item_availablity}", default: @general_item_availablity.to_s)
+      span.me-2 = item_availability_icon(@general_item_availability)
+      = t("item_availabilities.general_item_availability.#{@general_item_availability}", default: @general_item_availability.to_s)

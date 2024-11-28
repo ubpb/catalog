@@ -79,7 +79,7 @@ class ItemsController < RecordsController
 
         # Item stats
         @no_of_items = @items.count
-        @no_of_available_items = @items.count { |i| i.is_available == true }
+        @no_of_available_items = @items.count { |i| i.is_in_place == true }
 
         # Get hold requests for that record
         @hold_requests = Ils.get_hold_requests_for_record(@record.id)

@@ -5,7 +5,7 @@ class Ils
     attribute :id, Types::String
     attribute :call_number, Types::String.optional
     attribute :barcode, Types::String.optional
-    attribute :is_available, Types::Bool.default(false) # TODO: should be named is_loanable as it is not about availability but loanability
+    attribute :is_in_place, Types::Bool.default(false)
     attribute :reshelving_time, Types::Time.optional
     attribute :policy, Ils::ItemPolicy.optional
     attribute :library, Ils::Library.optional
@@ -56,7 +56,7 @@ class Ils
         false
       elsif is_in_temp_location
         false
-      elsif is_available && location&.label =~ /magazin/i
+      elsif is_in_place && location&.label =~ /magazin/i
         true
       else
         false
@@ -64,11 +64,11 @@ class Ils
     end
 
     def availability
-      if is_available == true
+      if is_in_place == true
         :available
       elsif is_restricted_available?
         :restricted_available
-      elsif is_available == false
+      elsif is_in_place == false
         :unavailable
       else
         :unknown

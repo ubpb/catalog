@@ -11,7 +11,7 @@ module Ils::Adapters
           id: get_id(alma_item),
           call_number: get_call_number(alma_item),
           barcode: get_barcode(alma_item),
-          is_available: get_is_available(alma_item),
+          is_in_place: get_is_in_place(alma_item),
           reshelving_time: get_reshelving_time(alma_item),
           policy: get_policy(alma_item),
           library: get_library(alma_item),
@@ -47,7 +47,7 @@ module Ils::Adapters
         alma_item.dig("item_data", "barcode")
       end
 
-      def get_is_available(alma_item)
+      def get_is_in_place(alma_item)
         alma_item.dig("item_data", "base_status", "value") == "1"
       end
 

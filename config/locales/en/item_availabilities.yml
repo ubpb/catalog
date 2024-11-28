@@ -1,0 +1,7 @@
+en:
+  item_availabilities:
+    general_item_availability:
+      available: At least one item on loan
+      restricted_available: At least one item available for viewing in the library (not available for loan)
+      unavailable: No item available for loan or viewing
+      unknown: Availability unknown

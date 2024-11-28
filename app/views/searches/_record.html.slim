@@ -82,7 +82,7 @@ ruby:
 
       / Creators
       - if (creators = record.creators).present?
-        .mb-1.mt-1 = render(CreatorsComponent.new(creators: creators))
+        .mb-0.mt-1 = render(CreatorsComponent.new(creators: creators))
 
       / Year of publication and edition
       - yop_and_edition = [record.edition, record.year_of_publication].map(&:presence).compact.join(", ")
@@ -99,6 +99,12 @@ ruby:
           = t(".journal_stock")
           =< journal_stocks.join("; ")
 
+      / Call numbers
+      - if record.call_numbers.present?
+        div
+          = t(".call_number")
+          ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+
       / Fulltext links
       - if enable_fulltext_links && record.is_online_resource?
         .card.mt-1.shadow-sm.rounded
@@ -108,11 +114,18 @@ ruby:
           turbo-frame#fulltexts.w-100(src=record_fulltexts_path(current_search_scope, record.id) loading="lazy" target="_top")
             .p-2: i.fa-solid.fa-spinner.fa-spin-pulse
 
-      / Call numbers
-      - if record.call_numbers.present?
-        div
-          = t(".call_number")
-          ==< record.call_numbers.map{|cn| link_to(cn, go_item_call_number_info_path)}.join(", ")
+      / Item availability
+      - if item_availability_enabled? && current_search_scope == :local && !record.is_online_resource && record.is_monograph?
+        ruby:
+          path = record_item_availabilities_path(
+            search_scope: current_search_scope,
+            record_id: record.id,
+            host_item_id: record.host_item_id
+          )
+        .mt-2
+          div.px-2.py-1.rounded.text-bg-light.fw-semibold(style="font-size: 0.85rem;")
+            turbo-frame(id="item-availability-#{record.id}" src=path loading="lazy")
+              i.fa-solid.fa-ellipsis.fa-flip
 
     / Notes
     - if enable_notes

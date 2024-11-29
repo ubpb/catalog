@@ -1,6 +1,13 @@
 class Ils
   class Item < BaseStruct
-    AVAILABILITY_STATES = [:available, :restricted_available, :unavailable, :unknown].freeze
+
+    AVAILABILITY_STATES = {
+      loanable: :loanable,
+      restricted_loanable: :restricted_loanable,
+      available: :available,
+      unavailable: :unavailable,
+      unknow: :unknown
+    }.freeze
 
     attribute :id, Types::String
     attribute :call_number, Types::String.optional
@@ -64,50 +71,47 @@ class Ils
     end
 
     def availability
-      if is_in_place == true
-        :available
-      elsif is_restricted_available?
-        :restricted_available
-      elsif is_in_place == false
-        :unavailable
+      if is_in_place
+        calculate_in_place_availability
       else
-        :unknown
+        calculate_not_in_place_availability
       end
     end
 
     private
 
-    def is_restricted_available?
-      # TODO: Should be configurable and not hard coded
-      restricted_available_codes = [
-        "23", # Tischapparat
-        "30", # Kurzausleihe
-        "31", # Magazin-Kurzausleihe
-        "32", # Nicht ausleihbar
-        "33", # Seminarapparat
-        "34", # Kurzausleihe
-        "35", # Kurzausleihe
-        "36", # Kurzausleihe
-        "37", # Nicht ausleihbar
-        "38", # Nicht ausleihbar
-        "40", # Kurzausleihe
-        "41", # Nicht ausleihbar
-        "42", # Nicht ausleihbar
-        "43", # Handapparat
-        "44", # Nicht ausleihbar
-        "47", # Magazin-Kurzausleihe
-        "48", # Nicht ausleihbar
-        "49", # Nicht ausleihbar
-        "50", # Nicht ausleihbar
-        "53", # 4-Wochen-Ausleihe
-        "55", # Nicht ausleihbar
-        "58", # Nicht ausleihbar
-        "60", # Nicht ausleihbar
-        "61", # Magazin-5-Tage-Ausleihe
-        "68", # Magazin-Präsenzausleihe
-      ]
+    def calculate_in_place_availability
+      if process_type.blank?
+        if loanable?
+          AVAILABILITY_STATES[:loanable]
+        elsif restricted_loanable?
+          AVAILABILITY_STATES[:restricted_loanable]
+        else
+          AVAILABILITY_STATES[:available]
+        end
+      else
+        AVAILABILITY_STATES[:unavailable]
+      end
+    end
 
-      restricted_available_codes.include?(policy&.code)
+    def calculate_not_in_place_availability
+      if process_type.present?
+        AVAILABILITY_STATES[:unavailable]
+      else
+        AVAILABILITY_STATES[:unknown]
+      end
+    end
+
+    def loanable?
+      reg_exp = /normalausleihe|magazinausleihe/i
+
+      policy&.label =~ reg_exp || temp_policy&.label =~ reg_exp
+    end
+
+    def restricted_loanable?
+      reg_exp = /kurzausleihe|4-wochen-ausleihe|tagesausleihe|6-monats-ausleihe/i
+
+      policy&.label =~ reg_exp || temp_policy&.label =~ reg_exp
     end
 
   end

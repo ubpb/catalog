@@ -73,17 +73,19 @@ module ApplicationHelper
     Config[:item_availability, :enabled, default: false]
   end
 
-  def item_availability_icon(availablity_state)
-    title = t("item_availabilities.general_item_availability.#{availablity_state}", default: availablity_state.to_s)
+  def item_availability_icon(availability_state)
+    # title = t("item_availabilities.general_item_availability.#{availability_state}", default: availability_state.to_s)
 
-    if availablity_state == :available
-      content_tag :i, nil, class: "fa-solid fa-check-circle text-success", title: title
-    elsif availablity_state == :unavailable
-      content_tag :i, nil, class: "fa-solid fa-times-circle text-danger", title: title
-    elsif availablity_state == :restricted_available
-      content_tag :i, nil, class: "fa-solid fa-building text-warning", title: title
+    if availability_state == Ils::Item::AVAILABILITY_STATES[:loanable]
+      content_tag :i, nil, class: "fa-solid fa-circle-check text-success"
+    elsif availability_state == Ils::Item::AVAILABILITY_STATES[:restricted_loanable]
+      content_tag :i, nil, class: "fa-solid fa-circle-check text-warning"
+    elsif availability_state == Ils::Item::AVAILABILITY_STATES[:available]
+      content_tag :i, nil, class: "fa-solid fa-building text-warning"
+    elsif availability_state == Ils::Item::AVAILABILITY_STATES[:unavailable]
+      content_tag :i, nil, class: "fa-solid fa-times-circle text-danger"
     else
-      content_tag :i, nil, class: "fa-solid fa-question-circle text-muted", title: title
+      content_tag :i, nil, class: "fa-solid fa-question-circle text-muted"
     end
   end
 

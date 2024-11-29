@@ -6,7 +6,7 @@ class Ils
       restricted_loanable: :restricted_loanable,
       available: :available,
       unavailable: :unavailable,
-      unknow: :unknown
+      unknown: :unknown
     }.freeze
 
     attribute :id, Types::String

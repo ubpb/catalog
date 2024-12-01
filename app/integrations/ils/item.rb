@@ -63,7 +63,7 @@ class Ils
         false
       elsif is_in_temp_location
         false
-      elsif is_in_place && location&.label =~ /magazin/i
+      elsif is_in_place && location&.label&.match?(/magazin/i)
         true
       else
         false
@@ -105,13 +105,13 @@ class Ils
     def loanable?
       reg_exp = /normalausleihe|magazinausleihe/i
 
-      policy&.label =~ reg_exp || temp_policy&.label =~ reg_exp
+      policy&.label&.match?(reg_exp) || temp_policy&.label&.match?(reg_exp)
     end
 
     def restricted_loanable?
       reg_exp = /kurzausleihe|4-wochen-ausleihe|tagesausleihe|6-monats-ausleihe/i
 
-      policy&.label =~ reg_exp || temp_policy&.label =~ reg_exp
+      policy&.label&.match?(reg_exp) || temp_policy&.label&.match?(reg_exp)
     end
 
   end

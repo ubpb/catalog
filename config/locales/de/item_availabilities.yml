@@ -5,5 +5,5 @@ de:
       available: Aktuell steht min. ein Exemplar zur Nutzung in der Bibliothek zur Verfügung (nicht ausleihbar)
       loanable: Aktuell steht min. ein Exemplar zur Ausleihe zur Verfügung
       restricted_loanable: Aktuell steht min. ein Exemplar zur eingeschränkten Ausleihe zur Verfügung
-      unavailable: Aktuell steht kein Exemplar zur Ausleihe bzw. zur Nutzung in der Bibliothek zur Verfügung
-      unknown: Verfügbarkeit unbekannt (siehe Titeldetails)
+      unavailable: Aktuell steht kein Exemplar zur Ausleihe bzw. zur Nutzung in der Bibliothek zur Verfügung (siehe Titeldetails für mehr Informationen)
+      unknown: Verfügbarkeit unbekannt (siehe Titeldetails für mehr Informationen)

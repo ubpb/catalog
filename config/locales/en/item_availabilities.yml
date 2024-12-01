@@ -5,5 +5,5 @@ en:
       available: At least one copy is currently available for use in the library (not for loan)
       loanable: At least one copy is currently available for loan
       restricted_loanable: At least one copy is currently available for limited loan
-      unavailable: There is currently no copy available for loan or use in the library
-      unknown: Availability unknown (see title details)
+      unavailable: There is currently no copy available for loan or use in the library (see title details for more information)
+      unknown: Availability unknown (see title details for more information)

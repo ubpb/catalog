@@ -96,7 +96,11 @@ class Ils
 
     def calculate_not_in_place_availability
       if process_type.present?
-        AVAILABILITY_STATES[:unavailable]
+        if policy&.label&.match?(/seminarapparat/i)
+          AVAILABILITY_STATES[:available]
+        else
+          AVAILABILITY_STATES[:unavailable]
+        end
       else
         AVAILABILITY_STATES[:unknown]
       end

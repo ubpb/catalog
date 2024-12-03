@@ -123,7 +123,7 @@ ruby:
             host_item_id: record.host_item_id
           )
         .mt-2
-          div.px-2.py-1.rounded.text-bg-light.fw-semibold(style="font-size: 0.85rem;")
+          div.px-2.py-1.rounded.border.fw-semibold(style="font-size: 0.85rem; background-color: var(--bs-light-bg-subtle)")
             turbo-frame(id="item-availability-#{record.id}" src=path loading="lazy")
               i.fa-solid.fa-ellipsis.fa-flip
 

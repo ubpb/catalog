@@ -10,6 +10,12 @@ import { Turbo } from "@hotwired/turbo-rails"
 window.Turbo = Turbo
 Turbo.config.drive.progressBarDelay = 200
 
+// Hack to scroll to top (default behavior) without animation on turbo:render
+window.addEventListener("turbo:render", () => {
+  Turbo.navigator.currentVisit.scrolled = true;
+  window.scrollTo({top: 0, behavior: "instant"})
+});
+
 // Load / init stimulus controllers from ./stimulus/index.js
 import "./stimulus"
 

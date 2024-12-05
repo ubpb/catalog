@@ -4,3 +4,5 @@
 # Mime::Type.register "text/richtext", :rtf
 
 Mime::Type.register "application/x-bibtex", :bibtex, %w( text/x-bibtex ), %w( bib )
+
+Mime::Type.register "application/vnd.apple.pkpass", :pkpass

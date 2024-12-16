@@ -12,7 +12,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "chunky_png", "~> 1.4"
 gem "csv", "~> 3.0"
 gem "dry-struct", "~> 1.4"
-gem "elasticsearch", "~> 8.12"
+gem "elasticsearch", "~> 8.17"
 gem "faraday", "~> 2.7", "< 3"
 gem "hashids", "~> 1.0"
 gem "hexapdf", "~> 1.0"

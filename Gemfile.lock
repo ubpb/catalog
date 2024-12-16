@@ -166,10 +166,10 @@ GEM
     elastic-transport (8.3.5)
       faraday (< 3)
       multi_json
-    elasticsearch (8.16.0)
+    elasticsearch (8.17.0)
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 8.16.0)
-    elasticsearch-api (8.16.0)
+      elasticsearch-api (= 8.17.0)
+    elasticsearch-api (8.17.0)
       multi_json
     erubi (1.13.0)
     faraday (2.12.2)
@@ -231,7 +231,7 @@ GEM
       letter_opener (~> 1.9)
       railties (>= 6.1)
       rexml
-    logger (1.6.2)
+    logger (1.6.3)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -461,7 +461,7 @@ DEPENDENCIES
   csv (~> 3.0)
   debug
   dry-struct (~> 1.4)
-  elasticsearch (~> 8.12)
+  elasticsearch (~> 8.17)
   faraday (~> 2.7, < 3)
   hashids (~> 1.0)
   hexapdf (~> 1.0)

@@ -30,7 +30,7 @@ gem "rss", "~> 0.2"
 gem "simple_form", "~> 5.1"
 gem "slim", ">= 5.0"
 gem "sprockets-rails", "~> 3.5"
-gem "strip_attributes", "~> 1.13"
+gem "strip_attributes", "~> 1.14"
 gem "turbo-rails", "~> 2.0"
 gem "view_component", "~> 3.0"
 

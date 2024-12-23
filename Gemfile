@@ -10,7 +10,7 @@ gem "bcrypt", "~> 3.1"
 gem "bibtex-ruby", "~> 6.1", require: "bibtex"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "chunky_png", "~> 1.4"
-gem "csv", "~> 3.0"
+gem "csv", "~> 3.3"
 gem "dry-struct", "~> 1.4"
 gem "elasticsearch", "~> 8.12"
 gem "faraday", "~> 2.7", "< 3"

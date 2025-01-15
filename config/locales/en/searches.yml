@@ -51,6 +51,7 @@ en:
     searchables:
       cdi:
         any: All fields
+        collection_id: CDI Collection ID
         creator: Author(s) / Participant(s)
         subject: Subject heading
         title: Title

@@ -54,6 +54,7 @@ de:
     searchables:
       cdi:
         any: Alle Felder
+        collection_id: CDI Collection ID
         creator: Autor(en) / Beteiligte
         subject: Schlagwort
         title: Titel

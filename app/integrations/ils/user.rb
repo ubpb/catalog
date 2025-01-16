@@ -1,5 +1,6 @@
 class Ils
   class User < BaseStruct
+
     attribute :id, Ils::Types::String
     attribute :user_group, Ils::UserGroup.optional
     attribute :first_name, Ils::Types::String.optional
@@ -23,6 +24,18 @@ class Ils
 
     def full_name_reversed
       [last_name, first_name].map(&:presence).compact.join(", ")
+    end
+
+    def short_name
+      short_first_char = first_name.strip[0, 1]
+      short_first_name = "#{short_first_char}." if short_first_char.present?
+      [short_first_name, last_name].map(&:presence).compact.join(" ")
+    end
+
+    def short_name_reversed
+      short_first_char = first_name.strip[0, 1]
+      short_first_name = "#{short_first_char}." if short_first_char.present?
+      [last_name, short_first_name].map(&:presence).compact.join(", ")
     end
 
     def short_barcode
@@ -59,5 +72,6 @@ class Ils
     def needs_password_change?
       force_password_change
     end
+
   end
 end

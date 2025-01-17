@@ -83,9 +83,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resource :password, only: [:edit, :update]
     resource :email, only: [:edit, :update]
-    resource :id_card, only: [:show], path: "id-card" do
-      get "print", on: :member, action: :download_printout
-    end
+    resource :id_card, only: [:show], path: "id-card"
     resource :pin, except: [:destroy]
     resources :proxy_users, path: "proxy-users", except: [:show]
     resources :todos, only: [:index]

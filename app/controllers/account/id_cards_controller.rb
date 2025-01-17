@@ -18,6 +18,17 @@ class Account::IdCardsController < Account::ApplicationController
         ensure_turbo_frame_request
       end
 
+      format.pdf do
+        pdf = IdCardPdfGeneratorService.generate(@ils_user)
+
+        send_data(
+          pdf,
+          filename: "#{@ils_user.short_barcode}.pdf",
+          type: "application/pdf",
+          disposition: "attachment"
+        )
+      end
+
       format.pkpass do
         tmp_dir = create_tmp_pkpass_dir
 
@@ -27,26 +38,13 @@ class Account::IdCardsController < Account::ApplicationController
 
         tmp_file = zip_pkpass(tmp_dir)
 
-        send_file(tmp_file.path, filename: "library_id_card_#{@ils_user.short_barcode}.pkpass",
+        send_file(tmp_file.path, filename: "#{@ils_user.short_barcode}.pkpass",
                                  type: "application/vnd.apple.pkpass")
       ensure
         FileUtils.remove_entry(tmp_dir)
         tmp_file&.close
       end
     end
-  end
-
-  def download_printout
-    pdf = IdCardPdfGeneratorService.generate(@ils_user)
-
-    send_data(
-      pdf,
-      filename: "#{@ils_user.short_barcode}.pdf",
-      type: "application/pdf",
-      disposition: "attachment"
-    )
-
-    true
   end
 
   private

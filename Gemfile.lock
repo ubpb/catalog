@@ -489,6 +489,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0)
   rss (~> 0.2)
   rubocop-ubpb!
+  rubyzip (~> 2.4)
   selenium-webdriver (>= 4.1)
   simple_form (~> 5.1)
   slim (>= 5.0)

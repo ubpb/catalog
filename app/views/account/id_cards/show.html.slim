@@ -12,9 +12,10 @@
           = link_to t(".set_pin"), new_account_pin_path, class: "btn btn-warning", data: {"turbo-frame": "_top"}
 
     - if @ils_user.barcode.present?
-      .text-center.mb-3.mt-3
+      .text-center
         div(data-controller="barcode" data-barcode-text-value="#{@ils_user.barcode}" data-barcode-display-value-value="false")
-      div
+
+      .mt-3
         h3 = @ils_user.full_name_reversed
         h4 = @ils_user.short_barcode
         - if @ils_user.expiry_date.present?
@@ -29,6 +30,14 @@
       .alert.alert-danger.mb-0
         i.fa-solid.fa-exclamation-triangle.fa-lg.me-2
         = t(".no_barcode_error")
+
+  - if pkpass_enabled? && @ils_user.barcode.present?
+    .modal-footer.justify-content-start
+      = link_to account_id_card_path(format: :pkpass), target: "_blank" do
+        = image_tag "wallet/add_to_apple.svg", height: 40
+
+      = link_to account_id_card_path(format: :pkpass), target: "_blank" do
+        = image_tag "wallet/add_to_google.svg", height: 40
 
   javascript:
     function update_date_and_time() {

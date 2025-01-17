@@ -89,4 +89,8 @@ module ApplicationHelper
     end
   end
 
+  def pkpass_enabled?
+    Config[:pkpass, :enabled, default: false]
+  end
+
 end

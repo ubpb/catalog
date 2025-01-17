@@ -1,20 +1,38 @@
 class Account::IdCardsController < Account::ApplicationController
 
   before_action { add_breadcrumb t("account.id_cards.breadcrumb"), account_id_card_path }
-  before_action :ensure_turbo_frame_request, except: [:download_printout]
   before_action :load_ils_user
 
-  def download_printout
-    pdf = IdCardPdfGeneratorService.generate(@ils_user)
+  def show
+    respond_to do |format|
+      format.html do
+        ensure_turbo_frame_request
+      end
 
-    send_data(
-      pdf,
-      filename: "#{@ils_user.short_barcode}.pdf",
-      type: "application/pdf",
-      disposition: "attachment"
-    )
+      format.pdf do
+        pdf = IdCardPdfGeneratorService.generate(@ils_user)
 
-    true
+        send_data(
+          pdf,
+          filename: "#{@ils_user.short_barcode}.pdf",
+          type: "application/pdf",
+          disposition: "attachment"
+        )
+      end
+
+      if helpers.pkpass_enabled?
+        format.pkpass do
+          pkpass = IdCardPkpassGeneratorService.generate(@ils_user)
+
+          send_data(
+            pkpass,
+            filename: "#{@ils_user.short_barcode}.pkpass",
+            type: "application/vnd.apple.pkpass",
+            disposition: "attachment"
+          )
+        end
+      end
+    end
   end
 
   private

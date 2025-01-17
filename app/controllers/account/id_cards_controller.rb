@@ -20,15 +20,17 @@ class Account::IdCardsController < Account::ApplicationController
         )
       end
 
-      format.pkpass do
-        pkpass = IdCardPkpassGeneratorService.generate(@ils_user)
+      if helpers.pkpass_enabled?
+        format.pkpass do
+          pkpass = IdCardPkpassGeneratorService.generate(@ils_user)
 
-        send_data(
-          pkpass,
-          filename: "#{@ils_user.short_barcode}.pkpass",
-          type: "application/vnd.apple.pkpass",
-          disposition: "attachment"
-        )
+          send_data(
+            pkpass,
+            filename: "#{@ils_user.short_barcode}.pkpass",
+            type: "application/vnd.apple.pkpass",
+            disposition: "attachment"
+          )
+        end
       end
     end
   end
